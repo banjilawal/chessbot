@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import PromotionDecision
-from authorization import PromotionReviewer, PropertyChecker, ValidElevationChecker
+from authorization import RoleReviewer, ValidElevationChecker
 from domain import Elevatable
 from exchange import PromotionRequest
 
 from util import LoggingLevelRouter
 
 
-class PromotionRoleReviewer(PromotionReviewer[Elevatable]):
+class PromotionRoleReviewer(RoleReviewer[PromotionRequest]):
     """
     Role:
         -   Authorization
@@ -30,10 +30,6 @@ class PromotionRoleReviewer(PromotionReviewer[Elevatable]):
 
     Attributes:
         valid_item_checker: ValidRankChecker
-        pawn_checker: PromotionPawnElevatableChecker
-        promotion_row_checker: PromotionRowChecker
-        readiness_checker: CombatantReadinessChecker
-        double_promotion_checker: DoublePromotionChecker
 
     Provides:
         -   def execute(request: PromotionRequest) -> PromotionDecision
@@ -57,32 +53,28 @@ class PromotionRoleReviewer(PromotionReviewer[Elevatable]):
     def valid_item_checker(self) -> ValidElevationChecker:
         return cast(ValidElevationChecker, super().valid_item_checker)
     
-    @property
-    def checkers(self) -> List[PropertyChecker]:
-        return [
-            self._valid_item_checker,
-        ]
     
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
         method = f"{self.__class__.__name__}.execute"
         
-        for checker in self.checkers:
-            decision = checker.execute(request)
-            if decision.is_denial:
-                return PromotionDecision.denial(
-                    request=request,
-                    exception=ActivityApproverException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=ActivityApproverException.MSG,
-                        err_code=ActivityApproverException.ERR_CODE,
-                        ex=decision.exception,
-                    )
+        
+        decision = self.valid_item_checker.execute(request)
+        if decision.is_denial:
+            return PromotionDecision.denial(
+                request=request,
+                exception=ActivityApproverException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ActivityApproverException.MSG,
+                    err_code=ActivityApproverException.ERR_CODE,
+                    ex=decision.exception,
                 )
+            )
+        activity = cast(Elevatable, decision.request.activity)
         approval = PromotionRequest(
             id=request.id,
-            activity=request.activity,
+            activity=activity,
             applicant=request.applicant,
         )
         return PromotionDecision.grant(approval)

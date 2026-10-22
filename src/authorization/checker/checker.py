@@ -1,7 +1,7 @@
-# src/authorization/checker.py
+# src/authorization/checker/checker.py
 
 """
-Module: authorization.checker
+Module: authorization.checker.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,14 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from artifcat import Decision
-from exchange import AuthorizationRequest
-from util import LoggingLevelRouter
-
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T")
 
 class Checker(ABC, Generic[T]):
-    
-    @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
-        pass
+    pass

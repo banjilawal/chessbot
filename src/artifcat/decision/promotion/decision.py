@@ -64,7 +64,7 @@ class PromotionDecision(Decision[PromotionRequest]):
         return super().is_granted and isinstance(self.request, PromotionRequest)
     
     @property
-    def is_denied(self) -> bool:
+    def is_denial(self) -> bool:
         return not self.is_granted
     
     @classmethod
@@ -72,11 +72,7 @@ class PromotionDecision(Decision[PromotionRequest]):
         return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def deny(
-            cls,
-            request: PromotionRequest,
-            exception: Exception,
-    ) -> PromotionDecision:
+    def denial(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
         return cls(
             request=request,
             exception=exception,
@@ -84,11 +80,7 @@ class PromotionDecision(Decision[PromotionRequest]):
         )
     
     @classmethod
-    def timed_out(
-            cls,
-            request: PromotionRequest,
-            exception: Exception,
-    ) -> PromotionDecision:
+    def timed_out(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
         return cls(
             request=request,
             exception=exception,

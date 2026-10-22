@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/checker.py
+# src/authorization/checker/applicant/token/checker.py
 
 """
-Module: authorization.checker.applicant.checker
+Module: authorization.checker.applicant.token.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,13 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Decision
-from authorization import Checker
-from domain import Actor
+from authorization import ApplicantChecker
+from domain import Token
+from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Actor")
+T = TypeVar("T", bound="AuthorizationRequest")
 
-class ApplicantChecker(Checker[T], ABC, Generic[T]):
+class TokenApplicantChecker(ApplicantChecker[Token], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -33,10 +34,10 @@ class ApplicantChecker(Checker[T], ABC, Generic[T]):
         -   def execute(request: T) -> Decision[T]
         
     Super Class:
-        PropertyChecker
+        ApplicantChecker
     """
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest) -> Decision[T]:
+    def execute(self, request: T) -> Decision[T]:
         pass

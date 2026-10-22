@@ -35,7 +35,7 @@ class TokenSearcher:
 
 
         permission = self._permitter.execute(request=request)
-        if permission.is_denied:
+        if permission.is_denial:
             return SearchResult.failure(
                 TokenSearcherException(
                     cls_mthd=method,

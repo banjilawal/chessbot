@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/encounter/exception.py
+# src/err/authorization/applicant/crud/insertion/push/encounter/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.encounter.exception
+Module: err.authorization.applicant.crud.insertion.push.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterPushAuthorizerException",
+    "EncounterPushApplicantApproverException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterPushAuthorizerException(PushAuthorizerException):
+class EncounterPushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPushAuthorizer failed.
+        1.  Indicating that a EncounterPushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterPushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "EncounterPushAuthorizer failed."
+    MSG = "EncounterPushApplicantApprover failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

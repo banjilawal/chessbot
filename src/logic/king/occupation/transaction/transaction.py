@@ -39,7 +39,7 @@ class KingTravelTransaction(TravelTransaction[KingOccupationEvent]):
                 return TransactionResult.errored(event_update=self.event, exception=validation.exception)
             
             # Step 2: Actor occupies enemy_square
-            self.event.destination_square.occupant = self.event.actor
+            self.event.destination_square.occupant = self.event.applicant
             
             """
             # Step 2.1:
@@ -66,8 +66,8 @@ class KingTravelTransaction(TravelTransaction[KingOccupationEvent]):
                 actor_previous_square.occupant != traveler.
             If the condition is not met then rollback the rollback and return the rollback_exception.
             """
-            if self.event.actor_square.occupant != self.event.actor:
-                self.event.actor_square.occupant = self.event.actor
+            if self.event.actor_square.occupant != self.event.applicant:
+                self.event.actor_square.occupant = self.event.applicant
                 self.event.destination_square.occupant = None
                 
                 # Send the error and last checkpoint in the result
@@ -78,13 +78,13 @@ class KingTravelTransaction(TravelTransaction[KingOccupationEvent]):
                     )
                 )
             
-            self.event.actor.positions.search_service(self.event.destination_square.point)
+            self.event.applicant.positions.search_service(self.event.destination_square.point)
             
             # If the push destination point is not the traveler's updated position rollback the rollback,
             # then return the rollback_exception.
-            if self.event.actor.position != self.event.destination_square.point:
-                self.event.actor.positions.undo_push()
-                self.event.actor_square.occupant = self.event.actor
+            if self.event.applicant.position != self.event.destination_square.point:
+                self.event.applicant.positions.undo_push()
+                self.event.actor_square.occupant = self.event.applicant
                 self.event.destination_square.occupant = None
                 
                 # Send the error and last checkpoint in the result
@@ -97,10 +97,10 @@ class KingTravelTransaction(TravelTransaction[KingOccupationEvent]):
             
             
             
-            self.event.actor.discoveries.clear()
+            self.event.applicant.discoveries.clear()
             
             promotion_event_build = PromotionEventBuilder.search_service(
-                actor=self.event.actor,
+                actor=self.event.applicant,
                 parentpiece=self.event,
                 destination_square=self.event.destination_square,
                 execution_environment=self.event.execution_environment,

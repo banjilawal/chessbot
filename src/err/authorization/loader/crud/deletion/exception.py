@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudLoaderException
+from err import CrudAuthorizationLoaderException
 
 __all__ = [
     # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-    "DeletionLoaderException",
+    "DeletionAuthorizationLoaderException",
 ]
 
 # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-class DeletionLoaderException(CrudLoaderException):
+class DeletionAuthorizationLoaderException(CrudAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class DeletionLoaderException(CrudLoaderException):
     Provides:
 
     Super Class:
-        CrudLoaderException
+        CrudAuthorizationLoaderException
     """
     MSG = "DeletionLoader failed."
     ERR_CODE = "DELETION_REQUEST_NULL_ERROR"

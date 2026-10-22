@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/coord/exception.py
+# src/err/authorization/applicant/crud/insertion/push/coord/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.coord.exception
+Module: err.authorization.applicant.crud.insertion.push.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordPushAuthorizerException",
+    "CoordPushApplicantApproverException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordPushAuthorizerException(PushAuthorizerException):
+class CoordPushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPushAuthorizer failed.
+        1.  Indicating that a CoordPushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordPushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "CoordPushAuthorizer failed."
+    MSG = "CoordPushApplicantApprover failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

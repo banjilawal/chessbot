@@ -1,4 +1,4 @@
-# src/authorization/checker/applicant/promotion/row/__init__.py
+# src/authorization/checker/applicant/token/promotion/row/__init__.py
 
 """
 Module: authorization.checker.applicant.promotion.row.__init__

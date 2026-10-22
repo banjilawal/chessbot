@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushLoaderException
+from err import PushAuthorizationLoaderException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterPushLoaderException",
+    "EncounterPushAuthorizationLoaderException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterPushLoaderException(PushLoaderException):
+class EncounterPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EncounterPushLoaderException(PushLoaderException):
     Provides:
 
     Super Class:
-        PushLoaderException
+        PushAuthorizationLoaderException
     """
     MSG = "EncounterPushLoader failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"

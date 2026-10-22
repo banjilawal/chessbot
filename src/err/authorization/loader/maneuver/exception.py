@@ -17,11 +17,11 @@ from err import AuthorizationLoaderException
 
 __all__ = [
     # ======================# MANEUVER_LOADER_FAILURE #======================#
-    "ManeuverLoaderException",
+    "ManeuverAuthorizationLoaderException",
 ]
 
 # ======================# MANEUVER_LOADER_FAILURE #======================#
-class ManeuverLoaderException(AuthorizationLoaderException):
+class ManeuverAuthorizationLoaderException(AuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ManeuverLoaderException(AuthorizationLoaderException):
     Provides:
 
     Super Class:
-        LoaderException
+        AuthorizationLoaderException
     """
     MSG = "ManeuverLoader failed."
     ERR_CODE = "MANEUVER_LOADER_FAILURE"

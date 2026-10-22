@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/add/vector/exception.py
+# src/err/authorization/applicant/crud/insertion/add/vector/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.add.vector.exception
+Module: err.authorization.applicant.crud.insertion.add.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeAuthorizerException
+from err import AddNodeApplicantApproverException
 
 __all__ = [
     # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeAuthorizerException",
+    "AddVectorNodeApplicantApproverException",
 ]
 
 # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeAuthorizerException(AddNodeAuthorizerException):
+class AddVectorNodeApplicantApproverException(AddNodeApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeAuthorizer failed.
+        1.  Indicating that an AddVectorNodeApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AddVectorNodeAuthorizerException(AddNodeAuthorizerException):
     Provides:
 
     Super Class:
-        AddNodeAuthorizerException
+        AddNodeApplicantApproverException
     """
-    MSG = "AddVectorNodeAuthorizer failed."
+    MSG = "AddVectorNodeApplicantApprover failed."
     ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

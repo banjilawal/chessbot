@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchLoaderException
+from err import SearchAuthorizationLoaderException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterSearchLoaderException",
+    "EncounterSearchAuthorizationLoaderException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterSearchLoaderException(SearchLoaderException):
+class EncounterSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EncounterSearchLoaderException(SearchLoaderException):
     Provides:
 
     Super Class:
-        SearchLoaderException
+        SearchAuthorizationLoaderException
     """
     MSG = "EncounterSearchLoader failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"

@@ -17,11 +17,11 @@ from err import AuthorizationLoaderException
 
 __all__ = [
     # ======================# PROMOTION_LOADER_FAILURE #======================#
-    "PromotionLoaderException",
+    "PromotionAuthorizationLoaderException",
 ]
 
 # ======================# PROMOTION_LOADER_FAILURE #======================#
-class PromotionLoaderException(AuthorizationLoaderException):
+class PromotionAuthorizationLoaderException(AuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionLoaderException(AuthorizationLoaderException):
     Provides:
 
     Super Class:
-        LoaderException
+        AuthorizationLoaderException
     """
     MSG = "PromotionLoader failed."
     ERR_CODE = "PROMOTION_LOADER_FAILURE"

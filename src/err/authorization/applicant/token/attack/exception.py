@@ -1,7 +1,7 @@
-# src/err/authorization/applicant/token/promotion/exception.py
+# src/err/authorization/applicant/token/attack/exception.py
 
 """
-Module: err.authorization.applicant.token.promotion.exception
+Module: err.authorization.applicant.token.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import TokenApproverException
 
 __all__ = [
-    # ======================# TOKEN_APPROVER_FAILURE #======================#
-    "TokenPromotionApproverException",
+    # ======================# TOKEN_ENCOUNTER_APPROVER_FAILURE #======================#
+    "TokenEncounterApproverException",
 ]
 
-# ======================# TOKEN_APPROVER_FAILURE #======================#
-class TokenPromotionApproverException(TokenApproverException):
+# ======================# TOKEN_ENCOUNTER_APPROVER_FAILURE #======================#
+class TokenEncounterApproverException(TokenApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPromotionApprover failed.
+        1.  Indicating that a TokenEncounterApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class TokenPromotionApproverException(TokenApproverException):
     Super Class:
         TokenApproverException
     """
-    MSG = "TokenPromotionApprover failed."
-    ERR_CODE = "TOKEN_APPROVER_FAILURE"
+    MSG = "TokenEncounterApprover failed."
+    ERR_CODE = "TOKEN_ENCOUNTER_APPROVER_FAILURE"
     
     def __init__(
             self,

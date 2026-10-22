@@ -11,5 +11,5 @@ from __future__ import annotations
 
 from abc import ABC
 
-class Applicant(ABC):
+class Activity(ABC):
     pass

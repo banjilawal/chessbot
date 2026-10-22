@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationException
+from err import ApplicantApproverException
 
 __all__ = [
-    # ======================# APPLICANT_FAILURE #======================#
-    "ApplicantApproverException",
+    # ======================# TOKEN_APPROVER_FAILUREFAILURE #======================#
+    "TokenApproverException",
 ]
 
-# ======================# APPLICANT_FAILURE #======================#
-class ApplicantApproverException(AuthorizationException):
+# ======================# TOKEN_APPROVER_FAILUREFAILURE #======================#
+class TokenApproverException(ApplicantApproverException):
     """
     Role:
         - Error Tracing
@@ -41,10 +41,10 @@ class ApplicantApproverException(AuthorizationException):
     Provides:
 
     Super Class:
-        AuthorizationException
+        ApplicantApproverException
     """
     MSG = "ApplicantApprover failed."
-    ERR_CODE = "APPLICANT_FAILURE"
+    ERR_CODE = "TOKEN_APPROVER_FAILUREFAILURE"
     
     def __init__(
             self,

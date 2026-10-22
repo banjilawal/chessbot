@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchLoaderException
+from err import SearchAuthorizationLoaderException
 
 __all__ = [
     # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-    "AccountSearchLoaderException",
+    "AccountSearchAuthorizationLoaderException",
 ]
 
 # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-class AccountSearchLoaderException(SearchLoaderException):
+class AccountSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class AccountSearchLoaderException(SearchLoaderException):
     Provides:
 
     Super Class:
-        SearchLoaderException
+        SearchAuthorizationLoaderException
     """
     MSG = "AccountSearchLoader failed."
     ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"

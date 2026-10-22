@@ -88,7 +88,7 @@ class SquareStackPushAuthorizer(StackPushAuthorizer[Square]):
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
-            return PushApprovalReport.deny(
+            return PushApprovalReport.denial(
                 SquarePushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -104,7 +104,7 @@ class SquareStackPushAuthorizer(StackPushAuthorizer[Square]):
         # Handle the case that square conflicts with a current stack member.
         report = self._collision_detector.execute(attractor=square, stream=stack)
         if report.collision_exists:
-            PushApprovalReport.deny(
+            PushApprovalReport.denial(
                 exception=SquarePushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

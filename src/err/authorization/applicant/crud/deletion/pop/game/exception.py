@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/game/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/game/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.game.exception
+Module: err.authorization.applicant.crud.deletion.pop.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# GAME_POP_REQUEST_NULL_ERROR #======================#
-    "GamePopAuthorizerException",
+    "GamePopApplicantApproverException",
 ]
 
 # ======================# GAME_POP_REQUEST_NULL_ERROR #======================#
-class GamePopAuthorizerException(PopAuthorizerException):
+class GamePopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GamePopAuthorizer failed.
+        1.  Indicating that a GamePopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class GamePopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "GamePopAuthorizer failed."
+    MSG = "GamePopApplicantApprover failed."
     ERR_CODE = "GAME_POP_REQUEST_NULL_ERROR"
     
     def __init__(

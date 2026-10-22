@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionLoaderException
+from err import InsertionAuthorizationLoaderException
 
 __all__ = [
     # ======================# ADD_REQUEST_NULL_ERROR #======================#
-    "AddNodeLoaderException",
+    "AddNodeAuthorizationLoaderException",
 ]
 
 # ======================# ADD_REQUEST_NULL_ERROR #======================#
-class AddNodeLoaderException(InsertionLoaderException):
+class AddNodeAuthorizationLoaderException(InsertionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class AddNodeLoaderException(InsertionLoaderException):
     Provides:
 
     Super Class:
-        InsertionLoaderException
+        InsertionAuthorizationLoaderException
     """
     MSG = "AddNodeLoader failed."
     ERR_CODE = "ADD_REQUEST_NULL_ERROR"

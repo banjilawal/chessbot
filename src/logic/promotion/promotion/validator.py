@@ -49,13 +49,13 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_validator = BoardActorValidator.search_service(event.actor, event.execution_environment)
+            actor_validator = BoardActorValidator.search_service(event.applicant, event.execution_environment)
             if actor_validation.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
             
-            if not isinstance(event.actor, PawnPiece):
+            if not isinstance(event.applicant, PawnPiece):
                 return ValidationResult.failure(
-                    TypeError(f"Expected a PawnPiece, got {type(event.actor).__name__}")
+                    TypeError(f"Expected a PawnPiece, got {type(event.applicant).__name__}")
                 )
             
             if not isinstance(event.new_rank, (Knight, Bishop, Rook, Queen)):
@@ -65,16 +65,16 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                 )
                 
             
-            if event.actor.position.row != event.actor.team_name.schema.enemy_schema.rank_row:
+            if event.applicant.position.row != event.applicant.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
                     ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.MSG}")
                 )
             
-            if not isinstance(event.actor, PromotablePiece):
+            if not isinstance(event.applicant, PromotablePiece):
                 return ValidationResult.failure(
                     TypeError(f"Expected an PromotablePiece, got {type(candidate).__name__} instead.")
                 )
-            piece = cast(PromotablePiece, event.actor)
+            piece = cast(PromotablePiece, event.applicant)
             
             if (
                 (piece.previous_rank is not None and not isinstance(piece.rank_name, Queen)) or
@@ -89,7 +89,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
-            context_build_result = BoardContextBuilder.search_service(piece_id=event.actor.visitor_id)
+            context_build_result = BoardContextBuilder.search_service(piece_id=event.applicant.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardContext, context_build_result.payload)

@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushLoaderException
+from err import PushAuthorizationLoaderException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamPushLoaderException",
+    "TeamPushAuthorizationLoaderException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamPushLoaderException(PushLoaderException):
+class TeamPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class TeamPushLoaderException(PushLoaderException):
     Provides:
 
     Super Class:
-        PushLoaderException
+        PushAuthorizationLoaderException
     """
     MSG = "TeamPushLoader failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"

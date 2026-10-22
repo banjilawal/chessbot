@@ -71,7 +71,7 @@ class TokenDeletionAuthorizer:
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
-            return DeletionApprovalReport.deny(
+            return DeletionApprovalReport.denial(
                 TokenDeleteAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -84,7 +84,7 @@ class TokenDeletionAuthorizer:
         stack = cast(TokenStackService, request.stack)
         if stack.is_empty:
             # Return the exception chain on failure
-            return DeletionApprovalReport.deny(
+            return DeletionApprovalReport.denial(
                 exception=TokenDeleteAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

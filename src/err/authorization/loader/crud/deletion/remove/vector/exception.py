@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RemoveNodeLoaderException
+from err import RemoveNodeAuthorizationLoaderException
 
 __all__ = [
     # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "RemoveVectorNodeLoaderException",
+    "RemoveVectorNodeAuthorizationLoaderException",
 ]
 
 # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class RemoveVectorNodeLoaderException(RemoveNodeLoaderException):
+class RemoveVectorNodeAuthorizationLoaderException(RemoveNodeAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class RemoveVectorNodeLoaderException(RemoveNodeLoaderException):
     Provides:
 
     Super Class:
-        RemoveNodeLoaderException
+        RemoveNodeAuthorizationLoaderException
     """
     MSG = "RemoveVectorNodeLoader failed."
     ERR_CODE = "REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR"

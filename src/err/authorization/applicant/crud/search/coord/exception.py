@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/coord/exception.py
+# src/err/authorization/applicant/crud/search/coord/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.coord.exception
+Module: err.authorization.applicant.crud.search.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordSearchAuthorizerException",
+    "CoordSearchApplicantApproverException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordSearchAuthorizerException(SearchAuthorizerException):
+class CoordSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordSearchAuthorizer failed.
+        1.  Indicating that a CoordSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "CoordSearchAuthorizer failed."
+    MSG = "CoordSearchApplicantApprover failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -65,7 +65,7 @@ class TokenRemoveAuthorizer(RemoveAuthorizer[Token]):
         bootstrap_result = self.bootstrap_request(request)
         if bootstrap_result.is_failure:
             # Send an exception chain in the permission denial.
-            return RemoveApprovalReport.deny(
+            return RemoveApprovalReport.denial(
                 TokenRemoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -82,7 +82,7 @@ class TokenRemoveAuthorizer(RemoveAuthorizer[Token]):
         )
         if chain_validation_result.is_failure:
             # Send an exception chain in the permission denial.
-            return RemoveApprovalReport.deny(
+            return RemoveApprovalReport.denial(
                 TokenRemoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -94,7 +94,7 @@ class TokenRemoveAuthorizer(RemoveAuthorizer[Token]):
         # Handle the case that the chain is empty.
         if request.chain.is_blank:
             # Send an exception chain in the permission denial.
-            return RemoveApprovalReport.deny(
+            return RemoveApprovalReport.denial(
                 TokenRemoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

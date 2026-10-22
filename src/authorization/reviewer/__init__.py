@@ -1,17 +1,19 @@
-# src/authorization/applicant/__init__.py
+# src/authorization/reviewer/__init__.py
 
 """
-Module: authorization.applicant.__init__
+Module: authorization.reviewer.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.APPLICANT PACKAGE ===========#
+# =========== AUTHORIZATION.REVIEWER PACKAGE ===========#
 
 # Packages
+from .role import *
+from .applicant import *
 from .token import *
 from .promotion import *
 
 # Modules
-from .reviewer import ApplicantReviewer
+from .reviewer import Reviewer

@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchLoaderException
+from err import SearchAuthorizationLoaderException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquareSearchLoaderException",
+    "SquareSearchAuthorizationLoaderException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquareSearchLoaderException(SearchLoaderException):
+class SquareSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class SquareSearchLoaderException(SearchLoaderException):
     Provides:
 
     Super Class:
-        SearchLoaderException
+        SearchAuthorizationLoaderException
     """
     MSG = "SquareSearchLoader failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"

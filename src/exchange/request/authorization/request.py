@@ -19,7 +19,7 @@ from exchange import Request
 T = TypeVar("T", bound="AuthorizableResult")
 
 
-class AuthorizationRequest(Request[T], ABC, Generic[T]):
+class AuthorizationRequest(Request[T], Generic[T]):
     """
      Role:
          -  Messaging
@@ -28,7 +28,7 @@ class AuthorizationRequest(Request[T], ABC, Generic[T]):
         1.  Provides information an Authorizer needs to execute a client's job.
 
      Attributes:
-        actor: Actor
+        applicant: Actor
         activity: Actionable
 
      Provides:
@@ -36,23 +36,23 @@ class AuthorizationRequest(Request[T], ABC, Generic[T]):
      Super Class:
         Request
      """
-    _actor: Actor
+    _applicant: Actor
     _activity: Actionable
     
-    def __init__(self, id: int, actor: Actor, activity: Actionable):
+    def __init__(self, id: int, applicant: Actor, activity: Actionable):
         """
         Args:
             id: int
-            actor: Actor
+            applicant: Actor
             activity: Actionable
         """
         super().__init__(id=id)
-        self._actor = actor
+        self._applicant = applicant
         self._activity = activity
         
     @property
-    def actor(self) -> Actor:
-        return self._actor
+    def applicant(self) -> Applicant:
+        return self._applicant
     
     @property
     def activity(self) -> Actionable:

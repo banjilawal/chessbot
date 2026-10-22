@@ -13,17 +13,16 @@ from typing import List, Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import (
-    Attributable, CombatantReadinessChecker, DoublePromotionChecker, PromotionPawnTokenChecker,
-    PromotionReviewer, PromotionRowChecker, PropertyChecker, ValidTokenChecker
+    ApplicantReviewer, DoublePromotionChecker, PromotionPawnTokenChecker,
+    PromotionRowChecker, Checker, ValidTokenChecker
 )
-from domain import Token
 from err import ApplicantApproverException
 from exchange import PromotionRequest
 
 from util import LoggingLevelRouter
 
 
-class PromotionApplicantReviewer(PromotionReviewer[Token]):
+class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
     """
     Role:
         -   Authorization
@@ -36,7 +35,7 @@ class PromotionApplicantReviewer(PromotionReviewer[Token]):
         valid_item_checker: ValidTokenChecker
         pawn_checker: PromotionPawnTokenChecker
         promotion_row_checker: PromotionRowChecker
-        readiness_checker: CombatantReadinessChecker
+        readiness_checker: ApplicantReadinessChecker
         double_promotion_checker: DoublePromotionChecker
 
     Provides:
@@ -48,7 +47,7 @@ class PromotionApplicantReviewer(PromotionReviewer[Token]):
 
     _pawn_checker: PromotionPawnTokenChecker
     _promotion_row_checker: PromotionRowChecker
-    _readiness_checker: CombatantReadinessChecker
+    _readiness_checker: ApplicantReadinessChecker
     _double_promotion_checker: DoublePromotionChecker
 
     
@@ -57,7 +56,7 @@ class PromotionApplicantReviewer(PromotionReviewer[Token]):
             valid_item_checker: Optional[ValidTokenChecker] | None = None,
             pawn_checker: Optional[PromotionPawnTokenChecker] | None = None,
             promotion_row_checker: Optional[PromotionRowChecker] | None = None,
-            readiness_checker: Optional[CombatantReadinessChecker] | None = None,
+            readiness_checker: Optional[ApplicantReadinessChecker] | None = None,
             double_promotion_checker: Optional[DoublePromotionChecker] | None = None,
     ):
         """
@@ -65,12 +64,12 @@ class PromotionApplicantReviewer(PromotionReviewer[Token]):
             valid_item_checker: Optional[ValidTokenChecker]
             pawn_checker: Optional[PromotionPawnTokenChecker]
             promotion_row_checker: Optional[PromotionRowChecker]
-            readiness_checker: Optional[CombatantReadinessChecker]
+            readiness_checker: Optional[ApplicantReadinessChecker]
             double_promotion_checker: Optional[DoublePromotionChecker]
         """
         super().__init__(valid_item_checker=valid_item_checker or ValidTokenChecker())
         self._pawn_checker = pawn_checker or PromotionPawnTokenChecker()
-        self._readiness_checker = readiness_checker or CombatantReadinessChecker()
+        self._readiness_checker = readiness_checker or ApplicantReadinessChecker()
         self._promotion_row_checker = promotion_row_checker or PromotionRowChecker()
         self._double_promotion_checker = double_promotion_checker or DoublePromotionChecker()
         
@@ -79,7 +78,7 @@ class PromotionApplicantReviewer(PromotionReviewer[Token]):
         return cast(ValidTokenChecker, super().valid_item_checker)
     
     @property
-    def checkers(self) -> List[PropertyChecker]:
+    def checkers(self) -> List[Checker]:
         return [
             self._pawn_checker,
             self._readiness_checker,

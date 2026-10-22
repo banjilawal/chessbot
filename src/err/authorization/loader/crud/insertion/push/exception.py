@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionLoaderException
+from err import InsertionAuthorizationLoaderException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "PushLoaderException",
+    "PushAuthorizationLoaderException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class PushLoaderException(InsertionLoaderException):
+class PushAuthorizationLoaderException(InsertionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PushLoaderException(InsertionLoaderException):
     Provides:
 
     Super Class:
-        InsertionLoaderException
+        InsertionAuthorizationLoaderException
     """
     MSG = "PushLoader failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"

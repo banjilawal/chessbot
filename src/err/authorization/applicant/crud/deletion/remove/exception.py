@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/exception.py
+# src/err/authorization/applicant/crud/exception.py
 
 """
-Module: err.authorization.authorizer.crud.exception
+Module: err.authorization.applicant.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionAuthorizerException
+from err import DeletionApplicantApproverException
 
 __all__ = [
     # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-    "RemoveNodeAuthorizerException",
+    "RemoveNodeApplicantApproverException",
 ]
 
 # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-class RemoveNodeAuthorizerException(DeletionAuthorizerException):
+class RemoveNodeApplicantApproverException(DeletionApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveNodeAuthorizer failed.
+        1.  Indicating that an RemoveNodeApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class RemoveNodeAuthorizerException(DeletionAuthorizerException):
     Provides:
 
     Super Class:
-        DeletionAuthorizerException
+        DeletionApplicantApproverException
     """
-    MSG = "RemoveNodeAuthorizer failed."
+    MSG = "RemoveNodeApplicantApprover failed."
     ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"
     
     def __init__(

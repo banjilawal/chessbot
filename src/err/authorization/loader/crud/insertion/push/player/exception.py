@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushLoaderException
+from err import PushAuthorizationLoaderException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerPushLoaderException",
+    "PlayerPushAuthorizationLoaderException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerPushLoaderException(PushLoaderException):
+class PlayerPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class PlayerPushLoaderException(PushLoaderException):
     Provides:
 
     Super Class:
-        PushLoaderException
+        PushAuthorizationLoaderException
     """
     MSG = "PlayerPushLoader failed."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"

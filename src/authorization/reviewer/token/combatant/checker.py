@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 from artifcat import Decision, PromotionDecision
-from authorization import PropertyChecker
+from authorization import Checker
 from err import DisabledTokenException
 from exchange import AuthorizationRequest, PromotionRequest
 from util import LoggingLevelRouter
 
 
-class CombatantReadinessChecker(PropertyChecker[PromotionRequest]):
+class CombatantReadinessChecker(Checker[PromotionRequest]):
     """
     Role:
         -   Authorization

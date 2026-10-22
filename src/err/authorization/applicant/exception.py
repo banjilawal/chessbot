@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/exception.py
+# src/err/authorization/applicant/exception.py
 
 """
-Module: err.authorization.authorizer.exception
+Module: err.authorization.applicant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import AuthorizationException
 
 __all__ = [
-    # ======================# AUTHORIZER_FAILURE #======================#
-    "AuthorizerException",
+    # ======================# APPLICANT_FAILURE #======================#
+    "ApplicantApproverException",
 ]
 
-# ======================# AUTHORIZER_FAILURE #======================#
-class AuthorizerException(AuthorizationException):
+# ======================# APPLICANT_FAILURE #======================#
+class ApplicantApproverException(AuthorizationException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Authorizer failed.
+        1.  Indicating that an ApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class AuthorizerException(AuthorizationException):
     Super Class:
         AuthorizationException
     """
-    MSG = "Authorizer failed."
-    ERR_CODE = "AUTHORIZER_FAILURE"
+    MSG = "ApplicantApprover failed."
+    ERR_CODE = "APPLICANT_FAILURE"
     
     def __init__(
             self,

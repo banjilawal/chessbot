@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/square/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/square/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.square.exception
+Module: err.authorization.applicant.crud.deletion.pop.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
-    "SquarePopAuthorizerException",
+    "SquarePopApplicantApproverException",
 ]
 
 # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
-class SquarePopAuthorizerException(PopAuthorizerException):
+class SquarePopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePopAuthorizer failed.
+        1.  Indicating that a SquarePopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquarePopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "SquarePopAuthorizer failed."
+    MSG = "SquarePopApplicantApprover failed."
     ERR_CODE = "SQUARE_POP_REQUEST_NULL_ERROR"
     
     def __init__(

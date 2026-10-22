@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/promotion/pawn/checker.py
+# src/authorization/checker/applicant/token/promotion/pawn/checker.py
 
 """
-Module: authorization.checker.applicant.promotioon.pawn.checker
+Module: authorization.checker.applicant.token.promotion.pawn.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,12 +13,12 @@ from typing import cast
 
 from artifcat import PromotionDecision
 from authorization import PromotionApplicantChecker
-from domain import PawnToken, Token
+from domain import PawnToken
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-class PromotionPawnTokenChecker(PromotionApplicantChecker[Token]):
+class PromotionPawnTokenChecker(PromotionApplicantChecker):
     """
     Role:
         -   Authorization

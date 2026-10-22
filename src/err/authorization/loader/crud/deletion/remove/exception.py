@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionLoaderException
+from err import DeletionAuthorizationLoaderException
 
 __all__ = [
     # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-    "RemoveNodeLoaderException",
+    "RemoveNodeAuthorizationLoaderException",
 ]
 
 # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-class RemoveNodeLoaderException(DeletionLoaderException):
+class RemoveNodeAuthorizationLoaderException(DeletionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RemoveNodeLoaderException(DeletionLoaderException):
     Provides:
 
     Super Class:
-        DeletionLoaderException
+        DeletionAuthorizationLoaderException
     """
     MSG = "RemoveNodeLoader failed."
     ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"

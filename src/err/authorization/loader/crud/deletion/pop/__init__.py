@@ -21,4 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import PopLoaderException
+from .exception import PopAuthorizationLoaderException

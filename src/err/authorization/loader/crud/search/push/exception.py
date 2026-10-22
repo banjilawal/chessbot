@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import SearchLoaderException
+from err import SearchAuthorizationLoaderException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "SearchLoaderException",
+    "SearchAuthorizationLoaderException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class SearchLoaderException(SearchLoaderException):
+class SearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class SearchLoaderException(SearchLoaderException):
     Provides:
 
     Super Class:
-        SearchLoaderException
+        SearchAuthorizationLoaderException
     """
     MSG = "SearchLoader failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"

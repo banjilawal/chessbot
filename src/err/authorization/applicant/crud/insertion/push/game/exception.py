@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/game/exception.py
+# src/err/authorization/applicant/crud/insertion/push/game/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.game.exception
+Module: err.authorization.applicant.crud.insertion.push.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# GAME_PUSH_REQUEST_NULL_ERROR #======================#
-    "GamePushAuthorizerException",
+    "GamePushApplicantApproverException",
 ]
 
 # ======================# GAME_PUSH_REQUEST_NULL_ERROR #======================#
-class GamePushAuthorizerException(PushAuthorizerException):
+class GamePushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GamePushAuthorizer failed.
+        1.  Indicating that a GamePushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class GamePushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "GamePushAuthorizer failed."
+    MSG = "GamePushApplicantApprover failed."
     ERR_CODE = "GAME_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

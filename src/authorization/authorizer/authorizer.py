@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Decision
-from authorization import ApplicantReviewer, AuthorizationLoader
+from authorization import RoleReviewer, ApplicantReviewer, AuthorizationLoader
 from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
@@ -32,6 +32,7 @@ class Authorizer(ABC, Generic[T]):
 
     Attributes:
         loader: AuthorizationLoader[T]
+        role_reviewer: RoleReviewer[T]
         applicant_reviewer: ApplicantReviewer[T]
         
     Provides:
@@ -40,25 +41,33 @@ class Authorizer(ABC, Generic[T]):
     Super Class:
     """
     _loader: AuthorizationLoader[T]
+    _role_reviewer: RoleReviewer[T]
     _applicant_reviewer: ApplicantReviewer[T]
-    _permit_reviewer: PermitRevier[T]
+
     
     def __init__(
             self,
             loader: AuthorizationLoader[T],
+            role_reviewer: RoleReviewer[T],
             applicant_reviewer: ApplicantReviewer[T],
     ):
         """
         Args:
             loader: AuthorizationLoader[T]
+            role_reviewer: RoleReviewer[T]
             applicant_reviewer: ApplicantReviewer[T]
         """
         self._loader = loader
+        self._role_reviewer = role_reviewer
         self._applicant_reviewer = applicant_reviewer
         
     @property
     def loader(self) -> AuthorizationLoader[T]:
         return self._loader
+    
+    @property
+    def role_reviewer(self) -> RoleReviewer[T]:
+        return self._role_reviewer
     
     @property
     def applicant_reviewer(self) -> ApplicantReviewer[T]:

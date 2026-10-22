@@ -25,7 +25,7 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         1.  Provides information a PromotionAuthorizer needs to execute a Promotion job.
 
      Attributes:
-        actor: PawnToken
+        applicant: PawnToken
         activity: Elevatable
 
      Provides:
@@ -34,18 +34,18 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, actor: PawnToken, activity: Elevatable):
+    def __init__(self, id: int, applicant: PawnToken, activity: Elevatable):
         """
         Args:
             id: int
-            actor: PawnToken
+            applicant: PawnToken
             activity: Elevatable
         """
-        super().__init__(id=id, actor=actor, activity=activity)
+        super().__init__(id=id, applicant=applicant, activity=activity)
     
     @property
-    def actor(self) -> PawnToken:
-        return cast(PawnToken, super().actor)
+    def applicant(self) -> PawnToken:
+        return cast(PawnToken, super().applicant)
     
     @property
     def activity(self) -> Elevatable:

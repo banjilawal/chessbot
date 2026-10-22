@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudLoaderException
+from err import CrudAuthorizationLoaderException
 
 __all__ = [
     # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-    "InsertionLoaderException",
+    "InsertionAuthorizationLoaderException",
 ]
 
 # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-class InsertionLoaderException(CrudLoaderException):
+class InsertionAuthorizationLoaderException(CrudAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class InsertionLoaderException(CrudLoaderException):
     Provides:
 
     Super Class:
-        CrudLoaderException
+        CrudAuthorizationLoaderException
     """
     MSG = "InsertionLoader failed."
     ERR_CODE = "INSERTION_REQUEST_NULL_ERROR"

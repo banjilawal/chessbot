@@ -1,4 +1,4 @@
-# src/authorization/checker/applicant/promotion/checker.py
+# src/authorization/checker/applicant/token/promotion/checker.py
 
 """
 Module: authorization.checker.applicant.promotion.checker
@@ -10,17 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
 
 from artifcat import PromotionDecision
-from authorization import ApplicantChecker
-from domain import Actor
+from authorization import TokenApplicantChecker
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Actor")
 
-class PromotionApplicantChecker(ApplicantChecker[PromotionRequest], ABC, Generic[T]):
+class PromotionApplicantChecker(TokenApplicantChecker[PromotionRequest], ABC):
     """
     Role:
         -   Authorization
@@ -34,7 +31,7 @@ class PromotionApplicantChecker(ApplicantChecker[PromotionRequest], ABC, Generic
         -   def execute(self, request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        ApplicantChecker
+        TokenApplicantChecker
     """
     
     @abstractmethod

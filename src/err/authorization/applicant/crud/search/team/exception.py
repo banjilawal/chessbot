@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/team/exception.py
+# src/err/authorization/applicant/crud/search/team/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.team.exception
+Module: err.authorization.applicant.crud.search.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamSearchAuthorizerException",
+    "TeamSearchApplicantApproverException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamSearchAuthorizerException(SearchAuthorizerException):
+class TeamSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamSearchAuthorizer failed.
+        1.  Indicating that a TeamSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "TeamSearchAuthorizer failed."
+    MSG = "TeamSearchApplicantApprover failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

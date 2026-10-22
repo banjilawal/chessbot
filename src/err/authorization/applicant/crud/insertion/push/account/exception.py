@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/account/exception.py
+# src/err/authorization/applicant/crud/insertion/push/account/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.account.exception
+Module: err.authorization.applicant.crud.insertion.push.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-    "AccountPushAuthorizerException",
+    "AccountPushApplicantApproverException",
 ]
 
 # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-class AccountPushAuthorizerException(PushAuthorizerException):
+class AccountPushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPushAuthorizer failed.
+        1.  Indicating that a AccountPushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountPushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "AccountPushAuthorizer failed."
+    MSG = "AccountPushApplicantApprover failed."
     ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

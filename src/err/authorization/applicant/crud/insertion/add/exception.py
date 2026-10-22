@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/exception.py
+# src/err/authorization/applicant/crud/exception.py
 
 """
-Module: err.authorization.authorizer.crud.exception
+Module: err.authorization.applicant.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionAuthorizerException
+from err import InsertionApplicantApproverException
 
 __all__ = [
     # ======================# ADD_REQUEST_NULL_ERROR #======================#
-    "AddNodeAuthorizerException",
+    "AddNodeApplicantApproverException",
 ]
 
 # ======================# ADD_REQUEST_NULL_ERROR #======================#
-class AddNodeAuthorizerException(InsertionAuthorizerException):
+class AddNodeApplicantApproverException(InsertionApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddNodeAuthorizer failed.
+        1.  Indicating that an AddNodeApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class AddNodeAuthorizerException(InsertionAuthorizerException):
     Provides:
 
     Super Class:
-        InsertionAuthorizerException
+        InsertionApplicantApproverException
     """
-    MSG = "AddNodeAuthorizer failed."
+    MSG = "AddNodeApplicantApprover failed."
     ERR_CODE = "ADD_REQUEST_NULL_ERROR"
     
     def __init__(

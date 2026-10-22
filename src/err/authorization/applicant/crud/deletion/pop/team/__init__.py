@@ -1,15 +1,15 @@
-# src/err/authorization/authorizer/crud/deletion/pop/team/__init__.py
+# src/err/authorization/applicant/crud/deletion/pop/team/__init__.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.team.__init__
+Module: err.authorization.applicant.crud.deletion.pop.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.AUTHORIZER.CRUD.DELETION.POP.TEAM PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.APPLICANT.CRUD.DELETION.POP.TEAM PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import TeamPopAuthorizerException
+from .exception import TeamPopApplicantApproverException

@@ -1,15 +1,15 @@
-# src/err/authorization/authorizer/crud/search/encounter/__init__.py
+# src/err/authorization/applicant/crud/search/encounter/__init__.py
 
 """
-Module: err.authorization.authorizer.crud.search.encounter.__init__
+Module: err.authorization.applicant.crud.search.encounter.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.AUTHORIZER.CRUD.SEARCH.ENCOUNTER PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.APPLICANT.CRUD.SEARCH.ENCOUNTER PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import EncounterSearchAuthorizerException
+from .exception import EncounterSearchApplicantApproverException

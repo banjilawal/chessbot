@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchLoaderException
+from err import SearchAuthorizationLoaderException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordSearchLoaderException",
+    "CoordSearchAuthorizationLoaderException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordSearchLoaderException(SearchLoaderException):
+class CoordSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class CoordSearchLoaderException(SearchLoaderException):
     Provides:
 
     Super Class:
-        SearchLoaderException
+        SearchAuthorizationLoaderException
     """
     MSG = "CoordSearchLoader failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"

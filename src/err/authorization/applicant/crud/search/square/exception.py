@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/square/exception.py
+# src/err/authorization/applicant/crud/search/square/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.square.exception
+Module: err.authorization.applicant.crud.search.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquareSearchAuthorizerException",
+    "SquareSearchApplicantApproverException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquareSearchAuthorizerException(SearchAuthorizerException):
+class SquareSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquareSearchAuthorizer failed.
+        1.  Indicating that a SquareSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquareSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "SquareSearchAuthorizer failed."
+    MSG = "SquareSearchApplicantApprover failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

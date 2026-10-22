@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/arena/exception.py
+# src/err/authorization/applicant/crud/search/arena/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.arena.exception
+Module: err.authorization.applicant.crud.search.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaSearchAuthorizerException",
+    "ArenaSearchApplicantApproverException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaSearchAuthorizerException(SearchAuthorizerException):
+class ArenaSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaSearchAuthorizer failed.
+        1.  Indicating that a ArenaSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "ArenaSearchAuthorizer failed."
+    MSG = "ArenaSearchApplicantApprover failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

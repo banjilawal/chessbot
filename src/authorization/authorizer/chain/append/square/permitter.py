@@ -88,7 +88,7 @@ class SquareAppendAuthorizer(AppendAuthorizer[Square]):
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
-            return AppendApprovalReport.deny(
+            return AppendApprovalReport.denial(
                 SquareAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -104,7 +104,7 @@ class SquareAppendAuthorizer(AppendAuthorizer[Square]):
         # Handle the case that square conflicts with a current chain member.
         report = self._collision_detector.execute(attractor=square, stream=chain)
         if report.collision_exists:
-            AppendApprovalReport.deny(
+            AppendApprovalReport.denial(
                 exception=SquareAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

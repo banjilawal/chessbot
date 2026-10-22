@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/board/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/board/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.board.exception
+Module: err.authorization.applicant.crud.deletion.pop.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-    "BoardPopAuthorizerException",
+    "BoardPopApplicantApproverException",
 ]
 
 # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-class BoardPopAuthorizerException(PopAuthorizerException):
+class BoardPopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPopAuthorizer failed.
+        1.  Indicating that a BoardPopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class BoardPopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "BoardPopAuthorizer failed."
+    MSG = "BoardPopApplicantApprover failed."
     ERR_CODE = "BOARD_POP_REQUEST_NULL_ERROR"
     
     def __init__(

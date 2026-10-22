@@ -77,7 +77,7 @@ class PromotionApplicantReviewer:
         
         loading = self.loader.execute(job)
         if loading.is_failure:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=job,
                 exception=loading.exception,
             )

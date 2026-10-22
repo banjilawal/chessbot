@@ -92,7 +92,7 @@ class TokenAppendAuthorizer(AppendAuthorizer[Token]):
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
-            return AppendApprovalReport.deny(
+            return AppendApprovalReport.denial(
                 TokenAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -113,9 +113,9 @@ class TokenAppendAuthorizer(AppendAuthorizer[Token]):
                 rank=token.rank,
             )
         )
-        if rank_opening.is_denied:
+        if rank_opening.is_denial:
             # Send an exception chain in the permission denial.
-            return AppendApprovalReport.deny(
+            return AppendApprovalReport.denial(
                 TokenAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -127,7 +127,7 @@ class TokenAppendAuthorizer(AppendAuthorizer[Token]):
         # Handle the case that token conflicts with a current chain member.
         report = self._collision_detector.execute(attractor=token, stream=chain)
         if report.collision_exists:
-            AppendApprovalReport.deny(
+            AppendApprovalReport.denial(
                 exception=TokenAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

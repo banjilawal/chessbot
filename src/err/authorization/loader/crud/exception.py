@@ -17,11 +17,11 @@ from err import AuthorizationLoaderException
 
 __all__ = [
     # ======================# CRUD_LOADER_FAILURE #======================#
-    "CrudLoaderException",
+    "CrudAuthorizationLoaderException",
 ]
 
 # ======================# CRUD_LOADER_FAILURE #======================#
-class CrudLoaderException(AuthorizationLoaderException):
+class CrudAuthorizationLoaderException(AuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class CrudLoaderException(AuthorizationLoaderException):
     Provides:
 
     Super Class:
-        LoaderException
+        AuthorizationLoaderException
     """
     MSG = "CrudLoader failed."
     ERR_CODE = "CRUD_LOADER_FAILURE"

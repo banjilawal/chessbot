@@ -1,17 +1,18 @@
-# src/authorization/checker/valid/__init__.py
+# src/authorization/checker/applicant/__init__.py
 
 """
-Module: authorization.checker.valid.__init__
+Module: authorization.checker.applicant.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.CHECKER.VALIDATION PACKAGE ===========#
+# =========== AUTHORIZATION.CHECKER.APPLICANT PACKAGE ===========#
 
 # Packages
-from .applicant import *
-from .activity import *
+from authorization.checker.applicant.token.promotion import *
+from .token import *
+from authorization.checker.applicant.token.readiness import *
 
 # Modules
-from .checker import ValidItemChecker
+from .checker import ApplicantChecker

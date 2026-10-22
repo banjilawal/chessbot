@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/readiness/checker.py
+# src/authorization/checker/applicant/token/readiness/checker.py
 
 """
-Module: authorization.checker.applicant.readiness.checker
+Module: authorization.checker.applicant.token.readiness.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -19,7 +19,7 @@ from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class ApplicantReadinessChecker(ApplicantChecker[Token]):
+class ApplicantReadinessChecker(TokenApplicantChecker):
     """
     Role:
         -   Authorization

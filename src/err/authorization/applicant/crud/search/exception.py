@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/exception.py
+# src/err/authorization/applicant/crud/search/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.exception
+Module: err.authorization.applicant.crud.search.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudAuthorizerException
+from err import CrudApplicantApproverException
 
 __all__ = [
     # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-    "SearchAuthorizerException",
+    "SearchApplicantApproverException",
 ]
 
 # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-class SearchAuthorizerException(CrudAuthorizerException):
+class SearchApplicantApproverException(CrudApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SearchAuthorizer failed.
+        1.  Indicating that an SearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SearchAuthorizerException(CrudAuthorizerException):
     Provides:
 
     Super Class:
-        CrudAuthorizerException
+        CrudApplicantApproverException
     """
-    MSG = "SearchAuthorizer failed."
+    MSG = "SearchApplicantApprover failed."
     ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"
     
     def __init__(

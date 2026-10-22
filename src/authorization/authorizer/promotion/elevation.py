@@ -87,7 +87,7 @@ class ElevationLevelReviewer[PromotionDecision]):
         
         loading = self.loader.execute(job)
         if loading.is_failure:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=job,
                 exception=loading.exception,
             )
@@ -95,7 +95,7 @@ class ElevationLevelReviewer[PromotionDecision]):
         
         id_validation = self.loader.identity_service.validate_id(request.id)
         if id_validation.is_failure:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=ChessException(
                     cls_mthd=method,
@@ -112,7 +112,7 @@ class ElevationLevelReviewer[PromotionDecision]):
             )
         )
         if token_validation.is_failure:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=ChessException(
                     cls_mthd=method,
@@ -124,7 +124,7 @@ class ElevationLevelReviewer[PromotionDecision]):
             )
         token = cast(Token, token_validation.payload)
         if not isinstance(token, PawnToken):
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=ChessException(
                     cls_mthd=method,
@@ -136,7 +136,7 @@ class ElevationLevelReviewer[PromotionDecision]):
             )
         applicant = cast(PawnToken, token)
         if applicant.is_promoted:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=PawnPromoterException(
                     cls_mthd=method,
@@ -153,7 +153,7 @@ class ElevationLevelReviewer[PromotionDecision]):
             )
         promotion_row = applicant.team.enemy_rank_row
         if applicant.position.row != promotion_row:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=PawnPromoterException(
                     cls_mthd=method,
@@ -169,7 +169,7 @@ class ElevationLevelReviewer[PromotionDecision]):
                 )
             )
         if applicant.is_not_ready:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=PawnPromoterException(
                     cls_mthd=method,
@@ -192,7 +192,7 @@ class ElevationLevelReviewer[PromotionDecision]):
         )
         rank = cast(Rank, rank_validation.payload)
         if rank not in PawnToken.PROMOTION_RANKS:
-            return PromotionDecision.deny(
+            return PromotionDecision.denial(
                 request=request,
                 exception=PawnPromoterException(
                     cls_mthd=method,

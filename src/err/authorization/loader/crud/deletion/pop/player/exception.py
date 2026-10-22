@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopLoaderException
+from err import PopAuthorizationLoaderException
 
 __all__ = [
     # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
-    "PlayerPopLoaderException",
+    "PlayerPopAuthorizationLoaderException",
 ]
 
 # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
-class PlayerPopLoaderException(PopLoaderException):
+class PlayerPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class PlayerPopLoaderException(PopLoaderException):
     Provides:
 
     Super Class:
-        PopLoaderException
+        PopAuthorizationLoaderException
     """
     MSG = "PlayerPopLoader failed."
     ERR_CODE = "PLAYER_POP_REQUEST_NULL_ERROR"

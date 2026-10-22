@@ -67,7 +67,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
             null_exception=VectorNodeSearchRequestNullException,
         )
         if bootstrap.is_failure:
-            return Decision.is_denied(
+            return Decision.is_denial(
                 exception=VectorNodeSearchRequestException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -80,7 +80,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
         
         node_validation = self.node_validator.execute(request.target)
         if node_validation.is_failure:
-            return Decision.is_denied(
+            return Decision.is_denial(
                 exception=VectorNodeSearchRequestException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

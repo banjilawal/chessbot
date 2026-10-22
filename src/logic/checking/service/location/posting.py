@@ -26,7 +26,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
         if validation_result.is_exception():
             return TransactionResult.errored(event_update=request, exception=validation_result.exception)
         
-        location_search_result = KingLocationSearch.searcher(data_owner=self._location_table, search_context=request.actor)
+        location_search_result = KingLocationSearch.searcher(data_owner=self._location_table, search_context=request.applicant)
         if location_search_result.is_failure():
             return TransactionResult.errored(event_update=request, exception=location_search_result.exception)
            
@@ -38,7 +38,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
                 )
             )
         
-        check_posting_search_result = CheckPostingService.route(king=request.actor, location=request.destination_square)
+        check_posting_search_result = CheckPostingService.route(king=request.applicant, location=request.destination_square)
         if check_posting_search_result.is_failure():
             return TransactionResult.errored(event_update=request, exception=check_posting_search_result.exception)
         if check_posting_search_result.is_success():

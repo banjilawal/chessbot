@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushLoaderException
+from err import PushAuthorizationLoaderException
 
 __all__ = [
     # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-    "BoardPushLoaderException",
+    "BoardPushAuthorizationLoaderException",
 ]
 
 # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-class BoardPushLoaderException(PushLoaderException):
+class BoardPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class BoardPushLoaderException(PushLoaderException):
     Provides:
 
     Super Class:
-        PushLoaderException
+        PushAuthorizationLoaderException
     """
     MSG = "BoardPushLoader failed."
     ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"

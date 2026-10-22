@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/arena/exception.py
+# src/err/authorization/applicant/crud/insertion/push/arena/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.arena.exception
+Module: err.authorization.applicant.crud.insertion.push.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaPushAuthorizerException",
+    "ArenaPushApplicantApproverException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaPushAuthorizerException(PushAuthorizerException):
+class ArenaPushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPushAuthorizer failed.
+        1.  Indicating that a ArenaPushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaPushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "ArenaPushAuthorizer failed."
+    MSG = "ArenaPushApplicantApprover failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

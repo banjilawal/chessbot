@@ -65,7 +65,7 @@ class TokenPopAuthorizer(PopAuthorizer[Token]):
         bootstrap_result = self.bootstrap_request(request)
         if bootstrap_result.is_failure:
             # Send an exception chain in the permission denial.
-            return PopApprovalReport.deny(
+            return PopApprovalReport.denial(
                 TokenPopAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -82,7 +82,7 @@ class TokenPopAuthorizer(PopAuthorizer[Token]):
         )
         if stack_validation_result.is_failure:
             # Send an exception chain in the permission denial.
-            return PopApprovalReport.deny(
+            return PopApprovalReport.denial(
                 TokenPopAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -94,7 +94,7 @@ class TokenPopAuthorizer(PopAuthorizer[Token]):
         # Handle the case that the stack is empty.
         if request.stack.is_blank:
             # Send an exception chain in the permission denial.
-            return PopApprovalReport.deny(
+            return PopApprovalReport.denial(
                 TokenPopAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

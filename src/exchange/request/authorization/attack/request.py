@@ -25,7 +25,7 @@ class EncounterRequest(AuthorizationRequest[EncounterResult]):
         1.  Provides information an EncounterAuthorizer needs to execute a Encounter job.
 
      Attributes:
-        actor: Token
+        applicant: Token
         activity: Attackable
 
      Provides:
@@ -34,18 +34,18 @@ class EncounterRequest(AuthorizationRequest[EncounterResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, actor: Token, activity: Attackable):
+    def __init__(self, id: int, applicant: Token, activity: Attackable):
         """
         Args:
             id: int
-            actor: Token
+            applicant: Token
             activity: Attackable
         """
-        super().__init__(id=id, actor=actor, activity=activity)
+        super().__init__(id=id, applicant=applicant, activity=activity)
     
     @property
-    def actor(self) -> Token:
-        return cast(Token, super().actor)
+    def applicant(self) -> Token:
+        return cast(Token, super().applicant)
     
     @property
     def activity(self) -> Attackable:

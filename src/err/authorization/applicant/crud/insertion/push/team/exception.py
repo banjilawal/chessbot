@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/team/exception.py
+# src/err/authorization/applicant/crud/insertion/push/team/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.team.exception
+Module: err.authorization.applicant.crud.insertion.push.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamPushAuthorizerException",
+    "TeamPushApplicantApproverException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamPushAuthorizerException(PushAuthorizerException):
+class TeamPushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushAuthorizer failed.
+        1.  Indicating that a TeamPushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamPushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "TeamPushAuthorizer failed."
+    MSG = "TeamPushApplicantApprover failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -29,8 +29,8 @@ class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
             if event_validation.failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             
-            self.event.actor.previous_rank = self.event.actor.rank_name
-            if self.event.actor.previous_rank is None:
+            self.event.applicant.previous_rank = self.event.applicant.rank_name
+            if self.event.applicant.previous_rank is None:
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedPreviousRankUpdateRolledBackException(
@@ -38,10 +38,10 @@ class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
                     )
                 )
         
-            self.event.actor.set_new_rank(self.event.new_rank)
-            if not isinstance(self.event.actor.rank_name, self.event.new_rank):
-                self.event.actor._set_rank(self.event.actor.previous_rank)
-                self.event.actor.previous_rank = None
+            self.event.applicant.set_new_rank(self.event.new_rank)
+            if not isinstance(self.event.applicant.rank_name, self.event.new_rank):
+                self.event.applicant._set_rank(self.event.applicant.previous_rank)
+                self.event.applicant.previous_rank = None
                 
                 return TransactionResult.rolled_back(
                     event_update=self.event,

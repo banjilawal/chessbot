@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/maneuver/exception.py
+# src/err/authorization/applicant/crud/insertion/push/maneuver/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.maneuver.exception
+Module: err.authorization.applicant.crud.insertion.push.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-    "ManeuverPushAuthorizerException",
+    "ManeuverPushApplicantApproverException",
 ]
 
 # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-class ManeuverPushAuthorizerException(PushAuthorizerException):
+class ManeuverPushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPushAuthorizer failed.
+        1.  Indicating that a ManeuverPushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverPushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "ManeuverPushAuthorizer failed."
+    MSG = "ManeuverPushApplicantApprover failed."
     ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

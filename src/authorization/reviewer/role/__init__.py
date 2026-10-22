@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.REVIEWER.ACTIVITY PACKAGE ===========#
 
 # Packages
+from .promotion import *
 
 # Modules
 from .reviewer import RoleReviewer

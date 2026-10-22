@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushLoaderException
+from err import PushAuthorizationLoaderException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquarePushLoaderException",
+    "SquarePushAuthorizationLoaderException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquarePushLoaderException(PushLoaderException):
+class SquarePushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class SquarePushLoaderException(PushLoaderException):
     Provides:
 
     Super Class:
-        PushLoaderException
+        PushAuthorizationLoaderException
     """
     MSG = "SquarePushLoader failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"

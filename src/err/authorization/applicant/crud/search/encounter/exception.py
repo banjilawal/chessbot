@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/encounter/exception.py
+# src/err/authorization/applicant/crud/search/encounter/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.encounter.exception
+Module: err.authorization.applicant.crud.search.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterSearchAuthorizerException",
+    "EncounterSearchApplicantApproverException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterSearchAuthorizerException(SearchAuthorizerException):
+class EncounterSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterSearchAuthorizer failed.
+        1.  Indicating that a EncounterSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "EncounterSearchAuthorizer failed."
+    MSG = "EncounterSearchApplicantApprover failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

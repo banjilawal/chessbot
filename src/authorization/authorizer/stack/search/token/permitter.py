@@ -82,7 +82,7 @@ class TokenSearchAuthorizer(SearchAuthorizer[Token]):
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
-            return SearchApprovalReport.deny(
+            return SearchApprovalReport.denial(
                 TokenSearchAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

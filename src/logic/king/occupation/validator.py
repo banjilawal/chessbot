@@ -42,7 +42,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_binding_validation = PieceBindingBoardValidator.search_service(event.actor, event.execution_environment)
+            actor_binding_validation = PieceBindingBoardValidator.search_service(event.applicant, event.execution_environment)
             if actor_binding_validation.is_failure():
                 return ValidationResult(exception=actor_binding_validation.exception)
             

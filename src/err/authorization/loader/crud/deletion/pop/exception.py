@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionLoaderException
+from err import DeletionAuthorizationLoaderException
 
 __all__ = [
     # ======================# POP_REQUEST_NULL_ERROR #======================#
-    "PopLoaderException",
+    "PopAuthorizationLoaderException",
 ]
 
 # ======================# POP_REQUEST_NULL_ERROR #======================#
-class PopLoaderException(DeletionLoaderException):
+class PopAuthorizationLoaderException(DeletionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PopLoaderException(DeletionLoaderException):
     Provides:
 
     Super Class:
-        DeletionLoaderException
+        DeletionAuthorizationLoaderException
     """
     MSG = "PopLoader failed."
     ERR_CODE = "POP_REQUEST_NULL_ERROR"

@@ -10,19 +10,35 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar
 
-from artifcat import ValidationResult
+from artifcat import Decision
 from assurance import PrimingValidator
-from exchange import PermissionRequest, ValidationService
+from exchange import AuthorizationRequest
 from microservice import IdentityService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="PermissionRequest")
+T = TypeVar("T", bound="AuthorizationRequest")
 
 class AuthorizationLoader(ABC, Generic[T]):
-    _priming_validator: PrimingValidator
+    """
+    Role:
+        -   Permission Authorization
+
+    Responsibilities:
+        1.  Ensure the correct Request type is loaded into an Authorization module.
+
+    Attributes:
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
+
+    Provides:
+        -   def execute(request: T) -> Decision[T]
+
+    Super Class:
+    """
     _identity_service: IdentityService
+    _priming_validator: PrimingValidator
 
     
     def __init__(
@@ -48,5 +64,20 @@ class AuthorizationLoader(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, request: T) -> Decision[T]:
+        """
+        Checks if the Request is the right type.
+        
+        Action:
+            1.  Send an exception chain in the Decision denial if either;
+                    -   the request is null.
+                    -   the wrong type.
+            2.  Otherwise, send an approval.
+        Args:
+            request: T
+        Returns:
+           Decision[T]
+        Raises:
+            AuthorizationLoaderxception
+        """
         pass

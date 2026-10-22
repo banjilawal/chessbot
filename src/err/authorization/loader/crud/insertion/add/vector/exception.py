@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeLoaderException
+from err import AddNodeAuthorizationLoaderException
 
 __all__ = [
     # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeLoaderException",
+    "AddVectorNodeAuthorizationLoaderException",
 ]
 
 # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeLoaderException(AddNodeLoaderException):
+class AddVectorNodeAuthorizationLoaderException(AddNodeAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class AddVectorNodeLoaderException(AddNodeLoaderException):
     Provides:
 
     Super Class:
-        AddNodeLoaderException
+        AddNodeAuthorizationLoaderException
     """
     MSG = "AddVectorNodeLoader failed."
     ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"

@@ -1,7 +1,7 @@
-# src/authorization/checker/valid/activity.checker.py
+# src/authorization/checker/role/checker.py
 
 """
-Module: authorization.checker.valid.activity.checker
+Module: authorization.checker.role.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import TypeVar, cast
 
 from artifcat import Decision
-from authorization import ValidItemChecker
+from authorization import Checker
 from domain import Actionable
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actionable")
 
-class ValidRoleChecker(ValidItemChecker[T], ABC):
+class RoleChecker(Checker[T], ABC):
     """
     Role:
         -   Authorization
@@ -36,7 +36,7 @@ class ValidRoleChecker(ValidItemChecker[T], ABC):
 
 
     Super Class:
-        ValidItemChecker
+        PropertyChecker
     """
     
     def __init__(self, validation_service: ValidationService[T]):

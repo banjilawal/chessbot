@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/account/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/account/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.account.exception
+Module: err.authorization.applicant.crud.deletion.pop.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
-    "AccountPopAuthorizerException",
+    "AccountPopApplicantApproverException",
 ]
 
 # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
-class AccountPopAuthorizerException(PopAuthorizerException):
+class AccountPopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPopAuthorizer failed.
+        1.  Indicating that a AccountPopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountPopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "AccountPopAuthorizer failed."
+    MSG = "AccountPopApplicantApprover failed."
     ERR_CODE = "ACCOUNT_POP_REQUEST_NULL_ERROR"
     
     def __init__(

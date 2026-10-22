@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudLoaderException
+from err import CrudAuthorizationLoaderException
 
 __all__ = [
     # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-    "SearchLoaderException",
+    "SearchAuthorizationLoaderException",
 ]
 
 # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-class SearchLoaderException(CrudLoaderException):
+class SearchAuthorizationLoaderException(CrudAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class SearchLoaderException(CrudLoaderException):
     Provides:
 
     Super Class:
-        CrudLoaderException
+        CrudAuthorizationLoaderException
     """
     MSG = "SearchLoader failed."
     ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"

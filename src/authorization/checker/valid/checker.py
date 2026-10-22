@@ -1,7 +1,7 @@
-# src/authorization/checker/validation/checker.py
+# src/authorization/checker/valid/checker.py
 
 """
-Module: authorization.checker.validation.checker
+Module: authorization.checker.valid.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ValidationChecker(Checker[T], ABC):
+class ValidItemChecker(Checker[T], ABC):
     """
     Role:
         -   Authorization
@@ -31,11 +31,11 @@ class ValidationChecker(Checker[T], ABC):
         validation_service: ValidationService[T]
         
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def eexecute(request: AuthorizationRequest) -> Decision
 
 
     Super Class:
-        ApplicantApprover
+        Checker
     """
     _validation_service: ValidationService[T]
 
@@ -45,6 +45,7 @@ class ValidationChecker(Checker[T], ABC):
         Args:
             validation_service: ValidationService[T]
         """
+        self._validation_service = validation_service
         
     @property
     def validation_service(self) -> ValidationService[T]:

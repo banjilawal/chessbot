@@ -10,17 +10,17 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TypeVar, cast
+from typing import TypeVar
 
 from artifcat import Decision
-from authorization import Attributable, ValidItemChecker
+from authorization import Attributable, Checker
 from domain import Actor
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class ValidApplicantChecker(ValidItemChecker[T], Attributable, ABC):
+class ValidApplicantChecker(Checker[T], Attributable, ABC):
     """
     Role:
         -   Authorization
@@ -36,19 +36,20 @@ class ValidApplicantChecker(ValidItemChecker[T], Attributable, ABC):
 
 
     Super Class:
-        ValidItemChecker
+        PropertyChecker
     """
+    _validation_service: ValidationService[T]
     
     def __init__(self, validation_service: ValidationService[T]):
         """
         Args:
             validation_service: ValidationService[T]
         """
-        super().__init__(validation_service=validation_service)
+        self._validation_service =validation_service
         
     @property
     def validation_service(self) -> ValidationService[T]:
-        return cast(ValidationService[T], super().validation_service)
+        return self.validation_service
     
     @abstractmethod
     @LoggingLevelRouter.monitor

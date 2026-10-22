@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/player/exception.py
+# src/err/authorization/applicant/crud/search/player/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.player.exception
+Module: err.authorization.applicant.crud.search.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerSearchAuthorizerException",
+    "PlayerSearchApplicantApproverException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerSearchAuthorizerException(SearchAuthorizerException):
+class PlayerSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerSearchAuthorizer failed.
+        1.  Indicating that a PlayerSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "PlayerSearchAuthorizer failed."
+    MSG = "PlayerSearchApplicantApprover failed."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

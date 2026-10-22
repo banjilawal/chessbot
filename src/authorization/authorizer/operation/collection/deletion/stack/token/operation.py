@@ -68,7 +68,7 @@ class TokenStackPop(StackPop[Token]):
         
         # Handle the case that pop rights are not granted.
         decision = self._authorizer.execute(job=request)
-        if decision.is_denied:
+        if decision.is_denial:
             # Return the exception chain on failure
             return DeletionResult.failure(
                 TokenStackPopException(

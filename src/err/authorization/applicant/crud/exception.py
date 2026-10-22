@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/exception.py
+# src/err/authorization/applicant/crud/exception.py
 
 """
-Module: err.authorization.authorizer.crud.exception
+Module: err.authorization.applicant.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizerException
+from err import ApplicantApproverException
 
 __all__ = [
-    # ======================# CRUD_AUTHORIZER_FAILURE #======================#
-    "CrudAuthorizerException",
+    # ======================# CRUD_APPLICANT_FAILURE #======================#
+    "CrudApplicantApproverException",
 ]
 
-# ======================# CRUD_AUTHORIZER_FAILURE #======================#
-class CrudAuthorizerException(AuthorizerException):
+# ======================# CRUD_APPLICANT_FAILURE #======================#
+class CrudApplicantApproverException(ApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudAuthorizer failed.
+        1.  Indicating that a CrudApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CrudAuthorizerException(AuthorizerException):
     Provides:
 
     Super Class:
-        AuthorizerException
+        ApplicantApproverException
     """
-    MSG = "CrudAuthorizer failed."
-    ERR_CODE = "CRUD_AUTHORIZER_FAILURE"
+    MSG = "CrudApplicantApprover failed."
+    ERR_CODE = "CRUD_APPLICANT_FAILURE"
     
     def __init__(
             self,

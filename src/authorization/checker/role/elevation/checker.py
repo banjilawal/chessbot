@@ -1,7 +1,7 @@
-# src/authorization/checker/valid/activity/elevatable/checker.py
+# src/authorization/checker/role/elevatable/checker.py
 
 """
-Module: authorization.checker.valid.activity.elevatable.checker
+Module: authorization.checker.role.elevatable.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -19,7 +19,7 @@ from exchange import AuthorizationRequest, RankValidationRequest, RankValidation
 from transit import ElevatableCarrier
 from util import IdFactory, LoggingLevelRouter
 
-class ValidElevationChecker(ValidRoleChecker[Elevatable]):
+class ElevationChecker(ValidRoleChecker[Elevatable]):
     """
     Role:
         -   Authorization

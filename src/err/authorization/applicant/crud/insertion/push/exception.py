@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/exception.py
+# src/err/authorization/applicant/crud/exception.py
 
 """
-Module: err.authorization.authorizer.crud.exception
+Module: err.authorization.applicant.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionAuthorizerException
+from err import InsertionApplicantApproverException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "PushAuthorizerException",
+    "PushApplicantApproverException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class PushAuthorizerException(InsertionAuthorizerException):
+class PushApplicantApproverException(InsertionApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushAuthorizer failed.
+        1.  Indicating that a PushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class PushAuthorizerException(InsertionAuthorizerException):
     Provides:
 
     Super Class:
-        InsertionAuthorizerException
+        InsertionApplicantApproverException
     """
-    MSG = "PushAuthorizer failed."
+    MSG = "PushApplicantApprover failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

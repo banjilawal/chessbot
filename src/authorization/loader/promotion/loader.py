@@ -9,56 +9,72 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
+from typing import cast
 
-from artifcat import ValidationResult
-from authorization import AuthorizationLoader, PromotionAuthorizationForm
-from domain import PawnToken, Token
-from err import ChessException, PromotionRequestNullException
-from exchange import PromotionRequest, RankValidationService, TokenValidationRequest, TokenValidationService
-from transit import PawnTokenCarrier
-from util import IdFactory, LoggingLevelRouter
+from artifcat import PromotionDecision
+from authorization import AuthorizationLoader
+from err import PromotionAuthorizationLoaderException, PromotionRequestNullException
+from exchange import PromotionRequest
+from util import LoggingLevelRouter
 
 
 class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
+    """
+    Role:
+        -   Permission Authorization
 
+    Responsibilities:
+        1.  Ensure only not-null PermissionRequest is processed.
 
-    
+    Attributes:
+
+    Provides:
+        -   def execute(request: PromotionRequest) -> PromotionDecision
+
+    Super Class:
+        AuthorizationLoader
+    """
     def __init__(self):
-        """
-        Args:
-        """
+        """Args:"""
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PromotionRequest]:
+    def execute(self, request: PromotionRequest) -> PromotionDecision:
+        """
+        Checks if the request is null or the wrong type
+
+        Action:
+            1.  Send an exception chain in the Decision denial if either;
+                    -   the request is null.
+                    -   not a PromotionRequest.
+            2.  Otherwise, send an approval.
+        Args:
+            request: PromotionRequest
+        Returns:
+           PromotionDecision
+        Raises:
+            PromotionAuthorizationLoaderException
+        """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
-            candidate=candidate,
+            candidate=request,
             target_model=PromotionRequest,
             null_exception=PromotionRequestNullException(),
         )
+        # Send an exception chain in the denial.
         if priming.is_failure:
-            return ValidationResult.failure(
-               ChessException(
+            return PromotionDecision.denial(
+                request=request,
+                exception=PromotionAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,
-                   msg=ChessException.MSG,
-                   err_code=ChessException.ERR_CODE,
+                   msg=PromotionAuthorizationLoaderException.MSG,
+                   err_code=PromotionAuthorizationLoaderException.ERR_CODE,
                    ex=priming.exception,
                 )
             )
-        request = cast(Type[PromotionRequest], priming.payload)
-        return ValidationResult.success(request)
-        
-
-        
-
-        form_id = cast(int, form_id_validation.payload)
-        operation_id = cast(int, op_number_validation.payload)
-        verified_form = PromotionAuthorizationForm(
-            id=form_id,
-            operation=PromotionRequest(id=operation_id, applicant=pawn)
-        )
-        return ValidationResult.success(verified_form)
+        # --- Forward the work product. ---#
+        approved_request = cast(PromotionRequest, priming.payload)
+        return PromotionDecision.grant(approved_request)

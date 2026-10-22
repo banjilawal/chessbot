@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopLoaderException
+from err import PopAuthorizationLoaderException
 
 __all__ = [
     # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
-    "SquarePopLoaderException",
+    "SquarePopAuthorizationLoaderException",
 ]
 
 # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
-class SquarePopLoaderException(PopLoaderException):
+class SquarePopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class SquarePopLoaderException(PopLoaderException):
     Provides:
 
     Super Class:
-        PopLoaderException
+        PopAuthorizationLoaderException
     """
     MSG = "SquarePopLoader failed."
     ERR_CODE = "SQUARE_POP_REQUEST_NULL_ERROR"

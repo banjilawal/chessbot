@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopLoaderException
+from err import PopAuthorizationLoaderException
 
 __all__ = [
     # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-    "BoardPopLoaderException",
+    "BoardPopAuthorizationLoaderException",
 ]
 
 # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-class BoardPopLoaderException(PopLoaderException):
+class BoardPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class BoardPopLoaderException(PopLoaderException):
     Provides:
 
     Super Class:
-        PopLoaderException
+        PopAuthorizationLoaderException
     """
     MSG = "BoardPopLoader failed."
     ERR_CODE = "BOARD_POP_REQUEST_NULL_ERROR"

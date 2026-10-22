@@ -103,7 +103,7 @@ class TokenUndoMoveAuthorizer(TokenManeuverAuthorizer):
         if report.token_is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PopApprovalReport.deny(
+                PopApprovalReport.denial(
                     exception=TokenUndoMoveAuthorizerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -122,7 +122,7 @@ class TokenUndoMoveAuthorizer(TokenManeuverAuthorizer):
         if requestor.previous_position == requestor.position:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PopApprovalReport.deny(
+                PopApprovalReport.denial(
                     exception=TokenUndoMoveAuthorizerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,

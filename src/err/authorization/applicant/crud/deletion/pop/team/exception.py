@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/team/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/team/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.team.exception
+Module: err.authorization.applicant.crud.deletion.pop.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# TEAM_POP_REQUEST_NULL_ERROR #======================#
-    "TeamPopAuthorizerException",
+    "TeamPopApplicantApproverException",
 ]
 
 # ======================# TEAM_POP_REQUEST_NULL_ERROR #======================#
-class TeamPopAuthorizerException(PopAuthorizerException):
+class TeamPopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPopAuthorizer failed.
+        1.  Indicating that a TeamPopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamPopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "TeamPopAuthorizer failed."
+    MSG = "TeamPopApplicantApprover failed."
     ERR_CODE = "TEAM_POP_REQUEST_NULL_ERROR"
     
     def __init__(

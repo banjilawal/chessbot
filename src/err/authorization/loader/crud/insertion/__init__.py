@@ -14,4 +14,4 @@ from .add import *
 from .push import *
 
 # Modules
-from .exception import InsertionLoaderException
+from .exception import InsertionAuthorizationLoaderException

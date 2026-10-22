@@ -17,11 +17,11 @@ from err import AuthorizationLoaderException
 
 __all__ = [
     # ======================# ATTACK_LOADER_FAILURE #======================#
-    "AttackLoaderException",
+    "AttackAuthorizationLoaderException",
 ]
 
 # ======================# ATTACK_LOADER_FAILURE #======================#
-class AttackLoaderException(AuthorizationLoaderException):
+class AttackAuthorizationLoaderException(AuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class AttackLoaderException(AuthorizationLoaderException):
     Provides:
 
     Super Class:
-        LoaderException
+        AuthorizationLoaderException
     """
     MSG = "AttackLoader failed."
     ERR_CODE = "ATTACK_LOADER_FAILURE"

@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/exception.py
+# src/err/authorization/applicant/crud/insertion/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.exception
+Module: err.authorization.applicant.crud.insertion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudAuthorizerException
+from err import CrudApplicantApproverException
 
 __all__ = [
     # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-    "InsertionAuthorizerException",
+    "InsertionApplicantApproverException",
 ]
 
 # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-class InsertionAuthorizerException(CrudAuthorizerException):
+class InsertionApplicantApproverException(CrudApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an InsertionAuthorizer failed.
+        1.  Indicating that an InsertionApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class InsertionAuthorizerException(CrudAuthorizerException):
     Provides:
 
     Super Class:
-        CrudAuthorizerException
+        CrudApplicantApproverException
     """
-    MSG = "InsertionAuthorizer failed."
+    MSG = "InsertionApplicantApprover failed."
     ERR_CODE = "INSERTION_REQUEST_NULL_ERROR"
     
     def __init__(

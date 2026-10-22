@@ -1,7 +1,7 @@
-# src/authorization/reviewer/reviewer.py
+# src/authorization/reviewer/applicant/reviewer.py
 
 """
-Module: authorization.reviewer.reviewer
+Module: authorization.reviewer.applicant.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -10,16 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, List, TypeVar
+from typing import Generic, List, Type, TypeVar, cast
 
 from artifcat import Decision
-from authorization import PropertyChecker, ValidItemChecker
+from authorization import ApplicantChecker, Attributable, Checkable, Checker, Reviewer, ValidApplicantChecker
 from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")
 
-class Reviewer(ABC, Generic[T]):
+class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -29,29 +29,28 @@ class Reviewer(ABC, Generic[T]):
             activity.
 
     Attributes:
-        valid_item_checker: ValidItemChecker[T]
+        valid_item_checker: ValidApplicantChecker[T]
 
     Provides:
         -   def execute(request: T) -> Decision[T]
 
     Super Class:
     """
-    _valid_item_checker: ValidItemChecker[T]
     
-    def __init__(self, valid_item_checker: ValidItemChecker):
+    def __init__(self, valid_item_checker: ValidApplicantChecker[T]):
         """
         Args:
-            valid_item_checker: ValidItemChecker
+            valid_item_checker: ValidApplicantChecker[T]
         """
-        self._valid_item_checker = valid_item_checker
+        super().__init__(valid_item_checker=valid_item_checker)
         
     @property
-    def valid_item_checker(self) -> ValidItemChecker:
-        return self._valid_item_checker
+    def valid_item_checker(self) -> ValidApplicantChecker[T]:
+        return cast(Type[ValidApplicantChecker[T]], super().valid_item_checker)
     
     @property
     @abstractmethod
-    def checkers(self) -> List[PropertyChecker[T]]:
+    def checkers(self) -> List[Checker]:
         pass
     
     @abstractmethod

@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/player/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/player/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.player.exception
+Module: err.authorization.applicant.crud.deletion.pop.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
-    "PlayerPopAuthorizerException",
+    "PlayerPopApplicantApproverException",
 ]
 
 # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
-class PlayerPopAuthorizerException(PopAuthorizerException):
+class PlayerPopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPopAuthorizer failed.
+        1.  Indicating that a PlayerPopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerPopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "PlayerPopAuthorizer failed."
+    MSG = "PlayerPopApplicantApprover failed."
     ERR_CODE = "PLAYER_POP_REQUEST_NULL_ERROR"
     
     def __init__(

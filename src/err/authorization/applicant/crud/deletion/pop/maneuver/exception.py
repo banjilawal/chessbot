@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/deletion/pop/maneuver/exception.py
+# src/err/authorization/applicant/crud/deletion/pop/maneuver/exception.py
 
 """
-Module: err.authorization.authorizer.crud.deletion.pop.maneuver.exception
+Module: err.authorization.applicant.crud.deletion.pop.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizerException
+from err import PopApplicantApproverException
 
 __all__ = [
     # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-    "ManeuverPopAuthorizerException",
+    "ManeuverPopApplicantApproverException",
 ]
 
 # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-class ManeuverPopAuthorizerException(PopAuthorizerException):
+class ManeuverPopApplicantApproverException(PopApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPopAuthorizer failed.
+        1.  Indicating that a ManeuverPopApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverPopAuthorizerException(PopAuthorizerException):
     Provides:
 
     Super Class:
-        PopAuthorizerException
+        PopApplicantApproverException
     """
-    MSG = "ManeuverPopAuthorizer failed."
+    MSG = "ManeuverPopApplicantApprover failed."
     ERR_CODE = "MANEUVER_POP_REQUEST_NULL_ERROR"
     
     def __init__(

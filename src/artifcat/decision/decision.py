@@ -13,14 +13,14 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
-from exchange import PermissionRequest
+from exchange import AuthorizationRequest
 
-T = TypeVar("T", bound="PermissionRequest")
+T = TypeVar("T", bound="AuthorizationRequest")
 
 class Decision(ABC, Generic[T]):
     """
     Role:
-        - Authorization Reporting
+        - Permission Reporting
 
     Responsibilities:
         1.  Report if an action is permitted.
@@ -34,6 +34,7 @@ class Decision(ABC, Generic[T]):
         is_denied: bool
         
     Provides:
+        -   def grant(cls, request: T) -> Decision[T]:
         -   def deny(exception: Exception) -> Exception
 
     Super Class:
@@ -78,7 +79,7 @@ class Decision(ABC, Generic[T]):
         )
     
     @property
-    def is_denied(self) -> bool:
+    def is_denial(self) -> bool:
         return (
             self._exception is not None and
             (
@@ -92,11 +93,7 @@ class Decision(ABC, Generic[T]):
         return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def deny(
-            cls,
-            request: T,
-            exception: Exception
-    ) -> Decision[T]:
+    def denial(cls, request: T, exception: Exception) -> Decision[T]:
         return cls(
             request=request,
             exception=exception,

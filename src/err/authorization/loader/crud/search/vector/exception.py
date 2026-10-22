@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchLoaderException
+from err import SearchAuthorizationLoaderException
 
 __all__ = [
     # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "VectorSearchLoaderException",
+    "VectorSearchAuthorizationLoaderException",
 ]
 
 # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class VectorSearchLoaderException(SearchLoaderException):
+class VectorSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class VectorSearchLoaderException(SearchLoaderException):
     Provides:
 
     Super Class:
-        SearchLoaderException
+        SearchAuthorizationLoaderException
     """
     MSG = "VectorSearchLoader failed."
     ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"

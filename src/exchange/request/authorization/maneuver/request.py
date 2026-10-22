@@ -25,7 +25,7 @@ class ManeuverRequest(AuthorizationRequest[ManeuverResult]):
         1.  Provides information a ManeuverAuthorizer needs to execute a Maneuver job.
 
      Attributes:
-        actor: Token
+        applicant: Token
         activity: Maneuverable
 
      Provides:
@@ -34,18 +34,18 @@ class ManeuverRequest(AuthorizationRequest[ManeuverResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, actor: Token, activity: Maneuverable):
+    def __init__(self, id: int, applicant: Token, activity: Maneuverable):
         """
         Args:
             id: int
-            actor: Token
+            applicant: Token
             activity: Maneuverable
         """
-        super().__init__(id=id, actor=actor, activity=activity)
+        super().__init__(id=id, applicant=applicant, activity=activity)
     
     @property
-    def actor(self) -> Token:
-        return cast(Token, super().actor)
+    def applicant(self) -> Token:
+        return cast(Token, super().applicant)
     
     @property
     def activity(self) -> Maneuverable:

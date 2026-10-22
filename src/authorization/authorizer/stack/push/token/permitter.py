@@ -92,7 +92,7 @@ class TokenStackPushAuthorizer(StackPushAuthorizer[Token]):
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
-            return PushApprovalReport.deny(
+            return PushApprovalReport.denial(
                 TokenPushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -113,9 +113,9 @@ class TokenStackPushAuthorizer(StackPushAuthorizer[Token]):
                 rank=token.rank,
             )
         )
-        if rank_opening.is_denied:
+        if rank_opening.is_denial:
             # Send an exception chain in the permission denial.
-            return PushApprovalReport.deny(
+            return PushApprovalReport.denial(
                 TokenPushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -127,7 +127,7 @@ class TokenStackPushAuthorizer(StackPushAuthorizer[Token]):
         # Handle the case that token conflicts with a current stack member.
         report = self._collision_detector.execute(attractor=token, stream=stack)
         if report.collision_exists:
-            PushApprovalReport.deny(
+            PushApprovalReport.denial(
                 exception=TokenPushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

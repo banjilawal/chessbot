@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopLoaderException
+from err import PopAuthorizationLoaderException
 
 __all__ = [
     # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-    "ManeuverPopLoaderException",
+    "ManeuverPopAuthorizationLoaderException",
 ]
 
 # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-class ManeuverPopLoaderException(PopLoaderException):
+class ManeuverPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class ManeuverPopLoaderException(PopLoaderException):
     Provides:
 
     Super Class:
-        PopLoaderException
+        PopAuthorizationLoaderException
     """
     MSG = "ManeuverPopLoader failed."
     ERR_CODE = "MANEUVER_POP_REQUEST_NULL_ERROR"

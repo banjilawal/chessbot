@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopLoaderException
+from err import PopAuthorizationLoaderException
 
 __all__ = [
     # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
-    "CoordPopLoaderException",
+    "CoordPopAuthorizationLoaderException",
 ]
 
 # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
-class CoordPopLoaderException(PopLoaderException):
+class CoordPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class CoordPopLoaderException(PopLoaderException):
     Provides:
 
     Super Class:
-        PopLoaderException
+        PopAuthorizationLoaderException
     """
     MSG = "CoordPopLoader failed."
     ERR_CODE = "COORD_POP_REQUEST_NULL_ERROR"

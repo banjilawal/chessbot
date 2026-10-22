@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/insertion/push/square/exception.py
+# src/err/authorization/applicant/crud/insertion/push/square/exception.py
 
 """
-Module: err.authorization.authorizer.crud.insertion.push.square.exception
+Module: err.authorization.applicant.crud.insertion.push.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizerException
+from err import PushApplicantApproverException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquarePushAuthorizerException",
+    "SquarePushApplicantApproverException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquarePushAuthorizerException(PushAuthorizerException):
+class SquarePushApplicantApproverException(PushApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushAuthorizer failed.
+        1.  Indicating that a SquarePushApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquarePushAuthorizerException(PushAuthorizerException):
     Provides:
 
     Super Class:
-        PushAuthorizerException
+        PushApplicantApproverException
     """
-    MSG = "SquarePushAuthorizer failed."
+    MSG = "SquarePushApplicantApprover failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

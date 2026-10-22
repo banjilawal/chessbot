@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/maneuver/exception.py
+# src/err/authorization/applicant/crud/search/maneuver/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.maneuver.exception
+Module: err.authorization.applicant.crud.search.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-    "ManeuverSearchAuthorizerException",
+    "ManeuverSearchApplicantApproverException",
 ]
 
 # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-class ManeuverSearchAuthorizerException(SearchAuthorizerException):
+class ManeuverSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverSearchAuthorizer failed.
+        1.  Indicating that a ManeuverSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "ManeuverSearchAuthorizer failed."
+    MSG = "ManeuverSearchApplicantApprover failed."
     ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

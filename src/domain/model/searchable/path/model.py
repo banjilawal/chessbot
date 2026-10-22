@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import SearchableModel, SquareRegister
+from domain import Maneuverable, SearchableModel, SquareRegister
 
 
 
-class Path(SearchableModel):
+class Path(SearchableModel, Maneuverable):
     """
     Role:
         - Model

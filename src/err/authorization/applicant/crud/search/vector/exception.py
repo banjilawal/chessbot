@@ -1,7 +1,7 @@
-# src/err/authorization/authorizer/crud/search/vector/exception.py
+# src/err/authorization/applicant/crud/search/vector/exception.py
 
 """
-Module: err.authorization.authorizer.crud.search.vector.exception
+Module: err.authorization.applicant.crud.search.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizerException
+from err import SearchApplicantApproverException
 
 __all__ = [
     # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "VectorSearchAuthorizerException",
+    "VectorSearchApplicantApproverException",
 ]
 
 # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class VectorSearchAuthorizerException(SearchAuthorizerException):
+class VectorSearchApplicantApproverException(SearchApplicantApproverException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a VectorSearchAuthorizer failed.
+        1.  Indicating that a VectorSearchApplicantApprover failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class VectorSearchAuthorizerException(SearchAuthorizerException):
     Provides:
 
     Super Class:
-        SearchAuthorizerException
+        SearchApplicantApproverException
     """
-    MSG = "VectorSearchAuthorizer failed."
+    MSG = "VectorSearchApplicantApprover failed."
     ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(
