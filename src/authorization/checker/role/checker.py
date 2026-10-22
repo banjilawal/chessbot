@@ -1,7 +1,7 @@
-# src/authorization/checker/validation/checker.py
+# src/authorization/checker/valid/activity.checker.py
 
 """
-Module: authorization.checker.validation.checker
+Module: authorization.checker.valid.activity.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -10,46 +10,45 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TypeVar
+from typing import TypeVar, cast
 
 from artifcat import Decision
-from authorization import Checker
+from authorization import ValidItemChecker
+from domain import Actionable
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Actionable")
 
-class ValidItemChecker(Checker[T], ABC):
+class ValidRoleChecker(ValidItemChecker[T], ABC):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Checks if a Token satisfies the requirements for an activity.
+        1.  Verifies an Actionable meets minimum safety requirements.
 
     Attributes:
         validation_service: ValidationService[T]
         
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(request: AuthorizationRequest) -> Decision
 
 
     Super Class:
-        ApplicantApprover
+        ValidItemChecker
     """
-    _validation_service: ValidationService[T]
-
     
     def __init__(self, validation_service: ValidationService[T]):
         """
         Args:
             validation_service: ValidationService[T]
         """
-        self._validation_service = validation_service
+        super().__init__(validation_service=validation_service)
         
     @property
     def validation_service(self) -> ValidationService[T]:
-        return self._validation_service
+        return cast(ValidationService[T], super().validation_service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

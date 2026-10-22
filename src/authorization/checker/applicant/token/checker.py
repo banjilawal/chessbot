@@ -10,16 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import Decision
-from authorization import PropertyChecker
-from exchange import AuthorizationRequest
+from authorization import Checker
+from domain import Actor
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="Actor")
 
-class ApplicantChecker(PropertyChecker[T], ABC):
+class ApplicantChecker(Checker[T], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -38,5 +38,5 @@ class ApplicantChecker(PropertyChecker[T], ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, request: AuthorizationRequest) -> Decision[T]:
         pass

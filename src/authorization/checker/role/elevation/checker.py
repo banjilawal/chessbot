@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision
-from authorization import ValidActivityChecker
+from authorization import ValidRoleChecker
 from domain import Bishop, Elevatable, King, Knight, Pawn, Persona, Queen, Rank, Rook
 from err import ElevatableApproverException
 from exchange import AuthorizationRequest, RankValidationRequest, RankValidationService
 from transit import ElevatableCarrier
 from util import IdFactory, LoggingLevelRouter
 
-class ValidElevationChecker(ValidActivityChecker[Elevatable]):
+class ValidElevationChecker(ValidRoleChecker[Elevatable]):
     """
     Role:
         -   Authorization
@@ -35,7 +35,7 @@ class ValidElevationChecker(ValidActivityChecker[Elevatable]):
         -   def execute(request: AuthorizationRequest) -> Decision
 
     Super Class:
-        ValidActivityChecker
+        ValidRoleChecker
     """
     
     def __init__(
