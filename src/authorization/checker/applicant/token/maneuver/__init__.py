@@ -12,8 +12,6 @@ version: 0.0.2
 # Packages
 from .destination import *
 from .origin import *
-from .pawn import *
-from .row import *
 
 # Modules
 from .checker import ManeuverApplicantChecker

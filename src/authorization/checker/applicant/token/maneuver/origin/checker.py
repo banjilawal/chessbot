@@ -47,7 +47,23 @@ class ApplicantOriginChecker(ManeuverApplicantChecker):
         method = f"{self.__class__.__name__}.execute"
         
         applicant = request.applicant
-        origin = request.activity_to_path.endpoints.origin
+        origin = request.activity_to_path.origin
+        if origin.is_not_consistent:
+            return ManeuverDecision.denial(
+                request=request,
+                exception=ApplicantOriginCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ApplicantOriginCheckerException.MSG,
+                    err_code=ApplicantOriginCheckerException.ERR_CODE,
+                    ex=SquareConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareConsistencyException.MSG,
+                        err_code=SquareConsistencyException.ERR_CODE,
+                    )
+                )
+            )
         if (
                 origin.occupant != applicant or
                 origin.coord != applicant.footstep.position

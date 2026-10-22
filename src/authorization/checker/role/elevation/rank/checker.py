@@ -71,11 +71,9 @@ class PromotionRankChecker(PromotionRoleChecker[Elevatable]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate gets flagged.
-        
-        abstract_rank= cast(Rank, cast(ABC, request.activity))
         validation = self.validation_service.extract_model(
             request=RankValidationRequest(
-                item=RankCarrier(model=abstract_rank),
+                item=RankCarrier(model=request.activity_to_rank),
                 id=IdFactory.next_id(class_name="RankValidationRequest")
             )
         )

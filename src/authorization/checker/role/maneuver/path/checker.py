@@ -71,11 +71,9 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate gets flagged.
-        
-        abstract_path= cast(Path, cast(ABC, request.activity))
         validation = self.validation_service.extract_model(
             request=PathValidationRequest(
-                item=PathCarrier(model=abstract_path),
+                item=PathCarrier(model=request.activity_to_path),
                 id=IdFactory.next_id(class_name="PathValidationRequest")
             )
         )
@@ -92,10 +90,9 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
                 )
             )
         path = cast(Path, validation.payload)
-        activity = cast(Maneuverable, path)
         approval = ManeuverRequest(
             id=request.id,
-            activity=activity,
+            activity=path,
             applicant=request.applicant,
         )
         # --- Forward the work product. ---#

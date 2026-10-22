@@ -76,7 +76,7 @@ class Maneuver(SearchableModel, Attackable):
         return self._benefit
     
     @property
-    def is_attack_maneuver(self) -> bool:
+    def is_attacking_enemy(self) -> bool:
         if self.is_not_consistent:
             return False
         destination_occupant = self.destination.occupant
@@ -88,7 +88,7 @@ class Maneuver(SearchableModel, Attackable):
         return self._traveler.is_enemy(destination_occupant)
     
     @property
-    def is_blocked_maneuver(self) -> bool:
+    def is_blocked_by_friend(self) -> bool:
         if self.is_not_consistent:
             return False
         destination_occupant = self.destination.occupant
