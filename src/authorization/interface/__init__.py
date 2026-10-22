@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .activity import *
 from .applicant import *
-from .checkable import *
+from .chainable import *
 
 # Modules
 from .interface import AuthorizationInterface

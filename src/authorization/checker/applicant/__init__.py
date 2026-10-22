@@ -16,4 +16,3 @@ from .token import *
 from .valid import *
 
 # Modules
-from .checker import ApplicantChecker
