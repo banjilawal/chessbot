@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
 from artifcat import Decision
-from authorization import Chainable, Reviewer
+from authorization import ActorChainable, Reviewer
 from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
@@ -43,7 +43,7 @@ class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def checkers(self) -> List[Chainable]:
+    def checkers(self) -> List[ActorChainable]:
         pass
     
     @abstractmethod
