@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Optional, cast
 
 from artifcat import PromotionDecision
@@ -21,7 +20,7 @@ from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class PromotionRankChecker(PromotionRoleChecker[Elevatable]):
+class PromotionRankChecker(PromotionRoleChecker):
     """
     Role:
         -   Authorization

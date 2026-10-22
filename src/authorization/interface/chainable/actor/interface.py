@@ -1,7 +1,7 @@
-# src/authorization/interface/chainable/applicant/interface.py
+# src/authorization/interface/chainable/actor/interface.py
 
 """
-Module: authorization.interface.chainable.applicant.interface
+Module: authorization.interface.chainable.actor.interface
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

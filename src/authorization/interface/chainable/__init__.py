@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.INTERFACE.CHAINABLE PACKAGE ===========#
 
 # Packages
-from .applicant import *
+from .actor import *
 
 # Modules
 from .interface import Chainable

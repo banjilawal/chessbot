@@ -22,6 +22,15 @@ T = TypeVar("T", bound="Elevatable")
 
 class PromotionRoleChecker(PromotionChecker[T], ABC, Generic[T]):
     
+    _validation_service: ValidationService
+    
+    def __init__(self):
+        super().__init__()
+        self._validation_service = validation_service
+        
+    @property
+    def validation_service(self) ->:
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
