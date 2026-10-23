@@ -20,8 +20,33 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="AuthorizationRequest")
 
 class ApplicantChecker(Checker[T], ActorChainable, ABC, Generic[T]):
+    """
+    Role:
+        -   Authorization
+        -   Interface
+
+    Responsibilities:
+        1.  Decides if an Actor can be granted permission to an Activity.
+
+    Attributes:
+
+    Provides:
+        -   def execute(request: T) -> Decision[T]
+
+    Super Class:
+        Checker
+    """
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:
+        """
+        Decide if an Actor can be granted permission to an activity.
+        Args:
+            request: T
+        Returns:
+           Decision[T]
+        Raises:
+          ApplicantCheckerException
+        """
         pass

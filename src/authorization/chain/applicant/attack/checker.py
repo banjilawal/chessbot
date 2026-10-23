@@ -25,20 +25,30 @@ class AttackApplicantChecker(ApplicantChecker[AttackRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Attack requirements.
+        1.  Decides if an Actor can be granted permission to a Attack.
 
     Attributes:
-        
+
     Provides:
-        -   def execute(self, request: AttackRequest) -> AttackDecision
+        -   def execute(request: AttackRequest) -> AttackDecision
 
     Super Class:
-        AttackApplicantChecker
+        ApplicantChecker
     """
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackRequest) -> AttackDecision:
+        """
+        Decide if an Actor can be granted permission to a Attack.
+        Args:
+            request: AttackRequest
+        Returns:
+           AttackDecision
+        Raises:
+          AttackApplicantCheckerException
+        """
         pass

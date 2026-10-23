@@ -25,20 +25,30 @@ class ManeuverApplicantChecker(ApplicantChecker[ManeuverRequest], ABC, Generic[T
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Maneuver requirements.
+        1.  Decides if an Actor can be granted permission to a Maneuver.
 
     Attributes:
-        
+
     Provides:
-        -   def execute(self, request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
-        ManeuverApplicantChecker
+        ApplicantChecker
     """
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+        """
+        Decide if an Actor can be granted permission to a Maneuver.
+        Args:
+            request: ManeuverRequest
+        Returns:
+           ManeuverDecision
+        Raises:
+          ManeuverApplicantCheckerException
+        """
         pass

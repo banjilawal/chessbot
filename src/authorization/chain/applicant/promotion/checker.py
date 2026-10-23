@@ -25,20 +25,30 @@ class PromotionApplicantChecker(ApplicantChecker[PromotionRequest], ABC, Generic
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Promotion requirements.
+        1.  Decides if an Actor can be granted permission to a Promotion.
 
     Attributes:
-        
+
     Provides:
-        -   def execute(self, request: PromotionRequest) -> PromotionDecision
+        -   def execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        PromotionApplicantChecker
+        ApplicantChecker
     """
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
+        """
+        Decide if an Actor can be granted permission to a Promotion.
+        Args:
+            request: PromotionRequest
+        Returns:
+           PromotionDecision
+        Raises:
+          PromotionApplicantCheckerException
+        """
         pass
