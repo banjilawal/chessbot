@@ -14,7 +14,7 @@ from abc import ABC
 from domain import Actionable
 
 
-class Elevatable(Actionable, ABC):
+class Elevateable(Actionable, ABC):
     """
     Role:
         - Interface

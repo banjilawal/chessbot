@@ -1,7 +1,7 @@
-# src/authorization/reviewer/promotion/activity/reviewer.py
+# src/authorization/reviewer/role/promotion/reviewer.py
 
 """
-Module: authorization.reviewer.promotion.activity.reviewer
+Module: authorization.reviewer.role.promotion.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,17 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import PromotionDecision
-from authorization import RoleReviewer, ValidElevationChecker
-from domain import Elevatable
+from authorization import PromotionRankChecker, RoleReviewer
+from domain import Elevateable
 from exchange import PromotionRequest
-
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="Elevateable")
 
-class PromotionRoleReviewer(RoleReviewer[PromotionRequest]):
+
+class PromotionRoleReviewer(RoleReviewer[PromotionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -29,53 +31,27 @@ class PromotionRoleReviewer(RoleReviewer[PromotionRequest]):
             activity.
 
     Attributes:
-        valid_item_checker: ValidRankChecker
+        checker: RankChecker
 
     Provides:
         -   def execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        RPromotionReviewer
+        RoleReviewer
     """
-
     
-    def __init__(
-            self,
-            valid_item_checker: Optional[ValidElevationChecker] | None = None,
-    ):
+    def __init__(self, checker: Optional[PromotionRankChecker] | None = None):
         """
         Args:
-            valid_item_checker: Optional[ValidRankChecker]
+            checker: Optional[PromotionRankChecker]
         """
-        super().__init__(valid_item_checker=valid_item_checker or ValidElevationChecker())
-        
+        super().__init__(checker=checker or PromotionRankChecker())
+
     @property
-    def valid_item_checker(self) -> ValidElevationChecker:
-        return cast(ValidElevationChecker, super().valid_item_checker)
+    def checker(self) -> PromotionRankChecker:
+        return cast(PromotionRankChecker, super().checker)
     
-    
+    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
-        method = f"{self.__class__.__name__}.execute"
-        
-        
-        decision = self.valid_item_checker.execute(request)
-        if decision.is_denial:
-            return PromotionDecision.denial(
-                request=request,
-                exception=ActivityApproverException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ActivityApproverException.MSG,
-                    err_code=ActivityApproverException.ERR_CODE,
-                    ex=decision.exception,
-                )
-            )
-        activity = cast(Elevatable, decision.request.activity)
-        approval = PromotionRequest(
-            id=request.id,
-            activity=activity,
-            applicant=request.applicant,
-        )
-        return PromotionDecision.grant(approval)
-        
+        pass

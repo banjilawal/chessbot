@@ -14,11 +14,11 @@ from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import PromotionDecision
 from authorization import RoleChecker
-from domain import Elevatable
+from domain import Elevateable
 from exchange import PromotionRequest, RankValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Elevatable")
+T = TypeVar("T", bound="Elevateable")
 
 class PromotionRoleChecker(RoleChecker[PromotionRequest], ABC, Generic[T]):
     

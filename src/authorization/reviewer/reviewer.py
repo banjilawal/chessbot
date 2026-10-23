@@ -38,11 +38,6 @@ class Reviewer(ABC, Generic[T]):
     def __init__(self,):
         """"""
         
-    @property
-    @abstractmethod
-    def checkers(self) -> List[Checkable]:
-        pass
-        
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:

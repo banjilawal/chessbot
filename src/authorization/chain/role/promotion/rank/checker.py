@@ -13,14 +13,14 @@ from typing import cast
 
 from artifcat import PromotionDecision
 from authorization import PromotionRoleChecker
-from domain import Elevatable, Rank
+from domain import Elevateable, Rank
 from err import AuthorizationException
 from exchange import PromotionRequest, RankValidationRequest
 from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class PromotionRankChecker(PromotionRoleChecker[Elevatable]):
+class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
     """
     Role:
         -   Authorization
@@ -76,7 +76,7 @@ class PromotionRankChecker(PromotionRoleChecker[Elevatable]):
                 )
             )
         rank = cast(Rank, validation.payload)
-        if not isinstance(rank, Elevatable):
+        if not isinstance(rank, Elevateable):
             # Send the exception chain on failure.
             return PromotionDecision.denial(
                 request=request,
@@ -91,7 +91,7 @@ class PromotionRankChecker(PromotionRoleChecker[Elevatable]):
                     ),
                 )
             )
-        activity = cast(Elevatable, rank)
+        activity = cast(Elevateable, rank)
         approval = PromotionRequest(
             id=request.id,
             activity=activity,

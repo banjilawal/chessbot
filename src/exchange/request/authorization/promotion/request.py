@@ -13,7 +13,7 @@ from abc import ABC
 from typing import cast
 
 from artifcat import PromotionResult
-from domain import Elevatable, PawnToken, Rank
+from domain import Elevateable, PawnToken, Rank
 from exchange import AuthorizationRequest
 
 
@@ -35,7 +35,7 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, applicant: PawnToken, activity: Elevatable):
+    def __init__(self, id: int, applicant: PawnToken, activity: Elevateable):
         """
         Args:
             id: int
@@ -49,8 +49,8 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         return cast(PawnToken, super().applicant)
     
     @property
-    def activity(self) -> Elevatable:
-        return cast(Elevatable, super().activity)
+    def activity(self) -> Elevateable:
+        return cast(Elevateable, super().activity)
     
     @property
     def activity_to_rank(self) -> Rank:

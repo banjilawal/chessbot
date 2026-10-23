@@ -13,7 +13,6 @@ version: 0.0.2
 from .role import *
 from .applicant import *
 from .token import *
-from .promotion import *
 
 # Modules
 from .reviewer import Reviewer
