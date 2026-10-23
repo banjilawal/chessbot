@@ -21,12 +21,12 @@ class PromotionRowChecker(PromotionTokenChecker):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Promotion applicant is on its enemy's rank row.
+        1.  Check if a Token can be promoted.
 
     Attributes:
 
     Provides:
-        -   def execute(self, request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
         PromotionTokenChecker
@@ -35,21 +35,27 @@ class PromotionRowChecker(PromotionTokenChecker):
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
         """
-        Checks if a Token meets the requirements to perform an activity.
+        Decide if a Token can be promoted.
 
+        Action:
+            1.  Deny promotion if the token does not occupy its
+                promotion row.
+            2.  Otherwise, issue an approval.
         Args:
-            request: request: PromotionRequest
+            request: PromotionRequest
         Returns:
            PromotionDecision
         Raises:
-            TypeError
+            PromotionRowCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the actor does not occupy the promotion_row.
         promotion_row = request.applicant.team.enemy_rank_row
-        current_row = request.applicant.footstep.position.row
+        position = request.applicant.footstep.position
         
-        if current_row is None or current_row != promotion_row:
+        if position is None or position.row != promotion_row:
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=PromotionRowException(
@@ -59,11 +65,11 @@ class PromotionRowChecker(PromotionTokenChecker):
                     err_code=PromotionRowException.ERR_CODE,
                 )
             )
-        # --- Forward the work product. ---
+        # --- Prepare an approval of the actor. ---#
         approval = PromotionRequest(
             id=request.id,
             applicant=request.applicant,
             activity=request.activity,
         )
+        # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)
- 
