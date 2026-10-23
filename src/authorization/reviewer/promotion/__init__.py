@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.REVIEWER.PROMOTION PACKAGE ===========#
 
 # Packages
+from .token import *
 
 # Modules
 from .reviewer import PromotionApplicantReviewer

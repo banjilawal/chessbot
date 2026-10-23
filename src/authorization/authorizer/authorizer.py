@@ -37,8 +37,11 @@ class Authorizer(ABC, Generic[T]):
 
     Super Class:
     """
-
     
+    _loader: AuthorizationLoader[T]
+    _role_permitter: RolePermitter[T]
+    _applicant_reviewer: ApplicantReviewer[T]
+
     def __init__(
             self,
             loader: AuthorizationLoader[T],
@@ -70,7 +73,7 @@ class Authorizer(ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:
         """
-        Grant permission to an activity.
+        Grant permission for an activity.
         
         Args:
             request: T
