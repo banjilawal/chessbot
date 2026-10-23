@@ -18,19 +18,19 @@ from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-
 class PromotionTokenChecker(PromotionApplicantChecker[Token], ABC):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Promotion requirements.
+        1.  Interface for checking a Token attribute satisfies promotion requirements.
 
     Attributes:
-        
+
     Provides:
-        -   def execute(self, request: PromotionRequest) -> PromotionDecision
+        -   def execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
         PromotionApplicantChecker
@@ -39,4 +39,13 @@ class PromotionTokenChecker(PromotionApplicantChecker[Token], ABC):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
+        """
+        Decide if a Token can be granted permission to a Promotion.
+        Args:
+            request: PromotionRequest
+        Returns:
+           PromotionDecision
+        Raises:
+          PromotionTokenCheckerException
+        """
         pass

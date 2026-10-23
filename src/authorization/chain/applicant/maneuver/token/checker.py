@@ -22,14 +22,15 @@ class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Maneuver requirements.
+        1.  Interface for checking a Token attribute satisfies Maneuver requirements.
 
     Attributes:
-        
+
     Provides:
-        -   def execute(self, request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverApplicantChecker
@@ -38,4 +39,13 @@ class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+        """
+        Decide if a Token can be granted permission to launch an Maneuver.
+        Args:
+            request: ManeuverRequest
+        Returns:
+           ManeuverDecision
+        Raises:
+          ManeuverTokenCheckerException
+        """
         pass

@@ -18,19 +18,19 @@ from exchange import AttackRequest
 from util import LoggingLevelRouter
 
 
-
 class AttackTokenChecker(AttackApplicantChecker[Token], ABC):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Attack requirements.
+        1.  Interface for checking a Token attribute satisfies Attack requirements.
 
     Attributes:
-        
+
     Provides:
-        -   def execute(self, request: AttackRequest) -> AttackDecision
+        -   def execute(request: AttackRequest) -> AttackDecision
 
     Super Class:
         AttackApplicantChecker
@@ -39,4 +39,13 @@ class AttackTokenChecker(AttackApplicantChecker[Token], ABC):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackRequest) -> AttackDecision:
+        """
+        Decide if a Token can be granted permission to launch an Attack.
+        Args:
+            request: AttackRequest
+        Returns:
+           AttackDecision
+        Raises:
+          AttackTokenCheckerException
+        """
         pass
