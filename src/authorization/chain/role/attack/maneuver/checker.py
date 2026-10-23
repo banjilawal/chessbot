@@ -26,13 +26,12 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Attack meets minimum safety requirements before it
-            can be approved for an activity.
+        1.  Grant permission to a Maneuver for an AttackRequest.
 
     Attributes:
 
     Provides:
-        -   def execute(request: AttackRequest) -> AttackDecision
+        -   execute(request: AttackRequest) -> AttackDecision
 
     Super Class:
         AttackRoleChecker
@@ -45,18 +44,24 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackRequest) -> AttackDecision:
         """
-        Checks if a Attack meets the requirements to perform an activity.
+        Decide if an Attack can be made using a Maneuver.
 
+        Action:
+            1.  Deny permission to the Attack if any of the following occur
+                    -   The activity is not a safe Maneuver.
+                    -   The maneuver has an inconsistency.
+                    -   There is no enemy at maneuver.destination.
+            2.  Otherwise, issue a grant decision.
         Args:
-            request: AuthorizationRequest
+            request: AttackRequest
         Returns:
-           Decision
+           AttackDecision
         Raises:
-            AuthorizationException
+          AttackManeuverCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate gets flagged.
+        # Handle the case that request.activity is not a safe maneuver.
         validation = self.validation_service.extract_model(
             request=ManeuverValidationRequest(
                 item=ManeuverCarrier(model=request.activity_to_maneuver),
@@ -64,7 +69,7 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
             )
         )
         if validation.is_failure:
-            # Send the exception chain on failure.
+            # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -75,9 +80,10 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
                     ex=validation.exception,
                 )
             )
+        # Handle the case that the requested maneuver has an inconsistency.
         maneuver = cast(Maneuver, validation.payload)
         if maneuver.is_not_consistent:
-            # Send the exception chain on failure.
+            # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -93,7 +99,9 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
                     ),
                 )
             )
+        # Handle the case that the requested maneuver does not have an enemy.
         if not maneuver.is_attacking_enemy:
+            # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -109,12 +117,13 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
                     ),
                 )
             )
+        # --- Prepare an approval of the activity. ---#
         activity = cast(Attackable, maneuver)
         approval = AttackRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,
         )
-        # --- Forward the work product. ---#
+        # --- Forward the approval. ---#
         return AttackDecision.grant(approval)
  

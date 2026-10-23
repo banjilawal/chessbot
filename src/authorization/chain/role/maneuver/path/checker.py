@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from typing import Optional, cast
+from typing import cast
 
 from artifcat import ManeuverDecision
 from authorization import ManeuverRoleChecker
 from domain import Maneuverable, Path
 from err import AuthorizationException, PathConsistencyException
-from exchange import ManeuverRequest, PathValidationRequest, PathValidationService
+from exchange import ManeuverRequest, PathValidationRequest
 from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -27,13 +27,13 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Maneuver meets minimum safety requirements before it
-            can be approved for an activity.
+        1.  Grant permission to a Path for a ManeuverRequest.
 
     Attributes:
+        validation_service : PathValidationService
 
     Provides:
-        -   def execute(request: ManeuverRequest) -> ManeuverDecision
+        -   execute(request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverRoleChecker
@@ -46,18 +46,23 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverDecision:
         """
-        Checks if a Maneuver meets the requirements to perform an activity.
+        Decide if a Maneuver can be made on a Path.
 
+        Action:
+            1.  Deny permission to the Maneuver if any of the following occur
+                    -   The activity is not a safe path.
+                    -   The path has an inconsistency.
+            2.  Otherwise, issue a grant decision.
         Args:
-            request: AuthorizationRequest
+            request: ManeuverRequest
         Returns:
-           Decision
+           ManeuverDecision
         Raises:
-            AuthorizationException
+            ManeuverPathCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate gets flagged.
+        # Handle the case that request.activity is not a safe path.
         validation = self.validation_service.extract_model(
             request=PathValidationRequest(
                 item=PathCarrier(model=request.activity_to_path),
@@ -65,7 +70,7 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
             )
         )
         if validation.is_failure:
-            # Send the exception chain on failure.
+            # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -76,9 +81,10 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
                     ex=validation.exception,
                 )
             )
+        # Handle the case that the requested path has an inconsistency.
         path = cast(Path, validation.payload)
         if path.not_consistent:
-            # Send the exception chain on failure.
+            # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -94,12 +100,12 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
                     ),
                 )
             )
+        # --- Prepare an approval of the activity. ---#
         activity = cast(Maneuverable, path)
         approval = ManeuverRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,
         )
-        # --- Forward the work product. ---#
+        # --- Forward the approval. ---#
         return ManeuverDecision.grant(approval)
- 

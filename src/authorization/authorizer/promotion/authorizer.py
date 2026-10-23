@@ -12,21 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import PromotionDecision
-from authorization import (
-    Authorizer, OperationAuthorizer, PromotionApplicantReviewer, PromotionAuthorizationForm,
-    PromotionRoleReviewer
-)
-from authorization.loader.promotion import PromotionAuthorizationLoader
-from domain import Bishop, King, Knight, Pawn, PawnToken, Persona, Queen, Rank, RankBlueprint, Rook, Token
-from err import ChessException, PawnPromoterException, PromoteInactivePawnException, PromotionAuthorizerException
-from exchange import (
-    PromotionRequest, RankBuildRequest, RankValidationRequest, RankValidationService, TokenValidationRequest,
-    PromotionApplicantReviewer
-)
-from fabrication import RankBuilder
-from logic.promotion.promotion.exception import DoublePromotionException
-from transit import PawnTokenCarrier, RankCarrier
-from util import IdFactory, LoggingLevelRouter
+from authorization import Authorizer, PromotionAuthorizationLoader, PromotionRankReviewer
+from authorization.reviewer.applicant.promotion.token import PromotionTokenReviewer
+from exchange import PromotionRequest
+from util import LoggingLevelRouter
 
 
 class PromotionAuthorizer(Authorizer[PromotionRequest]):
@@ -54,28 +43,28 @@ class PromotionAuthorizer(Authorizer[PromotionRequest]):
     def __init__(
             self,
             loader: Optional[PromotionAuthorizationLoader] | None = None,
-            role_reviewer: Optional[PromotionRoleReviewer] | None = None,
-            applicant_reviewer: Optional[PromotionApplicantReviewer] | None = None,
+            role_reviewer: Optional[PromotionRankReviewer] | None = None,
+            applicant_reviewer: Optional[PromotionTokenReviewer] | None = None,
     ):
         """
         Args:
             loader: Optional[PromotionAuthorizationLoader]
-            role_reviewer: Optional[PromotionRoleReviewer]
-            applicant_reviewer: Optional[PromotionApplicantReviewer] 
+            role_reviewer: Optional[PromotionRankReviewer]
+            applicant_reviewer: Optional[PromotionTokenReviewer] 
         """
         super().__init__(
             loader=loader or PromotionAuthorizationLoader(),
-            role_reviewer= role_reviewer or PromotionRoleReviewer(),
-            applicant_reviewer=applicant_reviewer or PromotionApplicantReviewer(),
+            role_reviewer= role_reviewer or PromotionRankReviewer(),
+            applicant_reviewer=applicant_reviewer or PromotionTokenReviewer(),
         )
     
     @property
-    def role_reviewer(self) -> PromotionRoleReviewer:
-        return cast(PromotionRoleReviewer, super().role_reviewer)
+    def role_reviewer(self) -> PromotionRankReviewer:
+        return cast(PromotionRankReviewer, super().role_reviewer)
     
     @property
-    def applicant_reviewer(self) -> PromotionApplicantReviewer:
-        return cast(PromotionApplicantReviewer, super().applicant_reviewer)
+    def applicant_reviewer(self) -> PromotionTokenReviewer:
+        return cast(PromotionTokenReviewer, super().applicant_reviewer)
     
     @property
     def loader(self) -> PromotionAuthorizationLoader:

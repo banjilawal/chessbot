@@ -94,19 +94,6 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
                 )
             )
         approved_request = decision.request
-        decision = self._readiness_checker.execute(approved_request)
-        if decision.is_denial:
-            return PromotionDecision.denial(
-                request=request,
-                exception=PromotionTokenReviewerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PromotionTokenReviewerException.MSG,
-                    err_code=PromotionTokenReviewerException.ERR_CODE,
-                    ex=decision.exception,
-                )
-            )
-        approved_request = decision.request
         decision = self._pawn_checker.execute(approved_request)
         if decision.is_denial:
             return PromotionDecision.denial(

@@ -26,14 +26,13 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Elevatable meets minimum safety requirements before it
-            can be approved for an activity.
+        1.  Grant permission to a Rank for a PromotionRequest.
 
     Attributes:
-        validation_service: RankValidationService
+        validation_service : RankValidationService
 
     Provides:
-        -   def execute(request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
         PromotionRoleChecker
@@ -45,18 +44,23 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
         """
-        Checks if a Elevatable meets the requirements to perform an activity.
+        Decide if a Promotion can be made to a Rank.
 
+        Action:
+            1.  Deny permission to the Promotion if any of the following occur
+                    -   The activity is not a safe Rank.
+                    -   The rank is not promotable.
+            2.  Otherwise, issue a grant decision.
         Args:
-            request: AuthorizationRequest
+            request: PromotionRequest
         Returns:
-           Decision
+           PromotionDecision
         Raises:
-            AuthorizationException
+          PromotionRankCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate gets flagged.
+        # Handle the case that request.activity is not a safe rank.
         validation = self.validation_service.extract_model(
             request=RankValidationRequest(
                 item=RankCarrier(model=request.activity_to_rank),
@@ -64,7 +68,7 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
             )
         )
         if validation.is_failure:
-            # Send the exception chain on failure.
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -75,9 +79,10 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
                     ex=validation.exception,
                 )
             )
+        # Handle the case that the validation payload is not Elevatable.
         rank = cast(Rank, validation.payload)
         if not isinstance(rank, Elevateable):
-            # Send the exception chain on failure.
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=AuthorizationException(
@@ -91,12 +96,13 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
                     ),
                 )
             )
+        # --- Prepare an approval of the activity. ---#
         activity = cast(Elevateable, rank)
         approval = PromotionRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,
         )
-        # --- Forward the work product. ---#
+        # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)
  

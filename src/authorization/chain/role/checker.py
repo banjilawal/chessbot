@@ -25,7 +25,7 @@ class RoleChecker(Checker[T], RoleChainable, ABC, Generic[T]):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies an Actionable meets minimum safety requirements.
+        1.  Decides if an Actionable satisfies a Request's conditions.
 
     Attributes:
         
@@ -53,4 +53,13 @@ class RoleChecker(Checker[T], RoleChainable, ABC, Generic[T]):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:
+        """
+        Grants permission to an Actionable.
+        Args:
+            request: T
+        Returns:
+           Decision[T]
+        Raises:
+            RoleCheckerException.
+        """
         pass
