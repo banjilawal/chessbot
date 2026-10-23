@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .token import *
-from .valid import *
 
 # Modules
 from .checker import PromotionApplicantChecker

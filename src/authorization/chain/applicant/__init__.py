@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHAIN.APPLICANT PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .maneuver import *
 from .promotion import *
 

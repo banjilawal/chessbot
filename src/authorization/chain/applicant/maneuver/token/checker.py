@@ -1,4 +1,4 @@
-# src/authorization/chain/applicant/maneuver/tokenchecker.py
+# src/authorization/chain/applicant/maneuver/token/checker.py
 
 """
 Module: authorization.chain.applicant.maneuver.token.checker

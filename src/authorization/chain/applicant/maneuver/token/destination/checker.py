@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from artifcat import ManeuverDecision
 from authorization import ManeuverTokenChecker
-from domain import Maneuver
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 

@@ -28,7 +28,6 @@ class Encounter(SearchableModel, Encounterable, ABC):
         id: int
         victim: Token
         maneuver: Maneuver
-        location: Square
         attacker_reward: int
 
     Provides:
@@ -38,7 +37,6 @@ class Encounter(SearchableModel, Encounterable, ABC):
     """
     _id: int
     _victim: Token
-    _location: Square
     _attack_maneuver: Maneuver
     _attacker_reward: int
 
@@ -48,7 +46,6 @@ class Encounter(SearchableModel, Encounterable, ABC):
             id: int,
             victim: Token,
             attacker_maneuver: Maneuver,
-            location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
     ):
         """
@@ -56,14 +53,12 @@ class Encounter(SearchableModel, Encounterable, ABC):
             id: int
             victim: Token
             attacker_maneuver: Maneuver
-            location: Optional[Square]
             attacker_reward: Optional[int]
         """
         self._id = id
         self._victim = victim
         self._attack_maneuver = attacker_maneuver
-        self._location = location or attacker_maneuver.path.endpoints.destination
-        self._attacker_reward = attacker_reward or victim.rank.ransom
+        self._attacker_reward = attacker_reward or victim.rank.persona.ransom
         
     @property
     def id(self) -> int:
@@ -72,6 +67,10 @@ class Encounter(SearchableModel, Encounterable, ABC):
     @property
     def victim(self) -> Token:
         return self._victim
+    
+    @property
+    def attacker(self) -> Token:
+        return self._attack_maneuver.traveler
     
     @property
     def attacker_maneuver(self) -> Maneuver:
@@ -83,11 +82,34 @@ class Encounter(SearchableModel, Encounterable, ABC):
     
     @property
     def location(self) -> Square:
-        return self._location
+        return self._attack_maneuver.destination
     
     @property
     def score(self) -> Dict[str, Dict[Archetype, Account]]:
         return {}
+    
+    @property
+    def consistency_exists(self) -> bool:
+        return (
+            self._victim_has_consistency and
+            self._attack_maneuver.is_attacking_enemy
+        )
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
+
+    @property
+    def victim_has_consistency(self) -> bool:
+        return (
+            self.location.occupant == self._victim and
+            self.location.coord == self._victim.footstep.position and
+            self._victim.is_enemy(self.attacker)
+        )
+    
+    @property
+    def victim_is_not_consistent(self) -> bool:
+        return not self.victim_has_consistency
     
     def __eq__(self, other) -> bool:
         if other is None:
