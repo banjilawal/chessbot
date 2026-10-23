@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .crud import *
-from .encounter import *
+from .attacker import *
 from .maneuver import *
 from .promotion import *
 

@@ -16,11 +16,9 @@ from artifcat import AttackDecision
 from authorization import ActorChainable, ApplicantReviewer, ReadyChecker
 from domain import Actor
 from exchange import AttackRequest
-
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
-
 
 class AttackApplicantReviewer(ApplicantReviewer[AttackRequest], ABC, Generic[T]):
     """
@@ -41,13 +39,13 @@ class AttackApplicantReviewer(ApplicantReviewer[AttackRequest], ABC, Generic[T])
         ApplicantReviewer
     """
     
-    def __init__(self, ready_checker: ReadyChecker[T]):
+    def __init__(self, ready_checker: ReadyChecker):
         """
         Args:
             ready_checker: ReadyChecker
         """
         super().__init__(ready_checker=ready_checker)
-    
+        
     @property
     def ready_checker(self) -> ReadyChecker[T]:
         return cast(ReadyChecker[T], super().ready_checker)
@@ -70,3 +68,5 @@ class AttackApplicantReviewer(ApplicantReviewer[AttackRequest], ABC, Generic[T])
             AttackApplicantReviewerException
         """
         pass
+
+        

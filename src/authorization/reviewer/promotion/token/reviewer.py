@@ -1,7 +1,7 @@
-# src/authorization/reviewer/promotion/token/checker.py
+# src/authorization/reviewer/promotion/token/reviewer.py
 
 """
-Module: authorization.reviewer.promotion.token.checker
+Module: authorization.reviewer.promotion.token.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -17,6 +17,7 @@ from authorization import (
     PromotionRowChecker, ReadyTokenChecker,
 )
 from domain import Token
+from err import PromotionTokenReviewerException
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
