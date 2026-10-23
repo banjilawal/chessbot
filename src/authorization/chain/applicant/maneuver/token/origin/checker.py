@@ -14,18 +14,18 @@ from authorization import ManeuverTokenChecker
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 
-class ApplicantOriginChecker(ManeuverTokenChecker):
+class ManeuverTokenOriginChecker(ManeuverTokenChecker):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Maneuver applicant is on its enemy's rank origin.
+        1.  Check if a Token can move.
 
     Attributes:
 
     Provides:
-        -   def execute(self, request: ManeuverRequest) -> ManeuverDecision
+        -   execute(request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverTokenChecker
@@ -34,27 +34,34 @@ class ApplicantOriginChecker(ManeuverTokenChecker):
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverDecision:
         """
-        Checks if a Token meets the requirements to perform an activity.
+        Decide if a Token can be move.
 
+        Action:
+            1.  Deny a maneuver if any of the following occur.
+                    -   There is an inconsistency in the originating square.
+                    -   The token is not at the origin.
+            2.  Otherwise, issue an approval.
         Args:
-            request: request: ManeuverRequest
+            request: ManeuverRequest
         Returns:
            ManeuverDecision
         Raises:
-            ManeuverTokenChecker
+            ManeuverTokenOriginCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the path's origin has an inconsistency.  
         applicant = request.applicant
         origin = request.activity_to_path.origin
         if origin.is_not_consistent:
+            # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ApplicantOriginCheckerException(
+                exception=ManeuverTokenOriginCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ApplicantOriginCheckerException.MSG,
-                    err_code=ApplicantOriginCheckerException.ERR_CODE,
+                    msg=ManeuverTokenOriginCheckerException.MSG,
+                    err_code=ManeuverTokenOriginCheckerException.ERR_CODE,
                     ex=SquareConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -63,24 +70,32 @@ class ApplicantOriginChecker(ManeuverTokenChecker):
                     )
                 )
             )
+        # Handle the case that the applicant is not at the origin Square.
         if (
                 origin.occupant != applicant or
                 origin.coord != applicant.footstep.position
         ):
+            # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ApplicantOriginCheckerException(
+                exception=ManeuverTokenOriginCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ApplicantOriginCheckerException.MSG,
-                    err_code=ApplicantOriginCheckerException.ERR_CODE,
+                    msg=ManeuverTokenOriginCheckerException.MSG,
+                    err_code=ManeuverTokenOriginCheckerException.ERR_CODE,
+                    ex=TokenPositionException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenPositionException.MSG,
+                        err_code=TokenPositionException.ERR_CODE,
+                    )
                 )
             )
-        # --- Forward the work product. ---
+        # --- Prepare an approval of the actor. ---#
         approval = ManeuverRequest(
             id=request.id,
             applicant=request.applicant,
             activity=request.activity,
         )
+        # --- Forward the approval. ---#
         return ManeuverDecision.grant(approval)
- 

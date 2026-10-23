@@ -13,7 +13,7 @@ from typing import List, Optional, Type, cast
 
 from artifcat import ManeuverDecision
 from authorization import (
-    ApplicantChecker, ApplicantDestinationChecker, ApplicantOriginChecker,
+    ApplicantChecker, ApplicantDestinationChecker, ManeuverTokenOriginChecker,
     ApplicantReadinessChecker, ApplicantReviewer, ValidTokenChecker,
 )
 from err import ApplicantApproverException
@@ -44,7 +44,7 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest]):
         ApplicantReviewer
     """
 
-    _origin_checker: ApplicantOriginChecker
+    _origin_checker: ManeuverTokenOriginChecker
     _readiness_checker: ApplicantReadinessChecker
     _destination_checker: ApplicantDestinationChecker
 
@@ -52,7 +52,7 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest]):
     def __init__(
             self,
             valid_applicant_checker: Optional[ValidTokenChecker] | None = None,
-            origin_checker: Optional[ApplicantOriginChecker] | None = None,
+            origin_checker: Optional[ManeuverTokenOriginChecker] | None = None,
             readiness_checker: Optional[ApplicantReadinessChecker] | None = None,
             destination_checker: Optional[ApplicantDestinationChecker] | None = None,
     ):
@@ -65,7 +65,7 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest]):
         """
         super().__init__(valid_applicant_checker=valid_applicant_checker or ValidTokenChecker())
         self._readiness_checker = readiness_checker or ApplicantReadinessChecker()
-        self._origin_checker = origin_checker or ApplicantOriginChecker()
+        self._origin_checker = origin_checker or ManeuverTokenOriginChecker()
         self._destination_checker = destination_checker or ApplicantDestinationChecker()
         
     @property
