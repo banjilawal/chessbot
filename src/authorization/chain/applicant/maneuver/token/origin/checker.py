@@ -34,12 +34,11 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverDecision:
         """
-        Decide if a Token can be move.
+        Decide if a Token can move.
 
         Action:
-            1.  Deny a maneuver if any of the following occur.
-                    -   There is an inconsistency in the originating square.
-                    -   The token is not at the origin.
+            1.  Deny a ManeuverRequest if the token is not in the originating
+                square.
             2.  Otherwise, issue an approval.
         Args:
             request: ManeuverRequest
@@ -50,27 +49,9 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the path's origin has an inconsistency.  
+        # Handle the case that the applicant is not at the origin Square.
         applicant = request.applicant
         origin = request.activity_to_path.origin
-        if origin.is_not_consistent:
-            # Send the exception chain in the denial.
-            return ManeuverDecision.denial(
-                request=request,
-                exception=ManeuverTokenOriginCheckerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverTokenOriginCheckerException.MSG,
-                    err_code=ManeuverTokenOriginCheckerException.ERR_CODE,
-                    ex=SquareConsistencyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=SquareConsistencyException.MSG,
-                        err_code=SquareConsistencyException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that the applicant is not at the origin Square.
         if (
                 origin.occupant != applicant or
                 origin.coord != applicant.footstep.position
