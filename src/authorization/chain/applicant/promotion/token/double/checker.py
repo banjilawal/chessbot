@@ -36,33 +36,46 @@ class DoublePromotionChecker(PromotionTokenChecker):
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
         """
-        Checks if a Token meets the requirements to perform an activity.
+        Decide if a Token can be promoted.
 
+        Action:
+            1.  Deny promotion if the token has already been promoted.
+            2.  Otherwise, issue an approval.
         Args:
-            request: request: PromotionRequest
+            request: PromotionRequest
         Returns:
            PromotionDecision
         Raises:
-            TypeError
+            DoublePromotionCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        
+        # Handle the case that the applicant has already been promoted.
         if request.applicant.is_promoted:
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
-                exception=DoublePromotionException(
+                exception=DoublePromotionCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DoublePromotionException.MSG,
-                    err_code=DoublePromotionException.ERR_CODE,
+                    msg=DoublePromotionCheckerException.MSG,
+                    err_code=DoublePromotionCheckerException.ERR_CODE,
+                    ex= DoublePromotionException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DoublePromotionException.MSG,
+                        err_code=DoublePromotionException.ERR_CODE,
+                    )
                 )
             )
-        # --- Forward the work product. ---
+        # --- Prepare an approval of the actor. ---#
         approval = PromotionRequest(
             id=request.id,
             applicant=request.applicant,
             activity=request.activity,
         )
+        # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)
+    
+
  

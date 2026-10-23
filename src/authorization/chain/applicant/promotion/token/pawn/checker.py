@@ -52,7 +52,9 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the applicant is not a PawnToken.
         if not isinstance(request.applicant, PawnToken):
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=PromotionPawnTokenCheckerException(
