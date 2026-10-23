@@ -24,12 +24,12 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Promotion applicant is a PawnToken.
+        1.  Check if a Token can be promoted.
 
     Attributes:
 
     Provides:
-        -   def execute(self, request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
         PromotionTokenChecker
@@ -38,31 +38,40 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
         """
-        Checks if a Token meets the requirements to perform an activity.
+        Decide if a Token can be promoted.
 
+        Action:
+            1.  Deny promotion if the token is not a PawnToken.
+            2.  Otherwise, issue an approval.
         Args:
-            request: request: PromotionRequest
+            request: PromotionRequest
         Returns:
            PromotionDecision
         Raises:
-            TypeError
+            PromotionPawnTokenCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
         if not isinstance(request.applicant, PawnToken):
             return PromotionDecision.denial(
                 request=request,
-                exception=TypeError(
-                    f"Expected PawnToken received, "
-                    f"{type(request.applicant).__class__.__name__} instead."
+                exception=PromotionPawnTokenCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPawnTokenCheckerException.MSG,
+                    err_code=PromotionPawnTokenCheckerException.ERR_CODe,
+                    ex=TypeError(
+                        f"Expected PawnToken received, "
+                        f"{type(request.applicant).__class__.__name__} instead."
+                    )
                 )
             )
-        # --- Forward the work product. ---#
+        # --- Prepare an approval of the actor. ---#
         applicant = cast(PawnToken, request.applicant)
         approval = PromotionRequest(
             id=request.id,
             applicant=applicant,
             activity=request.activity,
         )
+        # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)
- 

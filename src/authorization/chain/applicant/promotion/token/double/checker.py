@@ -22,12 +22,12 @@ class DoublePromotionChecker(PromotionTokenChecker):
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Promotion applicant is on its enemy's rank double.
+        1.  Check if a Token can be promoted.
 
     Attributes:
 
     Provides:
-        -   def execute(self, request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
         PromotionTokenChecker
