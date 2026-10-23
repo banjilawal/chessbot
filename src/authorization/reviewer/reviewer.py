@@ -10,9 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, List, TypeVar
 
 from artifcat import Decision
+from authorization import ActorChainable, ReadyChecker
 from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
@@ -27,6 +28,8 @@ class ApplicantReviewer(ABC, Generic[T]):
         1.  Run the series of ApplicantCheckers.
 
     Attributes:
+        model_checker: ModelChecker
+        checkers: List[ActorChainable]
     
     Provides:
         -   def execute(request: T) -> Decision[T]
@@ -34,8 +37,20 @@ class ApplicantReviewer(ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self):
+    _ready_checker: ReadyChecker
+    
+    def __init__(self, ready_checker: ReadyChecker):
+        self._ready_checker = ready_checker
+        
+    @property
+    def ready_checker(self) -> ReadyChecker:
+        return self._ready_checker
+    
+    @property
+    @abstractmethod
+    def checkers(self) -> List[ActorChainable]:
         pass
+        
         
     @abstractmethod
     @LoggingLevelRouter.monitor

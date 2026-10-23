@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHAIN.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
-from .ready import *
 
 # Modules
-from .checker import ValidTokenChecker
+from .checker import ReadyTokenChecker

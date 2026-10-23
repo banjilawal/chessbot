@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import Decision
-from authorization import ModelChecker
+from authorization import ReadyChecker
 from domain import CombatantToken, KingToken, Token
 from err import DisabledTokenException
 from exchange import AuthorizationRequest, TokenValidationRequest
@@ -20,7 +20,7 @@ from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ReadyTokenChecker(ModelChecker):
+class ReadyTokenChecker(ReadyChecker):
     """
     Role:
         -   Authorization

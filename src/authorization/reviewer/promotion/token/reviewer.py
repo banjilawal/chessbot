@@ -14,22 +14,20 @@ from typing import List, Optional
 from artifcat import PromotionDecision
 from authorization import (
     ActorChainable, DoublePromotionChecker, PromotionApplicantReviewer, PromotionPawnTokenChecker,
-    PromotionRowChecker, ReadyTokenChecker
+    PromotionRowChecker, ReadyTokenChecker,
 )
-from domain import Elevateable
-
+from domain import Token
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
+class PromotionTokenReviewer(PromotionApplicantReviewer[Token]):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Checks if an Actor satisfies the requirements to perform an
-            activity.
+        1.  Check if a Token can be promoted.
 
     Attributes:
         ready_checker: ReadyTokenChecker
@@ -41,7 +39,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
         -   def execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        ApplicantReviewer
+        PromotionApplicantReviewer
     """
     _ready_checker: ReadyTokenChecker
     _pawn_checker: PromotionPawnTokenChecker
@@ -62,8 +60,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
             promotion_row_checker: Optional[PromotionRowChecker]
             double_promotion_checker: Optional[DoublePromotionChecker]
         """
-        super().__init__()
-        self._ready_checker = ready_checker or ReadyTokenChecker()
+        super().__init__(ready_checker=ready_checker or ReadyTokenChecker())
         self._pawn_checker = pawn_checker or PromotionPawnTokenChecker()
         self._promotion_row_checker = promotion_row_checker or PromotionRowChecker()
         self._double_promotion_checker = double_promotion_checker or DoublePromotionChecker()
@@ -79,10 +76,23 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
     
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
+        """
+        Decide if a Token can be promoted
+        
+        Action:
+        Args:
+            request: PromotionRequest
+        Returns:
+            PromotionDecision
+        Raises:
+            PromotionTokenReviewerException
+        """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the token is not ready.
         decision = self._ready_checker.execute(request)
         if decision.is_denial:
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=PromotionTokenReviewerException(
@@ -93,9 +103,11 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
                     ex=decision.exception,
                 )
             )
+        # Handle the pawn_checker does not grant permission.
         approved_request = decision.request
         decision = self._pawn_checker.execute(approved_request)
         if decision.is_denial:
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=PromotionTokenReviewerException(
@@ -106,9 +118,11 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
                     ex=decision.exception,
                 )
             )
+        # Handle the row_checker does not grant permission.
         approved_request = decision.request
         decision = self._promotion_row_checker.execute(approved_request)
         if decision.is_denial:
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=PromotionTokenReviewerException(
@@ -119,9 +133,11 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
                     ex=decision.exception,
                 )
             )
+        # Handle the double_promotion_checker does not grant permission.
         approved_request = decision.request
         decision = self._double_promotion_checker.execute(approved_request)
         if decision.is_denial:
+            # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
                 exception=PromotionTokenReviewerException(
@@ -132,11 +148,14 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Elevateable]):
                     ex=decision.exception,
                 )
             )
+        # --- Prepare an approval of the actor. ---#
         approved_request = decision.request
         approval = PromotionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,
         )
+        # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)
+
         

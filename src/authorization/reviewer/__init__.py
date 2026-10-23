@@ -10,6 +10,9 @@ version: 0.0.2
 # =========== AUTHORIZATION.REVIEWER PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .maneuver import *
+from .promotion import *
 
 
 # Modules
