@@ -52,4 +52,13 @@ class ModelChecker(ActorChainable, ABC, Generic[T]):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: AuthorizationRequest) -> Decision:
+        """
+        Run validation checks on a Request applicant.
+        Args:
+            request: T
+        Returns:
+           Decision[T]
+        Raises:
+          ModelCheckerException
+        """
         pass

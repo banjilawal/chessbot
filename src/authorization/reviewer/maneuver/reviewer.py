@@ -1,7 +1,7 @@
-# src/authorization/reviewer/applicant/maneuver/reviewer.py
+# src/authorization/reviewer/maneuver/reviewer.py
 
 """
-Module: authorization.reviewer.applicant.maneuver.reviewer
+Module: authorization.reviewer.maneuver.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

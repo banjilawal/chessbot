@@ -10,9 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.REVIEWER PACKAGE ===========#
 
 # Packages
-from .role import *
-from .applicant import *
-from .token import *
+
 
 # Modules
-from .reviewer import Reviewer
+from .reviewer import ApplicantReviewer

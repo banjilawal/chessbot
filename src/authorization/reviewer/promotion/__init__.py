@@ -1,13 +1,13 @@
-# src/authorization/reviewer/applicant/promotion/__init__.py
+# src/authorization/reviewer/promotion/__init__.py
 
 """
-Module: authorization.reviewer.applicant.promotion.__init__
+Module: authorization.reviewer.promotion.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.REVIEWER.APPLICANT.PROMOTION PACKAGE ===========#
+# =========== AUTHORIZATION.REVIEWER.PROMOTION PACKAGE ===========#
 
 # Packages
 

@@ -25,7 +25,6 @@ class PromotionApplicantChecker(ApplicantChecker[PromotionRequest], ABC, Generic
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Interface for implementing a check on an Actor's eligibility for Promotion.

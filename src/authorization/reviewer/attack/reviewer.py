@@ -1,7 +1,7 @@
-# src/authorization/reviewer/applicant/attack/reviewer.py
+# src/authorization/reviewer/attack/reviewer.py
 
 """
-Module: authorization.reviewer.applicant.attack.reviewer
+Module: authorization.reviewer.attack.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

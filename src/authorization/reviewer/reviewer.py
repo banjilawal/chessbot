@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import Decision
 from exchange import AuthorizationRequest
@@ -18,14 +18,13 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")
 
-class Reviewer(ABC, Generic[T]):
+class ApplicantReviewer(ABC, Generic[T]):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Checks if an Actor satisfies the requirements to perform an
-            activity.
+        1.  Run the series of ApplicantCheckers.
 
     Attributes:
     
@@ -35,11 +34,19 @@ class Reviewer(ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self,):
-        """"""
+    def __init__(self):
+        pass
         
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:
+        """
+        Decide if authorization should be granted.
+        Args:
+            request: T
+        Returns:
+           Decision[T]
+        Raises:
+          ApplicantReviewerException
+        """
         pass
-        

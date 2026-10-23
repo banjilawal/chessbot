@@ -1,7 +1,7 @@
-# src/authorization/chain/model/token/ready/__init__.py
+# src/authorization/chain/model/token/__init__.py
 
 """
-Module: authorization.chain.model.token.ready.__init__
+Module: authorization.chain.model.token.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import Decision
-from authorization import ValidTokenChecker
+from authorization import ModelChecker
 from domain import CombatantToken, KingToken, Token
 from err import DisabledTokenException
 from exchange import AuthorizationRequest, TokenValidationRequest
@@ -20,7 +20,7 @@ from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ReadyTokenChecker(ValidTokenChecker):
+class ReadyTokenChecker(ModelChecker):
     """
     Role:
         -   Authorization
@@ -34,7 +34,7 @@ class ReadyTokenChecker(ValidTokenChecker):
         -   def execute(self, request: ReadyRequest) -> ReadyDecision
 
     Super Class:
-        ValidTokenChecker
+        ModelChecker
     """
     
     @LoggingLevelRouter.monitor

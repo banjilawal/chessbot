@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import AttackDecision
 from authorization import AttackRoleChecker
 from domain import Attackable, Maneuver
-from err import AuthorizationException, ManeuverConsistencyException
+from err import AttackManeuverCheckerException, ManeuverConsistencyException
 from exchange import AttackRequest, ManeuverValidationRequest, ManeuverValidationService
 from transit import ManeuverCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -80,11 +80,11 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=AttackManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=AttackManeuverCheckerException.MSG,
+                    err_code=AttackManeuverCheckerException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
@@ -94,11 +94,11 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=AttackManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=AttackManeuverCheckerException.MSG,
+                    err_code=AttackManeuverCheckerException.ERR_CODE,
                     ex=ManeuverConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -112,11 +112,11 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=AttackManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=AttackManeuverCheckerException.MSG,
+                    err_code=AttackManeuverCheckerException.ERR_CODE,
                     ex=NullAttackVictimException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

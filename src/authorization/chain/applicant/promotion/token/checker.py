@@ -22,7 +22,6 @@ class PromotionTokenChecker(PromotionApplicantChecker[Token], ABC):
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Interface for checking a Token attribute satisfies promotion requirements.

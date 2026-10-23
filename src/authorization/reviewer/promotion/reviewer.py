@@ -1,7 +1,7 @@
-# src/authorization/reviewer/applicant/promotion/reviewer.py
+# src/authorization/reviewer/promotion/reviewer.py
 
 """
-Module: authorization.reviewer.applicant.promotion.reviewer
+Module: authorization.reviewer.promotion.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

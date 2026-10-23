@@ -15,7 +15,7 @@ from typing import Optional, cast
 from artifcat import ManeuverDecision
 from authorization import ManeuverRoleChecker
 from domain import Maneuverable, Path
-from err import AuthorizationException, PathConsistencyException
+from err import ManeuverPathCheckerException, PathConsistencyException
 from exchange import ManeuverRequest, PathValidationRequest, PathValidationService
 from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -80,11 +80,11 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=ManeuverPathCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=ManeuverPathCheckerException.MSG,
+                    err_code=ManeuverPathCheckerException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
@@ -94,11 +94,11 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=ManeuverPathCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=ManeuverPathCheckerException.MSG,
+                    err_code=ManeuverPathCheckerException.ERR_CODE,
                     ex=PathConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

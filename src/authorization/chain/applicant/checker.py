@@ -23,7 +23,6 @@ class ApplicantChecker(Checker[T], ActorChainable, ABC, Generic[T]):
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Decides if an Actor can be granted permission to an Activity.

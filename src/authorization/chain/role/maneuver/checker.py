@@ -24,7 +24,6 @@ class ManeuverRoleChecker(RoleChecker[ManeuverRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Interface for deciding an Actionable can be used in a Maneuver.

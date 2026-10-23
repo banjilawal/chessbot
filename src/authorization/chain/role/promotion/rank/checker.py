@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import PromotionDecision
 from authorization import PromotionRoleChecker
 from domain import Elevateable, Rank
-from err import AuthorizationException
+from err import PromotionRankCheckerException
 from exchange import PromotionRequest, RankValidationRequest, RankValidationService
 from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -77,11 +77,11 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=PromotionRankCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=PromotionRankCheckerException.MSG,
+                    err_code=PromotionRankCheckerException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
@@ -91,11 +91,11 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
-                exception=AuthorizationException(
+                exception=PromotionRankCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AuthorizationException.MSG,
-                    err_code=AuthorizationException.ERR_CODE,
+                    msg=PromotionRankCheckerException.MSG,
+                    err_code=PromotionRankCheckerException.ERR_CODE,
                     ex=TypeError(
                         f"Expected an Elevatable Rank got "
                         f"{type(rank).__class__.__name__} instead."

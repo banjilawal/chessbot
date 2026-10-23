@@ -9,11 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
+from typing import Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import Authorizer, PromotionAuthorizationLoader, PromotionRankReviewer
-from authorization.reviewer.applicant.promotion.token import PromotionTokenReviewer
+from authorization.reviewer.promotion import PromotionTokenReviewer
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 

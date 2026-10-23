@@ -1,7 +1,7 @@
-# src/authorization/reviewer/applicant/promotion/token/checker.py
+# src/authorization/reviewer/promotion/token/checker.py
 
 """
-Module: authorization.reviewer.applicant.promotion.token.checker
+Module: authorization.reviewer.promotion.token.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -25,7 +25,6 @@ class ManeuverApplicantChecker(ApplicantChecker[ManeuverRequest], ABC, Generic[T
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Interface for implementing a check on an Actor's eligibility to perform a Maneuver.

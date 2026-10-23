@@ -23,7 +23,6 @@ class RoleChecker(Checker[T], RoleChainable, ABC, Generic[T]):
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Decides if an Actionable satisfies an AuthorizationRequest's conditions.

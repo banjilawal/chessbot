@@ -24,7 +24,6 @@ class AttackRoleChecker(RoleChecker[AttackRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
-        -   Interface
 
     Responsibilities:
         1.  Interface for deciding an Actionable can be used in an Attack.
