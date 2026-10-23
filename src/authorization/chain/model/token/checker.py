@@ -1,7 +1,7 @@
-# src/authorization/chain/model/token/checker.py
+# src/authorization/chain/model/token/ready/__init__.py
 
 """
-Module: authorization.chain.model.token.checker
+Module: authorization.chain.model.token.ready.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,90 +9,89 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import cast
 
 from artifcat import Decision
-from authorization import ModelChecker
-from domain import Token
-from err import TokenApproverException
-from exchange import AuthorizationRequest, TokenValidationRequest, TokenValidationService
+from authorization import ValidTokenChecker
+from domain import CombatantToken, KingToken, Token
+from err import DisabledTokenException
+from exchange import AuthorizationRequest, TokenValidationRequest
 from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
-class ValidTokenChecker(ModelChecker[Token]):
+
+class ReadyTokenChecker(ValidTokenChecker):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Token meets minimum safety requirements before it
-            can be approved for an activity.
+        1.  Checks that an applicant satisfies one of the Ready requirements.
 
     Attributes:
-        validation_service: TokenValidationService
-
+        
     Provides:
-        -   def execute(request: AuthorizationRequest) -> Decision
+        -   def execute(self, request: ReadyRequest) -> ReadyDecision
 
     Super Class:
-        ModelChecker
+        ValidTokenChecker
     """
-    
-    def __init__(
-            self,
-            validation_service: Optional[TokenValidationService] | None = None,
-    ):
-        """
-        Args:
-            validation_service: Optional[TokenValidationService]
-        """
-        super().__init__(
-            validation_service=validation_service or TokenValidationService()
-        )
-        
-    @property
-    def validation_service(self) -> TokenValidationService:
-        return cast(TokenValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AuthorizationRequest) -> Decision:
-        """
-        Checks if a Token meets the requirements to perform an activity.
-
-        Args:
-            request: AuthorizationRequest
-        Returns:
-           Decision
-        Raises:
-            TokenApproverException
-        """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate gets flagged.
+        candidate = None
+        
+        if isinstance(request.applicant, KingToken):
+            candidate = cast(KingToken, request.applicant)
+        if isinstance(request.applicant, CombatantToken):
+            candidate = cast(CombatantToken, request.applicant)
+            
         validation = self.validation_service.extract_model(
             request=TokenValidationRequest(
-                item=TokenCarrier(model=request.applicant),
+                item=TokenCarrier(model=candidate),
                 id=IdFactory.next_id(class_name="TokenValidationRequest")
             )
         )
         if validation.is_failure:
-            # Send the exception chain on failure.
             return Decision.denial(
                 request=request,
-                exception=TokenApproverException(
+                exception=ReadyTokenCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenApproverException.MSG,
-                    err_code=TokenApproverException.ERR_CODE,
+                    msg=ReadyTokenCheckerException.MSG,
+                    err_code=ReadyTokenCheckerException_CODE,
                     ex=validation.exception,
                 )
             )
-        applicant = cast(Token, validation.payload)
+        token = cast(Token, validation.payload)
+        applicant = token
+        
+        if isinstance(token, KingToken):
+            applicant = cast(KingToken, token)
+        if isinstance(token, CombatantToken):
+            applicant = cast(CombatantToken, token)
+            
+        if applicant.is_not_ready:
+            return Decision.denial(
+                request=request,
+                exception=ReadyTokenCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ReadyTokenCheckerException.MSG,
+                    err_code=ReadyTokenCheckerException_CODE,
+                    ex=DisabledTokenException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DisabledTokenException.MSG,
+                        err_code=DisabledTokenException.ERR_CODE,
+                    )
+                )
+            )
         approval = AuthorizationRequest(
             id=request.id,
-            activity=request.activity,
             applicant=applicant,
+            activity=request.activity,
         )
-        # --- Forward the work product. ---#
         return Decision.grant(approval)
- 
