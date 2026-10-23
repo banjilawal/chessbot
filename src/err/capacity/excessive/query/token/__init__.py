@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/token/_init_.py
+# src/err/capacity/excessive/query/token/__init_.py
 
 """
 Module: err.capacity.excessive.token._init_

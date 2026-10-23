@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/binder/_init_.py
+# src/err/capacity/excessive/binder/__init_.py
 
 """
 Module: err.capacity.excessive.binder._init_

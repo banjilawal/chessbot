@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/edge/_init_.py
+# src/err/capacity/excessive/query/edge/__init_.py
 
 """
 Module: err.capacity.excessive.edge._init_

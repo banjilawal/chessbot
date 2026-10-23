@@ -1,4 +1,4 @@
-# src/authorization/reviewer/applicant/attack/_init__.py
+# src/authorization/reviewer/applicant/attack/__init__.py
 
 """
 Module: authorization.reviewer.applicant.attack.__init__

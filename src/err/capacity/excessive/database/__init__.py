@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/database/_init_.py
+# src/err/capacity/excessive/database/__init_.py
 
 """
 Module: err.capacity.excessive.database._init_

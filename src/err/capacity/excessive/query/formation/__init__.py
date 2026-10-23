@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/formation/_init_.py
+# src/err/capacity/excessive/query/formation/__init_.py
 
 """
 Module: err.capacity.excessive.formation._init_

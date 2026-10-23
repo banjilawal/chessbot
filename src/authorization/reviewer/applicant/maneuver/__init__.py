@@ -1,4 +1,4 @@
-# src/authorization/reviewer/applicant/maneuver/_init__.py
+# src/authorization/reviewer/applicant/maneuver/__init__.py
 
 """
 Module: authorization.reviewer.applicant.maneuver.__init__

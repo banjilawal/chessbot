@@ -1,4 +1,4 @@
-# src/domain/interface/actionable/attackable/_init__.py
+# src/domain/interface/actionable/attackable/__init__.py
 
 """
 Module: domain.interface.actionable.attackable.__init__

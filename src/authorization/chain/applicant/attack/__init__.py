@@ -1,4 +1,4 @@
-# src/authorization/chain/applicant/attack_/_init__.py
+# src/authorization/chain/applicant/attack_/__init__.py
 
 """
 Module: authorization.chain.applicant.attack.__init__

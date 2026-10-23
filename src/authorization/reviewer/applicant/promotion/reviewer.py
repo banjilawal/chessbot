@@ -9,20 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, Optional, Type, cast
+from abc import ABC
+from typing import Generic, List, Optional
 
 from artifcat import PromotionDecision
 from authorization import (
-    ApplicantChecker, ApplicantReadinessChecker, ApplicantReviewer,
-    DoublePromotionChecker, PromotionPawnTokenChecker, PromotionRowChecker, ValidTokenChecker,
+    ActorChainable, ApplicantReviewer, DoublePromotionChecker, PromotionPawnTokenChecker,
+    PromotionRowChecker,  ReadyTokenChecker
 )
-from err import ApplicantApproverException
 from exchange import PromotionRequest
-
 from util import LoggingLevelRouter
 
 
-class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
+class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -32,7 +31,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
             activity.
 
     Attributes:
-        valid_applicant_checker: ValidTokenChecker
+        ready_checker: ReadyTokenChecker
         pawn_checker: PromotionPawnTokenChecker
         promotion_row_checker: PromotionRowChecker
         readiness_checker: ApplicantReadinessChecker
@@ -44,45 +43,38 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
     Super Class:
         ApplicantReviewer
     """
-
+    _ready_checker: ReadyTokenChecker
     _pawn_checker: PromotionPawnTokenChecker
     _promotion_row_checker: PromotionRowChecker
-    _readiness_checker: ApplicantReadinessChecker
     _double_promotion_checker: DoublePromotionChecker
 
     
     def __init__(
             self,
-            valid_applicant_checker: Optional[ValidTokenChecker] | None = None,
+            ready_checker: Optional[ReadyTokenChecker] | None = None,
             pawn_checker: Optional[PromotionPawnTokenChecker] | None = None,
             promotion_row_checker: Optional[PromotionRowChecker] | None = None,
-            readiness_checker: Optional[ApplicantReadinessChecker] | None = None,
+
             double_promotion_checker: Optional[DoublePromotionChecker] | None = None,
     ):
         """
         Args:
-            valid_applicant_checker: Optional[ValidTokenChecker]
+            ready_checker: Optional[ReadyTokenChecker]
             pawn_checker: Optional[PromotionPawnTokenChecker]
             promotion_row_checker: Optional[PromotionRowChecker]
-            readiness_checker: Optional[ApplicantReadinessChecker]
             double_promotion_checker: Optional[DoublePromotionChecker]
         """
-        super().__init__(valid_applicant_checker=valid_applicant_checker or ValidTokenChecker())
+        super().__init__()
+        self._ready_checker=ready_checker or ReadyTokenChecker()
         self._pawn_checker = pawn_checker or PromotionPawnTokenChecker()
-        self._readiness_checker = readiness_checker or ApplicantReadinessChecker()
         self._promotion_row_checker = promotion_row_checker or PromotionRowChecker()
         self._double_promotion_checker = double_promotion_checker or DoublePromotionChecker()
-        
-    @property
-    def valid_applicant_checker(self) -> ValidTokenChecker:
-        return cast(ValidTokenChecker, super().valid_applicant_checker)
     
     @property
-    def checkers(self) -> List[ApplicantChecker]:
+    def checkers(self) -> List[ActorChainable]:
         return [
-            self._valid_applicant_checker,
+            self._ready_checker,
             self._pawn_checker,
-            self._readiness_checker,
             self._promotion_row_checker,
             self._double_promotion_checker,
         ]
@@ -91,7 +83,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
     def execute(self, request: PromotionRequest) -> PromotionDecision:
         method = f"{self.__class__.__name__}.execute"
         
-        decision = self._valid_applicant_checker.execute(request)
+        decision = self._ready_checker.execute(request)
         if decision.is_denial:
             return PromotionDecision.denial(
                 request=request,

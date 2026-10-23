@@ -1,4 +1,4 @@
-# src/assurance/primitive/binder/game/_init__.py
+# src/assurance/primitive/binder/game/__init__.py
 
 """
 Module: assurance.primitive.binder.game.__init__

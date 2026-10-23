@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/player/_init_.py
+# src/err/capacity/excessive/query/player/__init_.py
 
 """
 Module: err.capacity.excessive.player._init_

@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/database/hostage/_init_.py
+# src/err/capacity/excessive/database/hostage/__init_.py
 
 """
 Module: err.capacity.excessive.database.hostage._init_

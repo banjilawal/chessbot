@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/graph/_init_.py
+# src/err/capacity/excessive/graph/__init_.py
 
 """
 Module: err.capacity.excessive.graph._init_

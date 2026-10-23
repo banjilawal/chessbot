@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/stack/player/_init_.py
+# src/err/capacity/excessive/stack/player/__init_.py
 
 """
 Module: err.capacity.excessive.stack.player._init_

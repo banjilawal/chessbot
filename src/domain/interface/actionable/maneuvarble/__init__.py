@@ -1,4 +1,4 @@
-# src/domain/interface/actionable/maneuverable/_init__.py
+# src/domain/interface/actionable/maneuverable/__init__.py
 
 """
 Module: domain.interface.actionable.maneuverable.__init__

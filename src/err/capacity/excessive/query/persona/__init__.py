@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/persona/_init_.py
+# src/err/capacity/excessive/query/persona/__init_.py
 
 """
 Module: err.capacity.excessive.persona._init_

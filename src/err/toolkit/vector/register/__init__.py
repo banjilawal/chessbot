@@ -1,4 +1,4 @@
-# src/err/toolkit/vector/register/_init_.py
+# src/err/toolkit/vector/register/__init_.py
 
 """
 Module: err.toolkit.vector.register._init_

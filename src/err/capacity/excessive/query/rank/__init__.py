@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/rank/_init_.py
+# src/err/capacity/excessive/query/rank/__init_.py
 
 """
 Module: err.capacity.excessive.rank._init_

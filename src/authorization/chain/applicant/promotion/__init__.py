@@ -1,4 +1,4 @@
-# src/authorization/chain/applicant/promotion_/_init__.py
+# src/authorization/chain/applicant/promotion_/__init__.py
 
 """
 Module: authorization.chain.applicant.promotion.__init__

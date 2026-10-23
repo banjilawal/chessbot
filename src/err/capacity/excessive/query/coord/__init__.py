@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/coord/_init_.py
+# src/err/capacity/excessive/query/coord/__init_.py
 
 """
 Module: err.capacity.excessive.coord._init_

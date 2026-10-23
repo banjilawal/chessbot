@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/stack/arena/_init_.py
+# src/err/capacity/excessive/stack/arena/__init_.py
 
 """
 Module: err.capacity.excessive.stack.arena._init_

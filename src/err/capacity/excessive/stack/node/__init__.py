@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/stack/node/_init_.py
+# src/err/capacity/excessive/stack/node/__init_.py
 
 """
 Module: err.capacity.excessive.stack.node._init_

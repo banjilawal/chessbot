@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/binder/game/_init_.py
+# src/err/capacity/excessive/binder/game/__init_.py
 
 """
 Module: err.capacity.excessive.binder.game._init_

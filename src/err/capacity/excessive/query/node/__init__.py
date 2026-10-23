@@ -1,4 +1,4 @@
-# src/err/capacity/excessive/query/node/_init_.py
+# src/err/capacity/excessive/query/node/__init_.py
 
 """
 Module: err.capacity.excessive.node._init_
