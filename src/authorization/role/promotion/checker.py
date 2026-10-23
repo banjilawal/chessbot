@@ -1,7 +1,7 @@
-# src/authorization/chain/role/maneuverable/checker.py
+# src/authorization/role/promotion/checker.py
 
 """
-Module: authorization.chain.role.maneuverable.checker
+Module: authorization.role.promotion.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -10,29 +10,29 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ManeuverDecision
+from artifcat import PromotionDecision
 from authorization import RolePermitter
-from domain import Maneuverable
-from exchange import ManeuverRequest, ValidationService
+from domain import Elevateable
+from exchange import PromotionRequest, RankValidationService, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Maneuverable")
+T = TypeVar("T", bound="Elevateable")
 
-class ManeuverRolePermitter(RolePermitter[ManeuverRequest], ABC, Generic[T]):
+class PromotionRolePermitter(RolePermitter[PromotionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Interface for deciding an Actionable can be used in a Maneuver.
+        1.  Interface for deciding an Actionable can be used in a Promotion.
 
     Attributes:
         validation_service: ValidationService
 
     Provides:
-        -   execute(request: ManeuverRequest) -> ManeuverDecision
+        -   execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
         RoleChecker
@@ -49,18 +49,16 @@ class ManeuverRolePermitter(RolePermitter[ManeuverRequest], ABC, Generic[T]):
     def validation_service(self) -> ValidationService:
         return cast(ValidationService, super().validation_service)
     
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: PromotionRequest) -> PromotionDecision:
         """
-        Decide if a Maneuver can be made with an Actionable.
+        Decide if an Promotion can be made with an Actionable.
         Args:
-            request: ManeuverRequest
+            request: PromotionRequest
         Returns:
-           ManeuverDecision
+           PromotionDecision
         Raises:
-          ManeuverRoleCheckerException
+          PromotionRoleCheckerException
         """
         pass
- 

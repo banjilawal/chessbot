@@ -1,7 +1,7 @@
-# src/authorization/chain/role/promotion/rank/checker.py
+# src/authorization/role/promotion/rank/checker.py
 
 """
-Module: authorization.chain.role.promotion.rank.checker_
+Module: authorization.role.promotion.rank.checker_
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/authorization/chain/role/attackable/checker.py
+# src/authorization/role/attackable/checker.py
 
 """
-Module: authorization.chain.role.attackable.checker
+Module: authorization.role.attackable.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

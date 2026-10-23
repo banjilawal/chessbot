@@ -1,7 +1,7 @@
-# src/authorization/chain/role/maneuver/path/checker.py
+# src/authorization/role/maneuver/path/checker.py
 
 """
-Module: authorization.chain.role.maneuver.path.checker
+Module: authorization.role.maneuver.path.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

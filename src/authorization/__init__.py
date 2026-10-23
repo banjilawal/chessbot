@@ -11,12 +11,11 @@ version: 0.0.2
 
 # Packages
 from .authorizer import *
-from .adjudicator import *
 from .chain import *
 from .reviewer import *
 from .interface import *
 from .loader import *
 from .reviewer import *
+from .role import *
 
 # Modules
-from .auth import RequestAuthorizer

@@ -1,7 +1,7 @@
-# src/authorization/chain/role/attack/maneuver/checker.py
+# src/authorization/role/attack/maneuver/checker.py
 
 """
-Module: authorization.chain.role.attack.maneuver.checker
+Module: authorization.role.attack.maneuver.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

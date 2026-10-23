@@ -1,7 +1,7 @@
-# src/authorization/chain/role/checker.py
+# src/authorization/role/checker.py
 
 """
-Module: authorization.chain.role.checker
+Module: authorization.role.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
