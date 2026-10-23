@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaPushReviewerException",
+    "ArenaPushApplicantReviewerException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaPushReviewerException(PushReviewerException):
+class ArenaPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPushReviewer failed.
+        1.  Indicating that a ArenaPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "ArenaPushReviewer failed."
+    MSG = "ArenaPushApplicantReviewer failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

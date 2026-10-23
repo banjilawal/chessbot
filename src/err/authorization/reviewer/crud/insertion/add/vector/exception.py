@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeReviewerException
+from err import AddNodeApplicantReviewerException
 
 __all__ = [
     # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeReviewerException",
+    "AddVectorNodeApplicantReviewerException",
 ]
 
 # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeReviewerException(AddNodeReviewerException):
+class AddVectorNodeApplicantReviewerException(AddNodeApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeReviewer failed.
+        1.  Indicating that an AddVectorNodeApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AddVectorNodeReviewerException(AddNodeReviewerException):
     Provides:
 
     Super Class:
-        AddNodeReviewerException
+        AddNodeApplicantReviewerException
     """
-    MSG = "AddVectorNodeReviewer failed."
+    MSG = "AddVectorNodeApplicantReviewer failed."
     ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

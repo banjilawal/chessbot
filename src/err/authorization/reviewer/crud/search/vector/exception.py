@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchApplicantReviewerException
 
 __all__ = [
     # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "VectorSearchReviewerException",
+    "VectorSearchApplicantReviewerException",
 ]
 
 # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class VectorSearchReviewerException(SearchReviewerException):
+class VectorSearchApplicantReviewerException(SearchApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a VectorSearchReviewer failed.
+        1.  Indicating that a VectorSearchApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class VectorSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchApplicantReviewerException
     """
-    MSG = "VectorSearchReviewer failed."
+    MSG = "VectorSearchApplicantReviewer failed."
     ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

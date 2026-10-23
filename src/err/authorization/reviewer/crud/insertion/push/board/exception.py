@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-    "BoardPushReviewerException",
+    "BoardPushApplicantReviewerException",
 ]
 
 # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-class BoardPushReviewerException(PushReviewerException):
+class BoardPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPushReviewer failed.
+        1.  Indicating that a BoardPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class BoardPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "BoardPushReviewer failed."
+    MSG = "BoardPushApplicantReviewer failed."
     ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

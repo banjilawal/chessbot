@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterPushReviewerException",
+    "EncounterPushApplicantReviewerException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterPushReviewerException(PushReviewerException):
+class EncounterPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPushReviewer failed.
+        1.  Indicating that a EncounterPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "EncounterPushReviewer failed."
+    MSG = "EncounterPushApplicantReviewer failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

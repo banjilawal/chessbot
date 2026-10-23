@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-    "AccountPushReviewerException",
+    "AccountPushApplicantReviewerException",
 ]
 
 # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-class AccountPushReviewerException(PushReviewerException):
+class AccountPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPushReviewer failed.
+        1.  Indicating that a AccountPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "AccountPushReviewer failed."
+    MSG = "AccountPushApplicantReviewer failed."
     ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

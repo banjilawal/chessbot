@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import ApplicantReviewerException
 
 __all__ = [
-    # ======================# MANEUVER_REVIEWER_FAILURE #======================#
-    "ManeuverReviewerException",
+    # ======================# MANEUVER_APPLICANT_REVIEWER_FAILURE #======================#
+    "ManeuverApplicantReviewerException",
 ]
 
-# ======================# MANEUVER_REVIEWER_FAILURE #======================#
-class ManeuverReviewerException(AuthorizationReviewerException):
+# ======================# MANEUVER_APPLICANT_REVIEWER_FAILURE #======================#
+class ManeuverApplicantReviewerException(ApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverReviewer failed.
+        1.  Indicating that a ManeuverApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ManeuverReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        ApplicantReviewerException
     """
-    MSG = "ManeuverReviewer failed."
-    ERR_CODE = "MANEUVER_REVIEWER_FAILURE"
+    MSG = "ManeuverApplicantReviewer failed."
+    ERR_CODE = "MANEUVER_APPLICANT_REVIEWER_FAILURE"
     
     def __init__(
             self,

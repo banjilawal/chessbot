@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordPushReviewerException",
+    "CoordPushApplicantReviewerException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordPushReviewerException(PushReviewerException):
+class CoordPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPushReviewer failed.
+        1.  Indicating that a CoordPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "CoordPushReviewer failed."
+    MSG = "CoordPushApplicantReviewer failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

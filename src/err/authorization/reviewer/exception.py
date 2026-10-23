@@ -16,17 +16,17 @@ from err import AuthorizationException
 
 __all__ = [
     # ======================# REVIEWER_FAILURE #======================#
-    "AuthorizationReviewerException",
+    "ApplicantReviewerException",
 ]
 
 # ======================# REVIEWER_FAILURE #======================#
-class AuthorizationReviewerException(AuthorizationException):
+class ApplicantReviewerException(AuthorizationException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Reviewer failed.
+        1.  Indicating that a ApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class AuthorizationReviewerException(AuthorizationException):
     Super Class:
         AuthorizationException
     """
-    MSG = "Reviewer failed."
+    MSG = "ApplicantReviewer failed."
     ERR_CODE = "REVIEWER_FAILURE"
     
     def __init__(

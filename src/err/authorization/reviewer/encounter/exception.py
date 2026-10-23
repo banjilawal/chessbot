@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import ApplicantReviewerException
 
 __all__ = [
-    # ======================# ATTACK_REVIEWER_FAILURE #======================#
-    "AttackReviewerException",
+    # ======================# ATTACK_APPLICANT_REVIEWER_FAILURE #======================#
+    "AttackApplicantReviewerException",
 ]
 
-# ======================# ATTACK_REVIEWER_FAILURE #======================#
-class AttackReviewerException(AuthorizationReviewerException):
+# ======================# ATTACK_APPLICANT_REVIEWER_FAILURE #======================#
+class AttackApplicantReviewerException(ApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AttackReviewer failed.
+        1.  Indicating that a AttackApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AttackReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        ApplicantReviewerException
     """
-    MSG = "AttackReviewer failed."
-    ERR_CODE = "ATTACK_REVIEWER_FAILURE"
+    MSG = "AttackApplicantReviewer failed."
+    ERR_CODE = "ATTACK_APPLICANT_REVIEWER_FAILURE"
     
     def __init__(
             self,

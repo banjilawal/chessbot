@@ -14,4 +14,4 @@ from .add import *
 from .push import *
 
 # Modules
-from .exception import InsertionReviewerException
+from .exception import InsertionApplicantReviewerException

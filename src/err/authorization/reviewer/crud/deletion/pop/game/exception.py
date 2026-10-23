@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopApplicantReviewerException
 
 __all__ = [
     # ======================# GAME_POP_REQUEST_NULL_ERROR #======================#
-    "GamePopReviewerException",
+    "GamePopApplicantReviewerException",
 ]
 
 # ======================# GAME_POP_REQUEST_NULL_ERROR #======================#
-class GamePopReviewerException(PopReviewerException):
+class GamePopApplicantReviewerException(PopApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GamePopReviewer failed.
+        1.  Indicating that a GamePopApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class GamePopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopApplicantReviewerException
     """
-    MSG = "GamePopReviewer failed."
+    MSG = "GamePopApplicantReviewer failed."
     ERR_CODE = "GAME_POP_REQUEST_NULL_ERROR"
     
     def __init__(

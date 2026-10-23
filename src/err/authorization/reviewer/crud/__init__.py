@@ -15,4 +15,4 @@ from .insertion import *
 from .search import *
 
 # Modules
-from .exception import CrudReviewerException
+from .exception import CrudApplicantReviewerException

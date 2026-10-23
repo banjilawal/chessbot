@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerPushReviewerException",
+    "PlayerPushApplicantReviewerException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerPushReviewerException(PushReviewerException):
+class PlayerPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPushReviewer failed.
+        1.  Indicating that a PlayerPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "PlayerPushReviewer failed."
+    MSG = "PlayerPushApplicantReviewer failed."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopApplicantReviewerException
 
 __all__ = [
     # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
-    "AccountPopReviewerException",
+    "AccountPopApplicantReviewerException",
 ]
 
 # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
-class AccountPopReviewerException(PopReviewerException):
+class AccountPopApplicantReviewerException(PopApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPopReviewer failed.
+        1.  Indicating that a AccountPopApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountPopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopApplicantReviewerException
     """
-    MSG = "AccountPopReviewer failed."
+    MSG = "AccountPopApplicantReviewer failed."
     ERR_CODE = "ACCOUNT_POP_REQUEST_NULL_ERROR"
     
     def __init__(

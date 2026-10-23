@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchApplicantReviewerException
 
 __all__ = [
     # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenSearchReviewerException",
+    "TokenSearchApplicantReviewerException",
 ]
 
 # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenSearchReviewerException(SearchReviewerException):
+class TokenSearchApplicantReviewerException(SearchApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenSearchReviewer failed.
+        1.  Indicating that a TokenSearchApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchApplicantReviewerException
     """
-    MSG = "TokenSearchReviewer failed."
+    MSG = "TokenSearchApplicantReviewer failed."
     ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

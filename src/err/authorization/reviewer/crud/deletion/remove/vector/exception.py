@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RemoveNodeReviewerException
+from err import RemoveNodeApplicantReviewerException
 
 __all__ = [
     # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "RemoveVectorNodeReviewerException",
+    "RemoveVectorNodeApplicantReviewerException",
 ]
 
 # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class RemoveVectorNodeReviewerException(RemoveNodeReviewerException):
+class RemoveVectorNodeApplicantReviewerException(RemoveNodeApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveVectorNodeReviewer failed.
+        1.  Indicating that an RemoveVectorNodeApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class RemoveVectorNodeReviewerException(RemoveNodeReviewerException):
     Provides:
 
     Super Class:
-        RemoveNodeReviewerException
+        RemoveNodeApplicantReviewerException
     """
-    MSG = "RemoveVectorNodeReviewer failed."
+    MSG = "RemoveVectorNodeApplicantReviewer failed."
     ERR_CODE = "REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

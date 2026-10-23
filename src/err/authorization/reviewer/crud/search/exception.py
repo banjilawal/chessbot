@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudReviewerException
+from err import CrudApplicantReviewerException
 
 __all__ = [
     # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-    "SearchReviewerException",
+    "SearchApplicantReviewerException",
 ]
 
 # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-class SearchReviewerException(CrudReviewerException):
+class SearchApplicantReviewerException(CrudApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SearchReviewer failed.
+        1.  Indicating that an SearchApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SearchReviewerException(CrudReviewerException):
     Provides:
 
     Super Class:
-        CrudReviewerException
+        CrudApplicantReviewerException
     """
-    MSG = "SearchReviewer failed."
+    MSG = "SearchApplicantReviewer failed."
     ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"
     
     def __init__(

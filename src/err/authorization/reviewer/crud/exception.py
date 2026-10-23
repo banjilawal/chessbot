@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import ApplicantReviewerException
 
 __all__ = [
-    # ======================# CRUD_REVIEWER_FAILURE #======================#
-    "CrudReviewerException",
+    # ======================# CRUD_APPLICANT_REVIEWER_FAILURE #======================#
+    "CrudApplicantReviewerException",
 ]
 
-# ======================# CRUD_REVIEWER_FAILURE #======================#
-class CrudReviewerException(AuthorizationReviewerException):
+# ======================# CRUD_APPLICANT_REVIEWER_FAILURE #======================#
+class CrudApplicantReviewerException(ApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudReviewer failed.
+        1.  Indicating that a CrudApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CrudReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        ApplicantReviewerException
     """
-    MSG = "CrudReviewer failed."
-    ERR_CODE = "CRUD_REVIEWER_FAILURE"
+    MSG = "CrudApplicantReviewer failed."
+    ERR_CODE = "CRUD_APPLICANT_REVIEWER_FAILURE"
     
     def __init__(
             self,

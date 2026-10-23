@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudReviewerException
+from err import CrudApplicantReviewerException
 
 __all__ = [
     # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-    "InsertionReviewerException",
+    "InsertionApplicantReviewerException",
 ]
 
 # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-class InsertionReviewerException(CrudReviewerException):
+class InsertionApplicantReviewerException(CrudApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an InsertionReviewer failed.
+        1.  Indicating that an InsertionApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class InsertionReviewerException(CrudReviewerException):
     Provides:
 
     Super Class:
-        CrudReviewerException
+        CrudApplicantReviewerException
     """
-    MSG = "InsertionReviewer failed."
+    MSG = "InsertionApplicantReviewer failed."
     ERR_CODE = "INSERTION_REQUEST_NULL_ERROR"
     
     def __init__(

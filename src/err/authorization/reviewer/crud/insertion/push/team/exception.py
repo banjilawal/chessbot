@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamPushReviewerException",
+    "TeamPushApplicantReviewerException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamPushReviewerException(PushReviewerException):
+class TeamPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushReviewer failed.
+        1.  Indicating that a TeamPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "TeamPushReviewer failed."
+    MSG = "TeamPushApplicantReviewer failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

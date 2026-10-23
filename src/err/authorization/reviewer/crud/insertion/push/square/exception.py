@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquarePushReviewerException",
+    "SquarePushApplicantReviewerException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquarePushReviewerException(PushReviewerException):
+class SquarePushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushReviewer failed.
+        1.  Indicating that a SquarePushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquarePushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "SquarePushReviewer failed."
+    MSG = "SquarePushApplicantReviewer failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

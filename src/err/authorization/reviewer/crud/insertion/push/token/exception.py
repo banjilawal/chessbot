@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushApplicantReviewerException
 
 __all__ = [
     # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenPushReviewerException",
+    "TokenPushApplicantReviewerException",
 ]
 
 # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenPushReviewerException(PushReviewerException):
+class TokenPushApplicantReviewerException(PushApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPushReviewer failed.
+        1.  Indicating that a TokenPushApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushApplicantReviewerException
     """
-    MSG = "TokenPushReviewer failed."
+    MSG = "TokenPushApplicantReviewer failed."
     ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

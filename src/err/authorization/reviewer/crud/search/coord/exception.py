@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchApplicantReviewerException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordSearchReviewerException",
+    "CoordSearchApplicantReviewerException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordSearchReviewerException(SearchReviewerException):
+class CoordSearchApplicantReviewerException(SearchApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordSearchReviewer failed.
+        1.  Indicating that a CoordSearchApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchApplicantReviewerException
     """
-    MSG = "CoordSearchReviewer failed."
+    MSG = "CoordSearchApplicantReviewer failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

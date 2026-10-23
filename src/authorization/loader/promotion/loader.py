@@ -75,6 +75,12 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
                    ex=priming.exception,
                 )
             )
-        # --- Forward the work product. ---#
         approved_request = cast(PromotionRequest, priming.payload)
-        return PromotionDecision.grant(approved_request)
+        # --- Prepare an approval from the completed chain. ---#
+        approval = PromotionRequest(
+            id=approved_request.id,
+            activity=approved_request.activity,
+            applicant=approved_request.applicant,
+        )
+        # --- Forward the approval. ---#
+        return PromotionDecision.grant(approval)

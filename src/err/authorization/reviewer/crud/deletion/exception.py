@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudReviewerException
+from err import CrudApplicantReviewerException
 
 __all__ = [
     # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-    "DeletionReviewerException",
+    "DeletionApplicantReviewerException",
 ]
 
 # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-class DeletionReviewerException(CrudReviewerException):
+class DeletionApplicantReviewerException(CrudApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an DeletionReviewer failed.
+        1.  Indicating that an DeletionApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class DeletionReviewerException(CrudReviewerException):
     Provides:
 
     Super Class:
-        CrudReviewerException
+        CrudApplicantReviewerException
     """
-    MSG = "DeletionReviewer failed."
+    MSG = "DeletionApplicantReviewer failed."
     ERR_CODE = "DELETION_REQUEST_NULL_ERROR"
     
     def __init__(

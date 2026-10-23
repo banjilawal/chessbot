@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import ApplicantReviewerException
 
 __all__ = [
-    # ======================# PROMOTION_REVIEWER_FAILURE #======================#
-    "PromotionReviewerException",
+    # ======================# PROMOTION_APPLICANT_REVIEWER_FAILURE #======================#
+    "PromotionApplicantReviewerException",
 ]
 
-# ======================# PROMOTION_REVIEWER_FAILURE #======================#
-class PromotionReviewerException(AuthorizationReviewerException):
+# ======================# PROMOTION_APPLICANT_REVIEWER_FAILURE #======================#
+class PromotionApplicantReviewerException(ApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PromotionReviewer failed.
+        1.  Indicating that a PromotionApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PromotionReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        ApplicantReviewerException
     """
-    MSG = "PromotionReviewer failed."
-    ERR_CODE = "PROMOTION_REVIEWER_FAILURE"
+    MSG = "PromotionApplicantReviewer failed."
+    ERR_CODE = "PROMOTION_APPLICANT_REVIEWER_FAILURE"
     
     def __init__(
             self,

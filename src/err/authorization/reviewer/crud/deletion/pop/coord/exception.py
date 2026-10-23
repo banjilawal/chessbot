@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopApplicantReviewerException
 
 __all__ = [
     # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
-    "CoordPopReviewerException",
+    "CoordPopApplicantReviewerException",
 ]
 
 # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
-class CoordPopReviewerException(PopReviewerException):
+class CoordPopApplicantReviewerException(PopApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPopReviewer failed.
+        1.  Indicating that a CoordPopApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordPopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopApplicantReviewerException
     """
-    MSG = "CoordPopReviewer failed."
+    MSG = "CoordPopApplicantReviewer failed."
     ERR_CODE = "COORD_POP_REQUEST_NULL_ERROR"
     
     def __init__(

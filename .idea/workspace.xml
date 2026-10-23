@@ -5,101 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/account/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/account/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/remove/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/remove/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/add/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/add/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/add/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/account/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/account/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/push/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/push/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/vector/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/loader/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/loader/attack/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/loader/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/loader/maneuver/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/loader/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/loader/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/loader/promotion/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/loader/promotion/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/reviewer/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/reviewer/maneuver/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1920177219564194" />
-      <entry key="MS500" value="2.9753094502007764" />
-      <entry key="S2" value="9.388067268184656" />
-      <entry key="S5" value="20.136300938597433" />
-      <entry key="S10" value="32.977035717571695" />
-      <entry key="S30" value="62.41632583185156" />
-      <entry key="S60" value="103.24781254274878" />
-      <entry key="M2" value="165.90604454514116" />
-      <entry key="M5" value="246.08096148193667" />
-      <entry key="M10" value="289.8877974710082" />
-      <entry key="M15" value="313.94886701026115" />
-      <entry key="M30" value="378.20734478895264" />
-      <entry key="H1" value="517.1437741637872" />
-      <entry key="H2" value="821.9640221392092" />
-      <entry key="H4" value="1437.6853381244828" />
-      <entry key="D1" value="6526.829696455169" />
-      <entry key="W1" value="28145.770537803284" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0004756627415723" />
+      <entry key="S2" value="1.165956801480164" />
+      <entry key="S5" value="1.7854366744931922" />
+      <entry key="S10" value="2.7195114099428253" />
+      <entry key="S30" value="5.157507120013764" />
+      <entry key="S60" value="7.537480276778873" />
+      <entry key="M2" value="11.950504319489907" />
+      <entry key="M5" value="39.860668007493196" />
+      <entry key="M10" value="108.05303775773872" />
+      <entry key="M15" value="168.20861800872882" />
+      <entry key="M30" value="296.13399160884643" />
+      <entry key="H1" value="479.1291363149755" />
+      <entry key="H2" value="807.263612260768" />
+      <entry key="H4" value="1435.4421430821606" />
+      <entry key="D1" value="6547.677626644597" />
+      <entry key="W1" value="28195.068566100916" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.730859461308596E-153" />
-      <entry key="S2" value="1.1529431248285123E-38" />
-      <entry key="S5" value="1.038899790563011E-15" />
-      <entry key="S10" value="5.046879840353476E-8" />
-      <entry key="S30" value="0.0074447146651115325" />
-      <entry key="S60" value="0.1574914630372427" />
-      <entry key="M2" value="0.832728532481227" />
-      <entry key="M5" value="2.684328159640384" />
-      <entry key="M10" value="4.427924123584635" />
-      <entry key="M15" value="5.6100184420974175" />
-      <entry key="M30" value="8.710807091885016" />
-      <entry key="H1" value="14.72228469762599" />
-      <entry key="H2" value="25.110541351139315" />
-      <entry key="H4" value="42.07824418650663" />
-      <entry key="D1" value="281.0913554380344" />
-      <entry key="W1" value="1479.960839809149" />
+      <entry key="MS500" value="1.0410328576150815E-171" />
+      <entry key="S2" value="2.929636965341509E-43" />
+      <entry key="S5" value="1.4662343569721535E-17" />
+      <entry key="S10" value="5.415051308659147E-9" />
+      <entry key="S30" value="0.0031139053177889594" />
+      <entry key="S60" value="0.11081130508959568" />
+      <entry key="M2" value="0.7668965093500149" />
+      <entry key="M5" value="2.698493676053857" />
+      <entry key="M10" value="4.80039576760893" />
+      <entry key="M15" value="6.41410982501785" />
+      <entry key="M30" value="10.260959922528427" />
+      <entry key="H1" value="16.800509144660204" />
+      <entry key="H2" value="27.702518463302965" />
+      <entry key="H4" value="45.20075621256822" />
+      <entry key="D1" value="283.898491989594" />
+      <entry key="W1" value="1483.5584115332294" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9983497448149204" />
-      <entry key="MS500" value="2.8796396630796397" />
-      <entry key="S2" value="9.310140955251812" />
-      <entry key="S5" value="20.069448859952157" />
-      <entry key="S10" value="32.92300801890422" />
-      <entry key="S30" value="62.38996789623025" />
-      <entry key="S60" value="103.37446006190858" />
-      <entry key="M2" value="166.70694354215408" />
-      <entry key="M5" value="248.7389806336548" />
-      <entry key="M10" value="294.2971328469784" />
-      <entry key="M15" value="319.54376543041036" />
-      <entry key="M30" value="386.90353450697023" />
-      <entry key="H1" value="531.8475531068495" />
-      <entry key="H2" value="847.0539730794336" />
-      <entry key="H4" value="1479.7433392816563" />
-      <entry key="D1" value="6807.8911698918455" />
-      <entry key="W1" value="29625.70636165411" />
+      <entry key="MS100" value="4.002426698406141E-16" />
+      <entry key="MS500" value="9.259361425600663E-4" />
+      <entry key="S2" value="0.27282180789373317" />
+      <entry key="S5" value="1.0941193002896166" />
+      <entry key="S10" value="2.186668918160594" />
+      <entry key="S30" value="4.839981445085443" />
+      <entry key="S60" value="7.421912524446569" />
+      <entry key="M2" value="12.5694586525072" />
+      <entry key="M5" value="42.482838680846164" />
+      <entry key="M10" value="112.80774274646095" />
+      <entry key="M15" value="174.5883914014564" />
+      <entry key="M30" value="306.37117063869164" />
+      <entry key="H1" value="495.9077159117014" />
+      <entry key="H2" value="834.9441955703322" />
+      <entry key="H4" value="1480.6219932081947" />
+      <entry key="D1" value="6831.546239606544" />
+      <entry key="W1" value="29678.6019544015" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -229,7 +142,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/transit/dispatcher/authorization",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/loader",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -243,11 +156,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/loader" />
       <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/authorization" />
       <recent name="$PROJECT_DIR$/src/err/exchange/request" />
       <recent name="$PROJECT_DIR$/src/err/exchange/responder" />
       <recent name="$PROJECT_DIR$/src/err/exchange/wrapper/authorization" />
-      <recent name="$PROJECT_DIR$/src/err/exchange/wrapper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/authorization/authorizer/crud" />
@@ -916,7 +829,7 @@
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
-      <workItem from="1792402033304" duration="221459000" />
+      <workItem from="1792402033304" duration="222482000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionReviewerException
+from err import DeletionApplicantReviewerException
 
 __all__ = [
     # ======================# POP_REQUEST_NULL_ERROR #======================#
-    "PopReviewerException",
+    "PopApplicantReviewerException",
 ]
 
 # ======================# POP_REQUEST_NULL_ERROR #======================#
-class PopReviewerException(DeletionReviewerException):
+class PopApplicantReviewerException(DeletionApplicantReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PopReviewer failed.
+        1.  Indicating that a PopApplicantReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class PopReviewerException(DeletionReviewerException):
     Provides:
 
     Super Class:
-        DeletionReviewerException
+        DeletionApplicantReviewerException
     """
-    MSG = "PopReviewer failed."
+    MSG = "PopApplicantReviewer failed."
     ERR_CODE = "POP_REQUEST_NULL_ERROR"
     
     def __init__(
