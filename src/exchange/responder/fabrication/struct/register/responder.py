@@ -65,6 +65,6 @@ class RegisterBuildResponder(
         Result:
             RegisterBuildResponse[T]
         Raises:
-            RegisterValidatorExchangeException
+            RegisterValidationResponderException
         """
         pass

@@ -71,7 +71,7 @@ class ManeuverBuildResponder(ModelBuildResponder[Maneuver]):
         Result:
             ManeuverBuildResponse
         Raises:
-            ManeuverValidatorExchangeException
+            ManeuverValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

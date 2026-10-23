@@ -71,7 +71,7 @@ class ScalarBuildResponder(ModelBuildResponder[Scalar]):
         Result:
             ScalarBuildResponse
         Raises:
-            ScalarValidatorExchangeException
+            ScalarValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

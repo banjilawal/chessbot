@@ -71,7 +71,7 @@ class ScalarValidationResponder(ModelValidationResponder[Scalar]):
         Result:
             ScalarValidationResponse
         Raises:
-            ScalarValidatorExchangeException
+            ScalarValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

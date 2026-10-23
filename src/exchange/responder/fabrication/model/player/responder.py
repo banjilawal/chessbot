@@ -71,7 +71,7 @@ class PlayerBuildResponder(ModelBuildResponder[Player]):
         Result:
             PlayerBuildResponse
         Raises:
-            PlayerValidatorExchangeException
+            PlayerValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

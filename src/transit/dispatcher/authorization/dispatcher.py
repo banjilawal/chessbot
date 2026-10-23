@@ -12,31 +12,55 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from authorization import RequestAuthorizer
-from artifcat.report import Decision
-from client.exchange import Request
-from artifcat import Result
+
+from artifcat import Decision
+from authorization import Authorizer
+from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Result")
+T = TypeVar("T", bound="AuthorizationRequest")
 
 class AuthorizationDispatcher(ABC, Generic[T]):
+    """
+    Role
+        -   Permission Authorization Manager
+
+    Responsibilities:
+        1.  Grant
+
+    Attributes:
+        authorizer: Authorizer[T]
+
+    Provides:
+        -   def  execute(self, request: T) -> Decision[T]
+
+    Super Class:
+        Dispatcher
+    """
     
-    _authorizer: RequestAuthorizer[T]
+    _authorizer: Authorizer[T]
     
-    def __init__(self, authorizer: RequestAuthorizer[T]):
+    def __init__(self, authorizer: Authorizer[T]):
         """
         Args:
-            authorizer: RequestAuthorizer[T]
+            authorizer: Authorizer[T]
         """
         self._authorizer = authorizer
         
     @property
-    def authorizer(self) -> RequestAuthorizer[T]:
+    def authorizer(self) -> Authorizer[T]:
         return self._authorizer
-    
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Request[T]) -> Decision:
+    def execute(self, request: T) -> Decision[T]:
+        """
+        Decide if an activity can be performed.
+        Args:
+            request: T
+        Returns:
+            Decision[T]
+        Raises:
+            AuthorizationDispatcherException
+        """
         pass

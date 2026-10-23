@@ -71,7 +71,7 @@ class SquareRegisterBuildResponder(RegisterBuildResponder[SquareRegister]):
         Result:
             SquareRegisterBuildResponse
         Raises:
-            SquareValidatorExchangeException
+            SquareValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

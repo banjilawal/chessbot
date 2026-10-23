@@ -71,7 +71,7 @@ class CoordBuildResponder(ModelBuildResponder[Coord]):
         Result:
             CoordBuildResponse
         Raises:
-            CoordValidatorExchangeException
+            CoordValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

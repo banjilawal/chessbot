@@ -71,7 +71,7 @@ class AlertBuildResponder(ModelBuildResponder[Alert]):
         Result:
             AlertBuildResponse
         Raises:
-            AlertValidatorExchangeException
+            AlertValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

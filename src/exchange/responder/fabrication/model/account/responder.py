@@ -71,7 +71,7 @@ class AccountBuildResponder(ModelBuildResponder[Account]):
         Result:
             AccountBuildResponse
         Raises:
-            AccountValidatorExchangeException
+            AccountValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

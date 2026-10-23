@@ -71,7 +71,7 @@ class CoordRegisterValidationResponder(RegisterValidationResponder[CoordRegister
         Result:
             CoordRegisterValidationResponse
         Raises:
-            CoordValidatorExchangeException
+            CoordValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

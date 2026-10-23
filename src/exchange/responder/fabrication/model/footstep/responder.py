@@ -71,7 +71,7 @@ class FootstepBuildResponder(ModelBuildResponder[Footstep]):
         Result:
             FootstepBuildResponse
         Raises:
-            CoordValidatorExchangeException
+            CoordValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

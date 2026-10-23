@@ -71,7 +71,7 @@ class VectorValidationResponder(ModelValidationResponder[Vector]):
         Result:
             VectorValidationResponse
         Raises:
-            VectorValidatorExchangeException
+            VectorValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

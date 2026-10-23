@@ -71,7 +71,7 @@ class ParticipationValidationResponder(ChartValidationResponder[Participation]):
         Result:
             ParticipationValidationResponse
         Raises:
-            TokenValidatorExchangeException
+            TokenValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

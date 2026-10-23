@@ -71,7 +71,7 @@ class ArenaValidationResponder(ModelValidationResponder[Arena]):
         Result:
             ArenaValidationResponse
         Raises:
-            ArenaValidatorExchangeException
+            ArenaValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

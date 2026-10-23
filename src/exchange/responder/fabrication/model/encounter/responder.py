@@ -71,7 +71,7 @@ class EncounterBuildResponder(ModelBuildResponder[Encounter]):
         Result:
             EncounterBuildResponse
         Raises:
-            EncounterValidatorExchangeException
+            EncounterValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

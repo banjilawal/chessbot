@@ -59,6 +59,6 @@ class BuildResponder(Responder[BuildResult], ABC, Generic[T]):
         Result:
             BuildResponse[T]
         Raises:
-            ValidatorExchangeException
+            ValidationResponderException
         """
         pass

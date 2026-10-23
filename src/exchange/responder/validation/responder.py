@@ -59,6 +59,6 @@ class ValidationResponder(Responder[ValidationResult], ABC, Generic[T]):
         Result:
             ValidationResponse[T]
         Raises:
-            ValidatorExchangeException
+            ValidationResponderException
         """
         pass

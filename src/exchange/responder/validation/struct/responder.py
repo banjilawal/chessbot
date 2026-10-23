@@ -66,6 +66,6 @@ class StructValidationResponder(
         Result:
             StructValidationResponse[T]
         Raises:
-            StructValidatorExchangeException
+            StructValidationResponderException
         """
         pass

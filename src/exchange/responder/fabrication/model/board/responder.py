@@ -71,7 +71,7 @@ class BoardBuildResponder(ModelBuildResponder[Board]):
         Result:
             BoardBuildResponse
         Raises:
-            BoardValidatorExchangeException
+            BoardValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

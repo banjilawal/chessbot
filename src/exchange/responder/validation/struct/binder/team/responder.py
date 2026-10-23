@@ -71,7 +71,7 @@ class TeamBinderValidationResponder(BinderValidationResponder[TeamBinder]):
         Result:
             TeamBinderValidationResponse
         Raises:
-            TeamValidatorExchangeException
+            TeamValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

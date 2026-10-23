@@ -71,7 +71,7 @@ class PathBuildResponder(ModelBuildResponder[Path]):
         Result:
             PathBuildResponse
         Raises:
-            PathValidatorExchangeException
+            PathValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

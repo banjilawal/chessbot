@@ -57,6 +57,6 @@ class PromotionResponder(Responder[PromotionResult]):
         Result:
             PromotionResponse[T]
         Raises:
-            ValidatorExchangeException
+            ValidationResponderException
         """
         pass

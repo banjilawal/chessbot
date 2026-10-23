@@ -71,7 +71,7 @@ class ParticipationBuildResponder(ChartBuildResponder[Participation]):
         Result:
             ParticipationBuildResponse
         Raises:
-            TokenValidatorExchangeException
+            TokenValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

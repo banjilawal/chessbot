@@ -61,6 +61,6 @@ class ModelBuildResponder(BuildResponder[T], ABC, Generic[T]):
         Result:
             ModelBuildResponse[T]
         Raises:
-            ModelValidatorExchangeException
+            ModelValidationResponderException
         """
         pass

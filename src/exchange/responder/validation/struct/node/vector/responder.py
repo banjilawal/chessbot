@@ -71,7 +71,7 @@ class VectorNodeValidationResponder(NodeValidationResponder[VectorNode]):
         Result:
             VectorNodeValidationResponse
         Raises:
-            VectorValidatorExchangeException
+            VectorValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

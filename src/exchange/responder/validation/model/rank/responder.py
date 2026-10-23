@@ -71,7 +71,7 @@ class RankValidationResponder(ModelValidationResponder[Rank]):
         Result:
             RankValidationResponse
         Raises:
-            RankValidatorExchangeException
+            RankValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

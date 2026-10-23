@@ -65,6 +65,6 @@ class NodeValidationResponder(
         Result:
             NodeValidationResponse[T]
         Raises:
-            NodeValidatorExchangeException
+            NodeValidationResponderException
         """
         pass

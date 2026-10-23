@@ -65,6 +65,6 @@ class ChartBuildResponder(
         Result:
             ChartBuildResponse[T]
         Raises:
-            ChartValidatorExchangeException
+            ChartValidationResponderException
         """
         pass

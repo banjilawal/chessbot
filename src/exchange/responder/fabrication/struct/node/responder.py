@@ -65,6 +65,6 @@ class NodeBuildResponder(
         Result:
             NodeBuildResponse[T]
         Raises:
-            NodeValidatorExchangeException
+            NodeValidationResponderException
         """
         pass

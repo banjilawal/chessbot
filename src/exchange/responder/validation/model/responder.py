@@ -65,6 +65,6 @@ class ModelValidationResponder(
         Result:
             ModelValidationResponse[T]
         Raises:
-            ModelValidatorExchangeException
+            ModelValidationResponderException
         """
         pass

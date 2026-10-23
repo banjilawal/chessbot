@@ -71,7 +71,7 @@ class SquareValidationResponder(ModelValidationResponder[Square]):
         Result:
             SquareValidationResponse
         Raises:
-            SquareValidatorExchangeException
+            SquareValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

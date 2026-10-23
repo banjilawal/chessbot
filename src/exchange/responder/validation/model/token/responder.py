@@ -71,7 +71,7 @@ class TokenValidationResponder(ModelValidationResponder[Token]):
         Result:
             TokenValidationResponse
         Raises:
-            TokenValidatorExchangeException
+            TokenValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

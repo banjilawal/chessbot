@@ -71,7 +71,7 @@ class VectorRegisterBuildResponder(RegisterBuildResponder[VectorRegister]):
         Result:
             VectorRegisterBuildResponse
         Raises:
-            VectorValidatorExchangeException
+            VectorValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

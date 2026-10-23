@@ -65,6 +65,6 @@ class BinderValidationResponder(
         Result:
             BinderValidationResponse[T]
         Raises:
-            BinderValidatorExchangeException
+            BinderValidationResponderException
         """
         pass

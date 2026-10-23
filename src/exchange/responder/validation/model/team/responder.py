@@ -71,7 +71,7 @@ class TeamValidationResponder(ModelValidationResponder[Team]):
         Result:
             TeamValidationResponse
         Raises:
-            TeamValidatorExchangeException
+            TeamValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

@@ -71,7 +71,7 @@ class PlayerBinderBuildResponder(BinderBuildResponder[PlayerBinder]):
         Result:
             PlayerBinderBuildResponse
         Raises:
-            PlayerValidatorExchangeException
+            PlayerValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

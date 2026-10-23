@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.AUTHORIZATION PACKAGE ===========#
 
 # Packages
-from .insertion import *
+from .promotion import *
 
 # Modules
 from .dispatcher import AuthorizationDispatcher

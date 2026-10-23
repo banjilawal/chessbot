@@ -71,7 +71,7 @@ class EncounterWaningNodeValidationResponder(NodeValidationResponder[EncounterWa
         Result:
             EncounterWaningNodeValidationResponse
         Raises:
-            WarningValidatorExchangeException
+            WarningValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         

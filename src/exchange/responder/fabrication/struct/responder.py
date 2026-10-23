@@ -66,6 +66,6 @@ class StructBuildResponder(
         Result:
             StructBuildResponse[T]
         Raises:
-            StructValidatorExchangeException
+            StructValidationResponderException
         """
         pass

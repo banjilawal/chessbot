@@ -71,7 +71,7 @@ class GameValidationResponder(ModelValidationResponder[Game]):
         Result:
             GameValidationResponse
         Raises:
-            GameValidatorExchangeException
+            GameValidationResponderException
         """
         method = f"{self.__class__.__name__}.submit"
         
