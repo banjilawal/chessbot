@@ -10,12 +10,10 @@ version: 0.0.2
 # =========== AUTHORIZATION.AUTHORIZER PACKAGE ===========#
 
 # Packages
-from .insertion import *
+from .attack import *
+from .crud import *
 from .maneuver import *
-from .slot import *
-from .stack import *
-from .token import *
-from .operation import *
+from .promotion import *
 
 # Modules
 from .authorizer import Authorizer
