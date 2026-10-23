@@ -13,6 +13,7 @@ from typing import Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import PromotionAuthorizer
+from err import PromotionAuthorizationDispatcherException
 from exchange import PromotionRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter

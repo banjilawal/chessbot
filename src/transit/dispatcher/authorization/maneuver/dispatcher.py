@@ -13,6 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ManeuverDecision
 from authorization import ManeuverAuthorizer
+from err import ManeuverAuthorizationDispatcherException
 from exchange import ManeuverRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter

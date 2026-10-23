@@ -13,6 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AttackDecision
 from authorization import AttackAuthorizer
+from err import AttackAuthorizationDispatcherException
 from exchange import AttackRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter

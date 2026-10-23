@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
+from .authorization import *
 from .fabrication import *
 from .validation import *
 
