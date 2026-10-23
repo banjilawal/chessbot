@@ -23,6 +23,7 @@ class RoleChecker(Checker[T], RoleChainable, ABC, Generic[T]):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
         1.  Decides if an Actionable satisfies a Request's conditions.
@@ -54,12 +55,12 @@ class RoleChecker(Checker[T], RoleChainable, ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:
         """
-        Grants permission to an Actionable.
+        Decide if a Request can be fulfilled with an Actionable.
         Args:
             request: T
         Returns:
            Decision[T]
         Raises:
-            RoleCheckerException.
+          RoleCheckerException
         """
         pass

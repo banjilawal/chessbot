@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import ManeuverDecision
 from authorization import ManeuverRoleChecker
 from domain import Maneuverable, Path
 from err import AuthorizationException, PathConsistencyException
-from exchange import ManeuverRequest, PathValidationRequest
+from exchange import ManeuverRequest, PathValidationRequest, PathValidationService
 from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -30,18 +30,25 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
         1.  Grant permission to a Path for a ManeuverRequest.
 
     Attributes:
-        validation_service : PathValidationService
+        validation_service: PathValidationService
 
     Provides:
-        -   execute(request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverRoleChecker
     """
     
-    def __init__(self):
-        """"""
-        super().__init__()
+    def __init__(self, validation_service: Optional[PathValidationService] | None = None):
+        """
+        Args:
+            validation_service: Optional[PathValidationService]
+        """
+        super().__init__(validation_service=validation_service or PathValidationService())
+    
+    @property
+    def validation_service(self) -> PathValidationService:
+        return cast(PathValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverDecision:

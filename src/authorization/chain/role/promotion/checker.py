@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar, cast
 from artifcat import PromotionDecision
 from authorization import RoleChecker
 from domain import Elevateable
-from exchange import PromotionRequest, RankValidationService
+from exchange import PromotionRequest, RankValidationService, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Elevateable")
@@ -24,12 +24,13 @@ class PromotionRoleChecker(RoleChecker[PromotionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Grant permission to use an Elevatable in a PromotionRequest.
+        1.  Interface for deciding an Actionable can be used in a Promotion.
 
     Attributes:
-        validation_service : RankValidationService
+        validation_service: ValidationService
 
     Provides:
         -   execute(request: PromotionRequest) -> PromotionDecision
@@ -38,16 +39,27 @@ class PromotionRoleChecker(RoleChecker[PromotionRequest], ABC, Generic[T]):
         RoleChecker
     """
     
-    def __init__(self, validation_service : Optional[RankValidationService] | None = None):
-        super().__init__(
-            validation_service=validation_service or RankValidationService()
-        )
-        
+    def __init__(self, validation_service: ValidationService):
+        """
+        Args:
+            validation_service: ValidationService
+        """
+        super().__init__(validation_service=validation_service)
+    
     @property
-    def validation_service(self) -> RankValidationService:
-        return cast(RankValidationService, super().validation_service)
+    def validation_service(self) -> ValidationService:
+        return cast(ValidationService, super().validation_service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
+        """
+        Decide if an Promotion can be made with an Actionable.
+        Args:
+            request: PromotionRequest
+        Returns:
+           PromotionDecision
+        Raises:
+          PromotionRoleCheckerException
+        """
         pass

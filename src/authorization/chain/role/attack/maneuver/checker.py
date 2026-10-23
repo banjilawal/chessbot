@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import AttackDecision
 from authorization import AttackRoleChecker
 from domain import Attackable, Maneuver
 from err import AuthorizationException, ManeuverConsistencyException
-from exchange import AttackRequest, ManeuverValidationRequest
+from exchange import AttackRequest, ManeuverValidationRequest, ManeuverValidationService
 from transit import ManeuverCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -29,6 +29,7 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
         1.  Grant permission to a Maneuver for an AttackRequest.
 
     Attributes:
+        validation_service: ManeuverValidationService
 
     Provides:
         -   execute(request: AttackRequest) -> AttackDecision
@@ -37,9 +38,16 @@ class AttackManeuverChecker(AttackRoleChecker[Attackable]):
         AttackRoleChecker
     """
     
-    def __init__(self):
-        """"""
-        super().__init__()
+    def __init__(self, validation_service: Optional[ManeuverValidationService] | None = None):
+        """
+        Args:
+            validation_service: Optional[ManeuverValidationService]
+        """
+        super().__init__(validation_service=validation_service or ManeuverValidationService())
+    
+    @property
+    def validation_service(self) -> ManeuverValidationService:
+        return cast(ManeuverValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackRequest) -> AttackDecision:

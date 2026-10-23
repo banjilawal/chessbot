@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar, cast
 
 from artifcat import AttackDecision
 from authorization import RoleChecker
 from domain import Attackable
-from exchange import AttackRequest, ManeuverValidationService
+from exchange import AttackRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Attackable")
@@ -24,35 +24,43 @@ class AttackRoleChecker(RoleChecker[AttackRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
+        -   Interface
 
     Responsibilities:
-        1.  Verifies an Attackable meets minimum safety requirements before it
-            can be approved for an activity.
+        1.  Interface for deciding an Actionable can be used in an Attack.
 
     Attributes:
-        validation_service: ManeuverValidationService
+        validation_service: ValidationService
 
     Provides:
-        -   def execute(request: request: AttackRequest) -> AttackDecision
+        -   execute(request: AttackRequest) -> AttackDecision
 
     Super Class:
         RoleChecker
     """
     
-    def __init__(self, validation_service: Optional[ManeuverValidationService] | None = None):
+    def __init__(self, validation_service: ValidationService):
         """
         Args:
-            validation_service: Optional[ManeuverValidationService]
+            validation_service: ValidationService
         """
-        super().__init__(validation_service=validation_service or ManeuverValidationService())
+        super().__init__(validation_service=validation_service)
     
     @property
-    def validation_service(self) -> ManeuverValidationService:
-        return cast(ManeuverValidationService, super().validation_service)
-        
+    def validation_service(self) -> ValidationService:
+        return cast(ValidationService, super().validation_service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackRequest) -> AttackDecision:
+        """
+        Decide if an Attack can be made with an Actionable.
+        Args:
+            request: AttackRequest
+        Returns:
+           AttackDecision
+        Raises:
+          AttackRoleCheckerException
+        """
         pass
  

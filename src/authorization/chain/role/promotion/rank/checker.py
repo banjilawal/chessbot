@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import PromotionRoleChecker
 from domain import Elevateable, Rank
 from err import AuthorizationException
-from exchange import PromotionRequest, RankValidationRequest
+from exchange import PromotionRequest, RankValidationRequest, RankValidationService
 from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -38,8 +38,14 @@ class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
         PromotionRoleChecker
     """
     
-    def __init__(self):
-        super().__init__()
+    def __init__(self, validation_service: Optional[RankValidationService] | None = None):
+        super().__init__(
+            validation_service=validation_service or RankValidationService()
+        )
+    
+    @property
+    def validation_service(self) -> RankValidationService:
+        return cast(RankValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionDecision:
