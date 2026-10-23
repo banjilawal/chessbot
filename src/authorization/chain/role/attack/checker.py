@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import AttackDecision
-from authorization import RoleChecker
+from authorization import RolePermitter
 from domain import Attackable
 from exchange import AttackRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Attackable")
 
-class AttackRoleChecker(RoleChecker[AttackRequest], ABC, Generic[T]):
+class AttackRolePermitter(RolePermitter[AttackRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization

@@ -13,4 +13,4 @@ version: 0.0.2
 from .rank import *
 
 # Modules
-from .checker import PromotionRoleChecker
+from .checker import PromotionRolePermitter

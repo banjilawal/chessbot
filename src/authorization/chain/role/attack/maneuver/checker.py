@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AttackDecision
-from authorization import AttackRoleChecker
+from authorization import AttackRolePermitter
 from domain import Attackable, Maneuver
 from err import AttackManeuverCheckerException, ManeuverConsistencyException
 from exchange import AttackRequest, ManeuverValidationRequest, ManeuverValidationService
@@ -20,7 +20,7 @@ from transit import ManeuverCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class AttackManeuverChecker(AttackRoleChecker[Attackable]):
+class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
     """
     Role:
         -   Authorization

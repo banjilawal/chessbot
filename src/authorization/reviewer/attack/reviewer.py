@@ -14,6 +14,7 @@ from typing import Generic, List, TypeVar, cast
 
 from artifcat import AttackDecision
 from authorization import ActorChainable, ApplicantReviewer, ReadyChecker
+from domain import Actor
 from exchange import AttackRequest
 
 from util import LoggingLevelRouter

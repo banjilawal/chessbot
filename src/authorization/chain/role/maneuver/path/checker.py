@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ManeuverDecision
-from authorization import ManeuverRoleChecker
+from authorization import ManeuverRolePermitter
 from domain import Maneuverable, Path
 from err import ManeuverPathCheckerException, PathConsistencyException
 from exchange import ManeuverRequest, PathValidationRequest, PathValidationService
@@ -21,7 +21,7 @@ from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
+class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
     """
     Role:
         -   Authorization

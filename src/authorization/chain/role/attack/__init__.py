@@ -13,4 +13,4 @@ version: 0.0.2
 from .maneuver import *
 
 # Modules
-from .checker import AttackRoleChecker
+from .checker import AttackRolePermitter

@@ -13,4 +13,4 @@ version: 0.0.2
 from .path import *
 
 # Modules
-from .checker import ManeuverRoleChecker
+from .checker import ManeuverRolePermitter

@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")
 
-class RoleChecker(Checker[T], RoleChainable, ABC, Generic[T]):
+class RolePermitter(Checker[T], RoleChainable, ABC, Generic[T]):
     """
     Role:
         -   Authorization

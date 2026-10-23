@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import PromotionDecision
-from authorization import PromotionRoleChecker
+from authorization import PromotionRolePermitter
 from domain import Elevateable, Rank
 from err import PromotionRankCheckerException
 from exchange import PromotionRequest, RankValidationRequest, RankValidationService
@@ -20,7 +20,7 @@ from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class PromotionRankChecker(PromotionRoleChecker[Elevateable]):
+class PromotionRankPermitter(PromotionRolePermitter[Elevateable]):
     """
     Role:
         -   Authorization

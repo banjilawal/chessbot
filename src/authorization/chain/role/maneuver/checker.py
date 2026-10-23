@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ManeuverDecision
-from authorization import RoleChecker
+from authorization import RolePermitter
 from domain import Maneuverable
 from exchange import ManeuverRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Maneuverable")
 
-class ManeuverRoleChecker(RoleChecker[ManeuverRequest], ABC, Generic[T]):
+class ManeuverRolePermitter(RolePermitter[ManeuverRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
