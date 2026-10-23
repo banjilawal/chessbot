@@ -1,10 +1,10 @@
-# src/err/transit/dispatcher/authorization/exception.py
+# src/err/null/transit/dispatcher/authorization/crud/search/player/exception.py
 
 """
-Module: err.transit.dispatcher.authorization.exception
+Module: err.null.transit.dispatcher.authorization.crud.search.player.exception
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-04
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -12,48 +12,48 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import DispatcherException
+from err import SearchAuthorizationDispatcherException
 
 __all__ = [
-    # ======================# AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "AuthorizationDispatcherException",
+    # ======================# PLAYER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
+    "PlayerSearchAuthorizationDispatcherException",
 ]
 
-# ======================# AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class AuthorizationDispatcherException(DispatcherException):
+# ======================# PLAYER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
+class PlayerSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AuthorizationDispatcher encountered an error.
+        1.  Indicating that a PlayerSearchAuthorizationDispatcher encountered an error.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        DispatcherException
+        SearchAuthorizationDispatcherException
     """
-    MSG = "AuthorizationDispatcher failure."
-    ERR_CODE = "AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "PlayerSearchAuthorizationDispatcher encountered an error."
+    ERR_CODE = "PLAYER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

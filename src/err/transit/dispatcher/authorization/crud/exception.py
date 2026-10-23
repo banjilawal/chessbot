@@ -1,60 +1,60 @@
-# src/err/transit/dispatcher/authorization/crud/exception.py
+# src/err/null/transit/dispatcher/authorization/crud/exception.py
 
 """
-Module: err.transit.dispatcher.authorization.crud.exception
+Module: err.null.transit.dispatcher.authorization.crud.exception
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-04
+version: 0.0.2
 """
 
 from __future__ import annotations
 
 from typing import Any, Optional
 
+
 from artifcat import MethodResultType
 from err import AuthorizationDispatcherException
 
-
 __all__ = [
-    # ======================# CRUD_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "CrudAuthorizationDispatcherException",
+    # ======================# CRUD_AUTHORIZATION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
+    "AuthorizationDispatcherException",
 ]
 
-# ======================# CRUD_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class CrudAuthorizationDispatcherException(AuthorizationDispatcherException):
+# ======================# CRUD_AUTHORIZATION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
+class AuthorizationDispatcherException(AuthorizationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CrudAuthorizationDispatcher encountered an error.
+        1.  Indicating that a AuthorizationDispatcher encountered an error.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         AuthorizationDispatcherException
     """
-    MSG = "CrudAuthorizationDispatcher failure."
-    ERR_CODE = "CRUD_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "AuthorizationDispatcher encountered an error."
+    ERR_CODE = "CRUD_AUTHORIZATION_AUTHORIZATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
