@@ -5,147 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/account/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/alert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/alert/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/arena/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/board/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/coord/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/encounter/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/footstep/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/footstep/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/game/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/maneuver/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/path/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/player/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/rank/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/scalar/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/square/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/team/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/token/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/model/vector/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/player/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/team/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/attack/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/promotion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/promotion/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/dispatcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/account/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/account/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/alert/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/alert/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/arena/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/arena/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/board/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/board/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/coord/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/encounter/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/encounter/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/footstep/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/footstep/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/game/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/game/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/maneuver/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/maneuver/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/path/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/path/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/player/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/player/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/rank/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/rank/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/scalar/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/scalar/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/square/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/square/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/team/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/team/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/token/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/token/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/model/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/binder/player/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/binder/player/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/binder/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/binder/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/binder/team/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/binder/team/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/chart/participate/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/chart/participate/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/chart/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/chart/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/node/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/node/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/node/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/node/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/node/warning/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/node/warning/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/coord/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/square/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/square/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/register/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/fabrication/struct/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/promotion/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/promotion/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/account/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/account/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/alert/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/alert/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/arena/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/arena/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/board/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/board/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/coord/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/encounter/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/encounter/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/footstep/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/footstep/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/game/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/game/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/maneuver/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/maneuver/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/path/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/path/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/player/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/player/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/rank/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/rank/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/scalar/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/scalar/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/square/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/square/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/team/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/team/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/token/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/token/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/model/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/model/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/binder/player/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/binder/player/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/binder/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/binder/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/binder/team/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/binder/team/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/participate/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/participate/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/warning/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/warning/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/coord/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/square/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/square/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/struct/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/responder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/insertion/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/insertion/chain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/insertion/chain/dispatcher.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/insertion/chain/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/insertion/chain/vector/dispatcher.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/insertion/dispatcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,61 +59,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0001644736434043" />
-      <entry key="MS500" value="1.2028074208350337" />
-      <entry key="S2" value="2.0837391003862193" />
-      <entry key="S5" value="3.319644733365894" />
-      <entry key="S10" value="5.683336752492337" />
-      <entry key="S30" value="12.101712137813454" />
-      <entry key="S60" value="18.07055499140828" />
-      <entry key="M2" value="28.653571850110588" />
-      <entry key="M5" value="56.87781840964295" />
-      <entry key="M10" value="93.92343458699894" />
-      <entry key="M15" value="119.48277741720129" />
-      <entry key="M30" value="178.0573731436908" />
-      <entry key="H1" value="316.0706228633431" />
-      <entry key="H2" value="632.6592744930148" />
-      <entry key="H4" value="1250.9693971966615" />
-      <entry key="D1" value="6284.434154323419" />
-      <entry key="W1" value="27785.421265789835" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000623376266" />
+      <entry key="S10" value="1.0006983731167345" />
+      <entry key="S30" value="1.3540522167735436" />
+      <entry key="S60" value="2.682497209923472" />
+      <entry key="M2" value="4.66900798033833" />
+      <entry key="M5" value="7.782607257993358" />
+      <entry key="M10" value="21.950060184427212" />
+      <entry key="M15" value="45.81226785546942" />
+      <entry key="M30" value="122.30181993622956" />
+      <entry key="H1" value="273.0036423811254" />
+      <entry key="H2" value="590.9584776159444" />
+      <entry key="H4" value="1212.018188221217" />
+      <entry key="D1" value="6270.525754341304" />
+      <entry key="W1" value="27817.35049659978" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.7297828679953735E-133" />
-      <entry key="S5" value="1.6905750897973035E-53" />
-      <entry key="S10" value="7.607111402949251E-27" />
-      <entry key="S30" value="5.138708270090384E-9" />
-      <entry key="S60" value="1.6814467045415864E-4" />
-      <entry key="M2" value="0.03515290484167644" />
-      <entry key="M5" value="0.9816719783533865" />
-      <entry key="M10" value="3.0946298174974007" />
-      <entry key="M15" value="4.612699033338863" />
-      <entry key="M30" value="7.727806226478594" />
-      <entry key="H1" value="13.003905039528203" />
-      <entry key="H2" value="21.706590485367748" />
-      <entry key="H4" value="36.794268955489294" />
-      <entry key="D1" value="278.27695768338344" />
-      <entry key="W1" value="1473.6965827657568" />
+      <entry key="S2" value="3.5431971453801E-310" />
+      <entry key="S5" value="2.787609786422704E-124" />
+      <entry key="S10" value="2.990195652086458E-62" />
+      <entry key="S30" value="7.58388324877473E-21" />
+      <entry key="S60" value="1.7346125346887165E-10" />
+      <entry key="M2" value="2.633937386717657E-5" />
+      <entry key="M5" value="0.037260168399393896" />
+      <entry key="M10" value="0.5509372812091752" />
+      <entry key="M15" value="1.5153602974044231" />
+      <entry key="M30" value="4.816866638783672" />
+      <entry key="H1" value="10.805031466194361" />
+      <entry key="H2" value="20.428908985446828" />
+      <entry key="H4" value="36.32684818546459" />
+      <entry key="D1" value="276.8010006082533" />
+      <entry key="W1" value="1473.559554144378" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9396730504020884" />
-      <entry key="MS500" value="1.1867860596395094" />
-      <entry key="S2" value="2.075744313723855" />
-      <entry key="S5" value="3.314089027595889" />
-      <entry key="S10" value="5.678367451408417" />
-      <entry key="S30" value="12.098191022014088" />
-      <entry key="S60" value="18.068072674654697" />
-      <entry key="M2" value="28.683750037989135" />
-      <entry key="M5" value="57.82030005446517" />
-      <entry key="M10" value="96.9514413536227" />
-      <entry key="M15" value="124.027307867429" />
-      <entry key="M30" value="185.73026896076928" />
-      <entry key="H1" value="329.0339395767761" />
-      <entry key="H2" value="654.3353160258498" />
-      <entry key="H4" value="1287.7392564216955" />
-      <entry key="D1" value="6562.680111203532" />
-      <entry key="W1" value="29259.092711644375" />
+      <entry key="MS100" value="0.9526379980439373" />
+      <entry key="MS500" value="0.9903428719330246" />
+      <entry key="S2" value="0.9975769252644544" />
+      <entry key="S5" value="0.9990301232200479" />
+      <entry key="S10" value="1.0001956759881574" />
+      <entry key="S30" value="1.351273746085411" />
+      <entry key="S60" value="2.6764026073849916" />
+      <entry key="M2" value="4.66254667372733" />
+      <entry key="M5" value="7.815375479792798" />
+      <entry key="M10" value="22.49313241591286" />
+      <entry key="M15" value="47.31327061181863" />
+      <entry key="M30" value="127.09375388650926" />
+      <entry key="H1" value="283.7808825346285" />
+      <entry key="H2" value="611.3617914407461" />
+      <entry key="H4" value="1248.3225426150566" />
+      <entry key="D1" value="6547.296213819186" />
+      <entry key="W1" value="29290.88496353867" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -275,7 +147,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/authorization/promotion",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/transit/dispatcher/authorization",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -289,11 +161,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/authorization" />
+      <recent name="$PROJECT_DIR$/src/err/transit/dispatcher" />
+      <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion" />
       <recent name="$PROJECT_DIR$/src/exchange/responder" />
-      <recent name="$PROJECT_DIR$/src/authorization/authorizer" />
-      <recent name="$PROJECT_DIR$/src/authorization/reviewer/maneuver/token" />
-      <recent name="$PROJECT_DIR$/src/authorization/reviewer/applicant/promotion/token" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/authorization/authorizer/crud" />
@@ -962,7 +834,7 @@
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
-      <workItem from="1792402033304" duration="216797000" />
+      <workItem from="1792402033304" duration="218601000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
