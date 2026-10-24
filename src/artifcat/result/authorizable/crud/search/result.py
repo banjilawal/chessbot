@@ -14,7 +14,7 @@ from typing import Generic, List, Optional, TypeVar, cast
 from domain import DomainDataObject
 from artifcat import CrudResult, SearchState
 
-T = TypeVar("T", bound="DomainDataObject")
+T = TypeVar("T")
 
 
 class SearchResult(CrudResult[T], Generic[T]):
@@ -45,7 +45,7 @@ class SearchResult(CrudResult[T], Generic[T]):
         Result
     """
     _state: SearchState
-    _payload: Optional[List[T]] = None
+    _payload: Optional[T] = []
     
     
     def __init__(
@@ -57,7 +57,7 @@ class SearchResult(CrudResult[T], Generic[T]):
         """
         Args:
             state: SearchState
-            payload: Optional[T]
+            payload: Optional[List[T]]
             exception: Optional[Exception]
         """
         super().__init__(payload=payload, exception=exception)
@@ -75,16 +75,14 @@ class SearchResult(CrudResult[T], Generic[T]):
     @property
     def is_success(self) -> bool:
         return (
-                self.payload is not None and
-                self.exception is None and
+                super().is_success and
                 self._state ==  SearchState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.payload is None and
-                self.exception is not None and
+                super().is_failure and
                 self._state ==  SearchState.FAILURE
         )
     

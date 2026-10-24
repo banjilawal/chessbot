@@ -10,10 +10,9 @@ version: 0.0.2
 # ============ ARTIFACT.RESULT.AUTHORIZABLE PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .crud import *
-from .encounter import *
 from .maneuver import *
 from .promotion import *
 
 # Modules
-from .result import Decision

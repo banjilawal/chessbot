@@ -11,36 +11,36 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Decision, ResultState
+from artifcat import Result, ResultState
 from domain import PawnToken
 
 
-class PromotionResult(Decision[PawnToken]):
+class PromotionResult(Result[PawnToken]):
     """
     Role:
         - Data Transport
         - Error Transport
 
     Responsibilities:
-        1.  Contains details of a Promotion transaction.
+        1.  Contains outcome of a Promotion transaction.
 
     Attributes:
-        exception: Optional[Exception]
-        payload: Optional[PawnToken]
         state: resultState
+        payload: Optional[PawnToken]
+        exception: Optional[Exception]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(payload: PawnToken) -> PromotionResult
-        -   def failure(exception: Exception) -> PromotionResult
-        -   def timed_out(cls, exception: Exception) -> PromotionResult:
+        -   def success(payload: T) -> BuildResult
+        -   def failure(exception: Exception) -> BuildResult
+        -   def timed_out(cls, exception: Exception) -> BuildResult:
 
     Super Class:
-        AuthorizableResult
+        Result
     """
-    _state: ResultState
     
     def __init__(
             self,
@@ -55,11 +55,10 @@ class PromotionResult(Decision[PawnToken]):
             exception: Optional[Exception]
         """
         super().__init__(
+            state=state,
             payload=payload,
             exception=exception
         )
-        """INTERNAL: Use promotion methods instead of direct constructor."""
-        self._state = state
     
     @property
     def payload(self) -> Optional[PawnToken]:

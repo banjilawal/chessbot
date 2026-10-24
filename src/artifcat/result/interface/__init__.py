@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .authorizable import *
+from .resulatable import *
 
 # Modules
 from .interface import ArtifactInterface

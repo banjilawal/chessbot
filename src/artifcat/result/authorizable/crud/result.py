@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional, TypeVar, Generic, cast
 
-from artifcat import Decision
+from artifcat import Resultable
 
 T = TypeVar("T")
 
 
-class CrudResult(Decision[T], ABC, Generic[T]):
+class CrudResult(ABC, Resultable, Generic[T]):
     """
     Role:
         - Data Transport
@@ -40,6 +40,9 @@ class CrudResult(Decision[T], ABC, Generic[T]):
         AuthorizableResult
     """
     
+    _payload: Optional[T]
+    _exception: Optional[Exception]
+    
     def __init__(
             self,
             payload: Optional[T] = None,
@@ -50,11 +53,16 @@ class CrudResult(Decision[T], ABC, Generic[T]):
             payload: Optional[T]
             exception: Optional[Exception]
         """
-        super().__init__(payload=payload, exception=exception)
-    
+        self._payload = payload
+        self._exception = exception
+        
     @property
     def payload(self) -> Optional[T]:
-        return cast(T, super().payload)
+        return self._payload
+    
+    @property
+    def exception(self) -> Optional:
+        return self._exception
     
     @property
     def is_success(self) -> bool:
@@ -62,13 +70,13 @@ class CrudResult(Decision[T], ABC, Generic[T]):
     
     @property
     def is_failure(self) -> bool:
-        return self._exception is not None
+        return self._exception is None
     
     @classmethod
-    def success(cls, payload: T) -> Result:
+    def success(cls, payload: T) -> CrudResult[T]:
         return cls(payload=payload)
     
     @classmethod
-    def failure(cls, exception: Exception) -> Result:
+    def failure(cls, exception: Exception) -> CrudResult:
         return cls(exception=exception)
     

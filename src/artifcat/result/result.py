@@ -12,6 +12,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, TypeVar, Generic
 
+from artifcat import ResultState
+
 T = TypeVar("T")
 
 
@@ -25,8 +27,10 @@ class Result(Generic[T]):
         1.  Hold the product of some work.
 
     Attributes:
+        state: ResultState
         payload: Optional[T]
         exception: Optional[Exception]
+        
         is_success: bool
         is_failure: bool
 
@@ -36,21 +40,29 @@ class Result(Generic[T]):
         
     Super Class:
     """
+    _state: ResultState
     _payload: Optional[T]
     _exception: Optional[Exception]
     
     def __init__(
             self,
+            state: ResultState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None
     ):
         """
         Args:
+            state: ResultState
             payload: Optional[T]
             exception: Optional[Exception]
         """
+        self._state = state
         self._payload = payload
         self._exception = exception
+        
+    @property
+    def state(self) -> ResultState:
+        return  self._state
     
     @property
     def payload(self) -> Optional[T]:

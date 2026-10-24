@@ -16,7 +16,7 @@ from domain import Encounter
 T = TypeVar("T", bound="Encounter")
 
 
-class AttackResult(Result[T], Generic[T]):
+class AttackResult(Result[T], Resultable, Generic[T]):
     """
     Role:
         - Data Transport
@@ -26,9 +26,10 @@ class AttackResult(Result[T], Generic[T]):
         1.  Contains the outcome of a attack transaction.
 
     Attributes:
-        exception: Optional[Exception]
         state: resultState
         payload: Optional[T]
+        exception: Optional[Exception]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool

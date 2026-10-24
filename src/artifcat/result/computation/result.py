@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ResultState, Result
+from artifcat import ResultState, Result, Resultable
 
 T = TypeVar("T")
 
-class ComputationResult(Result[T], Generic[T]):
+class ComputationResult(Result[T], Resultable, Generic[T]):
     """
     Role:
         - Data Transport
@@ -25,9 +25,10 @@ class ComputationResult(Result[T], Generic[T]):
         1.  Contains details of a Computation transaction.
 
     Attributes:
-        exception: Optional[Exception]
-        state: ResultState
+        state: resultState
         payload: Optional[T]
+        exception: Optional[Exception]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
@@ -40,21 +41,21 @@ class ComputationResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: ResultState
     
     def __init__(
             self,
             state: ResultState,
-            exception: Optional[Exception] = None,
             payload: Optional[T] = None,
+            exception: Optional[Exception] = None,
     ):
         """
         Args:
-            payload: Optional[T]
             state: ResultState
+            payload: Optional[T]
             exception: Optional[Exception]
         """
         super().__init__(
+            state=state,
             payload=payload,
             exception=exception,
         )
@@ -64,10 +65,6 @@ class ComputationResult(Result[T], Generic[T]):
     @property
     def payload(self) -> Optional[T]:
         return cast(T, super().payload)
-        
-    @property
-    def state(self) -> ResultState:
-        return self._state
 
     @property
     def is_success(self) -> bool:

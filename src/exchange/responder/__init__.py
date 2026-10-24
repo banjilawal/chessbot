@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.RESPONDER PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .authorization import *
 from .fabrication import *
 from .promotion import *

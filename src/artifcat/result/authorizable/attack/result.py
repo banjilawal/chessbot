@@ -1,7 +1,7 @@
-# src/artifact/result/authorizable/encounter/kill/result.py
+# src/artifact/result/authorizable/attack/result.py
 
 """
-Module: artfifact.result.authorizable.encounter.kill.result.
+Module: artfifact.result.authorizable.attack.result.
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,61 +9,64 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import EncounterResult, ResultState
-from domain import KillEncounter
+from artifcat import Result, ResultState
+from domain import Encounter
+
+T = TypeVar("T", bound="Encounter")
 
 
-class KillResult(EncounterResult[KillEncounter]):
+class AttackResult(Result[T], ABC, Generic[T]):
     """
     Role:
         - Data Transport
         - Error Transport
 
     Responsibilities:
-        1.  Contains details of a KillEncounter transaction.
+        1.  Contains the outcome of an Attack transaction.
+
 
     Attributes:
-        exception: Optional[Exception]
-        payload: Optional[KillEncounter]
         state: resultState
+        payload: Optional[T]
+        exception: Optional[Exception]
         
         is_timed_out: bool
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(payload: KillEncounter) -> KillResult
-        -   def failure(exception: Exception) -> KillResult
-        -   def timed_out(exception: Exception) -> KillResult:
+        -   def success(payload: T) -> AttackResult
+        -   def failure(exception: Exception) -> AttackResult
+        -   def timed_out(cls, exception: Exception) -> AttackResult:
 
     Super Class:
-        AttackResult
+        Result
     """
     
     def __init__(
             self,
             state: ResultState,
-            payload: Optional[KillEncounter] = None,
+            payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: resultState
-            payload: Optional[KillEncounter]
+            payload: Optional[T]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             payload=payload,
-            exception=exception,
+            exception=exception
         )
-        """INTERNAL: Use attack methods instead of direct constructor."""
     
     @property
-    def payload(self) -> Optional[KillEncounter]:
-        return cast(KillEncounter, super().payload)
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
     
     @property
     def state(self) -> ResultState:
@@ -91,21 +94,21 @@ class KillResult(EncounterResult[KillEncounter]):
         )
     
     @classmethod
-    def success(cls, payload: KillEncounter) -> KillResult:
+    def success(cls, payload: T) -> AttackResult:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> KillResult:
+    def failure(cls, exception: Exception) -> AttackResult:
         return cls(
             exception=exception,
             state=ResultState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> KillResult:
+    def timed_out(cls, exception: Exception) -> AttackResult:
         return cls(
             exception=exception,
             state=ResultState.TIMED_OUT,

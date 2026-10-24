@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ResultState, Result
+from artifcat import ResultState, Result, Resultable
 
 T = TypeVar("T")
 
 
-class BuildResult(Result[T], Generic[T]):
+class BuildResult(Result[T], Resultable, Generic[T]):
     """
     Role:
         - Data Transport
@@ -26,9 +26,10 @@ class BuildResult(Result[T], Generic[T]):
         1.  Contains details of a Build transaction.
 
     Attributes:
-        exception: Optional[Exception]
-        payload: Optional[T]
         state: resultState
+        payload: Optional[T]
+        exception: Optional[Exception]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
@@ -55,19 +56,14 @@ class BuildResult(Result[T], Generic[T]):
             exception: Optional[Exception]
         """
         super().__init__(
+            state=state,
             payload=payload,
             exception=exception
         )
-        """INTERNAL: Use build methods instead of direct constructor."""
-        self._state = state
     
     @property
     def payload(self) -> Optional[T]:
         return cast(T, super().payload)
-    
-    @property
-    def state(self) -> ResultState:
-        return self._state
     
     @property
     def is_success(self) -> bool:

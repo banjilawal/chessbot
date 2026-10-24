@@ -10,12 +10,12 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import Result
+from artifcat import Result, ResultState, Resultable
 
 T = TypeVar("T")
 
 
-class ValidationResult(Result[T], Generic[T]):
+class ValidationResult(Result[T], Resultable, Generic[T]):
     """
     Role:
         - Data Transport
@@ -25,9 +25,10 @@ class ValidationResult(Result[T], Generic[T]):
         1.  Contains the outcome of a validation transaction.
 
     Attributes:
-        exception: Optional[Exception]
         state: resultState
         payload: Optional[T]
+        exception: Optional[Exception]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
@@ -40,7 +41,6 @@ class ValidationResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: ResultState
     
     def __init__(
             self,
@@ -55,19 +55,15 @@ class ValidationResult(Result[T], Generic[T]):
             exception: Optional[Exception]
         """
         super().__init__(
+            super=state,
             payload=payload,
             exception=exception
         )
         """INTERNAL: Use validation methods instead of direct constructor."""
-        self._state = state
     
     @property
     def payload(self) -> Optional[T]:
         return cast(T, super().payload)
-    
-    @property
-    def state(self) -> ResultState:
-        return self._state
     
     @property
     def is_success(self) -> bool:

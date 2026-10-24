@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Decision, ResultState
+from artifcat import Result, ResultState
 from domain import Maneuver
 
 
-class ManeuverResult(Decision[Maneuver]):
+class ManeuverResult(Result[Maneuver]):
     """
     Role:
         - Data Transport
@@ -24,10 +24,12 @@ class ManeuverResult(Decision[Maneuver]):
     Responsibilities:
         1.  Contains details of a Maneuver transaction.
 
+
     Attributes:
-        exception: Optional[Exception]
-        payload: Optional[Maneuver]
         state: resultState
+        payload: Optional[Maneuver]
+        exception: Optional[Exception]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
@@ -38,9 +40,8 @@ class ManeuverResult(Decision[Maneuver]):
         -   def timed_out(cls, exception: Exception) -> ManeuverResult:
 
     Super Class:
-        AuthorizableResult
+        Result
     """
-    _state: ResultState
     
     def __init__(
             self,
@@ -55,11 +56,10 @@ class ManeuverResult(Decision[Maneuver]):
             exception: Optional[Exception]
         """
         super().__init__(
+            state=state,
             payload=payload,
             exception=exception
         )
-        """INTERNAL: Use maneuver methods instead of direct constructor."""
-        self._state = state
     
     @property
     def payload(self) -> Optional[Maneuver]:

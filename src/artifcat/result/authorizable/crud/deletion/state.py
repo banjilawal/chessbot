@@ -8,7 +8,6 @@ version: 0.0.2
 
 from enum import auto, Enum
 
-
 class DeletionState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
