@@ -12,8 +12,10 @@ version: 0.0.2
 # Packages
 from .applicant import *
 from .authorizer import *
+from .chain import *
 from .loader import *
 from .reviewer import *
+from .role import *
 
 # Modules
 from .exception import AuthorizationException

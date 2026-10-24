@@ -14,6 +14,7 @@ from typing import cast
 from artifcat import PromotionDecision
 from authorization import PromotionTokenChecker
 from domain import PawnToken
+from err import PromotionPawnTokenCheckerException
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 

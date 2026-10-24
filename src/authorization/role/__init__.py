@@ -15,4 +15,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .checker import RolePermitter
+from .permitter import RolePermitter

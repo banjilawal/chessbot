@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from artifcat import PromotionDecision
 from authorization import PromotionTokenChecker
+from err import PromotionRowException
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 

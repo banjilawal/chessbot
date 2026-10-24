@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import ManeuverApplicantCheckerException
 
 __all__ = [
     # ======================# MANEUVER_TOKEN_PATH_CHECKER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_TOKEN_PATH_CHECKER_FAILURE #======================#
-class ManeuverTokenPathCheckerException(ApplicantCheckerException):
+class ManeuverTokenPathCheckerException(ManeuverApplicantCheckerException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ManeuverTokenPathCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        ManeuverApplicantCheckerException
     """
     MSG = "ManeuverTokenPathChecker failed."
     ERR_CODE = "MANEUVER_TOKEN_PATH_CHECKER_FAILURE"

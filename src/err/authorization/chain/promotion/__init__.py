@@ -10,7 +10,10 @@ version: 0.0.2
 # ============ ERR.AUTHORIZATION.CHECKER.PROMOTION PACKAGE ===========#
 
 # Packages
+from .double import *
+from .pawn import *
 from .rank import *
+from .row import *
 
 # Modules
 from .exception import PromotionApplicantCheckerException

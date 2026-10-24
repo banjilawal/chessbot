@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from artifcat import ManeuverDecision
 from authorization import ManeuverTokenChecker
+from err import ManeuverCandidateOriginException
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 
@@ -45,7 +46,7 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
         Returns:
            ManeuverDecision
         Raises:
-            ManeuverTokenOriginCheckerException
+            ManeuverCandidateOriginException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -59,17 +60,11 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ManeuverTokenOriginCheckerException(
+                exception=ManeuverCandidateOriginException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverTokenOriginCheckerException.MSG,
-                    err_code=ManeuverTokenOriginCheckerException.ERR_CODE,
-                    ex=TokenPositionException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenPositionException.MSG,
-                        err_code=TokenPositionException.ERR_CODE,
-                    )
+                    msg=ManeuverCandidateOriginException.MSG,
+                    err_code=ManeuverCandidateOriginException.ERR_CODE,
                 )
             )
         # --- Prepare an approval of the actor. ---#

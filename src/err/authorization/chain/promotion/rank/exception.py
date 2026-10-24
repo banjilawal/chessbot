@@ -1,7 +1,7 @@
-# src/err/authorization/checker/promotion/token/exception.py
+# src/err/authorization/checker/promotion/rank/exception.py
 
 """
-Module: err.authorization.checker.promotion.token.exception
+Module: err.authorization.checker.promotion.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import PromotionApplicantCheckerException
 
 __all__ = [
     # ======================# PROMOTION_TOKEN_RANK_CHECKER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTION_TOKEN_RANK_CHECKER_FAILURE #======================#
-class PromotionTokenRankCheckerException(ApplicantCheckerException):
+class PromotionTokenRankCheckerException(PromotionApplicantCheckerException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionTokenRankCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        PromotionApplicantCheckerException
     """
     MSG = "PromotionTokenRankChecker failed."
     ERR_CODE = "PROMOTION_TOKEN_RANK_CHECKER_FAILURE"

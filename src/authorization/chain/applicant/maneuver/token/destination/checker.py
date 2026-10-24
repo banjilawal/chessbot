@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from artifcat import ManeuverDecision
 from authorization import ManeuverTokenChecker
+from err import BlockedDestinationException, TravelerAtDestinationException
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 
@@ -61,17 +61,11 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ManeuverTokenDestinationException(
+                exception=TravelerAtDestinationException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverTokenDestinationException.MSG,
-                    err_code=ManeuverTokenDestinationException.ERR_CODE,
-                    ex=TravelerAtDestintionException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TravelerAtDestintionException.MSG,
-                        err_code=TravelerAtDestintionException.ERR_CODE,
-                    )
+                    msg=TravelerAtDestinationException.MSG,
+                    err_code=TravelerAtDestinationException.ERR_CODE,
                 )
             )
         # Handle the case that the destination square is occupied by a friend.
@@ -83,17 +77,11 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ManeuverTokenDestinationException(
+                exception=BlockedDestinationException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverTokenDestinationException.MSG,
-                    err_code=ManeuverTokenDestinationException.ERR_CODE,
-                    ex=BlockedDestintionException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BlockedDestintionException.MSG,
-                        err_code=BlockedDestintionException.ERR_CODE,
-                    )
+                    msg=BlockedDestinationException.MSG,
+                    err_code=BlockedDestinationException.ERR_CODE,
                 )
             )
         # --- Prepare an approval of the actor. ---#

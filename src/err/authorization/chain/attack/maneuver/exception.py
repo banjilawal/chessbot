@@ -1,7 +1,7 @@
-# src/err/authorization/checker/attack/token/exception.py
+# src/err/authorization/checker/attack/maneuver/exception.py
 
 """
-Module: err.authorization.checker.attack.token.exception
+Module: err.authorization.checker.attack.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import AttackApplicantCheckerException
 
 __all__ = [
     # ======================# ATTACK_TOKEN_MANEUVER_CHECKER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# ATTACK_TOKEN_MANEUVER_CHECKER_FAILURE #======================#
-class AttackTokenManeuverCheckerException(ApplicantCheckerException):
+class AttackTokenManeuverCheckerException(AttackApplicantCheckerException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class AttackTokenManeuverCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        AttackApplicantCheckerException
     """
     MSG = "AttackTokenManeuverChecker failed."
     ERR_CODE = "ATTACK_TOKEN_MANEUVER_CHECKER_FAILURE"

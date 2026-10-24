@@ -27,7 +27,7 @@ class AttackApplicantCheckerException(ApplicantCheckerException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AttackApplicantChecker failed.
+        1.  Indicating that an AttackApplicantChecker failed.
 
     Attributes:
             msg: Optional[str]

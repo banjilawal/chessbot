@@ -12,8 +12,9 @@ version: 0.0.2
 # Packages
 from .checkmate import *
 from .kill import *
-from .warning import *
 from .stalemate import *
+from .warning import *
+from .victim import *
 
 # Modules
 from .exception import EncounterNullException

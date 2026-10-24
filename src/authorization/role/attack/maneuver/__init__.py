@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .checker import AttackManeuverPermitter
+from .permitter import AttackManeuverPermitter

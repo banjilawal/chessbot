@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from artifcat import PromotionDecision
 from authorization import PromotionTokenChecker
+from err import DoublePromotionException
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
@@ -55,17 +55,11 @@ class DoublePromotionChecker(PromotionTokenChecker):
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
-                exception=DoublePromotionCheckerException(
+                exception=DoublePromotionException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DoublePromotionCheckerException.MSG,
-                    err_code=DoublePromotionCheckerException.ERR_CODE,
-                    ex= DoublePromotionException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=DoublePromotionException.MSG,
-                        err_code=DoublePromotionException.ERR_CODE,
-                    )
+                    msg=DoublePromotionException.MSG,
+                    err_code=DoublePromotionException.ERR_CODE,
                 )
             )
         # --- Prepare an approval of the actor. ---#

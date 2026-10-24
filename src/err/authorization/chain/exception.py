@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import AuthorizationException
 
 __all__ = [
-    # ======================# CHECKER_FAILURE #======================#
+    # ======================# APPLICANT_CHECKER_FAILURE #======================#
     "ApplicantCheckerException",
 ]
 
-# ======================# CHECKER_FAILURE #======================#
+# ======================# APPLICANT_CHECKER_FAILURE #======================#
 class ApplicantCheckerException(AuthorizationException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ApplicantChecker failed.
+        1.  Indicating that an ApplicantChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class ApplicantCheckerException(AuthorizationException):
         AuthorizationException
     """
     MSG = "ApplicantChecker failed."
-    ERR_CODE = "CHECKER_FAILURE"
+    ERR_CODE = "APPLICANT_CHECKER_FAILURE"
     
     def __init__(
             self,
