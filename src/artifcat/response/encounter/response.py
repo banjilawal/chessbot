@@ -13,10 +13,10 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, EncounterResult
-from domain import Blueprint
+from domain import Blueprint, Encounter
 from exchange import Request, EncounterRequest
 
-T = TypeVar("T",)
+T = TypeVar("T", bound="Encounter")
 
 class EncounterResponse(Response[EncounterResult], ABC, Generic[T]):
     """
