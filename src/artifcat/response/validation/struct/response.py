@@ -13,44 +13,32 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
+from exchange import StructValidationRequest, Request
 from domain import Struct, StructBlueprint
-from exchange import Request, StructValidationRequest
+from transit import StructCarrier
 
-T = TypeVar("T", bound="Struct")
+T = TypeVar("T", bound="StructValidationRequest")
 
 class StructValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Struct's validation request-response cycle's data and state.
+        1.  Capture the outcome of a StructValidation transaction.
 
     Attributes:
+        request: T
         state: ResponseState
-        result: ValidationResult
-        request: ValidationRequest[T]
+        result: Optional[ValidationResult]
         exception: Optional[Exception]
 
+        is_success: bool
+        is_failure: bool
+
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[T]
-        -   def valid_blueprint() -> Optional[StructBlueprint[T]]
-
-        -   def success(
-                    request: Request,
-                    result: ValidationResult[T],
-            ) -> ValidationResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[T],
-                    exception: Exception,
-            ) -> ValidationResponse[T]
+        -   def success(result: ValidationResult, request: T) -> ValidationResponse[T]:
+        -   def failure(request: T, exception: Exception) -> ValidationResponse[T]
 
     Super Class:
         ValidationResponse
@@ -58,17 +46,17 @@ class StructValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            request: StructValidationRequest[T],
             result: Optional[ValidationResult] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T,
             state: ResponseState
-            result: ValidationResult
-            request: StructValidationRequest[T]
-            exception:Optional[Exception]
+            result: ValidationResult,
+            request: StructValidationRequest[T],
         """
         super().__init__(
             state=state,
@@ -78,57 +66,44 @@ class StructValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> ValidationResult:
+    def result(self) -> Optional[ValidationResult]:
         return cast(ValidationResult, super().result)
         
     @property
-    def request(self) -> StructValidationRequest[T]:
-        return cast(StructValidationRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     @abstractmethod
-    def valid_model(self) -> Optional[Struct[T]]:
+    def valid_struct(self) -> Optional[Struct]:
         pass
     
     @property
     @abstractmethod
-    def valid_blueprint(self) -> Optional[StructBlueprint[T]]:
+    def valid_blueprint(self) -> Optional[StructBlueprint]:
+        pass
+    
+    @property
+    @abstractmethod
+    def carrier(self) -> Optional[StructCarrier]:
         pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> StructValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            StructValidationRequest[T],
-            request
-        )
+    def success(cls, result: ValidationResult, request: Request) -> StructValidationResponse:
         # Send a success Response using the cast.
+        req = cast(T, request)
         return cls(
             result=result,
-            request=validation_request,
+            request=req,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> StructValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            StructValidationRequest[T],
-            request
-        )
+    def failure(cls, request: Request, exception: Exception) -> StructValidationResponse:
         # Send a failure Response using the cast.
+        req = cast(T, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )

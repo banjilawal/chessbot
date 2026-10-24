@@ -18,36 +18,30 @@ from transit import PlayerBinderCarrier
 
 
 class PlayerBinderValidationResponse(
-    BinderValidationResponse[PlayerBinder]
+    BinderValidationResponse[PlayerBinderValidationRequest]
 ):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a PlayerBinder validation request-response cycle's data and state.
+        1.  Capture the outcome of a PlayerBinderValidation transaction.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult[PlayerBinderCarrier]
         request: PlayerBinderValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Player]
-        -   def valid_blueprint() -> Optional[PlayerBinderBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[PlayerBinderCarrier],
-            ) -> PlayerBinderValidationResponse
+                    result: ValidationResult,
+                    request: PlayerBinderValidationRequest,
+            ) -> ValidationResponse:
 
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[PlayerBinderCarrier],
-                    exception: Exception,
-            ) -> PlayerBinderValidationResponse
-            
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         BinderValidationResponse
     """
@@ -55,22 +49,22 @@ class PlayerBinderValidationResponse(
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: PlayerBinderValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[PlayerBinderCarrier]
             request: PlayerBinderValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
     
     @property
@@ -79,94 +73,59 @@ class PlayerBinderValidationResponse(
     
     @property
     def valid_model(self) -> Optional[PlayerBinder]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PlayerBinderCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, PlayerBinderCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, PlayerBinder)
         ):
-            return None
-        # Handle the case that there is no binder in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the binder. ---#
-        binder = cast(PlayerBinder, carrier.entity)
-        # Handle the case that the binder is null or the wrong type.
-        if (
-                binder is None or
-                not isinstance(binder, PlayerBinder)
-        ):
-            return None
-        # Finally send the success result.
-        return binder
+        model = cast(PlayerBinder, carrier.entity)
+        return model
     
     @property
     def valid_blueprint(self) -> Optional[PlayerBinderBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PlayerBinderCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, PlayerBinderCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, PlayerBinderBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the binder. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, PlayerBinderBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> PlayerBinderValidationResponse:
-        # Downcast the request into a PlayerBinderValidationRequest.
-        validation_request = cast(
-            PlayerBinderValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> PlayerBinderValidationResponse:
+        req = cast(PlayerBinderValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> PlayerBinderValidationResponse:
-        # Downcast the request into a PlayerBinderValidationRequest.
-        validation_request = cast(
-            PlayerBinderValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> PlayerBinderValidationResponse:
+        req = cast(PlayerBinderValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[PlayerBinderCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(PlayerBinderCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

@@ -13,37 +13,32 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
-from domain import Binder, BinderBlueprint
 from exchange import BinderValidationRequest, Request
+from domain import ArchetypeBinder, BinderBlueprint
+from transit import BinderCarrier
 
-T = TypeVar("T", bound="Binder")
+T = TypeVar("T", bound="BinderValidationRequest")
 
 class BinderValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Binder's validation request-response cycle's data and state.
+        1.  Capture the outcome of a BinderValidation transaction.
 
     Attributes:
-        request: ValidationRequest[T]
+        request: T
+        state: ResponseState
+        result: Optional[ValidationResult]
         exception: Optional[Exception]
 
+        is_success: bool
+        is_failure: bool
+
     Provides:
-        -   def valid_binder() -> Optional[T]
-        -   def valid_blueprint() -> Optional[BinderBlueprint[T]]
-
-        -   def success(
-                    request: Request,
-                    result: ValidationResult[T],
-            ) -> ValidationResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[T],
-                    exception: Exception,
-            ) -> ValidationResponse[T]
+        -   def success(result: ValidationResult, request: Request) -> ValidationResponse[T]:
+        -   def failure(request: Request, exception: Exception) -> ValidationResponse[T]
 
     Super Class:
         ValidationResponse
@@ -51,17 +46,17 @@ class BinderValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            result: ValidationResult,
-            request: BinderValidationRequest[T],
+            result: Optional[ValidationResult] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T,
             state: ResponseState
             result: ValidationResult,
-            request: BinderValidationRequest[T]
-            exception:Optional[Exception]
+            request: BinderValidationRequest[T],
         """
         super().__init__(
             state=state,
@@ -71,57 +66,44 @@ class BinderValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> ValidationResult:
+    def result(self) -> Optional[ValidationResult]:
         return cast(ValidationResult, super().result)
         
     @property
-    def request(self) -> BinderValidationRequest[T]:
-        return cast(BinderValidationRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     @abstractmethod
-    def valid_model(self) -> Optional[T]:
+    def valid_model(self) -> Optional[ArchetypeBinder]:
         pass
     
     @property
     @abstractmethod
-    def valid_blueprint(self) -> Optional[BinderBlueprint[T]]:
+    def valid_blueprint(self) -> Optional[BinderBlueprint]:
+        pass
+    
+    @property
+    @abstractmethod
+    def carrier(self) -> Optional[BinderCarrier]:
         pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> BinderValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            BinderValidationRequest[T],
-            request
-        )
+    def success(cls, result: ValidationResult, request: Request) -> BinderValidationResponse:
         # Send a success Response using the cast.
+        req = cast(T, request)
         return cls(
             result=result,
-            request=validation_request,
+            request=req,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> BinderValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            BinderValidationRequest[T],
-            request
-        )
+    def failure(cls, request: Request, exception: Exception) -> BinderValidationResponse:
         # Send a failure Response using the cast.
+        req = cast(T, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )

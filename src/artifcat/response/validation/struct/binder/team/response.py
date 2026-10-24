@@ -18,36 +18,30 @@ from transit import TeamBinderCarrier
 
 
 class TeamBinderValidationResponse(
-    BinderValidationResponse[TeamBinder]
+    BinderValidationResponse[TeamBinderValidationRequest]
 ):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a TeamBinder validation request-response cycle's data and state.
+        1.  Capture the outcome of a TeamBinderValidation transaction.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult[TeamBinderCarrier]
         request: TeamBinderValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Team]
-        -   def valid_blueprint() -> Optional[TeamBinderBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[TeamBinderCarrier],
-            ) -> TeamBinderValidationResponse
+                    result: ValidationResult,
+                    request: TeamBinderValidationRequest,
+            ) -> ValidationResponse:
 
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[TeamBinderCarrier],
-                    exception: Exception,
-            ) -> TeamBinderValidationResponse
-            
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         BinderValidationResponse
     """
@@ -55,22 +49,22 @@ class TeamBinderValidationResponse(
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: TeamBinderValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[TeamBinderCarrier]
             request: TeamBinderValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
     
     @property
@@ -79,94 +73,59 @@ class TeamBinderValidationResponse(
     
     @property
     def valid_model(self) -> Optional[TeamBinder]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(TeamBinderCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, TeamBinderCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, TeamBinder)
         ):
-            return None
-        # Handle the case that there is no binder in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the binder. ---#
-        binder = cast(TeamBinder, carrier.entity)
-        # Handle the case that the binder is null or the wrong type.
-        if (
-                binder is None or
-                not isinstance(binder, TeamBinder)
-        ):
-            return None
-        # Finally send the success result.
-        return binder
+        model = cast(TeamBinder, carrier.entity)
+        return model
     
     @property
     def valid_blueprint(self) -> Optional[TeamBinderBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(TeamBinderCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, TeamBinderCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, TeamBinderBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the binder. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, TeamBinderBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> TeamBinderValidationResponse:
-        # Downcast the request into a TeamBinderValidationRequest.
-        validation_request = cast(
-            TeamBinderValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> TeamBinderValidationResponse:
+        req = cast(TeamBinderValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> TeamBinderValidationResponse:
-        # Downcast the request into a TeamBinderValidationRequest.
-        validation_request = cast(
-            TeamBinderValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> TeamBinderValidationResponse:
+        req = cast(TeamBinderValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[TeamBinderCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(TeamBinderCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

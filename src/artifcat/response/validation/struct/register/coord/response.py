@@ -18,36 +18,30 @@ from transit import CoordRegisterCarrier
 
 
 class CoordRegisterValidationResponse(
-    RegisterValidationResponse[CoordRegister]
+    RegisterValidationResponse[CoordRegisterValidationRequest]
 ):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a CoordRegister validation request-response cycle's data and state.
+        1.  Capture the outcome of a CoordRegisterValidation transaction.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult[CoordRegisterCarrier]
         request: CoordRegisterValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Coord]
-        -   def valid_blueprint() -> Optional[CoordRegisterBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[CoordRegisterCarrier],
-            ) -> CoordRegisterValidationResponse
+                    result: ValidationResult,
+                    request: CoordRegisterValidationRequest,
+            ) -> ValidationResponse:
 
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[CoordRegisterCarrier],
-                    exception: Exception,
-            ) -> CoordRegisterValidationResponse
-            
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         RegisterValidationResponse
     """
@@ -55,22 +49,22 @@ class CoordRegisterValidationResponse(
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: CoordRegisterValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[CoordRegisterCarrier]
             request: CoordRegisterValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
     
     @property
@@ -79,94 +73,59 @@ class CoordRegisterValidationResponse(
     
     @property
     def valid_model(self) -> Optional[CoordRegister]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(CoordRegisterCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, CoordRegisterCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, CoordRegister)
         ):
-            return None
-        # Handle the case that there is no register in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the register. ---#
-        register = cast(CoordRegister, carrier.entity)
-        # Handle the case that the register is null or the wrong type.
-        if (
-                register is None or
-                not isinstance(register, CoordRegister)
-        ):
-            return None
-        # Finally send the success result.
-        return register
+        model = cast(CoordRegister, carrier.entity)
+        return model
     
     @property
     def valid_blueprint(self) -> Optional[CoordRegisterBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(CoordRegisterCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, CoordRegisterCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, CoordRegisterBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the register. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, CoordRegisterBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> CoordRegisterValidationResponse:
-        # Downcast the request into a CoordRegisterValidationRequest.
-        validation_request = cast(
-            CoordRegisterValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> CoordRegisterValidationResponse:
+        req = cast(CoordRegisterValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> CoordRegisterValidationResponse:
-        # Downcast the request into a CoordRegisterValidationRequest.
-        validation_request = cast(
-            CoordRegisterValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> CoordRegisterValidationResponse:
+        req = cast(CoordRegisterValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[CoordRegisterCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(CoordRegisterCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

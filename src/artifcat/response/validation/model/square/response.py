@@ -17,56 +17,54 @@ from domain import Square, SquareBlueprint
 from transit import SquareCarrier
 
 
-class SquareValidationResponse(ModelValidationResponse[Square]):
+class SquareValidationResponse(
+    ModelValidationResponse[SquareValidationRequest]
+):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Square validation request-response cycle's data and state.
+        1.  Capture the outcome of a SquareValidation transaction.
 
     Attributes:
-        result: ValidationResult[SquareCarrier],
         request: SquareValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Square]
-        -   def valid_blueprint() -> Optional[SquareBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[SquareCarrier],
-            ) -> SquareValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[SquareCarrier],
-                    exception: Exception,
-            ) -> SquareValidationResponse
+                    result: ValidationResult,
+                    request: SquareValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: SquareValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
             request: SquareValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
         
     @property
@@ -75,96 +73,59 @@ class SquareValidationResponse(ModelValidationResponse[Square]):
     
     @property
     def valid_model(self) -> Optional[Square]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(SquareCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, SquareCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, Square)
         ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Square, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Square)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[SquareBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(SquareCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, SquareCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, SquareBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the model. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, SquareBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> SquareValidationResponse:
-        
-        # Downcast the request into a SquareValidationRequest.
-        validation_request = cast(
-            SquareValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> SquareValidationResponse:
+        req = cast(SquareValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> SquareValidationResponse:
-        
-        # Downcast the request into a SquareValidationRequest.
-        validation_request = cast(
-            SquareValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> SquareValidationResponse:
+        req = cast(SquareValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[SquareCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(SquareCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

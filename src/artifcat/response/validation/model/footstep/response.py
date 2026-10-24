@@ -18,36 +18,30 @@ from transit import FootstepCarrier
 
 
 class FootstepValidationResponse(
-    ModelValidationResponse[Footstep]
+    ModelValidationResponse[FootstepValidationRequest]
 ):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Footstep validation request-response cycle's data and state.
+        1.  Capture the outcome of a FootstepValidation transaction.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult[FootstepCarrier]
         request: FootstepValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Coord]
-        -   def valid_blueprint() -> Optional[FootstepBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[FootstepCarrier],
-            ) -> FootstepValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[FootstepCarrier],
-                    exception: Exception,
-            ) -> FootstepValidationResponse
+                    result: ValidationResult,
+                    request: FootstepValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
@@ -55,118 +49,83 @@ class FootstepValidationResponse(
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: FootstepValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[FootstepCarrier]
             request: FootstepValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
-    
+        
     @property
     def request(self) -> FootstepValidationRequest:
         return cast(FootstepValidationRequest, super().request)
     
     @property
     def valid_model(self) -> Optional[Footstep]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(FootstepCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, FootstepCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, Footstep)
         ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Footstep, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-                model is None or
-                not isinstance(model, Footstep)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[FootstepBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(FootstepCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, FootstepCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, FootstepBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the model. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, FootstepBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> FootstepValidationResponse:
-        # Downcast the request into a FootstepValidationRequest.
-        validation_request = cast(
-            FootstepValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> FootstepValidationResponse:
+        req = cast(FootstepValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> FootstepValidationResponse:
-        # Downcast the request into a FootstepValidationRequest.
-        validation_request = cast(
-            FootstepValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> FootstepValidationResponse:
+        req = cast(FootstepValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[FootstepCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(FootstepCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

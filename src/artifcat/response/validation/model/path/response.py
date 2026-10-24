@@ -17,56 +17,54 @@ from domain import Path, PathBlueprint
 from transit import PathCarrier
 
 
-class PathValidationResponse(ModelValidationResponse[Path]):
+class PathValidationResponse(
+    ModelValidationResponse[PathValidationRequest]
+):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Path validation request-response cycle's data and state.
+        1.  Capture the outcome of a PathValidation transaction.
 
     Attributes:
-        result: ValidationResult[PathCarrier],
         request: PathValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Path]
-        -   def valid_blueprint() -> Optional[PathBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[PathCarrier],
-            ) -> PathValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[PathCarrier],
-                    exception: Exception,
-            ) -> PathValidationResponse
+                    result: ValidationResult,
+                    request: PathValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: PathValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
             request: PathValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
         
     @property
@@ -75,96 +73,59 @@ class PathValidationResponse(ModelValidationResponse[Path]):
     
     @property
     def valid_model(self) -> Optional[Path]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PathCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, PathCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, Path)
         ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Path, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Path)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[PathBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PathCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, PathCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, PathBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the model. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, PathBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> PathValidationResponse:
-        
-        # Downcast the request into a PathValidationRequest.
-        validation_request = cast(
-            PathValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> PathValidationResponse:
+        req = cast(PathValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> PathValidationResponse:
-        
-        # Downcast the request into a PathValidationRequest.
-        validation_request = cast(
-            PathValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> PathValidationResponse:
+        req = cast(PathValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[PathCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(PathCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

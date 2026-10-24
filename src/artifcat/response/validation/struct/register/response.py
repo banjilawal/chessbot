@@ -13,55 +13,50 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
-from domain import Register, RegisterBlueprint
 from exchange import RegisterValidationRequest, Request
+from domain import Register, RegisterBlueprint
+from transit import RegisterCarrier
 
-T = TypeVar("T", bound="Register")
+T = TypeVar("T", bound="RegisterValidationRequest")
 
 class RegisterValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Register's validation request-response cycle's data and state.
+        1.  Capture the outcome of a RegisterValidation transaction.
 
     Attributes:
-        request: ValidationRequest[T]
+        request: T
+        state: ResponseState
+        result: Optional[ValidationResult]
         exception: Optional[Exception]
 
+        is_success: bool
+        is_failure: bool
+
     Provides:
-        -   def valid_register() -> Optional[T]
-        -   def valid_blueprint() -> Optional[RegisterBlueprint[T]]
-
-        -   def success(
-                    request: Request,
-                    result: ValidationResult[T],
-            ) -> ValidationResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[T],
-                    exception: Exception,
-            ) -> ValidationResponse[T]
+        -   def success(result: ValidationResult, request: Request) -> ValidationResponse[T]:
+        -   def failure(request: Request, exception: Exception) -> ValidationResponse[T]
 
     Super Class:
-        ValidationResponse
+        StructValidationResponse
     """
     
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            result: ValidationResult,
-            request: RegisterValidationRequest[T],
+            result: Optional[ValidationResult] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T,
             state: ResponseState
             result: ValidationResult,
-            request: RegisterValidationRequest[T]
-            exception:Optional[Exception]
+            request: RegisterValidationRequest[T],
         """
         super().__init__(
             state=state,
@@ -71,57 +66,44 @@ class RegisterValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> ValidationResult:
+    def result(self) -> Optional[ValidationResult]:
         return cast(ValidationResult, super().result)
         
     @property
-    def request(self) -> RegisterValidationRequest[T]:
-        return cast(RegisterValidationRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     @abstractmethod
-    def valid_model(self) -> Optional[T]:
+    def valid_model(self) -> Optional[Register]:
         pass
     
     @property
     @abstractmethod
-    def valid_blueprint(self) -> Optional[RegisterBlueprint[T]]:
+    def valid_blueprint(self) -> Optional[RegisterBlueprint]:
+        pass
+    
+    @property
+    @abstractmethod
+    def carrier(self) -> Optional[RegisterCarrier]:
         pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> RegisterValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            RegisterValidationRequest[T],
-            request
-        )
+    def success(cls, result: ValidationResult, request: Request) -> RegisterValidationResponse:
         # Send a success Response using the cast.
+        req = cast(T, request)
         return cls(
             result=result,
-            request=validation_request,
+            request=req,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> RegisterValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            RegisterValidationRequest[T],
-            request
-        )
+    def failure(cls, request: Request, exception: Exception) -> RegisterValidationResponse:
         # Send a failure Response using the cast.
+        req = cast(T, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )

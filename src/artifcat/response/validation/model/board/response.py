@@ -17,56 +17,54 @@ from domain import Board, BoardBlueprint
 from transit import BoardCarrier
 
 
-class BoardValidationResponse(ModelValidationResponse[Board]):
+class BoardValidationResponse(
+    ModelValidationResponse[BoardValidationRequest]
+):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Board validation request-response cycle's data and state.
+        1.  Capture the outcome of a BoardValidation transaction.
 
     Attributes:
-        result: ValidationResult[BoardCarrier],
         request: BoardValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Board]
-        -   def valid_blueprint() -> Optional[BoardBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[BoardCarrier],
-            ) -> BoardValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[BoardCarrier],
-                    exception: Exception,
-            ) -> BoardValidationResponse
+                    result: ValidationResult,
+                    request: BoardValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: BoardValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
             request: BoardValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
         
     @property
@@ -75,96 +73,59 @@ class BoardValidationResponse(ModelValidationResponse[Board]):
     
     @property
     def valid_model(self) -> Optional[Board]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(BoardCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, BoardCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, Board)
         ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Board, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Board)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[BoardBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(BoardCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, BoardCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, BoardBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the model. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, BoardBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> BoardValidationResponse:
-        
-        # Downcast the request into a BoardValidationRequest.
-        validation_request = cast(
-            BoardValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> BoardValidationResponse:
+        req = cast(BoardValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> BoardValidationResponse:
-        
-        # Downcast the request into a BoardValidationRequest.
-        validation_request = cast(
-            BoardValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> BoardValidationResponse:
+        req = cast(BoardValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[BoardCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(BoardCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

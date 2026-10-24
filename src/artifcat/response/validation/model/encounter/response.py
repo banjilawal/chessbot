@@ -17,56 +17,54 @@ from domain import Encounter, EncounterBlueprint
 from transit import EncounterCarrier
 
 
-class EncounterValidationResponse(ModelValidationResponse[Encounter]):
+class EncounterValidationResponse(
+    ModelValidationResponse[EncounterValidationRequest]
+):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Encounter validation request-response cycle's data and state.
+        1.  Capture the outcome of a EncounterValidation transaction.
 
     Attributes:
-        result: ValidationResult[EncounterCarrier],
         request: EncounterValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Encounter]
-        -   def valid_blueprint() -> Optional[EncounterBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[EncounterCarrier],
-            ) -> EncounterValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[EncounterCarrier],
-                    exception: Exception,
-            ) -> EncounterValidationResponse
+                    result: ValidationResult,
+                    request: EncounterValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: EncounterValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
             request: EncounterValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
         
     @property
@@ -75,96 +73,59 @@ class EncounterValidationResponse(ModelValidationResponse[Encounter]):
     
     @property
     def valid_model(self) -> Optional[Encounter]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(EncounterCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, EncounterCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, Encounter)
         ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Encounter, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Encounter)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[EncounterBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(EncounterCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, EncounterCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, EncounterBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the model. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, EncounterBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> EncounterValidationResponse:
-        
-        # Downcast the request into a EncounterValidationRequest.
-        validation_request = cast(
-            EncounterValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> EncounterValidationResponse:
+        req = cast(EncounterValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> EncounterValidationResponse:
-        
-        # Downcast the request into a EncounterValidationRequest.
-        validation_request = cast(
-            EncounterValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> EncounterValidationResponse:
+        req = cast(EncounterValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[EncounterCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(EncounterCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier

@@ -17,56 +17,54 @@ from domain import Game, GameBlueprint
 from transit import GameCarrier
 
 
-class GameValidationResponse(ModelValidationResponse[Game]):
+class GameValidationResponse(
+    ModelValidationResponse[GameValidationRequest]
+):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Game validation request-response cycle's data and state.
+        1.  Capture the outcome of a GameValidation transaction.
 
     Attributes:
-        result: ValidationResult[GameCarrier],
         request: GameValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Game]
-        -   def valid_blueprint() -> Optional[GameBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[GameCarrier],
-            ) -> GameValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[GameCarrier],
-                    exception: Exception,
-            ) -> GameValidationResponse
+                    result: ValidationResult,
+                    request: GameValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: GameValidationRequest,
+            result: Optional[ValidationResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
             request: GameValidationRequest
+            result: Optional[ValidationResult]
             exception: Optional[Exception]
         """
         super().__init__(
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
         
     @property
@@ -75,96 +73,59 @@ class GameValidationResponse(ModelValidationResponse[Game]):
     
     @property
     def valid_model(self) -> Optional[Game]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(GameCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, GameCarrier)
+                not carrier.has_model or
+                carrier.entity is None or
+                not isinstance(carrier.entity, Game)
         ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Game, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Game)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[GameBlueprint]:
-        # Handle the case that the validation failed.
-        if self.result.is_failure:
-            return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(GameCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
+        carrier = self.carrier
         if (
                 carrier is None or
-                not isinstance(carrier, GameCarrier)
+                not carrier.has_blueprint or
+                carrier.entity is None or
+                not isinstance(carrier.entity, GameBlueprint)
         ):
             return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
+        # --- Extract the model. ---#
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, GameBlueprint)
-        ):
-            return None
-        # Finally send the success result.
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> GameValidationResponse:
-        
-        # Downcast the request into a GameValidationRequest.
-        validation_request = cast(
-            GameValidationRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: Request) -> GameValidationResponse:
+        req = cast(GameValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> GameValidationResponse:
-        
-        # Downcast the request into a GameValidationRequest.
-        validation_request = cast(
-            GameValidationRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> GameValidationResponse:
+        req = cast(GameValidationRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )
+    
+    @property
+    def carrier(self) -> Optional[GameCarrier]:
+        result = self.result
+        if (
+                result is None or
+                not isinstance(result, ValidationResult)
+        ):
+            return None
+        carrier = cast(GameCarrier, result.payload)
+        if carrier is None or carrier.is_empty:
+            return None
+        return carrier
