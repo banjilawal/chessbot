@@ -5,32 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/travel/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/travel/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/attack/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/maneuver/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/promotion/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/attack/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/maneuver/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/promotion/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/attack/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/maneuver/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/promotion/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/promotion/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/promotion/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/attack/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/attack/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/maneuver/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/maneuver/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/promotion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/promotion/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/attack/dispatcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/maneuver/dispatcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/promotion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/maneuver/promotion/dispatcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/attack/dispatcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/promotion/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/maneuver/dispatcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/promotion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/promotion/promotion/dispatcher.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,61 +72,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.153366299451893" />
-      <entry key="MS500" value="2.4313347114101047" />
-      <entry key="S2" value="5.193309519674691" />
-      <entry key="S5" value="10.610223133387317" />
-      <entry key="S10" value="18.409061830679182" />
-      <entry key="S30" value="35.26661897401283" />
-      <entry key="S60" value="44.468968691066856" />
-      <entry key="M2" value="54.39963452931954" />
-      <entry key="M5" value="80.27591882618106" />
-      <entry key="M10" value="112.48065768398939" />
-      <entry key="M15" value="142.88612124912814" />
-      <entry key="M30" value="237.10793580820769" />
-      <entry key="H1" value="386.52384537647976" />
-      <entry key="H2" value="568.6365995725708" />
-      <entry key="H4" value="903.5952399980204" />
-      <entry key="D1" value="5682.673834821562" />
-      <entry key="W1" value="27989.66281251753" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000023007832643" />
+      <entry key="S2" value="1.0806840014235148" />
+      <entry key="S5" value="1.6246715577061497" />
+      <entry key="S10" value="2.481568171696975" />
+      <entry key="S30" value="3.83087639570789" />
+      <entry key="S60" value="4.3607435801992604" />
+      <entry key="M2" value="5.059238526132184" />
+      <entry key="M5" value="17.109380914728114" />
+      <entry key="M10" value="53.14906463632637" />
+      <entry key="M15" value="90.64170894999457" />
+      <entry key="M30" value="196.70070698842386" />
+      <entry key="H1" value="366.54823708858885" />
+      <entry key="H2" value="579.4850747233452" />
+      <entry key="H4" value="934.11492244237" />
+      <entry key="D1" value="5710.965254821783" />
+      <entry key="W1" value="28041.69859621163" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.187844838903426E-164" />
-      <entry key="MS500" value="2.2150678082426965E-33" />
-      <entry key="S2" value="1.0280982860852262E-8" />
-      <entry key="S5" value="0.0011722371398570435" />
-      <entry key="S10" value="0.06471682505273467" />
-      <entry key="S30" value="0.9977260945542036" />
-      <entry key="S60" value="1.994318553746783" />
-      <entry key="M2" value="2.8436863466816726" />
-      <entry key="M5" value="4.1128450935449425" />
-      <entry key="M10" value="6.447761599708865" />
-      <entry key="M15" value="8.970874887831124" />
-      <entry key="M30" value="16.20417402672224" />
-      <entry key="H1" value="26.516355695124947" />
-      <entry key="H2" value="37.782550997838435" />
-      <entry key="H4" value="52.42299194899507" />
-      <entry key="D1" value="261.97684990903707" />
-      <entry key="W1" value="1477.0687926674514" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.0010989163513E-190" />
+      <entry key="S5" value="1.4696371592615784E-76" />
+      <entry key="S10" value="1.694128423540799E-38" />
+      <entry key="S30" value="5.047027585078231E-13" />
+      <entry key="S60" value="1.2255663735896343E-6" />
+      <entry key="M2" value="0.00203222764320118" />
+      <entry key="M5" value="0.23134985193440966" />
+      <entry key="M10" value="1.5495201666414042" />
+      <entry key="M15" value="3.4682990275185173" />
+      <entry key="M30" value="10.119410796324315" />
+      <entry key="H1" value="21.305126548774762" />
+      <entry key="H2" value="34.600544095640686" />
+      <entry key="H4" value="51.02633337976078" />
+      <entry key="D1" value="261.3091039976354" />
+      <entry key="W1" value="1477.1172129897218" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.962636257692941" />
-      <entry key="MS500" value="2.3432991963649847" />
-      <entry key="S2" value="5.147931066416278" />
-      <entry key="S5" value="10.577260456379603" />
-      <entry key="S10" value="18.43905238010172" />
-      <entry key="S30" value="36.20675635375588" />
-      <entry key="S60" value="46.41051000661538" />
-      <entry key="M2" value="57.203140063894296" />
-      <entry key="M5" value="84.34581049786188" />
-      <entry key="M10" value="118.87071495428742" />
-      <entry key="M15" value="151.79205225025908" />
-      <entry key="M30" value="253.24611218706048" />
-      <entry key="H1" value="412.98768110433775" />
-      <entry key="H2" value="606.3841772492389" />
-      <entry key="H4" value="955.9953400522237" />
-      <entry key="D1" value="5944.625613188296" />
-      <entry key="W1" value="29466.70720938277" />
+      <entry key="MS100" value="7.343705749791444E-24" />
+      <entry key="MS500" value="2.7736611446563655E-5" />
+      <entry key="S2" value="0.1174332936858266" />
+      <entry key="S5" value="0.812029101343046" />
+      <entry key="S10" value="1.8541293437177135" />
+      <entry key="S30" value="3.5218702655017595" />
+      <entry key="S60" value="4.187817178536461" />
+      <entry key="M2" value="4.969160157438832" />
+      <entry key="M5" value="17.29480152974312" />
+      <entry key="M10" value="54.658438912414276" />
+      <entry key="M15" value="94.06648553163254" />
+      <entry key="M30" value="206.7692650788698" />
+      <entry key="H1" value="387.8059215406038" />
+      <entry key="H2" value="614.0507067636231" />
+      <entry key="H4" value="985.1174285456981" />
+      <entry key="D1" value="5972.249156809478" />
+      <entry key="W1" value="29518.791393316875" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -160,7 +160,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/exchange/request",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -174,8 +174,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/exchange/request" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher" />
+      <recent name="$PROJECT_DIR$/src/exchange/request" />
       <recent name="$PROJECT_DIR$/src/exchange/request/encounter" />
       <recent name="$PROJECT_DIR$/src/domain/interface" />
       <recent name="$PROJECT_DIR$/src/exchange/request/encounter/kill" />
@@ -847,7 +847,7 @@
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
-      <workItem from="1792402033304" duration="241960000" />
+      <workItem from="1792402033304" duration="243386000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2559,11 +2559,6 @@
           <url>file://$PROJECT_DIR$/src/err/authorization/chain/attack/exception.py</url>
           <line>11</line>
           <option name="timeStamp" value="591" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exchange/request/encounter/request.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="593" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

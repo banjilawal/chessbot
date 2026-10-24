@@ -1,13 +1,13 @@
-# src/transit/dispatcher/authorization/__init__.py
+# src/transit/dispatcher/promotion/__init__.py
 
 """
-Module: transit.dispatcher.authorization.__init__
+Module: transit.dispatcher.promotion.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== TRANSIT.DISPATCHER.AUTHORIZATION PACKAGE ===========#
+# =========== TRANSIT.DISPATCHER.PROMOTION PACKAGE ===========#
 
 # Packages
 from .attack import *
@@ -15,4 +15,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .dispatcher import AuthorizationDispatcher
+from .dispatcher import PromotionDispatcher

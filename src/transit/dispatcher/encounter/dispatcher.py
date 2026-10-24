@@ -1,7 +1,7 @@
-# src/transit/dispatcher/authorization/dispatcher.py
+# src/transit/dispatcher/encounter/dispatcher.py
 
 """
-Module: transit.dispatcher.authorization.dispatcher
+Module: transit.dispatcher.encounter.dispatcher
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,16 +14,15 @@ from typing import Generic, TypeVar
 
 
 from artifcat import Decision
-from authorization import Authorizer
-from exchange import AuthorizationRequest
+from exchange import EncounterRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="EncounterRequest")
 
-class AuthorizationDispatcher(ABC, Generic[T]):
+class EncounterDispatcher(ABC, Generic[T]):
     """
     Role
-        -   Permission Authorization Manager
+        -   Permission Encounter Manager
 
     Responsibilities:
         1.  Grant
@@ -61,6 +60,6 @@ class AuthorizationDispatcher(ABC, Generic[T]):
         Returns:
             Decision[T]
         Raises:
-            AuthorizationDispatcherException
+            EncounterDispatcherException
         """
         pass

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from artifcat import PromotionResult
+from artifcat import PromotionResponse, PromotionResult
 from exchange import PromotionRequest, Responder
 from util import LoggingLevelRouter
 

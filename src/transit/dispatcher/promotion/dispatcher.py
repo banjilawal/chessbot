@@ -1,7 +1,7 @@
-# src/transit/dispatcher/authorization/dispatcher.py
+# src/transit/dispatcher/promotion/dispatcher.py
 
 """
-Module: transit.dispatcher.authorization.dispatcher
+Module: transit.dispatcher.promotion.dispatcher
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,58 +9,54 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from abc import abstractmethod
 
-
-from artifcat import Decision
-from authorization import Authorizer
-from exchange import AuthorizationRequest
+from artifcat import PromotionResponse
+from exchange import PromotionRequest
+from transit import Dispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
-
-class AuthorizationDispatcher(ABC, Generic[T]):
+class PromotionDispatcher(Dispatcher[PromotionRequest]):
     """
     Role
-        -   Permission Authorization Manager
+        -   Permission Promotion Manager
 
     Responsibilities:
         1.  Grant
 
     Attributes:
-        authorizer: Authorizer[T]
+        promoter: Promoter
 
     Provides:
-        -   def  execute(self, request: T) -> Decision[T]
+        -   def  execute(self, request: PromotionRequest) -> PromotionResponse
 
     Super Class:
         Dispatcher
     """
     
-    _authorizer: Authorizer[T]
+    _promoter: Promoter
     
-    def __init__(self, authorizer: Authorizer[T]):
+    def __init__(self, promoter: Promoter):
         """
         Args:
-            authorizer: Authorizer[T]
+            promoter: Promoter
         """
-        self._authorizer = authorizer
+        self._promoter = promoter
         
     @property
-    def authorizer(self) -> Authorizer[T]:
-        return self._authorizer
+    def promoter(self) -> Promoter:
+        return self._promoter
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, request: PromotionRequest) -> PromotionResponse:
         """
         Decide if an activity can be performed.
         Args:
             request: T
         Returns:
-            Decision[T]
+            PromotionResponse
         Raises:
-            AuthorizationDispatcherException
+            PromotionDispatcherException
         """
         pass

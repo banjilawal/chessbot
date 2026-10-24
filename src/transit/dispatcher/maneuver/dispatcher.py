@@ -1,7 +1,7 @@
-# src/transit/dispatcher/authorization/dispatcher.py
+# src/transit/dispatcher/maneuver/dispatcher.py
 
 """
-Module: transit.dispatcher.authorization.dispatcher
+Module: transit.dispatcher.maneuver.dispatcher
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,58 +9,54 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from abc import abstractmethod
 
-
-from artifcat import Decision
-from authorization import Authorizer
-from exchange import AuthorizationRequest
+from artifcat import ManeuverResponse
+from exchange import ManeuverRequest
+from transit import Dispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
-
-class AuthorizationDispatcher(ABC, Generic[T]):
+class ManeuverDispatcher(Dispatcher[ManeuverRequest]):
     """
     Role
-        -   Permission Authorization Manager
+        -   Permission Maneuver Manager
 
     Responsibilities:
         1.  Grant
 
     Attributes:
-        authorizer: Authorizer[T]
+        mover: Mover
 
     Provides:
-        -   def  execute(self, request: T) -> Decision[T]
+        -   def  execute(self, request: ManeuverRequest) -> ManeuverResponse
 
     Super Class:
         Dispatcher
     """
     
-    _authorizer: Authorizer[T]
+    _mover: Mover
     
-    def __init__(self, authorizer: Authorizer[T]):
+    def __init__(self, mover: Mover):
         """
         Args:
-            authorizer: Authorizer[T]
+            mover: Mover
         """
-        self._authorizer = authorizer
+        self._mover = mover
         
     @property
-    def authorizer(self) -> Authorizer[T]:
-        return self._authorizer
+    def mover(self) -> Mover:
+        return self._mover
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, request: ManeuverRequest) -> ManeuverResponse:
         """
         Decide if an activity can be performed.
         Args:
             request: T
         Returns:
-            Decision[T]
+            ManeuverResponse
         Raises:
-            AuthorizationDispatcherException
+            ManeuverDispatcherException
         """
         pass
