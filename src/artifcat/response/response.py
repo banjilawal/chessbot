@@ -15,16 +15,16 @@ from typing import Generic, Optional, TypeVar
 from artifcat import ResponseState, Result
 from exchange import Request
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Result")
 
 
 class Response(ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a request-response cycle's data and state.
+        1.  Capture the outcome of a transaction.
 
     Attributes:
         request: Request[T]
@@ -32,12 +32,11 @@ class Response(ABC, Generic[T]):
         result: Optional[Result[T]]
         exception: Optional[Exception]
         
+        is_success: bool
+        is_failure: bool
+        
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        
-        -   def success(request: Request[T], result: Result[T]) -> Response[T]:
-        
+        -   def success(result: T, request: Request[T]) -> Response[T]:
         -   def failure(request: Request[T], exception: Exception) -> Response[T]
 
     Super Class:

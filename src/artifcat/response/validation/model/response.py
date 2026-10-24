@@ -13,37 +13,31 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
-from exchange import ModelValidationRequest
+from exchange import ModelValidationRequest, Request, ValidationRequest
 from domain import Model, ModelBlueprint
-
+from transit import ModelCarrier
 
 T = TypeVar("T", bound="ModelValidationRequest")
 
 class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Model's validation request-response cycle's data and state.
+        1.  Capture the outcome of a ModelValidation transaction.
 
     Attributes:
+        request: T
         state: ResponseState
-        result: ValidationResult
-        request: ValidationRequest[T]
+        result: Optional[ValidationResult]
         exception: Optional[Exception]
 
+        is_success: bool
+        is_failure: bool
+
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[T]
-        -   def valid_blueprint() -> Optional[ModelBlueprint[T]]
-
-        -   def success(request: T, result: ValidationResult[T]) -> ValidationResponse[T]
-
+        -   def success(result: ValidationResult, request: T) -> ValidationResponse[T]:
         -   def failure(request: T, exception: Exception) -> ValidationResponse[T]
 
     Super Class:
@@ -59,6 +53,7 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     ):
         """
         Args:
+            request: T,
             state: ResponseState
             result: ValidationResult,
             request: ModelValidationRequest[T],
@@ -87,20 +82,28 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     @abstractmethod
     def valid_blueprint(self) -> Optional[ModelBlueprint]:
         pass
+    
+    @property
+    @abstractmethod
+    def carrier(self) -> Optional[ModelCarrier]:
+        pass
         
     @classmethod
-    def success(cls, result: ValidationResult, request: T) -> ModelValidationResponse:
+    def success(cls, result: ValidationResult, request: Request) -> ModelValidationResponse:
+        # Send a success Response using the cast.
+        req = cast(T, request)
         return cls(
             result=result,
-            request=request,
+            request=req,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, request: T, exception: Exception) -> ModelValidationResponse:
+    def failure(cls, request: Request, exception: Exception) -> ModelValidationResponse:
         # Send a failure Response using the cast.
+        req = cast(T, request)
         return cls(
-            request=request,
+            request=req,
             exception=exception,
             state=ResponseState.FAILURE,
         )

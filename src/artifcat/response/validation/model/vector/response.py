@@ -17,37 +17,35 @@ from domain import Vector, VectorBlueprint
 from transit import VectorCarrier
 
 
-class VectorValidationResponse(ModelValidationResponse[VectorValidationRequest]):
+class VectorValidationResponse(
+    ModelValidationResponse[VectorValidationRequest]
+):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Vector validation request-response cycle's data and state.
+        1.  Capture the outcome of a VectorValidation transaction.
 
     Attributes:
-        result: ValidationResult[VectorCarrier],
         request: VectorValidationRequest
-        exception: Optional[Exception]
+        result: Optional[ValidationResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   def valid_model() -> Optional[Vector]
-        -   def valid_blueprint() -> Optional[VectorBlueprint]
-
         -   def success(
-                    request: Request,
-                    result: ValidationResult[VectorCarrier],
-            ) -> VectorValidationResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[VectorCarrier],
-                    exception: Exception,
-            ) -> VectorValidationResponse
+                    result: ValidationResult,
+                    request: VectorValidationRequest,
+            ) -> ValidationResponse:
             
+        -   def failure(request: ValidationResult, exception: Exception) -> ValidationResponse
+
     Super Class:
         ModelValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
@@ -102,25 +100,19 @@ class VectorValidationResponse(ModelValidationResponse[VectorValidationRequest])
         return blueprint
     
     @classmethod
-    def success(
-            cls,
-            result: ValidationResult,
-            request: VectorValidationRequest,
-    ) -> VectorValidationResponse:
+    def success(cls, result: ValidationResult, request: Request) -> VectorValidationResponse:
+        req = cast(VectorValidationRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: VectorValidationRequest,
-            exception: Exception,
-    ) -> VectorValidationResponse:
+    def failure(cls, request: Request, exception: Exception) -> VectorValidationResponse:
+        req = cast(VectorValidationRequest, request)
         return cls(
-            request=request,
+            request=req,
             exception=exception,
             state=ResponseState.FAILURE,
         )
