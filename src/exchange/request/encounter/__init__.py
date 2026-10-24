@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.ENCOUNTER PACKAGE ===========#
 
 # Packages
+from .checkmate import *
 from .kill import *
+from .warning import *
 
 # Modules
 from .request import EncounterRequest
