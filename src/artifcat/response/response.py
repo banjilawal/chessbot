@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar
 from artifcat import ResponseState, Result
 from exchange import Request
 
-T = TypeVar("T", bound="Result")
+T = TypeVar("T")
 
 
 class Response(ABC, Generic[T]):
@@ -27,73 +27,68 @@ class Response(ABC, Generic[T]):
         1.  Capture a request-response cycle's data and state.
 
     Attributes:
-        result: T
         request: Request[T]
         state: ResponseState
+        result: Optional[Result[T]]
         exception: Optional[Exception]
         
     Provides:
         -   is_success: bool
         -   is_failure: bool
         
-        -   def success(
-                    request: Request[T],
-                    result: T,
-            ) -> Response[T]:
+        -   def success(request: Request[T], result: Result[T]) -> Response[T]:
         
-        -   def failure(
-                    request: Request[T],
-                    result: T,
-                    exception: Exception,
-            ) -> Response[T]
+        -   def failure(request: Request[T], exception: Exception) -> Response[T]
 
     Super Class:
     """
-    _result: T
     _request: Request[T]
     _state: ResponseState
+    _result: Optional[T]
     _exception: Optional[Exception]
     
     def __init__(
             self,
-            result: T,
             request: Request[T],
             state: ResponseState,
+            result: Optional[T] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
-            result: T
             request: Request[T]
             state: ResponseState
+            result: Optional[T]
             exception: Optional[Exception]
         """
         self._state = state
         self._result = result
         self._request = request
-        self._exception = exception or result.exception
-        
+        self._exception = exception
+    
     @property
-    def result(self) -> T:
-        return self._result
+    def state(self) -> ResponseState:
+        return self._state
         
     @property
     def request(self) -> Request[T]:
         return self._request
     
     @property
-    def state(self) -> ResponseState:
-        return self._state
+    def result(self) -> Optional[T]:
+        return self._result
     
     @property
     def exception(self) -> Optional[Exception]:
-        return self._result.exception
+        return self._exception
     
     @property
     def is_success(self) -> bool:
         return (
-            self._result.is_success and
             self._exception is None and
+            self._result is not None and
+            self._request is not None and
+            self._result.is_success and
             self._state == ResponseState.SUCCESS
         )
     
@@ -102,11 +97,7 @@ class Response(ABC, Generic[T]):
         return not self.success
         
     @classmethod
-    def success(
-            cls,
-            request: Request[T],
-            result: T,
-    ) -> Response[T]:
+    def success(cls, result: T, request: Request[T]) -> Response[T]:
         return cls(
             result=result,
             request=request,
@@ -114,14 +105,8 @@ class Response(ABC, Generic[T]):
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request[T],
-            result: T,
-            exception: Exception,
-    ) -> Response[T]:
+    def failure(cls, request: Request[T], exception: Exception) -> Response[T]:
         return cls(
-            result=result,
             request=request,
             exception=exception,
             state=ResponseState.FAILURE,

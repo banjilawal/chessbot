@@ -1,0 +1,157 @@
+# src/space/linear/segment/axis/space.py
+
+"""
+Module: space.linear.segment.axis.space
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from transit.dispatcher.attack import VectorValidator
+from err import SouthAxisEndPointAttackException
+from domain.model import Vector
+from domain.struct.register import VectorRegister
+from artifcat import AttackResult
+from domain.schema.destination.axis import AxisDestination
+from util import LoggingLevelRouter
+
+
+class SouthAxisEndpointAttack:
+    """
+    Role:
+        - Attack
+        - Integrity Management
+
+    Responsibilities:
+        1.  Create a VectoRegister for an Axis endpoints.
+
+    Attributes:
+        delta: Vector
+        origin: Vector
+        vector_validator: Optional[VectorValidator]
+
+    Provides:
+        -   def execute() -> AttackResult[VectorRegister]
+
+    Super Class:
+    """
+    _delta: Vector
+    _origin: Vector
+    _destination: Vector
+    _vector_validator: VectorValidator
+    
+    def __init__(
+            self,
+            origin: Vector,
+            vector_validator: Optional[VectorValidator] | None = VectorValidator(),
+    ):
+        """
+        Args:
+            origin: Vector
+            vector_validator: Optional[VectorValidator]
+        """
+        self._origin = origin
+        self._vector_validator = vector_validator
+        self._delta = Vector(
+            x=origin.x + AxisDestination.SOUTH.vector.x,
+            y=origin.y + AxisDestination.SOUTH.vector.y,
+        )
+        self._destination = Vector(
+            x=self._origin.x,
+            y=AxisDestination.SOUTH.vector.y
+        )
+        
+    @property
+    def origin(self) -> Vector:
+        return self._origin
+    
+    @property
+    def delta(self) -> Vector:
+        return self._delta
+    
+    @property
+    def destination(self) -> Vector:
+        return self._destination
+    
+    @LoggingLevelRouter.monitor
+    def execute(self) -> AttackResult[VectorRegister]:
+        """
+        Construct the endpoints for a SouthernAxis instance.
+
+        Action:
+            1.  Send an exception chain in the AttackResult if the VectorValidator instance
+                fails.
+            2.  Otherwise, create the VectorRegister product and send in the success result.
+        Args:
+        Returns:
+            AttackResult[VectorRegister]
+        Raises:
+             SouthernAxisEndPointAttackException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that the origin is not safe to use.
+        validation = self._vector_validator.execute(self._origin)
+        # Send the exception chain in the result.
+        if validation.is_failure:
+            return AttackResult.failure(
+                SouthAxisEndPointAttackException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=SouthAxisEndPointAttackException.MSG,
+                    err_code=SouthAxisEndPointAttackException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        # Create the endpoint register.
+        vector_register = VectorRegister(
+            u=cast(Vector, validation.payload),
+            v=self._destination,
+        )
+        # --- Forward the work product to the caller. ---#
+        return AttackResult.success(vector_register)
+    
+    # @LoggingLevelRouter.monitor
+    # def execute(self) -> AttackResult[VectorRegister]:
+    #     """
+    #     Construct the endpoints for a SouthernAxis instance.
+    #
+    #     Action:
+    #         1.  Send an exception chain in the AttackResult if the VectorValidator instance
+    #             fails.
+    #         2.  Otherwise, create the VectorRegister product and send in the success result.
+    #     Args:
+    #     Returns:
+    #         AttackResult[VectorRegister]
+    #     Raises:
+    #          SouthernAxisEndPointAttackException
+    #     """
+    #     method = f"{self.__class__.__name__}.execute"
+    #
+    #     # Request a product from the vector attack.
+    #     result = self._vector_validator.execute(
+    #         x=self._origin.x + self._delta.x,
+    #         y=self._origin.y + self._delta.y,
+    #     )
+    #     # Handle the case that the request is not fulfilled.
+    #     if result.is_failure:
+    #         return AttackResult.failure(
+    #             SouthAxisEndPointAttackException(
+    #                 cls_mthd=method,
+    #                 cls_name=self.__class__.__name__,
+    #                 msg=SouthAxisEndPointAttackException.MSG,
+    #                 err_code=SouthAxisEndPointAttackException.ERR_CODE,
+    #                 ex=result.exception,
+    #             )
+    #         )
+    #     # Create the endpoint register.
+    #     vector_register = VectorRegister(
+    #         u=self._origin,
+    #         v=cast(Vector, result.payload)
+    #     )
+    #     # --- Forward the work product to the caller. ---#
+    #     return AttackResult.success(payload=vector_register)

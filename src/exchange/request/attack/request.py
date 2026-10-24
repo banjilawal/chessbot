@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import AttackResult
-from domain import Maneuver, Square, Encounter, Token
+from domain import Maneuver, Square, Token
 from exchange import Request
 
 T = TypeVar("T", bound="AttackResult")

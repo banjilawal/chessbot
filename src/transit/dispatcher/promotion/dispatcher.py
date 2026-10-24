@@ -14,6 +14,7 @@ from typing import Optional
 
 from artifcat import PromotionResponse, PromotionResult
 from exchange import PromotionRequest
+from operation import Promoter
 from transit import Dispatcher
 from util import LoggingLevelRouter
 
@@ -35,14 +36,14 @@ class PromotionDispatcher(Dispatcher[PromotionResult]):
         Dispatcher
     """
     
-    _promoter: Optional[Promoter]
+    _promoter: Promoter
     
-    def __init__(self, promoter: Promoter):
+    def __init__(self, promoter: Optional[Promoter] | None = None):
         """
         Args:
-            promoter: Promoter
+            promoter: Optional[Promoter]
         """
-        self._promoter = promoter
+        self._promoter = promoter or Promoter()
         
     @property
     def promoter(self) -> Promoter:

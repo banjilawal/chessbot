@@ -1,0 +1,26 @@
+# src/transit/dispatcher/attack/__init__.py
+
+"""
+Module: transit.dispatcher.attack.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+
+# ========== TRANSIT.DISPATCHER.ATTACK PACKAGE ===========#
+
+# Packages
+
+from .container import *
+from .context import *
+from .endpoint import *
+from .model import *
+from .register import *
+from .registry import *
+from .signature import *
+from .space import *
+from .toggle import *
+
+# Modules
+from .dispatcher import AttackDispatcher

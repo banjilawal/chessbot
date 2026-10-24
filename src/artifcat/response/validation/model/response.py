@@ -13,11 +13,11 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
-from exchange import ModelValidationRequest, Request
+from exchange import ModelValidationRequest
 from domain import Model, ModelBlueprint
-from transit import ModelCarrier
 
-T = TypeVar("T", bound="Model")
+
+T = TypeVar("T", bound="ModelValidationRequest")
 
 class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     """
@@ -42,16 +42,9 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         -   def valid_model() -> Optional[T]
         -   def valid_blueprint() -> Optional[ModelBlueprint[T]]
 
-        -   def success(
-                    request: Request,
-                    result: ValidationResult[T],
-            ) -> ValidationResponse[T]
+        -   def success(request: T, result: ValidationResult[T]) -> ValidationResponse[T]
 
-        -   def failure(
-                    request: Request,
-                    result: ValidationResult[T],
-                    exception: Exception,
-            ) -> ValidationResponse[T]
+        -   def failure(request: T, exception: Exception) -> ValidationResponse[T]
 
     Super Class:
         ValidationResponse
@@ -59,9 +52,9 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            result: ValidationResult,
-            request: ModelValidationRequest[T],
+            result: Optional[ValidationResult] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
@@ -78,57 +71,36 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> ValidationResult:
+    def result(self) -> Optional[ValidationResult]:
         return cast(ValidationResult, super().result)
         
     @property
-    def request(self) -> ModelValidationRequest[T]:
-        return cast(ModelValidationRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     @abstractmethod
-    def valid_model(self) -> Optional[T]:
+    def valid_model(self) -> Optional[Model]:
         pass
     
     @property
     @abstractmethod
-    def valid_blueprint(self) -> Optional[ModelBlueprint[T]]:
+    def valid_blueprint(self) -> Optional[ModelBlueprint]:
         pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> ModelValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            ModelValidationRequest[T],
-            request
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: T) -> ModelValidationResponse:
         return cls(
             result=result,
-            request=validation_request,
+            request=request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> ModelValidationResponse:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            ModelValidationRequest[T],
-            request
-        )
+    def failure(cls, request: T, exception: Exception) -> ModelValidationResponse:
         # Send a failure Response using the cast.
         return cls(
-            result=result,
+            request=request,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )

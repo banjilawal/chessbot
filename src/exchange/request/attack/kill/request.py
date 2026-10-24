@@ -11,10 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import CombatantToken, Maneuver, Square
+from domain import KillEncounter, Maneuver, Square
 from exchange import AttackRequest
 
-class KillRequest(AttackRequest[CombatantToken]):
+
+class KillRequest(AttackRequest[KillEncounter]):
     """
      Role:
          -  Messaging
@@ -25,7 +26,7 @@ class KillRequest(AttackRequest[CombatantToken]):
      Attributes:
         square: Square
         maneuver: Maneuver
-        victim: CombatantToken
+        victim: KillEncounter
 
      Provides:
      
@@ -38,14 +39,14 @@ class KillRequest(AttackRequest[CombatantToken]):
             id: int,
             location: Square,
             maneuver: Maneuver,
-            victim: CombatantToken,
+            victim: KillEncounter,
     ):
         """
         Args:
             id: int
             location: Square
             maneuver: Maneuver
-            victim: CombatantToken
+            victim: KillEncounter
         """
         super().__init__(
             id=id,
@@ -63,8 +64,8 @@ class KillRequest(AttackRequest[CombatantToken]):
         return self._maneuver
     
     @property
-    def victim(self) -> CombatantToken:
-        return cast(CombatantToken, super().victim)
+    def victim(self) -> KillEncounter:
+        return cast(KillEncounter, super().victim)
     
     def __eq__(self, other):
         if other is self: return True

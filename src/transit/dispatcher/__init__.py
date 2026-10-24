@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .authorization import *
 from .builder import *
 from .encounter import *

@@ -11,10 +11,11 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .authorization import *
 from .crud import *
 from .chain import *
-from .authorization import *
-from .encounter import *
+from .deletion import *
 from .fabrication import *
 from .insertion import *
 from .maneuver import *

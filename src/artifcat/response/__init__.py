@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.RESPONSE PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .deletion import *
 from .fabrication import *
 from .insertion import *

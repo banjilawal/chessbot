@@ -1,0 +1,134 @@
+# src/space/linear/segment/axis/space.py
+
+"""
+Module: space.linear.segment.axis.space
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import cast
+
+from domain.model import Vector
+from domain.struct.register import VectorRegister
+from artifcat import AttackResult
+from domain.schema.destination.axis import AxisDestination
+from util import LoggingLevelRouter
+
+
+class EastAxisEndpointAttack:
+    """
+    Role:
+        - Attack
+        - Integrity Management
+
+    Responsibilities:
+        1.  Create a VectoRegister for an Axis endpoints.
+
+    Attributes:
+        origin: Vector
+        
+    Provides:
+        -   def execute() -> AttackResult[VectorRegister]
+
+    Super Class:
+    """
+    _origin: Vector
+    _destination: Vector
+    
+    def __init__(self, origin: Vector,):
+        """
+        Args:
+            origin: Vector
+        """
+        self._origin = origin
+        self._destination = AxisDestination.EAST.vector
+        
+    @property
+    def origin(self) -> Vector:
+        return self._origin
+    
+    @property
+    def destination(self) -> Vector:
+        return self._destination
+    
+    @LoggingLevelRouter.monitor
+    def execute(self) -> AttackResult[VectorRegister]:
+        """
+        Construct the endpoints for a EasternAxis instance.
+
+        Action:
+            1.  Send an exception chain in the AttackResult if the VectorValidator instance
+                fails.
+            2.  Otherwise, create the VectorRegister product and send in the success result.
+        Args:
+        Returns:
+            AttackResult[VectorRegister]
+        Raises:
+             EasternAxisEndPointAttackException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that the origin is not safe to use.
+        validation = self._vector_validator.execute(self._origin)
+        # Send the exception chain in the result.
+        if validation.is_failure:
+            return AttackResult.failure(
+                EastAxisEndPointAttackException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=EastAxisEndPointAttackException.MSG,
+                    err_code=EastAxisEndPointAttackException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        # Create the endpoint register.
+        vector_register = VectorRegister(
+            u=cast(Vector, validation.payload),
+            v=self._destination,
+        )
+        # --- Forward the work product to the caller. ---#
+        return AttackResult.success(vector_register)
+    
+    # @LoggingLevelRouter.monitor
+    # def execute(self) -> AttackResult[VectorRegister]:
+    #     """
+    #     Construct the endpoints for a EastAxis instance.
+    #
+    #     Action:
+    #         1.  Send an exception chain in the AttackResult if the VectorValidator instance
+    #             fails.
+    #         2.  Otherwise, create the VectorRegister product and send in the success result.
+    #     Args:
+    #     Returns:
+    #         AttackResult[VectorRegister]
+    #     Raises:
+    #          EastAxisEndPointAttackException
+    #     """
+    #     method = f"{self.__class__.__name__}.execute"
+    #
+    #     # Request a product from the vector attack.
+    #     result = self._vector_validator.execute(
+    #         x=self._origin.x + self._delta.x,
+    #         y=self._origin.y + self._delta.y,
+    #     )
+    #     # Handle the case that the request is not fulfilled.
+    #     if result.is_failure:
+    #         return AttackResult.failure(
+    #             EastAxisEndPointAttackException(
+    #                 cls_mthd=method,
+    #                 cls_name=self.__class__.__name__,
+    #                 msg=EastAxisEndPointAttackException.MSG,
+    #                 err_code=EastAxisEndPointAttackException.ERR_CODE,
+    #                 ex=result.exception,
+    #             )
+    #         )
+    #     # Create the endpoint register.
+    #     vector_register = VectorRegister(
+    #         u=self._origin,
+    #         v=cast(Vector, result.payload)
+    #     )
+    #     # --- Forward the work product to the caller. ---#
+    #     return AttackResult.success(payload=vector_register)

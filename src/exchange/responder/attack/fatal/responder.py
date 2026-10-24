@@ -9,11 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from exchange import AttackResponder
+from typing import Optional
+
+from artifcat import KillResult
+from exchange import AttackResponder, KillRequest
 from util import LoggingLevelRouter
 
 
-class KillResponder(AttackResponder[KillResult):
+class KillResponder(AttackResponder[KillResult]):
     """
     Role
         - Mediator

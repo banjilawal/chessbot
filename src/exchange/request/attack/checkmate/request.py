@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import KingToken, Maneuver, Square
+from domain import CheckmateEncounter, Maneuver, Square
 from exchange import AttackRequest
 
-class CheckmateRequest(AttackRequest[KingToken]):
+class CheckmateRequest(AttackRequest[CheckmateEncounter]):
     """
      Role:
          -  Messaging
@@ -25,7 +25,7 @@ class CheckmateRequest(AttackRequest[KingToken]):
      Attributes:
         square: Square
         maneuver: Maneuver
-        victim: KingToken
+        victim: CheckmateEncounter
 
      Provides:
      
@@ -38,14 +38,14 @@ class CheckmateRequest(AttackRequest[KingToken]):
             id: int,
             location: Square,
             maneuver: Maneuver,
-            victim: KingToken,
+            victim: CheckmateEncounter,
     ):
         """
         Args:
             id: int
             location: Square
             maneuver: Maneuver
-            victim: KingToken
+            victim: CheckmateEncounter
         """
         super().__init__(
             id=id,
@@ -63,8 +63,8 @@ class CheckmateRequest(AttackRequest[KingToken]):
         return self._maneuver
     
     @property
-    def victim(self) -> KingToken:
-        return cast(KingToken, super().victim)
+    def victim(self) -> CheckmateEncounter:
+        return cast(CheckmateEncounter, super().victim)
     
     def __eq__(self, other):
         if other is self: return True

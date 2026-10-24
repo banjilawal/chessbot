@@ -59,8 +59,8 @@ class StructValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: StructValidationRequest[T],
+            result: Optional[ValidationResult] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """

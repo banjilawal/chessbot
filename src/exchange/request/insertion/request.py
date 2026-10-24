@@ -12,11 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ExchangeObjectCollection
 from exchange.request import Request
 from artifcat import InsertionResult
 
-T = TypeVar("T", bound="ExchangeObjectCollection")
+T = TypeVar("T")
 
 
 class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):

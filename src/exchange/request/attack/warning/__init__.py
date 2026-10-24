@@ -10,6 +10,6 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.ENCOUNTER.WARNING PACKAGE ===========#
 
 # Packages
-from .warning import *
 
 # Modules
+from .request import WarningRequest

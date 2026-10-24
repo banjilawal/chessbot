@@ -10,6 +10,6 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.ENCOUNTER.KILL PACKAGE ===========#
 
 # Packages
-from .kill import *
 
 # Modules
+from .request import KillRequest

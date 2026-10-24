@@ -1,0 +1,43 @@
+# src/transit/dispatcher/attack/pattern/pawn/dispatcher/attack/pattern.py
+
+"""
+Module: transit.dispatcher.attack.pattern.pawn.pattern
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+
+from collection import VectorSet
+from domain.schema import Offset
+from surface.topology import PawnAttackSignature
+
+
+class DevelopedPawnAttackPattern(PawnAttackSignature):
+    """
+    Role:
+        - Data Holder
+        - Immutability
+
+    Responsibilities:
+        1.  Determine potential attack destinations from a developed Pawn's current position.
+
+    Attributes:
+        offsets: VectorSet
+
+    Provides:
+
+    Super Class:
+        AttackOffsetPattern
+
+    """
+    def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_ATTACK.entries,):
+        """
+        Args:
+            offsets: VectorSet
+        """
+        super().__init__(offsets=offsets)
+    
+    

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import KingToken, Maneuver, Square
+from domain import EncounterWarning, KingToken, Maneuver, Square
 from exchange import AttackRequest
 
-class WarningRequest(AttackRequest[KingToken]):
+class WarningRequest(AttackRequest[EncounterWarning]):
     """
      Role:
          -  Messaging

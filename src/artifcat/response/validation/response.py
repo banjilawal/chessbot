@@ -16,7 +16,7 @@ from artifcat import Response, ResponseState, ValidationResult
 from domain import Blueprint
 from exchange import Request, ValidationRequest
 
-T = TypeVar("T",)
+T = TypeVar("ValidationRequest",)
 
 class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
     """
@@ -53,9 +53,9 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
     def __init__(
             self,
             state: ResponseState,
-            result: ValidationResult,
             request: ValidationRequest[T],
             exception: Optional[Exception],
+            result: Optional[ValidationResult],
     ):
         """
         Args:
@@ -72,12 +72,12 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> ValidationResult:
+    def result(self) -> Optional[ValidationResult]:
         return cast(ValidationResult, super().result)
         
     @property
-    def request(self) -> ValidationRequest[T]:
-        return cast(ValidationRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     def is_success(self) -> bool:
@@ -104,39 +104,17 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
         pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ValidationResult,
-    ) -> ValidationResponse[T]:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            ValidationRequest[T],
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ValidationResult, request: T) -> ValidationResponse[ValidationResult]:
         return cls(
             result=result,
-            request=validation_request,
+            request=request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ValidationResult,
-            exception: Exception,
-    ) -> ValidationResponse[T]:
-        # Downcast the request into a ValidationRequest.
-        validation_request = cast(
-            ValidationRequest[T],
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: T, exception: Exception) -> ValidationResponse[ValidationResult[T]]:
         return cls(
-            result=result,
+            request=request,
             exception=exception,
-            request=validation_request,
             state=ResponseState.FAILURE,
         )

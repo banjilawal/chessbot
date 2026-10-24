@@ -9,16 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Optional, cast
 
 from artifcat import Result, ResultState
 from domain import Encounter
 
-T = TypeVar("T", bound="Encounter")
 
-
-class AttackResult(Result[T], ABC, Generic[T]):
+class AttackResult(Result[Encounter]):
     """
     Role:
         - Data Transport
@@ -30,7 +27,7 @@ class AttackResult(Result[T], ABC, Generic[T]):
 
     Attributes:
         state: resultState
-        payload: Optional[T]
+        payload: Optional[Encounter]
         exception: Optional[Exception]
         
         is_timed_out: bool
@@ -38,9 +35,7 @@ class AttackResult(Result[T], ABC, Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> AttackResult
-        -   def failure(exception: Exception) -> AttackResult
-        -   def timed_out(cls, exception: Exception) -> AttackResult:
+        -   def success(payload: Encounter) -> AttackResult
 
     Super Class:
         Result
@@ -49,67 +44,21 @@ class AttackResult(Result[T], ABC, Generic[T]):
     def __init__(
             self,
             state: ResultState,
-            payload: Optional[T] = None,
+            payload: Optional[Encounter] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: resultState
-            payload: Optional[T]
+            payload: Optional[Encounter]
             exception: Optional[Exception]
         """
-        super().__init__(
-            state=state,
-            payload=payload,
-            exception=exception
-        )
+        super().__init__(state=state, payload=payload, exception=exception)
     
     @property
-    def payload(self) -> Optional[T]:
-        return cast(T, super().payload)
-    
-    @property
-    def state(self) -> ResultState:
-        return self._state
-        
-    @property
-    def is_success(self) -> bool:
-        return not self.is_failure
-    
-    @property
-    def is_failure(self) -> bool:
-        return (
-                self.payload is None and
-                self.exception is not None and
-                self._state ==  ResultState.FAILURE or
-                self._state ==  ResultState.TIMED_OUT
-        )
-    
-    @property
-    def is_timed_out(self) -> bool:
-        return (
-                self.payload is None and
-                self.exception is not None and
-                self._state ==  ResultState.TIMED_OUT
-        )
+    def payload(self) -> Optional[Encounter]:
+        return cast(Encounter, super().payload)
     
     @classmethod
-    def success(cls, payload: T) -> AttackResult:
-        return cls(
-            payload=payload,
-            state=ResultState.SUCCESS,
-        )
-    
-    @classmethod
-    def failure(cls, exception: Exception) -> AttackResult:
-        return cls(
-            exception=exception,
-            state=ResultState.FAILURE,
-        )
-    
-    @classmethod
-    def timed_out(cls, exception: Exception) -> AttackResult:
-        return cls(
-            exception=exception,
-            state=ResultState.TIMED_OUT,
-        )
+    def success(cls, payload: Encounter) -> AttackResult:
+        return cls(payload=payload, state=ResultState.SUCCESS)

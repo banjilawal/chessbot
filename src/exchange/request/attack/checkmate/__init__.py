@@ -10,6 +10,6 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.ENCOUNTER.CHECKMATE PACKAGE ===========#
 
 # Packages
-from .checkmate import *
 
 # Modules
+from .request import CheckmateRequest

@@ -14,11 +14,10 @@ from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, DeletionResult
 from domain import Blueprint
-from exchange import Request, DeletionRequest
 
-T = TypeVar("T",)
+T = TypeVar("T")
 
-class DeletionResponse(Response[DeletionResult], ABC, Generic[T]):
+class DeletionResponse(Response[T], ABC, Generic[T]):
     """
     Role
         -   Messaging
@@ -53,7 +52,7 @@ class DeletionResponse(Response[DeletionResult], ABC, Generic[T]):
     def __init__(
             self,
             state: ResponseState,
-            result: DeletionResult,
+            result: DeletionResult[T],
             request: DeletionRequest[T],
             exception: Optional[Exception],
     ):
@@ -72,7 +71,7 @@ class DeletionResponse(Response[DeletionResult], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> DeletionResult:
+    def result(self) -> DeletionResult[T]:
         return cast(DeletionResult, super().result)
         
     @property
