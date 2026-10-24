@@ -14,6 +14,7 @@ version: 0.0.2
 from .crud import *
 from .chain import *
 from .authorization import *
+from .encounter import *
 from .fabrication import *
 from .insertion import *
 from .maneuver import *

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import CombatantReadiness, Formation, HomeSquare, Team, Token, Footstep
+from domain import CombatantReadiness, Formation, HomeSquare, Team, Token, Footstep, Victimizable
 
 
-class CombatantToken(Token):
+class CombatantToken(Token, Victimizable):
     """
     Role:
         - Stateful Data Holder

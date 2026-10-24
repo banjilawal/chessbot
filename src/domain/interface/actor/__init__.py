@@ -1,13 +1,13 @@
-# src/domain/interface/applicant/__init__.py
+# src/domain/interface/actor/__init__.py
 
 """
-Module: domain.interface.applicant.__init__
+Module: domain.interface.actor.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.INTERFACE.APPLICANT PACKAGE ===========#
+# =========== DOMAIN.INTERFACE.ACTOR PACKAGE ===========#
 
 # Packages
 

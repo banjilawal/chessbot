@@ -14,5 +14,6 @@ from .actor import *
 from .actionable import *
 from .archetyped import *
 from .searchable import *
+from .victimizable import *
 
 # Modules

@@ -13,11 +13,11 @@ from typing import Optional
 
 from domain import (
     Alert, ThreatLevel, Footstep, Formation, HomeSquare, Square, Team,
-    Token, KingReadiness
+    Token, KingReadiness, Victimizable
 )
 
 
-class KingToken(Token):
+class KingToken(Token, Victimizable):
     """
     Role:
         - Stateful Data-Holder
