@@ -1,7 +1,7 @@
-# src/authorization/adjudicator/adjudicator.py
+# src/adjudicator.py
 
 """
-Module: authorization.adjudicator.adjudicator
+Module: adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

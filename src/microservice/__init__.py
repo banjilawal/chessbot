@@ -15,6 +15,8 @@ from .binder import *
 from .board import *
 from .catalog import *
 from .coord import *
+from .edge import *
+from .extractor import *
 from .game import *
 from .identity import *
 from .player import *

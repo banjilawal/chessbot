@@ -1,7 +1,7 @@
-# src/authorization/adjudicator/extractor/home/extractor.py
+# src/microservice/extractor/home/extractor.py
 
 """
-Module: authorization.adjudicator.extractor.home.extractor
+Module: microservice.extractor.home.extractor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,6 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import TokenValidatorToolkit
-from domain import Board, Formation, HomeSquare, Square, SquareContext, TokenBlueprint
-from err import BlueprintHomeSquareExtractorException, SquareSearchResultEmptyException
-from artifcat import ValidationResult
-from util import LoggingLevelRouter
 
 
 class HomeSquareExtractor:
