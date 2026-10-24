@@ -1,7 +1,7 @@
-# src/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/model/board/response.py
 
 """
-Module: artifact.response.fabrication.response
+Module: artifact.response.fabrication.model.board.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,60 +11,47 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ModelBuildResponse, ResponseState, BuildResult
+from artifcat import BuildResult, ModelBuildResponse, ResponseState
+from domain import Board
 from exchange import Request, BoardBuildRequest
-from domain import Board, BoardBlueprint
 from transit import BoardCarrier
 
 
-class BoardBuildResponse(ModelBuildResponse[Board]):
+class BoardBuildResponse(ModelBuildResponse[BoardBuildRequest]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Board build request-response cycle's data and state.
+        1.  Capture the outcome of a BoardBuild transaction.
 
     Attributes:
-        state: ResponseState
-        result: BuildResult,
         request: BoardBuildRequest
-        exception: Optional[Exception]
+        model: Optional[Board]
+        carrier: Optional[BoardCarrier]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[Board]
-        -   def valid_blueprint() -> Optional[BoardBlueprint]
+        -   def success(result: BuildResult, request: Request) -> BoardBuildResponse
+        -   def failure(request: Request, exception: Exception) -> BoardBuildResponse
 
-        -   def success(
-                    request: Request,
-                    result: BuildResult,
-            ) -> BoardBuildResponse
-
-        -   def failure(
-                    request: Request,
-                    result: BuildResult,
-                    exception: Exception,
-            ) -> BoardBuildResponse
-            
     Super Class:
         ModelBuildResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: BuildResult,
             request: BoardBuildRequest,
+            result: Optional[BuildResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: BuildResult,
+            result: BuildResult
             request: BoardBuildRequest
             exception: Optional[Exception]
         """
@@ -72,105 +59,68 @@ class BoardBuildResponse(ModelBuildResponse[Board]):
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
+        
+    @property
+    def result(self) -> Optional[BuildResult]:
+        return cast(BuildResult, super().result)
         
     @property
     def request(self) -> BoardBuildRequest:
         return cast(BoardBuildRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Board]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def is_success(self) -> bool:
+        return (
+                super().is_success and
+                self.model is not None and
+                isinstance(self.model, Board)
+        )
+    
+    @property
+    def is_failure(self) -> bool:
+        return not self.is_success
+    
+    @property
+    def model(self) -> Optional[Board]:
+        carrier = self.carrier
+        if carrier is None:
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(BoardCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, BoardCarrier)
-        ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
-            return None
-        # --- Extract the model. ---#
         model = cast(Board, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Board)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
-    def valid_blueprint(self) -> Optional[BoardBlueprint]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def carrier(self) -> Optional[BoardCarrier]:
+        result = self.result
+        if (
+            result is None or
+            not isinstance(result, BuildResult)
+        ):
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(BoardCarrier, self.result.payload)
+        carrier = cast(BoardCarrier, result.payload)
+        if (
+            carrier is None or
+            carrier.is_empty or
+            not carrier.has_model
+        ):
+            return None
+        return carrier
         
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, BoardCarrier)
-        ):
-            return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
-        blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, BoardBlueprint)
-        ):
-            return None
-        # Finally send the success result.
-        return blueprint
-    
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: BuildResult,
-    ) -> BoardBuildResponse:
-        
-        # Downcast the request into a BoardBuildRequest.
-        fabrication_request = cast(
-            BoardBuildRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: BuildResult, request: Request) -> BoardBuildResponse:
+        req = cast(BoardBuildRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=fabrication_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: BuildResult,
-            exception: Exception,
-    ) -> BoardBuildResponse:
-        
-        # Downcast the request into a BoardBuildRequest.
-        fabrication_request = cast(
-            BoardBuildRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> BoardBuildResponse:
+        req = cast(BoardBuildRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=fabrication_request,
             state=ResponseState.FAILURE,
         )

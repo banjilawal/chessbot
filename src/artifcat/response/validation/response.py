@@ -76,6 +76,7 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
     def is_success(self) -> bool:
         return (
             super().is_success and
+            isinstance(self.result, ValidationResult) and
             (
                 self.valid_model is not None or
                 self.valid_blueprint is not None

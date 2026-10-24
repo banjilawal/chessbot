@@ -1,7 +1,7 @@
-# src/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/model/response.py
 
 """
-Module: artifact.response.fabrication.response
+Module: artifact.response.fabrication.model.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,66 +10,50 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar, cast
+from typing import Any, Generic, Optional, TypeVar, cast
 
-from artifcat import ResponseState, BuildResponse, BuildResult
+from artifcat import BuildResponse, BuildResult, ResponseState
 from exchange import ModelBuildRequest, Request
-from domain import Model, ModelBlueprint
 from transit import ModelCarrier
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="ModelBuildRequest",)
 
 class ModelBuildResponse(BuildResponse[T], ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Model's build request-response cycle's data and state.
+        1.  Capture the outcome of a Build transaction.
 
     Attributes:
-        state: ResponseState
-        result: BuildResult
-        request: BuildRequest[T]
-        exception: Optional[Exception]
+        request: T
+        model: Optional[Model]
+        carrier: Optional[ModelCarrier]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[T]
-        -   def valid_blueprint() -> Optional[ModelBlueprint[T]]
-
-        -   def success(
-                    request: Request,
-                    result: BuildResult[T],
-            ) -> BuildResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: BuildResult[T],
-                    exception: Exception,
-            ) -> BuildResponse[T]
+        -   def success(result: BuildResult, request: Request) -> BuildResponse
+        -   def failure(request: Request, exception: Exception) -> BuildResponse
 
     Super Class:
         BuildResponse
     """
-    _carrier: Optional[ModelCarrier[T]]
-    
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            result: BuildResult,
-            request: ModelBuildRequest[T],
-            exception:Optional[Exception] | None = None,
+            result: Optional[BuildResult] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T
             state: ResponseState
-            result: BuildResult,
-            request: ModelBuildRequest[T],
+            result: BuildResult
+            exception: Optional[Exception]
         """
         super().__init__(
             state=state,
@@ -79,90 +63,45 @@ class ModelBuildResponse(BuildResponse[T], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> BuildResult:
+    def result(self) -> Optional[BuildResult]:
         return cast(BuildResult, super().result)
         
     @property
-    def request(self) -> ModelBuildRequest[T]:
-        return cast(ModelBuildRequest[T], super().request)
-    
-    @property
-    @abstractmethod
-    def valid_blueprint(self) -> Optional[ModelBlueprint[T]]:
-        pass
-    
-    @property
-    @abstractmethod
-    def valid_model(self) -> Optional[T]:
-        pass
-    
-    @property
-    def state(self) -> ResponseState:
-        return self._state
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     def is_success(self) -> bool:
-        return (
-            self.result.is_success and
-            self._state == ResponseState.SUCCESS
-        )
-
-    @property
-    def is_consistent(self) -> bool:
-        if self.is_failure:
-            return False
-        if (
-                self.valid_model is None and
-                self.valid_blueprint is None
-        ):
-            return False
-        return True
+        return super().is_success
     
     @property
-    def is_not_consistent(self) -> bool:
-        return not self.is_consistent
-
-    @property
     def is_failure(self) -> bool:
-        return (
-            self._result.is_failure and
-            self._state == ResponseState.FAILURE
-        )
+        return not self.is_success
+    
+    @property
+    @abstractmethod
+    def model(self) -> Optional[Any]:
+        pass
+    
+    @property
+    @abstractmethod
+    def carrier(self) -> Optional[ModelCarrier]:
+        pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: BuildResult,
-    ) -> ModelBuildResponse:
-        # Downcast the request into a BuildRequest.
-        fabrication_request = cast(
-            ModelBuildRequest[T],
-            request
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: BuildResult, request: Request) -> BuildResponse:
+        req = cast(T, request)
         return cls(
+            request=req,
             result=result,
-            request=fabrication_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: BuildResult,
-            exception: Exception,
-    ) -> ModelBuildResponse:
-        # Downcast the request into a BuildRequest.
-        fabrication_request = cast(
-            ModelBuildRequest[T],
-            request
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> BuildResponse:
+        req = cast(T, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=fabrication_request,
             state=ResponseState.FAILURE,
         )

@@ -1,7 +1,7 @@
-# src/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/model/path/response.py
 
 """
-Module: artifact.response.fabrication.response
+Module: artifact.response.fabrication.model.path.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,60 +11,47 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ModelBuildResponse, ResponseState, BuildResult
+from artifcat import BuildResult, ModelBuildResponse, ResponseState
+from domain import Path
 from exchange import Request, PathBuildRequest
-from domain import Path, PathBlueprint
 from transit import PathCarrier
 
 
-class PathBuildResponse(ModelBuildResponse[Path]):
+class PathBuildResponse(ModelBuildResponse[PathBuildRequest]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Path build request-response cycle's data and state.
+        1.  Capture the outcome of a PathBuild transaction.
 
     Attributes:
-        state: ResponseState
-        result: BuildResult,
         request: PathBuildRequest
-        exception: Optional[Exception]
+        model: Optional[Path]
+        carrier: Optional[PathCarrier]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[Path]
-        -   def valid_blueprint() -> Optional[PathBlueprint]
+        -   def success(result: BuildResult, request: Request) -> PathBuildResponse
+        -   def failure(request: Request, exception: Exception) -> PathBuildResponse
 
-        -   def success(
-                    request: Request,
-                    result: BuildResult[PathCarrier],
-            ) -> PathBuildResponse
-
-        -   def failure(
-                    request: Request,
-                    result: BuildResult[PathCarrier],
-                    exception: Exception,
-            ) -> PathBuildResponse
-            
     Super Class:
         ModelBuildResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: BuildResult,
             request: PathBuildRequest,
+            result: Optional[BuildResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: BuildResult,
+            result: BuildResult
             request: PathBuildRequest
             exception: Optional[Exception]
         """
@@ -72,105 +59,68 @@ class PathBuildResponse(ModelBuildResponse[Path]):
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
+        
+    @property
+    def result(self) -> Optional[BuildResult]:
+        return cast(BuildResult, super().result)
         
     @property
     def request(self) -> PathBuildRequest:
         return cast(PathBuildRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Path]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def is_success(self) -> bool:
+        return (
+                super().is_success and
+                self.model is not None and
+                isinstance(self.model, Path)
+        )
+    
+    @property
+    def is_failure(self) -> bool:
+        return not self.is_success
+    
+    @property
+    def model(self) -> Optional[Path]:
+        carrier = self.carrier
+        if carrier is None:
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PathCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, PathCarrier)
-        ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
-            return None
-        # --- Extract the model. ---#
         model = cast(Path, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Path)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
-    def valid_blueprint(self) -> Optional[PathBlueprint]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def carrier(self) -> Optional[PathCarrier]:
+        result = self.result
+        if (
+            result is None or
+            not isinstance(result, BuildResult)
+        ):
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PathCarrier, self.result.payload)
+        carrier = cast(PathCarrier, result.payload)
+        if (
+            carrier is None or
+            carrier.is_empty or
+            not carrier.has_model
+        ):
+            return None
+        return carrier
         
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, PathCarrier)
-        ):
-            return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
-        blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, PathBlueprint)
-        ):
-            return None
-        # Finally send the success result.
-        return blueprint
-    
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: BuildResult,
-    ) -> PathBuildResponse:
-        
-        # Downcast the request into a PathBuildRequest.
-        fabrication_request = cast(
-            PathBuildRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: BuildResult, request: Request) -> PathBuildResponse:
+        req = cast(PathBuildRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=fabrication_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: BuildResult,
-            exception: Exception,
-    ) -> PathBuildResponse:
-        
-        # Downcast the request into a PathBuildRequest.
-        fabrication_request = cast(
-            PathBuildRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> PathBuildResponse:
+        req = cast(PathBuildRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=fabrication_request,
             state=ResponseState.FAILURE,
         )

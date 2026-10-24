@@ -1,7 +1,7 @@
-# src/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/model/player/response.py
 
 """
-Module: artifact.response.fabrication.response
+Module: artifact.response.fabrication.model.player.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,60 +11,47 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ModelBuildResponse, ResponseState, BuildResult
+from artifcat import BuildResult, ModelBuildResponse, ResponseState
+from domain import Player
 from exchange import Request, PlayerBuildRequest
-from domain import Player, PlayerBlueprint
 from transit import PlayerCarrier
 
 
-class PlayerBuildResponse(ModelBuildResponse[Player]):
+class PlayerBuildResponse(ModelBuildResponse[PlayerBuildRequest]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Player build request-response cycle's data and state.
+        1.  Capture the outcome of a PlayerBuild transaction.
 
     Attributes:
-        state: ResponseState
-        result: BuildResult,
         request: PlayerBuildRequest
-        exception: Optional[Exception]
+        model: Optional[Player]
+        carrier: Optional[PlayerCarrier]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[Player]
-        -   def valid_blueprint() -> Optional[PlayerBlueprint]
+        -   def success(result: BuildResult, request: Request) -> PlayerBuildResponse
+        -   def failure(request: Request, exception: Exception) -> PlayerBuildResponse
 
-        -   def success(
-                    request: Request,
-                    result: BuildResult[PlayerCarrier],
-            ) -> PlayerBuildResponse
-
-        -   def failure(
-                    request: Request,
-                    result: BuildResult[PlayerCarrier],
-                    exception: Exception,
-            ) -> PlayerBuildResponse
-            
     Super Class:
         ModelBuildResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: BuildResult,
             request: PlayerBuildRequest,
+            result: Optional[BuildResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: BuildResult,
+            result: BuildResult
             request: PlayerBuildRequest
             exception: Optional[Exception]
         """
@@ -72,105 +59,68 @@ class PlayerBuildResponse(ModelBuildResponse[Player]):
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
+        
+    @property
+    def result(self) -> Optional[BuildResult]:
+        return cast(BuildResult, super().result)
         
     @property
     def request(self) -> PlayerBuildRequest:
         return cast(PlayerBuildRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Player]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def is_success(self) -> bool:
+        return (
+                super().is_success and
+                self.model is not None and
+                isinstance(self.model, Player)
+        )
+    
+    @property
+    def is_failure(self) -> bool:
+        return not self.is_success
+    
+    @property
+    def model(self) -> Optional[Player]:
+        carrier = self.carrier
+        if carrier is None:
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PlayerCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, PlayerCarrier)
-        ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
-            return None
-        # --- Extract the model. ---#
         model = cast(Player, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Player)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
-    def valid_blueprint(self) -> Optional[PlayerBlueprint]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def carrier(self) -> Optional[PlayerCarrier]:
+        result = self.result
+        if (
+            result is None or
+            not isinstance(result, BuildResult)
+        ):
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(PlayerCarrier, self.result.payload)
+        carrier = cast(PlayerCarrier, result.payload)
+        if (
+            carrier is None or
+            carrier.is_empty or
+            not carrier.has_model
+        ):
+            return None
+        return carrier
         
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, PlayerCarrier)
-        ):
-            return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
-        blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, PlayerBlueprint)
-        ):
-            return None
-        # Finally send the success result.
-        return blueprint
-    
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: BuildResult,
-    ) -> PlayerBuildResponse:
-        
-        # Downcast the request into a PlayerBuildRequest.
-        fabrication_request = cast(
-            PlayerBuildRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: BuildResult, request: Request) -> PlayerBuildResponse:
+        req = cast(PlayerBuildRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=fabrication_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: BuildResult,
-            exception: Exception,
-    ) -> PlayerBuildResponse:
-        
-        # Downcast the request into a PlayerBuildRequest.
-        fabrication_request = cast(
-            PlayerBuildRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> PlayerBuildResponse:
+        req = cast(PlayerBuildRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=fabrication_request,
             state=ResponseState.FAILURE,
         )

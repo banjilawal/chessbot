@@ -1,7 +1,7 @@
-# src/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/model/maneuver/response.py
 
 """
-Module: artifact.response.fabrication.response
+Module: artifact.response.fabrication.model.maneuver.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,60 +11,47 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ModelBuildResponse, ResponseState, BuildResult
+from artifcat import BuildResult, ModelBuildResponse, ResponseState
+from domain import Maneuver
 from exchange import Request, ManeuverBuildRequest
-from domain import Maneuver, ManeuverBlueprint
 from transit import ManeuverCarrier
 
 
-class ManeuverBuildResponse(ModelBuildResponse[Maneuver]):
+class ManeuverBuildResponse(ModelBuildResponse[ManeuverBuildRequest]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a Maneuver build request-response cycle's data and state.
+        1.  Capture the outcome of a ManeuverBuild transaction.
 
     Attributes:
-        state: ResponseState
-        result: BuildResult,
         request: ManeuverBuildRequest
-        exception: Optional[Exception]
+        model: Optional[Maneuver]
+        carrier: Optional[ManeuverCarrier]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[Maneuver]
-        -   def valid_blueprint() -> Optional[ManeuverBlueprint]
+        -   def success(result: BuildResult, request: Request) -> ManeuverBuildResponse
+        -   def failure(request: Request, exception: Exception) -> ManeuverBuildResponse
 
-        -   def success(
-                    request: Request,
-                    result: BuildResult[ManeuverCarrier],
-            ) -> ManeuverBuildResponse
-
-        -   def failure(
-                    request: Request,
-                    result: BuildResult[ManeuverCarrier],
-                    exception: Exception,
-            ) -> ManeuverBuildResponse
-            
     Super Class:
         ModelBuildResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
-            result: BuildResult,
             request: ManeuverBuildRequest,
+            result: Optional[BuildResult] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: BuildResult,
+            result: BuildResult
             request: ManeuverBuildRequest
             exception: Optional[Exception]
         """
@@ -72,105 +59,68 @@ class ManeuverBuildResponse(ModelBuildResponse[Maneuver]):
             state=state,
             result=result,
             request=request,
-            exception=exception or result.exception,
+            exception=exception,
         )
+        
+    @property
+    def result(self) -> Optional[BuildResult]:
+        return cast(BuildResult, super().result)
         
     @property
     def request(self) -> ManeuverBuildRequest:
         return cast(ManeuverBuildRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Maneuver]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def is_success(self) -> bool:
+        return (
+                super().is_success and
+                self.model is not None and
+                isinstance(self.model, Maneuver)
+        )
+    
+    @property
+    def is_failure(self) -> bool:
+        return not self.is_success
+    
+    @property
+    def model(self) -> Optional[Maneuver]:
+        carrier = self.carrier
+        if carrier is None:
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(ManeuverCarrier, self.result.payload)
-        
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, ManeuverCarrier)
-        ):
-            return None
-        # Handle the case that there is no model in the carrier.
-        if not carrier.has_model:
-            return None
-        # --- Extract the model. ---#
         model = cast(Maneuver, carrier.entity)
-        # Handle the case that the model is null or the wrong type.
-        if (
-            model is None or
-            not isinstance(model, Maneuver)
-        ):
-            return None
-        # Finally send the success result.
         return model
     
     @property
-    def valid_blueprint(self) -> Optional[ManeuverBlueprint]:
-        # Handle the case that the fabrication failed.
-        if self.result.is_failure:
+    def carrier(self) -> Optional[ManeuverCarrier]:
+        result = self.result
+        if (
+            result is None or
+            not isinstance(result, BuildResult)
+        ):
             return None
-        # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(ManeuverCarrier, self.result.payload)
+        carrier = cast(ManeuverCarrier, result.payload)
+        if (
+            carrier is None or
+            carrier.is_empty or
+            not carrier.has_model
+        ):
+            return None
+        return carrier
         
-        # Handle the case that the carrier is null or the wrong type.
-        if (
-                carrier is None or
-                not isinstance(carrier, ManeuverCarrier)
-        ):
-            return None
-        # Handle the case that there is no blueprint in the carrier.
-        if not carrier.has_blueprint:
-            return None
-        # --- Extract the blueprint. ---#
-        blueprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null or the wrong type.
-        if (
-                blueprint is None or
-                not isinstance(blueprint, ManeuverBlueprint)
-        ):
-            return None
-        # Finally send the success result.
-        return blueprint
-    
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: BuildResult,
-    ) -> ManeuverBuildResponse:
-        
-        # Downcast the request into a ManeuverBuildRequest.
-        fabrication_request = cast(
-            ManeuverBuildRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: BuildResult, request: Request) -> ManeuverBuildResponse:
+        req = cast(ManeuverBuildRequest, request)
         return cls(
+            request=req,
             result=result,
-            request=fabrication_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: BuildResult,
-            exception: Exception,
-    ) -> ManeuverBuildResponse:
-        
-        # Downcast the request into a ManeuverBuildRequest.
-        fabrication_request = cast(
-            ManeuverBuildRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> ManeuverBuildResponse:
+        req = cast(ManeuverBuildRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=fabrication_request,
             state=ResponseState.FAILURE,
         )

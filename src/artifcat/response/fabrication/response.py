@@ -9,58 +9,48 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from abc import ABC, abstractmethod
+from typing import Any, Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, BuildResult
 from exchange import Request, BuildRequest
+from transit import EntityCarrier
 
-T = TypeVar("T",)
+T = TypeVar("T", bound="BuildRequest",)
 
 class BuildResponse(Response[BuildResult], ABC, Generic[T]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a build request-response cycle's data and state.
+        1.  Capture the outcome of a Build transaction.
 
     Attributes:
-        state: ResponseState
-        result: BuildResult
-        request: BuildRequest[T]
-        exception: Optional[Exception]
+        request: T
+        model: Optional[Any]
+        carrier: Optional[EntityCarrier]
+        is_success: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-
-        -   def success(
-                    request: Request,
-                    result: BuildResult[T],
-            ) -> BuildResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: BuildResult[T],
-                    exception: Exception,
-            ) -> BuildResponse[T]
+        -   def success(result: BuildResult, request: Request) -> BuildResponse
+        -   def failure(request: Request, exception: Exception) -> BuildResponse
 
     Super Class:
         Response
     """
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            result: BuildResult,
-            request: BuildRequest[T],
-            exception: Optional[Exception],
+            result: Optional[BuildResult] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T
             state: ResponseState
             result: BuildResult
-            request: BuildRequest[T]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -71,61 +61,45 @@ class BuildResponse(Response[BuildResult], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> BuildResult:
+    def result(self) -> Optional[BuildResult]:
         return cast(BuildResult, super().result)
         
     @property
-    def request(self) -> BuildRequest[T]:
-        return cast(BuildRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     def is_success(self) -> bool:
         return (
-            self.result.is_success and
-            self._state == ResponseState.SUCCESS
+                super().is_success and
+                isinstance(self.result, BuildResult) and
+                self.model is not None
         )
 
     @property
-    def is_failure(self) -> bool:
-        return (
-            self._result.is_failure and
-            self._state == ResponseState.FAILURE
-        )
+    @abstractmethod
+    def model(self) -> Optional[Any]:
+        pass
+    
+    @property
+    @abstractmethod
+    def carrier(self) -> Optional[EntityCarrier]:
+        pass
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: BuildResult,
-    ) -> BuildResponse[T]:
-        # Downcast the request into a BuildRequest.
-        fabrication_request = cast(
-            BuildRequest[T],
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: BuildResult, request: Request) -> BuildResponse:
+        req = cast(T, request)
         return cls(
+            request=req,
             result=result,
-            request=fabrication_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: BuildResult,
-            exception: Exception,
-    ) -> BuildResponse[T]:
-        # Downcast the request into a BuildRequest.
-        fabrication_request = cast(
-            BuildRequest[T],
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> BuildResponse:
+        req = cast(T, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=fabrication_request,
             state=ResponseState.FAILURE,
         )
