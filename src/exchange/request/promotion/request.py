@@ -9,8 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
+from typing import cast
+
 from artifcat import PromotionResult
-from domain import Elevateable, PawnToken
+from domain import Elevatable, PawnToken, Rank
 from exchange import Request
 
 class PromotionRequest(Request[PromotionResult]):
@@ -30,32 +33,32 @@ class PromotionRequest(Request[PromotionResult]):
      Super Class:
         Request
      """
-    _pawn_token: PawnToken
-    _rank_elevation: Elevateable
+    _applicant: PawnToken
+    _elevatable: Elevatable
     
-    def __init__(
-            self,
-            id: int,
-            pawn_token: PawnToken,
-            rank_elevation: Elevateable,
-    ):
+    def __init__(self, id: int, applicant: PawnToken, elevatable: Elevatable):
         """
         Args:
             id: int
-            pawn_token: PawnToken
-            rank_elevation: Elevateable
+            applicant: PawnToken
+            elevatable: Elevatable
         """
         super().__init__(id=id)
-        self._pawn_token = pawn_token
-        self._rank_elevation = rank_elevation
+        self._applicant = applicant
+        self._elevatable = elevatable
         
     @property
-    def pawn_token(self) -> PawnToken:
-        return self._pawn_token
+    def applicant(self) -> PawnToken:
+        return self._applicant
     
     @property
-    def rank_elevation(self) -> Elevateable:
-        return self._rank_elevation
+    def elevatable(self) -> Elevatable:
+        return self._elevatable
+    
+    @property
+    def elevatable_to_rank(self) -> Rank:
+        return cast(Rank, cast(ABC, self._elevatable))
+    
     
     def __eq__(self, other):
         if other is self: return True

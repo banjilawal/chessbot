@@ -13,7 +13,7 @@ from abc import ABC
 from typing import cast
 
 from artifcat import PromotionResult
-from domain import Elevateable, PromotionRequest, Rank
+from domain import Elevatable, PromotionRequest, Rank
 from exchange import AuthorizationRequest, PromotionRequest
 
 
@@ -49,8 +49,8 @@ class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
         return cast(PromotionRequest, super().candidate)
     
     @property
-    def activity(self) -> Elevateable:
-        return cast(Elevateable, super().activity)
+    def activity(self) -> Elevatable:
+        return cast(Elevatable, super().activity)
     
     @property
     def activity_to_rank(self) -> Rank:

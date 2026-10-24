@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Optional, cast
 
 from artifcat import PromotionResult
-from domain import PromotionState, Rank
+from domain import Bishop, Knight, Pawn, PromotionState, Queen, Rank, Rook
 from err import PromotionStateNullException
 from exchange import PromotionAuthorizationRequest, PromotionAuthorizationResponder, PromotionRequest
 from operation import Worker
@@ -78,9 +78,35 @@ class Promoter(Worker[PromotionResult]):
                 )
             )
         safe = cast(PromotionRequest, decision.candidate)
-        pawn_token = safe.pawn_token
-        elevation = cast(Rank, cast(ABC, safe.rank_elevation))
-        pawn_token.rank = elevation
-        pawn_token.promotion_state = PromotionState.PROMOTED
-        return PromotionResult.success(pawn_token)
+        applicant = safe.applicant
+        rank = safe.elevatable_to_rank
+        promotion = Pawn()
+        
+        if isinstance(rank, Bishop):
+            promotion = Bishop()
+        if isinstance(rank, Knight):
+            promotion = Knight()
+        if isinstance(rank, Queen):
+            promotion = Queen()
+        if isinstance(rank, Rook):
+            promotion = Rook()
+        
+        if isinstance(promotion, Pawn):
+            return PromotionResult.failure(
+                PromoterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromoterException.MSG,
+                    err_code=PromoterException.ERR_CODE,
+                    ex=PromotionRouteException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PromotionRouteException.MSG,
+                        err_code=NoPromotionRouteException.ERR_CODE,
+                    ),
+                )
+            )
+        applicant.rank = promotion
+        applicant.promotion_state = PromotionState.PROMOTED
+        return PromotionResult.success(applicant)
         
