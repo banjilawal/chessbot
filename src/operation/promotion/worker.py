@@ -1,7 +1,7 @@
-# src/operation/collection/operator.py
+# src/operation/promotion/worker.py
 
 """
-Module: operation.collection.operation
+Module: operation.promotion.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,12 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Optional, cast
 
-from artifcat import PromotionResult
-from domain import Bishop, Knight, Pawn, PromotionState, Queen, Rank, Rook
-from err import PromotionStateNullException
+from artifcat import PromotionResponse, PromotionResult
+from domain import Bishop, King, Knight, Pawn, PromotionState, Queen, Rook
 from exchange import PromotionAuthorizationRequest, PromotionAuthorizationResponder, PromotionRequest
 from operation import Worker
 from util import IdFactory, LoggingLevelRouter
@@ -26,14 +24,14 @@ class Promoter(Worker[PromotionResult]):
         - Worker
 
     Responsibilities:
-        1.  Execute a task on a Collection that produces either an Insertion, Deletion, Update
+        1.  Execute a task on a Collection that produces either an Promotion, Deletion, Update
             or Search Result.
 
     Attributes:
-        authorization_responder: CollectionOperationAuthorization_Responder[T]
+        authorization_responder: PromotionAuthorizationResponder
         
     Provides:
-        -   def execute(request: CollectionRequest[T]) -> T
+        -   def execute(request: PromotionRequest) -> PromotionResult
 
     Super Class:
         Worker
@@ -91,7 +89,7 @@ class Promoter(Worker[PromotionResult]):
         if isinstance(rank, Rook):
             promotion = Rook()
         
-        if isinstance(promotion, Pawn):
+        if isinstance(promotion, (Pawn, King)):
             return PromotionResult.failure(
                 PromoterException(
                     cls_mthd=method,

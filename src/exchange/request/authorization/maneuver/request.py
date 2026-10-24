@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from typing import cast
 
-from artifcat import ManeuverResult
-from domain import Maneuverable, Path, Token
-from exchange import AuthorizationRequest
+from exchange import AuthorizationRequest, ManeuverRequest
 
 
-class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverResult]):
+class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverRequest]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Provides information a ManeuverAuthorizer needs to execute a Maneuver job.
+        1.  Provides ManeuverAuthorizer with a job.
 
      Attributes:
-        applicant: Token
-        activity: Maneuverable
+        id: int
+        candidate: ManeuverRequest
 
      Provides:
 
@@ -34,27 +32,18 @@ class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, applicant: Token, activity: Maneuverable):
+    def __init__(self, id: int, candidate: ManeuverRequest):
         """
         Args:
             id: int
-            applicant: Token
-            activity: Maneuverable
+            candidate: ManeuverRequest
         """
-        super().__init__(id=id, applicant=applicant, activity=activity)
+        super().__init__(id=id, candidate=candidate)
     
     @property
-    def applicant(self) -> Token:
-        return cast(Token, super().applicant)
-    
-    @property
-    def activity(self) -> Maneuverable:
-        return cast(Maneuverable, super().activity)
-    
-    @property
-    def activity_to_path(self) -> Path:
-        return cast(Path, self.activity)
-    
+    def candidate(self) -> ManeuverRequest:
+        return cast(ManeuverRequest, super().candidate)
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

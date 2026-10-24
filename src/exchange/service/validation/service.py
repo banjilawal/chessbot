@@ -14,16 +14,12 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from domain import Blueprint
-from exchange import ResponseServer, ValidationRequest, ValidationResponder
+from exchange import ValidationRequest, ValidationResponder
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ValidationService(
-    ResponseServer[ValidationResult],
-    ABC,
-    Generic[T],
-):
+class ValidationService(ABC, Generic[T]):
     """
     Role
         -   Server
@@ -44,32 +40,26 @@ class ValidationService(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ResponseServer
     """
+    _responder = ValidationResponder[T]
     
     def __init__(self, responder: ValidationResponder[T]):
         """
         Args:
             responder: ValidationResponder[T]
         """
-        super().__init__(responder=responder)
+        self._responder = responder
         
     @property
     def responder(self) ->ValidationResponder[T]:
-        return cast(ValidationResponder[T], super().responder)
+        return self._responder
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def extract_model(
-            self,
-            request: ValidationRequest[T]
-    ) -> ValidationResult[T]:
+    def extract_model(self, request: ValidationRequest[T]) -> ValidationResult[T]:
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def extract_model(
-            self,
-            request: ValidationRequest[T]
-    ) -> ValidationResult[Blueprint[T]]:
+    def extract_model(self, request: ValidationRequest[T]) -> ValidationResult[Blueprint[T]]:
         pass

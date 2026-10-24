@@ -14,7 +14,7 @@ from .crud import *
 from .computation import *
 from .insertion import *
 from .microservice import *
-from .promoter import *
+from .promotion import *
 from .suite import *
 from .toolkit import *
 

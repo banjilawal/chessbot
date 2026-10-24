@@ -9,11 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import cast
 
-from artifcat import PromotionResult
-from domain import Elevatable, PromotionRequest, Rank
 from exchange import AuthorizationRequest, PromotionRequest
 
 
@@ -23,11 +20,11 @@ class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
          -  Messaging
 
      Responsibilities:
-        1.  Provides information a PromotionAuthorizer needs to execute a Promotion job.
+        1.  Provides PromotionAuthorizer with a job.
 
      Attributes:
+        id: int
         candidate: PromotionRequest
-        activity: Elevatable
 
      Provides:
 
@@ -40,22 +37,13 @@ class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
         Args:
             id: int
             candidate: PromotionRequest
-            activity: Elevatable
         """
         super().__init__(id=id, candidate=candidate)
     
     @property
     def candidate(self) -> PromotionRequest:
         return cast(PromotionRequest, super().candidate)
-    
-    @property
-    def activity(self) -> Elevatable:
-        return cast(Elevatable, super().activity)
-    
-    @property
-    def activity_to_rank(self) -> Rank:
-        return cast(Rank, cast(ABC, self.activity))
-    
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

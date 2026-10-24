@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from artifcat import ManeuverResult
 from domain import Path, Token
-from exchange import TravelRequest
+from exchange import Request
 
 
-class ManeuverRequest(TravelRequest[ManeuverResult]):
+class ManeuverRequest(Request[ManeuverResult]):
     """
      Role:
          -  Messaging
@@ -24,12 +24,12 @@ class ManeuverRequest(TravelRequest[ManeuverResult]):
 
      Attributes:
         token: Token
-        path: Elevatable
-
+        path: Path
+        
      Provides:
      
      Super Class:
-        TravelRequest
+        Request
      """
     _token: Token
     _path: Path

@@ -13,4 +13,4 @@ version: 0.0.2
 from .validation import *
 
 # Modules
-from .server import ResponseServer
+from .service import ResponseServer

@@ -15,17 +15,13 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Model, ModelBlueprint
 from exchange import (
-    ModelValidationRequest, ModelValidationResponder, ValidationService
+    ModelValidationRequest, ModelValidationResponder
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class ModelValidationServer(
-    ValidationService[T],
-    ABC,
-    Generic[T]
-):
+class ModelValidationService(ValidationService[T], ABC, Generic[T]):
     """
     Role
         -   Server
