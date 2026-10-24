@@ -14,17 +14,17 @@ from typing import Generic, TypeVar
 
 from artifcat import EncounterResult
 from domain import Maneuver, Square, Victimizable
-from exchange import Request
+from exchange import TravelRequest
 
 T = TypeVar("T", bound="Victimizable")
 
-class EncounterRequest(Request[EncounterResult], ABC, Generic[T]):
+class EncounterRequest(TravelRequest[EncounterResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide details about a encounter job.
+         1. Provide details about an encounter job.
 
      Attributes:
         victim: T
@@ -34,7 +34,7 @@ class EncounterRequest(Request[EncounterResult], ABC, Generic[T]):
      Provides:
      
      Super Class:
-        Request
+        TravelRequest
      """
     
     _victim: T

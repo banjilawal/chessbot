@@ -20,7 +20,9 @@ from .insertion import *
 from .maneuver import *
 from .microservice import *
 from .operation import *
+from .promotion import *
 from .validation import *
+from .travel import *
 from .operation import *
 
 # Modules
