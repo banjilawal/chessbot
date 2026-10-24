@@ -9,24 +9,25 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from abc import ABC
+from faulthandler import cancel_dump_traceback_later
+from typing import Generic, TypeVar, cast
 
-from artifcat import EncounterResult
-from domain import Attackable, Maneuver, Token
+
+from domain import Candidate, Token
 from exchange import AuthorizationRequest
 
+T = TypeVar("T", bound="Attackequest")
 
-class AttackRequest(AuthorizationRequest[EncounterResult]):
+class AttackAuthorizationRequest(AuthorizationRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Provides information an EncounterAuthorizer needs to execute a Encounter job.
+        1.  Provides AttackAuthorizer with a job.
 
      Attributes:
-        applicant: Token
-        activity: Attackable
 
      Provides:
 
@@ -34,30 +35,22 @@ class AttackRequest(AuthorizationRequest[EncounterResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, applicant: Token, activity: Attackable):
+    def __init__(self, id: int,  candidate: T):
         """
         Args:
             id: int
-            applicant: Token
-            activity: Attackable
+            candidate: T
         """
-        super().__init__(id=id, applicant=applicant, activity=activity)
+        super().__init__(id=id, candidate=candidate)
+    
     
     @property
-    def applicant(self) -> Token:
-        return cast(Token, super().applicant)
-    
-    @property
-    def activity(self) -> Attackable:
-        return cast(Attackable, super().activity)
-    
-    @property
-    def activity_to_maneuver(self) -> Maneuver:
-        return cast(Maneuver, self.activity)
-    
+    def candidate(self) -> T:
+        return cast(T, super().candidate)
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AttackRequest):
+        if isinstance(other, AttackAuthorizationRequest):
             return self.id == other.id
         return False

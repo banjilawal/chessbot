@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .analysis import *
+from .attack import *
 from .authorizable import *
 from .builder import *
 from .computation import *
