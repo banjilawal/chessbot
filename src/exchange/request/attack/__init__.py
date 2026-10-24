@@ -15,4 +15,4 @@ from .kill import *
 from .warning import *
 
 # Modules
-from .request import EncounterRequest
+from .request import AttackRequest

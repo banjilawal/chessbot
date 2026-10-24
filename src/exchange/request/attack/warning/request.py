@@ -1,7 +1,7 @@
-# src/exchange/request/encounter/request.py
+# src/exchange/request/encounter/warning/request.py
 
 """
-Module: exchange.request.encounter.request
+Module: exchange.request.encounter.warning.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,16 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
+from typing import cast
 
-from artifcat import EncounterResult
-from domain import Maneuver, Square, Victimizable
-from exchange import TravelRequest
+from domain import KingToken, Maneuver, Square
+from exchange import AttackRequest
 
-T = TypeVar("T", bound="Victimizable")
-
-class EncounterRequest(TravelRequest[EncounterResult], ABC, Generic[T]):
+class WarningRequest(AttackRequest[KingToken]):
     """
      Role:
          -  Messaging
@@ -27,40 +23,37 @@ class EncounterRequest(TravelRequest[EncounterResult], ABC, Generic[T]):
          1. Provide details about an encounter job.
 
      Attributes:
-        victim: T
         square: Square
         maneuver: Maneuver
+        victim: KingToken
 
      Provides:
      
      Super Class:
-        TravelRequest
+        Request
      """
-    
-    _victim: T
-    _location: Square
-    _maneuver: Maneuver
-
     
     def __init__(
             self,
             id: int,
-            victim: T,
             location: Square,
             maneuver: Maneuver,
+            victim: KingToken,
     ):
         """
         Args:
             id: int
-            victim: T
             location: Square
             maneuver: Maneuver
+            victim: KingToken
         """
-        super().__init__(id=id)
-        self._victim = victim
-        self._location = location
-        self._maneuver = maneuver
-        
+        super().__init__(
+            id=id,
+            victim=victim,
+            location=location,
+            maneuver=maneuver
+        )
+
     @property
     def square(self) -> Square:
         return self._location
@@ -70,12 +63,12 @@ class EncounterRequest(TravelRequest[EncounterResult], ABC, Generic[T]):
         return self._maneuver
     
     @property
-    def victim(self) -> T:
-        return self._victim
+    def victim(self) -> KingToken:
+        return cast(KingToken, super().victim)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, EncounterRequest):
+        if isinstance(other, WarningRequest):
             return self.id == other.id
         return False

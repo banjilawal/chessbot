@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from domain import CombatantToken, Maneuver, Square
-from exchange import EncounterRequest
+from exchange import AttackRequest
 
-class KillRequest(EncounterRequest[CombatantToken]):
+class KillRequest(AttackRequest[CombatantToken]):
     """
      Role:
          -  Messaging

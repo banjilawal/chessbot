@@ -1,7 +1,7 @@
-# src/exchange/request/encounter/warning/request.py
+# src/exchange/request/encounter/checkmate/request.py
 
 """
-Module: exchange.request.encounter.warning.request
+Module: exchange.request.encounter.checkmate.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from domain import KingToken, Maneuver, Square
-from exchange import EncounterRequest
+from exchange import AttackRequest
 
-class WarningRequest(EncounterRequest[KingToken]):
+class CheckmateRequest(AttackRequest[KingToken]):
     """
      Role:
          -  Messaging
@@ -69,6 +69,6 @@ class WarningRequest(EncounterRequest[KingToken]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, WarningRequest):
+        if isinstance(other, CheckmateRequest):
             return self.id == other.id
         return False
