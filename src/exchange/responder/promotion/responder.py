@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import cast
 
-from artifcat import PromotionResponse, PromotionResult
-from exchange import Responder, PromotionRequest
-from transit import PromotionDispatcher
+from artifcat import PromotionResult
+from exchange import PromotionRequest, Responder
 from util import LoggingLevelRouter
 
 
@@ -26,36 +26,35 @@ class PromotionResponder(Responder[PromotionResult]):
 
     Attributes:
         
-        dispatcher: PromotionDispatcher[T]
+        dispatcher: PromotionDispatcher
 
     Provides:
-        -   def submit(request: PromotionRequest[T]) -> PromotionResponse[T]
+        -   def submit(request: PromotionRequest) -> PromotionResponse
 
 
     Super Class:
         Responder
     """
     
-    def __init__(self, dispatcher: PromotionDispatcher[T]):
+    def __init__(self, dispatcher: PromotionDispatcher):
         """
         Args:
-            dispatcher: PromotionDispatcher[T]
+            dispatcher: PromotionDispatcher
         """
         super().__init__(dispatcher=dispatcher)
         
     @property
-    def dispatcher(self) -> PromotionDispatcher[T]:
+    def dispatcher(self) -> PromotionDispatcher:
         return cast(PromotionDispatcher, super().dispatcher)
     
     
-    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest[T]) -> PromotionResponse[T]:
+    def execute(self, request: PromotionRequest) -> PromotionResponse:
         """
         Args:
-            request: PromotionRequest[T]
+            request: PromotionRequest
         Result:
-            PromotionResponse[T]
+            PromotionResponse
         Raises:
             ValidationResponderException
         """

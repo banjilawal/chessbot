@@ -14,6 +14,7 @@ from .analysis import *
 from .authorizable import *
 from .builder import *
 from .computation import *
+from .encounter import *
 from .event import *
 from .interface import *
 from .shell import *

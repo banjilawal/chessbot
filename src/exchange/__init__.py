@@ -12,7 +12,6 @@ version: 0.0.2
 # Packages
 from .request import *
 from .responder import *
-from .wrapper import *
+from .server import *
 
 # Modules
-from .message import Message
