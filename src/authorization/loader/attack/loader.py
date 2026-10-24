@@ -13,12 +13,12 @@ from typing import cast
 
 from artifcat import AttackDecision
 from authorization import AuthorizationLoader
-from err import AttackAuthorizationLoaderException, AttackRequestNullException
-from exchange import AttackRequest
+from err import AttackAuthorizationLoaderException, AttackAuthorizationRequestNullException
+from exchange import AttackAuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class AttackAuthorizationLoader(AuthorizationLoader[AttackRequest]):
+class AttackAuthorizationLoader(AuthorizationLoader[AttackAuthorizationRequest]):
     """
     Role:
         -   Permission Authorization
@@ -29,7 +29,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackRequest]):
     Attributes:
 
     Provides:
-        -   def execute(request: AttackRequest) -> AttackDecision
+        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
 
     Super Class:
         AuthorizationLoader
@@ -39,17 +39,17 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackRequest]):
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackRequest) -> AttackDecision:
+    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
         """
         Checks if the request is null or the wrong type
 
         Action:
             1.  Send an exception chain in the Decision denial if either;
                     -   the request is null.
-                    -   not a AttackRequest.
+                    -   not a AttackAuthorizationRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: AttackRequest
+            request: AttackAuthorizationRequest
         Returns:
            AttackDecision
         Raises:
@@ -60,8 +60,8 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackRequest]):
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
             candidate=request,
-            target_model=AttackRequest,
-            null_exception=AttackRequestNullException(),
+            target_model=AttackAuthorizationRequest,
+            null_exception=AttackAuthorizationRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:
@@ -75,9 +75,9 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackRequest]):
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(AttackRequest, priming.payload)
+        approved_request = cast(AttackAuthorizationRequest, priming.payload)
         # --- Prepare an approval from the completed chain. ---#
-        approval = AttackRequest(
+        approval = AttackAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

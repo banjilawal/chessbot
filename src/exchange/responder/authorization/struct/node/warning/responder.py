@@ -31,7 +31,7 @@ class EncounterWaningNodeAuthorizationResponder(NodeAuthorizationResponder[Encou
         dispatcher: EncounterWaningNodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: EncounterWaningNodeAuthorizationRequest[T]) -> EncounterWaningNodeDecision[T]
+        -   def execute(request: EncounterWaningNodeAuthorizationRequest[T]) -> EncounterWaningNodeDecision[T]
 
     Super Class:
         NodeValidatorExchange

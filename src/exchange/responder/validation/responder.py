@@ -31,7 +31,7 @@ class ValidationResponder(Responder[ValidationResult], ABC, Generic[T]):
         dispatcher: ValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: ValidationRequest[T]) -> ValidationResponse[T]
+        -   def execute(request: ValidationRequest[T]) -> ValidationResponse[T]
 
 
     Super Class:

@@ -16,4 +16,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .result import AuthorizableResult
+from .result import Decision

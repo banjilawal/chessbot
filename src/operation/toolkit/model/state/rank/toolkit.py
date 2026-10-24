@@ -14,7 +14,7 @@ from typing import List
 from microservice import IdentityService, Microservice
 from domain.model import Rank
 from operation.toolkit.model.state.rank.toolkit import StateModelToolkit
-from operation import Operator
+from operation import Worker
 from transit.dispatcher.validator import PrimingValidator
 
 
@@ -41,7 +41,7 @@ class RankToolkit(StateModelToolkit[Rank]):
     Super Class:
        ModelToolkit
     """
-    DEPENDENCIES: List[Operator] = [PrimingValidator, ]
+    DEPENDENCIES: List[Worker] = [PrimingValidator, ]
     SERVICE_DEPENDENCIES: List[Microservice] = [IdentityService,]
 
     identity_service: IdentityService = IdentityService()

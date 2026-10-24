@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import AuthorizableResult, ResultState
+from artifcat import Decision, ResultState
 from domain import Encounter
 
 T = TypeVar("T", bound="Encounter")
 
 
-class EncounterResult(AuthorizableResult[T], ABC, Generic[T]):
+class EncounterResult(Decision[T], ABC, Generic[T]):
     """
     Role:
         - Data Transport

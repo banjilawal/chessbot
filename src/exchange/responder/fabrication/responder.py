@@ -31,7 +31,7 @@ class BuildResponder(Responder[BuildResult], ABC, Generic[T]):
         dispatcher: BuildDispatcher[T]
 
     Provides:
-        -   def submit(request: BuildRequest[T]) -> BuildResponse[T]
+        -   def execute(request: BuildRequest[T]) -> BuildResponse[T]
 
 
     Super Class:

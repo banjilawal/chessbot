@@ -14,14 +14,14 @@ from typing import Generic, TypeVar
 
 from artifcat import PromotionDecision
 from authorization import Checker
-from exchange import PromotionRequest
+from exchange import PromotionAuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class PromotionChecker(Checker[PromotionRequest], ABC, Generic[T]):
+class PromotionChecker(Checker[PromotionAuthorizationRequest], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         pass

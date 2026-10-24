@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional, TypeVar, Generic, cast
 
-from artifcat import AuthorizableResult
+from artifcat import Decision
 
 T = TypeVar("T")
 
 
-class CrudResult(AuthorizableResult[T], ABC, Generic[T]):
+class CrudResult(Decision[T], ABC, Generic[T]):
     """
     Role:
         - Data Transport

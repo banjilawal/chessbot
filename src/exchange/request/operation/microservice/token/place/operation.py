@@ -17,13 +17,13 @@ from sensor.analyzer import HomeSquareValidator
 from transit.controller import WorkerRegistryController
 from err import TokenPlaceException
 from exchange.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
-from operation import Operator
+from operation import Worker
 from artifcat.report import HomeSquareClaimReport
 from artifcat import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
 
-class TokenHomePlacer(Operator[Token]):
+class TokenHomePlacer(Worker[Token]):
     """
     Role:
         - Transaction Worker

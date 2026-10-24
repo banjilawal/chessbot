@@ -31,7 +31,7 @@ class EncounterWaningNodeValidationResponder(NodeValidationResponder[EncounterWa
         dispatcher: EncounterWaningNodeValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: EncounterWaningNodeValidationRequest[T]) -> EncounterWaningNodeValidationResponse[T]
+        -   def execute(request: EncounterWaningNodeValidationRequest[T]) -> EncounterWaningNodeValidationResponse[T]
 
     Super Class:
         NodeValidatorExchange

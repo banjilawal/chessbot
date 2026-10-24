@@ -31,7 +31,7 @@ class SquareValidationResponder(ModelValidationResponder[Square]):
         dispatcher: SquareValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: SquareValidationRequest[T]) -> SquareValidationResponse[T]
+        -   def execute(request: SquareValidationRequest[T]) -> SquareValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

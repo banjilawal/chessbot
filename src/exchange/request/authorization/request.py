@@ -12,14 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from artifcat import AuthorizableResult
-from domain import Actionable, Actor
+
 from exchange import Request
 
-T = TypeVar("T", bound="AuthorizableResult")
+T = TypeVar("T", bound="Request")
 
 
-class AuthorizationRequest(Request[T], Generic[T]):
+class AuthorizationRequest(Request[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -36,28 +35,21 @@ class AuthorizationRequest(Request[T], Generic[T]):
      Super Class:
         Request
      """
-    _applicant: Actor
-    _activity: Actionable
+    _candidate: T
     
-    def __init__(self, id: int, applicant: Actor, activity: Actionable):
+    def __init__(self, id: int, candidate: T):
         """
         Args:
             id: int
-            applicant: Actor
-            activity: Actionable
+            candidate: T
         """
         super().__init__(id=id)
-        self._applicant = applicant
-        self._activity = activity
+        self._candidate = candidate
         
     @property
-    def applicant(self) -> Applicant:
-        return self._applicant
-    
-    @property
-    def activity(self) -> Actionable:
-        return self._activity
-    
+    def candidate(self) -> T:
+        return self._candidate
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

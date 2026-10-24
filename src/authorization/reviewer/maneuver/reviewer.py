@@ -15,12 +15,12 @@ from typing import Generic, List, TypeVar, cast
 from artifcat import ManeuverDecision
 from authorization import ActorChainable, ApplicantReviewer, ReadyChecker
 from domain import Actor
-from exchange import ManeuverRequest
+from exchange import ManeuverAuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest], ABC, Generic[T]):
+class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverAuthorizationRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -33,7 +33,7 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest], ABC, Generic
         checkers: List[ActorChainable]
 
     Provides:
-        -   def execute(request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
 
     Super Class:
         ApplicantReviewer
@@ -57,11 +57,11 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest], ABC, Generic
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
         """
         Decide if an applicant can be promoted.
         Args:
-            request: ManeuverRequest
+            request: ManeuverAuthorizationRequest
         Returns:
             ManeuverDecision
         Raises:

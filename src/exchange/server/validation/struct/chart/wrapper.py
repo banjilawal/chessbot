@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/chart/wrapper.py
+# src/exchange/server/validation/struct/chart/server.py
 
 """
-Module: exchange.wrapper.validation.struct.chart.wrapper
+Module: exchange.server.validation.struct.chart.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,20 +15,20 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Chart, ChartBlueprint
 from exchange import (
-    ChartValidationRequest, ChartValidationResponder, StructValidationService,
+    ChartValidationRequest, ChartValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
 
-class ChartValidationService(
-    StructValidationService[T],
+class ChartValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the either:

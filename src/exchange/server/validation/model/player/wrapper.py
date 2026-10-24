@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/player/wrapper.py
+# src/exchange/server/validation/model/player/server.py
 
 """
-Module: exchange.wrapper.validation.model.player.wrapper
+Module: exchange.server.validation.model.player.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import PlayerValidationResponse, ValidationResult
 from domain import Player, PlayerBlueprint
 from err import PlayerValidationResponderException, PlayerValidationServerException, PlayerCarrierEmptyException
 from exchange import (
-    PlayerValidationResponder, ModelValidationService, PlayerValidationRequest
+    PlayerValidationResponder, ModelValidationServer, PlayerValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class PlayerValidationService(
-    ModelValidationService[Player]
+class PlayerValidationServer(
+    ModelValidationServer[Player]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

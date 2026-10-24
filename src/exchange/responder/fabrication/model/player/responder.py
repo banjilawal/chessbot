@@ -31,7 +31,7 @@ class PlayerBuildResponder(ModelBuildResponder[Player]):
         dispatcher: PlayerBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: PlayerBuildRequest[T]) -> PlayerBuildResponse[T]
+        -   def execute(request: PlayerBuildRequest[T]) -> PlayerBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -35,7 +35,7 @@ class ChartAuthorizationResponder(
         dispatcher: ChartAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: ChartAuthorizationRequest[T]) -> ChartDecision[T]
+        -   def execute(request: ChartAuthorizationRequest[T]) -> ChartDecision[T]
 
     Super Class:
         ValidatorExchange

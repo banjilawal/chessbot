@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/rank/wrapper.py
+# src/exchange/server/validation/model/rank/server.py
 
 """
-Module: exchange.wrapper.validation.model.rank.wrapper
+Module: exchange.server.validation.model.rank.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import RankValidationResponse, ValidationResult
 from domain import Rank, RankBlueprint
 from err import RankValidationResponderException, RankValidationServerException, RankCarrierEmptyException
 from exchange import (
-    RankValidationResponder, ModelValidationService, RankValidationRequest
+    RankValidationResponder, ModelValidationServer, RankValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class RankValidationService(
-    ModelValidationService[Rank]
+class RankValidationServer(
+    ModelValidationServer[Rank]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

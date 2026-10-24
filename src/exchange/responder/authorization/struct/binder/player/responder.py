@@ -31,7 +31,7 @@ class PlayerBinderAuthorizationResponder(BinderAuthorizationResponder[PlayerBind
         dispatcher: PlayerBinderAuthorizationDispatcher
 
     Provides:
-        -   def submit(request: PlayerBinderAuthorizationRequest) -> PlayerBinderDecision
+        -   def execute(request: PlayerBinderAuthorizationRequest) -> PlayerBinderDecision
 
     Super Class:
         BinderValidatorExchange

@@ -17,11 +17,11 @@ from authorization import (
 )
 from err import ManeuverAuthorizerException
 
-from exchange import ManeuverRequest
+from exchange import ManeuverAuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class ManeuverAuthorizer(Authorizer[ManeuverRequest]):
+class ManeuverAuthorizer(Authorizer[ManeuverAuthorizationRequest]):
     """
     Role:
         -   Permission Authorization
@@ -35,7 +35,7 @@ class ManeuverAuthorizer(Authorizer[ManeuverRequest]):
         applicant_reviewer: ManeuverTokenReviewer
 
     Provides:
-        -   def execute(request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
 
     Super Class:
         Authorizer
@@ -72,16 +72,16 @@ class ManeuverAuthorizer(Authorizer[ManeuverRequest]):
         return cast(ManeuverTokenReviewer, super().applicant_reviewer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
         """
-        Checks if a ManeuverRequest can be granted.
+        Checks if a ManeuverAuthorizationRequest can be granted.
         
         Action:
             1.  Send an exception in Decision if any authoriation delegated denies
                 the request.
             2.  Otherwise, send a maneuver approval.
         Args:
-            request: ManeuverRequest
+            request: ManeuverAuthorizationRequest
         Returns:
            ManeuverDecision
         Raises:
@@ -134,7 +134,7 @@ class ManeuverAuthorizer(Authorizer[ManeuverRequest]):
                 ),
             )
         # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverRequest(
+        approval = ManeuverAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

@@ -31,7 +31,7 @@ class SquareBuildResponder(ModelBuildResponder[Square]):
         dispatcher: SquareBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: SquareBuildRequest[T]) -> SquareBuildResponse[T]
+        -   def execute(request: SquareBuildRequest[T]) -> SquareBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -12,7 +12,7 @@ from __future__ import annotations
 from bootstrapper import PrimingValidator
 from err import ManeuverException
 from err.null.event import ManeuverEventNullException
-from artifcat.report import ManeuverApproval, ManeuverRequestDecision
+from artifcat.report import ManeuverApproval, ManeuverAuthorizationRequestDecision
 from artifcat import TurnResult
 from util import LoggingLevelRouter
 
@@ -46,7 +46,7 @@ class ManeuverLauncher:
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, report: ManeuverRequestDecision, ) -> TurnResult:
+    def execute(self, report: ManeuverAuthorizationRequestDecision, ) -> TurnResult:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -86,7 +86,7 @@ class ManeuverLauncher:
                     ex=priming.exception,
                 )
             )
-        report = cast(ManeuverRequestDecision, priming.payload)
+        report = cast(ManeuverAuthorizationRequestDecision, priming.payload)
         # Handle the case that the destination is not empty.
         if report.is_denial:
             # Send the exception chain on failure.

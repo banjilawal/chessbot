@@ -31,7 +31,7 @@ class EncounterBuildResponder(ModelBuildResponder[Encounter]):
         dispatcher: EncounterBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: EncounterBuildRequest[T]) -> EncounterBuildResponse[T]
+        -   def execute(request: EncounterBuildRequest[T]) -> EncounterBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

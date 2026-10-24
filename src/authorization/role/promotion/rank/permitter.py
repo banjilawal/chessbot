@@ -15,7 +15,7 @@ from artifcat import PromotionDecision
 from authorization import PromotionRolePermitter
 from domain import Elevateable, Rank
 from err import PromotionRankPermitterException
-from exchange import PromotionRequest, RankValidationRequest, RankValidationService
+from exchange import PromotionAuthorizationRequest, RankValidationRequest, RankValidationService
 from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -26,13 +26,13 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevateable]):
         -   Authorization
 
     Responsibilities:
-        1.  Grant permission to a Rank for a PromotionRequest.
+        1.  Grant permission to a Rank for a PromotionAuthorizationRequest.
 
     Attributes:
         validation_service : RankValidationService
 
     Provides:
-        -   execute(request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
 
     Super Class:
         PromotionRolePermitter
@@ -48,7 +48,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevateable]):
         return cast(RankValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
         Decide if a Promotion can be made to a Rank.
 
@@ -58,7 +58,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevateable]):
                     -   The rank is not promotable.
             2.  Otherwise, issue a grant decision.
         Args:
-            request: PromotionRequest
+            request: PromotionAuthorizationRequest
         Returns:
            PromotionDecision
         Raises:
@@ -104,7 +104,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevateable]):
             )
         # --- Prepare an approval of the activity. ---#
         activity = cast(Elevateable, rank)
-        approval = PromotionRequest(
+        approval = PromotionAuthorizationRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,

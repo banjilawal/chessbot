@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from err import TokenSearcherException
 from authorization.authorizer import TokenSearchAuthorizer
-from client.exchange import SearchRequest
+from client.exchange import SearchAuthorizationRequest
 from artifcat import SearchResult
 from transit.router import TokenSearchRouter
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class TokenSearcher:
         self._router = router
         
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchRequest) -> SearchResult:
+    def execute(self, request: SearchAuthorizationRequest) -> SearchResult:
         method = f"{self.__class__.__name__}.execute"
 
 

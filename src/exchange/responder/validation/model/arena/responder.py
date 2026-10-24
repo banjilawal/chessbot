@@ -31,7 +31,7 @@ class ArenaValidationResponder(ModelValidationResponder[Arena]):
         dispatcher: ArenaValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: ArenaValidationRequest[T]) -> ArenaValidationResponse[T]
+        -   def execute(request: ArenaValidationRequest[T]) -> ArenaValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -35,7 +35,7 @@ class ChartValidationResponder(
         dispatcher: ChartValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: ChartValidationRequest[T]) -> ChartValidationResponse[T]
+        -   def execute(request: ChartValidationRequest[T]) -> ChartValidationResponse[T]
 
     Super Class:
         ValidatorExchange

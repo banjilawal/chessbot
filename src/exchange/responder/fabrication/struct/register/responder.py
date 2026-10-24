@@ -35,7 +35,7 @@ class RegisterBuildResponder(
         dispatcher: RegisterBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: RegisterBuildRequest[T]) -> RegisterBuildResponse[T]
+        -   def execute(request: RegisterBuildRequest[T]) -> RegisterBuildResponse[T]
 
     Super Class:
         ValidatorExchange

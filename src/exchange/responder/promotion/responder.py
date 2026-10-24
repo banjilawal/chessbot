@@ -9,10 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import PromotionResponse, PromotionResult
 from exchange import PromotionRequest, Responder
+from transit import PromotionDispatcher
 from util import LoggingLevelRouter
 
 
@@ -29,19 +30,19 @@ class PromotionResponder(Responder[PromotionResult]):
         dispatcher: PromotionDispatcher
 
     Provides:
-        -   def submit(request: PromotionRequest) -> PromotionResponse
+        -   def execute(request: PromotionRequest) -> PromotionResponse
 
 
     Super Class:
         Responder
     """
     
-    def __init__(self, dispatcher: PromotionDispatcher):
+    def __init__(self, dispatcher: Optional[PromotionDispatcher] | None = None,):
         """
         Args:
             dispatcher: PromotionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(dispatcher=dispatcher or PromotionDispatcher())
         
     @property
     def dispatcher(self) -> PromotionDispatcher:

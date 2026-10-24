@@ -13,12 +13,12 @@ from typing import cast
 
 from artifcat import PromotionDecision
 from authorization import AuthorizationLoader
-from err import PromotionAuthorizationLoaderException, PromotionRequestNullException
-from exchange import PromotionRequest
+from err import PromotionAuthorizationLoaderException, PromotionAuthorizationRequestNullException
+from exchange import PromotionAuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
+class PromotionAuthorizationLoader(AuthorizationLoader[PromotionAuthorizationRequest]):
     """
     Role:
         -   Permission Authorization
@@ -29,7 +29,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
     Attributes:
 
     Provides:
-        -   def execute(request: PromotionRequest) -> PromotionDecision
+        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
 
     Super Class:
         AuthorizationLoader
@@ -39,17 +39,17 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
         Checks if the request is null or the wrong type
 
         Action:
             1.  Send an exception chain in the Decision denial if either;
                     -   the request is null.
-                    -   not a PromotionRequest.
+                    -   not a PromotionAuthorizationRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: PromotionRequest
+            request: PromotionAuthorizationRequest
         Returns:
            PromotionDecision
         Raises:
@@ -60,8 +60,8 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
             candidate=request,
-            target_model=PromotionRequest,
-            null_exception=PromotionRequestNullException(),
+            target_model=PromotionAuthorizationRequest,
+            null_exception=PromotionAuthorizationRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:
@@ -75,9 +75,9 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(PromotionRequest, priming.payload)
+        approved_request = cast(PromotionAuthorizationRequest, priming.payload)
         # --- Prepare an approval from the completed chain. ---#
-        approval = PromotionRequest(
+        approval = PromotionAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

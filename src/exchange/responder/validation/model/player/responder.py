@@ -31,7 +31,7 @@ class PlayerValidationResponder(ModelValidationResponder[Player]):
         dispatcher: PlayerValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: PlayerValidationRequest[T]) -> PlayerValidationResponse[T]
+        -   def execute(request: PlayerValidationRequest[T]) -> PlayerValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

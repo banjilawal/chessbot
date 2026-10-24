@@ -15,12 +15,12 @@ from typing import Generic, TypeVar, cast
 from artifcat import PromotionDecision
 from authorization import RolePermitter
 from domain import Elevateable
-from exchange import PromotionRequest, ValidationService
+from exchange import PromotionAuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Elevateable")
 
-class PromotionRolePermitter(RolePermitter[PromotionRequest], ABC, Generic[T]):
+class PromotionRolePermitter(RolePermitter[PromotionAuthorizationRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -32,7 +32,7 @@ class PromotionRolePermitter(RolePermitter[PromotionRequest], ABC, Generic[T]):
         validation_service: ValidationService
 
     Provides:
-        -   execute(request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
 
     Super Class:
         RolePermitter
@@ -51,11 +51,11 @@ class PromotionRolePermitter(RolePermitter[PromotionRequest], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
         Decide if a Promotion can be made with an Actionable.
         Args:
-            request: PromotionRequest
+            request: PromotionAuthorizationRequest
         Returns:
            PromotionDecision
         Raises:

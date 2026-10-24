@@ -36,7 +36,7 @@ class StructBuildResponder(
         dispatcher: StructBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: StructBuildRequest[T]) -> StructBuildResponse[T]
+        -   def execute(request: StructBuildRequest[T]) -> StructBuildResponse[T]
 
     Super Class:
         ValidatorExchange

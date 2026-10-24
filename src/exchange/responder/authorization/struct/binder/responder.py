@@ -35,7 +35,7 @@ class BinderAuthorizationResponder(
         dispatcher: BinderAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: BinderAuthorizationRequest[T]) -> BinderDecision[T]
+        -   def execute(request: BinderAuthorizationRequest[T]) -> BinderDecision[T]
 
     Super Class:
         ValidatorExchange

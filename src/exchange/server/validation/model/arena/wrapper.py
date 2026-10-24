@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/arena/wrapper.py
+# src/exchange/server/validation/model/arena/server.py
 
 """
-Module: exchange.wrapper.validation.model.arena.wrapper
+Module: exchange.server.validation.model.arena.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import ArenaValidationResponse, ValidationResult
 from domain import Arena, ArenaBlueprint
 from err import ArenaValidationResponderException, ArenaValidationServerException, EmptyArenaCarrierException
 from exchange import (
-    ArenaValidationResponder, ModelValidationService, ArenaValidationRequest
+    ArenaValidationResponder, ModelValidationServer, ArenaValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ArenaValidationService(
-    ModelValidationService[Arena]
+class ArenaValidationServer(
+    ModelValidationServer[Arena]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

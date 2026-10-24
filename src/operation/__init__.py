@@ -13,10 +13,10 @@ version: 0.0.2
 from .crud import *
 from .computation import *
 from .insertion import *
-from .kit import *
 from .microservice import *
+from .promoter import *
 from .suite import *
 from .toolkit import *
 
 # Modules
-from .operator import Operator
+from .worker import Worker

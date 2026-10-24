@@ -31,7 +31,7 @@ class GameBuildResponder(ModelBuildResponder[Game]):
         dispatcher: GameBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: GameBuildRequest[T]) -> GameBuildResponse[T]
+        -   def execute(request: GameBuildRequest[T]) -> GameBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

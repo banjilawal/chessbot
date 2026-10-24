@@ -16,7 +16,7 @@ from domain import Maneuverable, Path, Token
 from exchange import AuthorizationRequest
 
 
-class ManeuverRequest(AuthorizationRequest[ManeuverResult]):
+class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverResult]):
     """
      Role:
          -  Messaging
@@ -58,6 +58,6 @@ class ManeuverRequest(AuthorizationRequest[ManeuverResult]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ManeuverRequest):
+        if isinstance(other, ManeuverAuthorizationRequest):
             return self.id == other.id
         return False

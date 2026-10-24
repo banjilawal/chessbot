@@ -31,7 +31,7 @@ class TokenBuildResponder(ModelBuildResponder[Token]):
         dispatcher: TokenBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: TokenBuildRequest[T]) -> TokenBuildResponse[T]
+        -   def execute(request: TokenBuildRequest[T]) -> TokenBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -31,7 +31,7 @@ class VectorBuildResponder(ModelBuildResponder[Vector]):
         dispatcher: VectorBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: VectorBuildRequest[T]) -> VectorBuildResponse[T]
+        -   def execute(request: VectorBuildRequest[T]) -> VectorBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -16,10 +16,10 @@ from err import WorkerRegistryDomainSearchException
 from artifcat import SearchResult
 from domain.model import WorkerRegistry
 from util import LoggingLevelRouter
-from operation import Operator, RegistryEntryNameValidator
+from operation import Worker, RegistryEntryNameValidator
 
 
-class WorkerRegistryDomainSearch(Dict[str, Operator]):
+class WorkerRegistryDomainSearch(Dict[str, Worker]):
     """
     Role
         - Search Worker
@@ -48,7 +48,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operator]):
             name: str,
             registry: WorkerRegistry,
             key_name_validator: RegistryEntryNameValidator | None = None,
-    ) -> SearchResult[List[Dict[str, Operator]]]:
+    ) -> SearchResult[List[Dict[str, Worker]]]:
         """
         Search the WorkerRegistry for an operation.
 

@@ -10,13 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import abstractmethod
+from typing import Optional
 
-from artifcat import PromotionResponse
+from artifcat import PromotionResponse, PromotionResult
 from exchange import PromotionRequest
 from transit import Dispatcher
 from util import LoggingLevelRouter
 
-class PromotionDispatcher(Dispatcher[PromotionRequest]):
+class PromotionDispatcher(Dispatcher[PromotionResult]):
     """
     Role
         -   Permission Promotion Manager
@@ -34,7 +35,7 @@ class PromotionDispatcher(Dispatcher[PromotionRequest]):
         Dispatcher
     """
     
-    _promoter: Promoter
+    _promoter: Optional[Promoter]
     
     def __init__(self, promoter: Promoter):
         """
@@ -47,7 +48,6 @@ class PromotionDispatcher(Dispatcher[PromotionRequest]):
     def promoter(self) -> Promoter:
         return self._promoter
     
-    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionResponse:
         """

@@ -16,7 +16,7 @@ from domain.model import WorkerRegistry
 from operation.toolkit import WorkerRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from artifcat import InsertionResult, SearchResult
-from operation import Operator
+from operation import Worker
 from err import OperationNullException, WorkerRegistryControllerException
 
 
@@ -76,7 +76,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
     @LoggingLevelRouter.monitor
     def register_worker(
             self,
-            worker: Operator,
+            worker: Worker,
             null_exception: OperationNullException | None = None,
     ) -> InsertionResult:
         """
@@ -123,7 +123,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def find_worker(self, domain: str, operation_name: str,) -> SearchResult[List[Operator]]:
+    def find_worker(self, domain: str, operation_name: str,) -> SearchResult[List[Worker]]:
         """
         Find a worker in the registry.
 
@@ -162,7 +162,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         return search_result
     
     @LoggingLevelRouter.monitor
-    def domain_workers(self, domain: str,) -> SearchResult[List[Dict[str, Operator]]]:
+    def domain_workers(self, domain: str,) -> SearchResult[List[Dict[str, Worker]]]:
         """
         Find the workers in a domain.
 

@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/coord/wrapper.py
+# src/exchange/server/validation/model/coord/server.py
 
 """
-Module: exchange.wrapper.validation.model.coord.wrapper
+Module: exchange.server.validation.model.coord.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import CoordValidationResponse, ValidationResult
 from domain import Coord, CoordBlueprint
 from err import CoordValidationResponderException, CoordValidationServerException, CoordCarrierEmptyException
 from exchange import (
-    CoordValidationResponder, ModelValidationService, CoordValidationRequest
+    CoordValidationResponder, ModelValidationServer, CoordValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class CoordValidationService(
-    ModelValidationService[Coord]
+class CoordValidationServer(
+    ModelValidationServer[Coord]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

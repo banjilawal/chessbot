@@ -31,7 +31,7 @@ class ParticipationBuildResponder(ChartBuildResponder[Participation]):
         dispatcher: ParticipationBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: ParticipationBuildRequest[T]) -> ParticipationBuildResponse[T]
+        -   def execute(request: ParticipationBuildRequest[T]) -> ParticipationBuildResponse[T]
 
     Super Class:
         ChartValidatorExchange

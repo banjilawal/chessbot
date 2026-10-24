@@ -31,7 +31,7 @@ class TokenValidationResponder(ModelValidationResponder[Token]):
         dispatcher: TokenValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: TokenValidationRequest[T]) -> TokenValidationResponse[T]
+        -   def execute(request: TokenValidationRequest[T]) -> TokenValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

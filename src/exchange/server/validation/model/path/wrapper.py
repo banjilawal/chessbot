@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/path/wrapper.py
+# src/exchange/server/validation/model/path/server.py
 
 """
-Module: exchange.wrapper.validation.model.path.wrapper
+Module: exchange.server.validation.model.path.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import PathValidationResponse, ValidationResult
 from domain import Path, PathBlueprint
 from err import PathValidationResponderException, PathValidationServerException, PathCarrierEmptyException
 from exchange import (
-    PathValidationResponder, ModelValidationService, PathValidationRequest
+    PathValidationResponder, ModelValidationServer, PathValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class PathValidationService(
-    ModelValidationService[Path]
+class PathValidationServer(
+    ModelValidationServer[Path]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

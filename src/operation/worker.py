@@ -1,7 +1,7 @@
-# src/operation/operator.py
+# src/operation/worker.py
 
 """
-Module: operation.operation
+Module: operation.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,13 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from authorization import RequestAuthorizer
-from domain import Request
 from artifcat import Result
+from exchange import AuthorizationResponder, Request
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
-class Operator(ABC, Generic[T]):
+class Worker(ABC, Generic[T]):
     """
     Role
         - Worker
@@ -29,25 +28,25 @@ class Operator(ABC, Generic[T]):
         1.  Execute a task that produces a Result.
 
     Attributes:
-        authorizer: RequestAuthorizer[T]
+        authorization_responder: AuthorizationResponder[T]
         
     Provides:
         -   def execute(request: Request[T]) -> T
 
     Super Class:
     """
-    _authorizer: RequestAuthorizer[T]
+    _authorization_responder: AuthorizationResponder
     
-    def __init__(self, authorizer: RequestAuthorizer[T]):
+    def __init__(self, authorization_responder: AuthorizationResponder):
         """
         Args:
-            authorizer: RequestAuthorizer[T]
+            authorization_responder: AuthorizationResponder
         """
-        self._authorizer = authorizer
+        self._authorization_responder = authorization_responder
         
     @property
-    def authorizer(self) -> RequestAuthorizer[T]:
-        return self._authorizer
+    def authorization_responder(self) -> AuthorizationResponder:
+        return self._authorization_responder
     
     
     @abstractmethod

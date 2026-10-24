@@ -31,7 +31,7 @@ class TeamBinderValidationResponder(BinderValidationResponder[TeamBinder]):
         dispatcher: TeamBinderValidationDispatcher
 
     Provides:
-        -   def submit(request: TeamBinderValidationRequest) -> TeamBinderValidationResponse
+        -   def execute(request: TeamBinderValidationRequest) -> TeamBinderValidationResponse
 
     Super Class:
         BinderValidatorExchange

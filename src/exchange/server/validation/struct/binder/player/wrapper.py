@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/binder/player/wrapper.py
+# src/exchange/server/validation/struct/binder/player/server.py
 
 """
-Module: exchange.wrapper.validation.struct.binder.player.wrapper
+Module: exchange.server.validation.struct.binder.player.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -25,7 +25,7 @@ class PlayerBinderValidationServer(
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

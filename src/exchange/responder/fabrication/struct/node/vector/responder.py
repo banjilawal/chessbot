@@ -31,7 +31,7 @@ class VectorNodeBuildResponder(NodeBuildResponder[VectorNode]):
         dispatcher: VectorNodeBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: VectorNodeBuildRequest[T]) -> VectorNodeBuildResponse[T]
+        -   def execute(request: VectorNodeBuildRequest[T]) -> VectorNodeBuildResponse[T]
 
     Super Class:
         NodeValidatorExchange

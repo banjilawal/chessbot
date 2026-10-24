@@ -31,7 +31,7 @@ class CoordValidationResponder(ModelValidationResponder[Coord]):
         dispatcher: CoordValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: CoordValidationRequest[T]) -> CoordValidationResponse[T]
+        -   def execute(request: CoordValidationRequest[T]) -> CoordValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

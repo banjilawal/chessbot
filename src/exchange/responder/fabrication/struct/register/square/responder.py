@@ -31,7 +31,7 @@ class SquareRegisterBuildResponder(RegisterBuildResponder[SquareRegister]):
         dispatcher: SquareRegisterBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: SquareRegisterBuildRequest[T]) -> SquareRegisterBuildResponse[T]
+        -   def execute(request: SquareRegisterBuildRequest[T]) -> SquareRegisterBuildResponse[T]
 
     Super Class:
         RegisterValidatorExchange

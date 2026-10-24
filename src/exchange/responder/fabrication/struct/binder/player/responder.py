@@ -31,7 +31,7 @@ class PlayerBinderBuildResponder(BinderBuildResponder[PlayerBinder]):
         dispatcher: PlayerBinderBuildDispatcher
 
     Provides:
-        -   def submit(request: PlayerBinderBuildRequest) -> PlayerBinderBuildResponse
+        -   def execute(request: PlayerBinderBuildRequest) -> PlayerBinderBuildResponse
 
     Super Class:
         BinderValidatorExchange

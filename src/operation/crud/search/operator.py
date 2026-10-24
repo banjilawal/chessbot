@@ -14,14 +14,14 @@ from typing import Generic, TypeVar, cast
 
 from authorization import SearchAuthorizer
 from domain import SearchRequest
-from operation import CrudOperator
+from operation import CrudWorker
 from artifcat import SearchResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="SearchRequest")
 
 
-class Search(CrudOperator[T], ABC, Generic[T]):
+class Search(CrudWorker[T], ABC, Generic[T]):
     """
     Role
         - Worker

@@ -33,7 +33,7 @@ class Responder(ABC, Generic[T]):
         dispatcher: Dispatcher[T]
         
     Provides:
-        -   def submit(request: Request[T]) -> T
+        -   def execute(request: Request[T]) -> T
 
     Super Class:
     """

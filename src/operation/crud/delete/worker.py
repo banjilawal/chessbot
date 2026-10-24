@@ -14,14 +14,14 @@ from typing import Generic, TypeVar, cast
 
 from authorization import DeleteAuthorizer
 from domain import DeleteRequest
-from operation import CrudOperator
+from operation import CrudWorker
 from artifcat import DeletionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="DeleteRequest")
 
 
-class Delete(CrudOperator[T], ABC, Generic[T]):
+class Deleter(CrudWorker[DeletionResult], ABC, Generic[T]):
     """
     Role
         - Worker

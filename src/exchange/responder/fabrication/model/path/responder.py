@@ -31,7 +31,7 @@ class PathBuildResponder(ModelBuildResponder[Path]):
         dispatcher: PathBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: PathBuildRequest[T]) -> PathBuildResponse[T]
+        -   def execute(request: PathBuildRequest[T]) -> PathBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

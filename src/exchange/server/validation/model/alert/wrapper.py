@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/alert/wrapper.py
+# src/exchange/server/validation/model/alert/server.py
 
 """
-Module: exchange.wrapper.validation.model.alert.wrapper
+Module: exchange.server.validation.model.alert.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import AlertValidationResponse, ValidationResult
 from domain import Alert, AlertBlueprint
 from err import AlertValidationResponderException, AlertValidationServerException, EmptyAlertCarrierException
 from exchange import (
-    AlertValidationResponder, ModelValidationService, AlertValidationRequest
+    AlertValidationResponder, ModelValidationServer, AlertValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class AlertValidationService(
-    ModelValidationService[Alert]
+class AlertValidationServer(
+    ModelValidationServer[Alert]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import MicroservicePermitter, MicroserviceRequest
-from operation import Operator
+from operation import Worker
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
 
-class MicroserviceOperation(Operator, ABC, Generic[T]):
+class MicroserviceOperation(Worker, ABC, Generic[T]):
     """
     Role
         - Worker

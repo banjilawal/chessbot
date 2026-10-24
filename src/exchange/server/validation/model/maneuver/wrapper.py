@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/maneuver/wrapper.py
+# src/exchange/server/validation/model/maneuver/server.py
 
 """
-Module: exchange.wrapper.validation.model.maneuver.wrapper
+Module: exchange.server.validation.model.maneuver.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import ManeuverValidationResponse, ValidationResult
 from domain import Maneuver, ManeuverBlueprint
 from err import ManeuverValidationResponderException, ManeuverValidationServerException, ManeuverCarrierEmptyException
 from exchange import (
-    ManeuverValidationResponder, ModelValidationService, ManeuverValidationRequest
+    ManeuverValidationResponder, ModelValidationServer, ManeuverValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ManeuverValidationService(
-    ModelValidationService[Maneuver]
+class ManeuverValidationServer(
+    ModelValidationServer[Maneuver]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

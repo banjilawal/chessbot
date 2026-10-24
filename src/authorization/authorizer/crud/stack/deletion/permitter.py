@@ -10,10 +10,10 @@ version: 0.0.2
 from abc import abstractmethod
 from typing import Type
 
-from err import DeletionRequestNullException, DeleteAuthorizerException
+from err import DdeletionAuthorizationRequestNullException, DeleteAuthorizerException
 from authorization.authorizer.crud.stack import OperationAuthorizer
 from artifcat.report import DeletionApprovalReport
-from client.exchange import CollectionDeletionRequest
+from client.exchange import CollectionDdeletionAuthorizationRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
@@ -31,7 +31,7 @@ class DeleterAuthorizer(OperationAuthorizer):
     Attributes:
 
     Provides:
-        - run(self, request: DeletionRequest,) -> DeletionApprovalReport:
+        - run(self, request: DdeletionAuthorizationRequest,) -> DeletionApprovalReport:
 
     Super Class:
         Authorizer
@@ -39,7 +39,7 @@ class DeleterAuthorizer(OperationAuthorizer):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: CollectionDeletionRequest, ) -> DeletionApprovalReport:
+    def execute(self, request: CollectionDdeletionAuthorizationRequest, ) -> DeletionApprovalReport:
         pass
     
     @LoggingLevelRouter.monitor
@@ -64,8 +64,8 @@ class DeleterAuthorizer(OperationAuthorizer):
         # Handle the case that the request is malformed
         validation_result = self.priming_validator.execute(
             job=request,
-            target_model=Type[CollectionDeletionRequest],
-            null_exception=DeletionRequestNullException()
+            target_model=Type[CollectionDdeletionAuthorizationRequest],
+            null_exception=DdeletionAuthorizationRequestNullException()
         )
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.

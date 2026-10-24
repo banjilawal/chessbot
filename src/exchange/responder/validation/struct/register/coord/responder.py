@@ -31,7 +31,7 @@ class CoordRegisterValidationResponder(RegisterValidationResponder[CoordRegister
         dispatcher: CoordRegisterValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: CoordRegisterValidationRequest[T]) -> CoordRegisterValidationResponse[T]
+        -   def execute(request: CoordRegisterValidationRequest[T]) -> CoordRegisterValidationResponse[T]
 
     Super Class:
         RegisterValidatorExchange

@@ -31,7 +31,7 @@ class ScalarValidationResponder(ModelValidationResponder[Scalar]):
         dispatcher: ScalarValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: ScalarValidationRequest[T]) -> ScalarValidationResponse[T]
+        -   def execute(request: ScalarValidationRequest[T]) -> ScalarValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

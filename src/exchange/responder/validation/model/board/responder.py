@@ -31,7 +31,7 @@ class BoardValidationResponder(ModelValidationResponder[Board]):
         dispatcher: BoardValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: BoardValidationRequest[T]) -> BoardValidationResponse[T]
+        -   def execute(request: BoardValidationRequest[T]) -> BoardValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

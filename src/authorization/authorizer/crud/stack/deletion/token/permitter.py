@@ -13,9 +13,9 @@ from typing import cast
 
 from err import PoppingEmptyTokenStackException, TokenDeleteAuthorizerException
 from artifcat.report import DeletionApprovalReport
-from client.exchange import CollectionDeletionRequest
+from client.exchange import CollectionDdeletionAuthorizationRequest
 from collection.stack import TokenStackService
-from authorization.adjudicator import TokenDeletionRequestAdjudicator
+from authorization.adjudicator import TokenDdeletionAuthorizationRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -30,7 +30,7 @@ class TokenDeletionAuthorizer:
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
-        request_adjudicator: TokenDeletionRequestAdjudicator
+        request_adjudicator: TokenDdeletionAuthorizationRequestAdjudicator
 
     Provides:
         - run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
@@ -38,14 +38,14 @@ class TokenDeletionAuthorizer:
     Super Class:
         DeletionAuthorizer
     """
-    _request_adjudicator: TokenDeletionRequestAdjudicator
+    _request_adjudicator: TokenDdeletionAuthorizationRequestAdjudicator
     
-    def __init__(self, request_adjudicator: TokenDeletionRequestAdjudicator | None = TokenDeletionRequestAdjudicator()):
+    def __init__(self, request_adjudicator: TokenDdeletionAuthorizationRequestAdjudicator | None = TokenDdeletionAuthorizationRequestAdjudicator()):
         self._request_adjudicator = request_adjudicator
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def run(self, request: CollectionDeletionRequest, ) -> DeletionApprovalReport:
+    def run(self, request: CollectionDdeletionAuthorizationRequest, ) -> DeletionApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -58,7 +58,7 @@ class TokenDeletionAuthorizer:
                     - The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            request: DeletionRequest
+            request: DdeletionAuthorizationRequest
         Returns:
             DeletionApprovalReport
         Raises:

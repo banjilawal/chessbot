@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/attack/wrapper.py
+# src/exchange/server/validation/model/attack/server.py
 
 """
-Module: exchange.wrapper.validation.model.attack.wrapper
+Module: exchange.server.validation.model.attack.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import AttackValidationResponse, ValidationResult
 from domain import Encounter, AttackBlueprint
 from err import AttackValidationResponderException, AttackValidationServerException, EncounterCarrierEmptyException
 from exchange import (
-    AttackValidationResponder, ModelValidationService, AttackValidationRequest
+    AttackValidationResponder, ModelValidationServer, AttackValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class EncounterValidationService(
-    ModelValidationService[Encounter]
+class EncounterValidationServer(
+    ModelValidationServer[Encounter]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

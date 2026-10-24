@@ -15,10 +15,10 @@ from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from transit.controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException
-from operation import Primer, Operator, RegistryEntryNameValidator, PrimingValidator
+from operation import Primer, Worker, RegistryEntryNameValidator, PrimingValidator
 
 
-class PrimingWorkerRegistration(Primer[Operator]):
+class PrimingWorkerRegistration(Primer[Worker]):
     """
     Role
         - Worker
@@ -47,12 +47,12 @@ class PrimingWorkerRegistration(Primer[Operator]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            worker: Operator,
+            worker: Worker,
             registry: WorkerRegistry,
             null_exception: OperationNullException | None = None,
             priming_validator: PrimingValidator | None = None,
             registry_entry_name_validator: RegistryEntryNameValidator| None = None,
-    ) -> ValidationResult[Operator]:
+    ) -> ValidationResult[Worker]:
         """
         validate a worker before adding it to WorkerRegistry.
         
@@ -86,7 +86,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
         # Handle the case that the worker is not a valid operation.
         worker_validation_result = priming_validator.execute(
             candidate=worker,
-            target_model=Operator,
+            target_model=Worker,
             null_exception=null_exception,
         )
         if worker_validation_result.is_failure:
@@ -140,9 +140,9 @@ class PrimingWorkerRegistration(Primer[Operator]):
     @LoggingLevelRouter.monitor
     def _name_collision_helper(
             cls,
-            target: Operator,
+            target: Worker,
             registry: WorkerRegistry,
-    ) -> ValidationResult[Operator]:
+    ) -> ValidationResult[Worker]:
         """
         Process the cases where the worker's operation_name has already been a key.
 

@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/account/wrapper.py
+# src/exchange/server/validation/model/account/server.py
 
 """
-Module: exchange.wrapper.validation.model.account.wrapper
+Module: exchange.server.validation.model.account.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import AccountValidationResponse, ValidationResult
 from domain import Account, AccountBlueprint
 from err import AccountValidationResponderException, AccountValidationServerException, EmptyAccountCarrierException
 from exchange import (
-    AccountValidationResponder, ModelValidationService, AccountValidationRequest
+    AccountValidationResponder, ModelValidationServer, AccountValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class AccountValidationService(
-    ModelValidationService[Account]
+class AccountValidationServer(
+    ModelValidationServer[Account]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

@@ -36,7 +36,7 @@ class StructValidationResponder(
         dispatcher: StructValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: StructValidationRequest[T]) -> StructValidationResponse[T]
+        -   def execute(request: StructValidationRequest[T]) -> StructValidationResponse[T]
 
     Super Class:
         ValidatorExchange

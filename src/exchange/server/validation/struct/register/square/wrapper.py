@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/register/square/wrapper.py
+# src/exchange/server/validation/struct/register/square/server.py
 
 """
-Module: exchange.wrapper.validation.struct.register.square.wrapper
+Module: exchange.server.validation.struct.register.square.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -25,7 +25,7 @@ class SquareRegisterValidationServer(
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

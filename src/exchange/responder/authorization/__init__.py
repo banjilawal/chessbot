@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.RESPONDER.AUTHORIZATION PACKAGE ===========#
 
 # Packages
-from .model import *
+from .promotion import *
 from .struct import *
 
 # Modules

@@ -15,12 +15,12 @@ from typing import Generic, List, TypeVar, cast
 from artifcat import PromotionDecision
 from authorization import ActorChainable, ApplicantReviewer, ReadyChecker
 from domain import Actor
-from exchange import PromotionRequest
+from exchange import PromotionAuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest], ABC, Generic[T]):
+class PromotionApplicantReviewer(ApplicantReviewer[PromotionAuthorizationRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -33,7 +33,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest], ABC, Gener
         checkers: List[ActorChainable]
 
     Provides:
-        -   def execute(request: PromotionRequest) -> PromotionDecision
+        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
 
     Super Class:
         ApplicantReviewer
@@ -57,11 +57,11 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest], ABC, Gener
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
         Decide if an applicant can be promoted.
         Args:
-            request: PromotionRequest
+            request: PromotionAuthorizationRequest
         Returns:
             PromotionDecision
         Raises:

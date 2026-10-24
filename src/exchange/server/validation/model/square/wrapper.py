@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/square/wrapper.py
+# src/exchange/server/validation/model/square/server.py
 
 """
-Module: exchange.wrapper.validation.model.square.wrapper
+Module: exchange.server.validation.model.square.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import SquareValidationResponse, ValidationResult
 from domain import Square, SquareBlueprint
 from err import SquareValidationResponderException, SquareValidationServerException, SquareCarrierEmptyException
 from exchange import (
-    SquareValidationResponder, ModelValidationService, SquareValidationRequest
+    SquareValidationResponder, ModelValidationServer, SquareValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class SquareValidationService(
-    ModelValidationService[Square]
+class SquareValidationServer(
+    ModelValidationServer[Square]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

@@ -31,7 +31,7 @@ class TeamBuildResponder(ModelBuildResponder[Team]):
         dispatcher: TeamBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: TeamBuildRequest[T]) -> TeamBuildResponse[T]
+        -   def execute(request: TeamBuildRequest[T]) -> TeamBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

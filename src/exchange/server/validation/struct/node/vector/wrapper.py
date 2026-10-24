@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/node/vector/wrapper.py
+# src/exchange/server/validation/struct/node/vector/server.py
 
 """
-Module: exchange.wrapper.validation.struct.node.vector.wrapper
+Module: exchange.server.validation.struct.node.vector.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -25,7 +25,7 @@ class VectorNodeValidationServer(
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

@@ -15,13 +15,13 @@ from typing import Generic, TypeVar
 from artifcat import AttackDecision
 from authorization import ApplicantChecker
 from domain import Actor
-from exchange import AttackRequest
+from exchange import AttackAuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
 
-class AttackApplicantChecker(ApplicantChecker[AttackRequest], ABC, Generic[T]):
+class AttackApplicantChecker(ApplicantChecker[AttackAuthorizationRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -32,7 +32,7 @@ class AttackApplicantChecker(ApplicantChecker[AttackRequest], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(request: AttackRequest) -> AttackDecision
+        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
 
     Super Class:
         ApplicantChecker
@@ -40,11 +40,11 @@ class AttackApplicantChecker(ApplicantChecker[AttackRequest], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackRequest) -> AttackDecision:
+    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
         """
         Decide if an Actor can be granted permission to a Attack.
         Args:
-            request: AttackRequest
+            request: AttackAuthorizationRequest
         Returns:
            AttackDecision
         Raises:

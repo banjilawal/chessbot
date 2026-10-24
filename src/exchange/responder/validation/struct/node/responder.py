@@ -35,7 +35,7 @@ class NodeValidationResponder(
         dispatcher: NodeValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: NodeValidationRequest[T]) -> NodeValidationResponse[T]
+        -   def execute(request: NodeValidationRequest[T]) -> NodeValidationResponse[T]
 
     Super Class:
         ValidatorExchange

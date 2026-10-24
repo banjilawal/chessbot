@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import SearchAuthorizer, SearchRequest
-from operation import CrudOperator
+from authorization import SearchAuthorizer, SearchAuthorizationRequest
+from operation import CrudWorker
 from artifcat import SearchResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="StackService")
 
 
-class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
+class CollectionSearch(CrudWorker[SearchResult], ABC, Generic[T]):
     """
     Role
         - Worker
@@ -33,7 +33,7 @@ class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
         authorizer: SearchAuthorizer[T]
         
     Provides:
-        -   def execute(request: SearchRequest[T]) -> SearchResult
+        -   def execute(request: SearchAuthorizationRequest[T]) -> SearchResult
 
     Super Class:
         CollectionOperation
@@ -52,5 +52,5 @@ class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchRequest) -> SearchResult:
+    def execute(self, request: SearchAuthorizationRequest) -> SearchResult:
         pass

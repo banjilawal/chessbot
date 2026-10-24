@@ -31,7 +31,7 @@ class AccountBuildResponder(ModelBuildResponder[Account]):
         dispatcher: AccountBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: AccountBuildRequest[T]) -> AccountBuildResponse[T]
+        -   def execute(request: AccountBuildRequest[T]) -> AccountBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

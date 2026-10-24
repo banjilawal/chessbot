@@ -35,7 +35,7 @@ class RegisterValidationResponder(
         dispatcher: RegisterValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: RegisterValidationRequest[T]) -> RegisterValidationResponse[T]
+        -   def execute(request: RegisterValidationRequest[T]) -> RegisterValidationResponse[T]
 
     Super Class:
         ValidatorExchange

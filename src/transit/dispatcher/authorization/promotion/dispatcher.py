@@ -19,7 +19,7 @@ from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionRequest]):
+class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionAuthorizationRequest]):
     """
     Role
         -   Permission Authorization Manager
@@ -49,7 +49,7 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionRequest]
         return cast(PromotionAuthorizer, super().authorizer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
         Decide if a Token can be promoted.
         

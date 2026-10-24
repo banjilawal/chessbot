@@ -16,12 +16,12 @@ from artifcat import SearchResult
 from exchange.model import ServiceRegistry
 from util import LoggingLevelRouter
 from transit.controller import ServiceRegistryController
-from operation import Operator, RegistryEntryNameValidator
+from operation import Worker, RegistryEntryNameValidator
 
 
 
 
-class ServiceRegistrySearch(Operator):
+class ServiceRegistrySearch(Worker):
     """
     Role
         - Search Service

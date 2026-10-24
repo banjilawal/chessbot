@@ -31,7 +31,7 @@ class ManeuverValidationResponder(ModelValidationResponder[Maneuver]):
         dispatcher: ManeuverValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: ManeuverValidationRequest[T]) -> ManeuverValidationResponse[T]
+        -   def execute(request: ManeuverValidationRequest[T]) -> ManeuverValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

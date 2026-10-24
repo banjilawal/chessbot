@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/wrapper.py
+# src/exchange/server/validation/struct/server.py
 
 """
-Module: exchange.wrapper.validation.model.wrapper
+Module: exchange.server.validation.struct.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,63 +13,59 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from domain import Model, ModelBlueprint
+from domain import Struct, StructBlueprint
 from exchange import (
-    ModelValidationRequest, ModelValidationResponder, ValidationService
+    StructValidationRequest, StructValidationResponder, ValidationService
 )
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="Struct")
 
-class ModelValidationService(
-    ValidationService[T],
-    ABC,
-    Generic[T]
-):
+class StructValidationServer(ValidationService[T], ABC, Generic[T]):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the either:
-                -   The Model
+                -   The Struct
                 _   The Blueprint
-            from a ModelValidationResponse.
+            from a StructValidationResponse.
 
     Attributes:
-        responder: ModelValidationResponder[T]
+        responder: StructValidationResponder[T]
         
     Provides:
         -   def extract_model(
                     self,
-                    request: ModelValidationRequest[T]
+                    request: StructValidationRequest[T]
             ) -> ValidationResult[T]
             
         -   def extract_blueprint(
                     self,
-                    request: ModelValidationRequest[T]
+                    request: StructValidationRequest[T]
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
         ValidationServer
     """
     
-    def __init__(self, responder: ModelValidationResponder[T]):
+    def __init__(self, responder: StructValidationResponder[T]):
         """
         Args:
-            responder: ModelValidationResponder[T]
+            responder: StructValidationResponder[T]
         """
         super().__init__(responder=responder)
     
     @property
-    def responder(self) -> ModelValidationResponder[T]:
-        return cast(ModelValidationResponder[T], super().responder)
+    def responder(self) -> StructValidationResponder[T]:
+        return cast(StructValidationResponder[T], super().responder)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def extract_model(
             self,
-            request: ModelValidationRequest[T]
+            request: StructValidationRequest[T]
     ) -> ValidationResult[T]:
         pass
     
@@ -77,6 +73,6 @@ class ModelValidationService(
     @LoggingLevelRouter.monitor
     def extract_model(
             self,
-            request: ModelValidationRequest[T]
-    ) -> ValidationResult[ModelBlueprint[T]]:
+            request: StructValidationRequest[T]
+    ) -> ValidationResult[StructBlueprint[T]]:
         pass

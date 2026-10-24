@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/chart/participate/wrapper.py
+# src/exchange/server/validation/struct/chart/participate/server.py
 
 """
-Module: exchange.wrapper.validation.struct.chart.participate.wrapper
+Module: exchange.server.validation.struct.chart.participate.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -23,7 +23,7 @@ class ParticipationValidationServer(
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

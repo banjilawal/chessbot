@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AuthorizableResult, ResultState
+from artifcat import Decision, ResultState
 from domain import Maneuver
 
 
-class ManeuverResult(AuthorizableResult[Maneuver]):
+class ManeuverResult(Decision[Maneuver]):
     """
     Role:
         - Data Transport

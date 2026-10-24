@@ -31,7 +31,7 @@ class ScalarBuildResponder(ModelBuildResponder[Scalar]):
         dispatcher: ScalarBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: ScalarBuildRequest[T]) -> ScalarBuildResponse[T]
+        -   def execute(request: ScalarBuildRequest[T]) -> ScalarBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -31,7 +31,7 @@ class TeamValidationResponder(ModelValidationResponder[Team]):
         dispatcher: TeamValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: TeamValidationRequest[T]) -> TeamValidationResponse[T]
+        -   def execute(request: TeamValidationRequest[T]) -> TeamValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -31,7 +31,7 @@ class PlayerBinderValidationResponder(BinderValidationResponder[PlayerBinder]):
         dispatcher: PlayerBinderValidationDispatcher
 
     Provides:
-        -   def submit(request: PlayerBinderValidationRequest) -> PlayerBinderValidationResponse
+        -   def execute(request: PlayerBinderValidationRequest) -> PlayerBinderValidationResponse
 
     Super Class:
         BinderValidatorExchange

@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import InsertAuthorizer
 from domain import InsertRequest
-from operation import CrudOperator
+from operation import CrudWorker
 from artifcat import InsertionResult
 from util import LoggingLevelRouter
 
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="InsertRequest")
 
 
-class Inserter(CrudOperator[T], ABC, Generic[T]):
+class Inserter(CrudWorker[T], ABC, Generic[T]):
     """
     Role
         - Worker

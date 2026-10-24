@@ -15,7 +15,7 @@ from artifcat import AttackDecision
 from authorization import AttackRolePermitter
 from domain import Attackable, Maneuver
 from err import AttackManeuverPermitterException, ManeuverConsistencyException, NullAttackVictimException
-from exchange import AttackRequest, ManeuverValidationRequest, ManeuverValidationService
+from exchange import AttackAuthorizationRequest, ManeuverValidationRequest, ManeuverValidationService
 from transit import ManeuverCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -26,13 +26,13 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
         -   Authorization
 
     Responsibilities:
-        1.  Grant permission to a Maneuver for an AttackRequest.
+        1.  Grant permission to a Maneuver for an AttackAuthorizationRequest.
 
     Attributes:
         validation_service: ManeuverValidationService
 
     Provides:
-        -   execute(request: AttackRequest) -> AttackDecision
+        -   execute(request: AttackAuthorizationRequest) -> AttackDecision
 
     Super Class:
         AttackRolePermitter
@@ -50,7 +50,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
         return cast(ManeuverValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackRequest) -> AttackDecision:
+    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
         """
         Decide if an Attack can be made using a Maneuver.
 
@@ -61,7 +61,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
                     -   There is no enemy at maneuver.destination.
             2.  Otherwise, issue a grant decision.
         Args:
-            request: AttackRequest
+            request: AttackAuthorizationRequest
         Returns:
            AttackDecision
         Raises:
@@ -127,7 +127,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
             )
         # --- Prepare an approval of the activity. ---#
         activity = cast(Attackable, maneuver)
-        approval = AttackRequest(
+        approval = AttackAuthorizationRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,

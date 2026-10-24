@@ -31,7 +31,7 @@ class EncounterValidationResponder(ModelValidationResponder[Encounter]):
         dispatcher: EncounterValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: EncounterValidationRequest[T]) -> EncounterValidationResponse[T]
+        -   def execute(request: EncounterValidationRequest[T]) -> EncounterValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -35,7 +35,7 @@ class RegisterAuthorizationResponder(
         dispatcher: RegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: RegisterAuthorizationRequest[T]) -> RegisterDecision[T]
+        -   def execute(request: RegisterAuthorizationRequest[T]) -> RegisterDecision[T]
 
     Super Class:
         ValidatorExchange

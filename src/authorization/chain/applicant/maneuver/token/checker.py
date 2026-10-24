@@ -14,7 +14,7 @@ from abc import ABC, abstractmethod
 from artifcat import ManeuverDecision
 from authorization import ManeuverApplicantChecker
 from domain import Token
-from exchange import ManeuverRequest
+from exchange import ManeuverAuthorizationRequest
 from util import LoggingLevelRouter
 
 
@@ -29,7 +29,7 @@ class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     Attributes:
 
     Provides:
-        -   def execute(request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverApplicantChecker
@@ -37,11 +37,11 @@ class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
         """
         Decide if a Token can be granted permission to launch an Maneuver.
         Args:
-            request: ManeuverRequest
+            request: ManeuverAuthorizationRequest
         Returns:
            ManeuverDecision
         Raises:

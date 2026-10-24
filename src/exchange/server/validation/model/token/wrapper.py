@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/token/wrapper.py
+# src/exchange/server/validation/model/token/server.py
 
 """
-Module: exchange.wrapper.validation.model.token.wrapper
+Module: exchange.server.validation.model.token.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import TokenValidationResponse, ValidationResult
 from domain import Token, TokenBlueprint
 from err import TokenValidationResponderException, TokenValidationServerException, TokenCarrierEmptyException
 from exchange import (
-    TokenValidationResponder, ModelValidationService, TokenValidationRequest
+    TokenValidationResponder, ModelValidationServer, TokenValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TokenValidationService(
-    ModelValidationService[Token]
+class TokenValidationServer(
+    ModelValidationServer[Token]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

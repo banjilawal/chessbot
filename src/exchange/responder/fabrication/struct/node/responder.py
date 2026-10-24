@@ -35,7 +35,7 @@ class NodeBuildResponder(
         dispatcher: NodeBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: NodeBuildRequest[T]) -> NodeBuildResponse[T]
+        -   def execute(request: NodeBuildRequest[T]) -> NodeBuildResponse[T]
 
     Super Class:
         ValidatorExchange

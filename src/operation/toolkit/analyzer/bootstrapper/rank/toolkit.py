@@ -14,7 +14,7 @@ from typing import List
 from microservice import IdentityService, Microservice
 from sensor.analyzer import Rank
 from operation.toolkit.analyzer.bootstrapper.rank.toolkit import AnalyzerBootstrapperToolkit
-from operation import Operator
+from operation import Worker
 from transit.dispatcher.validator import PrimingValidator
 
 
@@ -41,7 +41,7 @@ class RankToolkit(AnalyzerBootstrapperToolkit[Rank]):
     Super Class:
         Toolkit
     """
-    DEPENDENCIES: List[Operator] = [PrimingValidator, ]
+    DEPENDENCIES: List[Worker] = [PrimingValidator, ]
     SERVICE_DEPENDENCIES: List[Microservice] = [IdentityService,]
 
     identity_service: IdentityService = IdentityService()

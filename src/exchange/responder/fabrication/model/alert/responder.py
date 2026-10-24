@@ -31,7 +31,7 @@ class AlertBuildResponder(ModelBuildResponder[Alert]):
         dispatcher: AlertBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: AlertBuildRequest[T]) -> AlertBuildResponse[T]
+        -   def execute(request: AlertBuildRequest[T]) -> AlertBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

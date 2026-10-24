@@ -1,17 +1,17 @@
-# src/exchange/wrapper/validation/__init__.py
+# src/exchange/server/validation/__init__.py
 
 """
-Module: exchange.wrapper.validation.__init__
+Module: exchange.server.validation.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# ========== EXCHANGE.WRAPPER.VALIDATION PACKAGE ===========#
+# ========== EXCHANGE.SERVER.VALIDATION PACKAGE ===========#
 
 # Packages
 from .model import *
 from .struct import *
 
 # Modules
-from .wrapper import ValidationService
+from .server import ValidationService

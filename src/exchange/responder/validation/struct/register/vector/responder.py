@@ -31,7 +31,7 @@ class VectorRegisterValidationResponder(RegisterValidationResponder[VectorRegist
         dispatcher: VectorRegisterValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: VectorRegisterValidationRequest[T]) -> VectorRegisterValidationResponse[T]
+        -   def execute(request: VectorRegisterValidationRequest[T]) -> VectorRegisterValidationResponse[T]
 
     Super Class:
         RegisterValidatorExchange

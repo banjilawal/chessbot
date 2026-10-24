@@ -15,7 +15,7 @@ from artifcat import ManeuverDecision
 from authorization import ManeuverRolePermitter
 from domain import Maneuverable, Path
 from err import ManeuverPathPermitterException, PathConsistencyException
-from exchange import ManeuverRequest, PathValidationRequest, PathValidationService
+from exchange import ManeuverAuthorizationRequest, PathValidationRequest, PathValidationService
 from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -26,13 +26,13 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
         -   Authorization
 
     Responsibilities:
-        1.  Grant permission to a Path for a ManeuverRequest.
+        1.  Grant permission to a Path for a ManeuverAuthorizationRequest.
 
     Attributes:
         validation_service: PathValidationService
 
     Provides:
-        -   def execute(request: request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: request: ManeuverAuthorizationRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverRoleChecker
@@ -50,7 +50,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
         return cast(PathValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
         """
         Decide if a Maneuver can be made on a Path.
 
@@ -60,7 +60,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
                     -   The path has an inconsistency.
             2.  Otherwise, issue a grant decision.
         Args:
-            request: ManeuverRequest
+            request: ManeuverAuthorizationRequest
         Returns:
            ManeuverDecision
         Raises:
@@ -108,7 +108,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
             )
         # --- Prepare an approval of the activity. ---#
         activity = cast(Maneuverable, path)
-        approval = ManeuverRequest(
+        approval = ManeuverAuthorizationRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,

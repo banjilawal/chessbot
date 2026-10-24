@@ -31,7 +31,7 @@ class CoordBuildResponder(ModelBuildResponder[Coord]):
         dispatcher: CoordBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: CoordBuildRequest[T]) -> CoordBuildResponse[T]
+        -   def execute(request: CoordBuildRequest[T]) -> CoordBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

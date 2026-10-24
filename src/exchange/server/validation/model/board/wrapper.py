@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/board/wrapper.py
+# src/exchange/server/validation/model/board/server.py
 
 """
-Module: exchange.wrapper.validation.model.board.wrapper
+Module: exchange.server.validation.model.board.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -18,17 +18,17 @@ from err import (
     BoardCarrierEmptyException
 )
 from exchange import (
-    BoardValidationResponder, ModelValidationService, BoardValidationRequest
+    BoardValidationResponder, ModelValidationServer, BoardValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class BoardValidationService(
-    ModelValidationService[Board]
+class BoardValidationServer(
+    ModelValidationServer[Board]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

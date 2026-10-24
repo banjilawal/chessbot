@@ -31,7 +31,7 @@ class TeamBinderAuthorizationResponder(BinderAuthorizationResponder[TeamBinder])
         dispatcher: TeamBinderAuthorizationDispatcher
 
     Provides:
-        -   def submit(request: TeamBinderAuthorizationRequest) -> TeamBinderDecision
+        -   def execute(request: TeamBinderAuthorizationRequest) -> TeamBinderDecision
 
     Super Class:
         BinderValidatorExchange

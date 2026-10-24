@@ -31,7 +31,7 @@ class ManeuverBuildResponder(ModelBuildResponder[Maneuver]):
         dispatcher: ManeuverBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: ManeuverBuildRequest[T]) -> ManeuverBuildResponse[T]
+        -   def execute(request: ManeuverBuildRequest[T]) -> ManeuverBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

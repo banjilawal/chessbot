@@ -1,16 +1,16 @@
-# src/exchange/wrapper/validation/struct/chart/__init__.py
+# src/exchange/server/validation/struct/chart/__init__.py
 
 """
-Module: exchange.wrapper.validation.struct.chart.__init__
+Module: exchange.server.validation.struct.chart.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# ========== EXCHANGE.WRAPPER.VALIDATION.STRUCT.CHART PACKAGE ===========#
+# ========== EXCHANGE.SERVER.VALIDATION.STRUCT.CHART PACKAGE ===========#
 
 # Packages
 from .participate import *
 
 # Modules
-from .wrapper import ChartValidationService
+from .server import ChartValidationService

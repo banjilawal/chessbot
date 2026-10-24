@@ -31,7 +31,7 @@ class VectorNodeAuthorizationResponder(NodeAuthorizationResponder[VectorNode]):
         dispatcher: VectorNodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: VectorNodeAuthorizationRequest[T]) -> VectorNodeDecision[T]
+        -   def execute(request: VectorNodeAuthorizationRequest[T]) -> VectorNodeDecision[T]
 
     Super Class:
         NodeValidatorExchange

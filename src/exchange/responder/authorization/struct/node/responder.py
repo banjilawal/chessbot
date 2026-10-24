@@ -35,7 +35,7 @@ class NodeAuthorizationResponder(
         dispatcher: NodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: NodeAuthorizationRequest[T]) -> NodeDecision[T]
+        -   def execute(request: NodeAuthorizationRequest[T]) -> NodeDecision[T]
 
     Super Class:
         ValidatorExchange

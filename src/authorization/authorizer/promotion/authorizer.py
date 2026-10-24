@@ -17,11 +17,11 @@ from authorization import (
 )
 from err import PromotionAuthorizerException
 
-from exchange import PromotionRequest
+from exchange import PromotionAuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizer(Authorizer[PromotionRequest]):
+class PromotionAuthorizer(Authorizer[PromotionAuthorizationRequest]):
     """
     Role:
         -   Permission Authorization
@@ -35,7 +35,7 @@ class PromotionAuthorizer(Authorizer[PromotionRequest]):
         applicant_reviewer: PromotionTokenReviewer
 
     Provides:
-        -   def execute(request: PromotionRequest) -> PromotionDecision
+        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
 
     Super Class:
         Authorizer
@@ -72,16 +72,16 @@ class PromotionAuthorizer(Authorizer[PromotionRequest]):
         return cast(PromotionTokenReviewer, super().applicant_reviewer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
-        Checks if a PromotionRequest can be granted.
+        Checks if a PromotionAuthorizationRequest can be granted.
         
         Action:
             1.  Send an exception in Decision if any authoriation delegated denies
                 the request.
             2.  Otherwise, send a promotion approval.
         Args:
-            request: PromotionRequest
+            request: PromotionAuthorizationRequest
         Returns:
            PromotionDecision
         Raises:
@@ -134,7 +134,7 @@ class PromotionAuthorizer(Authorizer[PromotionRequest]):
                 ),
             )
         # --- Prepare an approval from the completed chain. ---#
-        approval = PromotionRequest(
+        approval = PromotionAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

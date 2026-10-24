@@ -15,7 +15,7 @@ from artifcat import PromotionDecision
 from authorization import PromotionTokenChecker
 from domain import PawnToken
 from err import PromotionPawnTokenCheckerException
-from exchange import PromotionRequest
+from exchange import PromotionAuthorizationRequest
 from util import LoggingLevelRouter
 
 
@@ -30,14 +30,14 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
     Attributes:
 
     Provides:
-        -   execute(request: PromotionRequest) -> PromotionDecision
+        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
 
     Super Class:
         PromotionTokenChecker
     """
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
         """
         Decide if a Token can be promoted.
 
@@ -45,7 +45,7 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
             1.  Deny promotion if the token is not a PawnToken.
             2.  Otherwise, issue an approval.
         Args:
-            request: PromotionRequest
+            request: PromotionAuthorizationRequest
         Returns:
            PromotionDecision
         Raises:
@@ -71,7 +71,7 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
             )
         # --- Prepare an approval of the actor. ---#
         applicant = cast(PawnToken, request.applicant)
-        approval = PromotionRequest(
+        approval = PromotionAuthorizationRequest(
             id=request.id,
             applicant=applicant,
             activity=request.activity,

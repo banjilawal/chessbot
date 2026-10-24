@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/game/wrapper.py
+# src/exchange/server/validation/model/game/server.py
 
 """
-Module: exchange.wrapper.validation.model.game.wrapper
+Module: exchange.server.validation.model.game.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import GameValidationResponse, ValidationResult
 from domain import Game, GameBlueprint
 from err import GameValidationResponderException, GameValidationServerException, GameCarrierEmptyException
 from exchange import (
-    GameValidationResponder, ModelValidationService, GameValidationRequest
+    GameValidationResponder, ModelValidationServer, GameValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class GameValidationService(
-    ModelValidationService[Game]
+class GameValidationServer(
+    ModelValidationServer[Game]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

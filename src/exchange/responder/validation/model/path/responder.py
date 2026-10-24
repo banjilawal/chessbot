@@ -31,7 +31,7 @@ class PathValidationResponder(ModelValidationResponder[Path]):
         dispatcher: PathValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: PathValidationRequest[T]) -> PathValidationResponse[T]
+        -   def execute(request: PathValidationRequest[T]) -> PathValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -13,11 +13,11 @@ from abc import ABC
 from typing import cast
 
 from artifcat import PromotionResult
-from domain import Elevateable, PawnToken, Rank
-from exchange import AuthorizationRequest
+from domain import Elevateable, PromotionRequest, Rank
+from exchange import AuthorizationRequest, PromotionRequest
 
 
-class PromotionRequest(AuthorizationRequest[PromotionResult]):
+class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
     """
      Role:
          -  Messaging
@@ -26,7 +26,7 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         1.  Provides information a PromotionAuthorizer needs to execute a Promotion job.
 
      Attributes:
-        applicant: PawnToken
+        candidate: PromotionRequest
         activity: Elevatable
 
      Provides:
@@ -35,18 +35,18 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         AuthorizationRequest
      """
     
-    def __init__(self, id: int, applicant: PawnToken, activity: Elevateable):
+    def __init__(self, id: int, candidate: PromotionRequest):
         """
         Args:
             id: int
-            applicant: PawnToken
+            candidate: PromotionRequest
             activity: Elevatable
         """
-        super().__init__(id=id, applicant=applicant, activity=activity)
+        super().__init__(id=id, candidate=candidate)
     
     @property
-    def applicant(self) -> PawnToken:
-        return cast(PawnToken, super().applicant)
+    def candidate(self) -> PromotionRequest:
+        return cast(PromotionRequest, super().candidate)
     
     @property
     def activity(self) -> Elevateable:
@@ -59,6 +59,6 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PromotionRequest):
+        if isinstance(other, PromotionAuthorizationRequest):
             return self.id == other.id
         return False

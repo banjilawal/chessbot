@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/binder/wrapper.py
+# src/exchange/server/validation/struct/binder/server.py
 
 """
-Module: exchange.wrapper.validation.struct.binder.wrapper
+Module: exchange.server.validation.struct.binder.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,20 +15,20 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Binder, BinderBlueprint
 from exchange import (
-    BinderValidationRequest, BinderValidationResponder, StructValidationService,
+    BinderValidationRequest, BinderValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Binder")
 
-class BinderValidationService(
-    StructValidationService[T],
+class BinderValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the either:

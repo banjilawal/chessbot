@@ -31,7 +31,7 @@ class VectorNodeValidationResponder(NodeValidationResponder[VectorNode]):
         dispatcher: VectorNodeValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: VectorNodeValidationRequest[T]) -> VectorNodeValidationResponse[T]
+        -   def execute(request: VectorNodeValidationRequest[T]) -> VectorNodeValidationResponse[T]
 
     Super Class:
         NodeValidatorExchange

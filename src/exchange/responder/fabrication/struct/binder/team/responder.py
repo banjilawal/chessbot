@@ -31,7 +31,7 @@ class TeamBinderBuildResponder(BinderBuildResponder[TeamBinder]):
         dispatcher: TeamBinderBuildDispatcher
 
     Provides:
-        -   def submit(request: TeamBinderBuildRequest) -> TeamBinderBuildResponse
+        -   def execute(request: TeamBinderBuildRequest) -> TeamBinderBuildResponse
 
     Super Class:
         BinderValidatorExchange

@@ -35,7 +35,7 @@ class BinderValidationResponder(
         dispatcher: BinderValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: BinderValidationRequest[T]) -> BinderValidationResponse[T]
+        -   def execute(request: BinderValidationRequest[T]) -> BinderValidationResponse[T]
 
     Super Class:
         ValidatorExchange

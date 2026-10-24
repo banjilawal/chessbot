@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/footstep/wrapper.py
+# src/exchange/server/validation/model/footstep/server.py
 
 """
-Module: exchange.wrapper.validation.model.footstep.wrapper
+Module: exchange.server.validation.model.footstep.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -18,17 +18,17 @@ from err import (
     FootstepCarrierEmptyException
 )
 from exchange import (
-    FootstepValidationResponder, ModelValidationService, FootstepValidationRequest
+    FootstepValidationResponder, ModelValidationServer, FootstepValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class FootstepValidationService(
-    ModelValidationService[Footstep]
+class FootstepValidationServer(
+    ModelValidationServer[Footstep]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

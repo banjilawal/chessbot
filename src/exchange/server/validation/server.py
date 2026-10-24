@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/wrapper.py
+# src/exchange/server/validation/server.py
 
 """
-Module: exchange.wrapper.validation.wrapper
+Module: exchange.server.validation.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,19 +14,19 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from domain import Blueprint
-from exchange import ResponseWrapper, ValidationRequest, ValidationResponder
+from exchange import ResponseServer, ValidationRequest, ValidationResponder
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
 class ValidationService(
-    ResponseWrapper[ValidationResult],
+    ResponseServer[ValidationResult],
     ABC,
     Generic[T],
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the EntityCarrier from a ValidationResponse attribute
@@ -44,7 +44,7 @@ class ValidationService(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ResponseWrapper
+        ResponseServer
     """
     
     def __init__(self, responder: ValidationResponder[T]):

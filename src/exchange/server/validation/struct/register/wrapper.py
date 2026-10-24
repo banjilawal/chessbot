@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/register/wrapper.py
+# src/exchange/server/validation/struct/register/server.py
 
 """
-Module: exchange.wrapper.validation.struct.register.wrapper
+Module: exchange.server.validation.struct.register.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,20 +15,20 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Register, RegisterBlueprint
 from exchange import (
-    RegisterValidationRequest, RegisterValidationResponder, StructValidationService,
+    RegisterValidationRequest, RegisterValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterValidationService(
-    StructValidationService[T],
+class RegisterValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the either:

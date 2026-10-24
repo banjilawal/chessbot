@@ -15,7 +15,7 @@ from sensor.analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import ManeuverNullException
 from microservice import Microservice
 from sensor.analyzer import Maneuver
-from operation import Operator
+from operation import Worker
 from operation.crud.search import TokenOriginSearcher
 from operation.toolkit.analyzer.bootstrapper.maneuver.toolkit import AnalyzerBootstrapperToolkit
 from transit.dispatcher.validator import (
@@ -58,7 +58,7 @@ class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
         Toolkit
     """
 
-    DEPENDENCIES: List[Operator] = []
+    DEPENDENCIES: List[Worker] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
     
     path_validator: PathValidationDispatcher = PathValidationDispatcher()

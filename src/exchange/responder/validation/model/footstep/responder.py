@@ -31,7 +31,7 @@ class FootstepValidationResponder(ModelValidationResponder[Footstep]):
         dispatcher: FootstepValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: FootstepValidationRequest[T]) -> FootstepValidationResponse[T]
+        -   def execute(request: FootstepValidationRequest[T]) -> FootstepValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

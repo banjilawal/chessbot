@@ -31,7 +31,7 @@ class ModelBuildResponder(BuildResponder[T], ABC, Generic[T]):
         dispatcher: ModelBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: ModelBuildRequest[T]) -> ModelBuildResponse[T]
+        -   def execute(request: ModelBuildRequest[T]) -> ModelBuildResponse[T]
 
     Super Class:
         ValidatorExchange

@@ -13,13 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import Decision
-from exchange import Responder, AuthorizationRequest
+from authorization import Authorizer
+from exchange import AuthorizationRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T",)
+T = TypeVar("T", bound="Decision")
 
-class AuthorizationResponder(Responder[AuthorizationResult], ABC, Generic[T]):
+class AuthorizationResponder(ABC, Generic[T]):
     """
     Role
         - Mediator
@@ -31,23 +32,32 @@ class AuthorizationResponder(Responder[AuthorizationResult], ABC, Generic[T]):
         dispatcher: AuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: AuthorizationRequest[T]) -> Decision[T]
+        -   def execute(request: AuthorizationRequest[T]) -> Decision[T]
 
 
     Super Class:
         Responder
     """
     
-    def __init__(self, dispatcher: AuthorizationDispatcher[T]):
+    _authorizer: Authorizer[T]
+    _dispatcher: AuthorizationDispatcher[T]
+    
+    def __init__(
+            self,
+            authorizer: Authorizer[T],
+            dispatcher: AuthorizationDispatcher[T]
+    ):
         """
         Args:
+            authorizer: Authorizer[T]
             dispatcher: AuthorizationDispatcher[T]
         """
-        super().__init__(dispatcher=dispatcher)
+        self._authorizer = authorizer
+        self._dispatcher = dispatcher
         
     @property
     def dispatcher(self) -> AuthorizationDispatcher[T]:
-        return cast(AuthorizationDispatcher, super().dispatcher)
+        return self._authorizer
     
     
     @abstractmethod

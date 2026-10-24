@@ -31,7 +31,7 @@ class ArenaBuildResponder(ModelBuildResponder[Arena]):
         dispatcher: ArenaBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: ArenaBuildRequest[T]) -> ArenaBuildResponse[T]
+        -   def execute(request: ArenaBuildRequest[T]) -> ArenaBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -36,7 +36,7 @@ class StructAuthorizationResponder(
         dispatcher: StructAuthorizationDispatcher[T]
 
     Provides:
-        -   def submit(request: StructAuthorizationRequest[T]) -> StructDecision[T]
+        -   def execute(request: StructAuthorizationRequest[T]) -> StructDecision[T]
 
     Super Class:
         ValidatorExchange

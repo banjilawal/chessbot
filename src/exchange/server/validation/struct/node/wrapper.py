@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/node/wrapper.py
+# src/exchange/server/validation/struct/node/server.py
 
 """
-Module: exchange.wrapper.validation.struct.node.wrapper
+Module: exchange.server.validation.struct.node.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,20 +15,20 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Node, NodeBlueprint
 from exchange import (
-    NodeValidationRequest, NodeValidationResponder, StructValidationService,
+    NodeValidationRequest, NodeValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
-class NodeValidationService(
-    StructValidationService[T],
+class NodeValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the either:

@@ -31,7 +31,7 @@ class AccountValidationResponder(ModelValidationResponder[Account]):
         dispatcher: AccountValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: AccountValidationRequest[T]) -> AccountValidationResponse[T]
+        -   def execute(request: AccountValidationRequest[T]) -> AccountValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

@@ -31,7 +31,7 @@ class VectorValidationResponder(ModelValidationResponder[Vector]):
         dispatcher: VectorValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: VectorValidationRequest[T]) -> VectorValidationResponse[T]
+        -   def execute(request: VectorValidationRequest[T]) -> VectorValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

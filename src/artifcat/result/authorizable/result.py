@@ -14,11 +14,11 @@ from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Authorizable, ResultState, Result
 from domain import Model, PawnToken
-
+from exchange import Request
 
 T = TypeVar("T", bound="Model")
 
-class AuthorizableResult(Result[T], Authorizable, ABC, Generic[T]):
+class Decision(Result[T], Authorizable, ABC, Generic[T]):
     """
     Role:
         - Data Transport
@@ -44,10 +44,12 @@ class AuthorizableResult(Result[T], Authorizable, ABC, Generic[T]):
         Result
     """
     _state: ResultState
+    _candidate: Request
     
     def __init__(
             self,
             state: ResultState,
+            candidate: Request,
             payload: Optional[PawnToken] = None,
             exception: Optional[Exception] = None,
     ):
@@ -60,3 +62,8 @@ class AuthorizableResult(Result[T], Authorizable, ABC, Generic[T]):
         super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use promotion methods instead of direct constructor."""
         self._state = state
+        self._candidate = candidate
+        
+    @property
+    def candidate(self) -> Request:
+        return self._candidate

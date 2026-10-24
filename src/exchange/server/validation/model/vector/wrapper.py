@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/vector/wrapper.py
+# src/exchange/server/validation/model/vector/server.py
 
 """
-Module: exchange.wrapper.validation.model.vector.wrapper
+Module: exchange.server.validation.model.vector.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import VectorValidationResponse, ValidationResult
 from domain import Vector, VectorBlueprint
 from err import VectorValidationResponderException, VectorValidationServerException, VectorCarrierEmptyException
 from exchange import (
-    VectorValidationResponder, ModelValidationService, VectorValidationRequest
+    VectorValidationResponder, ModelValidationServer, VectorValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class VectorValidationService(
-    ModelValidationService[Vector]
+class VectorValidationServer(
+    ModelValidationServer[Vector]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

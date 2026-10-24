@@ -31,7 +31,7 @@ class RankValidationResponder(ModelValidationResponder[Rank]):
         dispatcher: RankValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: RankValidationRequest[T]) -> RankValidationResponse[T]
+        -   def execute(request: RankValidationRequest[T]) -> RankValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

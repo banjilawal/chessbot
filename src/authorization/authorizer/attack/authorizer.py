@@ -17,11 +17,11 @@ from authorization import (
 )
 from err import AttackAuthorizerException
 
-from exchange import AttackRequest
+from exchange import AttackAuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class AttackAuthorizer(Authorizer[AttackRequest]):
+class AttackAuthorizer(Authorizer[AttackAuthorizationRequest]):
     """
     Role:
         -   Permission Authorization
@@ -35,7 +35,7 @@ class AttackAuthorizer(Authorizer[AttackRequest]):
         applicant_reviewer: AttackTokenReviewer
 
     Provides:
-        -   def execute(request: AttackRequest) -> AttackDecision
+        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
 
     Super Class:
         Authorizer
@@ -72,16 +72,16 @@ class AttackAuthorizer(Authorizer[AttackRequest]):
         return cast(AttackTokenReviewer, super().applicant_reviewer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackRequest) -> AttackDecision:
+    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
         """
-        Checks if a AttackRequest can be granted.
+        Checks if a AttackAuthorizationRequest can be granted.
         
         Action:
             1.  Send an exception in Decision if any authoriation delegated denies
                 the request.
             2.  Otherwise, send a attack approval.
         Args:
-            request: AttackRequest
+            request: AttackAuthorizationRequest
         Returns:
            AttackDecision
         Raises:
@@ -134,7 +134,7 @@ class AttackAuthorizer(Authorizer[AttackRequest]):
                 ),
             )
         # --- Prepare an approval from the completed chain. ---#
-        approval = AttackRequest(
+        approval = AttackAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

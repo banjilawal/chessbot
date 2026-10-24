@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import CollectionRequest, OperationAuthorizer
-from operation import Operator
+from operation import Worker
 from util import LoggingLevelRouter
 
 
 T = TypeVar("T", bound="Result")
 
 
-class CollectionOperation(Operator, ABC, Generic[T]):
+class CollectionOperation(Worker, ABC, Generic[T]):
     """
     Role
         - Worker

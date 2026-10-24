@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import CrudAuthorizer
 from domain import CrudRequest
-from operation import Operator
+from operation import Worker
 from artifcat import CrudResult
 from util import LoggingLevelRouter
 
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="CrudResult")
 
 
-class CrudOperator(Operator[T], ABC, Generic[T]):
+class CrudWorker(Worker[T], ABC, Generic[T]):
     """
     Role
         - Worker

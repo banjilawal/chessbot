@@ -35,7 +35,7 @@ class ChartBuildResponder(
         dispatcher: ChartBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: ChartBuildRequest[T]) -> ChartBuildResponse[T]
+        -   def execute(request: ChartBuildRequest[T]) -> ChartBuildResponse[T]
 
     Super Class:
         ValidatorExchange

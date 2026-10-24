@@ -31,7 +31,7 @@ class GameValidationResponder(ModelValidationResponder[Game]):
         dispatcher: GameValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: GameValidationRequest[T]) -> GameValidationResponse[T]
+        -   def execute(request: GameValidationRequest[T]) -> GameValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange

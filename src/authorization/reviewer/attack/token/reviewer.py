@@ -18,7 +18,7 @@ from authorization import (
 )
 from domain import Token
 from err import AttackTokenReviewerException
-from exchange import AttackRequest
+from exchange import AttackAuthorizationRequest
 from util import LoggingLevelRouter
 
 
@@ -37,7 +37,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         double_attack_checker: DoubleAttackChecker
 
     Provides:
-        -   def execute(request: AttackRequest) -> AttackDecision
+        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
 
     Super Class:
         AttackApplicantReviewer
@@ -76,13 +76,13 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         ]
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackRequest) -> AttackDecision:
+    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
         """
         Decide if a Token can be promoted
         
         Action:
         Args:
-            request: AttackRequest
+            request: AttackAuthorizationRequest
         Returns:
             AttackDecision
         Raises:
@@ -151,7 +151,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
             )
         # --- Prepare an approval of the actor. ---#
         approved_request = decision.request
-        approval = AttackRequest(
+        approval = AttackAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

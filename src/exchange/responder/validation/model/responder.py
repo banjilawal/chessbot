@@ -35,7 +35,7 @@ class ModelValidationResponder(
         dispatcher: ModelValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: ModelValidationRequest[T]) -> ModelValidationResponse[T]
+        -   def execute(request: ModelValidationRequest[T]) -> ModelValidationResponse[T]
 
     Super Class:
         ValidatorExchange

@@ -16,12 +16,12 @@ from artifcat import SearchResult
 from exchange.model import WorkerRegistry
 from util import LoggingLevelRouter
 from transit.controller import WorkerRegistryController
-from operation import Operator, RegistryEntryNameValidator
+from operation import Worker, RegistryEntryNameValidator
 
 
 
 
-class WorkerRegistryNameSearch(Operator):
+class WorkerRegistryNameSearch(Worker):
     """
     Role
         - Search Worker
@@ -51,7 +51,7 @@ class WorkerRegistryNameSearch(Operator):
             operation_name: str,
             registry: WorkerRegistry,
             key_name_validator: RegistryEntryNameValidator | None = None,
-    ) -> SearchResult[List[Operator]]:
+    ) -> SearchResult[List[Worker]]:
         """
         Search the WorkerRegistry for an operation.
         

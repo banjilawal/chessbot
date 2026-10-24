@@ -31,7 +31,7 @@ class FootstepBuildResponder(ModelBuildResponder[Footstep]):
         dispatcher: FootstepBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: FootstepBuildRequest[T]) -> FootstepBuildResponse[T]
+        -   def execute(request: FootstepBuildRequest[T]) -> FootstepBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

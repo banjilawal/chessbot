@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionDeletionRequest
-from operation import CrudOperator
+from authorization import CollectionDdeletionAuthorizationRequest
+from operation import CrudWorker
 from artifcat import DeletionResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Collection")
 
 
-class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
+class CollectionDeletion(CrudWorker[DeletionResult], ABC, Generic[T]):
     """
     Role
         - Worker
@@ -33,7 +33,7 @@ class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
         authorizer: DeletionAuthorizer[T]
         
     Provides:
-        -   def execute(request: DeletionRequest[T]) -> DeletionResult
+        -   def execute(request: DdeletionAuthorizationRequest[T]) -> DeletionResult
 
     Super Class:
         CollectionOperation
@@ -52,5 +52,5 @@ class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: CollectionDeletionRequest[T]) -> DeletionResult:
+    def execute(self, request: CollectionDdeletionAuthorizationRequest[T]) -> DeletionResult:
         pass

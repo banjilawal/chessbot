@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/team/wrapper.py
+# src/exchange/server/validation/model/team/server.py
 
 """
-Module: exchange.wrapper.validation.model.team.wrapper
+Module: exchange.server.validation.model.team.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import TeamValidationResponse, ValidationResult
 from domain import Team, TeamBlueprint
 from err import TeamValidationResponderException, TeamValidationServerException, TeamCarrierEmptyException
 from exchange import (
-    TeamValidationResponder, ModelValidationService, TeamValidationRequest
+    TeamValidationResponder, ModelValidationServer, TeamValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TeamValidationService(
-    ModelValidationService[Team]
+class TeamValidationServer(
+    ModelValidationServer[Team]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

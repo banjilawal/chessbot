@@ -31,7 +31,7 @@ class BoardBuildResponder(ModelBuildResponder[Board]):
         dispatcher: BoardBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: BoardBuildRequest[T]) -> BoardBuildResponse[T]
+        -   def execute(request: BoardBuildRequest[T]) -> BoardBuildResponse[T]
 
     Super Class:
         ModelValidatorExchange

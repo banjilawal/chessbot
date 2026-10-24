@@ -13,12 +13,12 @@ from typing import cast
 
 from artifcat import ManeuverDecision
 from authorization import AuthorizationLoader
-from err import ManeuverAuthorizationLoaderException, ManeuverRequestNullException
-from exchange import ManeuverRequest
+from err import ManeuverAuthorizationLoaderException, ManeuverAuthorizationRequestNullException
+from exchange import ManeuverAuthorizationRequest
 from util import LoggingLevelRouter
 
 
-class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverRequest]):
+class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverAuthorizationRequest]):
     """
     Role:
         -   Permission Authorization
@@ -29,7 +29,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverRequest]):
     Attributes:
 
     Provides:
-        -   def execute(request: ManeuverRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
 
     Super Class:
         AuthorizationLoader
@@ -39,17 +39,17 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverRequest]):
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
         """
         Checks if the request is null or the wrong type
 
         Action:
             1.  Send an exception chain in the Decision denial if either;
                     -   the request is null.
-                    -   not a ManeuverRequest.
+                    -   not a ManeuverAuthorizationRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: ManeuverRequest
+            request: ManeuverAuthorizationRequest
         Returns:
            ManeuverDecision
         Raises:
@@ -60,8 +60,8 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverRequest]):
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
             candidate=request,
-            target_model=ManeuverRequest,
-            null_exception=ManeuverRequestNullException(),
+            target_model=ManeuverAuthorizationRequest,
+            null_exception=ManeuverAuthorizationRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:
@@ -75,9 +75,9 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverRequest]):
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(ManeuverRequest, priming.payload)
+        approved_request = cast(ManeuverAuthorizationRequest, priming.payload)
         # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverRequest(
+        approval = ManeuverAuthorizationRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

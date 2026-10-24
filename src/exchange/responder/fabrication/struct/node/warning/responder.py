@@ -31,7 +31,7 @@ class EncounterWaningNodeBuildResponder(NodeBuildResponder[EncounterWaningNode])
         dispatcher: EncounterWaningNodeBuildDispatcher[T]
 
     Provides:
-        -   def submit(request: EncounterWaningNodeBuildRequest[T]) -> EncounterWaningNodeBuildResponse[T]
+        -   def execute(request: EncounterWaningNodeBuildRequest[T]) -> EncounterWaningNodeBuildResponse[T]
 
     Super Class:
         NodeValidatorExchange

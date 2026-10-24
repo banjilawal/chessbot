@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/model/scalar/wrapper.py
+# src/exchange/server/validation/model/scalar/server.py
 
 """
-Module: exchange.wrapper.validation.model.scalar.wrapper
+Module: exchange.server.validation.model.scalar.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,17 +15,17 @@ from artifcat import ScalarValidationResponse, ValidationResult
 from domain import Scalar, ScalarBlueprint
 from err import ScalarValidationResponderException, ScalarValidationServerException, ScalarCarrierEmptyException
 from exchange import (
-    ScalarValidationResponder, ModelValidationService, ScalarValidationRequest
+    ScalarValidationResponder, ModelValidationServer, ScalarValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ScalarValidationService(
-    ModelValidationService[Scalar]
+class ScalarValidationServer(
+    ModelValidationServer[Scalar]
 ):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract either safe:

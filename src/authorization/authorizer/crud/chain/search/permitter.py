@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.authorizer.crud.chain import ChainOperationAuthorizer
 from artifcat.report import SearchApprovalReport
-from client.exchange import SearchRequest
+from client.exchange import SearchAuthorizationRequest
 from util import LoggingLevelRouter
 
 
@@ -36,5 +36,5 @@ class SearchAuthorizer(ChainOperationAuthorizer):
         super().__init__()
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchRequest, ) -> SearchApprovalReport:
+    def execute(self, request: SearchAuthorizationRequest, ) -> SearchApprovalReport:
         pass

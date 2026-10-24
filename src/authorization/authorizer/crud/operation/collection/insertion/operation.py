@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionInsertionRequest, OperationAuthorizer
-from operation import CrudOperator
+from authorization import CollectionInsertionAuthorizationRequest, OperationAuthorizer
+from operation import CrudWorker
 from artifcat import InsertionResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Collection")
 
 
-class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
+class CollectionInsertion(CrudWorker[InsertionResult], ABC, Generic[T]):
     """
     Role
         - Worker
@@ -33,7 +33,7 @@ class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
         authorizer: CollectionInsertionAuthorizer[T]
         
     Provides:
-        -   def execute(request: InsertionRequest[T]) -> InsertionResult
+        -   def execute(request: InsertionAuthorizationRequest[T]) -> InsertionResult
 
     Super Class:
         CollectionOperation
@@ -52,5 +52,5 @@ class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: CollectionInsertionRequest[T]) -> InsertionResult:
+    def execute(self, request: CollectionInsertionAuthorizationRequest[T]) -> InsertionResult:
         pass

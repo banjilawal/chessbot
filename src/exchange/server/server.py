@@ -1,7 +1,7 @@
-# src/exchange/wrapper/wrapper.py
+# src/exchange/server/server.py
 
 """
-Module: exchange.wrapper.wrapper
+Module: exchange.server.server
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -18,10 +18,10 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
-class ResponseWrapper(ABC, Generic[T]):
+class ResponseServer(ABC, Generic[T]):
     """
     Role
-        -   Wrapper
+        -   Server
 
     Responsibilities:
         1.  Extract the payload from a Response.result.

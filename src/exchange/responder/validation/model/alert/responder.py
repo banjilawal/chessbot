@@ -31,7 +31,7 @@ class AlertValidationResponder(ModelValidationResponder[Alert]):
         dispatcher: AlertValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: AlertValidationRequest[T]) -> AlertValidationResponse[T]
+        -   def execute(request: AlertValidationRequest[T]) -> AlertValidationResponse[T]
 
     Super Class:
         ModelValidatorExchange
