@@ -17,11 +17,11 @@ from authorization import (
 )
 from err import AttackAuthorizerException
 
-from exchange import AttackAuthorizationRequest
+from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
 
 
-class AttackAuthorizer(Authorizer[AttackAuthorizationRequest]):
+class AttackAuthorizer(Authorizer[AttackPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -72,7 +72,7 @@ class AttackAuthorizer(Authorizer[AttackAuthorizationRequest]):
         return cast(AttackTokenReviewer, super().applicant_reviewer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Checks if a AttackAuthorizationRequest can be granted.
         
@@ -134,7 +134,7 @@ class AttackAuthorizer(Authorizer[AttackAuthorizationRequest]):
                 ),
             )
         # --- Prepare an approval from the completed chain. ---#
-        approval = AttackAuthorizationRequest(
+        approval = AttackPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

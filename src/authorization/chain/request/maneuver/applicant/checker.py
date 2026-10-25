@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 from artifcat import ManeuverDecision
 from authorization import ActorChainable, ManeuverChecker
 from domain import Actor
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
@@ -24,5 +24,5 @@ class ManeuverApplicantChecker(ManeuverChecker[T], ActorChainable, ABC, Generic[
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         pass

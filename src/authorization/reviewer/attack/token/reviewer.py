@@ -18,7 +18,7 @@ from authorization import (
 )
 from domain import Token
 from err import AttackTokenReviewerException
-from exchange import AttackAuthorizationRequest
+from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
 
 
@@ -76,7 +76,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         ]
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Decide if a Token can be promoted
         
@@ -151,7 +151,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
             )
         # --- Prepare an approval of the actor. ---#
         approved_request = decision.request
-        approval = AttackAuthorizationRequest(
+        approval = AttackPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

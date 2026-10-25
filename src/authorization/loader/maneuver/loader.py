@@ -14,11 +14,11 @@ from typing import cast
 from artifcat import ManeuverDecision
 from authorization import AuthorizationLoader
 from err import ManeuverAuthorizationLoaderException, ManeuverAuthorizationRequestNullException
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 
-class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverAuthorizationRequest]):
+class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -39,7 +39,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverAuthorizationReque
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -60,7 +60,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverAuthorizationReque
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
             candidate=request,
-            target_model=ManeuverAuthorizationRequest,
+            target_model=ManeuverPermissionRequest,
             null_exception=ManeuverAuthorizationRequestNullException(),
         )
         # Send an exception chain in the denial.
@@ -75,9 +75,9 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverAuthorizationReque
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(ManeuverAuthorizationRequest, priming.payload)
+        approved_request = cast(ManeuverPermissionRequest, priming.payload)
         # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverAuthorizationRequest(
+        approval = ManeuverPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import AuthorizationRequest, PromotionRequest
+from exchange import PermissionRequest, PromotionRequest
 
 
-class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
+class PromotionPermissionRequest(PermissionRequest[PromotionRequest]):
     """
      Role:
          -  Messaging
@@ -29,7 +29,7 @@ class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
      Provides:
 
      Super Class:
-        AuthorizationRequest
+        PermissionRequest
      """
     
     def __init__(self, id: int, candidate: PromotionRequest):
@@ -47,6 +47,6 @@ class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PromotionAuthorizationRequest):
+        if isinstance(other, PromotionPermissionRequest):
             return self.id == other.id
         return False

@@ -17,11 +17,11 @@ from authorization import (
 )
 from err import PromotionAuthorizerException
 
-from exchange import PromotionAuthorizationRequest
+from exchange import PromotionPermissionRequest
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizer(Authorizer[PromotionAuthorizationRequest]):
+class PromotionAuthorizer(Authorizer[PromotionPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -72,7 +72,7 @@ class PromotionAuthorizer(Authorizer[PromotionAuthorizationRequest]):
         return cast(PromotionTokenReviewer, super().applicant_reviewer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Checks if a PromotionAuthorizationRequest can be granted.
         
@@ -134,7 +134,7 @@ class PromotionAuthorizer(Authorizer[PromotionAuthorizationRequest]):
                 ),
             )
         # --- Prepare an approval from the completed chain. ---#
-        approval = PromotionAuthorizationRequest(
+        approval = PromotionPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

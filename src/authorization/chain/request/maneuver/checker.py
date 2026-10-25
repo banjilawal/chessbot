@@ -14,14 +14,14 @@ from typing import Generic, TypeVar
 
 from artifcat import ManeuverDecision
 from authorization import Checker
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ManeuverChecker(Checker[ManeuverAuthorizationRequest], ABC, Generic[T]):
+class ManeuverChecker(Checker[ManeuverPermissionRequest], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         pass

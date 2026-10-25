@@ -15,12 +15,12 @@ from typing import Generic, TypeVar, cast
 from artifcat import ManeuverDecision
 from authorization import RolePermitter
 from domain import Maneuverable
-from exchange import ManeuverAuthorizationRequest, ValidationService
+from exchange import ManeuverPermissionRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Maneuverable")
 
-class ManeuverRolePermitter(RolePermitter[ManeuverAuthorizationRequest], ABC, Generic[T]):
+class ManeuverRolePermitter(RolePermitter[ManeuverPermissionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -52,7 +52,7 @@ class ManeuverRolePermitter(RolePermitter[ManeuverAuthorizationRequest], ABC, Ge
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if a Maneuver can be made with an Actionable.
         Args:

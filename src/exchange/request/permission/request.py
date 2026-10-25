@@ -18,7 +18,7 @@ from exchange import Request
 T = TypeVar("T", bound="Request")
 
 
-class AuthorizationRequest(ABC, Generic[T]):
+class PermissionRequest(ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -34,7 +34,7 @@ class AuthorizationRequest(ABC, Generic[T]):
      
      Super Class:
      """
-    _id; int
+    _id: int
     _candidate: T
     
     def __init__(self, id: int, candidate: T):
@@ -58,6 +58,6 @@ class AuthorizationRequest(ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AuthorizationRequest):
+        if isinstance(other, PermissionRequest):
             return self.id == other.id
         return False

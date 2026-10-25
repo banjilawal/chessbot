@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import Result, ResultState
+from artifcat import Result, ResultState, Resultable
 from domain import Encounter
 
 T = TypeVar("T", bound="Encounter")

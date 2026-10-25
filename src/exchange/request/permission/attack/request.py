@@ -9,17 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from faulthandler import cancel_dump_traceback_later
 from typing import Generic, TypeVar, cast
 
 
-from domain import Candidate, Token
-from exchange import AuthorizationRequest
+from exchange import AttackRequest, PermissionRequest
 
-T = TypeVar("T", bound="Attackequest")
+T = TypeVar("T", bound="AttackRequest")
 
-class AttackAuthorizationRequest(AuthorizationRequest[T], ABC, Generic[T]):
+class AttackPermissionRequest(PermissionRequest[T], Generic[T]):
     """
      Role:
          -  Messaging
@@ -32,7 +29,7 @@ class AttackAuthorizationRequest(AuthorizationRequest[T], ABC, Generic[T]):
      Provides:
 
      Super Class:
-        AuthorizationRequest
+        PermissionRequest
      """
     
     def __init__(self, id: int,  candidate: T):
@@ -51,6 +48,6 @@ class AttackAuthorizationRequest(AuthorizationRequest[T], ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AttackAuthorizationRequest):
+        if isinstance(other, AttackPermissionRequest):
             return self.id == other.id
         return False

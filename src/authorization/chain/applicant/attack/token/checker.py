@@ -14,7 +14,7 @@ from abc import ABC, abstractmethod
 from artifcat import AttackDecision
 from authorization import AttackApplicantChecker
 from domain import Token
-from exchange import AttackAuthorizationRequest
+from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
 
 
@@ -37,7 +37,7 @@ class AttackTokenChecker(AttackApplicantChecker[Token], ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Decide if a Token can be granted permission to launch an Attack.
         Args:

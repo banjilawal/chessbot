@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import AuthorizationRequest, ManeuverRequest
+from exchange import PermissionRequest, ManeuverRequest
 
 
-class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverRequest]):
+class ManeuverPermissionRequest(PermissionRequest[ManeuverRequest]):
     """
      Role:
          -  Messaging
@@ -29,7 +29,7 @@ class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverRequest]):
      Provides:
 
      Super Class:
-        AuthorizationRequest
+        PermissionRequest
      """
     
     def __init__(self, id: int, candidate: ManeuverRequest):
@@ -47,6 +47,6 @@ class ManeuverAuthorizationRequest(AuthorizationRequest[ManeuverRequest]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ManeuverAuthorizationRequest):
+        if isinstance(other, ManeuverPermissionRequest):
             return self.id == other.id
         return False

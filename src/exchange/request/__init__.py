@@ -12,7 +12,6 @@ version: 0.0.2
 
 # Packages
 from .attack import *
-from .authorization import *
 from .crud import *
 from .chain import *
 from .deletion import *
@@ -22,6 +21,7 @@ from .maneuver import *
 from .microservice import *
 from .operation import *
 from .promotion import *
+from .permission import *
 from .validation import *
 from .travel import *
 from .operation import *

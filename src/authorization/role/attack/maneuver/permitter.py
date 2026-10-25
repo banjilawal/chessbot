@@ -15,7 +15,7 @@ from artifcat import AttackDecision
 from authorization import AttackRolePermitter
 from domain import Attackable, Maneuver
 from err import AttackManeuverPermitterException, ManeuverConsistencyException, NullAttackVictimException
-from exchange import AttackAuthorizationRequest, ManeuverValidationRequest, ManeuverValidationService
+from exchange import AttackPermissionRequest, ManeuverValidationRequest, ManeuverValidationService
 from transit import ManeuverCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -50,7 +50,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
         return cast(ManeuverValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Decide if an Attack can be made using a Maneuver.
 
@@ -127,7 +127,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
             )
         # --- Prepare an approval of the activity. ---#
         activity = cast(Attackable, maneuver)
-        approval = AttackAuthorizationRequest(
+        approval = AttackPermissionRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,

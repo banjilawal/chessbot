@@ -17,11 +17,11 @@ from authorization import (
 )
 from err import ManeuverAuthorizerException
 
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 
-class ManeuverAuthorizer(Authorizer[ManeuverAuthorizationRequest]):
+class ManeuverAuthorizer(Authorizer[ManeuverPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -72,7 +72,7 @@ class ManeuverAuthorizer(Authorizer[ManeuverAuthorizationRequest]):
         return cast(ManeuverTokenReviewer, super().applicant_reviewer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Checks if a ManeuverAuthorizationRequest can be granted.
         
@@ -134,7 +134,7 @@ class ManeuverAuthorizer(Authorizer[ManeuverAuthorizationRequest]):
                 ),
             )
         # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverAuthorizationRequest(
+        approval = ManeuverPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

@@ -15,7 +15,7 @@ from artifcat import ManeuverDecision
 from authorization import ManeuverRolePermitter
 from domain import Maneuverable, Path
 from err import ManeuverPathPermitterException, PathConsistencyException
-from exchange import ManeuverAuthorizationRequest, PathValidationRequest, PathValidationService
+from exchange import ManeuverPermissionRequest, PathValidationRequest, PathValidationService
 from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -50,7 +50,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
         return cast(PathValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if a Maneuver can be made on a Path.
 
@@ -108,7 +108,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
             )
         # --- Prepare an approval of the activity. ---#
         activity = cast(Maneuverable, path)
-        approval = ManeuverAuthorizationRequest(
+        approval = ManeuverPermissionRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,

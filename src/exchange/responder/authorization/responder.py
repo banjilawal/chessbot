@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import Decision
 from authorization import Authorizer
-from exchange import AuthorizationRequest
+from exchange import PermissionRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -62,7 +62,7 @@ class AuthorizationResponder(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest[T]) -> Decision[T]:
+    def execute(self, request: PermissionRequest[T]) -> Decision[T]:
         """
         Args:
             request: AuthorizationRequest[T]

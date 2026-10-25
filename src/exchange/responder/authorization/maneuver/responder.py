@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import PromotionDecision
 from err import PromotionAuthorizationResponderException
-from exchange import AuthorizationResponder, PromotionAuthorizationRequest, PromotionRequest
+from exchange import AuthorizationResponder, PromotionPermissionRequest, PromotionRequest
 from transit import PromotionAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -51,7 +51,7 @@ class PromotionAuthorizationResponder(
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Args:
             request: PromotionAuthorizationRequest

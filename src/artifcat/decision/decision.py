@@ -13,9 +13,9 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
-from exchange import AuthorizationRequest
+from exchange import PermissionRequest
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="PermissionRequest")
 
 class Decision(ABC, Generic[T]):
     """
@@ -75,18 +75,13 @@ class Decision(ABC, Generic[T]):
     def is_granted(self) -> bool:
         return (
                 self._exception is None and
+                self._request is not None and
                 self._permission == Permission.GRANTED
         )
     
     @property
     def is_denial(self) -> bool:
-        return (
-            self._exception is not None and
-            (
-                    self._permission == Permission.DENIED or
-                    self._permission == Permission.TIMED_OUT
-            )
-        )
+        return not self.is_granted
     
     @classmethod
     def grant(cls, request: T) -> Decision[T]:

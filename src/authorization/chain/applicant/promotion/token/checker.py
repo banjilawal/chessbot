@@ -14,7 +14,7 @@ from abc import ABC, abstractmethod
 from artifcat import PromotionDecision
 from authorization import PromotionApplicantChecker
 from domain import Token
-from exchange import PromotionAuthorizationRequest
+from exchange import PromotionPermissionRequest
 from util import LoggingLevelRouter
 
 
@@ -37,7 +37,7 @@ class PromotionTokenChecker(PromotionApplicantChecker[Token], ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Decide if a Token can be granted permission to a Promotion.
         Args:

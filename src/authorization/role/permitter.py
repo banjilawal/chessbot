@@ -14,10 +14,10 @@ from typing import Generic, TypeVar
 
 from artifcat import Decision
 from authorization import Checker, RoleChainable
-from exchange import AuthorizationRequest, ValidationService
+from exchange import PermissionRequest, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="PermissionRequest")
 
 class RolePermitter(Checker[T], RoleChainable, ABC, Generic[T]):
     """

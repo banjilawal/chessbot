@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from artifcat import Decision
 from authorization import ActorChainable
-from exchange import AuthorizationRequest, ValidationService
+from exchange import PermissionRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
@@ -51,7 +51,7 @@ class ReadyChecker(ActorChainable, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest) -> Decision:
+    def execute(self, request: PermissionRequest) -> Decision:
         """
         Run validation checks on a Request applicant.
         Args:

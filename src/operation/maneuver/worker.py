@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ManeuverResult
 from collection import SquareStackService
 from domain import Maneuver, Path, SquareRegister, SquareState
-from exchange import ManeuverAuthorizationRequest, ManeuverAuthorizationResponder, ManeuverRequest
+from exchange import ManeuverPermissionRequest, ManeuverAuthorizationResponder, ManeuverRequest
 from operation import Worker
 from util import IdFactory, LoggingLevelRouter
 
@@ -59,7 +59,7 @@ class Mover(Worker[ManeuverResult]):
         method = f"{self.__class__.__name__}.execute"
         
         decision = self.authorization_responder.execute(
-            ManeuverAuthorizationRequest(
+            ManeuverPermissionRequest(
                 candidate=request,
                 id=IdFactory.next_id(class_name="ManeuverAuthorizationRequest")
             )

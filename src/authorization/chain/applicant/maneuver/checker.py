@@ -15,13 +15,13 @@ from typing import Generic, TypeVar
 from artifcat import ManeuverDecision
 from authorization import ApplicantChecker
 from domain import Actor
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
 
-class ManeuverApplicantChecker(ApplicantChecker[ManeuverAuthorizationRequest], ABC, Generic[T]):
+class ManeuverApplicantChecker(ApplicantChecker[ManeuverPermissionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -40,7 +40,7 @@ class ManeuverApplicantChecker(ApplicantChecker[ManeuverAuthorizationRequest], A
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if an Actor can be granted permission to a Maneuver.
         Args:

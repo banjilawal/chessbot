@@ -12,7 +12,7 @@ from __future__ import annotations
 from artifcat import ManeuverDecision
 from authorization import ManeuverTokenChecker
 from err import ManeuverCandidateOriginException
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 class ManeuverTokenOriginChecker(ManeuverTokenChecker):
@@ -33,7 +33,7 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
     """
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if a Token can move.
 
@@ -68,7 +68,7 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
                 )
             )
         # --- Prepare an approval of the actor. ---#
-        approval = ManeuverAuthorizationRequest(
+        approval = ManeuverPermissionRequest(
             id=request.id,
             applicant=request.applicant,
             activity=request.activity,

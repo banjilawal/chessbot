@@ -15,10 +15,10 @@ from typing import Generic, TypeVar
 
 from artifcat import Decision
 from authorization import Authorizer
-from exchange import AuthorizationRequest
+from exchange import PermissionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="PermissionRequest")
 
 class AuthorizationDispatcher(ABC, Generic[T]):
     """

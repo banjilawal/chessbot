@@ -10,6 +10,10 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.AUTHORIZATION.ENCOUNTER PACKAGE ===========#
 
 # Packages
+from .checkmate import *
+from .kill import *
+from .stalemate import *
+from .warning import *
 
 # Modules
-from .request import AttackRequest
+from .request import AttackPermissionRequest

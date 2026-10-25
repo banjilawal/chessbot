@@ -14,11 +14,11 @@ from typing import cast
 from artifcat import AttackDecision
 from authorization import AuthorizationLoader
 from err import AttackAuthorizationLoaderException, AttackAuthorizationRequestNullException
-from exchange import AttackAuthorizationRequest
+from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
 
 
-class AttackAuthorizationLoader(AuthorizationLoader[AttackAuthorizationRequest]):
+class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -39,7 +39,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackAuthorizationRequest])
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -60,7 +60,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackAuthorizationRequest])
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
             candidate=request,
-            target_model=AttackAuthorizationRequest,
+            target_model=AttackPermissionRequest,
             null_exception=AttackAuthorizationRequestNullException(),
         )
         # Send an exception chain in the denial.
@@ -75,9 +75,9 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackAuthorizationRequest])
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(AttackAuthorizationRequest, priming.payload)
+        approved_request = cast(AttackPermissionRequest, priming.payload)
         # --- Prepare an approval from the completed chain. ---#
-        approval = AttackAuthorizationRequest(
+        approval = AttackPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

@@ -15,4 +15,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .request import AuthorizationRequest
+from .request import PermissionRequest

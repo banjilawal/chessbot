@@ -18,7 +18,7 @@ from authorization import (
 )
 from domain import Token
 from err import PromotionTokenReviewerException
-from exchange import PromotionAuthorizationRequest
+from exchange import PromotionPermissionRequest
 from util import LoggingLevelRouter
 
 
@@ -76,7 +76,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Token]):
         ]
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Decide if a Token can be promoted
         
@@ -151,7 +151,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Token]):
             )
         # --- Prepare an approval of the actor. ---#
         approved_request = decision.request
-        approval = PromotionAuthorizationRequest(
+        approval = PromotionPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

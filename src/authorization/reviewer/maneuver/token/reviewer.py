@@ -18,7 +18,7 @@ from authorization import (
 )
 from domain import Token
 from err import ManeuverTokenReviewerException
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 
@@ -75,7 +75,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
         ]
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if a Token can move.
 
@@ -138,7 +138,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
             )
         # --- Prepare an approval of the actor. ---#
         approved_request = decision.request
-        approval = ManeuverAuthorizationRequest(
+        approval = ManeuverPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

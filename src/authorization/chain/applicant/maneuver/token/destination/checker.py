@@ -12,7 +12,7 @@ from __future__ import annotations
 from artifcat import ManeuverDecision
 from authorization import ManeuverTokenChecker
 from err import BlockedDestinationException, TravelerAtDestinationException
-from exchange import ManeuverAuthorizationRequest
+from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
@@ -33,7 +33,7 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
     """
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverAuthorizationRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if a Token can move.
 
@@ -85,7 +85,7 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
                 )
             )
         # --- Prepare an approval of the actor. ---#
-        approval = ManeuverAuthorizationRequest(
+        approval = ManeuverPermissionRequest(
             id=request.id,
             applicant=request.applicant,
             activity=request.activity,

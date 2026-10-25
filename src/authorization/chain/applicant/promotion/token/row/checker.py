@@ -13,7 +13,7 @@ from __future__ import annotations
 from artifcat import PromotionDecision
 from authorization import PromotionTokenChecker
 from err import PromotionRowException
-from exchange import PromotionAuthorizationRequest
+from exchange import PromotionPermissionRequest
 from util import LoggingLevelRouter
 
 class PromotionRowChecker(PromotionTokenChecker):
@@ -34,7 +34,7 @@ class PromotionRowChecker(PromotionTokenChecker):
     """
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Decide if a Token can be promoted.
 
@@ -67,7 +67,7 @@ class PromotionRowChecker(PromotionTokenChecker):
                 )
             )
         # --- Prepare an approval of the actor. ---#
-        approval = PromotionAuthorizationRequest(
+        approval = PromotionPermissionRequest(
             id=request.id,
             applicant=request.applicant,
             activity=request.activity,

@@ -15,12 +15,12 @@ from typing import Generic, List, TypeVar, cast
 from artifcat import AttackDecision
 from authorization import ActorChainable, ApplicantReviewer, ReadyChecker
 from domain import Actor
-from exchange import AttackAuthorizationRequest
+from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class AttackApplicantReviewer(ApplicantReviewer[AttackAuthorizationRequest], ABC, Generic[T]):
+class AttackApplicantReviewer(ApplicantReviewer[AttackPermissionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -57,7 +57,7 @@ class AttackApplicantReviewer(ApplicantReviewer[AttackAuthorizationRequest], ABC
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Decide if an applicant can be promoted.
         Args:

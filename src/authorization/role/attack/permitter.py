@@ -15,12 +15,12 @@ from typing import Generic, TypeVar, cast
 from artifcat import AttackDecision
 from authorization import RolePermitter
 from domain import Attackable
-from exchange import AttackAuthorizationRequest, ValidationService
+from exchange import AttackPermissionRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Attackable")
 
-class AttackRolePermitter(RolePermitter[AttackAuthorizationRequest], ABC, Generic[T]):
+class AttackRolePermitter(RolePermitter[AttackPermissionRequest], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -51,7 +51,7 @@ class AttackRolePermitter(RolePermitter[AttackAuthorizationRequest], ABC, Generi
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Decide if an Attack can be made with an Actionable.
         Args:

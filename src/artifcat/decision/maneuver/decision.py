@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision, Permission
-from exchange import ManeuverRequest
+from exchange import ManeuverPermissionRequest, ManeuverRequest
 
 
-class ManeuverDecision(Decision[ManeuverRequest]):
+class ManeuverDecision(Decision[ManeuverPermissionRequest]):
     """
     Role:
         - Authorization Reporting
@@ -24,9 +24,10 @@ class ManeuverDecision(Decision[ManeuverRequest]):
         1.  Report if an action is permitted.
         
     Attributes:
-        request: ManeuverRequest
         permission: Permission
         exception: Optional[Exception]
+        request: ManeuverAuthorizationRequest
+
         
         is_granted: bool
         is_denied: bool

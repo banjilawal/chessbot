@@ -14,11 +14,11 @@ from typing import cast
 from artifcat import PromotionDecision
 from authorization import AuthorizationLoader
 from err import PromotionAuthorizationLoaderException, PromotionAuthorizationRequestNullException
-from exchange import PromotionAuthorizationRequest
+from exchange import PromotionPermissionRequest
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizationLoader(AuthorizationLoader[PromotionAuthorizationRequest]):
+class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -39,7 +39,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionAuthorizationReq
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -60,7 +60,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionAuthorizationReq
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
             candidate=request,
-            target_model=PromotionAuthorizationRequest,
+            target_model=PromotionPermissionRequest,
             null_exception=PromotionAuthorizationRequestNullException(),
         )
         # Send an exception chain in the denial.
@@ -75,9 +75,9 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionAuthorizationReq
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(PromotionAuthorizationRequest, priming.payload)
+        approved_request = cast(PromotionPermissionRequest, priming.payload)
         # --- Prepare an approval from the completed chain. ---#
-        approval = PromotionAuthorizationRequest(
+        approval = PromotionPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
             applicant=approved_request.applicant,

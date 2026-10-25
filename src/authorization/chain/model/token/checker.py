@@ -15,7 +15,7 @@ from artifcat import Decision
 from authorization import ReadyChecker
 from domain import CombatantToken, KingToken, Token
 from err import DisabledTokenException
-from exchange import AuthorizationRequest, TokenValidationRequest
+from exchange import PermissionRequest, TokenValidationRequest
 from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -38,7 +38,7 @@ class ReadyTokenChecker(ReadyChecker):
     """
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest) -> Decision:
+    def execute(self, request: PermissionRequest) -> Decision:
         method = f"{self.__class__.__name__}.execute"
         
         candidate = None
@@ -89,7 +89,7 @@ class ReadyTokenChecker(ReadyChecker):
                     )
                 )
             )
-        approval = AuthorizationRequest(
+        approval = PermissionRequest(
             id=request.id,
             applicant=applicant,
             activity=request.activity,

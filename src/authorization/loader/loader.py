@@ -14,11 +14,11 @@ from typing import Generic, Optional, TypeVar
 
 from artifcat import Decision
 from assurance import PrimingValidator
-from exchange import AuthorizationRequest
+from exchange import PermissionRequest
 from microservice import IdentityService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="PermissionRequest")
 
 class AuthorizationLoader(ABC, Generic[T]):
     """

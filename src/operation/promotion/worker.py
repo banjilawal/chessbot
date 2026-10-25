@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import PromotionResponse, PromotionResult
 from domain import Bishop, King, Knight, Pawn, PromotionState, Queen, Rook
-from exchange import PromotionAuthorizationRequest, PromotionAuthorizationResponder, PromotionRequest
+from exchange import PromotionPermissionRequest, PromotionAuthorizationResponder, PromotionRequest
 from operation import Worker
 from util import IdFactory, LoggingLevelRouter
 
@@ -60,7 +60,7 @@ class Promoter(Worker[PromotionResult]):
         method = f"{self.__class__.__name__}.execute"
         
         decision = self.authorization_responder.execute(
-            PromotionAuthorizationRequest(
+            PromotionPermissionRequest(
                 candidate=request,
                 id=IdFactory.next_id(class_name="PromotionAuthorizationRequest")
             )

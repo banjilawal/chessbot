@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision, Permission
-from exchange import PromotionRequest
+from exchange import PromotionPermissionRequest, PromotionRequest
 
 
-class PromotionDecision(Decision[PromotionRequest]):
+class PromotionDecision(Decision[PromotionPermissionRequest]):
     """
     Role:
         - Authorization Reporting
@@ -24,9 +24,9 @@ class PromotionDecision(Decision[PromotionRequest]):
         1.  Report if an action is permitted.
         
     Attributes:
-        request: PromotionRequest
         permission: Permission
         exception: Optional[Exception]
+        request: PromotionAuthorizationRequest
         
         is_granted: bool
         is_denied: bool

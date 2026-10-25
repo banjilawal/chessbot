@@ -15,7 +15,7 @@ from artifcat import PromotionDecision
 from authorization import PromotionRolePermitter
 from domain import Elevatable, Rank
 from err import PromotionRankPermitterException
-from exchange import PromotionAuthorizationRequest, RankValidationRequest, RankValidationService
+from exchange import PromotionPermissionRequest, RankValidationRequest, RankValidationService
 from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -48,7 +48,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
         return cast(RankValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Decide if a Promotion can be made to a Rank.
 
@@ -104,7 +104,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
             )
         # --- Prepare an approval of the activity. ---#
         activity = cast(Elevatable, rank)
-        approval = PromotionAuthorizationRequest(
+        approval = PromotionPermissionRequest(
             id=request.id,
             activity=activity,
             applicant=request.applicant,

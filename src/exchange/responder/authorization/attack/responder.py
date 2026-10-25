@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AttackDecision
 from err import AttackAuthorizationResponderException
-from exchange import AuthorizationResponder, AttackAuthorizationRequest, EncounterRequest
+from exchange import AuthorizationResponder, AttackPermissionRequest, EncounterRequest
 from transit import AttackAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -51,7 +51,7 @@ class AttackAuthorizationResponder(
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackAuthorizationRequest) -> AttackDecision:
+    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Args:
             request: AttackAuthorizationRequest

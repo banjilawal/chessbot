@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision, Permission
-from exchange import AttackRequest
+from exchange import AttackPermissionRequest, AttackRequest
 
 
-class AttackDecision(Decision[AttackRequest]):
+class AttackDecision(Decision[AttackPermissionRequest]):
     """
     Role:
         - Authorization Reporting
@@ -24,9 +24,9 @@ class AttackDecision(Decision[AttackRequest]):
         1.  Report if an action is permitted.
         
     Attributes:
-        request: AttackRequest
         permission: Permission
         exception: Optional[Exception]
+        request: AttackAuthorizationRequest
         
         is_granted: bool
         is_denied: bool
