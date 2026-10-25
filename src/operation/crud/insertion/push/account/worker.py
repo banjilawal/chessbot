@@ -12,6 +12,8 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import InsertionResult
+from collection import AccountStack
+from domain import Account
 from err import AccountPusherException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
 from operation import Pusher
@@ -81,4 +83,13 @@ class AccountPusher(Pusher[AccountPushRequest]):
                     ex=permission.exception,
                 )
             )
-        push_request = cast(AccountPushRequest, permission.permission_request)
+        approved = cast(AccountPushRequest, permission.approval)
+        
+        item = cast(Account, approved.item)
+        collection = cast(AccountStack, approved.collection)
+        
+        if item in collection.items:
+            return InsertionResult.already_inserted()
+        collection.items.append(item)
+        
+        return InsertionResult.success()
