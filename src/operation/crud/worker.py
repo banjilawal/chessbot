@@ -9,10 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
+from artifcat import CrudResult
 from operation import Worker
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="CrudResult")
 

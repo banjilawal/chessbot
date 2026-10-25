@@ -12,6 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
+from exchange import CrudRequest, PermissionRequest
+
 T = TypeVar("T", bound="CrudRequest")
 
 class CrudPermissionRequest(PermissionRequest[T], ABC, Generic[T]):

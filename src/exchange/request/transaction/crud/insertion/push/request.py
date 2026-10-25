@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import Stack
-from exchange import CrudRequest, InsertionRequest
+from exchange import InsertionRequest
 
 T = TypeVar("T")
 

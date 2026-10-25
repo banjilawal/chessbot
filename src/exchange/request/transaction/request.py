@@ -1,7 +1,7 @@
 # src/exchange/request/transaction/request.py
 
 """
-Module: exchange.request.transaction.request
+Module: exchange.request.transaction.equest
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-T = TypeVar("T", bound="TransactionResult")
+from artifcat import Transactional
+
+T = TypeVar("T", bound="Transactional")
 
 
 class TransactionRequest(ABC, Generic[T]):
@@ -42,7 +44,6 @@ class TransactionRequest(ABC, Generic[T]):
         """
         self._id = id
         self._candidate = candidate
-        
         
     @property
     def id(self) -> int:

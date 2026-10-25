@@ -39,7 +39,7 @@ class Decision(ABC, Generic[T]):
 
     Super Class:
     """
-    __transaction_request: T
+    _transaction_request: T
     _permission: Permission
     _exception: Optional[Exception]
   
@@ -55,13 +55,13 @@ class Decision(ABC, Generic[T]):
             permission: Permission
             exception: Optional[Exception]
         """
-        self.__transaction_request = transaction_request
+        self._transaction_request = transaction_request
         self._exception = exception
         self._permission = permission
     
     @property
     def transaction_request(self) -> T:
-        return self.__transaction_request
+        return self._transaction_request
         
     @property
     def permission(self) -> Permission:
