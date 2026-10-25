@@ -46,5 +46,5 @@ class CrudRequest(Request[T], ABC, Generic[T]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, CrudRequest):
-            return self.id == request.id
+            return self.id == other.id
         return False

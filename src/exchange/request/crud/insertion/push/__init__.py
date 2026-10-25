@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.CRUD.INSERTION.PUSH PACKAGE ===========#
 
 # Packages
-from .account import *
+from .model import *
 
 # Modules
 from .request import PushRequest
