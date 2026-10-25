@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/encounter.request.py
+# src/exchange/request/permission/encounter.request.py
 
 """
-Module: exchange.request.authorization.encounter.request
+Module: exchange.request.permission.encounter.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

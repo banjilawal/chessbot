@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/attack/kill/request.py
+# src/exchange/request/permission/attack/kill/request.py
 
 """
-Module: exchange.request.authorization.attack.kill.request
+Module: exchange.request.permission.attack.kill.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -27,7 +27,7 @@ class KillPermissionRequest(AttackPermissionRequest[KillRequest]):
      Provides:
 
      Super Class:
-        Authorization
+        Permission
      """
     
     def __init__(self, id: int,  candidate: KillRequest):

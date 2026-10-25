@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/attack/checkmate/request.py
+# src/exchange/request/permission/attack/checkmate/request.py
 
 """
-Module: exchange.request.authorization.attack.checkmate.request
+Module: exchange.request.permission.attack.checkmate.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -27,7 +27,7 @@ class CheckmatePermissionRequest(AttackPermissionRequest[CheckmateRequest]):
      Provides:
 
      Super Class:
-        Authorization
+        Permission
      """
     
     def __init__(self, id: int,  candidate: CheckmateRequest):

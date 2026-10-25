@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/request.py
+# src/exchange/request/permission/request.py
 
 """
-Module: exchange.request.authorization.request
+Module: exchange.request.permission.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,10 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-
-from exchange import Request
-
-T = TypeVar("T", bound="Request")
+T = TypeVar("T", bound="PermissionRequest")
 
 
 class PermissionRequest(ABC, Generic[T]):

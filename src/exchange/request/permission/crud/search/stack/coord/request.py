@@ -1,0 +1,64 @@
+# src/exchange/permissionRequest/permission/crud/search/stack/coord/request.py
+
+"""
+Module: exchange.request.permission.crud.search.stack.coord.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import cast
+
+from collection import CoordStackService
+from exchange import StackSearchPermissionRequest, Coord, CoordSearchContext
+
+
+class CoordSearchPermissionRequest(StackSearchPermissionRequest[Coord]):
+    """
+     Role:
+         -  Messaging
+
+     Responsibilities:
+        1.  Provide a CoordStackService and criteria a CoordSearcher needs to run a job.
+
+     Attributes:
+        id: int
+        context: CoordContext
+        stack: CoordStackService
+
+     Provides:
+     
+     Super Class:
+        StackSearchPermissionRequest[
+     """
+    
+    def __init__(self, id: int, context: CoordSearchContext, stack: CoordStackService):
+        """
+        Args:
+            id: int
+            context: CoordContext
+            stack: CoordStackService
+        """
+        super().__init__(id=id, context=context, stack=stack)
+        
+    @property
+    def context(self) -> CoordSearchContext:
+        return cast(CoordSearchContext, super().context)
+        
+    @property
+    def stack(self) -> CoordStackService:
+        return cast(CoordStackService, super().stack)
+    
+    @property
+    def collection(self) -> CoordStackService:
+        return self.stack
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, StackSearchPermissionRequest):
+            permissionRequest = cast(StackSearchPermissionRequest, other)
+            return self.id == permissionRequest.id
+        return False

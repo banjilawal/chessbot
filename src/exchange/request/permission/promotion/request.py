@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/promotion.request.py
+# src/exchange/request/permission/promotion.request.py
 
 """
-Module: exchange.request.authorization.promotion.request
+Module: exchange.request.permission.promotion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

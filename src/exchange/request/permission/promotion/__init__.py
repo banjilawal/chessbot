@@ -1,13 +1,13 @@
-# src/exchange/request/authorization/promotion/__init__.py
+# src/exchange/request/permission/promotion/__init__.py
 
 """
-Module: exchange.request.authorization.promotion.__init__
+Module: exchange.request.permission.promotion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.REQUEST.AUTHORIZATION.PROMOTION PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.PERMISSION.PROMOTION PACKAGE ===========#
 
 # Packages
 

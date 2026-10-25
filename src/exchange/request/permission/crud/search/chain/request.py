@@ -1,0 +1,65 @@
+# src/exchange/permissionRequest/permission/crud/search/chain/request.py
+
+"""
+Module: exchange.request.permission.crud.search.chain.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+from __future__ import annotations
+
+from abc import ABC
+from typing import Generic, TypeVar, cast
+
+from collection import Chain
+from exchange import SearchPermissionRequest, Node
+
+T = TypeVar("T", bound="Node")
+
+class AddNodePermissionRequest(SearchPermissionRequest, ABC, Generic[T]):
+    """
+     Role:
+         -  Messaging
+
+     Responsibilities:
+         1.  Transport information during the CrudOperation lifecycle.
+
+     Attributes:
+         id: int
+         context: T
+         collection: Chain[T]
+
+     Provides:
+     
+     Super Class:
+        SearchPermissionRequest
+     """
+    
+    def __init__(self, id: int, context: T, chain: Chain[T]):
+        """
+        Args:
+            id: int
+            context: T
+            chain: Chain[T]
+        """
+        super().__init__(id=id, context=context, collection=chain)
+    
+    @property
+    def context(self) -> T:
+        return cast(T, super().context)
+        
+    @property
+    def chain(self) -> Chain[T]:
+        return cast(Chain[T], super().collection)
+    
+    @property
+    def collection(self) -> Chain[T]:
+        return self.chain
+        
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, AddNodePermissionRequest):
+            permissionRequest = cast(AddNodePermissionRequest, other)
+            return self.id == permissionRequest.id
+        return False
