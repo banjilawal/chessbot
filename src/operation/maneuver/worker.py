@@ -63,7 +63,7 @@ class Mover(Worker[ManeuverResult]):
                 id=IdFactory.next_id(class_name="ManeuverPermissionRequest")
             )
         )
-        if decision.is_denial:
+        if decision.request_is_denied:
             return ManeuverResult.failure(
                 MoverException(
                     cls_mthd=method,

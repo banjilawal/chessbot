@@ -92,7 +92,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         
         # Handle the case that the token is not ready.
         decision = self._ready_checker.execute(request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
@@ -107,7 +107,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         # Handle the pawn_checker does not grant permission.
         approved_request = decision.request
         decision = self._pawn_checker.execute(approved_request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
@@ -122,7 +122,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         # Handle the row_checker does not grant permission.
         approved_request = decision.request
         decision = self._attack_row_checker.execute(approved_request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
@@ -137,7 +137,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         # Handle the double_attack_checker does not grant permission.
         approved_request = decision.request
         decision = self._double_attack_checker.execute(approved_request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,

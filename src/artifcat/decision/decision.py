@@ -26,7 +26,7 @@ class Decision(ABC, Generic[T]):
         1.  Report if an action is permitted.
         
     Attributes:
-        request: T
+        transaction_request: T
         permission: Permission
         exception: Optional[Exception]
         
@@ -39,29 +39,29 @@ class Decision(ABC, Generic[T]):
 
     Super Class:
     """
-    _request: T
+    __transaction_request: T
     _permission: Permission
     _exception: Optional[Exception]
   
     def __init__(
             self,
-            request: T,
+            transaction_request: T,
             permission: Permission,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
-            request: T
+            transaction_request: T
             permission: Permission
             exception: Optional[Exception]
         """
-        self._request = request
+        self.__transaction_request = transaction_request
         self._exception = exception
         self._permission = permission
     
     @property
-    def request(self) -> T:
-        return self._request
+    def transaction_request(self) -> T:
+        return self.__transaction_request
         
     @property
     def permission(self) -> Permission:
@@ -72,34 +72,33 @@ class Decision(ABC, Generic[T]):
         return self._exception
     
     @property
-    def is_granted(self) -> bool:
+    def request_is_granted(self) -> bool:
         return (
                 self._exception is None and
-                self._request is not None and
-                
+                self._transaction_request is not None and
                 self._permission == Permission.GRANTED
         )
     
     @property
-    def is_denial(self) -> bool:
-        return not self.is_granted
+    def request_is_denied(self) -> bool:
+        return not self.request_is_granted
     
     @classmethod
     def grant(cls, request: T) -> Decision[T]:
-        return cls(request=request, permission=Permission.GRANTED)
+        return cls(transaction_request=request, permission=Permission.GRANTED)
     
     @classmethod
     def denial(cls, request: T, exception: Exception) -> Decision[T]:
         return cls(
-            request=request,
+            transaction_request=request,
             exception=exception,
             permission=Permission.DENIED,
         )
     
     @classmethod
-    def timed_out(cls, request: T, exception: Exception) -> Decision:
+    def timed_out(cls, request: T, exception: Exception) -> Decision[T]:
         return cls(
-            request=request,
+            transaction_request=request,
             exception=exception,
             permission=Permission.TIMED_OUT,
         )

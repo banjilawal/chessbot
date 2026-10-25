@@ -66,7 +66,7 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionPermissi
         
         # Handle the case that the authorizer does not grant permission.
         decision = self.authorizer.execute(request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request.candidate,

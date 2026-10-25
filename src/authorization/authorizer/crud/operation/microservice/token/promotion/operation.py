@@ -100,7 +100,7 @@ class PawnPromoter:
             )
         promotion_permission = cast(PromotionPermissionRequestDecision, permission_analysis_result.payload)
         # Handle the case that the pawn is not granted promotion permission.
-        if promotion_permission.is_denial:
+        if promotion_permission.request_is_denied:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,

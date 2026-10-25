@@ -41,7 +41,7 @@ class AttackLoader(Worker[T], ABC, Generic[T]):
         decision = self.authorization_responder.execute(
             AttackPermissionRequest(candidate=request)
         )
-        if decision.is_denial:
+        if decision.request_is_denied:
             return AttackResult.failure(
                 AttackLoaderException(
                     cls_mthd=method,

@@ -68,7 +68,7 @@ class TokenPusher(StackPop[Token]):
         
         # Handle the case that push rights are not granted.
         decision = self._permitter.execute(job=request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 TokenStackPushException(

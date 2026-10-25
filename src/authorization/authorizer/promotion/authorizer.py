@@ -91,7 +91,7 @@ class PromotionAuthorizer(Authorizer[PromotionPermissionRequest]):
         
         # Handle the case that the loader does not grant permission.
         decision = self.loader.execute(request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
@@ -106,7 +106,7 @@ class PromotionAuthorizer(Authorizer[PromotionPermissionRequest]):
         # Handle the case that the role_permitter does not grant activity permission.
         approved_request = decision.request
         decision = self.role_permitter.execute(approved_request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
@@ -121,7 +121,7 @@ class PromotionAuthorizer(Authorizer[PromotionPermissionRequest]):
         # Handle the case that the applicant reviewe does not grant actor permission.
         approved_request = decision.request
         decision = self.applicant_reviewer.execute(approved_request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,

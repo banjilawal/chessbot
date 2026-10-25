@@ -113,7 +113,7 @@ class TokenStackPushAuthorizer(StackPushAuthorizer[Token]):
                 rank=token.rank,
             )
         )
-        if rank_opening.is_denial:
+        if rank_opening.request_is_denied:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.denial(
                 TokenPushAuthorizerException(

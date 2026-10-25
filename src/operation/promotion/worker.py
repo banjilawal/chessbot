@@ -65,7 +65,7 @@ class Promoter(Worker[PromotionResult]):
                 id=IdFactory.next_id(class_name="PromotionPermissionRequest")
             )
         )
-        if decision.is_denial:
+        if decision.request_is_denied:
             return PromotionResult.failure(
                 ChessException(
                     cls_mthd=method,

@@ -95,7 +95,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
         # Handle the case that ready_checker does not grant permission.
         decision = self._ready_checker.execute(request)
         # Send the exception chain in the denial.
-        if decision.is_denial:
+        if decision.request_is_denied:
             return ManeuverDecision.denial(
                 request=request,
                 exception=ManeuverTokenReviewerException(
@@ -110,7 +110,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
         approved_request = decision.request
         decision = self._origin_checker.execute(approved_request)
         # Send the exception chain in the denial.
-        if decision.is_denial:
+        if decision.request_is_denied:
             return ManeuverDecision.denial(
                 request=request,
                 exception=ManeuverTokenReviewerException(
@@ -124,7 +124,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
         # Handle the case that destination_checker does not grant permission.
         approved_request = decision.request
         decision = self._destination_checker.execute(approved_request)
-        if decision.is_denial:
+        if decision.request_is_denied:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,

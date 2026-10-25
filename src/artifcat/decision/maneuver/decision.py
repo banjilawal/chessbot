@@ -61,12 +61,12 @@ class ManeuverDecision(Decision[ManeuverPermissionRequest]):
         
 
     @property
-    def is_granted(self) -> bool:
-        return super().is_granted and isinstance(self.request, ManeuverRequest)
+    def request_is_granted(self) -> bool:
+        return super().request_is_granted and isinstance(self.request, ManeuverRequest)
     
     @property
-    def is_denial(self) -> bool:
-        return not self.is_granted
+    def request_is_denied(self) -> bool:
+        return not self.request_is_granted
     
     @classmethod
     def grant(cls, request: ManeuverRequest) -> ManeuverDecision:
