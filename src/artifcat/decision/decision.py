@@ -13,9 +13,9 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
-from exchange import PermissionRequest
+from exchange import Request
 
-T = TypeVar("T", bound="PermissionRequest")
+T = TypeVar("T", bound="Request")
 
 class Decision(ABC, Generic[T]):
     """
@@ -26,33 +26,33 @@ class Decision(ABC, Generic[T]):
         1.  Report if an action is permitted.
         
     Attributes:
-        request: T
         permission: Permission
+        request: Optional[T]
         exception: Optional[Exception]
         
         is_granted: bool
         is_denied: bool
         
     Provides:
-        -   def grant(cls, request: T) -> Decision[T]:
+        -   def grant(request: T) -> Decision[T]:
         -   def deny(exception: Exception) -> Exception
 
     Super Class:
     """
-    _request: T
     _permission: Permission
+    _request: Optional[T]
     _exception: Optional[Exception]
   
     def __init__(
             self,
-            request: T,
             permission: Permission,
+            request: Optional[T] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
-            request: T
             permission: Permission
+            request: Optional[T]
             exception: Optional[Exception]
         """
         self._request = request
@@ -60,7 +60,7 @@ class Decision(ABC, Generic[T]):
         self._permission = permission
     
     @property
-    def request(self) -> T:
+    def request(self) -> Optional[T]:
         return self._request
         
     @property
@@ -88,17 +88,15 @@ class Decision(ABC, Generic[T]):
         return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def denial(cls, request: T, exception: Exception) -> Decision[T]:
+    def denial(cls, exception: Exception) -> Decision[T]:
         return cls(
-            request=request,
             exception=exception,
             permission=Permission.DENIED,
         )
     
     @classmethod
-    def timed_out(cls, request: T, exception: Exception) -> Decision:
+    def timed_out(cls, exception: Exception) -> Decision[T]:
         return cls(
-            request=request,
             exception=exception,
             permission=Permission.TIMED_OUT,
         )

@@ -13,7 +13,7 @@ from typing import cast
 
 from artifcat import PromotionDecision
 from authorization import AuthorizationLoader
-from err import PromotionAuthorizationLoaderException, PromotionAuthorizationRequestNullException
+from err import PromotionAuthorizationLoaderException
 from exchange import PromotionPermissionRequest
 from util import LoggingLevelRouter
 
@@ -66,7 +66,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
         # Send an exception chain in the denial.
         if priming.is_failure:
             return PromotionDecision.denial(
-                request=request,
+                request=request.candidate,
                 exception=PromotionAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,
