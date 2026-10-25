@@ -27,7 +27,7 @@ class DoublePromotionChecker(PromotionTokenChecker):
     Attributes:
 
     Provides:
-        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         PromotionTokenChecker
@@ -42,7 +42,7 @@ class DoublePromotionChecker(PromotionTokenChecker):
             1.  Deny promotion if the token has already been promoted.
             2.  Otherwise, issue an approval.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

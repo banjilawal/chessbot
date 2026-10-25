@@ -29,7 +29,7 @@ class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     Attributes:
 
     Provides:
-        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverApplicantChecker
@@ -41,7 +41,7 @@ class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
         """
         Decide if a Token can be granted permission to launch an Maneuver.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

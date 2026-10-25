@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, ParticipationDecision
 from domain import Participation
-from exchange import ChartAuthorizationResponder, FootstepAuthorizationRequest
+from exchange import ChartAuthorizationResponder, FootstepPermissionRequest
 from err import ParticipationAuthorizationResponderException
 from transit import TokenCarrier, ParticipationCarrier, ParticipationAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class ParticipationAuthorizationResponder(ChartAuthorizationResponder[Participat
         dispatcher: ParticipationAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: ParticipationAuthorizationRequest[T]) -> ParticipationDecision[T]
+        -   def execute(request: ParticipationPermissionRequest[T]) -> ParticipationDecision[T]
 
     Super Class:
         ChartValidatorExchange
@@ -56,7 +56,7 @@ class ParticipationAuthorizationResponder(ChartAuthorizationResponder[Participat
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: FootstepAuthorizationRequest
+            request: FootstepPermissionRequest
     ) -> ParticipationDecision:
         """
         Certify a candidate is a TokenCarrier whose payload is either a Token
@@ -67,7 +67,7 @@ class ParticipationAuthorizationResponder(ChartAuthorizationResponder[Participat
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: ParticipationAuthorizationRequest
+            request: ParticipationPermissionRequest
         Result:
             ParticipationDecision
         Raises:

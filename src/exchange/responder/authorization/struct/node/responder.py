@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import NodeDecision
-from exchange import NodeAuthorizationRequest, AuthorizationResponder
+from exchange import NodePermissionRequest, AuthorizationResponder
 from transit import NodeAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -35,7 +35,7 @@ class NodeAuthorizationResponder(
         dispatcher: NodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: NodeAuthorizationRequest[T]) -> NodeDecision[T]
+        -   def execute(request: NodePermissionRequest[T]) -> NodeDecision[T]
 
     Super Class:
         ValidatorExchange
@@ -57,11 +57,11 @@ class NodeAuthorizationResponder(
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: NodeAuthorizationRequest[T]
+            request: NodePermissionRequest[T]
     ) -> NodeDecision[T]:
         """
         Args:
-            request: NodeAuthorizationRequest[T]
+            request: NodePermissionRequest[T]
         Result:
             NodeDecision[T]
         Raises:

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestException
+from err import PermissionRequestException
 
 __all__ = [
     # ======================# DELETION_AUTHORIZATION_REQUEST_FAILURE #======================#
-    "DeletionAuthorizationRequestException",
+    "DeletionPermissionRequestException",
 ]
 
 # ======================# DELETION_AUTHORIZATION_REQUEST_FAILURE #======================#
-class DeletionAuthorizationRequestException(AuthorizationRequestException):
+class DeletionPermissionRequestException(PermissionRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a DeletionAuthorizationRequest encountered and error.
+        1.  Indicating a DeletionPermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class DeletionAuthorizationRequestException(AuthorizationRequestException):
     Provides:
 
     Super Class:
-        AuthorizationRequestException
+        PermissionRequestException
     """
-    MSG = "DeletionAuthorizationRequest error."
+    MSG = "DeletionPermissionRequest error."
     ERR_CODE = "DELETION_AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

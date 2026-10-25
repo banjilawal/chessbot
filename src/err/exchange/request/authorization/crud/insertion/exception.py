@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestException
+from err import PermissionRequestException
 
 __all__ = [
     # ======================# INSERTION_AUTHORIZATION_REQUEST_FAILURE #======================#
-    "InsertionAuthorizationRequestException",
+    "InsertionPermissionRequestException",
 ]
 
 # ======================# INSERTION_AUTHORIZATION_REQUEST_FAILURE #======================#
-class InsertionAuthorizationRequestException(AuthorizationRequestException):
+class InsertionPermissionRequestException(PermissionRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a InsertionAuthorizationRequest encountered and error.
+        1.  Indicating a InsertionPermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class InsertionAuthorizationRequestException(AuthorizationRequestException):
     Provides:
 
     Super Class:
-        AuthorizationRequestException
+        PermissionRequestException
     """
-    MSG = "InsertionAuthorizationRequest error."
+    MSG = "InsertionPermissionRequest error."
     ERR_CODE = "INSERTION_AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

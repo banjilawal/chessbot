@@ -32,7 +32,7 @@ class AttackAuthorizationResponder(
         dispatcher: AttackAuthorizationDispatcher
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         AuthorizationResponder
@@ -54,7 +54,7 @@ class AttackAuthorizationResponder(
     def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Result:
             AttackDecision
         Raises:

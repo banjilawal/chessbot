@@ -32,7 +32,7 @@ class AttackApplicantChecker(ApplicantChecker[AttackPermissionRequest], ABC, Gen
     Attributes:
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         ApplicantChecker
@@ -44,7 +44,7 @@ class AttackApplicantChecker(ApplicantChecker[AttackPermissionRequest], ABC, Gen
         """
         Decide if an Actor can be granted permission to a Attack.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:

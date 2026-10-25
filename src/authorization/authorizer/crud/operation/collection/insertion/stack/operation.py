@@ -34,7 +34,7 @@ class StackPush(InsertOperation[StackService], ABC, Generic[T]):
         authorizer: PushAuthorizer[T]
         
     Provides:
-        -   def execute(request: InsertionAuthorizationRequest[T]) -> InsertionResult
+        -   def execute(request: InsertionPermissionRequest[T]) -> InsertionResult
 
     Super Class:
         InsertionOperation

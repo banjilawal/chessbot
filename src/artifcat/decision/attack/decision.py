@@ -26,7 +26,7 @@ class AttackDecision(Decision[AttackPermissionRequest]):
     Attributes:
         permission: Permission
         exception: Optional[Exception]
-        request: AttackAuthorizationRequest
+        request: AttackPermissionRequest
         
         is_granted: bool
         is_denied: bool

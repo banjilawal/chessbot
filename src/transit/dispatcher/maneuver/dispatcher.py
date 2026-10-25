@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from abc import abstractmethod
 
-from artifcat import ManeuverResponse
 from exchange import ManeuverRequest
 from transit import Dispatcher
 from util import LoggingLevelRouter

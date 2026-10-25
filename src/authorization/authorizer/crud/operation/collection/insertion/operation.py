@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionInsertionAuthorizationRequest, OperationAuthorizer
+from authorization import CollectionInsertionPermissionRequest, OperationAuthorizer
 from operation import CrudWorker
 from artifcat import InsertionResult
 from util import LoggingLevelRouter
@@ -33,7 +33,7 @@ class CollectionInsertion(CrudWorker[InsertionResult], ABC, Generic[T]):
         authorizer: CollectionInsertionAuthorizer[T]
         
     Provides:
-        -   def execute(request: InsertionAuthorizationRequest[T]) -> InsertionResult
+        -   def execute(request: InsertionPermissionRequest[T]) -> InsertionResult
 
     Super Class:
         CollectionOperation
@@ -52,5 +52,5 @@ class CollectionInsertion(CrudWorker[InsertionResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: CollectionInsertionAuthorizationRequest[T]) -> InsertionResult:
+    def execute(self, request: CollectionInsertionPermissionRequest[T]) -> InsertionResult:
         pass

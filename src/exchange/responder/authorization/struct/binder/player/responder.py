@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, PlayerBinderDecision
 from domain import PlayerBinder
-from exchange import BinderAuthorizationResponder, PlayerBinderAuthorizationRequest
+from exchange import BinderAuthorizationResponder, PlayerBinderPermissionRequest
 from err import PlayerBinderAuthorizationResponderException
 from transit import PlayerBinderCarrier, PlayerBinderAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class PlayerBinderAuthorizationResponder(BinderAuthorizationResponder[PlayerBind
         dispatcher: PlayerBinderAuthorizationDispatcher
 
     Provides:
-        -   def execute(request: PlayerBinderAuthorizationRequest) -> PlayerBinderDecision
+        -   def execute(request: PlayerBinderPermissionRequest) -> PlayerBinderDecision
 
     Super Class:
         BinderValidatorExchange
@@ -56,7 +56,7 @@ class PlayerBinderAuthorizationResponder(BinderAuthorizationResponder[PlayerBind
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: PlayerBinderAuthorizationRequest
+            request: PlayerBinderPermissionRequest
     ) -> PlayerBinderDecision:
         """
         Certify a candidate is a PlayerBinderCarrier whose payload is either a Player
@@ -67,7 +67,7 @@ class PlayerBinderAuthorizationResponder(BinderAuthorizationResponder[PlayerBind
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: PlayerBinderAuthorizationRequest
+            request: PlayerBinderPermissionRequest
         Result:
             PlayerBinderDecision
         Raises:

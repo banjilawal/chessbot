@@ -62,12 +62,12 @@ class Promoter(Worker[PromotionResult]):
         decision = self.authorization_responder.execute(
             PromotionPermissionRequest(
                 candidate=request,
-                id=IdFactory.next_id(class_name="PromotionAuthorizationRequest")
+                id=IdFactory.next_id(class_name="PromotionPermissionRequest")
             )
         )
         if decision.is_denial:
             return PromotionResult.failure(
-                PromoterException(
+                ChessException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=PromoterException.MSG,
@@ -75,7 +75,7 @@ class Promoter(Worker[PromotionResult]):
                     ex=decision.exception,
                 )
             )
-        safe = cast(PromotionRequest, decision.candidate)
+        safe = cast(PromotionRequest, decision.request)
         applicant = safe.applicant
         rank = safe.elevatable_to_rank
         promotion = Pawn()

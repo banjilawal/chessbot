@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, CoordRegisterDecision
 from domain import CoordRegister
-from exchange import RegisterAuthorizationResponder, CoordRegisterAuthorizationRequest
+from exchange import RegisterAuthorizationResponder, CoordRegisterPermissionRequest
 from err import CoordRegisterAuthorizationResponderException
 from transit import CoordCarrier, CoordRegisterCarrier, CoordRegisterAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class CoordRegisterAuthorizationResponder(RegisterAuthorizationResponder[CoordRe
         dispatcher: CoordRegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: CoordRegisterAuthorizationRequest[T]) -> CoordRegisterDecision[T]
+        -   def execute(request: CoordRegisterPermissionRequest[T]) -> CoordRegisterDecision[T]
 
     Super Class:
         RegisterValidatorExchange
@@ -56,7 +56,7 @@ class CoordRegisterAuthorizationResponder(RegisterAuthorizationResponder[CoordRe
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: CoordRegisterAuthorizationRequest
+            request: CoordRegisterPermissionRequest
     ) -> CoordRegisterDecision:
         """
         Certify a candidate is a CoordCarrier whose payload is either a Coord
@@ -67,7 +67,7 @@ class CoordRegisterAuthorizationResponder(RegisterAuthorizationResponder[CoordRe
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: CoordRegisterAuthorizationRequest
+            request: CoordRegisterPermissionRequest
         Result:
             CoordRegisterDecision
         Raises:

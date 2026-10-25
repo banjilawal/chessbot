@@ -27,9 +27,9 @@ class EncounterWarning(Encounter):
     Attributes:
         id: int
         maneuver: Maneuver
-        warning_recipient: KingToken
-        current_safe_square: Square
-        danger_zone: Optional[Square]
+        checked_king: KingToken
+        enemy_origin: Square
+        enemy_origin: Optional[Square]
         attacker_reward: Optional[int]
 
     Provides:
@@ -37,55 +37,66 @@ class EncounterWarning(Encounter):
     Super Class:
         Encounter
     """
-    _current_safe_square: Square
+    
+    _enemy: Token
+    _enemy_origin: Square
+
 
 
     def __init__(
             self,
             id: int,
-            attacker_maneuver: Maneuver,
-            warning_recipient: KingToken,
-            current_safe_square: Square,
-            danger_zone: Optional[Square] | None = None,
+            enemy: Token,
+            checked_king: KingToken,
+            enemy_origin: Square,
+            location: Square,
             attacker_reward: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
-            attacker_maneuver: Maneuver
-            warning_recipient: KingToken
-            current_safe_square: Square
-            danger_zone: Optional[Square]
+            enemy: Token,
+            checked_king: KingToken
+            location: Square
+            enemy_origin: Square
             attacker_reward: Optional[int]
         """
         super().__init__(
             id=id,
-            victim=warning_recipient,
-            attacker_maneuver=attacker_maneuver,
-            location=danger_zone,
+            victim=checked_king,
+            location=location,
             attacker_reward=attacker_reward,
         )
-        self._current_safe_square = current_safe_square
+        self._enemy = enemy
+        self._enemy_origin = enemy_origin
         
     @property
-    def warning_recipient(self) -> KingToken:
+    def checked_king(self) -> KingToken:
         return cast(KingToken, super().victim)
     
     @property
     def victim(self) -> KingToken:
-        return self.warning_recipient
+        return self.checked_king
     
     @property
-    def threat(self) -> Token:
-        return self.initiater
+    def enemy(self) -> Token:
+        return self._enemy
     
     @property
-    def current_safe_square(self) -> Square:
-        return self._current_safe_square
+    def enemy_origin(self) -> Square:
+        return self._enemy_origin
     
     @property
-    def threat_path(self) -> Path:
-        return self.attacker_maneuver.path
+    def consistency_exists(self) -> bool:
+        return (
+            super().consistency_exists and
+            self._enemy_origin.occupant == self._enemy and
+            self._enemy_origin.coord == self._enemy.footstep.position
+        )
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
 
     def __eq__(self, other) -> bool:
         if other is None:

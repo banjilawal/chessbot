@@ -33,7 +33,7 @@ class AttackApplicantReviewer(ApplicantReviewer[AttackPermissionRequest], ABC, G
         checkers: List[ActorChainable]
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         ApplicantReviewer
@@ -61,7 +61,7 @@ class AttackApplicantReviewer(ApplicantReviewer[AttackPermissionRequest], ABC, G
         """
         Decide if an applicant can be promoted.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
             AttackDecision
         Raises:

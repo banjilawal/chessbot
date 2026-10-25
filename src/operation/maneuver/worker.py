@@ -12,9 +12,8 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ManeuverResult
-from collection import SquareStackService
 from domain import Maneuver, Path, SquareRegister, SquareState
-from exchange import ManeuverPermissionRequest, ManeuverAuthorizationResponder, ManeuverRequest
+from exchange import ManeuverPermissionRequest, ManeuverRequest
 from operation import Worker
 from util import IdFactory, LoggingLevelRouter
 
@@ -61,7 +60,7 @@ class Mover(Worker[ManeuverResult]):
         decision = self.authorization_responder.execute(
             ManeuverPermissionRequest(
                 candidate=request,
-                id=IdFactory.next_id(class_name="ManeuverAuthorizationRequest")
+                id=IdFactory.next_id(class_name="ManeuverPermissionRequest")
             )
         )
         if decision.is_denial:

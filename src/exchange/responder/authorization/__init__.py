@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.RESPONDER.AUTHORIZATION PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .maneuver import *
 from .promotion import *
 from .struct import *

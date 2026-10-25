@@ -16,9 +16,9 @@ from err import TokenSearchAuthorizerException
 from domain.model import Token
 from authorization.authorizer.crud.chain import SearchAuthorizer
 from artifcat.report import SearchApprovalReport
-from client.exchange import SearchAuthorizationRequest
+from client.exchange import SearchPermissionRequest
 from chain import TokenChainService
-from authorization.adjudicator import TokenSearchAuthorizationRequestAdjudicator
+from authorization.adjudicator import TokenSearchPermissionRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -33,30 +33,30 @@ class TokenSearchAuthorizer(SearchAuthorizer[Token]):
         1.  Run tests to see if permission can be granted to a TokenChainService to execute a search.
 
     Attributes:
-        request_adjudicator: TokenSearchAuthorizationRequestAdjudicator
+        request_adjudicator: TokenSearchPermissionRequestAdjudicator
 
     Provides:
-        - execute(request: SearchAuthorizationRequest) -> SearchApprovalReport
+        - execute(request: SearchPermissionRequest) -> SearchApprovalReport
 
     Super Class:
         SearchAuthorizer
     """
-    _request_adjudicator: TokenSearchAuthorizationRequestAdjudicator
+    _request_adjudicator: TokenSearchPermissionRequestAdjudicator
     
     def __init__(
             self,
-            request_adjudicator: TokenSearchAuthorizationRequestAdjudicator | None = TokenSearchAuthorizationRequestAdjudicator()
+            request_adjudicator: TokenSearchPermissionRequestAdjudicator | None = TokenSearchPermissionRequestAdjudicator()
     ):
         """
         Args:
-            request_adjudicator: TokenSearchAuthorizationRequestAdjudicator
+            request_adjudicator: TokenSearchPermissionRequestAdjudicator
         """
         super().__init__()
         self._request_adjudicator = request_adjudicator
         
         
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchAuthorizationRequest, ) -> SearchApprovalReport:
+    def execute(self, request: SearchPermissionRequest, ) -> SearchApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -69,7 +69,7 @@ class TokenSearchAuthorizer(SearchAuthorizer[Token]):
                     - The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            request: SearchAuthorizationRequest
+            request: SearchPermissionRequest
         Returns:
             AnalysisResult
         Raises:

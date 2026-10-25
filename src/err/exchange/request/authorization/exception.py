@@ -17,17 +17,17 @@ from err import ResponseRequestException
 
 __all__ = [
     # ======================# AUTHORIZATION_REQUEST_FAILURE #======================#
-    "AuthorizationRequestException",
+    "PermissionRequestException",
 ]
 
 # ======================# AUTHORIZATION_REQUEST_FAILURE #======================#
-class AuthorizationRequestException(ResponseRequestException):
+class PermissionRequestException(ResponseRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AuthorizationRequest encountered and error.
+        1.  Indicating an PermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AuthorizationRequestException(ResponseRequestException):
     Super Class:
         ResponseRequestException
     """
-    MSG = "AuthorizationRequest error."
+    MSG = "PermissionRequest error."
     ERR_CODE = "AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

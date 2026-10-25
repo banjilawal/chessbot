@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import RegisterDecision
-from exchange import RegisterAuthorizationRequest, StructAuthorizationResponder
+from exchange import RegisterPermissionRequest, StructAuthorizationResponder
 from transit import RegisterAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -35,7 +35,7 @@ class RegisterAuthorizationResponder(
         dispatcher: RegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: RegisterAuthorizationRequest[T]) -> RegisterDecision[T]
+        -   def execute(request: RegisterPermissionRequest[T]) -> RegisterDecision[T]
 
     Super Class:
         ValidatorExchange
@@ -57,11 +57,11 @@ class RegisterAuthorizationResponder(
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: RegisterAuthorizationRequest[T]
+            request: RegisterPermissionRequest[T]
     ) -> RegisterDecision[T]:
         """
         Args:
-            request: RegisterAuthorizationRequest[T]
+            request: RegisterPermissionRequest[T]
         Result:
             RegisterDecision[T]
         Raises:

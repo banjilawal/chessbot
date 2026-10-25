@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== OPERATION.ATTACK PACKAGE ===========#
 
 # Packages
-from .combatant import *
+from .kill import *
 
 # Modules
 from .worker import Attacker

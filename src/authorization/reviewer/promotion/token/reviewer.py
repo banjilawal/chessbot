@@ -37,7 +37,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Token]):
         double_promotion_checker: DoublePromotionChecker
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         PromotionApplicantReviewer
@@ -82,7 +82,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Token]):
         
         Action:
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
             PromotionDecision
         Raises:

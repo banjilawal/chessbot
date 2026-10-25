@@ -98,7 +98,7 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
     
     
     @property
-    def maneuver(self) -> Optional[Maneuver]:
+    def attack_maneuver(self) -> Optional[Maneuver]:
         return self._maneuver
     
     

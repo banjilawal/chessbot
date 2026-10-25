@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, SquareRegisterDecision
 from domain import SquareRegister
-from exchange import RegisterAuthorizationResponder, SquareRegisterAuthorizationRequest
+from exchange import RegisterAuthorizationResponder, SquareRegisterPermissionRequest
 from err import SquareRegisterAuthorizationResponderException
 from transit import SquareCarrier, SquareRegisterCarrier, SquareRegisterAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class SquareRegisterAuthorizationResponder(RegisterAuthorizationResponder[Square
         dispatcher: SquareRegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: SquareRegisterAuthorizationRequest[T]) -> SquareRegisterDecision[T]
+        -   def execute(request: SquareRegisterPermissionRequest[T]) -> SquareRegisterDecision[T]
 
     Super Class:
         RegisterValidatorExchange
@@ -56,7 +56,7 @@ class SquareRegisterAuthorizationResponder(RegisterAuthorizationResponder[Square
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: SquareRegisterAuthorizationRequest
+            request: SquareRegisterPermissionRequest
     ) -> SquareRegisterDecision:
         """
         Certify a candidate is a SquareCarrier whose payload is either a Square
@@ -67,7 +67,7 @@ class SquareRegisterAuthorizationResponder(RegisterAuthorizationResponder[Square
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: SquareRegisterAuthorizationRequest
+            request: SquareRegisterPermissionRequest
         Result:
             SquareRegisterDecision
         Raises:

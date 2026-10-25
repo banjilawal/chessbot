@@ -26,13 +26,13 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
         -   Authorization
 
     Responsibilities:
-        1.  Grant permission to a Rank for a PromotionAuthorizationRequest.
+        1.  Grant permission to a Rank for a PromotionPermissionRequest.
 
     Attributes:
         validation_service : RankValidationService
 
     Provides:
-        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         PromotionRolePermitter
@@ -58,7 +58,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
                     -   The rank is not promotable.
             2.  Otherwise, issue a grant decision.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

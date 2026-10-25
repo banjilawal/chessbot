@@ -10,54 +10,41 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
-
-from collection import ExchangeObjectCollection
-from exchange import Request
+from typing import Generic, TypeVar
 
 from artifcat import CrudResult
+from exchange import Request
 
-C = TypeVar("C", bound="ExchangeObjectCollection")
-R = TypeVar("R", bound="CrudResult")
+T = TypeVar("T", bound="CrudResult")
 
-
-class CrudRequest(Request[R], ABC, Generic[C, R]):
+class CrudRequest(Request[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Transport the collection and other objects a CrudOperation needs to run a job.
+         1. Provide a CrudWorker details about a job.
 
      Attributes:
          id: int
-         collection: C
 
      Provides:
-     
+
      Super Class:
         Request
      """
-    _collection: C
     
-    def __init__(self, id: int, collection: C):
+    def __init__(self, id: int):
         """
         Args:
             id: int
-            collection: C
         """
         super().__init__(id)
-        self._collection = collection
-        
-    @property
-    def collection(self) -> C:
-        return self._collection
         
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, CrudRequest):
-            request = cast(CrudRequest, other)
             return self.id == request.id
         return False

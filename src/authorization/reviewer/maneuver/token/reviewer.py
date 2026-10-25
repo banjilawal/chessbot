@@ -36,7 +36,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
         destination_checker: ApplicantDestinationChecker
 
     Provides:
-        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverApplicantReviewer
@@ -84,7 +84,7 @@ class ManeuverTokenReviewer(ManeuverApplicantReviewer[Token]):
                 fails.
             2.  Otherwise, issue an approval.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
             ManeuverDecision
         Raises:

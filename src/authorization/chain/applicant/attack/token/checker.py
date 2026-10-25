@@ -29,7 +29,7 @@ class AttackTokenChecker(AttackApplicantChecker[Token], ABC):
     Attributes:
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         AttackApplicantChecker
@@ -41,7 +41,7 @@ class AttackTokenChecker(AttackApplicantChecker[Token], ABC):
         """
         Decide if a Token can be granted permission to launch an Attack.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:

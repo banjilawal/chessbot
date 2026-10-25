@@ -13,7 +13,7 @@ from typing import cast
 
 from artifcat import ManeuverDecision
 from authorization import AuthorizationLoader
-from err import ManeuverAuthorizationLoaderException, ManeuverAuthorizationRequestNullException
+from err import ManeuverAuthorizationLoaderException, ManeuverPermissionRequestNullException
 from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
@@ -29,7 +29,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
     Attributes:
 
     Provides:
-        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         AuthorizationLoader
@@ -46,10 +46,10 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         Action:
             1.  Send an exception chain in the Decision denial if either;
                     -   the request is null.
-                    -   not a ManeuverAuthorizationRequest.
+                    -   not a ManeuverPermissionRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:
@@ -61,7 +61,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         priming = self.priming_validator.execute(
             candidate=request,
             target_model=ManeuverPermissionRequest,
-            null_exception=ManeuverAuthorizationRequestNullException(),
+            null_exception=ManeuverPermissionRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:

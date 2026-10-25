@@ -29,7 +29,7 @@ class PromotionTokenChecker(PromotionApplicantChecker[Token], ABC):
     Attributes:
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         PromotionApplicantChecker
@@ -41,7 +41,7 @@ class PromotionTokenChecker(PromotionApplicantChecker[Token], ABC):
         """
         Decide if a Token can be granted permission to a Promotion.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, VectorNodeDecision
 from domain import VectorNode
-from exchange import NodeAuthorizationResponder, VectorNodeAuthorizationRequest
+from exchange import NodeAuthorizationResponder, VectorNodePermissionRequest
 from err import VectorNodeAuthorizationResponderException
 from transit import VectorCarrier, VectorNodeCarrier, VectorNodeAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class VectorNodeAuthorizationResponder(NodeAuthorizationResponder[VectorNode]):
         dispatcher: VectorNodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: VectorNodeAuthorizationRequest[T]) -> VectorNodeDecision[T]
+        -   def execute(request: VectorNodePermissionRequest[T]) -> VectorNodeDecision[T]
 
     Super Class:
         NodeValidatorExchange
@@ -56,7 +56,7 @@ class VectorNodeAuthorizationResponder(NodeAuthorizationResponder[VectorNode]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: VectorNodeAuthorizationRequest
+            request: VectorNodePermissionRequest
     ) -> VectorNodeDecision:
         """
         Certify a candidate is a VectorCarrier whose payload is either a Vector
@@ -67,7 +67,7 @@ class VectorNodeAuthorizationResponder(NodeAuthorizationResponder[VectorNode]):
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: VectorNodeAuthorizationRequest
+            request: VectorNodePermissionRequest
         Result:
             VectorNodeDecision
         Raises:

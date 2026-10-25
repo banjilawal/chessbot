@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import PermissionRequestNullException
 
 __all__ = [
     # ======================# ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class AttackRequestNullException(AuthorizationRequestNullException):
+class AttackRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class AttackRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        PermissionRequestNullException
     """
     MSG = "AttackRequest cannot be null."
     ERR_CODE = "ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR"

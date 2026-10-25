@@ -26,7 +26,7 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
     Attributes:
 
     Provides:
-        -   execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverTokenChecker
@@ -38,11 +38,11 @@ class ManeuverTokenOriginChecker(ManeuverTokenChecker):
         Decide if a Token can move.
 
         Action:
-            1.  Deny a ManeuverAuthorizationRequest if the token is not in the originating
+            1.  Deny a ManeuverPermissionRequest if the token is not in the originating
                 square.
             2.  Otherwise, issue an approval.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

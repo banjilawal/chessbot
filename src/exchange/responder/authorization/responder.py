@@ -32,7 +32,7 @@ class AuthorizationResponder(ABC, Generic[T]):
         dispatcher: AuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: AuthorizationRequest[T]) -> Decision[T]
+        -   def execute(request: PermissionRequest[T]) -> Decision[T]
 
 
     Super Class:
@@ -65,7 +65,7 @@ class AuthorizationResponder(ABC, Generic[T]):
     def execute(self, request: PermissionRequest[T]) -> Decision[T]:
         """
         Args:
-            request: AuthorizationRequest[T]
+            request: PermissionRequest[T]
         Result:
             Decision[T]
         Raises:

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestException
+from err import PermissionRequestException
 
 __all__ = [
     # ======================# SEARCH_AUTHORIZATION_REQUEST_FAILURE #======================#
-    "SearchAuthorizationRequestException",
+    "SearchPermissionRequestException",
 ]
 
 # ======================# SEARCH_AUTHORIZATION_REQUEST_FAILURE #======================#
-class SearchAuthorizationRequestException(AuthorizationRequestException):
+class SearchPermissionRequestException(PermissionRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SearchAuthorizationRequest encountered and error.
+        1.  Indicating a SearchPermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class SearchAuthorizationRequestException(AuthorizationRequestException):
     Provides:
 
     Super Class:
-        AuthorizationRequestException
+        PermissionRequestException
     """
-    MSG = "SearchAuthorizationRequest error."
+    MSG = "SearchPermissionRequest error."
     ERR_CODE = "SEARCH_AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

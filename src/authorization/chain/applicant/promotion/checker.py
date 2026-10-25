@@ -32,7 +32,7 @@ class PromotionApplicantChecker(ApplicantChecker[PromotionPermissionRequest], AB
     Attributes:
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         ApplicantChecker
@@ -44,7 +44,7 @@ class PromotionApplicantChecker(ApplicantChecker[PromotionPermissionRequest], AB
         """
         Decide if an Actor can be granted permission to a Promotion.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

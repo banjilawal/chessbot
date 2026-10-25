@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, TeamBinderDecision
 from domain import TeamBinder
-from exchange import BinderAuthorizationResponder, TeamBinderAuthorizationRequest
+from exchange import BinderAuthorizationResponder, TeamBinderPermissionRequest
 from err import TeamBinderAuthorizationResponderException
 from transit import TeamBinderCarrier, TeamBinderAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class TeamBinderAuthorizationResponder(BinderAuthorizationResponder[TeamBinder])
         dispatcher: TeamBinderAuthorizationDispatcher
 
     Provides:
-        -   def execute(request: TeamBinderAuthorizationRequest) -> TeamBinderDecision
+        -   def execute(request: TeamBinderPermissionRequest) -> TeamBinderDecision
 
     Super Class:
         BinderValidatorExchange
@@ -56,7 +56,7 @@ class TeamBinderAuthorizationResponder(BinderAuthorizationResponder[TeamBinder])
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: TeamBinderAuthorizationRequest
+            request: TeamBinderPermissionRequest
     ) -> TeamBinderDecision:
         """
         Certify a candidate is a TeamBinderCarrier whose payload is either a Team
@@ -67,7 +67,7 @@ class TeamBinderAuthorizationResponder(BinderAuthorizationResponder[TeamBinder])
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: TeamBinderAuthorizationRequest
+            request: TeamBinderPermissionRequest
         Result:
             TeamBinderDecision
         Raises:

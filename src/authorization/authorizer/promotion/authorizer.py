@@ -35,7 +35,7 @@ class PromotionAuthorizer(Authorizer[PromotionPermissionRequest]):
         applicant_reviewer: PromotionTokenReviewer
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         Authorizer
@@ -74,14 +74,14 @@ class PromotionAuthorizer(Authorizer[PromotionPermissionRequest]):
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
-        Checks if a PromotionAuthorizationRequest can be granted.
+        Checks if a PromotionPermissionRequest can be granted.
         
         Action:
             1.  Send an exception in Decision if any authoriation delegated denies
                 the request.
             2.  Otherwise, send a promotion approval.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

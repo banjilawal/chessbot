@@ -26,13 +26,13 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
         -   Authorization
 
     Responsibilities:
-        1.  Grant permission to a Path for a ManeuverAuthorizationRequest.
+        1.  Grant permission to a Path for a ManeuverPermissionRequest.
 
     Attributes:
         validation_service: PathValidationService
 
     Provides:
-        -   def execute(request: request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverRoleChecker
@@ -60,7 +60,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
                     -   The path has an inconsistency.
             2.  Otherwise, issue a grant decision.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

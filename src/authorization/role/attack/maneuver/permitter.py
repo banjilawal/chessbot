@@ -26,13 +26,13 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
         -   Authorization
 
     Responsibilities:
-        1.  Grant permission to a Maneuver for an AttackAuthorizationRequest.
+        1.  Grant permission to a Maneuver for an AttackPermissionRequest.
 
     Attributes:
         validation_service: ManeuverValidationService
 
     Provides:
-        -   execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         AttackRolePermitter
@@ -61,7 +61,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
                     -   There is no enemy at maneuver.destination.
             2.  Otherwise, issue a grant decision.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:

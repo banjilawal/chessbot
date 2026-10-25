@@ -33,7 +33,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionPermissionRequest], 
         checkers: List[ActorChainable]
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         ApplicantReviewer
@@ -61,7 +61,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionPermissionRequest], 
         """
         Decide if an applicant can be promoted.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
             PromotionDecision
         Raises:

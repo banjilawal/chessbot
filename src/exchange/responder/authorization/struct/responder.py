@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import StructDecision
 from domain import Struct
-from exchange import StructAuthorizationRequest, AuthorizationResponder
+from exchange import StructPermissionRequest, AuthorizationResponder
 from transit import StructAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -36,7 +36,7 @@ class StructAuthorizationResponder(
         dispatcher: StructAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: StructAuthorizationRequest[T]) -> StructDecision[T]
+        -   def execute(request: StructPermissionRequest[T]) -> StructDecision[T]
 
     Super Class:
         ValidatorExchange
@@ -58,11 +58,11 @@ class StructAuthorizationResponder(
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: StructAuthorizationRequest[T]
+            request: StructPermissionRequest[T]
     ) -> StructDecision[T]:
         """
         Args:
-            request: StructAuthorizationRequest[T]
+            request: StructPermissionRequest[T]
         Result:
             StructDecision[T]
         Raises:

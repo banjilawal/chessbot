@@ -16,17 +16,17 @@ from err import RequestNullException
 
 __all__ = [
     # ======================# AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "AuthorizationRequestNullException",
+    "PermissionRequestNullException",
 ]
 
 # ======================# AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class AuthorizationRequestNullException(RequestNullException):
+class PermissionRequestNullException(RequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AuthorizationRequest is null.
+        1.  Indicating that an PermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class AuthorizationRequestNullException(RequestNullException):
     Super Class:
         RequestNullException
     """
-    MSG = "AuthorizationRequest cannot be null."
+    MSG = "PermissionRequest cannot be null."
     ERR_CODE = "AUTHORIZATION_REQUEST_NULL_ERROR"
     
     def __init__(

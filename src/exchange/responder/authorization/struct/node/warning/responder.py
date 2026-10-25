@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, EncounterWaningNodeDecision
 from domain import EncounterWaningNode
-from exchange import NodeAuthorizationResponder, EncounterWaningNodeAuthorizationRequest
+from exchange import NodeAuthorizationResponder, EncounterWaningNodePermissionRequest
 from err import EncounterWaningNodeAuthorizationResponderException
 from transit import WarningCarrier, EncounterWaningNodeCarrier, EncounterWaningNodeAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class EncounterWaningNodeAuthorizationResponder(NodeAuthorizationResponder[Encou
         dispatcher: EncounterWaningNodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: EncounterWaningNodeAuthorizationRequest[T]) -> EncounterWaningNodeDecision[T]
+        -   def execute(request: EncounterWaningNodePermissionRequest[T]) -> EncounterWaningNodeDecision[T]
 
     Super Class:
         NodeValidatorExchange
@@ -56,7 +56,7 @@ class EncounterWaningNodeAuthorizationResponder(NodeAuthorizationResponder[Encou
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: EncounterWaningNodeAuthorizationRequest
+            request: EncounterWaningNodePermissionRequest
     ) -> EncounterWaningNodeDecision:
         """
         Certify a candidate is a WarningCarrier whose payload is either a Warning
@@ -67,7 +67,7 @@ class EncounterWaningNodeAuthorizationResponder(NodeAuthorizationResponder[Encou
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: EncounterWaningNodeAuthorizationRequest
+            request: EncounterWaningNodePermissionRequest
         Result:
             EncounterWaningNodeDecision
         Raises:

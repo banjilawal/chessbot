@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AuthorizationResult, VectorRegisterDecision
 from domain import VectorRegister
-from exchange import RegisterAuthorizationResponder, VectorRegisterAuthorizationRequest
+from exchange import RegisterAuthorizationResponder, VectorRegisterPermissionRequest
 from err import VectorRegisterAuthorizationResponderException
 from transit import VectorCarrier, VectorRegisterCarrier, VectorRegisterAuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class VectorRegisterAuthorizationResponder(RegisterAuthorizationResponder[Vector
         dispatcher: VectorRegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: VectorRegisterAuthorizationRequest[T]) -> VectorRegisterDecision[T]
+        -   def execute(request: VectorRegisterPermissionRequest[T]) -> VectorRegisterDecision[T]
 
     Super Class:
         RegisterValidatorExchange
@@ -56,7 +56,7 @@ class VectorRegisterAuthorizationResponder(RegisterAuthorizationResponder[Vector
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: VectorRegisterAuthorizationRequest
+            request: VectorRegisterPermissionRequest
     ) -> VectorRegisterDecision:
         """
         Certify a candidate is a VectorCarrier whose payload is either a Vector
@@ -67,7 +67,7 @@ class VectorRegisterAuthorizationResponder(RegisterAuthorizationResponder[Vector
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: VectorRegisterAuthorizationRequest
+            request: VectorRegisterPermissionRequest
         Result:
             VectorRegisterDecision
         Raises:

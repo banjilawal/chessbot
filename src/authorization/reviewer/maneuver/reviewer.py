@@ -33,7 +33,7 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverPermissionRequest], AB
         checkers: List[ActorChainable]
 
     Provides:
-        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ApplicantReviewer
@@ -61,7 +61,7 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverPermissionRequest], AB
         """
         Decide if an applicant can be promoted.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
             ManeuverDecision
         Raises:

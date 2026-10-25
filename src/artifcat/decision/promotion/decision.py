@@ -26,7 +26,7 @@ class PromotionDecision(Decision[PromotionPermissionRequest]):
     Attributes:
         permission: Permission
         exception: Optional[Exception]
-        request: PromotionAuthorizationRequest
+        request: PromotionPermissionRequest
         
         is_granted: bool
         is_denied: bool

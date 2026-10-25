@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import PermissionRequestNullException
 
 __all__ = [
     # ======================# MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class ManeuverRequestNullException(AuthorizationRequestNullException):
+class ManeuverRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ManeuverRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        PermissionRequestNullException
     """
     MSG = "ManeuverRequest cannot be null."
     ERR_CODE = "MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR"

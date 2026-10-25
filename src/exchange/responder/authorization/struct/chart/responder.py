@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ChartDecision
-from exchange import ChartAuthorizationRequest, AuthorizationResponder
+from exchange import ChartPermissionRequest, AuthorizationResponder
 from transit import ChartAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -35,7 +35,7 @@ class ChartAuthorizationResponder(
         dispatcher: ChartAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: ChartAuthorizationRequest[T]) -> ChartDecision[T]
+        -   def execute(request: ChartPermissionRequest[T]) -> ChartDecision[T]
 
     Super Class:
         ValidatorExchange
@@ -57,11 +57,11 @@ class ChartAuthorizationResponder(
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: ChartAuthorizationRequest[T]
+            request: ChartPermissionRequest[T]
     ) -> ChartDecision[T]:
         """
         Args:
-            request: ChartAuthorizationRequest[T]
+            request: ChartPermissionRequest[T]
         Result:
             ChartDecision[T]
         Raises:

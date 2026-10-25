@@ -35,7 +35,7 @@ class AttackAuthorizer(Authorizer[AttackPermissionRequest]):
         applicant_reviewer: AttackTokenReviewer
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         Authorizer
@@ -74,14 +74,14 @@ class AttackAuthorizer(Authorizer[AttackPermissionRequest]):
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackPermissionRequest) -> AttackDecision:
         """
-        Checks if a AttackAuthorizationRequest can be granted.
+        Checks if a AttackPermissionRequest can be granted.
         
         Action:
             1.  Send an exception in Decision if any authoriation delegated denies
                 the request.
             2.  Otherwise, send a attack approval.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:

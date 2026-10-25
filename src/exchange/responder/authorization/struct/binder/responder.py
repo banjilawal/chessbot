@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import BinderDecision
-from exchange import BinderAuthorizationRequest, StructAuthorizationResponder
+from exchange import BinderPermissionRequest, StructAuthorizationResponder
 from transit import BinderAuthorizationDispatcher
 from util import LoggingLevelRouter
 
@@ -35,7 +35,7 @@ class BinderAuthorizationResponder(
         dispatcher: BinderAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: BinderAuthorizationRequest[T]) -> BinderDecision[T]
+        -   def execute(request: BinderPermissionRequest[T]) -> BinderDecision[T]
 
     Super Class:
         ValidatorExchange
@@ -57,11 +57,11 @@ class BinderAuthorizationResponder(
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: BinderAuthorizationRequest[T]
+            request: BinderPermissionRequest[T]
     ) -> BinderDecision[T]:
         """
         Args:
-            request: BinderAuthorizationRequest[T]
+            request: BinderPermissionRequest[T]
         Result:
             BinderDecision[T]
         Raises:

@@ -30,7 +30,7 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
     Attributes:
 
     Provides:
-        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         PromotionTokenChecker
@@ -45,7 +45,7 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
             1.  Deny promotion if the token is not a PawnToken.
             2.  Otherwise, issue an approval.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

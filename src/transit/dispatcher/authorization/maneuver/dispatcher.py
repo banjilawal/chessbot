@@ -14,12 +14,12 @@ from typing import Optional, cast
 from artifcat import ManeuverDecision
 from authorization import ManeuverAuthorizer
 from err import ManeuverAuthorizationDispatcherException
-from exchange import ManeuverRequest
+from exchange import ManeuverPermissionRequest, ManeuverRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
 
 
-class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverRequest]):
+class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverPermissionRequest]):
     """
     Role
         -   Permission Authorization Manager
@@ -37,7 +37,7 @@ class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverRequest]):
         Dispatcher
     """
     
-    def __init__(self, authorizer: Optional[ManeuverAuthorizer]):
+    def __init__(self, authorizer: Optional[ManeuverAuthorizer] | None = None):
         """
         Args:
              authorizer: Optional[ManeuverAuthorizer]
@@ -49,7 +49,7 @@ class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverRequest]):
         return cast(ManeuverAuthorizer, super().authorizer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverDecision:
+    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Decide if a Token can be promoted.
         
@@ -69,7 +69,7 @@ class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverRequest]):
         if decision.is_denial:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
-                request=request,
+                request=request.candidate,
                 exception=ManeuverAuthorizationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -78,12 +78,7 @@ class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverRequest]):
                     ex=decision.exception,
                 )
             )
-        approved_request = decision.request
+        approval = decision.request
         # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverRequest(
-            id=approved_request.id,
-            activity=approved_request.activity,
-            applicant=approved_request.applicant,
-        )
         # --- Forward the approval. ---#
         return ManeuverDecision.grant(approval)

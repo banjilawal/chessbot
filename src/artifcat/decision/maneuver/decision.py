@@ -26,7 +26,7 @@ class ManeuverDecision(Decision[ManeuverPermissionRequest]):
     Attributes:
         permission: Permission
         exception: Optional[Exception]
-        request: ManeuverAuthorizationRequest
+        request: ManeuverPermissionRequest
 
         
         is_granted: bool

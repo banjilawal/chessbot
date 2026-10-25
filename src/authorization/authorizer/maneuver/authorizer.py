@@ -35,7 +35,7 @@ class ManeuverAuthorizer(Authorizer[ManeuverPermissionRequest]):
         applicant_reviewer: ManeuverTokenReviewer
 
     Provides:
-        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         Authorizer
@@ -74,14 +74,14 @@ class ManeuverAuthorizer(Authorizer[ManeuverPermissionRequest]):
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
-        Checks if a ManeuverAuthorizationRequest can be granted.
+        Checks if a ManeuverPermissionRequest can be granted.
         
         Action:
             1.  Send an exception in Decision if any authoriation delegated denies
                 the request.
             2.  Otherwise, send a maneuver approval.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

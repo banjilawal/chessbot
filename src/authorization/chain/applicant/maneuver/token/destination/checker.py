@@ -26,7 +26,7 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
     Attributes:
 
     Provides:
-        -   execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ManeuverTokenChecker
@@ -38,12 +38,12 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
         Decide if a Token can move.
 
         Action:
-            1.  Deny a ManeuverAuthorizationRequest if any of the following occur
+            1.  Deny a ManeuverPermissionRequest if any of the following occur
                     -   The token is already at the destination square.
                     -   The destination is occupied by a friend.
             2.  Otherwise, issue an approval.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

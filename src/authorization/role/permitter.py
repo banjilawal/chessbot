@@ -25,7 +25,7 @@ class RolePermitter(Checker[T], RoleChainable, ABC, Generic[T]):
         -   Authorization
 
     Responsibilities:
-        1.  Decides if an Actionable satisfies an AuthorizationRequest's conditions.
+        1.  Decides if an Actionable satisfies an PermissionRequest's conditions.
 
     Attributes:
         

@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import PermissionRequestNullException
 
 __all__ = [
     # ======================# CRUD_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CRUD_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class CrudRequestNullException(AuthorizationRequestNullException):
+class CrudRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class CrudRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        PermissionRequestNullException
     """
     MSG = "CrudRequest cannot be null."
     ERR_CODE = "CRUD_AUTHORIZATION_REQUEST_NULL_ERROR"

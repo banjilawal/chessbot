@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestException
+from err import PermissionRequestException
 
 
 __all__ = [
     # ======================# MANEUVER_AUTHORIZATION_REQUEST_FAILURE #======================#
-    "ManeuverAuthorizationRequestException",
+    "ManeuverPermissionRequestException",
 ]
 
 # ======================# MANEUVER_AUTHORIZATION_REQUEST_FAILURE #======================#
-class ManeuverAuthorizationRequestException(AuthorizationRequestException):
+class ManeuverPermissionRequestException(PermissionRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ManeuverAuthorizationRequest encountered and error.
+        1.  Indicating a ManeuverPermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -42,9 +42,9 @@ class ManeuverAuthorizationRequestException(AuthorizationRequestException):
     Provides:
 
     Super Class:
-        AuthorizationRequestException
+        PermissionRequestException
     """
-    MSG = "ManeuverAuthorizationRequest error."
+    MSG = "ManeuverPermissionRequest error."
     ERR_CODE = "MANEUVER_AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

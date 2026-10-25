@@ -32,7 +32,7 @@ class PromotionRolePermitter(RolePermitter[PromotionPermissionRequest], ABC, Gen
         validation_service: ValidationService
 
     Provides:
-        -   execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         RolePermitter
@@ -55,7 +55,7 @@ class PromotionRolePermitter(RolePermitter[PromotionPermissionRequest], ABC, Gen
         """
         Decide if a Promotion can be made with an Actionable.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:

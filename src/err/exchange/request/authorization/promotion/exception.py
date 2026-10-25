@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestException
+from err import PermissionRequestException
 
 
 __all__ = [
     # ======================# PROMOTION_AUTHORIZATION_REQUEST_FAILURE #======================#
-    "PromotionAuthorizationRequestException",
+    "PromotionPermissionRequestException",
 ]
 
 # ======================# PROMOTION_AUTHORIZATION_REQUEST_FAILURE #======================#
-class PromotionAuthorizationRequestException(AuthorizationRequestException):
+class PromotionPermissionRequestException(PermissionRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PromotionAuthorizationRequest encountered and error.
+        1.  Indicating a PromotionPermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -42,9 +42,9 @@ class PromotionAuthorizationRequestException(AuthorizationRequestException):
     Provides:
 
     Super Class:
-        AuthorizationRequestException
+        PermissionRequestException
     """
-    MSG = "PromotionAuthorizationRequest error."
+    MSG = "PromotionPermissionRequest error."
     ERR_CODE = "PROMOTION_AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

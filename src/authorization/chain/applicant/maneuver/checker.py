@@ -32,7 +32,7 @@ class ManeuverApplicantChecker(ApplicantChecker[ManeuverPermissionRequest], ABC,
     Attributes:
 
     Provides:
-        -   def execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         ApplicantChecker
@@ -44,7 +44,7 @@ class ManeuverApplicantChecker(ApplicantChecker[ManeuverPermissionRequest], ABC,
         """
         Decide if an Actor can be granted permission to a Maneuver.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

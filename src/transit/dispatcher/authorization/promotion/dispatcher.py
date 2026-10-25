@@ -14,12 +14,12 @@ from typing import Optional, cast
 from artifcat import PromotionDecision
 from authorization import PromotionAuthorizer
 from err import PromotionAuthorizationDispatcherException
-from exchange import PromotionRequest
+from exchange import PromotionPermissionRequest, PromotionRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionAuthorizationRequest]):
+class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionPermissionRequest]):
     """
     Role
         -   Permission Authorization Manager
@@ -37,7 +37,7 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionAuthoriz
         Dispatcher
     """
     
-    def __init__(self, authorizer: Optional[PromotionAuthorizer]):
+    def __init__(self, authorizer: Optional[PromotionAuthorizer] | None = None):
         """
         Args:
              authorizer: Optional[PromotionAuthorizer]
@@ -49,7 +49,7 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionAuthoriz
         return cast(PromotionAuthorizer, super().authorizer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionAuthorizationRequest) -> PromotionDecision:
+    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Decide if a Token can be promoted.
         
@@ -69,7 +69,7 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionAuthoriz
         if decision.is_denial:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
-                request=request,
+                request=request.candidate,
                 exception=PromotionAuthorizationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -78,12 +78,6 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionAuthoriz
                     ex=decision.exception,
                 )
             )
-        approved_request = decision.request
-        # --- Prepare an approval from the completed chain. ---#
-        approval = PromotionRequest(
-            id=approved_request.id,
-            activity=approved_request.activity,
-            applicant=approved_request.applicant,
-        )
+        approval = decision.request
         # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)

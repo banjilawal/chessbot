@@ -32,7 +32,7 @@ class PromotionAuthorizationResponder(
         dispatcher: PromotionAuthorizationDispatcher
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         AuthorizationResponder
@@ -54,7 +54,7 @@ class PromotionAuthorizationResponder(
     def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
         """
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Result:
             PromotionDecision
         Raises:

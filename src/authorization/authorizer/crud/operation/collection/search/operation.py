@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import SearchAuthorizer, SearchAuthorizationRequest
+from authorization import SearchAuthorizer, SearchPermissionRequest
 from operation import CrudWorker
 from artifcat import SearchResult
 from util import LoggingLevelRouter
@@ -33,7 +33,7 @@ class CollectionSearch(CrudWorker[SearchResult], ABC, Generic[T]):
         authorizer: SearchAuthorizer[T]
         
     Provides:
-        -   def execute(request: SearchAuthorizationRequest[T]) -> SearchResult
+        -   def execute(request: SearchPermissionRequest[T]) -> SearchResult
 
     Super Class:
         CollectionOperation
@@ -52,5 +52,5 @@ class CollectionSearch(CrudWorker[SearchResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchAuthorizationRequest) -> SearchResult:
+    def execute(self, request: SearchPermissionRequest) -> SearchResult:
         pass

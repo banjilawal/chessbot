@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestException
+from err import PermissionRequestException
 
 
 __all__ = [
     # ======================# ATTACK_AUTHORIZATION_REQUEST_FAILURE #======================#
-    "AttackAuthorizationRequestException",
+    "AttackPermissionRequestException",
 ]
 
 # ======================# ATTACK_AUTHORIZATION_REQUEST_FAILURE #======================#
-class AttackAuthorizationRequestException(AuthorizationRequestException):
+class AttackPermissionRequestException(PermissionRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AttackAuthorizationRequest encountered and error.
+        1.  Indicating a AttackPermissionRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -42,9 +42,9 @@ class AttackAuthorizationRequestException(AuthorizationRequestException):
     Provides:
 
     Super Class:
-        AuthorizationRequestException
+        PermissionRequestException
     """
-    MSG = "AttackAuthorizationRequest error."
+    MSG = "AttackPermissionRequest error."
     ERR_CODE = "ATTACK_AUTHORIZATION_REQUEST_FAILURE"
     
     def __init__(

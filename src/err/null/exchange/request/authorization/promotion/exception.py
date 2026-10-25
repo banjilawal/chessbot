@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import PermissionRequestNullException
 
 __all__ = [
     # ======================# PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class PromotionRequestNullException(AuthorizationRequestNullException):
+class PromotionRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        PermissionRequestNullException
     """
     MSG = "PromotionRequest cannot be null."
     ERR_CODE = "PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR"

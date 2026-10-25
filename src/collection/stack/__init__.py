@@ -1,15 +1,16 @@
-# src/stack/__init__.py
+# src/collection/stack/__init__.py
 
 """
-Module: stack.__init__
+Module: collection.stack.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== STACK PACKAGE ===========#
+# =========== COLLECTION.STACK PACKAGE ===========#
 
 # Packages
+from .model import *
 from .arena import *
 from .attack import *
 from .board import *
@@ -29,3 +30,4 @@ from .token import *
 
 # Modules
 from .stack import StackService
+from .collection import Stack

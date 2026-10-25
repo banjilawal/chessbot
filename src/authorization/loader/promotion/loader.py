@@ -29,7 +29,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
     Attributes:
 
     Provides:
-        -   def execute(request: PromotionAuthorizationRequest) -> PromotionDecision
+        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
         AuthorizationLoader
@@ -46,10 +46,10 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
         Action:
             1.  Send an exception chain in the Decision denial if either;
                     -   the request is null.
-                    -   not a PromotionAuthorizationRequest.
+                    -   not a PromotionPermissionRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: PromotionAuthorizationRequest
+            request: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:
@@ -61,7 +61,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
         priming = self.priming_validator.execute(
             candidate=request,
             target_model=PromotionPermissionRequest,
-            null_exception=PromotionAuthorizationRequestNullException(),
+            null_exception=PromotionPermissionRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:

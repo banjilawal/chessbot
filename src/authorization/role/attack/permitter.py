@@ -32,7 +32,7 @@ class AttackRolePermitter(RolePermitter[AttackPermissionRequest], ABC, Generic[T
         validation_service: ValidationService
 
     Provides:
-        -   execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         RolePermitter
@@ -55,7 +55,7 @@ class AttackRolePermitter(RolePermitter[AttackPermissionRequest], ABC, Generic[T
         """
         Decide if an Attack can be made with an Actionable.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:

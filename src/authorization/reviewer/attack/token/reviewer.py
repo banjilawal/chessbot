@@ -37,7 +37,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         double_attack_checker: DoubleAttackChecker
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         AttackApplicantReviewer
@@ -82,7 +82,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         
         Action:
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
             AttackDecision
         Raises:

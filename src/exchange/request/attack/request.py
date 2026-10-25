@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import AttackResult
-from domain import Maneuver, Square, Token
-from exchange import Request
+from domain import Encounter, Square, Token
+from exchange import ManeuverRequest, Request
 
-T = TypeVar("T", bound="AttackResult")
+T = TypeVar("T", bound="Encounter")
 
-class AttackRequest(Request[T], ABC, Generic[T]):
+class AttackRequest(Request[AttackResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -28,7 +28,7 @@ class AttackRequest(Request[T], ABC, Generic[T]):
 
      Attributes:
         victim: Token
-        maneuver: Maneuver
+        maneuver_request: Maneuver
 
      Provides:
      
@@ -38,35 +38,28 @@ class AttackRequest(Request[T], ABC, Generic[T]):
     
     _victim: Token
     _location: Square
-    _maneuver: Maneuver
+
 
     
     def __init__(
             self,
             id: int,
-            victim: T,
+            victim: Token,
             location: Square,
-            maneuver: Maneuver,
     ):
         """
         Args:
             id: int
             victim: Token
             location: Square
-            maneuver: Maneuver
         """
         super().__init__(id=id)
         self._victim = victim
         self._location = location
-        self._maneuver = maneuver
         
     @property
-    def square(self) -> Square:
+    def location(self) -> Square:
         return self._location
-    
-    @property
-    def maneuver(self) -> Maneuver:
-        return self._maneuver
     
     @property
     def victim(self) -> Token:

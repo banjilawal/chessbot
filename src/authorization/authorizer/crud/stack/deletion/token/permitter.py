@@ -13,9 +13,9 @@ from typing import cast
 
 from err import PoppingEmptyTokenStackException, TokenDeleteAuthorizerException
 from artifcat.report import DeletionApprovalReport
-from client.exchange import CollectionDdeletionAuthorizationRequest
+from client.exchange import CollectionDdeletionPermissionRequest
 from collection.stack import TokenStackService
-from authorization.adjudicator import TokenDdeletionAuthorizationRequestAdjudicator
+from authorization.adjudicator import TokenDdeletionPermissionRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -30,7 +30,7 @@ class TokenDeletionAuthorizer:
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
-        request_adjudicator: TokenDdeletionAuthorizationRequestAdjudicator
+        request_adjudicator: TokenDdeletionPermissionRequestAdjudicator
 
     Provides:
         - run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
@@ -38,14 +38,14 @@ class TokenDeletionAuthorizer:
     Super Class:
         DeletionAuthorizer
     """
-    _request_adjudicator: TokenDdeletionAuthorizationRequestAdjudicator
+    _request_adjudicator: TokenDdeletionPermissionRequestAdjudicator
     
-    def __init__(self, request_adjudicator: TokenDdeletionAuthorizationRequestAdjudicator | None = TokenDdeletionAuthorizationRequestAdjudicator()):
+    def __init__(self, request_adjudicator: TokenDdeletionPermissionRequestAdjudicator | None = TokenDdeletionPermissionRequestAdjudicator()):
         self._request_adjudicator = request_adjudicator
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def run(self, request: CollectionDdeletionAuthorizationRequest, ) -> DeletionApprovalReport:
+    def run(self, request: CollectionDdeletionPermissionRequest, ) -> DeletionApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -58,7 +58,7 @@ class TokenDeletionAuthorizer:
                     - The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            request: DdeletionAuthorizationRequest
+            request: DdeletionPermissionRequest
         Returns:
             DeletionApprovalReport
         Raises:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Optional
 
-from domain import Account, Archetype, Encounterable, Maneuver, SearchableModel, Square, Token
+from domain import Account, Archetype, Encounterable, Square, SearchableModel, Square, Token
 
 
 class Encounter(SearchableModel, Encounterable, ABC):
@@ -27,8 +27,8 @@ class Encounter(SearchableModel, Encounterable, ABC):
     Attributes:
         id: int
         victim: Token
-        maneuver: Maneuver
-        attacker_reward: int
+        location: Square
+        attacker_reward: Optional[int]
 
     Provides:
         
@@ -37,7 +37,7 @@ class Encounter(SearchableModel, Encounterable, ABC):
     """
     _id: int
     _victim: Token
-    _attack_maneuver: Maneuver
+    _location: Square
     _attacker_reward: int
 
     
@@ -45,19 +45,19 @@ class Encounter(SearchableModel, Encounterable, ABC):
             self,
             id: int,
             victim: Token,
-            attacker_maneuver: Maneuver,
+            location: Square,
             attacker_reward: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
             victim: Token
-            attacker_maneuver: Maneuver
+            location: Square
             attacker_reward: Optional[int]
         """
         self._id = id
         self._victim = victim
-        self._attack_maneuver = attacker_maneuver
+        self._location = location
         self._attacker_reward = attacker_reward or victim.rank.persona.ransom
         
     @property
@@ -69,20 +69,12 @@ class Encounter(SearchableModel, Encounterable, ABC):
         return self._victim
     
     @property
-    def attacker(self) -> Token:
-        return self._attack_maneuver.traveler
-    
-    @property
-    def attacker_maneuver(self) -> Maneuver:
-        return self._attack_maneuver
+    def location(self) -> Square:
+        return self._location
         
     @property
     def attacker_reward(self) -> int:
         return self._attacker_reward
-    
-    @property
-    def location(self) -> Square:
-        return self._attack_maneuver.destination
     
     @property
     def score(self) -> Dict[str, Dict[Archetype, Account]]:
@@ -91,25 +83,13 @@ class Encounter(SearchableModel, Encounterable, ABC):
     @property
     def consistency_exists(self) -> bool:
         return (
-            self._victim_has_consistency and
-            self._attack_maneuver.is_attacking_enemy
+            self._location.occupant == self._victim and
+            self._location.coord == self._victim.footstep.position
         )
     
     @property
     def is_not_consistent(self) -> bool:
         return not self.consistency_exists
-
-    @property
-    def victim_has_consistency(self) -> bool:
-        return (
-            self.location.occupant == self._victim and
-            self.location.coord == self._victim.footstep.position and
-            self._victim.is_enemy(self.attacker)
-        )
-    
-    @property
-    def victim_is_not_consistent(self) -> bool:
-        return not self.victim_has_consistency
     
     def __eq__(self, other) -> bool:
         if other is None:

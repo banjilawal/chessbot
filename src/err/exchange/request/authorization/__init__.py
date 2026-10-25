@@ -16,4 +16,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .exception import AuthorizationRequestException
+from .exception import PermissionRequestException

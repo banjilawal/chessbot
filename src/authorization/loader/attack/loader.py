@@ -13,7 +13,7 @@ from typing import cast
 
 from artifcat import AttackDecision
 from authorization import AuthorizationLoader
-from err import AttackAuthorizationLoaderException, AttackAuthorizationRequestNullException
+from err import AttackAuthorizationLoaderException, AttackPermissionRequestNullException
 from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
 
@@ -29,7 +29,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
     Attributes:
 
     Provides:
-        -   def execute(request: AttackAuthorizationRequest) -> AttackDecision
+        -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
         AuthorizationLoader
@@ -46,10 +46,10 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
         Action:
             1.  Send an exception chain in the Decision denial if either;
                     -   the request is null.
-                    -   not a AttackAuthorizationRequest.
+                    -   not a AttackPermissionRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: AttackAuthorizationRequest
+            request: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:
@@ -61,7 +61,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
         priming = self.priming_validator.execute(
             candidate=request,
             target_model=AttackPermissionRequest,
-            null_exception=AttackAuthorizationRequestNullException(),
+            null_exception=AttackPermissionRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:

@@ -32,7 +32,7 @@ class ManeuverRolePermitter(RolePermitter[ManeuverPermissionRequest], ABC, Gener
         validation_service: ValidationService
 
     Provides:
-        -   execute(request: ManeuverAuthorizationRequest) -> ManeuverDecision
+        -   execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
         RoleChecker
@@ -56,7 +56,7 @@ class ManeuverRolePermitter(RolePermitter[ManeuverPermissionRequest], ABC, Gener
         """
         Decide if a Maneuver can be made with an Actionable.
         Args:
-            request: ManeuverAuthorizationRequest
+            request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:

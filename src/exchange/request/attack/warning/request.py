@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import EncounterWarning, KingToken, Maneuver, Square
+from domain import EncounterWarning, KingToken, Maneuver, Square, Token
 from exchange import AttackRequest
 
 class WarningRequest(AttackRequest[EncounterWarning]):
@@ -32,39 +32,48 @@ class WarningRequest(AttackRequest[EncounterWarning]):
      Super Class:
         Request
      """
+    _enemy: Token
+    _enemy_origin: Square
     
     def __init__(
             self,
             id: int,
-            location: Square,
-            maneuver: Maneuver,
-            victim: KingToken,
+            enemy: Token,
+            checked_king: KingToken,
+            enemy_origin: Square,
+            location: Square
     ):
         """
         Args:
             id: int
+            enemy: Token,
+            checked_king: KingToken
             location: Square
-            maneuver: Maneuver
-            victim: KingToken
+            enemy_origin: Square
         """
         super().__init__(
             id=id,
-            victim=victim,
+            victim=checked_king,
             location=location,
-            maneuver=maneuver
         )
-
-    @property
-    def square(self) -> Square:
-        return self._location
+        self._enemy = enemy
+        self._enemy_origin = enemy_origin
     
     @property
-    def maneuver(self) -> Maneuver:
-        return self._maneuver
+    def checked_king(self) -> KingToken:
+        return cast(KingToken, super().victim)
     
     @property
     def victim(self) -> KingToken:
-        return cast(KingToken, super().victim)
+        return self.checked_king
+    
+    @property
+    def enemy(self) -> Token:
+        return self._enemy
+    
+    @property
+    def enemy_origin(self) -> Square:
+        return self._enemy_origin
     
     def __eq__(self, other):
         if other is self: return True
