@@ -11,38 +11,30 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Response, ResponseState, PromotionResult
-from domain import PawnToken, Rank
-from exchange import Request, PromotionRequest
+from artifcat import PromotionResult, Response, ResponseState
+from domain import Elevatable, PawnToken, Rank
+from err import EmptyDependencyListException
+from exchange import PromotionRequest
+
 
 class PromotionResponse(Response[PromotionResult]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a promotion request-response cycle's data and state.
+        1.  Capture the outcome of a Promotion transaction.
 
     Attributes:
-        state: ResponseState
-        result: PromotionResult
         request: PromotionRequest
-        exception: Optional[Exception]
+        result: Optional[PromotionResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-
-        -   def success(
-                    request: Request,
-                    result: PromotionResult,
-            ) -> PromotionResponse
-
-        -   def failure(
-                    request: Request,
-                    result: PromotionResult,
-                    exception: Exception,
-            ) -> PromotionResponse
+        -   def success(result: PromotionResult, request: T) -> PromotionResponse
+        -   def failure(request: T, exception: Exception) -> PromotionResponse
 
     Super Class:
         Response
@@ -50,16 +42,16 @@ class PromotionResponse(Response[PromotionResult]):
     def __init__(
             self,
             state: ResponseState,
-            result: PromotionResult,
             request: PromotionRequest,
             exception: Optional[Exception],
+            result: Optional[PromotionResult],
     ):
         """
         Args:
             state: ResponseState
-            result: PromotionResult
             request: PromotionRequest
             exception: Optional[Exception]
+            result: Optional[PromotionResult]
         """
         super().__init__(
             state=state,
@@ -69,7 +61,7 @@ class PromotionResponse(Response[PromotionResult]):
         )
         
     @property
-    def result(self) -> PromotionResult:
+    def result(self) -> Optional[PromotionResult]:
         return cast(PromotionResult, super().result)
         
     @property
@@ -80,8 +72,8 @@ class PromotionResponse(Response[PromotionResult]):
     def is_success(self) -> bool:
         return (
             super().is_success and
-            self.promoted_pawn is not None and
-            self.elevated_rank is not None
+            isinstance(self.result, PromotionResult) and
+            self.promoted_pawn is not None
         )
     
     @property
@@ -90,52 +82,34 @@ class PromotionResponse(Response[PromotionResult]):
     
     @property
     def promoted_pawn(self) -> Optional[PawnToken]:
-        if self.is_failure:
+        if (
+                super().is_failure or
+                not isinstance(self.result, PromotionResult)
+        ):
             return None
-        pawn = cast(PawnToken, self.result.payload)
-        return pawn
+        return self.result.promoted_pawn
     
     @property
-    def elevated_rank(self) -> Optional[Rank]:
+    def promotion(self) -> Optional[Rank]:
         if self.promoted_pawn is None:
             return None
-        pawn = self.promoted_pawn
-        return pawn.rank
+        rank = self.promoted_pawn.rank
+        if not isinstance(rank, Elevatable):
+            return None
+        return rank
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: PromotionResult,
-    ) -> PromotionResponse:
-        # Downcast the request into a PromotionRequest.
-        promotion_request = cast(
-            PromotionRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: PromotionResult, request: Request) -> PromotionResponse:
         return cls(
             result=result,
-            request=promotion_request,
+            request=request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: PromotionResult,
-            exception: Exception,
-    ) -> PromotionResponse:
-        # Downcast the request into a PromotionRequest.
-        promotion_request = cast(
-            PromotionRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> PromotionResponse:
         return cls(
-            result=result,
+            request=request,
             exception=exception,
-            request=promotion_request,
             state=ResponseState.FAILURE,
         )
