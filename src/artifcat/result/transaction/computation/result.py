@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ResultState, Result, Transactional
+from artifcat import ResultState, TransactionResult
 
 T = TypeVar("T")
 
-class ComputationResult(Result[T], Transactional, Generic[T]):
+class ComputationResult(TransactionResult[T], TransactionResult, Generic[T]):
     """
     Role:
         -   Persistence

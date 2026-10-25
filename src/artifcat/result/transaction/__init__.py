@@ -17,3 +17,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
+from .result import TransactionResult

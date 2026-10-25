@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Result, ResultState, Transactional
+from artifcat import ResultState, TransactionResult
 from domain import Maneuver
 
 
-class ManeuverResult(Result[Maneuver], Transactional):
+class ManeuverResult(TransactionResult[Maneuver]):
     """
     Role:
         -   Persistence

@@ -11,15 +11,14 @@ version: 0.0.2
 
 # Packages
 from .analysis import *
-from artifcat.result.transaction.attack import *
 from .authorizable import *
 from .builder import *
-from artifcat.result.transaction.computation import *
 from .encounter import *
 from .event import *
 from .interface import *
 from .shell import *
 from .turn import *
+from .transaction import *
 from .validation import*
 
 # Modules

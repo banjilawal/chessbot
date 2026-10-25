@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Result, ResultState
+from artifcat import ResultState
 from domain import PawnToken, Rank
 
 
-class PromotionResult(Result[PawnToken]):
+class PromotionResult(TransactionResult[PawnToken]):
     """
     Role:
         -   Persistence
