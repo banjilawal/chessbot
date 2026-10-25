@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision
-from exchange import AccountPushPermissionRequest
+from exchange import AccountPushPermissionRequest, AccountPushRequest
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -53,7 +53,7 @@ class AccountPushPermissionDispatcher(
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushPermissionRequest ) -> Decision:
+    def execute(self, request: AccountPushPermissionRequest) -> Decision:
         """
         Forward a job to a AccountPushAuthorizer then deliver the result.
 
@@ -72,18 +72,17 @@ class AccountPushPermissionDispatcher(
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.crudAuthorizer.execute(job)
-        if build.is_failure:
-            # Send the exception chain on failure.
-            return CrudRequest.failure(
-                AccountCrudPermissionDispatcherException(
+        decision = self.authorizer.execute(request)
+        if decision.request_is_denied:
+            return Decision.denial(
+                permission_request=request,
+                exception=AccountPushPermissionDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountCrudPermissionDispatcherException.MSG,
-                    err_code=AccountCrudPermissionDispatcherException.ERR_CODE,
-                    ex=build.exception,
+                    msg=AccountPushPermissionDispatcherException.MSG,
+                    err_code=AccountPushPermissionDispatcherException.ERR_CODE,
+                    ex=decision.exception,
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        carrier = cast(AccountCarrier, build.payload)
-        return CrudRequest.success(carrier)
+        transaction_request = cast(AccountPushRequest, decision.approval)
+        return Decision.grant(transaction_request)

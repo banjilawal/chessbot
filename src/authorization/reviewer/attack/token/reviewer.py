@@ -120,7 +120,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
                 )
             )
         # Handle the row_checker does not grant permission.
-        approved_request = decision.permission_request
+        approved_request = decision.request
         decision = self._attack_row_checker.execute(approved_request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
@@ -135,7 +135,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
                 )
             )
         # Handle the double_attack_checker does not grant permission.
-        approved_request = decision.permission_request
+        approved_request = decision.request
         decision = self._double_attack_checker.execute(approved_request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
@@ -150,7 +150,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
                 )
             )
         # --- Prepare an approval of the actor. ---#
-        approved_request = decision.permission_request
+        approved_request = decision.request
         approval = AttackPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,

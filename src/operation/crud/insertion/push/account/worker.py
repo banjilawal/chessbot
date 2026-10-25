@@ -17,7 +17,7 @@ from domain import Account
 from err import AccountPusherException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
 from operation import Pusher
-from transit import AccountPushPermissionPermitter
+from transit import AccountPushPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -30,7 +30,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         1.  Executes an AccountPushRequest
 
     Attributes:
-        permitter: AccountPushPermissionPermitter
+        permitter: AccountPushPermissionDispatcher
 
     Provides:
         -   def execute(request: AccountPushRequest) -> InsertionResult
@@ -41,18 +41,18 @@ class AccountPusher(Pusher[AccountPushRequest]):
     
     def __init__(
             self,
-            permitter: Optional[AccountPushPermissionPermitter] | None = None,
+            permitter: Optional[AccountPushPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            permitter: Optional[AccountPushPermissionPermitter]
+            permitter: Optional[AccountPushPermissionDispatcher]
         """
-        super().__init__(permitter=permitter or AccountPushPermissionPermitter())
+        super().__init__(permitter=permitter or AccountPushPermissionDispatcher())
     
     
     @property
-    def permitter(self) -> AccountPushPermissionPermitter:
-        return cast(AccountPushPermissionPermitter, super().permitter)
+    def permitter(self) -> AccountPushPermissionDispatcher:
+        return cast(AccountPushPermissionDispatcher, super().permitter)
     
     
     @LoggingLevelRouter.monitor
@@ -68,7 +68,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         method = f"{self.__class__.__name__}.execute"
         
         permission = self.permitter.execute(
-            permission_request=AccountPushPermissionRequest(
+            request=AccountPushPermissionRequest(
                 candidate=request,
                 id=IdFactory.next_id(class_name="AccountPushPermissionRequest"),
             )

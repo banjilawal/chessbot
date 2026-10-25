@@ -72,7 +72,7 @@ class KillEncounterDispatcher(EncounterDispatcher[KillRequest]):
                     ex=decision.exception,
                 )
             )
-        approved_request = decision.permission_request
+        approved_request = decision.request
         # --- Prepare an approval from the completed chain. ---#
         approval = KillRequest(
             id=approved_request.id,
