@@ -11,38 +11,29 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Response, ResponseState, ManeuverResult
-from domain import Token, Path
-from exchange import Request, ManeuverRequest
+from artifcat import ManeuverResult, Response, ResponseState
+from domain import Maneuver, PawnToken, Rank
+from exchange import ManeuverRequest, Request
+
 
 class ManeuverResponse(Response[ManeuverResult]):
     """
     Role
-        -   Messaging
+        -   Persistence
 
     Responsibilities:
-        1.  Capture a maneuver request-response cycle's data and state.
+        1.  Capture the outcome of a Maneuver transaction.
 
     Attributes:
-        state: ResponseState
-        result: ManeuverResult
         request: ManeuverRequest
-        exception: Optional[Exception]
+        result: Optional[ManeuverResult]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-
-        -   def success(
-                    request: Request,
-                    result: ManeuverResult,
-            ) -> ManeuverResponse
-
-        -   def failure(
-                    request: Request,
-                    result: ManeuverResult,
-                    exception: Exception,
-            ) -> ManeuverResponse
+        -   def success(result: ManeuverResult, request: Request) -> ManeuverResponse
+        -   def failure(request: Request, exception: Exception) -> ManeuverResponse
 
     Super Class:
         Response
@@ -50,16 +41,16 @@ class ManeuverResponse(Response[ManeuverResult]):
     def __init__(
             self,
             state: ResponseState,
-            result: ManeuverResult,
             request: ManeuverRequest,
-            exception: Optional[Exception],
+            exception: Optional[Exception] | None = None,
+            result: Optional[ManeuverResult] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ManeuverResult
             request: ManeuverRequest
             exception: Optional[Exception]
+            result: Optional[ManeuverResult]
         """
         super().__init__(
             state=state,
@@ -69,7 +60,7 @@ class ManeuverResponse(Response[ManeuverResult]):
         )
         
     @property
-    def result(self) -> ManeuverResult:
+    def result(self) -> Optional[ManeuverResult]:
         return cast(ManeuverResult, super().result)
         
     @property
@@ -77,11 +68,23 @@ class ManeuverResponse(Response[ManeuverResult]):
         return cast(ManeuverRequest, super().request)
     
     @property
+    def successful_maneuver(self) -> Optional[Maneuver]:
+        result = self.result
+        if (
+            result is None or
+            result.is_failure or
+            not isinstance(result, ManeuverResult)
+        ):
+            return None
+        maneuver = cast(Maneuver, result.payload)
+        return maneuver
+    
+    @property
     def is_success(self) -> bool:
         return (
             super().is_success and
-            self.traveler is not None and
-            self.path is not None
+            isinstance(self.request, ManeuverRequest) and
+            isinstance(self.result, ManeuverResult)
         )
     
     @property
@@ -89,53 +92,34 @@ class ManeuverResponse(Response[ManeuverResult]):
         return not self.is_success
     
     @property
-    def traveler(self) -> Optional[Token]:
-        if self.is_failure:
+    def promoted_pawn(self) -> Optional[PawnToken]:
+        result = self.result
+        if result is None or result.is_failure:
             return None
-        request = self.request
-        return request.traveler
+        pawn_token = cast(PawnToken, result.payload)
+        return pawn_token
     
     @property
-    def path(self) -> Optional[Path]:
-        if self.is_failure:
+    def maneuver(self) -> Optional[Rank]:
+        pawn_token = self.promoted_pawn
+        if pawn_token is None:
             return None
-        request = self.request
-        return request.path
+        return pawn_token.rank
         
     @classmethod
-    def success(
-            cls,
-            request: Request,
-            result: ManeuverResult,
-    ) -> ManeuverResponse:
-        # Downcast the request into a ManeuverRequest.
-        maneuver_request = cast(
-            ManeuverRequest,
-            request,
-        )
-        # Send a success Response using the cast.
+    def success(cls, result: ManeuverResult, request: Request) -> ManeuverResponse:
+        req = cast(ManeuverRequest, request)
         return cls(
             result=result,
-            request=maneuver_request,
+            request=req,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request,
-            result: ManeuverResult,
-            exception: Exception,
-    ) -> ManeuverResponse:
-        # Downcast the request into a ManeuverRequest.
-        maneuver_request = cast(
-            ManeuverRequest,
-            request,
-        )
-        # Send a failure Response using the cast.
+    def failure(cls, request: Request, exception: Exception) -> ManeuverResponse:
+        req = cast(ManeuverRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=maneuver_request,
             state=ResponseState.FAILURE,
         )

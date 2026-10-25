@@ -71,6 +71,7 @@ class PromotionResponse(Response[PromotionResult]):
     def is_success(self) -> bool:
         return (
             super().is_success and
+            isinstance(self.request, PromotionRequest) and
             isinstance(self.result, PromotionResult)
         )
     
