@@ -15,4 +15,4 @@ from .insert import *
 from .search import *
 
 # Modules
-from .operator import CrudWorker
+from .worker import CrudWorker

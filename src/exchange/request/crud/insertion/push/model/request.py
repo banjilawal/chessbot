@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
+from collection import ModelStack
 from domain import Model
 from exchange import PushRequest
 
@@ -33,7 +34,7 @@ class ModelPushRequest(PushRequest[T], ABC, Generic[T]):
      Provides:
 
      Super Class:
-        InsertionRequest
+        PushRequest
      """
     _item: T
     _collection: ModelStack[T]

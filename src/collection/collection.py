@@ -10,37 +10,37 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, Iterator, TypeVar
 
 from domain import DomainDataObject
 
-T = TypeVar("T", bound="DomainDataObject")
+T = TypeVar("T")
 
-class DomainObjectCollection(ABC, Generic[T]):
+class DataStructure(ABC, Generic[T]):
     """
     Role:
-        - Data Holder
-        - Data protection
-        
+        -   Collection
+
     Responsibilities:
-        1.  Immutable unordered set of items.
+        1.  Interface for defining reliable and safe, domain-specific data structures.
 
     Attributes:
-        items: Tuple[T, ...]
+        size: int
+        is_empty: bool
+        is_not_empty: bool
+        iterator: Iterator[T]
 
     Provides:
-
+    
     Super Class:
     """
     def __init__(self):
         pass
     
-    
     @property
     @abstractmethod
     def size(self) -> int:
         pass
-    
     
     @property
     @abstractmethod
@@ -50,4 +50,9 @@ class DomainObjectCollection(ABC, Generic[T]):
     @property
     @abstractmethod
     def is_not_empty(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def iterator(self) -> Iterator[T]:
         pass

@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, List, Optional, TypeVar, cast
 
 from assurance import NumberValidator
-from collection import DomainObjectCollection
+from collection import DataStructure
 from domain import Node
 from artifcat import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Node")
 
 
-class Chain(DomainObjectCollection[T], ABC, Generic[T]):
+class Chain(DataStructure[T], ABC, Generic[T]):
     _number_validator: NumberValidator
     _iterator: ChainIterator
     

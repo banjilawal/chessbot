@@ -9,28 +9,59 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
+from abc import ABC, abstractmethod
+from typing import Generic, Iterator, List, Optional, TypeVar
 
-from domain import Model
+from collection import DataStructure
 
 T = TypeVar("T")
 
 
-class Stack(ABC, Generic[T]):
+class Stack(DataStructure, ABC, Generic[T]):
     """
     Role:
         -   Collection
 
     Responsibilities:
-        1.  Provide reliable and safe data structure for Domain objects.
+        1.  Interface for defining reliable stack of unique items.
 
     Attributes:
-        items: List[T]
-        is
+        size: int
+        is_empty: bool
+        is_not_empty: bool
+        iterator: Iterator[T]
 
     Provides:
-    
 
     Super Class:
     """
+    
+    _items: List[T]
+    
+    def __init__(self, items: Optional[List[T]] | None = None):
+        self._items = items or []
+        super().__init__()
+        
+    @property
+    def items(self) -> List[T]:
+        return self._items
+    
+    @property
+    def size(self) -> int:
+        return len(self._items)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_not_empty(self) -> bool:
+        return not self.is_empty
+    
+    @property
+    @abstractmethod
+    def iterator(self) -> Iterator[T]:
+        pass
+    
+    @
+    

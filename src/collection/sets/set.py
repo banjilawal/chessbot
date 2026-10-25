@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Iterator, Optional, Tuple, TypeVar
 
-from collection import DomainObjectCollection
+from collection import DataStructure
 
 T = TypeVar("T")
 
-class SetCollection(DomainObjectCollection, ABC, Generic[T]):
+class SetCollection(DataStructure, ABC, Generic[T]):
     """
     Role:
         - Data Holder
