@@ -21,8 +21,8 @@ T = TypeVar("T", bound="Model")
 
 class ModelDeletionResponse(DeletionResponse[T], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Model's deletion request-response cycle's data and state.

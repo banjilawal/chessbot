@@ -18,8 +18,7 @@ from domain import EncounterWarning
 class WarningResult(AttackResult[EncounterWarning]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of an EncounterWarning transaction.
@@ -32,7 +31,7 @@ class WarningResult(AttackResult[EncounterWarning]):
         -   def success(payload: EncounterWarning) -> WarningResult
 
     Super Class:
-        Result
+        AttackResult
     """
     
     def __init__(
@@ -57,9 +56,10 @@ class WarningResult(AttackResult[EncounterWarning]):
     def payload(self) -> Optional[EncounterWarning]:
         return cast(EncounterWarning, super().payload)
     
+    @property
+    def is_success(self) -> bool:
+        return super().is_success and isinstance(self.payload, EncounterWarning)
+    
     @classmethod
     def success(cls, payload: EncounterWarning) -> WarningResult:
-        return cls(
-            payload=payload,
-            state=ResultState.SUCCESS,
-        )
+        return cls(payload=payload, state=ResultState.SUCCESS)

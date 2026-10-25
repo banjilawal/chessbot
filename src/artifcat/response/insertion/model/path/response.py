@@ -19,8 +19,8 @@ from transit import PathCarrier
 
 class PathInsertionResponse(ModelInsertionResponse[Path]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Path insertion request-response cycle's data and state.

@@ -18,8 +18,7 @@ from domain import PawnToken, Rank
 class PromotionResult(Result[PawnToken]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains the outcome of a Promotion transaction.

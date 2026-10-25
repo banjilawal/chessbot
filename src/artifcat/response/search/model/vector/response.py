@@ -19,8 +19,8 @@ from transit import VectorCarrier
 
 class VectorSearchResponse(ModelSearchResponse[Vector]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Vector search request-response cycle's data and state.

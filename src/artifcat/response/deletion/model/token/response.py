@@ -19,8 +19,8 @@ from transit import TokenCarrier
 
 class TokenDeletionResponse(ModelDeletionResponse[Token]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Token deletion request-response cycle's data and state.

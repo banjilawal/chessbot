@@ -19,8 +19,8 @@ from transit import TokenCarrier
 
 class TokenSearchResponse(ModelSearchResponse[Token]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Token search request-response cycle's data and state.

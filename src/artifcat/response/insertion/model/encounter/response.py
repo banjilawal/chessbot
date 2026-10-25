@@ -19,8 +19,8 @@ from transit import EncounterCarrier
 
 class EncounterInsertionResponse(ModelInsertionResponse[Encounter]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Encounter insertion request-response cycle's data and state.

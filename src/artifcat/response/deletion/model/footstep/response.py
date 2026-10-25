@@ -21,8 +21,8 @@ class FootstepDeletionResponse(
     ModelDeletionResponse[Footstep]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Footstep deletion request-response cycle's data and state.

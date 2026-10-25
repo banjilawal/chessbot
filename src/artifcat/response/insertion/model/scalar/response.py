@@ -19,8 +19,8 @@ from transit import ScalarCarrier
 
 class ScalarInsertionResponse(ModelInsertionResponse[Scalar]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Scalar insertion request-response cycle's data and state.

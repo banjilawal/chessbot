@@ -18,8 +18,7 @@ from domain import Maneuver
 class ManeuverResult(Result[Maneuver]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a Maneuver transaction.

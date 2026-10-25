@@ -18,8 +18,7 @@ from artifcat import AnalysisState, Result
 class AnalysisResult(Result[Report]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Hold the product of an Analyzer's work.

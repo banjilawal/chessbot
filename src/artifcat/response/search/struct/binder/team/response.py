@@ -21,8 +21,8 @@ class TeamBinderSearchResponse(
     BinderSearchResponse[TeamBinder]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a TeamBinder search request-response cycle's data and state.

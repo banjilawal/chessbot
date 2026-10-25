@@ -9,17 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import Result, ResultState
+from artifcat import Authorizable, Result, ResultState
 from domain import Encounter
 
+T = TypeVar("T", bound="Encounter")
 
-class AttackResult(Result[Encounter]):
+class AttackResult(Result[T], Authorizable, Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains the outcome of an Attack transaction.
@@ -27,7 +27,7 @@ class AttackResult(Result[Encounter]):
 
     Attributes:
         state: resultState
-        payload: Optional[Encounter]
+        payload: Optional[T]
         exception: Optional[Exception]
         
         is_timed_out: bool
@@ -35,7 +35,7 @@ class AttackResult(Result[Encounter]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: Encounter) -> AttackResult
+        -   def success(payload: T) -> AttackResult
 
     Super Class:
         Result
@@ -44,21 +44,21 @@ class AttackResult(Result[Encounter]):
     def __init__(
             self,
             state: ResultState,
-            payload: Optional[Encounter] = None,
+            payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: resultState
-            payload: Optional[Encounter]
+            payload: Optional[T]
             exception: Optional[Exception]
         """
         super().__init__(state=state, payload=payload, exception=exception)
     
     @property
-    def payload(self) -> Optional[Encounter]:
-        return cast(Encounter, super().payload)
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
     
     @classmethod
-    def success(cls, payload: Encounter) -> AttackResult:
+    def success(cls, payload: T) -> AttackResult:
         return cls(payload=payload, state=ResultState.SUCCESS)

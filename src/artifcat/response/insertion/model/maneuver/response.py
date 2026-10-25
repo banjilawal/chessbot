@@ -19,8 +19,8 @@ from transit import ManeuverCarrier
 
 class ManeuverInsertionResponse(ModelInsertionResponse[Maneuver]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Maneuver insertion request-response cycle's data and state.

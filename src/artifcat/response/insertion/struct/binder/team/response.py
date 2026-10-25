@@ -21,8 +21,8 @@ class TeamBinderInsertionResponse(
     BinderInsertionResponse[TeamBinder]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a TeamBinder insertion request-response cycle's data and state.

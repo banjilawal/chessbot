@@ -21,8 +21,8 @@ class FootstepSearchResponse(
     ModelSearchResponse[Footstep]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Footstep search request-response cycle's data and state.

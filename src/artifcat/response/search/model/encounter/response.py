@@ -19,8 +19,8 @@ from transit import EncounterCarrier
 
 class EncounterSearchResponse(ModelSearchResponse[Encounter]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Encounter search request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import BoardCarrier
 
 class BoardInsertionResponse(ModelInsertionResponse[Board]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Board insertion request-response cycle's data and state.

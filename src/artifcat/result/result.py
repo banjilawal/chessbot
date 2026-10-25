@@ -19,8 +19,7 @@ T = TypeVar("T")
 class Result(Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
   
     Responsibilities:
         1.  Hold the product of some work.

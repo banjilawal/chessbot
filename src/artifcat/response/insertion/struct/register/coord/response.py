@@ -21,8 +21,8 @@ class CoordRegisterInsertionResponse(
     RegisterInsertionResponse[CoordRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a CoordRegister insertion request-response cycle's data and state.

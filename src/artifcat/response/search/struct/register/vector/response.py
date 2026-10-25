@@ -21,8 +21,8 @@ class VectorRegisterSearchResponse(
     RegisterSearchResponse[VectorRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a VectorRegister search request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import AlertCarrier
 
 class AlertInsertionResponse(ModelInsertionResponse[Alert]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Alert insertion request-response cycle's data and state.

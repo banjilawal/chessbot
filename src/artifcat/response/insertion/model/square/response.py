@@ -19,8 +19,8 @@ from transit import SquareCarrier
 
 class SquareInsertionResponse(ModelInsertionResponse[Square]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Square insertion request-response cycle's data and state.

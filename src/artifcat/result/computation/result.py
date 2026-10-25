@@ -18,8 +18,7 @@ T = TypeVar("T")
 class ComputationResult(Result[T], Resultable, Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a Computation transaction.

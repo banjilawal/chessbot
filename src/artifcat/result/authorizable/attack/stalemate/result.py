@@ -18,8 +18,7 @@ from domain import StalemateEncounter
 class StalemateResult(AttackResult[StalemateEncounter]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a StalemateEncounter transaction.
@@ -57,9 +56,10 @@ class StalemateResult(AttackResult[StalemateEncounter]):
     def payload(self) -> Optional[StalemateEncounter]:
         return cast(StalemateEncounter, super().payload)
     
+    @property
+    def is_success(self) -> bool:
+        return super().is_success and isinstance(self.payload, StalemateEncounter)
+    
     @classmethod
     def success(cls, payload: StalemateEncounter) -> StalemateResult:
-        return cls(
-            payload=payload,
-            state=ResultState.SUCCESS,
-        )
+        return cls(payload=payload, state=ResultState.SUCCESS)

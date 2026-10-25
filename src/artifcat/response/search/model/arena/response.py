@@ -19,8 +19,8 @@ from transit import ArenaCarrier
 
 class ArenaSearchResponse(ModelSearchResponse[Arena]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Arena search request-response cycle's data and state.

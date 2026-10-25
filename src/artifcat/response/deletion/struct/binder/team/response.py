@@ -21,8 +21,8 @@ class TeamBinderDeletionResponse(
     BinderDeletionResponse[TeamBinder]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a TeamBinder deletion request-response cycle's data and state.

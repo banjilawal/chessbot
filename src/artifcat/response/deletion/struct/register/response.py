@@ -20,8 +20,8 @@ T = TypeVar("T", bound="Register")
 
 class RegisterDeletionResponse(DeletionResponse[T], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Register's deletion request-response cycle's data and state.

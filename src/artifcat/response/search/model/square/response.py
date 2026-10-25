@@ -19,8 +19,8 @@ from transit import SquareCarrier
 
 class SquareSearchResponse(ModelSearchResponse[Square]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Square search request-response cycle's data and state.

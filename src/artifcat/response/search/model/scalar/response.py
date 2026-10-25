@@ -19,8 +19,8 @@ from transit import ScalarCarrier
 
 class ScalarSearchResponse(ModelSearchResponse[Scalar]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Scalar search request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import RankCarrier
 
 class RankInsertionResponse(ModelInsertionResponse[Rank]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Rank insertion request-response cycle's data and state.

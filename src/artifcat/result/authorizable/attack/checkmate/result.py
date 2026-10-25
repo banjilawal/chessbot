@@ -18,8 +18,7 @@ from domain import CheckmateEncounter
 class CheckmateResult(AttackResult[CheckmateEncounter]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a CheckmateEncounter transaction.
@@ -56,6 +55,10 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
     @property
     def payload(self) -> Optional[CheckmateEncounter]:
         return cast(CheckmateEncounter, super().payload)
+    
+    @property
+    def is_success(self) -> bool:
+        return super().is_success and isinstance(self.payload, CheckmateEncounter)
     
     @classmethod
     def success(cls, payload: CheckmateEncounter) -> CheckmateResult:

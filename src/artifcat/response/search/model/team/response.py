@@ -19,8 +19,8 @@ from transit import TeamCarrier
 
 class TeamSearchResponse(ModelSearchResponse[Team]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Team search request-response cycle's data and state.

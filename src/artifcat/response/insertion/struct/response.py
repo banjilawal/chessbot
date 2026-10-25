@@ -20,8 +20,8 @@ T = TypeVar("T", bound="Struct")
 
 class StructInsertionResponse(InsertionResponse[T], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Struct's insertion request-response cycle's data and state.

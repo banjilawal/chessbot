@@ -18,8 +18,7 @@ from domain import KillEncounter
 class KillResult(AttackResult[KillEncounter]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a KillEncounter transaction.
@@ -56,10 +55,11 @@ class KillResult(AttackResult[KillEncounter]):
     @property
     def payload(self) -> Optional[KillEncounter]:
         return cast(KillEncounter, super().payload)
+    
+    @property
+    def is_success(self) -> bool:
+        return super().is_success and isinstance(self.payload, KillEncounter)
         
     @classmethod
     def success(cls, payload: KillEncounter) -> KillResult:
-        return cls(
-            payload=payload,
-            state=ResultState.SUCCESS,
-        )
+        return cls(payload=payload, state=ResultState.SUCCESS)

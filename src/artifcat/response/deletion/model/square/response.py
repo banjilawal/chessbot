@@ -19,8 +19,8 @@ from transit import SquareCarrier
 
 class SquareDeletionResponse(ModelDeletionResponse[Square]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Square deletion request-response cycle's data and state.

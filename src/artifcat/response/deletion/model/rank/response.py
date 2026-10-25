@@ -19,8 +19,8 @@ from transit import RankCarrier
 
 class RankDeletionResponse(ModelDeletionResponse[Rank]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Rank deletion request-response cycle's data and state.

@@ -21,8 +21,8 @@ T = TypeVar("T", bound="Model")
 
 class ModelInsertionResponse(InsertionResponse[T], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Model's insertion request-response cycle's data and state.

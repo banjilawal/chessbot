@@ -21,8 +21,8 @@ class PlayerBinderInsertionResponse(
     BinderInsertionResponse[PlayerBinder]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a PlayerBinder insertion request-response cycle's data and state.

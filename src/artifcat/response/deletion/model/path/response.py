@@ -19,8 +19,8 @@ from transit import PathCarrier
 
 class PathDeletionResponse(ModelDeletionResponse[Path]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Path deletion request-response cycle's data and state.

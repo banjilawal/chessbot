@@ -19,8 +19,7 @@ from artifcat import EventState, Result
 class EventResult(Result[Event]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains outcome of a event transaction.

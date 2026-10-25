@@ -11,44 +11,29 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AttackResponse, KillResult, ResponseState
+from artifcat import AttackResponse, AttackResult, ResponseState
 from domain import KillEncounter
-from exchange import KillRequest
+from exchange import KillRequest, Request
 
 
-class KillResponse(AttackResponse[KillEncounter]):
+class KillResponse(AttackResponse[KillRequest]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Kill's attack request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: KillAttack
-        request: AttackRequest[T]
-        exception: Optional[Exception]
+        result: AttackResult
+        request: KillRequest
 
     Provides:
         -   is_success: bool
         -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_kill() -> Optional[T]
-        -   def valid_blueprint() -> Optional[KillBlueprint[T]]
 
-        -   def success(
-                    request: Request,
-                    result: KillAttack[T],
-            ) -> AttackResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: KillAttack[T],
-                    exception: Exception,
-            ) -> AttackResponse[T]
+        -   def success(result: AttackResult, request: Request) -> AttackResponse
+        -   def failure(request:Request,  exception:Exception) -> AttackResponse
 
     Super Class:
         AttackResponse
@@ -57,15 +42,16 @@ class KillResponse(AttackResponse[KillEncounter]):
     def __init__(
             self,
             state: ResponseState,
-            result: KillResult,
             request: KillRequest,
+            result: Optional[AttackResult] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: KillAttack,
-            request: KillAttackRequest,
+            request: KillRequest
+            result: Optional[AttackResult]
+            exception:Optional[Exception]
         """
         super().__init__(
             state=state,
@@ -75,41 +61,45 @@ class KillResponse(AttackResponse[KillEncounter]):
         )
         
     @property
-    def result(self) -> KillResult:
-        return cast(KillResult, super().result)
+    def result(self) -> Optional[AttackResult]:
+        return cast(AttackResult, super().result)
         
     @property
     def request(self) -> KillRequest:
         return cast(KillRequest, super().request)
+    
+    @property
+    def is_success(self) -> bool:
+        return super().is_success and isinstance(self.request, KillRequest)
+    
+    @property
+    def encounter(self) -> Optional[KillEncounter]:
+        result = self.result
+        if (
+            result is None or
+            result.is_failure or
+            not isinstance(result, AttackResult)
+        ):
+            return None
+        encounter = cast(KillEncounter, result.payload)
+        return encounter
         
     @classmethod
-    def success(
-            request: KillRequest,
-            result: KillResult,
-    ) -> KillResponse:
+    def success(cls, result: AttackResult, request: Request) -> KillResponse:
         # Send a success Response using the cast.
+        req = cast(KillRequest, request)
         return cls(
-            request=request,
+            request=req,
             result=result,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: KillRequest,
-            result: KillAttack,
-            exception: Exception,
-    ) -> KillResponse:
-        # Downcast the request into a AttackRequest.
-        attack_request = cast(
-            KillAttackRequest,
-            request
-        )
-        # Send a failure Response using the cast.
+    def failure(cls,request: Request, exception: Exception) -> KillResponse:
+        # Downcast the request.
+        req = cast(KillRequest, request)
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=attack_request,
             state=ResponseState.FAILURE,
         )

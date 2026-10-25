@@ -21,8 +21,8 @@ class PlayerBinderDeletionResponse(
     BinderDeletionResponse[PlayerBinder]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a PlayerBinder deletion request-response cycle's data and state.

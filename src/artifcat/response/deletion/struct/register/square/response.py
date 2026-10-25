@@ -21,8 +21,8 @@ class SquareRegisterDeletionResponse(
     RegisterDeletionResponse[SquareRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a SquareRegister deletion request-response cycle's data and state.

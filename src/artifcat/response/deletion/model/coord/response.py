@@ -19,8 +19,8 @@ from transit import CoordCarrier
 
 class CoordDeletionResponse(ModelDeletionResponse[Coord]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Coord deletion request-response cycle's data and state.

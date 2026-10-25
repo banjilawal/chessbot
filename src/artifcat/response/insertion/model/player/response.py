@@ -19,8 +19,8 @@ from transit import PlayerCarrier
 
 class PlayerInsertionResponse(ModelInsertionResponse[Player]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Player insertion request-response cycle's data and state.

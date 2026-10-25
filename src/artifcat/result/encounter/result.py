@@ -20,8 +20,7 @@ T = TypeVar("T", bound="Encounter")
 class EncounterResult(Result[T], Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a Encounter transaction.

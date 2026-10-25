@@ -20,8 +20,8 @@ T = TypeVar("T", bound="Binder")
 
 class BinderDeletionResponse(DeletionResponse[T], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Binder's deletion request-response cycle's data and state.

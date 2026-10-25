@@ -19,8 +19,8 @@ from transit import ManeuverCarrier
 
 class ManeuverSearchResponse(ModelSearchResponse[Maneuver]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Maneuver search request-response cycle's data and state.

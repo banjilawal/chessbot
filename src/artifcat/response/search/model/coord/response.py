@@ -19,8 +19,8 @@ from transit import CoordCarrier
 
 class CoordSearchResponse(ModelSearchResponse[Coord]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Coord search request-response cycle's data and state.

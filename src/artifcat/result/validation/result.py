@@ -18,8 +18,7 @@ T = TypeVar("T")
 class ValidationResult(Result[T], Resultable, Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains the outcome of a validation transaction.

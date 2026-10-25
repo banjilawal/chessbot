@@ -19,8 +19,8 @@ from transit import ArenaCarrier
 
 class ArenaInsertionResponse(ModelInsertionResponse[Arena]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Arena insertion request-response cycle's data and state.

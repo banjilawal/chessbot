@@ -19,8 +19,8 @@ from transit import RankCarrier
 
 class RankSearchResponse(ModelSearchResponse[Rank]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Rank search request-response cycle's data and state.

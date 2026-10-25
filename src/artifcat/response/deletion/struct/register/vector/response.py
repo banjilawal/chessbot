@@ -21,8 +21,8 @@ class VectorRegisterDeletionResponse(
     RegisterDeletionResponse[VectorRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a VectorRegister deletion request-response cycle's data and state.

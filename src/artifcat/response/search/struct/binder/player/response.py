@@ -21,8 +21,8 @@ class PlayerBinderSearchResponse(
     BinderSearchResponse[PlayerBinder]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a PlayerBinder search request-response cycle's data and state.

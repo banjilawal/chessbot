@@ -18,8 +18,7 @@ from shell import Command
 class ParseResult(ShellResult[Command]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a Parse transaction.

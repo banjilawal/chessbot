@@ -21,8 +21,8 @@ class SquareRegisterInsertionResponse(
     RegisterInsertionResponse[SquareRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a SquareRegister insertion request-response cycle's data and state.

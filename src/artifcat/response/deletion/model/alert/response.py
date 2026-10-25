@@ -19,8 +19,8 @@ from transit import AlertCarrier
 
 class AlertDeletionResponse(ModelDeletionResponse[Alert]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Alert deletion request-response cycle's data and state.

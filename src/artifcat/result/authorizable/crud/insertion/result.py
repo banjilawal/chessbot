@@ -17,8 +17,7 @@ from artifcat import CrudResult, InsertionState
 class InsertionResult(CrudResult[bool]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of an Insertion transaction.

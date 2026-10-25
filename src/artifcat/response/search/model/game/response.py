@@ -19,8 +19,8 @@ from transit import GameCarrier
 
 class GameSearchResponse(ModelSearchResponse[Game]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Game search request-response cycle's data and state.

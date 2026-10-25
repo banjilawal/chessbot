@@ -19,8 +19,8 @@ from transit import ScalarCarrier
 
 class ScalarDeletionResponse(ModelDeletionResponse[Scalar]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Scalar deletion request-response cycle's data and state.

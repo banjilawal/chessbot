@@ -19,8 +19,8 @@ from transit import CoordCarrier
 
 class CoordInsertionResponse(ModelInsertionResponse[Coord]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Coord insertion request-response cycle's data and state.

@@ -21,8 +21,8 @@ class CoordRegisterSearchResponse(
     RegisterSearchResponse[CoordRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a CoordRegister search request-response cycle's data and state.

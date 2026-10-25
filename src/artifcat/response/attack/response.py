@@ -13,55 +13,44 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, AttackResult
-from domain import Encounter
 from exchange import Request, AttackRequest
 
-T = TypeVar("T", bound="Encounter")
+T = TypeVar("T", bound="AttackRequest")
 
-class AttackResponse(Response[T], ABC, Generic[T]):
+class AttackResponse(Response[AttackResult], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a attack request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
+        request: AttackRequest
         result: AttackResult
-        request: AttackRequest[T]
-        exception: Optional[Exception]
+
+        is_success: bool
+        is_failure: bool
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-
-        -   def success(
-                    request: Request,
-                    result: AttackResult[T],
-            ) -> AttackResponse[T]
-
-        -   def failure(
-                    request: Request,
-                    result: AttackResult[T],
-                    exception: Exception,
-            ) -> AttackResponse[T]
+        -   def success(result: AttackResult, request: Request) -> AttackResponse
+        -   def success(request: Request, exception: Exception) -> AttackResponse
 
     Super Class:
         Response
     """
     def __init__(
             self,
+            request: T,
             state: ResponseState,
-            result: AttackResult[T],
-            request: AttackRequest[T],
-            exception: Optional[Exception],
+            result: Optional[AttackResult] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T
             state: ResponseState
-            result: AttackResult
-            request: AttackRequest[T]
+            result: Optional[AttackResult]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -72,56 +61,38 @@ class AttackResponse(Response[T], ABC, Generic[T]):
         )
         
     @property
-    def result(self) -> AttackResult:
+    def result(self) -> Optional[AttackResult]:
         return cast(AttackResult, super().result)
         
     @property
-    def request(self) -> AttackRequest[T]:
-        return cast(AttackRequest[T], super().request)
+    def request(self) -> T:
+        return cast(T, super().request)
     
     @property
     def is_success(self) -> bool:
-        return (
-            super().is_success and
-            (
-                self.valid_model is not None or
-                self.valid_blueprint is not None
-            )
-        )
+        return super().is_success
     
     @property
     def is_failure(self) -> bool:
         return not self.is_success
         
     @classmethod
-    def success(
-            cls,
-            request: Request[T],
-            result: AttackResult[T],
-    ) -> AttackResponse:
+    def success(cls, result: AttackResult, request: Request) -> AttackResponse:
         # Send a success Response using the cast.
+        req = cast(AttackRequest[T], request)
         return cls(
-            result=result[T],
-            request=request[T],
+            request=req,
+            result=result,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
-    def failure(
-            cls,
-            request: Request[T],
-            result: AttackResult[T],
-            exception: Exception,
-    ) -> AttackResponse[T]:
+    def failure(cls, request: Request, exception: Exception) -> AttackResponse:
         # Downcast the request into a AttackRequest.
-        attack_request = cast(
-            AttackRequest[T],
-            request,
-        )
+        req = cast(T, request)
         # Send a failure Response using the cast.
         return cls(
-            result=result,
+            request=req,
             exception=exception,
-            request=attack_request,
             state=ResponseState.FAILURE,
         )

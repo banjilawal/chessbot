@@ -19,8 +19,8 @@ from transit import TokenCarrier
 
 class TokenInsertionResponse(ModelInsertionResponse[Token]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Token insertion request-response cycle's data and state.

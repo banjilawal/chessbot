@@ -19,8 +19,8 @@ from transit import AccountCarrier
 
 class AccountDeletionResponse(ModelDeletionResponse[Account]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Account deletion request-response cycle's data and state.

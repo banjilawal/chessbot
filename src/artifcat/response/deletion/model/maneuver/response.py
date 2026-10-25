@@ -19,8 +19,8 @@ from transit import ManeuverCarrier
 
 class ManeuverDeletionResponse(ModelDeletionResponse[Maneuver]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Maneuver deletion request-response cycle's data and state.

@@ -19,8 +19,7 @@ T = TypeVar("T")
 class BuildResult(Result[T], Resultable, Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a Build transaction.

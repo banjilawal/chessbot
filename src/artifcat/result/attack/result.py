@@ -19,8 +19,7 @@ T = TypeVar("T", bound="Encounter")
 class AttackResult(Result[T], Resultable, Generic[T]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains the outcome of a attack transaction.

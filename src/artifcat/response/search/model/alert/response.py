@@ -19,8 +19,8 @@ from transit import AlertCarrier
 
 class AlertSearchResponse(ModelSearchResponse[Alert]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Alert search request-response cycle's data and state.

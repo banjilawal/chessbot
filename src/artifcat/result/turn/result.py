@@ -17,8 +17,7 @@ from sync import Turn
 class TurnResult(Result[Turn]):
     """
     Role:
-        - Data Transport
-        - Error Transport
+        -   Persistence
 
     Responsibilities:
         1.  Contains details of a Turn transaction.

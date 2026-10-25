@@ -21,8 +21,8 @@ class SquareRegisterSearchResponse(
     RegisterSearchResponse[SquareRegister]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a SquareRegister search request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import VectorCarrier
 
 class VectorInsertionResponse(ModelInsertionResponse[Vector]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Vector insertion request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import BoardCarrier
 
 class BoardSearchResponse(ModelSearchResponse[Board]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Board search request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import GameCarrier
 
 class GameDeletionResponse(ModelDeletionResponse[Game]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Game deletion request-response cycle's data and state.

@@ -19,8 +19,8 @@ from transit import AccountCarrier
 
 class AccountSearchResponse(ModelSearchResponse[Account]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Account search request-response cycle's data and state.

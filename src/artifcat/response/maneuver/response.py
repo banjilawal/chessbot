@@ -90,21 +90,6 @@ class ManeuverResponse(Response[ManeuverResult]):
     @property
     def is_failure(self) -> bool:
         return not self.is_success
-    
-    @property
-    def promoted_pawn(self) -> Optional[PawnToken]:
-        result = self.result
-        if result is None or result.is_failure:
-            return None
-        pawn_token = cast(PawnToken, result.payload)
-        return pawn_token
-    
-    @property
-    def maneuver(self) -> Optional[Rank]:
-        pawn_token = self.promoted_pawn
-        if pawn_token is None:
-            return None
-        return pawn_token.rank
         
     @classmethod
     def success(cls, result: ManeuverResult, request: Request) -> ManeuverResponse:

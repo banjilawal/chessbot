@@ -21,8 +21,8 @@ class FootstepInsertionResponse(
     ModelInsertionResponse[Footstep]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Footstep insertion request-response cycle's data and state.

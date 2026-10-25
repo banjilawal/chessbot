@@ -21,8 +21,8 @@ class ParticipationSearchResponse(
     ChartSearchResponse[Participation]
 ):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Participation search request-response cycle's data and state.

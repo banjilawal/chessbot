@@ -19,8 +19,8 @@ from transit import EncounterCarrier
 
 class EncounterDeletionResponse(ModelDeletionResponse[Encounter]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Encounter deletion request-response cycle's data and state.

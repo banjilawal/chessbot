@@ -19,8 +19,8 @@ from transit import VectorCarrier
 
 class VectorDeletionResponse(ModelDeletionResponse[Vector]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Vector deletion request-response cycle's data and state.

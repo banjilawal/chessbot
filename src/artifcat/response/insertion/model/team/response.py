@@ -19,8 +19,8 @@ from transit import TeamCarrier
 
 class TeamInsertionResponse(ModelInsertionResponse[Team]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Team insertion request-response cycle's data and state.

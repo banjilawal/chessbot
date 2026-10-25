@@ -20,8 +20,8 @@ T = TypeVar("T", bound="Register")
 
 class RegisterInsertionResponse(InsertionResponse[T], ABC, Generic[T]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Register's insertion request-response cycle's data and state.

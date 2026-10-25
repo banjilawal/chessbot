@@ -19,8 +19,8 @@ from transit import PathCarrier
 
 class PathSearchResponse(ModelSearchResponse[Path]):
     """
-    Role
-        -   Messaging
+    Role:
+        -   Persistence
 
     Responsibilities:
         1.  Capture a Path search request-response cycle's data and state.
