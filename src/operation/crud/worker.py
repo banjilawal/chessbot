@@ -1,7 +1,7 @@
-# src/operation/crud/operator.py
+# src/operation/crud/worker.py
 
 """
-Module: operation.crud.operator
+Module: operation.crud.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,26 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from abc import ABC
+from typing import Generic, TypeVar
 
-from authorization import CrudAuthorizer
-from domain import CrudRequest
 from operation import Worker
-from artifcat import CrudResult
-from util import LoggingLevelRouter
-
 
 T = TypeVar("T", bound="CrudResult")
 
 
 class CrudWorker(Worker[T], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
-        1.  Process a CrudRequest.
+        1.  Executes a CrudRequest
 
     Attributes:
         authorizer: CrudAuthorizer[T]

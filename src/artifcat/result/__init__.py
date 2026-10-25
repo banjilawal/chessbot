@@ -11,10 +11,10 @@ version: 0.0.2
 
 # Packages
 from .analysis import *
-from .attack import *
+from artifcat.result.transaction.attack import *
 from .authorizable import *
 from .builder import *
-from .computation import *
+from artifcat.result.transaction.computation import *
 from .encounter import *
 from .event import *
 from .interface import *

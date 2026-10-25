@@ -1,0 +1,143 @@
+# src/artifact/result/transaction/crud/search/result.py
+
+"""
+Module: artfifact.result.transaction.crud.search.result
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Generic, List, Optional, TypeVar, cast
+
+from domain import DomainDataObject
+from artifcat import CrudResult, SearchState
+
+T = TypeVar("T")
+
+
+class SearchResult(CrudResult[T], Generic[T]):
+    """
+    Role:
+        -   Persistence
+
+    Responsibilities:
+        1.  Contains details of a Search transaction.
+
+    Attributes:
+        exception: Optional[Exception]
+        payload: Optional[T]
+        state: SearchState
+        is_timed_out: bool
+        is_success: bool
+        is_failure: bool
+        is_empty: bool
+
+    Provides:
+        -   def empty() -> SearchResult[T]:
+        -   def success(payload: T) -> Result[T]
+        -   def failure(exception: Exception) -> Result[T]
+        -   def timed_out(cls, exception: Exception) -> SearchResult[T]:
+
+    Super Class:
+        Result
+    """
+    _state: SearchState
+    _payload: Optional[T] = []
+    
+    
+    def __init__(
+            self,
+            state: SearchState,
+            payload: Optional[List[T]] | None = None,
+            exception: Optional[Exception] | None = None,
+    ):
+        """
+        Args:
+            state: SearchState
+            payload: Optional[List[T]]
+            exception: Optional[Exception]
+        """
+        super().__init__(payload=payload, exception=exception)
+        """INTERNAL: Use Search methods instead of direct constructor."""
+        self._state = state
+        
+    @property
+    def payload(self) -> Optional[List[T]]:
+        return cast(List[T], super().payload)
+        
+    @property
+    def state(self) -> SearchState:
+        return self._state
+    
+    @property
+    def is_success(self) -> bool:
+        return (
+                super().is_success and
+                self._state ==  SearchState.SUCCESS
+        )
+    
+    @property
+    def is_failure(self) -> bool:
+        return (
+                super().is_failure and
+                self._state ==  SearchState.FAILURE
+        )
+    
+    @property
+    def is_empty(self) -> bool:
+        return (
+                self.payload is None and
+                self.exception is None and
+                self._state ==  SearchState.NOTHING_FOUND
+        )
+    
+    @property
+    def is_not_empty(self) -> bool:
+        return (
+                self.payload is not None and
+                self.exception is None and
+                self._state ==  SearchState.SOMETHING_FOUND
+        )
+    
+    @property
+    def is_timed_out(self) -> bool:
+        return (
+                self.payload is None and
+                self.exception is not None and
+                self._state ==  SearchState.TIMED_OUT
+        )
+    
+    @classmethod
+    def success(cls, payload: List[T]) -> SearchResult:
+        return cls(
+            payload=payload,
+            exception=None,
+            state=SearchState.SUCCESS,
+        )
+    
+    @classmethod
+    def failure(cls, exception: Exception) -> SearchResult:
+        return cls(
+            payload=None,
+            exception=exception,
+            state=SearchState.FAILURE,
+        )
+    
+    @classmethod
+    def timed_out(cls, exception: Exception) -> SearchResult:
+        return cls(
+            payload=None,
+            exception=exception,
+            state=SearchState.TIMED_OUT,
+        )
+    
+    @classmethod
+    def empty(cls) -> SearchResult:
+        return cls(
+            payload=None,
+            exception=None,
+            state=SearchState.NOTHING_FOUND,
+        )
+

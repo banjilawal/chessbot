@@ -20,12 +20,11 @@ T = TypeVar("T", bound="Result")
 
 class Worker(ABC, Generic[T]):
     """
-    Role
-        - Worker
-        - Result Producer
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
-        1.  Execute a task that produces a Result.
+        1.  Executes a TransactionRequest
 
     Attributes:
         authorization_responder: AuthorizationResponder[T]
