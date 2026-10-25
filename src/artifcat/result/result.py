@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Optional, TypeVar, Generic
 
 from artifcat import ResultState
@@ -40,6 +39,7 @@ class Result(Generic[T]):
         
     Super Class:
     """
+    
     _state: ResultState
     _payload: Optional[T]
     _exception: Optional[Exception]
@@ -47,8 +47,8 @@ class Result(Generic[T]):
     def __init__(
             self,
             state: ResultState,
-            payload: Optional[T] = None,
-            exception: Optional[Exception] = None
+            payload: Optional[T] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
@@ -74,7 +74,11 @@ class Result(Generic[T]):
     
     @property
     def is_success(self) -> bool:
-        return self._exception is None and self._payload is not None
+        return (
+                self._exception is None and
+                self._payload is not None and
+                self.state == ResultState.SUCCESS
+        )
     
     @property
     def is_failure(self) -> bool:
@@ -82,9 +86,9 @@ class Result(Generic[T]):
     
     @classmethod
     def success(cls, payload: T) -> Result:
-        return cls(payload=payload)
+        return cls(payload=payload, state=ResultState.SUCCESS)
     
     @classmethod
     def failure(cls, exception: Exception) -> Result:
-        return cls(exception=exception)
+        return cls(exception=exception, state=ResultState.FAILURE)
     

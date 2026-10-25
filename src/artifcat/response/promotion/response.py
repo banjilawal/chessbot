@@ -12,9 +12,8 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import PromotionResult, Response, ResponseState
-from domain import Elevatable, PawnToken, Rank
-from err import EmptyDependencyListException
-from exchange import PromotionRequest
+from domain import PawnToken, Rank
+from exchange import PromotionRequest, Request
 
 
 class PromotionResponse(Response[PromotionResult]):
@@ -33,8 +32,8 @@ class PromotionResponse(Response[PromotionResult]):
         is_failure: bool
 
     Provides:
-        -   def success(result: PromotionResult, request: T) -> PromotionResponse
-        -   def failure(request: T, exception: Exception) -> PromotionResponse
+        -   def success(result: PromotionResult, request: Request) -> PromotionResponse
+        -   def failure(request: Request, exception: Exception) -> PromotionResponse
 
     Super Class:
         Response
@@ -43,8 +42,8 @@ class PromotionResponse(Response[PromotionResult]):
             self,
             state: ResponseState,
             request: PromotionRequest,
-            exception: Optional[Exception],
-            result: Optional[PromotionResult],
+            exception: Optional[Exception] | None = None,
+            result: Optional[PromotionResult] | None = None,
     ):
         """
         Args:
@@ -72,8 +71,7 @@ class PromotionResponse(Response[PromotionResult]):
     def is_success(self) -> bool:
         return (
             super().is_success and
-            isinstance(self.result, PromotionResult) and
-            self.promoted_pawn is not None
+            isinstance(self.result, PromotionResult)
         )
     
     @property
@@ -82,34 +80,33 @@ class PromotionResponse(Response[PromotionResult]):
     
     @property
     def promoted_pawn(self) -> Optional[PawnToken]:
-        if (
-                super().is_failure or
-                not isinstance(self.result, PromotionResult)
-        ):
+        result = self.result
+        if result is None or result.is_failure:
             return None
-        return self.result.promoted_pawn
+        pawn_token = cast(PawnToken, result.payload)
+        return pawn_token
     
     @property
     def promotion(self) -> Optional[Rank]:
-        if self.promoted_pawn is None:
+        pawn_token = self.promoted_pawn
+        if pawn_token is None:
             return None
-        rank = self.promoted_pawn.rank
-        if not isinstance(rank, Elevatable):
-            return None
-        return rank
+        return pawn_token.rank
         
     @classmethod
     def success(cls, result: PromotionResult, request: Request) -> PromotionResponse:
+        req = cast(PromotionRequest, request)
         return cls(
             result=result,
-            request=request,
+            request=req,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, request: Request, exception: Exception) -> PromotionResponse:
+        req = cast(PromotionRequest, request)
         return cls(
-            request=request,
+            request=req,
             exception=exception,
             state=ResponseState.FAILURE,
         )

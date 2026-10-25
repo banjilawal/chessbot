@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Result, ResultState
-from domain import PawnToken
+from domain import PawnToken, Rank
 
 
 class PromotionResult(Result[PawnToken]):
@@ -22,21 +22,20 @@ class PromotionResult(Result[PawnToken]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains outcome of a Promotion transaction.
+        1.  Contains the outcome of a Promotion transaction.
 
     Attributes:
         state: resultState
         payload: Optional[PawnToken]
         exception: Optional[Exception]
         
-        is_timed_out: bool
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> BuildResult
-        -   def failure(exception: Exception) -> BuildResult
-        -   def timed_out(cls, exception: Exception) -> BuildResult:
+        -   def success(payload: PawnToken) -> PromotionResult
+        -   def failure(exception: Exception) -> PromotionResult
+        -   def timed_out(exception: Exception) -> PromotionResult:
 
     Super Class:
         Result
@@ -65,43 +64,21 @@ class PromotionResult(Result[PawnToken]):
         return cast(PawnToken, super().payload)
     
     @property
+    def promotion(self) -> Optional[Rank]:
+        pawn_token = self.payload
+        if pawn_token is None:
+            return None
+        return pawn_token.rank
+        
+    
+    @property
     def is_success(self) -> bool:
-        return (
-            self.payload is not None and
-            self.exception is None and
-            self.state == ResultState.SUCCESS and
-            isinstance(self.payload, PawnToken)
-        )
+        return super().is_success and isinstance(self.payload, PawnToken)
     
     @property
     def is_failure(self) -> bool:
         return not self.success
     
-    @property
-    def is_timed_out(self) -> bool:
-        return (
-                self.payload is None and
-                self.exception is not None and
-                self._state == ResultState.TIMED_OUT
-        )
-    
     @classmethod
     def success(cls, payload: PawnToken) -> PromotionResult:
-        return cls(
-            payload=payload,
-            state=ResultState.SUCCESS,
-        )
-    
-    @classmethod
-    def failure(cls, exception: Exception) -> PromotionResult:
-        return cls(
-            exception=exception,
-            state=ResultState.FAILURE,
-        )
-    
-    @classmethod
-    def timed_out(cls, exception: Exception) -> PromotionResult:
-        return cls(
-            exception=exception,
-            state=ResultState.TIMED_OUT,
-        )
+        return cls(payload=payload, state=ResultState.SUCCESS)
