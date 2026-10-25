@@ -9,10 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-T = TypeVar("T", bound="PermissionRequest")
+from exchange import TransactionRequest
+
+T = TypeVar("T", bound="TransactionRequest")
 
 
 class PermissionRequest(ABC, Generic[T]):
@@ -21,14 +23,14 @@ class PermissionRequest(ABC, Generic[T]):
          -  Messaging
 
      Responsibilities:
-        1.  Provides information an Authorizer needs to execute a client's job.
+        1.  Provides a CrudAuthorizer with job details.
 
      Attributes:
-        id: int
-        candidate: T
+         id: int
+         candidate: : T
 
      Provides:
-     
+
      Super Class:
      """
     _id: int
@@ -43,18 +45,15 @@ class PermissionRequest(ABC, Generic[T]):
         self._id = id
         self._candidate = candidate
         
-        
     @property
     def id(self) -> int:
         return self._id
-        
+    
     @property
     def candidate(self) -> T:
         return self._candidate
-
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, PermissionRequest):
-            return self.id == other.id
-        return False
+    
+    @abstractmethod
+    def __eq__(self, other) -> bool:
+        pass
+    

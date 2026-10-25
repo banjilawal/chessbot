@@ -20,15 +20,15 @@ from util import IdFactory, LoggingLevelRouter
 
 class Mover(Worker[ManeuverResult]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces either an Maneuver, Deletion, Update
             or Search Result.
 
     Attributes:
-        authorization_responder: ManeuverAuthorizationResponder
+        permitter: ManeuverAuthorizationResponder
 
     Provides:
         -   def execute(request: ManeuverRequest) -> ManeuverResult
@@ -39,25 +39,25 @@ class Mover(Worker[ManeuverResult]):
     
     def __init__(
             self,
-            authorization_responder: Optional[ManeuverAuthorizationResponder] | None = None,
+            permitter: Optional[ManeuverAuthorizationResponder] | None = None,
     ):
         """
         Args:
-            authorization_responder: Optional[ManeuverAuthorizationResponder]
+            permitter: Optional[ManeuverAuthorizationResponder]
         """
         super().__init__(
-            authorization_responder=authorization_responder or ManeuverAuthorizationResponder()
+            permitter=permitter or ManeuverAuthorizationResponder()
         )
     
     @property
-    def authorization_responder(self) -> ManeuverAuthorizationResponder:
-        return cast(ManeuverAuthorizationResponder, super().authorization_responder)
+    def permitter(self) -> ManeuverAuthorizationResponder:
+        return cast(ManeuverAuthorizationResponder, super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverResult:
         method = f"{self.__class__.__name__}.execute"
         
-        decision = self.authorization_responder.execute(
+        decision = self.permitter.execute(
             ManeuverPermissionRequest(
                 candidate=request,
                 id=IdFactory.next_id(class_name="ManeuverPermissionRequest")

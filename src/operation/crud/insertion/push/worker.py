@@ -1,7 +1,7 @@
-# src/operation/crud/insert/operator.py
+# src/operation/crud/insertion/push/worker.py
 
 """
-Module: operation.crud.insert.operation
+Module: operation.crud.insertion.push.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,45 +12,43 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import InsertAuthorizer
-from domain import InsertRequest
-from operation import CrudWorker
 from artifcat import InsertionResult
+from operation import Inserter
+from transit import PushPermissionPermitter
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="PushRequest")
 
-T = TypeVar("T", bound="InsertRequest")
 
-
-class Inserter(CrudWorker[T], ABC, Generic[T]):
+class Pusher(Inserter[T], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
-        1.  Process an InsertRequest.
+        1.  Executes a PushRequest
 
     Attributes:
-        authorizer: InsertAuthorizer[T]
+        permitter: PushPermissionPermitter[T]
 
     Provides:
         -   def execute(self, request: T) -> InsertionResult
 
     Super Class:
-        CrudOperation
+        Inserter
     """
     
-    def __init__(self, authorizer: InsertAuthorizer[T]):
+    def __init__(self, permitter: PushPermissionPermitter[T]):
         """
         Args:
-            authorizer: InsertAuthorizer[T]
+            permitter: InsertionPermissionPermitter[T]
         """
-        super().__init__(authorizer=authorizer)
+        super().__init__(permitter=permitter[T])
     
     
     @property
-    def authorizer(self) -> InsertAuthorizer[T]:
-        return cast(InsertAuthorizer[T], super().authorizer)
+    def permitter(self) -> PushPermissionPermitter[T]:
+        return cast(PushPermissionPermitter[T], super().permitter)
     
     
     @abstractmethod
@@ -62,6 +60,6 @@ class Inserter(CrudWorker[T], ABC, Generic[T]):
         Result:
             InsertionResult
         Raises:
-            InsertException
+            PusherException
         """
         pass

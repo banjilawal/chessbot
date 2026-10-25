@@ -22,8 +22,8 @@ T = TypeVar("T", bound="StateModel")
 
 class MicroserviceBuilder(Microservice[BuildResult], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Execute a task on a Microservice that produces either an Build, Deletion, Update

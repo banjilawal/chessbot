@@ -10,10 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
 from artifcat import CrudResult
+from exchange import CrudRequest
 from operation import Worker
+from transit import CrudPermissionPermitter
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="CrudResult")
@@ -28,25 +30,25 @@ class CrudWorker(Worker[T], ABC, Generic[T]):
         1.  Executes a CrudRequest
 
     Attributes:
-        authorizer: CrudAuthorizer[T]
+        permitter: CrudPermissionPermitter[T]
         
     Provides:
         -   def execute(request: CrudRequest[T]) -> T
 
     Super Class:
-        Operation
+        Worker
     """
     
-    def __init__(self, authorizer: CrudAuthorizer[T]):
+    def __init__(self, permitter: CrudPermissionPermitter[T]):
         """
         Args:
-            authorizer: CrudAuthorizer[T]
+            permitter: CrudPermissionPermitter[T]
         """
-        super().__init__(authorizer=authorizer)
+        super().__init__(permitter=permitter)
     
     @property
-    def authorizer(self) -> CrudAuthorizer[T]:
-        return cast(CrudAuthorizer[T], super().authorizer)
+    def permitter(self) -> CrudPermissionPermitter[T]:
+        return cast(CrudPermissionPermitter[T], super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -57,6 +59,6 @@ class CrudWorker(Worker[T], ABC, Generic[T]):
         Result:
             T
         Raises:
-            CrudOperationException
+            CrudWorkerException
         """
         pass

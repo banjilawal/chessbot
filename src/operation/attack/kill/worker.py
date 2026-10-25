@@ -30,19 +30,19 @@ class Killer(Worker[T], ABC, Generic[T]):
             self,
             mover: Optional[Mover] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
-            authorization_responder: Optional[AttackAuthorizationResponder] | None = None,
+            permitter: Optional[AttackAuthorizationResponder] | None = None,
     ):
         """
         Args:
-            authorization_responder: Optional[AttackAuthorizationResponder]
+            permitter: Optional[AttackAuthorizationResponder]
         """
-        super().__init__(authorization_responder=authorization_responder or AttackAuthorizationResponder())
+        super().__init__(permitter=permitter or AttackAuthorizationResponder())
         self._priming_validator = priming_validator
         self_mover = mover
         
     @property
-    def authorization_responder(self) -> AttackAuthorizationResponder:
-        return cast(AttackAuthorizationResponder, super().authorization_responder)
+    def permitter(self) -> AttackAuthorizationResponder:
+        return cast(AttackAuthorizationResponder, super().permitter)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: KillRequest) -> AttackResult:

@@ -1,4 +1,4 @@
-# src/exchange/request/transaction/crud/search/stack/snapshot/request.py
+# src/exchange/request/transaction//crud/search/stack/snapshot/request.py
 
 """
 Module: exchange.request.transaction.crud.search.stack.snapshot.request

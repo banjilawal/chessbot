@@ -23,8 +23,8 @@ T = TypeVar("T")
 
 class Computation(Worker[ComputationResult], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Execute a task that produces a ComputationResult on success.

@@ -1,7 +1,7 @@
-# src/operation/crud/insert/chain/vector/operator.py
+# src/operation/crud/insertion/chain/vector/operator.py
 
 """
-Module: operation.crud.insert.chain.vector.operation
+Module: operation.crud.insertion.chain.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,14 +14,14 @@ from typing import Optional, cast
 from authorization import AddVectorNodeRequest
 from domain.struct.node import VectorNode
 from operation import AddNode
-from artifcat import InsertionResult
+from artifcat import InsertionionResult
 from util import LoggingLevelRouter
 
 
 class AddVectorNode(AddNode[VectorNode]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Add an item to a VectorNodeChain.
@@ -30,7 +30,7 @@ class AddVectorNode(AddNode[VectorNode]):
         permitter: AddVectorNodePermitter
 
     Provides:
-        -   def execute(request: AddVectorNodeRequest) -> InsertionResult
+        -   def execute(request: AddVectorNodeRequest) -> InsertionionResult
 
     Super Class:
         AddChainNode
@@ -49,5 +49,5 @@ class AddVectorNode(AddNode[VectorNode]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddVectorNodeRequest) -> InsertionResult:
+    def execute(self, request: AddVectorNodeRequest) -> InsertionionResult:
         pass

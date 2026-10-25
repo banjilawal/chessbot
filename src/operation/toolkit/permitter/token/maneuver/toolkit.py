@@ -15,7 +15,7 @@ from sensor.analyzer import TokenReadinessAnalyzer
 from bootstrapper import DestinationCertifierBootstrapper
 from operation.crud.search import TokenOriginSearcher
 from operation.toolkit.permitter.token.maneuver.toolkit import PermitterToolkit
-from transit.dispatcher.validator import SquareValidationDispatcher, TokenValidationDispatcher
+from transit.permitter.validator import SquareValidationPermitter, TokenValidationPermitter
 
 @dataclass
 class TokenManeuverToolkit(PermitterToolkit):
@@ -43,8 +43,8 @@ class TokenManeuverToolkit(PermitterToolkit):
     Super Class:
         PermitterToolkit
     """
-    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
-    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
+    token_validator: TokenValidationPermitter = TokenValidationPermitter()
+    square_validator: SquareValidationPermitter = SquareValidationPermitter()
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     destination_certifier: DestinationCertifierBootstrapper = DestinationCertifierBootstrapper()

@@ -16,9 +16,9 @@ from err import TokenNullException
 from microservice import RankService
 from domain.model import Token
 from operation.toolkit.permitter.token.toolkit import PermitterToolkit
-from transit.dispatcher.validator import (
-    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidationDispatcher, NumberValidator,
-    SquareValidationDispatcher, TeamValidationDispatcher
+from transit.permitter.validator import (
+    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidationPermitter, NumberValidator,
+    SquareValidationPermitter, TeamValidationPermitter
 )
 
 
@@ -52,9 +52,9 @@ class ManeuverToolkit(PermitterToolkit):
         Toolkit
     """
     home_detector: TokenHomeDetector = TokenHomeDetector()
-    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
-    coord_validator: CoordValidationDispatcher = CoordValidationDispatcher()
-    team_validator: TeamValidationDispatcher = TeamValidationDispatcher()
+    square_validator: SquareValidationPermitter = SquareValidationPermitter()
+    coord_validator: CoordValidationPermitter = CoordValidationPermitter()
+    team_validator: TeamValidationPermitter = TeamValidationPermitter()
     rank_service: RankService = RankService()
     number_validator: NumberValidator = NumberValidator()
     blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()

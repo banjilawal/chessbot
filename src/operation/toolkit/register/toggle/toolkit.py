@@ -20,7 +20,7 @@ from err import (
 from domain.struct.register import CartesianToggleRegister
 from domain.struct.toggle import CartesianToggle
 from operation.toolkit.register.toggle.toolkit import RegisterToolkit
-from transit.dispatcher.validator import CartesianToggleValidator
+from transit.permitter.validator import CartesianToggleValidator
 
 
 class CartesianToggleRegisterToolkit(RegisterToolkit[CartesianToggle]):

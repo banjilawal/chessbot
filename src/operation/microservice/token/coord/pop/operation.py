@@ -21,7 +21,7 @@ from domain.model.searchable.state import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )
-from transit.dispatcher.validator import TokenValidationDispatcher
+from transit.permitter.validator import TokenValidationPermitter
 
 
 class TokenPositionPopper:
@@ -50,7 +50,7 @@ class TokenPositionPopper:
     def execute(
             cls,
             token: Token,
-            token_validator: TokenValidationDispatcher | None = None,
+            token_validator: TokenValidationPermitter | None = None,
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> DeletionResult[Coord]:
         """

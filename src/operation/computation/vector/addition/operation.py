@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 
-from transit.dispatcher.builder import RegisterBuildDispatcher, CartesianToggleRegisterBuilder
+from transit.permitter.builder import RegisterBuilpermitter, CartesianToggleRegisterBuilder
 from selector import CartesianToggle
 
 from operation.toolkit import CartesianToggleToolkit
@@ -54,7 +54,7 @@ class AddVector(Computation[CartesianToggle]):
         pass
     
     
-    _register_builder: Optional[RegisterBuildDispatcher]
+    _register_builder: Optional[RegisterBuilpermitter]
     _vector_toggle_toolkit: Optional[CartesianToggleToolkit]
     
     def __init__(

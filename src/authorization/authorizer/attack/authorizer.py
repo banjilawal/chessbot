@@ -119,7 +119,7 @@ class AttackAuthorizer(Authorizer[AttackPermissionRequest]):
                 ),
             )
         # Handle the case that the applicant reviewe does not grant actor permission.
-        approved_request = decision.request
+        approved_request = decision.permission_request
         decision = self.applicant_reviewer.execute(approved_request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.

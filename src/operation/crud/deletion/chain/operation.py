@@ -23,8 +23,8 @@ T = TypeVar("T", bound="Node")
 
 class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Remove a Node from a Chain.

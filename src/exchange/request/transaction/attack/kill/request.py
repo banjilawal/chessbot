@@ -1,7 +1,7 @@
-# src/exchange/request/encounter/kill/request.py
+# src/exchange/request/transaction/encounter/kill/request.py
 
 """
-Module: exchange.request.encounter.kill.request
+Module: exchange.request.transaction.encounter.kill.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import CombatantToken, KillEncounter, Maneuver, Square
+from domain import CombatantToken, KillEncounter, Square
 from exchange import AttackRequest, ManeuverRequest
 
 

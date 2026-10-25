@@ -13,4 +13,4 @@ version: 0.0.2
 from .account import *
 
 # Modules
-from .dispatcher import InsertionPermissionDispatcher
+from .dispatcher import PushPermissionDispatcher

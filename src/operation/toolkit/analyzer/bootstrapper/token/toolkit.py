@@ -46,9 +46,9 @@ class TokenToolkit(AnalyzerToolkit):
         Toolkit
     """
     home_square_detector: TokenHomeDetector = TokenHomeDetector()
-    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
-    coord_validator: CoordValidationDispatcher = CoordValidationDispatcher()
-    team_validator: TeamValidationDispatcher = TeamValidationDispatcher()
+    square_validator: SquareValidationPermitter = SquareValidationPermitter()
+    coord_validator: CoordValidationPermitter = CoordValidationPermitter()
+    team_validator: TeamValidationPermitter = TeamValidationPermitter()
     rank_service: RankService = RankService()
     number_validator: NumberValidator = NumberValidator()
     blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()

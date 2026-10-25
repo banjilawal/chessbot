@@ -11,48 +11,38 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import AccountStack
-from domain import Account
-from exchange import ModelPushPermissionRequest
+from exchange import AccountPushRequest, ModelPushPermissionRequest
 
 
-class AccountPushPermissionRequest(ModelPushPermissionRequest[Account]):
+class AccountPushPermissionRequest(ModelPushPermissionRequest[AccountPushRequest]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide job details to an AccountPusher
+        1.  Provides an AccountPushAuthorizer with job details.
 
      Attributes:
          id: int
-         item: Account
-         collection: AccountStack
+         candidate: : AccountPushRequest
 
      Provides:
 
      Super Class:
         ModelPushPermissionRequest
      """
-    _item: Account
-    _collection: AccountStack
     
-    def __init__(self, id: int, item: Account, collection: AccountStack):
+    def __init__(self, id: int, candidate: AccountPushRequest):
         """
         Args:
             id: int
-            item: Account
-            collection: AccountStack
+            candidate: AccountPushRequest
         """
-        super().__init__(id, item=item, collection=collection)
+        super().__init__(id, candidate=candidate)
         
     @property
-    def item(self) -> Account:
-        return cast(Account, super().item)
-    
-    @property
-    def collection(self) -> AccountStack:
-        return cast(AccountStack, super().collection)
+    def candidate(self) -> AccountPushRequest:
+        return cast(AccountPushRequest, super().candidate)
         
     def __eq__(self, other):
         if other is self: return True

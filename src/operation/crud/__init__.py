@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== OPERATION.CRUD PACKAGE ===========#
 
 # Packages
-from .delete import *
-from .insert import *
+from .deletion import *
+from .insertion import *
 from .search import *
 
 # Modules

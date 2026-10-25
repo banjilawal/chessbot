@@ -21,8 +21,8 @@ T = TypeVar("T", bound="Result")
 
 class TokenMicroservice(MicroserviceOperation(Worker, ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Execute a task on a Microservice that produces either an Insertion, Deletion, Update

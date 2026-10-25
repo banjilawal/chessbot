@@ -10,53 +10,45 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from collection import Stack
-from exchange import CrudPermissionRequest, InsertionPermissionRequest
+from exchange import InsertionPermissionRequest
 
 T = TypeVar("T")
 
-class PushPermissionRequest(InsertionPermissionRequest[T], ABC, Generic[T]):
+
+class PushPermissionRequest(
+    InsertionPermissionRequest[T], ABC, Generic[T]
+):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide job details to a StackPusher
+        1.  Provides a PushAuthorizer with job details.
 
      Attributes:
          id: int
-         item: T
-         collection: Stack[T]
+         candidate: : T
 
      Provides:
 
      Super Class:
         InsertionPermissionRequest
      """
-    _item: T
-    _collection: Stack[T]
     
-    def __init__(self, id: int, item: T, collection: Stack[T]):
+    def __init__(self, id: int, candidate: T):
         """
         Args:
             id: int
-            item: T
-            collection: Stack[T]
+            candidate: T
         """
-        super().__init__(id)
-        self._item = item
-        self._collection = collection
-        
-    @property
-    def item(self) -> T:
-        return self._item
+        super().__init__(id, candidate=candidate)
     
     @property
-    def collection(self) -> Stack[T]:
-        return self._collection
-        
+    def candidate(self) -> T:
+        return cast(T, super().candidate)
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

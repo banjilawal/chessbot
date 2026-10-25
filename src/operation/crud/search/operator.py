@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import SearchAuthorizer
+from authorization import SearchPermitter
 from domain import SearchRequest
 from operation import CrudWorker
 from artifcat import SearchResult
@@ -23,14 +23,14 @@ T = TypeVar("T", bound="SearchRequest")
 
 class Search(CrudWorker[T], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Process an SearchRequest.
 
     Attributes:
-        authorizer: SearchAuthorizer[T]
+        permitter: SearchPermitter[T]
 
     Provides:
         -   def execute(self, request: T) -> SearchionResult
@@ -39,16 +39,16 @@ class Search(CrudWorker[T], ABC, Generic[T]):
         CrudOperation
     """
     
-    def __init__(self, authorizer: SearchAuthorizer[T]):
+    def __init__(self, permitter: SearchPermitter[T]):
         """
         Args:
-            authorizer: SearchAuthorizer[T]
+            permitter: SearchPermitter[T]
         """
-        super().__init__(authorizer=authorizer)
+        super().__init__(permitter=permitter)
     
     @property
-    def authorizer(self) -> SearchAuthorizer[T]:
-        return cast(SearchAuthorizer[T], super().authorizer)
+    def permitter(self) -> SearchPermitter[T]:
+        return cast(SearchPermitter[T], super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

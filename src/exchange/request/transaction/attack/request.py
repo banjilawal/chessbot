@@ -1,7 +1,7 @@
-# src/exchange/request/encounter/request.py
+# src/exchange/request/transaction/encounter/request.py
 
 """
-Module: exchange.request.encounter.request
+Module: exchange.request.transaction.encounter.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,11 +14,11 @@ from typing import Generic, TypeVar
 
 from artifcat import AttackResult
 from domain import Encounter, Square, Token
-from exchange import ManeuverRequest, Request
+from exchange import TransactionRequest
 
 T = TypeVar("T", bound="Encounter")
 
-class AttackRequest(Request[AttackResult], ABC, Generic[T]):
+class AttackRequest(TransactionRequest[AttackResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -33,7 +33,7 @@ class AttackRequest(Request[AttackResult], ABC, Generic[T]):
      Provides:
      
      Super Class:
-        Request
+        TransactionRequest
      """
     
     _victim: Token

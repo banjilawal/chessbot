@@ -15,7 +15,7 @@ from microservice import IdentityService, Microservice
 from domain.model import Rank
 from operation.toolkit.model.state.rank.toolkit import StateModelToolkit
 from operation import Worker
-from transit.dispatcher.validator import PrimingValidator
+from transit.permitter.validator import PrimingValidator
 
 
 class RankToolkit(StateModelToolkit[Rank]):

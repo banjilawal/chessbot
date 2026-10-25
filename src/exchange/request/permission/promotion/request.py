@@ -14,17 +14,19 @@ from typing import cast
 from exchange import PermissionRequest, PromotionRequest
 
 
-class PromotionPermissionRequest(PermissionRequest[PromotionRequest]):
+class PromotionPermissionRequest(
+    PermissionRequest[PromotionRequest]
+):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Provides PromotionAuthorizer with a job.
+        1.  Provides a CrudAuthorizer with job details.
 
      Attributes:
-        id: int
-        candidate: PromotionRequest
+         id: int
+         candidate: PromotionRequest
 
      Provides:
 
@@ -41,12 +43,12 @@ class PromotionPermissionRequest(PermissionRequest[PromotionRequest]):
         super().__init__(id=id, candidate=candidate)
     
     @property
-    def candidate(self) -> PromotionRequest:
+    def candidate(self) -> PermissionRequest:
         return cast(PromotionRequest, super().candidate)
-
-    def __eq__(self, other):
+    
+    def __eq__(self, other) -> bool:
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PromotionPermissionRequest):
+        if isinstance(other, PermissionRequest):
             return self.id == other.id
         return False

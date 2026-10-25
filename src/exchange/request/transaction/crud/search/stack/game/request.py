@@ -1,4 +1,4 @@
-# src/exchange/request/transaction/crud/search/stack/game/request.py
+# src/exchange/request/transaction//crud/search/stack/game/request.py
 
 """
 Module: exchange.request.transaction.crud.search.stack.game.request

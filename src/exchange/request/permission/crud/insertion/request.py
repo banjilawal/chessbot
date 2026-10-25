@@ -10,23 +10,26 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from artifcat import InsertionRequest
-from exchange import CrudPermissionRequest
+from exchange import CrudPermissionRequest, InsertionRequest
 
-T = TypeVar("T")
+T = TypeVar("T", bound="InsertionRequest")
 
-class InsertionPermissionRequest(CrudPermissionRequest[InsertionRequest], ABC, Generic[T]):
+
+class InsertionPermissionRequest(
+    CrudPermissionRequest[T], ABC, Generic[T]
+):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide insertion job details.
+        1.  Provides an InsertionAuthorizer with job details.
 
      Attributes:
          id: int
+         candidate: : T
 
      Provides:
 
@@ -34,13 +37,17 @@ class InsertionPermissionRequest(CrudPermissionRequest[InsertionRequest], ABC, G
         CrudPermissionRequest
      """
     
-    def __init__(self, id: int):
+    def __init__(self, id: int, candidate: T):
         """
         Args:
             id: int
+            candidate: T
         """
-        super().__init__(id)
-        
+        super().__init__(id, candidate=candidate)
+    
+    @property
+    def candidate(self) -> T:
+        return cast(T, super().candidate)
     
     def __eq__(self, other):
         if other is self: return True

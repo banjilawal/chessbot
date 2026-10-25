@@ -1,7 +1,7 @@
-# src/exchange/request/maneuver/request.py
+# src/exchange/request/transaction/maneuver/request.py
 
 """
-Module: exchange.request.maneuver.request
+Module: exchange.request.transaction.maneuver.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from artifcat import ManeuverResult
 from domain import Path, Token
-from exchange import Request
+from exchange import TransactionRequest
 
 
-class ManeuverRequest(Request[ManeuverResult]):
+class ManeuverRequest(TransactionRequest[ManeuverResult]):
     """
      Role:
          -  Messaging
@@ -29,7 +29,7 @@ class ManeuverRequest(Request[ManeuverResult]):
      Provides:
      
      Super Class:
-        Request
+        TransactionRequest
      """
     _token: Token
     _path: Path

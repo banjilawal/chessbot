@@ -16,11 +16,11 @@ from err import ManeuverNullException
 from domain.model import Maneuver
 from operation.crud.search import TokenOriginSearcher
 from operation.toolkit.model.state.maneuver.toolkit import StateModelToolkit
-from transit.dispatcher.validator import (
-    ManeuverEndpointValidator, PathValidationDispatcher, SquareValidationDispatcher, TokenDestinationCertifier,
-    TokenValidationDispatcher
+from transit.permitter.validator import (
+    ManeuverEndpointValidator, PathValidationPermitter, SquareValidationPermitter, TokenDestinationCertifier,
+    TokenValidationPermitter
 )
-from transit.dispatcher.validator import TokenOriginCertifier
+from transit.permitter.validator import TokenOriginCertifier
 
 
 class ManeuverToolkit(StateModelToolkit[Maneuver]):
@@ -56,9 +56,9 @@ class ManeuverToolkit(StateModelToolkit[Maneuver]):
        ModelToolkit
     """
     
-    path_validator: PathValidationDispatcher = PathValidationDispatcher()
-    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
-    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
+    path_validator: PathValidationPermitter = PathValidationPermitter()
+    token_validator: TokenValidationPermitter = TokenValidationPermitter()
+    square_validator: SquareValidationPermitter = SquareValidationPermitter()
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()

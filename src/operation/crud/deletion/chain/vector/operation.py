@@ -20,8 +20,8 @@ from util import LoggingLevelRouter
 
 class RemoveVectorNode(RemoveNode[VectorNode]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Add an item to a VectorNodeChain.

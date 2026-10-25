@@ -1,7 +1,7 @@
-# src/operation/crud/insert/stack/operator.py
+# src/operation/crud/insertion/stack/operator.py
 
 """
-Module: operation.crud.insert.stack.operation
+Module: operation.crud.insertion.stack.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,30 +14,30 @@ from typing import Generic, TypeVar, cast
 
 from authorization import StackPushPermitter, StackPushRequest
 from collection import StackService
-from operation import InsertOperation
-from artifcat import InsertionResult
+from operation import InsertionOperation
+from artifcat import InsertionionResult
 from util import LoggingLevelRouter
 
 
 T = TypeVar("T", bound="StateModel")
 
 
-class StackPusher(InsertOperation[StackService], ABC, Generic[T]):
+class StackPusher(InsertionOperation[StackService], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
-        1.  Execute a task on a Collection that produces an InsertionResult.
+        1.  Execute a task on a Collection that produces an InsertionionResult.
 
     Attributes:
         permitter: PushPermitter[T]
         
     Provides:
-        -   def execute(request: InsertionRequest[T]) -> InsertionResult
+        -   def execute(request: InsertionionRequest[T]) -> InsertionionResult
 
     Super Class:
-        InsertionOperation
+        InsertionionOperation
     """
     
     def __init__(self, permitter: StackPushPermitter[T]):
@@ -53,5 +53,5 @@ class StackPusher(InsertOperation[StackService], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: StackPushRequest) -> InsertionResult:
+    def execute(self, request: StackPushRequest) -> InsertionionResult:
         pass

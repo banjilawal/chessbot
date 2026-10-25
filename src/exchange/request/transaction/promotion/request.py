@@ -1,7 +1,7 @@
-# src/exchange/request/promotion/request.py
+# src/exchange/request/transaction/promotion/request.py
 
 """
-Module: exchange.request.promotion.request
+Module: exchange.request.transaction.promotion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,9 +14,10 @@ from typing import cast
 
 from artifcat import PromotionResult
 from domain import Elevatable, PawnToken, Rank
-from exchange import Request
+from exchange import TransactionRequest
 
-class PromotionRequest(Request[PromotionResult]):
+
+class PromotionRequest(TransactionRequest[PromotionResult]):
     """
      Role:
          -  Messaging
@@ -31,7 +32,7 @@ class PromotionRequest(Request[PromotionResult]):
      Provides:
      
      Super Class:
-        Request
+        TransactionRequest
      """
     _applicant: PawnToken
     _elevatable: Elevatable

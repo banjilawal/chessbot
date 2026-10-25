@@ -12,52 +12,43 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ModelStack
-from domain import Model
 from exchange import PushPermissionRequest
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="ModelPushPermissionRequest")
 
-class ModelPushPermissionRequest(PushPermissionRequest[T], ABC, Generic[T]):
+
+class ModelPushPermissionRequest(
+    PushPermissionRequest[T], ABC, Generic[T]
+):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide job details to a ModelStackPusher
+        1.  Provides a ModelPushAuthorizer with job details.
 
      Attributes:
          id: int
-         item: T
-         collection: ModelStack[T]
+         candidate: : T
 
      Provides:
 
      Super Class:
         PushPermissionRequest
      """
-    _item: T
-    _collection: ModelStack[T]
     
-    def __init__(self, id: int, item: T, collection: ModelStack[T]):
+    def __init__(self, id: int, candidate: T):
         """
         Args:
             id: int
-            item: T
-            collection: ModelStack[T]
+            candidate: T
         """
-        super().__init__(id)
-        self._item = item
-        self._collection = collection
-        
-    @property
-    def item(self) -> T:
-        return cast(T, super().item)
+        super().__init__(id, candidate=candidate)
     
     @property
-    def collection(self) -> ModelStack[T]:
-        return cast(ModelStack[T], super().collection)
-        
+    def candidate(self) -> T:
+        return cast(T, super().candidate)
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

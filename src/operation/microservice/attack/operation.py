@@ -18,7 +18,7 @@ from operation import ManeuverLauncher
 from artifcat.report import AttackApproval, ManeuverApproval
 from artifcat import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
-from transit.dispatcher.validator import PrimingValidator
+from transit.permitter.validator import PrimingValidator
 
 
 class LaunchAttack:

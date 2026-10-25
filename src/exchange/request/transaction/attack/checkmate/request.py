@@ -1,7 +1,7 @@
-# src/exchange/request/encounter/checkmate/request.py
+# src/exchange/request/transaction/encounter/checkmate/request.py
 
 """
-Module: exchange.request.encounter.checkmate.request
+Module: exchange.request.transaction.encounter.checkmate.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

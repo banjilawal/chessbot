@@ -1,7 +1,7 @@
-# src/operation/crud/insert/chain/operator.py
+# src/operation/crud/insertion/chain/operator.py
 
 """
-Module: operation.crud.insert.chain.operation
+Module: operation.crud.insertion.chain.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,17 +14,17 @@ from typing import Generic, TypeVar, cast
 
 from authorization import AddNodeRequest
 from collection import Chain
-from operation import InsertOperation
-from artifcat import InsertionResult
+from operation import InsertionOperation
+from artifcat import InsertionionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
 
-class AddNode(InsertOperation[Chain], ABC, Generic[T]):
+class AddNode(InsertionOperation[Chain], ABC, Generic[T]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Add a node to a Chain.
@@ -33,10 +33,10 @@ class AddNode(InsertOperation[Chain], ABC, Generic[T]):
         permitter: AddNodePermitter[T]
 
     Provides:
-        -   def execute(request: AddNodeRequest) -> InsertionResult
+        -   def execute(request: AddNodeRequest) -> InsertionionResult
 
     Super Class:
-        InsertionOperation
+        InsertionionOperation
     """
     
     def __init__(self, permitter: AddNodePermitter[T]):
@@ -52,5 +52,5 @@ class AddNode(InsertOperation[Chain], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddNodeRequest) -> InsertionResult:
+    def execute(self, request: AddNodeRequest) -> InsertionionResult:
         pass

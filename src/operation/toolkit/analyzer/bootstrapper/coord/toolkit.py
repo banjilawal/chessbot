@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from sensor.analyzer import Coord
 from operation.toolkit.analyzer.bootstrapper.coord.toolkit import AnalyzerBootstrapperToolkit
-from transit.dispatcher.validator import NumberValidator, PrimingValidator
+from transit.permitter.validator import NumberValidator, PrimingValidator
 
 
 @dataclass

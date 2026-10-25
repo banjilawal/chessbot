@@ -9,16 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import Decision
 from exchange import AccountPushPermissionRequest
-from transit import InsertionPermissionDispatcher
+from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
 
 class AccountPushPermissionDispatcher(
-    InsertionPermissionDispatcher[AccountPushPermissionRequest]
+    PushPermissionDispatcher[AccountPushPermissionRequest]
 ):
     """
     Role
@@ -55,7 +55,7 @@ class AccountPushPermissionDispatcher(
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushPermissionRequest ) -> Decision:
         """
-        Forward a job to a AccountCrudAuthorizer then deliver the result.
+        Forward a job to a AccountPushAuthorizer then deliver the result.
 
         Action:
             1.  Send an exception chain in the CrudRequest if the crudAuthorizer cannot

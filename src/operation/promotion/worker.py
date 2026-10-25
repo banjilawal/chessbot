@@ -20,15 +20,15 @@ from util import IdFactory, LoggingLevelRouter
 
 class Promoter(Worker[PromotionResult]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces either an Promotion, Deletion, Update
             or Search Result.
 
     Attributes:
-        authorization_responder: PromotionAuthorizationResponder
+        permitter: PromotionAuthorizationResponder
         
     Provides:
         -   def execute(request: PromotionRequest) -> PromotionResult
@@ -40,26 +40,26 @@ class Promoter(Worker[PromotionResult]):
     
     def __init__(
             self,
-            authorization_responder: Optional[PromotionAuthorizationResponder] | None = None,
+            permitter: Optional[PromotionAuthorizationResponder] | None = None,
     ):
         """
         Args:
-            authorization_responder: Optional[PromotionAuthorizationResponder]
+            permitter: Optional[PromotionAuthorizationResponder]
         """
         super().__init__(
-            authorization_responder=authorization_responder or PromotionAuthorizationResponder()
+            permitter=permitter or PromotionAuthorizationResponder()
         )
         
     @property
-    def authorization_responder(self) -> PromotionAuthorizationResponder:
-        return cast(PromotionAuthorizationResponder, super().authorization_responder)
+    def permitter(self) -> PromotionAuthorizationResponder:
+        return cast(PromotionAuthorizationResponder, super().permitter)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionResult:
         method = f"{self.__class__.__name__}.execute"
         
-        decision = self.authorization_responder.execute(
+        decision = self.permitter.execute(
             PromotionPermissionRequest(
                 candidate=request,
                 id=IdFactory.next_id(class_name="PromotionPermissionRequest")

@@ -1,4 +1,4 @@
-# src/exchange/request/transaction/crud/search/stack/arena/__init__.py
+# src/exchange/request/transaction//crud/search/stack/arena/__init__.py
 
 """
 Module: exchange.request.transaction.crud.search.stack.arena.__init__

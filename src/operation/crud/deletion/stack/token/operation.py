@@ -22,8 +22,8 @@ from util import LoggingLevelRouter
 
 class TokenStackPop(StackPop[Token]):
     """
-    Role
-        - Worker
+    Role:
+        -   Transaction Worker
 
     Responsibilities:
         1.  Add an item to the TokenStackService

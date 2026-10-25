@@ -78,7 +78,7 @@ class CheckmateEncounterDispatcher(EncounterDispatcher[CheckmateRequest]):
                     ex=decision.exception,
                 )
             )
-        approved_request = decision.request
+        approved_request = decision.permission_request
         # --- Prepare an approval from the completed chain. ---#
         approval = CheckmateRequest(
             id=approved_request.id,

@@ -14,11 +14,11 @@ __all__ = [
     "AttackException",
 ]
 
-from system import OperationException
+from system import WorkerException
 
 
 # ======================# ATTACK_FAILURE #======================#
-class AttackException(OperationException):
+class AttackException(WorkerException):
     """
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 

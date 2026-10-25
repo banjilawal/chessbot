@@ -13,9 +13,9 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
-from exchange import PermissionRequest
+from exchange import PermissionRequest, TransactionRequest
 
-T = TypeVar("T", bound="PermissionRequest")
+T = TypeVar("T", bound="TransactionRequest")
 
 class Decision(ABC, Generic[T]):
     """
@@ -26,46 +26,62 @@ class Decision(ABC, Generic[T]):
         1.  Report if an action is permitted.
         
     Attributes:
-        transaction_request: T
+        permission_request: PermissionRequest[T]
         permission: Permission
+        approval: Optional[T]
         exception: Optional[Exception]
         
         is_granted: bool
         is_denied: bool
         
     Provides:
-        -   def grant(cls, request: T) -> Decision[T]:
-        -   def deny(exception: Exception) -> Exception
+        -   def grant(
+                    approval: T,
+                    permission_request: PermissionRequest[T],
+            ) -> Decision[T]
+            
+        -   def denial(
+                    permission_request: PermissionRequest[T],
+                    exception: Exception,
+            ) -> Decision[T]
 
     Super Class:
     """
-    _transaction_request: T
+    _permission_request: PermissionRequest[T]
     _permission: Permission
     _exception: Optional[Exception]
+    _approval: Optional[TransactionRequest]
   
     def __init__(
             self,
-            transaction_request: T,
             permission: Permission,
+            permission_request: PermissionRequest[T],
             exception: Optional[Exception] | None = None,
+            approval: Optional[TransactionRequest] | None = None,
     ):
         """
         Args:
-            transaction_request: T
             permission: Permission
+            permission_request: PermissionRequest
             exception: Optional[Exception]
+            approval: Optional[TransactionRequest]
         """
-        self._transaction_request = transaction_request
+        self._approval = approval
         self._exception = exception
         self._permission = permission
+        self._permission_request = permission_request
     
     @property
-    def transaction_request(self) -> T:
-        return self._transaction_request
+    def permission_request(self) -> PermissionRequest[T]:
+        return self._permission_request
         
     @property
     def permission(self) -> Permission:
         return self._permission
+    
+    @property
+    def approval(self) -> Optional[T]:
+        return 
     
     @property
     def exception(self) -> Optional[Exception]:
@@ -75,7 +91,7 @@ class Decision(ABC, Generic[T]):
     def request_is_granted(self) -> bool:
         return (
                 self._exception is None and
-                self._transaction_request is not None and
+                self._approval is not None and
                 self._permission == Permission.GRANTED
         )
     
@@ -84,23 +100,18 @@ class Decision(ABC, Generic[T]):
         return not self.request_is_granted
     
     @classmethod
-    def grant(cls, request: T) -> Decision[T]:
-        return cls(transaction_request=request, permission=Permission.GRANTED)
+    def grant(cls, approval: T, permission_request: PermissionRequest[T]) -> Decision[T]:
+        return cls(
+            approval=approval, 
+            permission_request=permission_request, 
+            permission=Permission.GRANTED,
+        )
     
     @classmethod
-    def denial(cls, request: T, exception: Exception) -> Decision[T]:
+    def denial(cls, permission_request: PermissionRequest[T], exception: Exception) -> Decision[T]:
         return cls(
-            transaction_request=request,
             exception=exception,
+            permission_request=permission_request,
             permission=Permission.DENIED,
         )
-    
-    @classmethod
-    def timed_out(cls, request: T, exception: Exception) -> Decision[T]:
-        return cls(
-            transaction_request=request,
-            exception=exception,
-            permission=Permission.TIMED_OUT,
-        )
-    
     

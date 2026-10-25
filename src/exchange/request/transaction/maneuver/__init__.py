@@ -1,13 +1,13 @@
-# src/exchange/request/maneuver/__init__.py
+# src/exchange/request/transaction/maneuver/__init__.py
 
 """
-Module: exchange.request.maneuver.__init__
+Module: exchange.request.transaction.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.REQUEST.MANEUVER PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.TRANSACTION.MANEUVER PACKAGE ===========#
 
 # Packages
 

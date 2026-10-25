@@ -12,7 +12,7 @@ from __future__ import annotations
 from microservice import IdentityService
 from sensor.analyzer import Team
 from operation.toolkit.analyzer.bootstrapper.team.toolkit import AnalyzerBootstrapperToolkit
-from transit.dispatcher.validator import BoardValidationDispatcher, PlayerValidationDispatcher, PrimingValidator
+from transit.permitter.validator import BoardValidationPermitter, PlayerValidationPermitter, PrimingValidator
 
 
 class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
@@ -41,13 +41,13 @@ class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
         Toolkit
     """
     DEPENDENCIES = [
-        BoardValidationDispatcher,
-        PlayerValidationDispatcher,
+        BoardValidationPermitter,
+        PlayerValidationPermitter,
         PrimingValidator
     ]
     SERVICE_DEPENDENCIES = [ IdentityService, ]
     
-    board_validator: BoardValidationDispatcher = BoardValidationDispatcher()
+    board_validator: BoardValidationPermitter = BoardValidationPermitter()
     identity_service: IdentityService = IdentityService()
-    player_validator: PlayerValidationDispatcher = PlayerValidationDispatcher()
+    player_validator: PlayerValidationPermitter = PlayerValidationPermitter()
     priming_validator: PrimingValidator = PrimingValidator()

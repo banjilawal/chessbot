@@ -27,25 +27,25 @@ class Worker(ABC, Generic[T]):
         1.  Executes a TransactionRequest
 
     Attributes:
-        authorization_responder: AuthorizationResponder[T]
+        permitter: AuthorizationResponder[T]
         
     Provides:
         -   def execute(request: Request[T]) -> T
 
     Super Class:
     """
-    _authorization_responder: AuthorizationResponder
+    _permitter: AuthorizationResponder
     
-    def __init__(self, authorization_responder: AuthorizationResponder):
+    def __init__(self, permitter: AuthorizationResponder):
         """
         Args:
-            authorization_responder: AuthorizationResponder
+            permitter: AuthorizationResponder
         """
-        self._authorization_responder = authorization_responder
+        self._permitter = permitter
         
     @property
-    def authorization_responder(self) -> AuthorizationResponder:
-        return self._authorization_responder
+    def permitter(self) -> AuthorizationResponder:
+        return self._permitter
     
     
     @abstractmethod
@@ -57,6 +57,6 @@ class Worker(ABC, Generic[T]):
         Result:
             T
         Raises:
-            OperationException
+            WorkerException
         """
         pass

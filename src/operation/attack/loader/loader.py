@@ -23,22 +23,22 @@ class AttackLoader(Worker[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            authorization_responder: Optional[AttackAuthorizationResponder] | None = None,
+            permitter: Optional[AttackAuthorizationResponder] | None = None,
     ):
         """
         Args:
-            authorization_responder: Optional[AttackAuthorizationResponder]
+            permitter: Optional[AttackAuthorizationResponder]
         """
-        super().__init__(authorization_responder=authorization_responder or AttackAuthorizationResponder())
+        super().__init__(permitter=permitter or AttackAuthorizationResponder())
         
     @property
-    def authorization_responder(self) -> AttackAuthorizationResponder:
-        return cast(AttackAuthorizationResponder, super().authorization_responder)
+    def permitter(self) -> AttackAuthorizationResponder:
+        return cast(AttackAuthorizationResponder, super().permitter)
         
     @property
     def execute(self, request: AttackRequest) -> AttackResult:
         method = f"{self.__class__.__name__}.execute"
-        decision = self.authorization_responder.execute(
+        decision = self.permitter.execute(
             AttackPermissionRequest(candidate=request)
         )
         if decision.request_is_denied:

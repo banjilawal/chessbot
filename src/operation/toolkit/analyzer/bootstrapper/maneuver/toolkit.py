@@ -18,11 +18,11 @@ from sensor.analyzer import Maneuver
 from operation import Worker
 from operation.crud.search import TokenOriginSearcher
 from operation.toolkit.analyzer.bootstrapper.maneuver.toolkit import AnalyzerBootstrapperToolkit
-from transit.dispatcher.validator import (
-    ManeuverEndpointValidator, PathValidationDispatcher, SquareValidationDispatcher, TokenDestinationCertifier,
-    TokenValidationDispatcher
+from transit.permitter.validator import (
+    ManeuverEndpointValidator, PathValidationPermitter, SquareValidationPermitter, TokenDestinationCertifier,
+    TokenValidationPermitter
 )
-from transit.dispatcher.validator import TokenOriginCertifier
+from transit.permitter.validator import TokenOriginCertifier
 
 
 class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
@@ -61,9 +61,9 @@ class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
     DEPENDENCIES: List[Worker] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
     
-    path_validator: PathValidationDispatcher = PathValidationDispatcher()
-    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
-    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
+    path_validator: PathValidationPermitter = PathValidationPermitter()
+    token_validator: TokenValidationPermitter = TokenValidationPermitter()
+    square_validator: SquareValidationPermitter = SquareValidationPermitter()
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()

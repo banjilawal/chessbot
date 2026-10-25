@@ -16,7 +16,7 @@ from domain.metadata.blueprint import VectorBlueprint
 
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 from domain.model import Vector
-from transit.dispatcher.validator import NumberValidator
+from transit.permitter.validator import NumberValidator
 from operation.toolkit import ModelToolkit
 from transit.carrier import VectorCarrier
 

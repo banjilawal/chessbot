@@ -1,7 +1,7 @@
-# src/exchange/request/encounter/warning/request.py
+# src/exchange/request/transaction/encounter/warning/request.py
 
 """
-Module: exchange.request.encounter.warning.request
+Module: exchange.request.transaction.encounter.warning.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

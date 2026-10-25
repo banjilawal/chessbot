@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from microservice import IdentityService
-from transit.dispatcher.validator import PrimingValidator
+from transit.permitter.validator import PrimingValidator
 
 
 class Toolkit:

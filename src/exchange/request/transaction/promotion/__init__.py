@@ -1,13 +1,13 @@
-# src/exchange/request/promotion/__init__.py
+# src/exchange/request/transaction/promotion/__init__.py
 
 """
-Module: exchange.request.promotion.__init__
+Module: exchange.request.transaction.promotion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.REQUEST.PROMOTION PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.TRANSACTION.PROMOTION PACKAGE ===========#
 
 # Packages
 

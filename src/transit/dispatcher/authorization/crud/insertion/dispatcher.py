@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 
 TypeVar = ("T")
 
-class InsertionPermissionDispatcher(
+class PushPermissionDispatcher(
     CrudPermissionDispatcher[PushPermissionRequest], ABC, Generic[T]
 ):
     """
