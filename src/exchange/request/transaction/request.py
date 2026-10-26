@@ -1,4 +1,4 @@
-# src/exchange/request/transaction//request.py
+# src/exchange/request/transaction/request.py
 
 """
 Module: exchange.request.transaction.equest

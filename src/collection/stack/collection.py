@@ -12,12 +12,13 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Iterator, List, Optional, TypeVar
 
-from collection import DataStructure
+from artifcat import DeletionResult, InsertionResult, SearchResult
+from collection import DataStruct
 
 T = TypeVar("T")
 
 
-class Stack(DataStructure, ABC, Generic[T]):
+class Stack(DataStruct, ABC, Generic[T]):
     """
     Role:
         -   Collection
@@ -59,7 +60,19 @@ class Stack(DataStructure, ABC, Generic[T]):
         return not self.is_empty
     
     @property
-    def pusher
+    @abstractmethod
+    def push(self) -> InsertionResult:
+        pass
+    
+    @property
+    @abstractmethod
+    def search(self) -> SearchResult[List[T]]:
+        pass
+    
+    @property
+    @abstractmethod
+    def pop(self) -> DeletionResult[T]:
+        pass
     
     @property
     @abstractmethod

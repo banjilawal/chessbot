@@ -1,4 +1,4 @@
-# src/exchange/request/transaction//crud/search/request.py
+# src/exchange/request/transaction/crud/search/request.py
 
 """
 Module: exchange.request.transaction.crud.search.request
@@ -10,15 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar
 
-from collection import ExchangeObjectCollection
-from exchange import CrudRequest, ExchangeDataObject, Context
 from artifcat import SearchResult
+from collection import DataStruct
+from domain import Context
+from exchange import CrudRequest
 
-
-T = TypeVar("T", bound="ExchangeDataObject")
-
+T = TypeVar("T")
 
 class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
     """
@@ -26,38 +25,48 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
          -  Messaging
 
      Responsibilities:
-         1.  Transport information during the CrudOperation lifecycle.
+         1. Provide search job details.
 
      Attributes:
-         id: int
-         context: Context[T]
-         collection: ExchangeObjectCollection[T]
+        context: Context[T]
+        collection: DataStruct[T]
 
      Provides:
-     
+
      Super Class:
         CrudRequest
      """
-    _context: Context[T]
     
-    def __init__(self, id: int, context: Context[T], collection: ExchangeObjectCollection[T]):
+    _context: Context[T]
+    _collection: DataStruct[T]
+    
+    def __init__(
+            self,
+            id: int,
+            context: Context[T],
+            collection: DataStruct[T],
+    ):
         """
         Args:
             id: int
             context: Context[T]
-            collection: ExchangeObjectCollection[T]
+            collection: DataStruct[T]
         """
-        super().__init__(id=id, collection=collection)
+        super().__init__(id)
         self._context = context
-    
+        self._collection = collection
+        
     @property
     def context(self) -> Context[T]:
-        return self._context
+        return  self._context
+    
+    @property
+    def collection(self) -> DataStruct[T]:
+        return self._collection
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, SearchRequest):
-            request = cast(SearchRequest, other)
-            return self.id == request.id
+            return self.id == other.id
         return False

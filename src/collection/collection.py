@@ -16,7 +16,7 @@ from domain import DomainDataObject
 
 T = TypeVar("T")
 
-class DataStructure(ABC, Generic[T]):
+class DataStruct(ABC, Generic[T]):
     """
     Role:
         -   Collection

@@ -1,4 +1,4 @@
-# src/collection/stack//model/collection.py
+# src/collection/stack/model/collection.py
 
 """
 Module: collection.stack.model.collection
@@ -34,3 +34,43 @@ class ModelStack(Stack, ABC, Generic[T]):
     Super Class:
         Stack
     """
+    
+    def __init__(self, items: Optional[List[T]] | None = None):
+        self._items = items or []
+        super().__init__()
+    
+    @property
+    def items(self) -> List[T]:
+        return self._items
+    
+    @property
+    def size(self) -> int:
+        return len(self._items)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_not_empty(self) -> bool:
+        return not self.is_empty
+    
+    @property
+    @abstractmethod
+    def push(self) -> InsertionResult:
+        pass
+    
+    @property
+    @abstractmethod
+    def search(self) -> SearchResult[List[T]]:
+        pass
+    
+    @property
+    @abstractmethod
+    def pop(self) -> DeletionResult[T]:
+        pass
+    
+    @property
+    @abstractmethod
+    def iterator(self) -> Iterator[T]:
+        pass

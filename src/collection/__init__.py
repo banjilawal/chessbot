@@ -17,4 +17,4 @@ from .stack import *
 from .tree import *
 
 # Modules
-from .collection import DataStructure
+from .collection import DataStruct

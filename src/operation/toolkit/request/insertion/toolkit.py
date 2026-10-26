@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Generic, Type, TypeVar, cast
 
-from collection import DataStructure
+from collection import DataStruct
 from err import CollectionNullException, RequestNullException
 from artifcat import InsertionResult
 from operation.toolkit import PermissionRuleset
 
-T = TypeVar("T", bound="DataStructure")
+T = TypeVar("T", bound="DataStruct")
 
 
 class InsertPermissionRuleset(PermissionRuleset[InsertionResult], Generic[T]):
@@ -44,7 +44,7 @@ class InsertPermissionRuleset(PermissionRuleset[InsertionResult], Generic[T]):
        Toolkit
     """
     _request_type: Type[T]
-    _collection_type: Type[DataStructure]
+    _collection_type: Type[DataStruct]
     _request_null_exception: RequestNullException
     _collection_null_exception: CollectionNullException
     
@@ -52,7 +52,7 @@ class InsertPermissionRuleset(PermissionRuleset[InsertionResult], Generic[T]):
     def __init__(
             self,
             request_type: Type[T],
-            collection_type: Type[DataStructure],
+            collection_type: Type[DataStruct],
             request_null_exception: RequestNullException,
             collection_null_exception: CollectionNullException,
     ):
@@ -65,7 +65,7 @@ class InsertPermissionRuleset(PermissionRuleset[InsertionResult], Generic[T]):
         return self._request_type
     
     @property
-    def collection_type(self) -> Type[DataStructure]:
+    def collection_type(self) -> Type[DataStruct]:
         return self._collection_type
     
     @property

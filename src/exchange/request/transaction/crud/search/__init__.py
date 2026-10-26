@@ -1,4 +1,4 @@
-# src/exchange/request/transaction//crud/search/__init__.py
+# src/exchange/request/transaction/crud/search/__init__.py
 
 """
 Module: exchange.request.transaction.crud.search.__init__
@@ -10,8 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.TRANSACTION.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
-from .chain import *
-from .stack import *
+from .model import *
 
 # Modules
 from .request import SearchRequest
