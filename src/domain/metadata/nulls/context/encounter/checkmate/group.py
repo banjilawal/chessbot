@@ -27,7 +27,7 @@ class CheckmateEncounterContextNullGroup(EncounterContextNullGroup[CheckmateEnco
         1. Catalog of ContextNullExceptions associated with a CheckmateEncounter's integrity cycle.
 
     Attributes:
-        context: CheckmateEncounterContextNullException
+        model: CheckmateEncounterContextNullException
         carrier: CheckmateEncounterContextCarrierNullException
         blueprint: CheckmateEncounterContextBlueprintNullException
 
@@ -39,13 +39,13 @@ class CheckmateEncounterContextNullGroup(EncounterContextNullGroup[CheckmateEnco
     
     def __init__(
             self,
-            context: Optional[CheckmateEncounterContextNullException] | None = None,
+            model: Optional[CheckmateEncounterContextNullException] | None = None,
             carrier: Optional[CheckmateEncounterContextCarrierNullException] | None = None,
             blueprint: Optional[CheckmateEncounterContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[CheckmateEncounterContextNullException]
+            model: Optional[CheckmateEncounterContextNullException]
             carrier: Optional[CheckmateEncounterContextCarrierNullException]
             blueprint: Optional[CheckmateEncounterContextBlueprintNullException]
         """
@@ -56,8 +56,8 @@ class CheckmateEncounterContextNullGroup(EncounterContextNullGroup[CheckmateEnco
         )
         
     @property
-    def context(self) -> CheckmateEncounterContextNullException:
-        return cast(CheckmateEncounterContextNullException, super().context)
+    def model(self) -> CheckmateEncounterContextNullException:
+        return cast(CheckmateEncounterContextNullException, super().model)
     
     @property
     def carrier(self) -> CheckmateEncounterContextCarrierNullException:

@@ -28,7 +28,7 @@ class AccountContextNullGroup(ContextNullGroup[T], Generic[TContext]):
         1. Catalog of ContextNullExceptions associated with a Account's integrity cycle.
 
     Attributes:
-        context: AccountContextNullException
+        model: AccountContextNullException
         carrier: AccountContextCarrierNullException
         blueprint: AccountContextBlueprintNullException
 
@@ -40,25 +40,25 @@ class AccountContextNullGroup(ContextNullGroup[T], Generic[TContext]):
     
     def __init__(
             self,
-            context: Optional[AccountContextNullException] | None = None,
+            model: Optional[AccountContextNullException] | None = None,
             carrier: Optional[AccountContextCarrierNullException] | None = None,
             blueprint: Optional[AccountContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[AccountContextNullException]
+            model: Optional[AccountContextNullException]
             carrier: Optional[AccountContextCarrierNullException]
             blueprint: Optional[AccountContextBlueprintNullException]
         """
         super().__init__(
-            context = context or AccountContextNullException(),
-            carrier = carrier or AccountContextCarrierNullException(),
-            blueprint = blueprint or AccountContextBlueprintNullException(),
+            model=model or AccountContextNullException(),
+            carrier=carrier or AccountContextCarrierNullException(),
+            blueprint=blueprint or AccountContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> AccountContextNullException:
-        return cast(AccountContextNullException, super().context)
+    def model(self) -> AccountContextNullException:
+        return cast(AccountContextNullException, super().model)
     
     @property
     def carrier(self) -> AccountContextCarrierNullException:

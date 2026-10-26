@@ -26,7 +26,7 @@ class ManeuverContextNullGroup(ContextNullGroup[ManeuverContext]):
         1. Catalog of ContextNullExceptions associated with a Maneuver's integrity cycle.
 
     Attributes:
-        context: ManeuverContextNullException
+        model: ManeuverContextNullException
         carrier: ManeuverContextCarrierNullException
         blueprint: ManeuverContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class ManeuverContextNullGroup(ContextNullGroup[ManeuverContext]):
     
     def __init__(
             self,
-            context: Optional[ManeuverContextNullException] | None = None,
+            model: Optional[ManeuverContextNullException] | None = None,
             carrier: Optional[ManeuverContextCarrierNullException] | None = None,
             blueprint: Optional[ManeuverContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[ManeuverContextNullException]
+            model: Optional[ManeuverContextNullException]
             carrier: Optional[ManeuverContextCarrierNullException]
             blueprint: Optional[ManeuverContextBlueprintNullException]
         """
         super().__init__(
-            context = context or ManeuverContextNullException(),
-            carrier = carrier or ManeuverContextCarrierNullException(),
-            blueprint = blueprint or ManeuverContextBlueprintNullException(),
+            model=model or ManeuverContextNullException(),
+            carrier=carrier or ManeuverContextCarrierNullException(),
+            blueprint=blueprint or ManeuverContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> ManeuverContextNullException:
-        return cast(ManeuverContextNullException, super().context)
+    def model(self) -> ManeuverContextNullException:
+        return cast(ManeuverContextNullException, super().model)
     
     @property
     def carrier(self) -> ManeuverContextCarrierNullException:

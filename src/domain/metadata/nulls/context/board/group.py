@@ -26,7 +26,7 @@ class BoardContextNullGroup(ContextNullGroup[BoardContext]):
         1. Catalog of ContextNullExceptions associated with an Board's integrity cycle.
 
     Attributes:
-        context: BoardContextNullException
+        model: BoardContextNullException
         carrier: BoardContextCarrierNullException
         blueprint: BoardContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class BoardContextNullGroup(ContextNullGroup[BoardContext]):
     
     def __init__(
             self,
-            context: Optional[BoardContextNullException] | None = None,
+            model: Optional[BoardContextNullException] | None = None,
             carrier: Optional[BoardContextCarrierNullException] | None = None,
             blueprint: Optional[BoardContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[BoardContextNullException]
+            model: Optional[BoardContextNullException]
             carrier: Optional[BoardContextCarrierNullException]
             blueprint: Optional[BoardContextBlueprintNullException]
         """
         super().__init__(
-            context = context or BoardContextNullException(),
-            carrier = carrier or BoardContextCarrierNullException(),
-            blueprint = blueprint or BoardContextBlueprintNullException(),
+            model=model or BoardContextNullException(),
+            carrier=carrier or BoardContextCarrierNullException(),
+            blueprint=blueprint or BoardContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> BoardContextNullException:
-        return cast(BoardContextNullException, super().context)
+    def model(self) -> BoardContextNullException:
+        return cast(BoardContextNullException, super().model)
     
     @property
     def carrier(self) -> BoardContextCarrierNullException:

@@ -26,7 +26,7 @@ class PathContextNullGroup(ContextNullGroup[PathContext]):
         1. Catalog of ContextNullExceptions associated with a Path's integrity cycle.
 
     Attributes:
-        context: PathContextNullException
+        model: PathContextNullException
         carrier: PathContextCarrierNullException
         blueprint: PathContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class PathContextNullGroup(ContextNullGroup[PathContext]):
     
     def __init__(
             self,
-            context: Optional[PathContextNullException] | None = None,
+            model: Optional[PathContextNullException] | None = None,
             carrier: Optional[PathContextCarrierNullException] | None = None,
             blueprint: Optional[PathContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[PathContextNullException]
+            model: Optional[PathContextNullException]
             carrier: Optional[PathContextCarrierNullException]
             blueprint: Optional[PathContextBlueprintNullException]
         """
         super().__init__(
-            context = context or PathContextNullException(),
-            carrier = carrier or PathContextCarrierNullException(),
-            blueprint = blueprint or PathContextBlueprintNullException(),
+            model=model or PathContextNullException(),
+            carrier=carrier or PathContextCarrierNullException(),
+            blueprint=blueprint or PathContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> PathContextNullException:
-        return cast(PathContextNullException, super().context)
+    def model(self) -> PathContextNullException:
+        return cast(PathContextNullException, super().model)
     
     @property
     def carrier(self) -> PathContextCarrierNullException:

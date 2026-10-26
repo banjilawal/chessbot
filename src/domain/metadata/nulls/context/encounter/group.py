@@ -29,7 +29,7 @@ class EncounterContextNullGroup(ContextNullGroup[T], Generic[TContext]):
         1. Catalog of ContextNullExceptions associated with an Encounter's integrity cycle.
 
     Attributes:
-        context: EncounterContextNullException
+        model: EncounterContextNullException
         carrier: AttackContextCarrierNullException
         blueprint: AttackContextBlueprintNullException
 
@@ -41,25 +41,25 @@ class EncounterContextNullGroup(ContextNullGroup[T], Generic[TContext]):
     
     def __init__(
             self,
-            context: Optional[EncounterContextNullException] | None = None,
+            model: Optional[EncounterContextNullException] | None = None,
             carrier: Optional[EncounterContextCarrierNullException] | None = None,
             blueprint: Optional[EncounterContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[EncounterContextNullException]
+            model: Optional[EncounterContextNullException]
             carrier: Optional[AttackContextCarrierNullException]
             blueprint: Optional[AttackContextBlueprintNullException]
         """
         super().__init__(
-            context = context or EncounterContextNullException(),
+            model=model or EncounterContextNullException(),
             carrier =carrier or EncounterContextCarrierNullException(),
             blueprint =blueprint or EncounterContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> EncounterContextNullException:
-        return cast(EncounterContextNullException, super().context)
+    def model(self) -> EncounterContextNullException:
+        return cast(EncounterContextNullException, super().model)
     
     @property
     def carrier(self) -> EncounterContextCarrierNullException:

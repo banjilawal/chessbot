@@ -24,7 +24,7 @@ class HumanAccountContextNullGroup(AccountContextNullGroup[HumanAccountContext])
         1. Catalog of ContextNullExceptions associated with a HumanAccount's integrity cycle.
 
     Attributes:
-        context: HumanContextNullException
+        model: HumanContextNullException
         carrier: HumanContextCarrierNullException
         blueprint: HumanContextBlueprintNullException
 
@@ -36,25 +36,25 @@ class HumanAccountContextNullGroup(AccountContextNullGroup[HumanAccountContext])
     
     def __init__(
             self,
-            context: Optional[HumanContextNullException] | None = None,
+            model: Optional[HumanContextNullException] | None = None,
             carrier: Optional[HumanContextCarrierNullException] | None = None,
             blueprint: Optional[HumanContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[HumanContextNullException]
+            model: Optional[HumanContextNullException]
             carrier: Optional[HumanContextCarrierNullException]
             blueprint: Optional[HumanContextBlueprintNullException]
         """
         super().__init__(
-            context = context or HumanContextNullException(),
-            carrier = carrier or HumanContextCarrierNullException(),
-            blueprint = blueprint or HumanContextBlueprintNullException(),
+            model=model or HumanContextNullException(),
+            carrier=carrier or HumanContextCarrierNullException(),
+            blueprint=blueprint or HumanContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> HumanContextNullException:
-        return cast(HumanContextNullException, super().context)
+    def model(self) -> HumanContextNullException:
+        return cast(HumanContextNullException, super().model)
     
     @property
     def carrier(self) -> HumanContextCarrierNullException:

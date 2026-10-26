@@ -26,7 +26,7 @@ class GameContextNullGroup(ContextNullGroup[GameContext]):
         1. Catalog of ContextNullExceptions associated with a Game's integrity cycle.
 
     Attributes:
-        context: GameContextNullException
+        model: GameContextNullException
         carrier: GameContextCarrierNullException
         blueprint: GameContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class GameContextNullGroup(ContextNullGroup[GameContext]):
     
     def __init__(
             self,
-            context: Optional[GameContextNullException] | None = None,
+            model: Optional[GameContextNullException] | None = None,
             carrier: Optional[GameContextCarrierNullException] | None = None,
             blueprint: Optional[GameContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[GameContextNullException]
+            model: Optional[GameContextNullException]
             carrier: Optional[GameContextCarrierNullException]
             blueprint: Optional[GameContextBlueprintNullException]
         """
         super().__init__(
-            context = context or GameContextNullException(),
-            carrier = carrier or GameContextCarrierNullException(),
-            blueprint = blueprint or GameContextBlueprintNullException(),
+            model=model or GameContextNullException(),
+            carrier=carrier or GameContextCarrierNullException(),
+            blueprint=blueprint or GameContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> GameContextNullException:
-        return cast(GameContextNullException, super().context)
+    def model(self) -> GameContextNullException:
+        return cast(GameContextNullException, super().model)
     
     @property
     def carrier(self) -> GameContextCarrierNullException:

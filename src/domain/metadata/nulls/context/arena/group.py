@@ -26,7 +26,7 @@ class ArenaContextNullGroup(ContextNullGroup[ArenaContext]):
         1. Catalog of ContextNullExceptions associated with an Arena's integrity cycle.
 
     Attributes:
-        context: ArenaContextNullException
+        model: ArenaContextNullException
         carrier: ArenaContextCarrierNullException
         blueprint: ArenaContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class ArenaContextNullGroup(ContextNullGroup[ArenaContext]):
     
     def __init__(
             self,
-            context: Optional[ArenaContextNullException] | None = None,
+            model: Optional[ArenaContextNullException] | None = None,
             carrier: Optional[ArenaContextCarrierNullException] | None = None,
             blueprint: Optional[ArenaContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[ArenaContextNullException]
+            model: Optional[ArenaContextNullException]
             carrier: Optional[ArenaContextCarrierNullException]
             blueprint: Optional[ArenaContextBlueprintNullException]
         """
         super().__init__(
-            context = context or ArenaContextNullException(),
-            carrier = carrier or ArenaContextCarrierNullException(),
-            blueprint = blueprint or ArenaContextBlueprintNullException(),
+            model=model or ArenaContextNullException(),
+            carrier=carrier or ArenaContextCarrierNullException(),
+            blueprint=blueprint or ArenaContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> ArenaContextNullException:
-        return cast(ArenaContextNullException, super().context)
+    def model(self) -> ArenaContextNullException:
+        return cast(ArenaContextNullException, super().model)
     
     @property
     def carrier(self) -> ArenaContextCarrierNullException:

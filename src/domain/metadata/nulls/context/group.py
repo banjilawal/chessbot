@@ -26,7 +26,7 @@ class ContextNullGroup(NullExceptionGroup[T], ABC, Generic[T):
         1. Catalog of ContextNullExceptions associated with a Context's integrity cycle.
 
     Attributes:
-        context: ContextNullException
+        model: ContextNullException
         carrier: ContextCarrierNullException
         blueprint: ContextBlueprintNullException
 
@@ -38,22 +38,22 @@ class ContextNullGroup(NullExceptionGroup[T], ABC, Generic[T):
     
     def __init__(
             self,
-            context: ContextNullException,
+            model: ContextNullException,
             carrier: ContextCarrierNullException,
             blueprint: ContextBlueprintNullException,
     ):
         """
         Args:
-            context: ContextNullException
+            model: ContextNullException
             carrier: ContextCarrierNullException
             blueprint: ContextBlueprintNullException
         """
-        super().__init__(context=context, carrier=carrier, blueprint=blueprint)
+        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
 
         
     @property
-    def context(self) -> ContextNullException:
-        return cast(ContextNullException, super().context)
+    def model(self) -> ContextNullException:
+        return cast(ContextNullException, super().model)
     
     @property
     def carrier(self) -> ContextCarrierNullException:

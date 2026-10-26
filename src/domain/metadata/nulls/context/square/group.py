@@ -26,7 +26,7 @@ class SquareContextNullGroup(ContextNullGroup[SquareContext]):
         1. Catalog of ContextNullExceptions associated with an Square's integrity cycle.
 
     Attributes:
-        context: SquareContextNullException
+        model: SquareContextNullException
         carrier: SquareContextCarrierNullException
         blueprint: SquareContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class SquareContextNullGroup(ContextNullGroup[SquareContext]):
     
     def __init__(
             self,
-            context: Optional[SquareContextNullException] | None = None,
+            model: Optional[SquareContextNullException] | None = None,
             carrier: Optional[SquareContextCarrierNullException] | None = None,
             blueprint: Optional[SquareContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[SquareContextNullException]
+            model: Optional[SquareContextNullException]
             carrier: Optional[SquareContextCarrierNullException]
             blueprint: Optional[SquareContextBlueprintNullException]
         """
         super().__init__(
-            context = context or SquareContextNullException(),
-            carrier = carrier or SquareContextCarrierNullException(),
-            blueprint = blueprint or SquareContextBlueprintNullException(),
+            model=model or SquareContextNullException(),
+            carrier=carrier or SquareContextCarrierNullException(),
+            blueprint=blueprint or SquareContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> SquareContextNullException:
-        return cast(SquareContextNullException, super().context)
+    def model(self) -> SquareContextNullException:
+        return cast(SquareContextNullException, super().model)
     
     @property
     def carrier(self) -> SquareContextCarrierNullException:

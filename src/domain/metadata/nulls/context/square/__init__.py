@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.NULLS.CONTEXT.SQUARE PACKAGE ===========#
 
 # Packages
-from .home import *
 
 # Modules
 from .group import SquareContextNullGroup

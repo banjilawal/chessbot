@@ -5,76 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/human/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/machine/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/alert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/alert/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/arena/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/board/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/coord/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/checkmate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/checkmate/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/kill/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/kill/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/stalemate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/stalemate/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/warning/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/warning/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/footstep/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/footstep/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/game/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/maneuver/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/path/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/player/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/bishop/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/king/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/knight/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/pawn/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/queen/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/rook/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/scalar/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/home/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/team/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/pawn/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/king/group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/vector/group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/human/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/human/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/machine/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/account/machine/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/alert/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/alert/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/arena/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/arena/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/board/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/board/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/coord/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/coord/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/checkmate/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/checkmate/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/kill/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/kill/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/stalemate/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/stalemate/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/warning/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/encounter/warning/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/footstep/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/footstep/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/game/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/game/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/maneuver/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/maneuver/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/path/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/path/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/player/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/player/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/bishop/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/bishop/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/king/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/king/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/knight/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/knight/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/pawn/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/pawn/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/queen/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/queen/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/rook/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/rank/rook/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/scalar/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/scalar/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/home/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/square/home/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/team/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/team/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/pawn/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/combatant/pawn/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/king/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/token/king/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/context/vector/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/context/vector/group.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,61 +80,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="9.799971903874973E-17" />
-      <entry key="MS500" value="6.284127184088232E-4" />
-      <entry key="S2" value="0.1583292818010452" />
-      <entry key="S5" value="0.4789698742003028" />
-      <entry key="S10" value="0.8180988422763055" />
-      <entry key="S30" value="6.940107977701458" />
-      <entry key="S60" value="17.782945870030282" />
-      <entry key="M2" value="31.011453362063428" />
-      <entry key="M5" value="52.37507750682257" />
-      <entry key="M10" value="75.01669122739577" />
-      <entry key="M15" value="95.15629759118634" />
-      <entry key="M30" value="146.76315174075748" />
-      <entry key="H1" value="215.28216487367249" />
-      <entry key="H2" value="345.80979711259334" />
-      <entry key="H4" value="808.9704901859322" />
-      <entry key="D1" value="6682.963644093713" />
-      <entry key="W1" value="32152.453513219636" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0003815773070373" />
+      <entry key="S2" value="1.8136226991581765" />
+      <entry key="S5" value="6.384509453555458" />
+      <entry key="S10" value="13.309542938684338" />
+      <entry key="S30" value="25.96251506026327" />
+      <entry key="S60" value="31.655131758053535" />
+      <entry key="M2" value="36.577399592660974" />
+      <entry key="M5" value="53.046430458081474" />
+      <entry key="M10" value="79.22605401529327" />
+      <entry key="M15" value="102.1127444126549" />
+      <entry key="M30" value="158.77146113430345" />
+      <entry key="H1" value="233.56755488303457" />
+      <entry key="H2" value="367.8004072131973" />
+      <entry key="H4" value="827.8733463273721" />
+      <entry key="D1" value="6694.04574315852" />
+      <entry key="W1" value="32172.23427868929" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000684677575" />
-      <entry key="MS500" value="1.0369060206696727" />
-      <entry key="S2" value="1.4383028606580175" />
-      <entry key="S5" value="1.7189682664234787" />
-      <entry key="S10" value="1.8479199646750488" />
-      <entry key="S30" value="1.9470845618481225" />
-      <entry key="S60" value="2.018455291650695" />
-      <entry key="M2" value="2.4990267118937286" />
-      <entry key="M5" value="5.042036788228139" />
-      <entry key="M10" value="8.58355227244541" />
-      <entry key="M15" value="11.110245060667335" />
-      <entry key="M30" value="16.2858571008177" />
-      <entry key="H1" value="22.386138668653594" />
-      <entry key="H2" value="30.57332571989254" />
-      <entry key="H4" value="51.7476212912838" />
-      <entry key="D1" value="331.90263277334856" />
-      <entry key="W1" value="1696.4265317001234" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="8.36076546E-315" />
+      <entry key="S2" value="4.30999737122227E-79" />
+      <entry key="S5" value="6.697589468240772E-32" />
+      <entry key="S10" value="3.647610773473246E-16" />
+      <entry key="S30" value="1.1336872370120477E-5" />
+      <entry key="S60" value="0.004870497854362244" />
+      <entry key="M2" value="0.12275749265604864" />
+      <entry key="M5" value="1.5104865222284525" />
+      <entry key="M10" value="4.698102400333985" />
+      <entry key="M15" value="7.434080390681241" />
+      <entry key="M30" value="13.321785210984888" />
+      <entry key="H1" value="20.246739415104138" />
+      <entry key="H2" value="29.07573051789436" />
+      <entry key="H4" value="50.46431320397101" />
+      <entry key="D1" value="330.51640987199573" />
+      <entry key="W1" value="1695.4125314098965" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.005410583859812078" />
-      <entry key="MS500" value="0.3535294920175596" />
-      <entry key="S2" value="1.0688780877590272" />
-      <entry key="S5" value="1.8274449535042792" />
-      <entry key="S10" value="2.4341390600857453" />
-      <entry key="S30" value="8.793609780713185" />
-      <entry key="S60" value="19.746189953383226" />
-      <entry key="M2" value="33.45744250622402" />
-      <entry key="M5" value="57.33554940260944" />
-      <entry key="M10" value="83.51210391987907" />
-      <entry key="M15" value="106.179540904719" />
-      <entry key="M30" value="162.9667836607906" />
-      <entry key="H1" value="237.59937524523102" />
-      <entry key="H2" value="376.33016528434064" />
-      <entry key="H4" value="860.6716239753873" />
-      <entry key="D1" value="7014.819766647676" />
-      <entry key="W1" value="33848.84975311964" />
+      <entry key="MS100" value="0.9794202975869268" />
+      <entry key="MS500" value="0.9962187904508044" />
+      <entry key="S2" value="1.8059844231656879" />
+      <entry key="S5" value="6.367359080779583" />
+      <entry key="S10" value="13.290955218280411" />
+      <entry key="S30" value="25.95044736055535" />
+      <entry key="S60" value="31.652530177571577" />
+      <entry key="M2" value="36.69348726610696" />
+      <entry key="M5" value="54.5307504720677" />
+      <entry key="M10" value="83.8750300010811" />
+      <entry key="M15" value="109.48801651143548" />
+      <entry key="M30" value="172.02568738800898" />
+      <entry key="H1" value="253.75180331282886" />
+      <entry key="H2" value="396.8256990915189" />
+      <entry key="H4" value="878.2922872818593" />
+      <entry key="D1" value="7024.515830792794" />
+      <entry key="W1" value="33867.616535509056" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -892,7 +856,7 @@
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
       <workItem from="1792402033304" duration="278739000" />
-      <workItem from="1792878648662" duration="109954000" />
+      <workItem from="1792878648662" duration="110417000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

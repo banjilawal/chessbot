@@ -27,7 +27,7 @@ class EncounterWarningContextNullGroup(EncounterContextNullGroup[EncounterWarnin
         1. Catalog of ContextNullExceptions associated with a EncounterWarning's integrity cycle.
 
     Attributes:
-        context: EncounterWarningContextNullException
+        model: EncounterWarningContextNullException
         carrier: EncounterWarningContextCarrierNullException
         blueprint: EncounterWarningContextBlueprintNullException
 
@@ -39,25 +39,25 @@ class EncounterWarningContextNullGroup(EncounterContextNullGroup[EncounterWarnin
     
     def __init__(
             self,
-            context: Optional[EncounterWarningContextNullException] | None = None,
+            model: Optional[EncounterWarningContextNullException] | None = None,
             carrier: Optional[EncounterWarningContextCarrierNullException] | None = None,
             blueprint: Optional[EncounterWarningContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[EncounterWarningContextNullException]
+            model: Optional[EncounterWarningContextNullException]
             carrier: Optional[EncounterWarningContextCarrierNullException]
             blueprint: Optional[EncounterWarningContextBlueprintNullException]
         """
         super().__init__(
-            context = context or EncounterWarningContextNullException(),
-            carrier = carrier or EncounterWarningContextCarrierNullException(),
-            blueprint = blueprint or EncounterWarningContextBlueprintNullException(),
+            model=model or EncounterWarningContextNullException(),
+            carrier=carrier or EncounterWarningContextCarrierNullException(),
+            blueprint=blueprint or EncounterWarningContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> EncounterWarningContextNullException:
-        return cast(EncounterWarningContextNullException, super().context)
+    def model(self) -> EncounterWarningContextNullException:
+        return cast(EncounterWarningContextNullException, super().model)
     
     @property
     def carrier(self) -> EncounterWarningContextCarrierNullException:

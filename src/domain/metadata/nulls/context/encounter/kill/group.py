@@ -27,7 +27,7 @@ class KillEncounterContextNullGroup(EncounterContextNullGroup[KillEncounterConte
         1. Catalog of ContextNullExceptions associated with a KillEncounter's integrity cycle.
 
     Attributes:
-        context: KillEncounterContextNullException
+        model: KillEncounterContextNullException
         carrier: KillEncounterContextCarrierNullException
         blueprint: KillEncounterContextBlueprintNullException
 
@@ -39,13 +39,13 @@ class KillEncounterContextNullGroup(EncounterContextNullGroup[KillEncounterConte
     
     def __init__(
             self,
-            context: Optional[KillEncounterContextNullException] | None = None,
+            model: Optional[KillEncounterContextNullException] | None = None,
             carrier: Optional[KillEncounterContextCarrierNullException] | None = None,
             blueprint: Optional[KillEncounterContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[KillEncounterContextNullException]
+            model: Optional[KillEncounterContextNullException]
             carrier: Optional[KillEncounterContextCarrierNullException]
             blueprint: Optional[KillEncounterContextBlueprintNullException]
         """
@@ -56,8 +56,8 @@ class KillEncounterContextNullGroup(EncounterContextNullGroup[KillEncounterConte
         )
         
     @property
-    def context(self) -> KillEncounterContextNullException:
-        return cast(KillEncounterContextNullException, super().context)
+    def model(self) -> KillEncounterContextNullException:
+        return cast(KillEncounterContextNullException, super().model)
     
     @property
     def carrier(self) -> KillEncounterContextCarrierNullException:

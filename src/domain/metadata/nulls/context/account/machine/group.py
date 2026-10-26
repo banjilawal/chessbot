@@ -26,7 +26,7 @@ class MachineAccountContextNullGroup(AccountContextNullGroup[MachineAccountConte
         1. Catalog of ContextNullExceptions associated with a MachineAccount's integrity cycle.
 
     Attributes:
-        context: MachineContextNullException
+        model: MachineContextNullException
         carrier: MachineContextCarrierNullException
         blueprint: MachineContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class MachineAccountContextNullGroup(AccountContextNullGroup[MachineAccountConte
     
     def __init__(
             self,
-            context: Optional[MachineContextNullException] | None = None,
+            model: Optional[MachineContextNullException] | None = None,
             carrier: Optional[MachineContextCarrierNullException] | None = None,
             blueprint: Optional[MachineContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[MachineContextNullException]
+            model: Optional[MachineContextNullException]
             carrier: Optional[MachineContextCarrierNullException]
             blueprint: Optional[MachineContextBlueprintNullException]
         """
         super().__init__(
-            context = context or MachineContextNullException(),
-            carrier = carrier or MachineContextCarrierNullException(),
-            blueprint = blueprint or MachineContextBlueprintNullException(),
+            model=model or MachineContextNullException(),
+            carrier=carrier or MachineContextCarrierNullException(),
+            blueprint=blueprint or MachineContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> MachineContextNullException:
-        return cast(MachineContextNullException, super().context)
+    def model(self) -> MachineContextNullException:
+        return cast(MachineContextNullException, super().model)
     
     @property
     def carrier(self) -> MachineContextCarrierNullException:

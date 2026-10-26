@@ -27,7 +27,7 @@ class StalemateEncounterContextNullGroup(EncounterContextNullGroup[StalemateEnco
         1. Catalog of ContextNullExceptions associated with a StalemateEncounter's integrity cycle.
 
     Attributes:
-        context: StalemateEncounterContextNullException
+        model: StalemateEncounterContextNullException
         carrier: StalemateEncounterContextCarrierNullException
         blueprint: StalemateEncounterContextBlueprintNullException
 
@@ -39,13 +39,13 @@ class StalemateEncounterContextNullGroup(EncounterContextNullGroup[StalemateEnco
     
     def __init__(
             self,
-            context: Optional[StalemateEncounterContextNullException] | None = None,
+            model: Optional[StalemateEncounterContextNullException] | None = None,
             carrier: Optional[StalemateEncounterContextCarrierNullException] | None = None,
             blueprint: Optional[StalemateEncounterContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[StalemateEncounterContextNullException]
+            model: Optional[StalemateEncounterContextNullException]
             carrier: Optional[StalemateEncounterContextCarrierNullException]
             blueprint: Optional[StalemateEncounterContextBlueprintNullException]
         """
@@ -56,8 +56,8 @@ class StalemateEncounterContextNullGroup(EncounterContextNullGroup[StalemateEnco
         )
         
     @property
-    def context(self) -> StalemateEncounterContextNullException:
-        return cast(StalemateEncounterContextNullException, super().context)
+    def model(self) -> StalemateEncounterContextNullException:
+        return cast(StalemateEncounterContextNullException, super().model)
     
     @property
     def carrier(self) -> StalemateEncounterContextCarrierNullException:

@@ -26,7 +26,7 @@ class PlayerContextNullGroup(ContextNullGroup[PlayerContext]):
         1. Catalog of ContextNullExceptions associated with a Player's integrity cycle.
 
     Attributes:
-        context: PlayerContextNullException
+        model: PlayerContextNullException
         carrier: PlayerContextCarrierNullException
         blueprint: PlayerContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class PlayerContextNullGroup(ContextNullGroup[PlayerContext]):
     
     def __init__(
             self,
-            context: Optional[PlayerContextNullException] | None = None,
+            model: Optional[PlayerContextNullException] | None = None,
             carrier: Optional[PlayerContextCarrierNullException] | None = None,
             blueprint: Optional[PlayerContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[PlayerContextNullException]
+            model: Optional[PlayerContextNullException]
             carrier: Optional[PlayerContextCarrierNullException]
             blueprint: Optional[PlayerContextBlueprintNullException]
         """
         super().__init__(
-            context = context or PlayerContextNullException(),
-            carrier = carrier or PlayerContextCarrierNullException(),
-            blueprint = blueprint or PlayerContextBlueprintNullException(),
+            model=model or PlayerContextNullException(),
+            carrier=carrier or PlayerContextCarrierNullException(),
+            blueprint=blueprint or PlayerContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> PlayerContextNullException:
-        return cast(PlayerContextNullException, super().context)
+    def model(self) -> PlayerContextNullException:
+        return cast(PlayerContextNullException, super().model)
     
     @property
     def carrier(self) -> PlayerContextCarrierNullException:

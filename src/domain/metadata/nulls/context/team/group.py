@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextNullGroup, Team
-from err import (
+from domain import ContextNullGroup,
     TeamContextBlueprintNullException, TeamContextCarrierNullException, TeamContextNullException
 )
 
@@ -26,7 +25,7 @@ class TeamContextNullGroup(ContextNullGroup[TeamContext]):
         1. Catalog of ContextNullExceptions associated with an Team's integrity cycle.
 
     Attributes:
-        context: TeamContextNullException
+        model: TeamContextNullException
         carrier: TeamContextCarrierNullException
         blueprint: TeamContextBlueprintNullException
 
@@ -38,25 +37,25 @@ class TeamContextNullGroup(ContextNullGroup[TeamContext]):
     
     def __init__(
             self,
-            context: Optional[TeamContextNullException] | None = None,
+            model: Optional[TeamContextNullException] | None = None,
             carrier: Optional[TeamContextCarrierNullException] | None = None,
             blueprint: Optional[TeamContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[TeamContextNullException]
+            model: Optional[TeamContextNullException]
             carrier: Optional[TeamContextCarrierNullException]
             blueprint: Optional[TeamContextBlueprintNullException]
         """
         super().__init__(
-            context = context or TeamContextNullException(),
-            carrier = carrier or TeamContextCarrierNullException(),
-            blueprint = blueprint or TeamContextBlueprintNullException(),
+            model=model or TeamContextNullException(),
+            carrier=carrier or TeamContextCarrierNullException(),
+            blueprint=blueprint or TeamContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> TeamContextNullException:
-        return cast(TeamContextNullException, super().context)
+    def model(self) -> TeamContextNullException:
+        return cast(TeamContextNullException, super().model)
     
     @property
     def carrier(self) -> TeamContextCarrierNullException:

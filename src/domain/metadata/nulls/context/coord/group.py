@@ -26,7 +26,7 @@ class CoordContextNullGroup(ContextNullGroup[CoordContext]):
         1. Catalog of ContextNullExceptions associated with an Coord's integrity cycle.
 
     Attributes:
-        context: CoordContextNullException
+        model: CoordContextNullException
         carrier: CoordContextCarrierNullException
         blueprint: CoordContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class CoordContextNullGroup(ContextNullGroup[CoordContext]):
     
     def __init__(
             self,
-            context: Optional[CoordContextNullException] | None = None,
+            model: Optional[CoordContextNullException] | None = None,
             carrier: Optional[CoordContextCarrierNullException] | None = None,
             blueprint: Optional[CoordContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[CoordContextNullException]
+            model: Optional[CoordContextNullException]
             carrier: Optional[CoordContextCarrierNullException]
             blueprint: Optional[CoordContextBlueprintNullException]
         """
         super().__init__(
-            context = context or CoordContextNullException(),
-            carrier = carrier or CoordContextCarrierNullException(),
-            blueprint = blueprint or CoordContextBlueprintNullException(),
+            model=model or CoordContextNullException(),
+            carrier=carrier or CoordContextCarrierNullException(),
+            blueprint=blueprint or CoordContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> CoordContextNullException:
-        return cast(CoordContextNullException, super().context)
+    def model(self) -> CoordContextNullException:
+        return cast(CoordContextNullException, super().model)
     
     @property
     def carrier(self) -> CoordContextCarrierNullException:

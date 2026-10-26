@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextNullGroup, Vector
+from domain import ContextNullGroup,
 from err import (
     VectorContextBlueprintNullException, VectorContextCarrierNullException, VectorContextNullException
 )
@@ -26,7 +26,7 @@ class VectorContextNullGroup(ContextNullGroup[VectorContext]):
         1. Catalog of ContextNullExceptions associated with a Vector's integrity cycle.
 
     Attributes:
-        context: VectorContextNullException
+        model: VectorContextNullException
         carrier: VectorContextCarrierNullException
         blueprint: VectorContextBlueprintNullException
 
@@ -38,25 +38,25 @@ class VectorContextNullGroup(ContextNullGroup[VectorContext]):
     
     def __init__(
             self,
-            context: Optional[VectorContextNullException] | None = None,
+            model: Optional[VectorContextNullException] | None = None,
             carrier: Optional[VectorContextCarrierNullException] | None = None,
             blueprint: Optional[VectorContextBlueprintNullException] | None = None,
     ):
         """
         Args:
-            context: Optional[VectorContextNullException]
+            model: Optional[VectorContextNullException]
             carrier: Optional[VectorContextCarrierNullException]
             blueprint: Optional[VectorContextBlueprintNullException]
         """
         super().__init__(
-            context = context or VectorContextNullException(),
-            carrier = carrier or VectorContextCarrierNullException(),
-            blueprint = blueprint or VectorContextBlueprintNullException(),
+            model=model or VectorContextNullException(),
+            carrier=carrier or VectorContextCarrierNullException(),
+            blueprint=blueprint or VectorContextBlueprintNullException(),
         )
         
     @property
-    def context(self) -> VectorContextNullException:
-        return cast(VectorContextNullException, super().context)
+    def model(self) -> VectorContextNullException:
+        return cast(VectorContextNullException, super().model)
     
     @property
     def carrier(self) -> VectorContextCarrierNullException:
