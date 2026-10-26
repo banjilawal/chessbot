@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import EdgeBlueprint
+from domain.blueprint import EdgeBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import EdgeAttackException
 from domain.model import Edge

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from domain.metadata.blueprint import SquareRegisterBlueprint
+from domain.blueprint import SquareRegisterBlueprint
 from carrier import SquareRegisterCarrier
 from err import (
     SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException, SquareRegisterNullException

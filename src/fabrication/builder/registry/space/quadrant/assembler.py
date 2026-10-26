@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import SpaceReservoirBuilder
-from domain.metadata.blueprint import QuadrantReservoirBlueprint
+from domain.blueprint import QuadrantReservoirBlueprint
 from surface.topology import QuadrantReservoir
 from artifcat import BuildResult
 

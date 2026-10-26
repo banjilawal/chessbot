@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from domain.metadata.blueprint import QueryValidationBlueprint
+from domain.blueprint import QueryValidationBlueprint
 from err import QueryValidatorException
 from domain.model import CatalogQuery, Query, StackQuery
 from artifcat import ValidationResult

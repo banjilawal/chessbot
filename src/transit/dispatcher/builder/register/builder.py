@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from domain.metadata.blueprint import RegisterBlueprint
+from domain.blueprint import RegisterBlueprint
 from transit.dispatcher.builder import BuildDispatcher
 from artifcat import BuildResult
 from operation.toolkit import RegisterBuilderToolkit

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import NorthAxisBlueprint
+from domain.blueprint import NorthAxisBlueprint
 from transit.dispatcher.attack import AxisAttack
 from err import NorthAxisAttackException
 from artifcat import AttackResult, MethodResultType

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import CoordBlueprint
+from domain.blueprint import CoordBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import CoordAttackException
 from domain.model import Coord

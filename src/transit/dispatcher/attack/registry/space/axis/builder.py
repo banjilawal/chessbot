@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import AxisReservoirBlueprint
+from domain.blueprint import AxisReservoirBlueprint
 from transit.dispatcher.attack import SpaceReservoirAttackDispatcher
 from err import AxisReservoirAttackException
 from surface.topology import AxisReservoir

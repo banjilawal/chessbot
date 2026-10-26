@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import VectorBlueprint
+from domain.blueprint import VectorBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import VectorAttackException
 from domain.model import Vector

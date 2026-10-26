@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import SnapshotBlueprint
+from domain.blueprint import SnapshotBlueprint
 from transit.dispatcher.builder import ModelBuilder
 from err import SnapshotBuilderException
 from domain.model import Snapshot

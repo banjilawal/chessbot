@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from domain.metadata.blueprint import SoutheastQuadrantBlueprint
+from domain.blueprint import SoutheastQuadrantBlueprint
 from carrier import SoutheastQuadrantCarrier
 from domain.model import Vector
 from artifcat import ValidationResult

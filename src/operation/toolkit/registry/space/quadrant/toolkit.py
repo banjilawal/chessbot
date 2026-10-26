@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain.metadata.blueprint import QuadrantReservoirBlueprint
+from domain.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from err import QuadrantReservoirNullException, SpaceReservoirNullException
 from surface.space import Quadrant, QuadrantReservoir

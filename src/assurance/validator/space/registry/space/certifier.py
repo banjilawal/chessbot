@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from domain.metadata.blueprint import SpaceReservoirBlueprint
+from domain.blueprint import SpaceReservoirBlueprint
 from assurance.validator import Validator
 from artifcat import ValidationResult
 from operation.toolkit import SpaceReservoirToolkit

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from domain.metadata.blueprint import VectorRegisterBlueprint
+from domain.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
 from domain.struct.register import VectorRegister

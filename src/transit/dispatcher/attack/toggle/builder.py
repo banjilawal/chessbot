@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
 
-from domain.metadata.blueprint.struct.toggle import ToggleBlueprint
+from domain.blueprint.struct.toggle import ToggleBlueprint
 from transit.dispatcher.attack import AttackDispatcher
 from artifcat import AttackResult
 from operation.toolkit import AttackToolkit, ToggleAttackToolkit

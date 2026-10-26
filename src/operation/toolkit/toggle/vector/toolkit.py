@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain.metadata.blueprint import CartesianToggleBlueprint
+from domain.blueprint import CartesianToggleBlueprint
 from carrier.toggle.vector.carrier import CartesianToggleCarrier
 from err import CartesianToggleBlueprintNullException, CartesianToggleCarrierNullException, CartesianToggleNullException
 from operation.suite import  CoordOperationSuite, VectorOperationSuite

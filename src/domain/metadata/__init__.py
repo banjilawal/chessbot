@@ -10,11 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.METADATA PACKAGE ===========#
 
 # Packages
-from .blueprint import *
 from .layer import *
 from .manifest import *
 from .null import *
-
 
 # Modules
 from .metadata import DomainMetadata

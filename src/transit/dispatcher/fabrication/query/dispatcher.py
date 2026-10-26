@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from domain.metadata.blueprint import QueryBuildBlueprint
+from domain.blueprint import QueryBuildBlueprint
 from err import QueryBuilderException
 from domain.model import CatalogQuery, Query, StackQuery
 from artifcat import BuildResult

@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
-from domain.metadata.blueprint import RegisterBlueprint
+from domain.blueprint import RegisterBlueprint
 from carrier import RegisterCarrier
 from err import RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
 from domain.struct.register import Register

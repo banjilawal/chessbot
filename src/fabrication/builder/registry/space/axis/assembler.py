@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import SpaceReservoirBuilder
-from domain.metadata.blueprint import AxisReservoirBlueprint
+from domain.blueprint import AxisReservoirBlueprint
 from surface.topology import AxisReservoir
 from artifcat import BuildResult
 from util import LoggingLevelRouter

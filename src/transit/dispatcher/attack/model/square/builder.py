@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import SquareBlueprint
+from domain.blueprint import SquareBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import SquareAttackException
 from domain.model import Square

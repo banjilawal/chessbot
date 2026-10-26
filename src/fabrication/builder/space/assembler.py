@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from fabrication.builder import Builder
-from domain.metadata.blueprint import SpaceBlueprint
+from domain.blueprint import SpaceBlueprint
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

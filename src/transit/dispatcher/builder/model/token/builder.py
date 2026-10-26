@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import TokenBlueprint
+from domain.blueprint import TokenBlueprint
 from transit.dispatcher.builder import ModelBuilder
 from err import TokenBuilderException
 from domain.model import Token

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from domain.metadata.blueprint import CartesianToggleRegisterBlueprint
+from domain.blueprint import CartesianToggleRegisterBlueprint
 from carrier import CartesianToggleRegisterCarrier
 from err import (
     CartesianToggleRegisterBlueprintNullException, CartesianToggleRegisterCarrierNullException,

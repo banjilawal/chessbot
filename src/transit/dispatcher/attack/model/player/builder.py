@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import PlayerBlueprint
+from domain.blueprint import PlayerBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import PlayerAttackException
 from domain.model import Player

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from domain.metadata.blueprint import Blueprint
+from domain.blueprint import Blueprint
 from transit.dispatcher.attack import SpaceAttackDispatcher
 from artifcat import AttackResult
 from operation.toolkit import QuadrantAttackToolkit

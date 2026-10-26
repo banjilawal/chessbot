@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import CartesianToggleBlueprint
+from domain.blueprint import CartesianToggleBlueprint
 from transit.dispatcher.attack import ToggleAttackDispatcher
 from err import CartesianToggleAttackException
 from artifcat import AttackResult, MethodResultType

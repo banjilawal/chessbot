@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import ScalarBlueprint
+from domain.blueprint import ScalarBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import ScalarAttackException
 from domain.model import Scalar

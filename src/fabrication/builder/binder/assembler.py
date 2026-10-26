@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from domain.metadata.blueprint import BoardBinderBlueprint
+from domain.blueprint import BoardBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
 from domain.model.searchable.state.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuilderException,

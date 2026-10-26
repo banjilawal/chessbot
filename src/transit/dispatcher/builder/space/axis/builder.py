@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from domain.metadata.blueprint import AxisBlueprint
+from domain.blueprint import AxisBlueprint
 from transit.dispatcher.builder import SpaceBuildDispatcher
 from artifcat import BuildResult
 from operation.toolkit import AxisBuilderToolkit

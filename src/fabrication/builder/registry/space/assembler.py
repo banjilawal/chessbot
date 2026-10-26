@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from fabrication.builder import Builder
-from domain.metadata.blueprint import SpaceReservoirBlueprint
+from domain.blueprint import SpaceReservoirBlueprint
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

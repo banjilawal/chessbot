@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.metadata.blueprint import NorthwestQuadrantBlueprint
+from domain.blueprint import NorthwestQuadrantBlueprint
 
 from artifcat import BuildResult
 from fabrication.builder import QuadrantBuilder

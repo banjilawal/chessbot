@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import TeamBlueprint
+from domain.blueprint import TeamBlueprint
 from transit.dispatcher.builder import ModelBuilder
 from err import TeamBuilderException
 from domain.model import Team

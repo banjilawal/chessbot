@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import BoardBlueprint
+from domain.blueprint import BoardBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import BoardAttackException
 from domain.model import Board

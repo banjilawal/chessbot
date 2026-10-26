@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import SouthAxisBlueprint
+from domain.blueprint import SouthAxisBlueprint
 from transit.dispatcher.builder import AxisBuilder
 from err import SouthAxisBuilderException
 from artifcat import BuildResult, MethodResultType

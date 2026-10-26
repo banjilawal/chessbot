@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import GameBlueprint
+from domain.blueprint import GameBlueprint
 from transit.dispatcher.builder import ModelBuilder
 from err import GameBuilderException
 from domain.model import Game

@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from fabrication.builder import SpaceBuilder
-from domain.metadata.blueprint import AxisBlueprint
+from domain.blueprint import AxisBlueprint
 from artifcat import BuildResult
 
 from util import LoggingLevelRouter

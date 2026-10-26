@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain.metadata.blueprint.space.quadrant.southwest import SouthwestQuadrantBlueprint
+from domain.blueprint import SouthwestQuadrantBlueprint
 from carrier import SouthwestQuadrantCarrier
 from err import SouthwestQuadrantBlueprintNullException, SouthwestQuadrantCarrierNullException, SouthwestQuadrantNullException
 from surface.space import SouthwestQuadrant

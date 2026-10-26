@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import ToggleBuilder
-from domain.metadata.blueprint.struct.toggle import CartesianToggleBlueprint
+from domain.blueprint.struct.toggle import CartesianToggleBlueprint
 
 from artifcat import BuildResult
 from domain.struct.toggle import CartesianToggle

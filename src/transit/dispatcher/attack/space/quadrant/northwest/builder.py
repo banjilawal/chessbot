@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import NorthwestQuadrantBlueprint
+from domain.blueprint import NorthwestQuadrantBlueprint
 from transit.dispatcher.attack import QuadrantAttack
 from err import NorthwestQuadrantAttackException
 from artifcat import AttackResult, MethodResultType

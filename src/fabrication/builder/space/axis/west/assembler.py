@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.metadata.blueprint import WestAxisBlueprint
+from domain.blueprint import WestAxisBlueprint
 
 from artifcat import BuildResult
 from fabrication.builder import AxisBuilder

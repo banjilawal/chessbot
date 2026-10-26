@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from domain.metadata.blueprint import IdentityRegisterBlueprint
+from domain.blueprint import IdentityRegisterBlueprint
 from err import IdentityRegisterBlueprintNullException, IdentityRegisterNullException
 from  import IdentityRegister
 from operation.toolkit.register.identity.toolkit import RegisterToolkit

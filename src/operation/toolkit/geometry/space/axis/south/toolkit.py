@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain.metadata.blueprint.space import SouthAxisBlueprint
+from domain.blueprint import SouthAxisBlueprint
 from carrier import SouthAxisCarrier
 from err import SouthAxisBlueprintNullException, SouthAxisCarrierNullException, SouthAxisNullException
 from surface.space import SouthAxis

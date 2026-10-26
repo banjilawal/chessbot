@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
-from domain.metadata.blueprint import CartesianToggleRegisterBlueprint
+from domain.blueprint import CartesianToggleRegisterBlueprint
 from domain.struct.register import CartesianToggleRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter

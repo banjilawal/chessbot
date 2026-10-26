@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import RankBlueprint
+from domain.blueprint import RankBlueprint
 from transit.dispatcher.attack import ModelAttack
 from err import RankAttackException
 from domain.model import Rank

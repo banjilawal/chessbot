@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain.metadata.blueprint import VectorRegisterBlueprint
+from domain.blueprint import VectorRegisterBlueprint
 from transit.dispatcher.attack import RegisterAttackDispatcher
 from err import VectorRegisterAttackException
 from domain.struct.register import VectorRegister

@@ -141,6 +141,39 @@ class AccountContextValidationLoader(
                     ),
                 )
             )
+        # Handle the case that the too many flags are enabled.
+        if blueprint.size > blueprint.max_size:
+            return ValidationResult.failure(
+                AccountContextValidationLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountContextValidationLoaderException.MSG,
+                    err_code=AccountContextValidationLoaderException.ERR_CODE,
+                    ex=ExcessiveAccountContextFlagsException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=ExcessiveAccountContextFlagsException.MSG,
+                        err_code=ExcessAccountContextFlagsException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that no flags are enabled.
+        if blueprint.size > blueprint.max_size:
+            return ValidationResult.failure(
+                AccountContextValidationLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountContextValidationLoaderException.MSG,
+                    err_code=AccountContextValidationLoaderException.ERR_CODE,
+                    ex=NoAccountContextFlagsException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=NoAccountContextFlagsException.MSG,
+                        err_code=NoAccountContextFlagsException.ERR_CODE,
+                    ),
+                )
+            )
+        
         # --- Send the work product. ---#
         extract = AccountContextPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

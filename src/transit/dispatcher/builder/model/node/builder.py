@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import NodeBlueprint
+from domain.blueprint import NodeBlueprint
 from transit.dispatcher.builder import ModelBuilder
 from err import NodeBuilderException
 from domain.model import Node

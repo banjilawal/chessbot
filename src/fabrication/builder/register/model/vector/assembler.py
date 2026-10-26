@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
-from domain.metadata.blueprint import VectorRegisterBlueprint
+from domain.blueprint import VectorRegisterBlueprint
 from domain.struct.register import VectorRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter

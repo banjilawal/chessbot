@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import AxisReservoirBlueprint
+from domain.blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from domain.model import Vector
 from assurance.validator import SpaceReservoirChecker
