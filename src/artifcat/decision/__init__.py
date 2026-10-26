@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION PACKAGE ===========#
 
 # Packages
+from .crud import *
 from .attack import *
 from .maneuver import *
 from .promotion import *

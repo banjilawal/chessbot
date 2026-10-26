@@ -11,17 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Decision
+from artifcat import InsertionDecision
 from authorization import AccountPushPermissionLoader, PushPermitter
 from collection import AccountStack
 from domain import Account
-from err import ChessException, NullException
-from exchange import (
-    AccountPushPermissionRequest, AccountPushRequest, AccountValidationRequest,
-    AccountValidationService
-)
-from transit import AccountCarrier
-from util import IdFactory, LoggingLevelRouter
+from err import ChessException
+from exchange import AccountPushPermissionRequest, AccountPushRequest
+from util import LoggingLevelRouter
 
 
 class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
@@ -57,11 +53,6 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
     @property
     def loader(self) -> AccountPushPermissionLoader:
         return cast(AccountPushPermissionLoader, super().loader)
-    
-    @property
-    def validation_service(self) -> AccountValidationService:
-        return cast(AccountValidationService, super().validation_service)
-        
 
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushPermissionRequest) -> InsertionDecision:
@@ -81,7 +72,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         decision = self.loader.execute(candidate=request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
-            return Decision.denial(
+            return InsertionDecision.denial(
                 permission_request=request,
                 exception=ChessException(
                     cls_mthd=method,
@@ -92,80 +83,28 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
                 )
             )
         # --- Extract the transaction_request for processing. ---#
+        permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
         transaction_request = cast(AccountPushRequest, decision.approval)
         item = cast(Account, transaction_request.item)
         collection = cast(AccountStack, transaction_request.collection)
         
+        # Do nothing when the item is already in the collection.
         if item in collection.items:
-        
-        
-        permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
-        approval = cast(AccountPushRequest, decision.approval)
-        
-        priming_result = self.loader.priming_validator.execute(
-            candidate=approval,
-            target_model=AccountPushRequest,
-            null_exception=NullException(),
-        )
-        if priming_result.is_failure:
-            return Decision.denial(
+            # Send the exception chain in the denial.
+            return InsertionDecision.do_nothing(
                 permission_request=permission_request,
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=priming_result.exception,
-                )
             )
-        safe = cast(AccountPushRequest, priming_result.payload)
-        
-        item_validation = self.validation_service.extract_model(
-            request=AccountValidationRequest(
-                item=AccountCarrier(model=safe.item),
-                id=IdFactory.next_id(class_name="AccountValidationRequest")
-            )
-        )
-        if item_validation.is_failure:
-            return Decision.denial(
-                permission_request=permission_request,
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=item_validation.exception,
-                )
-            )
-        collection_validation = self.loader.priming_validator.execute(
-            candidate=safe.collection,
-            target_model=AccountStack,
-            null_exception=NullException()
-        )
-        if collection_validation.is_failure:
-            return Decision.denial(
-                permission_request=permission_request,
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=collection_validation.exception,
-                )
-            )
-        account = cast(Account, item_validation.payload)
-        stack = cast(AccountStack, collection_validation.payload)
-        
+        # --- Otherwise prepare an approval of the transaction. ---#
         transaction_request = AccountPushRequest(
-            id=safe.id,
-            item=account,
-            collection=stack,
+            id=transaction_request.id,
+            item=item,
+            collection=collection,
         )
-        decision = Decision.grant(
-            permission_request=permission_request,
+        # --- Forward the approval. ---#
+        return InsertionDecision.grant(
             approval=transaction_request,
+            permission_request=permission_request,
         )
-        return decision
         
         
         
