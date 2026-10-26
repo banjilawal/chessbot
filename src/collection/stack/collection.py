@@ -59,9 +59,11 @@ class Stack(DataStructure, ABC, Generic[T]):
         return not self.is_empty
     
     @property
+    def pusher
+    
+    @property
     @abstractmethod
     def iterator(self) -> Iterator[T]:
         pass
     
-    @
     

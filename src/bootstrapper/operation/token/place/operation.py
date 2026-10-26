@@ -14,7 +14,7 @@ from copy import deepcopy
 from typing import cast
 
 from sensor.analyzer import HomeSquareValidator
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from err import TokenPlaceException
 from domain.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
 from operation import Worker

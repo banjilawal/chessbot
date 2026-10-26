@@ -1,15 +1,15 @@
-# src/exchange/server/validation/struct/binder/player/__init__.py
+# src/exchange/service/validation/struct/binder/player/__init__.py
 
 """
-Module: exchange.server.validation.struct.binder.player.__init__
+Module: exchange.service.validation.struct.binder.player.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# ========== EXCHANGE.SERVER.VALIDATION.STRUCT.BINDER.PLAYER PACKAGE ===========#
+# ========== EXCHANGE.SERVICE.VALIDATION.STRUCT.BINDER.PLAYER PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .server import PlayerBinderValidationServer
+from .service import PlayerBinderValidationService

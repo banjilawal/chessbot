@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ChartValidationServerException
+from err import ChartValidationServiceException
 
 __all__ = [
     # ======================# TOKEN_CHART_VALIDATION_SERVER_FAILURE #======================#
-    "ParticipationValidationServerException",
+    "ParticipationValidationServiceException",
 ]
 
 # ======================# TOKEN_CHART_VALIDATION_SERVER_FAILURE #======================#
-class ParticipationValidationServerException(
-    ChartValidationServerException
+class ParticipationValidationServiceException(
+    ChartValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class ParticipationValidationServerException(
     Provides:
 
     Super Class:
-        ChartValidationServerException
+        ChartValidationServiceException
     """
     MSG = "ParticipationValidationServer error."
     ERR_CODE = "TOKEN_CHART_VALIDATION_SERVER_FAILURE"

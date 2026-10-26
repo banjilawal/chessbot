@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.LOADER.CRUD PACKAGE ===========#
 
 # Packages
+from .deletion import *
 from .insertion import *
 
 # Modules

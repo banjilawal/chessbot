@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RegisterValidationServerException
+from err import RegisterValidationServiceException
 
 __all__ = [
     # ======================# COORD_REGISTER_VALIDATION_SERVER_FAILURE #======================#
-    "CoordRegisterValidationServerException",
+    "CoordRegisterValidationServiceException",
 ]
 
 # ======================# COORD_REGISTER_VALIDATION_SERVER_FAILURE #======================#
-class CoordRegisterValidationServerException(
-    RegisterValidationServerException
+class CoordRegisterValidationServiceException(
+    RegisterValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class CoordRegisterValidationServerException(
     Provides:
 
     Super Class:
-        RegisterValidationServerException
+        RegisterValidationServiceException
     """
     MSG = "CoordRegisterValidationServer error."
     ERR_CODE = "COORD_REGISTER_VALIDATION_SERVER_FAILURE"

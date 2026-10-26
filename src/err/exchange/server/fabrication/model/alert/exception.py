@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# ALERT_TABLE_VALIDATION_SERVER_FAILURE #======================#
-    "AlertValidationServerException",
+    "AlertValidationServiceException",
 ]
 
 # ======================# ALERT_TABLE_VALIDATION_SERVER_FAILURE #======================#
-class AlertValidationServerException(
+class AlertValidationServiceException(
     ModelValidationServiceException
 ):
     """

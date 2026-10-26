@@ -1,7 +1,7 @@
-# src/exchange/server/validation/server.py
+# src/exchange/service/validation/service.py
 
 """
-Module: exchange.server.validation.server
+Module: exchange.service.validation.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from domain import Blueprint
-from exchange import ValidationRequest, ValidationResponder
+from exchange import ValidationRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
@@ -22,13 +22,13 @@ T = TypeVar("T")
 class ValidationService(ABC, Generic[T]):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract the EntityCarrier from a ValidationResponse attribute
 
     Attributes:
-        responder: ValidationResponder[T]
+        service: ValidationService[T]
 
     Provides:
         -   def extract_model(
@@ -41,18 +41,18 @@ class ValidationService(ABC, Generic[T]):
 
     Super Class:
     """
-    _responder = ValidationResponder[T]
+    _service = ValidationService[T]
     
-    def __init__(self, responder: ValidationResponder[T]):
+    def __init__(self, service: ValidationService[T]):
         """
         Args:
-            responder: ValidationResponder[T]
+            service: ValidationService[T]
         """
-        self._responder = responder
+        self._service = service
         
     @property
-    def responder(self) ->ValidationResponder[T]:
-        return self._responder
+    def service(self) ->ValidationService[T]:
+        return self._service
     
     @abstractmethod
     @LoggingLevelRouter.monitor

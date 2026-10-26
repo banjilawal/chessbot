@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .exception import EncounterValidationServerException
+from .exception import EncounterValidationServiceException

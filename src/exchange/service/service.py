@@ -1,7 +1,7 @@
-# src/exchange/server/server.py
+# src/exchange/service/service.py
 
 """
-Module: exchange.server.server
+Module: exchange.service.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,36 +13,36 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Result
-from exchange import Request, Responder
+from exchange import Request, Service
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
-class ResponseServer(ABC, Generic[T]):
+class ResponseService(ABC, Generic[T]):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract the payload from a Response.result.
 
     Attributes:
-        responder: Responder[T]
+        service: Service[T]
 
     Provides:
         -   def execute(self, request[T]) -> Any
 
     Super Class:
     """
-    _responder: Responder[T]
+    _service: Service[T]
     
-    def __init__(self, responder: Responder[T]):
+    def __init__(self, service: Service[T]):
         """
         Args:
-            responder: Responder[T]
+            service: Service[T]
         """
-        self._responder = responder
+        self._service = service
         
     @property
-    def responder(self) ->Responder[T]:
-        return self._responder
+    def service(self) ->Service[T]:
+        return self._service

@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationServerException
+from err import AuthorizationServiceException
 
 
 __all__ = [
     # ======================# ATTACK_AUTHORIZATION_SERVER_FAILURE #======================#
-    "AttackAuthorizationServerException",
+    "AttackAuthorizationServiceException",
 ]
 
 # ======================# ATTACK_AUTHORIZATION_SERVER_FAILURE #======================#
-class AttackAuthorizationServerException(AuthorizationServerException):
+class AttackAuthorizationServiceException(AuthorizationServiceException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class AttackAuthorizationServerException(AuthorizationServerException):
     Provides:
 
     Super Class:
-        AuthorizationServerException
+        AuthorizationServiceException
     """
     MSG = "AttackAuthorizationServer error."
     ERR_CODE = "ATTACK_AUTHORIZATION_SERVER_FAILURE"

@@ -1,13 +1,13 @@
-# src/exchange/server/validation/struct/__init__.py
+# src/exchange/service/validation/struct/__init__.py
 
 """
-Module: exchange.server.validation.struct.__init__
+Module: exchange.service.validation.struct.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# ========== EXCHANGE.SERVER.VALIDATION.STRUCT PACKAGE ===========#
+# ========== EXCHANGE.SERVICE.VALIDATION.STRUCT PACKAGE ===========#
 
 # Packages
 from .binder import *
@@ -16,4 +16,4 @@ from .node import *
 from .register import *
 
 # Modules
-from .service import StructValidationServer
+from .service import StructValidationService

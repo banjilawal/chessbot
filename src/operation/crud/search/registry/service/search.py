@@ -15,7 +15,7 @@ from err import ServiceRegistrySearchException
 from artifcat import SearchResult
 from domain.model import ServiceRegistry
 from util import LoggingLevelRouter
-from transit.controller import ServiceRegistryController
+from controller import ServiceRegistryController
 from operation import Worker, RegistryEntryNameValidator
 
 

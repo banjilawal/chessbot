@@ -15,4 +15,4 @@ from .chart import *
 from .register import *
 
 # Modules
-from .exception import StructValidationServerException
+from .exception import StructValidationServiceException

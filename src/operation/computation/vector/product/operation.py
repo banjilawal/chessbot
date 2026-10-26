@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from artifcat import ComputationResult
 from util import LoggingLevelRouter
 from err import ScalarProductException

@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationServerException
+from err import AuthorizationServiceException
 
 __all__ = [
     # ======================# INSERTION_AUTHORIZATION_SERVER_FAILURE #======================#
-    "InsertionAuthorizationServerException",
+    "InsertionAuthorizationServiceException",
 ]
 
 # ======================# INSERTION_AUTHORIZATION_SERVER_FAILURE #======================#
-class InsertionAuthorizationServerException(AuthorizationServerException):
+class InsertionAuthorizationServiceException(AuthorizationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class InsertionAuthorizationServerException(AuthorizationServerException):
     Provides:
 
     Super Class:
-        AuthorizationServerException
+        AuthorizationServiceException
     """
     MSG = "InsertionAuthorizationServer error."
     ERR_CODE = "INSERTION_AUTHORIZATION_SERVER_FAILURE"

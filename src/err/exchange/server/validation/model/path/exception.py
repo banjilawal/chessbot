@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# PATH_VALIDATION_SERVER_FAILURE #======================#
-    "PathValidationServerException",
+    "PathValidationServiceException",
 ]
 
 # ======================# PATH_VALIDATION_SERVER_FAILURE #======================#
-class PathValidationServerException(ModelValidationServiceException):
+class PathValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

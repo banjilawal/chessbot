@@ -1,7 +1,7 @@
-# src/exchange/server/validation/struct/chart/server.py
+# src/exchange/service/validation/struct/chart/service.py
 
 """
-Module: exchange.server.validation.struct.chart.server
+Module: exchange.service.validation.struct.chart.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,20 +15,20 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Chart, ChartBlueprint
 from exchange import (
-    ChartValidationRequest, ChartValidationResponder, StructValidationServer,
+    ChartValidationRequest, ChartValidationService, StructValidationService,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
 
-class ChartValidationServer(
-    StructValidationServer[T],
+class ChartValidationService(
+    StructValidationService[T],
     ABC,
     Generic[T]
 ):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract the either:
@@ -37,7 +37,7 @@ class ChartValidationServer(
             from a ChartValidationResponse.
 
     Attributes:
-        responder: ChartValidationResponder[T]
+        service: ChartValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -51,19 +51,19 @@ class ChartValidationServer(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationServer
+        ValidationService
     """
     
-    def __init__(self, responder: ChartValidationResponder[T]):
+    def __init__(self, service: ChartValidationService[T]):
         """
         Args:
-            responder: ChartValidationResponder[T]
+            service: ChartValidationService[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(service=service)
     
     @property
-    def responder(self) -> ChartValidationResponder[T]:
-        return cast(ChartValidationResponder[T], super().responder)
+    def service(self) -> ChartValidationService[T]:
+        return cast(ChartValidationService[T], super().service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

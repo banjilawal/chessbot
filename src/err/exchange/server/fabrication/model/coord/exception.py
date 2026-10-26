@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# COORD_VALIDATION_SERVER_FAILURE #======================#
-    "CoordValidationServerException",
+    "CoordValidationServiceException",
 ]
 
 # ======================# COORD_VALIDATION_SERVER_FAILURE #======================#
-class CoordValidationServerException(ModelValidationServiceException):
+class CoordValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

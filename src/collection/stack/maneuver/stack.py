@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, List, Optional
 
 from sensor.analyzer import CollisionAnalyzer
-from transit.controller import ManeuverStackOpsController
+from controller import ManeuverStackOpsController
 
 from event import ManeuverEvent
 from microservice import IdentityService, ManeuverService

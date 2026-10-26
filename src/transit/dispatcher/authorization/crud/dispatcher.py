@@ -1,4 +1,4 @@
-# src/transit/dispatcher/authorization/crud//dispatcher.py
+# src/transit/dispatcher/authorization/crud/dispatcher.py
 
 """
 Module: transit.dispatcher.authorization.crud.dispatcher
@@ -13,6 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import Decision
+from exchange import CrudPermissionRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
 

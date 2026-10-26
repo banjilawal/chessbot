@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationServerException
+from err import ValidationServiceException
 
 
 __all__ = [
     # ======================# STRUCT_VALIDATION_SERVER_FAILURE #======================#
-    "StructValidationServerException",
+    "StructValidationServiceException",
 ]
 
 # ======================# STRUCT_VALIDATION_SERVER_FAILURE #======================#
-class StructValidationServerException(
-    ValidationServerException
+class StructValidationServiceException(
+    ValidationServiceException
 ):
     """
     Role:
@@ -44,7 +44,7 @@ class StructValidationServerException(
     Provides:
 
     Super Class:
-        ValidationServerException
+        ValidationServiceException
     """
     MSG = "StructValidationServer error."
     ERR_CODE = "STRUCT_VALIDATION_SERVER_FAILURE"

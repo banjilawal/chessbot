@@ -1,7 +1,7 @@
-# src/artifact/decision/crud/decision.py
+# src/artifact/decision/crud/insertion/decision.py
 
 """
-Module: artfifact.decision.crud.decision
+Module: artfifact.decision.crud.insertion.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import Decision, Permission
+from artifcat import Permission
 from artifcat.decision.crud import CrudDecision
 from exchange import InsertionRequest, PermissionRequest
 
@@ -23,16 +23,13 @@ class InsertionDecision(CrudDecision[T], Generic[T]):
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if an action is permitted.
+        1.  Report if an insertion is permitted or denied.
         
     Attributes:
-        permission_request: PermissionRequest[T]
         permission: Permission
-        approval: Optional[T]
+        permission_request: PermissionRequest[T]
         exception: Optional[Exception]
-        
-        is_granted: bool
-        is_denied: bool
+        approval: Optional[T]
         
     Provides:
         -   def grant(
@@ -44,6 +41,10 @@ class InsertionDecision(CrudDecision[T], Generic[T]):
                     permission_request: PermissionRequest[T],
                     exception: Exception,
             ) -> Decision[T]
+            
+        -   def do_nothing(
+                    permission_request: PermissionRequest[T]
+            ) -> InsertionDecision
 
     Super Class:
         CrudDecision

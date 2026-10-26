@@ -1,7 +1,7 @@
-# src/authorization/loader/insertion/account/loader.py
+# src/authorization/loader/crud/insertion/account/loader.py
 
 """
-Module: authorization.loader.insertion.account.loader
+Module: authorization.loader.crud.insertion.account.loader
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -58,18 +58,17 @@ class AccountPushPermissionLoader(
     def validation_service(self) -> AccountValidationService:
         return cast(AccountValidationService, super().validation_service)
     
-    
     @LoggingLevelRouter.monitor
     def execute(self, candidate: AccountPushPermissionRequest) -> Decision:
         """
         Checks if the Request is the right type.
-        
+
         Action:
             1.  Send an exception chain in the Decision denial if any of the following
                 occur.
                     -   The candidate is null or the wrong type.
                     -   The bundled transaction_request is null or the wrong type.
-                    -   There is an error with transaction_request.collection 
+                    -   There is an error with transaction_request.collection
                     -   Validating transaction_request.item fails.
             2.  Otherwise, send an approval.
         Args:
@@ -85,7 +84,7 @@ class AccountPushPermissionLoader(
         priming = self.priming_validator.execute(
             candidate=candidate,
             target_model=AccountPushPermissionRequest,
-            null_exception=PermissionRequestNullException()   
+            null_exception=PermissionRequestNullException()
         )
         if priming.is_failure:
             # Send the exception chain in the denial.
@@ -101,7 +100,7 @@ class AccountPushPermissionLoader(
             )
         # --- Cast the candidate to a permission_request for additional processing. ---#
         permission_request = cast(
-            AccountPushPermissionRequest, 
+            AccountPushPermissionRequest,
             priming.payload,
         )
         # Handle the case that permission_request.payload gets flagged.

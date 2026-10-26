@@ -13,4 +13,4 @@ version: 1.0.0
 from .participate import *
 
 # Modules
-from .exception import ChartValidationServerException
+from .exception import ChartValidationServiceException

@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import BinderValidationServerException
+from err import BinderValidationServiceException
 
 __all__ = [
     # ======================# PLAYER_BINDER_VALIDATION_SERVER_FAILURE #======================#
-    "PlayerBinderValidationServerException",
+    "PlayerBinderValidationServiceException",
 ]
 
 # ======================# PLAYER_BINDER_VALIDATION_SERVER_FAILURE #======================#
-class PlayerBinderValidationServerException(
-    BinderValidationServerException
+class PlayerBinderValidationServiceException(
+    BinderValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class PlayerBinderValidationServerException(
     Provides:
 
     Super Class:
-        BinderValidationServerException
+        BinderValidationServiceException
     """
     MSG = "PlayerBinderValidationServer error."
     ERR_CODE = "PLAYER_BINDER_VALIDATION_SERVER_FAILURE"

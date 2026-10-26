@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import InsertionDecision
-from authorization import AccountPushPermissionLoader, PushPermitter
+from authorization import AccountCrudPermissionLoader, PushPermitter
 from collection import AccountStack
 from domain import Account
 from err import ChessException
@@ -41,17 +41,17 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     
     def __init__(
-            self, loader: Optional[AccountPushPermissionLoader] | None = None,
+            self, loader: Optional[AccountCrudPermissionLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[PushPermissionLoader]
         """
-        super().__init__(loader=loader or AccountPushPermissionLoader())
+        super().__init__(loader=loader or AccountCrudPermissionLoader())
     
     @property
-    def loader(self) -> AccountPushPermissionLoader:
-        return cast(AccountPushPermissionLoader, super().loader)
+    def loader(self) -> AccountCrudPermissionLoader:
+        return cast(AccountCrudPermissionLoader, super().loader)
 
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushPermissionRequest) -> InsertionDecision:

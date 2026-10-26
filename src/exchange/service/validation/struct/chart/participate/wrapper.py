@@ -1,7 +1,7 @@
-# src/exchange/server/validation/struct/chart/participate/server.py
+# src/exchange/service/validation/struct/chart/participate/service.py
 
 """
-Module: exchange.server.validation.struct.chart.participate.server
+Module: exchange.service.validation.struct.chart.participate.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,26 +13,26 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from domain import Participation, ParticipationBlueprint
-from err import ParticipationValidationServerException
-from exchange import ChartValidationService, ParticipationValidationRequest, ParticipationValidationResponder
+from err import ParticipationValidationServiceException
+from exchange import ChartValidationService, ParticipationValidationRequest, ParticipationValidationService
 from util import LoggingLevelRouter
 
 
-class ParticipationValidationServer(
+class ParticipationValidationService(
     ChartValidationService[Participation]
 ):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract either safe:
                 -   Token
                 _   TokenBlueprint
-            products from ParticipationValidationResponder.
+            products from ParticipationValidationService.
 
     Attributes:
-        responder: ParticipationValidationResponder
+        service: ParticipationValidationService
         
     Provides:
         -   def extract_model(
@@ -44,22 +44,22 @@ class ParticipationValidationServer(
             ) -> ValidationResult[TokenBlueprint]
 
     Super Class:
-        ValidationServer
+        ValidationService
     """
     
     def __init__(
             self,
-            responder: Optional[ParticipationValidationResponder] | None = None,
+            service: Optional[ParticipationValidationService] | None = None,
     ):
         """
         Args:
-            responder: Optional[ParticipationValidationResponder]
+            service: Optional[ParticipationValidationService]
         """
-        super().__init__(responder=responder or ParticipationValidationResponder())
+        super().__init__(service=service or ParticipationValidationService())
     
     @property
-    def responder(self) -> ParticipationValidationResponder:
-        return cast(ParticipationValidationResponder, super().responder)
+    def service(self) -> ParticipationValidationService:
+        return cast(ParticipationValidationService, super().service)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class ParticipationValidationServer(
         Extract a Token safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the responder
+            1.  Send an exception chain in the ValidationResult if the service
                 fails.
             2.  Otherwise, extract the Token from the success response then send it 
                 to the client.
@@ -80,20 +80,20 @@ class ParticipationValidationServer(
         Result:
             ValidationResult[Token]
         Raises:
-            ParticipationValidationServerException
+            ParticipationValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.responder.execute(request)
+        result = self.service.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipationValidationServerException(
+                ParticipationValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipationValidationServerException.MSG,
-                    err_code=ParticipationValidationServerException.ERR_CODE,
+                    msg=ParticipationValidationServiceException.MSG,
+                    err_code=ParticipationValidationServiceException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -101,11 +101,11 @@ class ParticipationValidationServer(
         if not response.valid_chart:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipationValidationResponderException(
+                ParticipationValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipationValidationResponderException.MSG,
-                    err_code=ParticipationValidationResponderException.ERR_CODE,
+                    msg=ParticipationValidationServiceException.MSG,
+                    err_code=ParticipationValidationServiceException.ERR_CODE,
                     ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -127,7 +127,7 @@ class ParticipationValidationServer(
         Extract a TokenBlueprint safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the responder
+            1.  Send an exception chain in the ValidationResult if the service
                 fails.
             2.  Otherwise, extract the TokenBluprint from the success response
                 then send it to the client.
@@ -136,20 +136,20 @@ class ParticipationValidationServer(
         Result:
             ValidationResult[TokenBlueprint]
         Raises:
-            ParticipationValidationServerException
+            ParticipationValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.responder.execute(request)
+        result = self.service.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipationValidationServerException(
+                ParticipationValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipationValidationServerException.MSG,
-                    err_code=ParticipationValidationServerException.ERR_CODE,
+                    msg=ParticipationValidationServiceException.MSG,
+                    err_code=ParticipationValidationServiceException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -157,11 +157,11 @@ class ParticipationValidationServer(
         if not response.valid_token:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipationValidationResponderException(
+                ParticipationValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipationValidationResponderException.MSG,
-                    err_code=ParticipationValidationResponderException.ERR_CODE,
+                    msg=ParticipationValidationServiceException.MSG,
+                    err_code=ParticipationValidationServiceException.ERR_CODE,
                     ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

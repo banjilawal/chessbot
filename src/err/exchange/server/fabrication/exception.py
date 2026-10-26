@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ResponseServerException
+from err import ResponseServiceException
 
 
 __all__ = [
     # ======================# VALIDATION_SERVER_FAILURE #======================#
-    "ValidationServerException",
+    "ValidationServiceException",
 ]
 
 # ======================# VALIDATION_SERVER_FAILURE #======================#
-class ValidationServerException(ResponseServerException):
+class ValidationServiceException(ResponseServiceException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ValidationServerException(ResponseServerException):
     Provides:
 
     Super Class:
-        ResponseServerException
+        ResponseServiceException
     """
     MSG = "ValidationServer error."
     ERR_CODE = "VALIDATION_SERVER_FAILURE"

@@ -1,7 +1,7 @@
-# src/exchange/server/validation/model/account/server.py
+# src/exchange/service/validation/model/account/service.py
 
 """
-Module: exchange.server.validation.model.account.server
+Module: exchange.service.validation.model.account.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,9 +13,9 @@ from typing import Optional, cast
 
 from artifcat import AccountValidationResponse, ValidationResult
 from domain import Account, AccountBlueprint
-from err import AccountValidationResponderException, AccountValidationServerException
+from err import AccountValidationServiceException, AccountValidationServiceException
 from exchange import (
-    AccountValidationResponder, AccountValidationRequest, ModelValidationService
+    AccountValidationService, AccountValidationRequest, ModelValidationService
 )
 from util import LoggingLevelRouter
 
@@ -25,16 +25,16 @@ class AccountValidationService(
 ):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract either safe:
                 -   Account
                 _   AccountBlueprint
-            products from AccountValidationResponder.
+            products from AccountValidationService.
 
     Attributes:
-        responder: AccountValidationResponder
+        service: AccountValidationService
         
     Provides:
         -   def extract_model(
@@ -46,22 +46,22 @@ class AccountValidationService(
             ) -> ValidationResult[AccountBlueprint]
 
     Super Class:
-        ValidationServer
+        ValidationService
     """
     
     def __init__(
             self,
-            responder: Optional[AccountValidationResponder] | None = None,
+            service: Optional[AccountValidationService] | None = None,
     ):
         """
         Args:
-            responder: Optional[AccountValidationResponder]
+            service: Optional[AccountValidationService]
         """
-        super().__init__(responder=responder or AccountValidationResponder())
+        super().__init__(service=service or AccountValidationService())
     
     @property
-    def responder(self) -> AccountValidationResponder:
-        return cast(AccountValidationResponder, super().responder)
+    def service(self) -> AccountValidationService:
+        return cast(AccountValidationService, super().service)
     
 
     @LoggingLevelRouter.monitor
@@ -73,7 +73,7 @@ class AccountValidationService(
         Extract a Account safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the responder
+            1.  Send an exception chain in the ValidationResult if the service
                 fails.
             2.  Otherwise, extract the Account from the success response then send it 
                 to the client.
@@ -82,20 +82,20 @@ class AccountValidationService(
         Result:
             ValidationResult[Account]
         Raises:
-            AccountValidationServerException
+            AccountValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.responder.execute(request)
+        result = self.service.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountValidationServerException(
+                AccountValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountValidationServerException.MSG,
-                    err_code=AccountValidationServerException.ERR_CODE,
+                    msg=AccountValidationServiceException.MSG,
+                    err_code=AccountValidationServiceException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -103,11 +103,11 @@ class AccountValidationService(
         if not response.valid_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountValidationResponderException(
+                AccountValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountValidationResponderException.MSG,
-                    err_code=AccountValidationResponderException.ERR_CODE,
+                    msg=AccountValidationServiceException.MSG,
+                    err_code=AccountValidationServiceException.ERR_CODE,
                     ex=EmptyAccountCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -129,7 +129,7 @@ class AccountValidationService(
         Extract a AccountBlueprint safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the responder
+            1.  Send an exception chain in the ValidationResult if the service
                 fails.
             2.  Otherwise, extract the AccountBluprint from the success response
                 then send it to the client.
@@ -138,20 +138,20 @@ class AccountValidationService(
         Result:
             ValidationResult[AccountBlueprint]
         Raises:
-            AccountValidationServerException
+            AccountValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.responder.execute(request)
+        result = self.service.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountValidationServerException(
+                AccountValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountValidationServerException.MSG,
-                    err_code=AccountValidationServerException.ERR_CODE,
+                    msg=AccountValidationServiceException.MSG,
+                    err_code=AccountValidationServiceException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -159,11 +159,11 @@ class AccountValidationService(
         if not response.valid_account:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountValidationResponderException(
+                AccountValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountValidationResponderException.MSG,
-                    err_code=AccountValidationResponderException.ERR_CODE,
+                    msg=AccountValidationServiceException.MSG,
+                    err_code=AccountValidationServiceException.ERR_CODE,
                     ex=EmptyAccountCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

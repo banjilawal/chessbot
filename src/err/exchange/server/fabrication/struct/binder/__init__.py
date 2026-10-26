@@ -14,4 +14,4 @@ from .player import *
 from .team import *
 
 # Modules
-from .exception import BinderValidationServerException
+from .exception import BinderValidationServiceException

@@ -15,4 +15,4 @@ from .fabrication import *
 from .validation import *
 
 # Modules
-from .exception import ResponseServerException
+from .exception import ResponseServiceException

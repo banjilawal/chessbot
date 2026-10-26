@@ -14,11 +14,11 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import Decision
 from authorization import CrudAuthorizationLoader
-from exchange import PushPermissionRequest, ValidationService
+from exchange import InsertionPermissionRequest, ValidationService
 
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="PushPermissionRequest")
+T = TypeVar("T", bound="InsertionPermissionRequest")
 
 class InsertionAuthorizationLoader(
     CrudAuthorizationLoader[T], ABC, Generic[T]
@@ -53,7 +53,7 @@ class InsertionAuthorizationLoader(
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, target: T) -> Decision[T]:
         """
         Checks if the Request is the right type.
         
@@ -63,7 +63,7 @@ class InsertionAuthorizationLoader(
                     -   the wrong type.
             2.  Otherwise, send an approval.
         Args:
-            request: T
+            target: T
         Returns:
            Decision[T]
         Raises:

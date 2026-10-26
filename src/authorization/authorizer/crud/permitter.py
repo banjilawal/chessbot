@@ -12,7 +12,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from artifcat import Decision
 from authorization import AuthorizationLoader
 from exchange import CrudPermissionRequest
 from exchange.service import ValidationService
@@ -31,11 +30,9 @@ class CrudPermitter(ABC, Generic[T]):
 
     Attributes:
         loader: AuthorizationLoader[T]
-        role_permitter: RolePermitter[T]
-        applicant_reviewer: ApplicantReviewer[T]
 
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(request: T) -> CrudDecision
 
     Super Class:
     """
@@ -65,14 +62,14 @@ class CrudPermitter(ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, request: T) -> CrudDecision:
         """
         Grant permission for an activity.
         
         Args:
             request: T
         Returns:
-           Decision[T]
+           CrudDecision
         Raises:
             CrudPermitterException
         """

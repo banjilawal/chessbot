@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# MANEUVER_VALIDATION_SERVER_FAILURE #======================#
-    "ManeuverValidationServerException",
+    "ManeuverValidationServiceException",
 ]
 
 # ======================# MANEUVER_VALIDATION_SERVER_FAILURE #======================#
-class ManeuverValidationServerException(ModelValidationServiceException):
+class ManeuverValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

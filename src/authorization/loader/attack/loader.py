@@ -39,7 +39,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackPermissionRequest) -> AttackDecision:
+    def execute(self, target: AttackPermissionRequest) -> AttackDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -49,7 +49,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
                     -   not a AttackPermissionRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: AttackPermissionRequest
+            target: AttackPermissionRequest
         Returns:
            AttackDecision
         Raises:
@@ -59,14 +59,14 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
         
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
-            candidate=request,
+            candidate=target,
             target_model=AttackPermissionRequest,
             null_exception=AttackPermissionRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:
             return AttackDecision.denial(
-                request=request,
+                request=target,
                 exception=AttackAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,

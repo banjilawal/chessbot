@@ -13,8 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import InsertionResult
+from exchange import PushRequest
 from operation import Inserter
-from transit import PushPermissionPermitter
+from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PushRequest")
@@ -29,7 +30,7 @@ class Pusher(Inserter[T], ABC, Generic[T]):
         1.  Executes a PushRequest
 
     Attributes:
-        permitter: PushPermissionPermitter[T]
+        permitter: PushPermissionDispatcher[T]
 
     Provides:
         -   def execute(self, request: T) -> InsertionResult
@@ -38,7 +39,7 @@ class Pusher(Inserter[T], ABC, Generic[T]):
         Inserter
     """
     
-    def __init__(self, permitter: PushPermissionPermitter[T]):
+    def __init__(self, permitter: PushPermissionDispatcher[T]):
         """
         Args:
             permitter: InsertionPermissionPermitter[T]
@@ -47,8 +48,8 @@ class Pusher(Inserter[T], ABC, Generic[T]):
     
     
     @property
-    def permitter(self) -> PushPermissionPermitter[T]:
-        return cast(PushPermissionPermitter[T], super().permitter)
+    def permitter(self) -> PushPermissionDispatcher[T]:
+        return cast(PushPermissionDispatcher[T], super().permitter)
     
     
     @abstractmethod

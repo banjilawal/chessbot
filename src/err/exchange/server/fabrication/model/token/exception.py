@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_SERVER_FAILURE #======================#
-    "TokenValidationServerException",
+    "TokenValidationServiceException",
 ]
 
 # ======================# TOKEN_VALIDATION_SERVER_FAILURE #======================#
-class TokenValidationServerException(ModelValidationServiceException):
+class TokenValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

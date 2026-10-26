@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any
 
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from err import MaxNameLengthException, MinNameLengthException, NameValidatorException
 
 from operation import StringValidator, Validator

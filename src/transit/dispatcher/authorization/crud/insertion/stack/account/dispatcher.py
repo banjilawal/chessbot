@@ -72,10 +72,10 @@ class AccountPushPermissionDispatcher(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # Handle the case that the request is denied.
         decision = self.authorizer.execute(request)
         if decision.request_is_denied:
-            return Decision.denial(
+            return InsertionDecision.denial(
                 permission_request=request,
                 exception=AccountPushPermissionDispatcherException(
                     cls_mthd=method,
@@ -85,5 +85,24 @@ class AccountPushPermissionDispatcher(
                     ex=decision.exception,
                 )
             )
-        transaction_request = cast(AccountPushRequest, decision.approval)
-        return Decision.grant(transaction_request)
+        permission_request = cast(
+            AccountPushPermissionRequest,
+            decision.permission_request,
+        )
+        approval = cast(AccountPushRequest, decision.approval)
+        return InsertionDecision.grant(
+            approval=approval,
+            permission_request=permission_request,
+        )
+        
+        # --- Otherwise prepare an approval of the transaction. ---#
+        transaction_request = AccountPushRequest(
+            id=transaction_request.id,
+            item=item,
+            collection=collection,
+        )
+        # --- Forward the approval. ---#
+        return InsertionDecision.grant(
+            approval=transaction_request,
+            permission_request=permission_request,
+        )

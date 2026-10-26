@@ -14,7 +14,9 @@ from typing import cast
 from exchange import AccountPushRequest, ModelPushPermissionRequest
 
 
-class AccountPushPermissionRequest(ModelPushPermissionRequest[AccountPushRequest]):
+class AccountPushPermissionRequest(
+    ModelPushPermissionRequest[AccountPushRequest]
+):
     """
      Role:
          -  Messaging

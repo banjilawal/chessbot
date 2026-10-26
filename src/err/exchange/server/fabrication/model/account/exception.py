@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# ACCOUNT_VALIDATION_SERVER_FAILURE #======================#
-    "AccountValidationServerException",
+    "AccountValidationServiceException",
 ]
 
 # ======================# ACCOUNT_VALIDATION_SERVER_FAILURE #======================#
-class AccountValidationServerException(ModelValidationServiceException):
+class AccountValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

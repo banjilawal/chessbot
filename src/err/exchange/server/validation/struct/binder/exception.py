@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructValidationServerException
+from err import StructValidationServiceException
 
 
 __all__ = [
     # ======================# BINDER_VALIDATION_SERVER_FAILURE #======================#
-    "BinderValidationServerException",
+    "BinderValidationServiceException",
 ]
 
 # ======================# BINDER_VALIDATION_SERVER_FAILURE #======================#
-class BinderValidationServerException(
-    StructValidationServerException
+class BinderValidationServiceException(
+    StructValidationServiceException
 ):
     """
     Role:
@@ -44,7 +44,7 @@ class BinderValidationServerException(
     Provides:
 
     Super Class:
-        StructValidationServerException
+        StructValidationServiceException
     """
     MSG = "BinderValidationServer error."
     ERR_CODE = "BINDER_VALIDATION_SERVER_FAILURE"

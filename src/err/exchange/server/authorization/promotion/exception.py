@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationServerException
+from err import AuthorizationServiceException
 
 
 __all__ = [
     # ======================# PROMOTION_AUTHORIZATION_SERVER_FAILURE #======================#
-    "PromotionAuthorizationServerException",
+    "PromotionAuthorizationServiceException",
 ]
 
 # ======================# PROMOTION_AUTHORIZATION_SERVER_FAILURE #======================#
-class PromotionAuthorizationServerException(AuthorizationServerException):
+class PromotionAuthorizationServiceException(AuthorizationServiceException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionAuthorizationServerException(AuthorizationServerException):
     Provides:
 
     Super Class:
-        AuthorizationServerException
+        AuthorizationServiceException
     """
     MSG = "PromotionAuthorizationServer error."
     ERR_CODE = "PROMOTION_AUTHORIZATION_SERVER_FAILURE"

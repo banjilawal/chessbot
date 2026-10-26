@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# ENCOUNTER_VALIDATION_SERVER_FAILURE #======================#
-    "EncounterValidationServerException",
+    "EncounterValidationServiceException",
 ]
 
 # ======================# ENCOUNTER_VALIDATION_SERVER_FAILURE #======================#
-class EncounterValidationServerException(ModelValidationServiceException):
+class EncounterValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

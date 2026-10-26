@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationServerException
+from err import ValidationServiceException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MODEL_VALIDATION_SERVER_FAILURE #======================#
-class ModelValidationServiceException(ValidationServerException):
+class ModelValidationServiceException(ValidationServiceException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ModelValidationServiceException(ValidationServerException):
     Provides:
 
     Super Class:
-        ValidationServerException
+        ValidationServiceException
     """
     MSG = "ModelValidationService error."
     ERR_CODE = "MODEL_VALIDATION_SERVER_FAILURE"

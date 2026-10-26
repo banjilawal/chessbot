@@ -1,7 +1,7 @@
-# src/exchange/server/validation/model/server.py
+# src/exchange/service/validation/model/service.py
 
 """
-Module: exchange.server.validation.model.server
+Module: exchange.service.validation.model.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Model, ModelBlueprint
 from exchange import (
-    ModelValidationRequest, ModelValidationResponder
+    ModelValidationRequest, ModelValidationService, ValidationService
 )
 from util import LoggingLevelRouter
 
@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Model")
 class ModelValidationService(ValidationService[T], ABC, Generic[T]):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract the either:
@@ -33,7 +33,7 @@ class ModelValidationService(ValidationService[T], ABC, Generic[T]):
             from a ModelValidationResponse.
 
     Attributes:
-        responder: ModelValidationResponder[T]
+        service: ModelValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -47,19 +47,19 @@ class ModelValidationService(ValidationService[T], ABC, Generic[T]):
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationServer
+        ValidationService
     """
     
-    def __init__(self, responder: ModelValidationResponder[T]):
+    def __init__(self, service: ModelValidationService[T]):
         """
         Args:
-            responder: ModelValidationResponder[T]
+            service: ModelValidationService[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(service=service)
     
     @property
-    def responder(self) -> ModelValidationResponder[T]:
-        return cast(ModelValidationResponder[T], super().responder)
+    def service(self) -> ModelValidationService[T]:
+        return cast(ModelValidationService[T], super().service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

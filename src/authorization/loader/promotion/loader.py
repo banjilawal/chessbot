@@ -9,16 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import AuthorizationLoader
 from err import PromotionAuthorizationLoaderException
-from exchange import PromotionPermissionRequest
+from exchange import PromotionPermissionRequest, TokenValidationService, ValidationService
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionRequest]):
+class PromotionAuthorizationLoader(
+    AuthorizationLoader[PromotionPermissionRequest]
+):
     """
     Role:
         -   Permission Authorization
@@ -34,12 +36,23 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
     Super Class:
         AuthorizationLoader
     """
-    def __init__(self):
-        """Args:"""
-        super().__init__()
+    
+    def __init__(
+            self,
+            validation_service: Optional[TokenValidationService] | None = None,
+    ):
+        """
+        Args:
+            validation_service: Optional[TokenValidationService]
+        """
+        super().__init__(validation_service=validation_service or TokenValidationService())
+        
+    @property
+    def validation_service(self) -> TokenValidationService:
+        return cast(TokenValidationService, super().validation_service)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
+    def execute(self, target: PromotionPermissionRequest) -> PromotionDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -49,7 +62,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
                     -   not a PromotionPermissionRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: PromotionPermissionRequest
+            target: PromotionPermissionRequest
         Returns:
            PromotionDecision
         Raises:
@@ -59,14 +72,14 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
         
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
-            candidate=request,
+            candidate=target,
             target_model=PromotionPermissionRequest,
             null_exception=PromotionPermissionRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:
             return PromotionDecision.denial(
-                request=request.payload,
+                permission_request=target,
                 exception=PromotionAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,

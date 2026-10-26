@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# SCALAR_VALIDATION_SERVER_FAILURE #======================#
-    "ScalarValidationServerException",
+    "ScalarValidationServiceException",
 ]
 
 # ======================# SCALAR_VALIDATION_SERVER_FAILURE #======================#
-class ScalarValidationServerException(ModelValidationServiceException):
+class ScalarValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

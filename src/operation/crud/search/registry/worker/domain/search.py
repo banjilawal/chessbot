@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from err import WorkerRegistryDomainSearchException
 from artifcat import SearchResult
 from domain.model import WorkerRegistry

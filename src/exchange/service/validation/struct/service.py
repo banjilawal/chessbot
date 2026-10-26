@@ -1,7 +1,7 @@
-# src/exchange/server/validation/struct/server.py
+# src/exchange/service/validation/struct/service.py
 
 """
-Module: exchange.server.validation.struct.server
+Module: exchange.service.validation.struct.service
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,16 +15,16 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Struct, StructBlueprint
 from exchange import (
-    StructValidationRequest, StructValidationResponder, ValidationService
+    StructValidationRequest, StructValidationService, ValidationService
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Struct")
 
-class StructValidationServer(ValidationService[T], ABC, Generic[T]):
+class StructValidationService(ValidationService[T], ABC, Generic[T]):
     """
     Role
-        -   Server
+        -   Service
 
     Responsibilities:
         1.  Extract the either:
@@ -33,7 +33,7 @@ class StructValidationServer(ValidationService[T], ABC, Generic[T]):
             from a StructValidationResponse.
 
     Attributes:
-        responder: StructValidationResponder[T]
+        service: StructValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -47,19 +47,19 @@ class StructValidationServer(ValidationService[T], ABC, Generic[T]):
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationServer
+        ValidationService
     """
     
-    def __init__(self, responder: StructValidationResponder[T]):
+    def __init__(self, service: StructValidationService[T]):
         """
         Args:
-            responder: StructValidationResponder[T]
+            service: StructValidationService[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(service=service)
     
     @property
-    def responder(self) -> StructValidationResponder[T]:
-        return cast(StructValidationResponder[T], super().responder)
+    def service(self) -> StructValidationService[T]:
+        return cast(StructValidationService[T], super().service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

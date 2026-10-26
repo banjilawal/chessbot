@@ -10,7 +10,7 @@ version: 0.0.2
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from transit.controller import Controller
+from controller import Controller
 
 T = TypeVar("T", bound="StateModel")
 

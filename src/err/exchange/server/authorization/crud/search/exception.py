@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationServerException
+from err import AuthorizationServiceException
 
 __all__ = [
     # ======================# SEARCH_AUTHORIZATION_SERVER_FAILURE #======================#
-    "SearchAuthorizationServerException",
+    "SearchAuthorizationServiceException",
 ]
 
 # ======================# SEARCH_AUTHORIZATION_SERVER_FAILURE #======================#
-class SearchAuthorizationServerException(AuthorizationServerException):
+class SearchAuthorizationServiceException(AuthorizationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class SearchAuthorizationServerException(AuthorizationServerException):
     Provides:
 
     Super Class:
-        AuthorizationServerException
+        AuthorizationServiceException
     """
     MSG = "SearchAuthorizationServer error."
     ERR_CODE = "SEARCH_AUTHORIZATION_SERVER_FAILURE"

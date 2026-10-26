@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructValidationServerException
+from err import StructValidationServiceException
 
 
 __all__ = [
     # ======================# REGISTER_VALIDATION_SERVER_FAILURE #======================#
-    "RegisterValidationServerException",
+    "RegisterValidationServiceException",
 ]
 
 # ======================# REGISTER_VALIDATION_SERVER_FAILURE #======================#
-class RegisterValidationServerException(
-    StructValidationServerException
+class RegisterValidationServiceException(
+    StructValidationServiceException
 ):
     """
     Role:
@@ -44,7 +44,7 @@ class RegisterValidationServerException(
     Provides:
 
     Super Class:
-        StructValidationServerException
+        StructValidationServiceException
     """
     MSG = "RegisterValidationServer error."
     ERR_CODE = "REGISTER_VALIDATION_SERVER_FAILURE"

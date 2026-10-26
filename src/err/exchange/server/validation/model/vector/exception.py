@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# VECTOR_VALIDATION_SERVER_FAILURE #======================#
-    "VectorValidationServerException",
+    "VectorValidationServiceException",
 ]
 
 # ======================# VECTOR_VALIDATION_SERVER_FAILURE #======================#
-class VectorValidationServerException(ModelValidationServiceException):
+class VectorValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

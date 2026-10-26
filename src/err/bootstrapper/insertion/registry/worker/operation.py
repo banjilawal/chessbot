@@ -13,7 +13,7 @@ from __future__ import annotations
 from domain.model import WorkerRegistry
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException
 from operation import Primer, Worker, RegistryEntryNameValidator, PrimingValidator
 

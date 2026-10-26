@@ -12,7 +12,6 @@ version: 0.0.2
 # Packages
 from .broadcast import *
 from .carrier import *
-from .controller import *
 from .delivery import *
 from .dispatcher import *
 from .router import *

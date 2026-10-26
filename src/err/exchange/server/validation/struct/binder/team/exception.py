@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import BinderValidationServerException
+from err import BinderValidationServiceException
 
 __all__ = [
     # ======================# TEAM_BINDER_VALIDATION_SERVER_FAILURE #======================#
-    "TeamBinderValidationServerException",
+    "TeamBinderValidationServiceException",
 ]
 
 # ======================# TEAM_BINDER_VALIDATION_SERVER_FAILURE #======================#
-class TeamBinderValidationServerException(
-    BinderValidationServerException
+class TeamBinderValidationServiceException(
+    BinderValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class TeamBinderValidationServerException(
     Provides:
 
     Super Class:
-        BinderValidationServerException
+        BinderValidationServiceException
     """
     MSG = "TeamBinderValidationServer error."
     ERR_CODE = "TEAM_BINDER_VALIDATION_SERVER_FAILURE"

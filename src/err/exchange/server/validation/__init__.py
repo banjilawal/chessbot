@@ -14,4 +14,4 @@ from .model import *
 from .struct import *
 
 # Modules
-from .exception import ValidationServerException
+from .exception import ValidationServiceException

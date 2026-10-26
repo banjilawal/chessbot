@@ -23,10 +23,11 @@ T = TypeVar("T", bound="PermissionRequest")
 class AuthorizationLoader(ABC, Generic[T]):
     """
     Role:
-        -   Permission Authorization
+        -   Loader, Bootstrapper
 
     Responsibilities:
-        1.  Ensure the correct Request type is loaded into an Authorization module.
+        1.  Run type and validation checks on the item before handing off
+            to the Permitter for additional processing.
 
     Attributes:
         identity_service: IdentityService
@@ -73,7 +74,7 @@ class AuthorizationLoader(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, target: T) -> Decision[T]:
         """
         Checks if the Request is the right type.
         
@@ -83,10 +84,10 @@ class AuthorizationLoader(ABC, Generic[T]):
                     -   the wrong type.
             2.  Otherwise, send an approval.
         Args:
-            request: T
+            target: T
         Returns:
            Decision[T]
         Raises:
-            AuthorizationLoaderxception
+            AuthorizationLoaderException
         """
         pass

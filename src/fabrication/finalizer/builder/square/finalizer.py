@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from err import FinalizeSquareBuilderException
 from fabrication.finalizer import BuilderFinalizer
 from domain.model import Square

@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RegisterValidationServerException
+from err import RegisterValidationServiceException
 
 __all__ = [
     # ======================# VECTOR_REGISTER_VALIDATION_SERVER_FAILURE #======================#
-    "VectorRegisterValidationServerException",
+    "VectorRegisterValidationServiceException",
 ]
 
 # ======================# VECTOR_REGISTER_VALIDATION_SERVER_FAILURE #======================#
-class VectorRegisterValidationServerException(
-    RegisterValidationServerException
+class VectorRegisterValidationServiceException(
+    RegisterValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class VectorRegisterValidationServerException(
     Provides:
 
     Super Class:
-        RegisterValidationServerException
+        RegisterValidationServiceException
     """
     MSG = "VectorRegisterValidationServer error."
     ERR_CODE = "VECTOR_REGISTER_VALIDATION_SERVER_FAILURE"

@@ -17,11 +17,11 @@ from err import ExchangeException
 
 __all__ = [
     # ======================# SERVER_FAILURE #======================#
-    "ResponseServerException",
+    "ResponseServiceException",
 ]
 
 # ======================# SERVER_FAILURE #======================#
-class ResponseServerException(ExchangeException):
+class ResponseServiceException(ExchangeException):
     """
     Role:
         - Error Tracing

@@ -1,0 +1,177 @@
+# src/exchange/service/validation/model/team/service.py
+
+"""
+Module: exchange.service.validation.model.team.service
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from artifcat import TeamValidationResponse, ValidationResult
+from domain import Team, TeamBlueprint
+from err import TeamValidationServiceException, TeamValidationServiceException, TeamCarrierEmptyException
+from exchange import (
+    TeamValidationService, ModelValidationService, TeamValidationRequest
+)
+from util import LoggingLevelRouter
+
+
+class TeamValidationService(
+    ModelValidationService[Team]
+):
+    """
+    Role
+        -   Service
+
+    Responsibilities:
+        1.  Extract either safe:
+                -   Team
+                _   TeamBlueprint
+            products from TeamValidationService.
+
+    Attributes:
+        service: TeamValidationService
+        
+    Provides:
+        -   def extract_model(
+                    request: TeamValidationRequest
+            ) -> ValidationResult[Team]
+            
+        -   def extract_blueprint(
+                    request: TeamValidationRequest
+            ) -> ValidationResult[TeamBlueprint]
+
+    Super Class:
+        ValidationService
+    """
+    
+    def __init__(
+            self,
+            service: Optional[TeamValidationService] | None = None,
+    ):
+        """
+        Args:
+            service: Optional[TeamValidationService]
+        """
+        super().__init__(service=service or TeamValidationService())
+    
+    @property
+    def service(self) -> TeamValidationService:
+        return cast(TeamValidationService, super().service)
+    
+
+    @LoggingLevelRouter.monitor
+    def extract_model(
+            self, 
+            request: TeamValidationRequest,
+    ) -> ValidationResult[Team]:
+        """
+        Extract a Team safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the service
+                fails.
+            2.  Otherwise, extract the Team from the success response then send it 
+                to the client.
+        Args:
+            request: TeamValidationRequest
+        Result:
+            ValidationResult[Team]
+        Raises:
+            TeamValidationServiceException
+        """
+        method = f"{self.__class__.__name__}.extract_model"
+        
+        # Handle the case that a failure response is received.
+        result = self.service.execute(request)
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidationServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidationServiceException.MSG,
+                    err_code=TeamValidationServiceException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        response = cast(TeamValidationResponse, result)
+        if not response.valid_model:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidationServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidationServiceException.MSG,
+                    err_code=TeamValidationServiceException.ERR_CODE,
+                    ex=TeamCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Send the work product. ---#
+        model = cast(Team, response.valid_model)
+        return ValidationResult.success(model)
+    
+    @LoggingLevelRouter.monitor
+    def extract_blueprint(
+            self,
+            request: TeamValidationRequest,
+    ) -> ValidationResult[TeamBlueprint]:
+        """
+        Extract a TeamBlueprint safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the service
+                fails.
+            2.  Otherwise, extract the TeamBluprint from the success response
+                then send it to the client.
+        Args:
+            request: TeamValidationRequest
+        Result:
+            ValidationResult[TeamBlueprint]
+        Raises:
+            TeamValidationServiceException
+        """
+        method = f"{self.__class__.__name__}.extract_model"
+        
+        # Handle the case that a failure response is received.
+        result = self.service.execute(request)
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidationServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidationServiceException.MSG,
+                    err_code=TeamValidationServiceException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        response = cast(TeamValidationResponse, result)
+        if not response.valid_team:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidationServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidationServiceException.MSG,
+                    err_code=TeamValidationServiceException.ERR_CODE,
+                    ex=TeamCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Send the work product. ---#
+        blueprint = cast(TeamBlueprint, response.valid_blueprint)
+        return ValidationResult.success(blueprint)

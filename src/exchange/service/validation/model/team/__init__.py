@@ -1,15 +1,15 @@
-# src/exchange/server/validation/model/team/__init__.py
+# src/exchange/service/validation/model/team/__init__.py
 
 """
-Module: exchange.server.validation.model.team.__init__
+Module: exchange.service.validation.model.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# ========== EXCHANGE.SERVER.VALIDATION.MODEL.TEAM PACKAGE ===========#
+# ========== EXCHANGE.SERVICE.VALIDATION.MODEL.TEAM PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .server import TeamValidationService
+from .service import TeamValidationService

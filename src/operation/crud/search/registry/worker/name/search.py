@@ -15,7 +15,7 @@ from err import WorkerRegistryNameSearchException
 from artifcat import SearchResult
 from domain.model import WorkerRegistry
 from util import LoggingLevelRouter
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from operation import Worker, RegistryEntryNameValidator
 
 

@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from exchange import InsertionPermissionRequest
+from exchange import InsertionPermissionRequest, PushRequest
 
-T = TypeVar("T")
+T = TypeVar("T", bound="PushRequest")
 
 
 class PushPermissionRequest(

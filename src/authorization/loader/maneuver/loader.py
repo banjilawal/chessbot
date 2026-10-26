@@ -39,7 +39,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
+    def execute(self, target: ManeuverPermissionRequest) -> ManeuverDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -49,7 +49,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
                     -   not a ManeuverPermissionRequest.
             2.  Otherwise, send an approval.
         Args:
-            request: ManeuverPermissionRequest
+            target: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:
@@ -59,14 +59,14 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
-            candidate=request,
+            candidate=target,
             target_model=ManeuverPermissionRequest,
             null_exception=ManeuverPermissionRequestNullException(),
         )
         # Send an exception chain in the denial.
         if priming.is_failure:
             return ManeuverDecision.denial(
-                request=request,
+                request=target,
                 exception=ManeuverAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,

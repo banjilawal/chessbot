@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# ARENA_VALIDATION_SERVER_FAILURE #======================#
-    "ArenaValidationServerException",
+    "ArenaValidationServiceException",
 ]
 
 # ======================# ARENA_VALIDATION_SERVER_FAILURE #======================#
-class ArenaValidationServerException(ModelValidationServiceException):
+class ArenaValidationServiceException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing

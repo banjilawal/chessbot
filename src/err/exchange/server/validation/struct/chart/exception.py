@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructValidationServerException
+from err import StructValidationServiceException
 
 
 __all__ = [
     # ======================# CHART_VALIDATION_SERVER_FAILURE #======================#
-    "ChartValidationServerException",
+    "ChartValidationServiceException",
 ]
 
 # ======================# CHART_VALIDATION_SERVER_FAILURE #======================#
-class ChartValidationServerException(
-    StructValidationServerException
+class ChartValidationServiceException(
+    StructValidationServiceException
 ):
     """
     Role:
@@ -44,7 +44,7 @@ class ChartValidationServerException(
     Provides:
 
     Super Class:
-        StructValidationServerException
+        StructValidationServiceException
     """
     MSG = "ChartValidationServer error."
     ERR_CODE = "CHART_VALIDATION_SERVER_FAILURE"

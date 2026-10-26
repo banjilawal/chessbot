@@ -16,11 +16,11 @@ from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# FOOTSTEP_VALIDATION_SERVER_FAILURE #======================#
-    "FootstepValidationServerException",
+    "FootstepValidationServiceException",
 ]
 
 # ======================# FOOTSTEP_VALIDATION_SERVER_FAILURE #======================#
-class FootstepValidationServerException(
+class FootstepValidationServiceException(
     ModelValidationServiceException
 ):
     """

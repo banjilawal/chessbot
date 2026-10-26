@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RegisterValidationServerException
+from err import RegisterValidationServiceException
 
 __all__ = [
     # ======================# SQUARE_REGISTER_VALIDATION_SERVER_FAILURE #======================#
-    "SquareRegisterValidationServerException",
+    "SquareRegisterValidationServiceException",
 ]
 
 # ======================# SQUARE_REGISTER_VALIDATION_SERVER_FAILURE #======================#
-class SquareRegisterValidationServerException(
-    RegisterValidationServerException
+class SquareRegisterValidationServiceException(
+    RegisterValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class SquareRegisterValidationServerException(
     Provides:
 
     Super Class:
-        RegisterValidationServerException
+        RegisterValidationServiceException
     """
     MSG = "SquareRegisterValidationServer error."
     ERR_CODE = "SQUARE_REGISTER_VALIDATION_SERVER_FAILURE"

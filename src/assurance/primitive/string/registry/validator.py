@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from transit.controller import WorkerRegistryController
+from controller import WorkerRegistryController
 from err import (
     EmptyListException, ListNullException, RegistryEntryKeyStringValidatorException, StringValidatorException
 )

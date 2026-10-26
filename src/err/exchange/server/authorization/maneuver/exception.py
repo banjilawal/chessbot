@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationServerException
+from err import AuthorizationServiceException
 
 
 __all__ = [
     # ======================# MANEUVER_AUTHORIZATION_SERVER_FAILURE #======================#
-    "ManeuverAuthorizationServerException",
+    "ManeuverAuthorizationServiceException",
 ]
 
 # ======================# MANEUVER_AUTHORIZATION_SERVER_FAILURE #======================#
-class ManeuverAuthorizationServerException(AuthorizationServerException):
+class ManeuverAuthorizationServiceException(AuthorizationServiceException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ManeuverAuthorizationServerException(AuthorizationServerException):
     Provides:
 
     Super Class:
-        AuthorizationServerException
+        AuthorizationServiceException
     """
     MSG = "ManeuverAuthorizationServer error."
     ERR_CODE = "MANEUVER_AUTHORIZATION_SERVER_FAILURE"

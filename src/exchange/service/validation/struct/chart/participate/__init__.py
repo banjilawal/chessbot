@@ -1,15 +1,15 @@
-# src/exchange/server/validation/struct/chart/participate/__init__.py
+# src/exchange/service/validation/struct/chart/participate/__init__.py
 
 """
-Module: exchange.server.validation.struct.chart.participate.__init__
+Module: exchange.service.validation.struct.chart.participate.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# ========== EXCHANGE.SERVER.VALIDATION.STRUCT.CHART.PARTICIPATE PACKAGE ===========#
+# ========== EXCHANGE.SERVICE.VALIDATION.STRUCT.CHART.PARTICIPATE PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .server import ParticipationValidationServer
+from .service import ParticipationValidationService
