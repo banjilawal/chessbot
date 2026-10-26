@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
-from bootstrapper.validator.priming import PrimingValidator
+from bootstrapper.validation.priming import PrimingValidator
 from operation.toolkit.model.state.binder.board.toolkit import StateModelToolkit
 
 

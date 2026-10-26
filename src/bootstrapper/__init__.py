@@ -11,13 +11,9 @@ version: 0.0.2
 # =========== BOOTSTRAPPER PACKAGE ===========#
 
 # Packages
-from .analyzer import *
-from .detector import *
-from .insertion import *
-from .operation import *
-from .request import *
-from .searcher import *
-from .validator import *
+from .authorization import *
+from .fabrication import *
+from .validation import *
 
 # Modules
-from .bootstrapper import Bootstrapper
+from .loader import Loader

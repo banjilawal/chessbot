@@ -1,0 +1,72 @@
+# src/bootstrap/authorization/deletion/loader.py
+
+"""
+Module: bootstrap.authorization.deletion.loader
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar, cast
+
+from artifcat import Decision
+from authorization import CrudAuthorizationLoader
+from exchange import DeletionPermissionRequest, ValidationService
+
+from util import LoggingLevelRouter
+
+T = TypeVar("T", bound="DeletionPermissionRequest")
+
+class DeletionAuthorizationLoader(
+    CrudAuthorizationLoader[T], ABC, Generic[T]
+):
+    """
+    Role:
+        -   Permission Authorization
+
+    Responsibilities:
+        1.  Ensure the correct Request type is loaded into a CrudAuthorization module.
+        
+    Attributes:
+        validation_service: ValidationService
+
+    Provides:
+        -   def execute(request: T) -> Decision
+
+    Super Class:
+        CrudAuthorizationLoader
+    """
+    
+    def __init__(self, validation_service: ValidationService):
+        """
+        Args:
+            validation_service: ValidationService
+        """
+        super().__init__(validation_service=validation_service)
+    
+    @property
+    def validation_service(self) -> ValidationService:
+        return cast(ValidationService, super().validation_service)
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, target: T) -> Decision[T]:
+        """
+        Checks if the Request is the right type.
+        
+        Action:
+            1.  Send an exception chain in the Decision denial if either;
+                    -   the request is null.
+                    -   the wrong type.
+            2.  Otherwise, send an approval.
+        Args:
+            target: T
+        Returns:
+           Decision[T]
+        Raises:
+            DeletionAuthorizationLoaderException
+        """
+        pass

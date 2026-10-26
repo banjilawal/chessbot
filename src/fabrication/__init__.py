@@ -14,6 +14,5 @@ from .builder import *
 from .contractor import *
 from fabrication.builder.factory import *
 from .finalizer import *
-from .loader import *
 
 # Modules

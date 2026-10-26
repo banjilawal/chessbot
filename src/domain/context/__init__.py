@@ -15,4 +15,4 @@ from .model import *
 from .struct import *
 
 # Modules
-from .search import Context
+from .context import Context

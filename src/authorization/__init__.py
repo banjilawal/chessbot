@@ -13,7 +13,6 @@ version: 0.0.2
 from .authorizer import *
 from .chain import *
 from .interface import *
-from .loader import *
 from .reviewer import *
 from .role import *
 
