@@ -16,3 +16,4 @@ class Permission(Enum):
     GRANTED = auto(),
     DENIED = auto(),
     TIMED_OUT = auto(),
+    DO_NOTHING = auto(),

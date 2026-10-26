@@ -61,10 +61,10 @@ class CrudDecision(Decision[T], ABC, Generic[T]):
             permission: Permission
             permission_request: PermissionRequest
             exception: Optional[Exception]
-            approval: Optional[TransactionRequest]
+            approval: Optional[T]
         """
         super().__init__(
-            approva=approval,
+            approval=approval,
             exception=exception,
             permission=permission,
             permission_request=permission_request,
