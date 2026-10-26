@@ -1,0 +1,67 @@
+# src/domain/metadata/nulls/context/player/group.py
+
+"""
+Module: domain.metadata.nulls.context.player.group
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from domain import ContextNullGroup, Player
+from err import (
+    PlayerContextBlueprintNullException, PlayerContextCarrierNullException, PlayerContextNullException
+)
+
+
+class PlayerContextNullGroup(ContextNullGroup[PlayerContext]):
+    """
+    Role:
+        - Metadata
+
+    Responsibilities:
+        1. Catalog of ContextNullExceptions associated with a Player's integrity cycle.
+
+    Attributes:
+        context: PlayerContextNullException
+        carrier: PlayerContextCarrierNullException
+        blueprint: PlayerContextBlueprintNullException
+
+    Provides:
+
+    Super Class:
+        ContextNullExceptionGroup
+    """
+    
+    def __init__(
+            self,
+            context: Optional[PlayerContextNullException] | None = None,
+            carrier: Optional[PlayerContextCarrierNullException] | None = None,
+            blueprint: Optional[PlayerContextBlueprintNullException] | None = None,
+    ):
+        """
+        Args:
+            context: Optional[PlayerContextNullException]
+            carrier: Optional[PlayerContextCarrierNullException]
+            blueprint: Optional[PlayerContextBlueprintNullException]
+        """
+        super().__init__(
+            context = context or PlayerContextNullException(),
+            carrier = carrier or PlayerContextCarrierNullException(),
+            blueprint = blueprint or PlayerContextBlueprintNullException(),
+        )
+        
+    @property
+    def context(self) -> PlayerContextNullException:
+        return cast(PlayerContextNullException, super().context)
+    
+    @property
+    def carrier(self) -> PlayerContextCarrierNullException:
+        return cast(PlayerContextCarrierNullException, super().carrier)
+    
+    @property
+    def blueprint(self) -> PlayerContextBlueprintNullException:
+        return cast(PlayerContextBlueprintNullException, super().blueprint)

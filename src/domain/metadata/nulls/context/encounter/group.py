@@ -1,0 +1,70 @@
+# src/domain/metadata/nulls/context/encounter/group.py
+
+"""
+Module: domain.metadata.nulls.context.encounter.group
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
+
+from domain import ContextNullGroup, Encounter
+from err import (
+    EncounterContextBlueprintNullException, EncounterContextCarrierNullException,
+    EncounterContextNullException
+)
+
+T = TypeVar("T", bound="Encounter")
+
+class EncounterContextNullGroup(ContextNullGroup[T], Generic[TContext]):
+    """
+    Role:
+        - Metadata
+
+    Responsibilities:
+        1. Catalog of ContextNullExceptions associated with an Encounter's integrity cycle.
+
+    Attributes:
+        context: EncounterContextNullException
+        carrier: AttackContextCarrierNullException
+        blueprint: AttackContextBlueprintNullException
+
+    Provides:
+
+    Super Class:
+        ContextNullExceptionGroup
+    """
+    
+    def __init__(
+            self,
+            context: Optional[EncounterContextNullException] | None = None,
+            carrier: Optional[EncounterContextCarrierNullException] | None = None,
+            blueprint: Optional[EncounterContextBlueprintNullException] | None = None,
+    ):
+        """
+        Args:
+            context: Optional[EncounterContextNullException]
+            carrier: Optional[AttackContextCarrierNullException]
+            blueprint: Optional[AttackContextBlueprintNullException]
+        """
+        super().__init__(
+            context = context or EncounterContextNullException(),
+            carrier =carrier or EncounterContextCarrierNullException(),
+            blueprint =blueprint or EncounterContextBlueprintNullException(),
+        )
+        
+    @property
+    def context(self) -> EncounterContextNullException:
+        return cast(EncounterContextNullException, super().context)
+    
+    @property
+    def carrier(self) -> EncounterContextCarrierNullException:
+        return cast(EncounterContextCarrierNullException, super().carrier)
+    
+    @property
+    def blueprint(self) -> EncounterContextBlueprintNullException:
+        return cast(EncounterContextBlueprintNullException, super().blueprint)
