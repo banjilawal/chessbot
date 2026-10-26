@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/register/vector/group.py
+# src/domain/metadata/null/struct/register/vector/null.py
 
 """
-Module: domain.metadata.nulls.struct.register.vector.group
+Module: domain.metadata.null.struct.register.vector.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

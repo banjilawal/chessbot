@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/binder/player/group.py
+# src/domain/metadata/null/struct/binder/player/null.py
 
 """
-Module: domain.metadata.nulls.struct.binder.player.group
+Module: domain.metadata.null.struct.binder.player.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

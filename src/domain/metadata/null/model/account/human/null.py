@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/account/human/group.py
+# src/domain/metadata/null/model/account/human/null.py
 
 """
-Module: domain.metadata.nulls.model.account.human.group
+Module: domain.metadata.null.model.account.human.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

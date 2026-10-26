@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/square/home/group.py
+# src/domain/metadata/null/model/square/home/null.py
 
 """
-Module: domain.metadata.nulls.model.square.home.group
+Module: domain.metadata.null.model.square.home.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

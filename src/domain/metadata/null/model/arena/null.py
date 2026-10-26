@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/arena/group.py
+# src/domain/metadata/null/model/arena/null.py
 
 """
-Module: domain.metadata.nulls.model.arena.group
+Module: domain.metadata.null.model.arena.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

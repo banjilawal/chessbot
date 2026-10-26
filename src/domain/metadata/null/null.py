@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/roster.py
+# src/domain/metadata/null/roster.py
 
 """
-Module: domain.metadata.nulls.roster
+Module: domain.metadata.null.roster
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/encounter/kill/group.py
+# src/domain/metadata/null/model/encounter/kill/null.py
 
 """
-Module: domain.metadata.nulls.model.encounter.kill.group
+Module: domain.metadata.null.model.encounter.kill.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

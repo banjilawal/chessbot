@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/context/board/group.py
+# src/domain/metadata/null/context/board/null.py
 
 """
-Module: domain.metadata.nulls.context.board.group
+Module: domain.metadata.null.context.board.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

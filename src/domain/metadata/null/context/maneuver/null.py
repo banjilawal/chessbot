@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/context/maneuver/group.py
+# src/domain/metadata/null/context/maneuver/null.py
 
 """
-Module: domain.metadata.nulls.context.maneuver.group
+Module: domain.metadata.null.context.maneuver.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

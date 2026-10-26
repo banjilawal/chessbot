@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/context/group.py
+# src/domain/metadata/null/context/null.py
 
 """
-Module: domain.metadata.nulls.context.group
+Module: domain.metadata.null.context.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Context, NullExceptionGroup, NullWarningSet
-from err import ContextCarrierNullException, ContextBlueprintNullException, ContextNullException
+from domain import Context, NullWarningSet
+from err import BlueprintNullException, ContextNullException, EntityCarrierNullException
 
 T = TypeVar("T", bound="Context")
 
-class ContextNullWarningSet(NullWarningSet[T], ABC, Generic[T):
+class ContextNullWarningSet(NullWarningSet[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -27,8 +27,8 @@ class ContextNullWarningSet(NullWarningSet[T], ABC, Generic[T):
 
     Attributes:
         model: ContextNullException
-        carrier: ContextCarrierNullException
-        blueprint: ContextBlueprintNullException
+        carrier: EntityCarrierNullException
+        blueprint: BlueprintNullException
 
     Provides:
 
@@ -39,14 +39,14 @@ class ContextNullWarningSet(NullWarningSet[T], ABC, Generic[T):
     def __init__(
             self,
             model: ContextNullException,
-            carrier: ContextCarrierNullException,
-            blueprint: ContextBlueprintNullException,
+            carrier: EntityCarrierNullException,
+            blueprint: BlueprintNullException,
     ):
         """
         Args:
             model: ContextNullException
-            carrier: ContextCarrierNullException
-            blueprint: ContextBlueprintNullException
+            carrier: EntityCarrierNullException
+            blueprint: BlueprintNullException
         """
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
 
@@ -56,9 +56,9 @@ class ContextNullWarningSet(NullWarningSet[T], ABC, Generic[T):
         return cast(ContextNullException, super().model)
     
     @property
-    def carrier(self) -> ContextCarrierNullException:
-        return cast(ContextCarrierNullException, super().carrier)
+    def carrier(self) -> EntityCarrierNullException:
+        return cast(EntityCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> ContextBlueprintNullException:
-        return cast(ContextBlueprintNullException, super().blueprint)
+    def blueprint(self) -> BlueprintNullException:
+        return cast(BlueprintNullException, super().blueprint)

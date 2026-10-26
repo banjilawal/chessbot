@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/rank/king/group.py
+# src/domain/metadata/null/model/rank/king/null.py
 
 """
-Module: domain.metadata.nulls.model.rank.king.group
+Module: domain.metadata.null.model.rank.king.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

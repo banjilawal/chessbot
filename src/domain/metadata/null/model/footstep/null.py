@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/footstep/group.py
+# src/domain/metadata/null/model/footstep/null.py
 
 """
-Module: domain.metadata.nulls.model.footstep.group
+Module: domain.metadata.null.model.footstep.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

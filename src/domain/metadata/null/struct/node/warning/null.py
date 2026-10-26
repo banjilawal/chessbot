@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/node/warning/group.py
+# src/domain/metadata/null/struct/node/warning/null.py
 
 """
-Module: domain.metadata.nulls.struct.node.warning.group
+Module: domain.metadata.null.struct.node.warning.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

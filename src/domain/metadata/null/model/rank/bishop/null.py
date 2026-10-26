@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/rank/bishop/group.py
+# src/domain/metadata/null/model/rank/bishop/null.py
 
 """
-Module: domain.metadata.nulls.model.rank.bishop.group
+Module: domain.metadata.null.model.rank.bishop.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

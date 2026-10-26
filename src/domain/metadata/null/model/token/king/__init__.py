@@ -1,13 +1,13 @@
-# src/domain/metadata/nulls/model/token/king/__init__.py
+# src/domain/metadata/null/model/token/king/__init__.py
 
 """
-Module: domain.metadata.nulls.model.token.king.__init__
+Module: domain.metadata.null.model.token.king.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.NULLS.MODEL.TOKEN.KING PACKAGE ===========#
+# =========== DOMAIN.METADATA.NULL.MODEL.TOKEN.KING PACKAGE ===========#
 
 # Packages
 

@@ -14,8 +14,7 @@ from .analyzer import *
 from .assurance import *
 from .authorization import *
 from .bidirectional import *
-from .bootstrapper import *
-from .builder import *
+from .bootstrap import *
 from .capacity import *
 from .config import *
 from .consistency import *

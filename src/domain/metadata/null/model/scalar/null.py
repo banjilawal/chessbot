@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/scalar/group.py
+# src/domain/metadata/null/model/scalar/null.py
 
 """
-Module: domain.metadata.nulls.model.scalar.group
+Module: domain.metadata.null.model.scalar.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

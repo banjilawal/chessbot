@@ -1,13 +1,13 @@
-# src/domain/metadata/nulls/model/account/__init__.py
+# src/domain/metadata/null/model/account/__init__.py
 
 """
-Module: domain.metadata.nulls.model.account.__init__
+Module: domain.metadata.null.model.account.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.NULLS.MODEL.ACCOUNT PACKAGE ===========#
+# =========== DOMAIN.METADATA.NULL.MODEL.ACCOUNT PACKAGE ===========#
 
 # Packages
 from .human import *

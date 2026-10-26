@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/game/group.py
+# src/domain/metadata/null/model/game/null.py
 
 """
-Module: domain.metadata.nulls.model.game.group
+Module: domain.metadata.null.model.game.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

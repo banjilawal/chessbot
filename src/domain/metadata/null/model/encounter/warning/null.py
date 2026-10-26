@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/model/encounter/warning/group.py
+# src/domain/metadata/null/model/encounter/warning/null.py
 
 """
-Module: domain.metadata.nulls.model.encounter.warning.group
+Module: domain.metadata.null.model.encounter.warning.null
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

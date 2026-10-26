@@ -1,13 +1,13 @@
-# src/domain/metadata/nulls/model/footstep/__init__.py
+# src/domain/metadata/null/model/footstep/__init__.py
 
 """
-Module: domain.metadata.nulls.model.footstep.__init__
+Module: domain.metadata.null.model.footstep.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.NULLS.MODEL.FOOTSTEP PACKAGE ===========#
+# =========== DOMAIN.METADATA.NULL.MODEL.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
