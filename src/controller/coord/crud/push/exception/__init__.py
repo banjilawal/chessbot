@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/push/exception/full.py
+# src/logic/coord/database/kernel/operation/crud/push/exception/full.py
 
 """
 Module: logic.coord.database.kernel.operation.crud.push.exception.full

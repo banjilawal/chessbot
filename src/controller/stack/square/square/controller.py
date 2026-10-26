@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/util/util.py
+# src/logic/square/database/kernel/util/util.py
 
 """
 Module: logic.square.database.kernel.operation.util

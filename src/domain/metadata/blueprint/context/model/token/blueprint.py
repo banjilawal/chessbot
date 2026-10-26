@@ -13,12 +13,12 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import (
-    Coord, Formation, HomeSquare, ModelContextBlueprint, Rank, Team, TokenReadiness, TokenContext
+    Coord, Formation, HomeSquare, ContextBlueprint, Rank, Team, TokenReadiness, TokenContext
 )
 from err import TokenContextNullException
 
 
-class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
+class TokenContextBlueprint(ContextBlueprint[TokenContext]):
     """
      Role:
         1.  Metadata
@@ -33,7 +33,6 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
         rank: Optional[Rank]
         ransom: Optional[int]
         color: Optional[GameColor]
-        current_position:Optional[Coord]
         home_square: Optional[HomeSquare]
         formation: Optional[Formation]
         activity_state: Optional[TokenActivityState]
@@ -44,18 +43,18 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
     _id: Optional[int]
     _name: Optional[str]
     _rank: Optional[Rank]
     _team: Optional[Team]
     _ransom: Optional[int]
+    _position: Optional[Coord]
     _color: Optional[GameColor]
     _formation: Optional[Formation]
-    _current_position: Optional[Coord]
+    _token_type: Optional[TokenType]
     _home_square: Optional[HomeSquare]
-    _activity_state: Optional[TokenReadiness]
     
     def __init__(
             self,
@@ -64,11 +63,11 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
             rank: Optional[Rank] | None = None,
             team: Optional[Team] | None = None,
             ransom: Optional[int] | None = None,
+            position: Optional[Coord] | None = None,
             color: Optional[GameColor] | None = None,
             formation: Optional[Formation] | None = None,
-            current_position: Optional[Coord] | None = None,
+            token_type: Optional[TokenType] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            activity_state: Optional[TokenReadiness] | None = None,
             domain_class: Optional[Type[TokenContext]] | None = None,
             domain_null_exception: Optional[TokenContextNullException] | None = None,
     ):
@@ -79,11 +78,12 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
             team: Optional[Team]
             rank: Optional[Rank]
             ransom: Optional[int]
+            position:Optional[Coord]
             color: Optional[GameColor]
-            current_position:Optional[Coord]
+            formation: Optional[Formation]
+            token_type: Optional[TokenType]
             home_square: Optional[HomeSquare]
             domain_class: Type[TokenContext]
-            activity_state: Optional[TokenActivityState]
             domain_null_exception: TokenContextNullException
         """
         super().__init__(
@@ -98,8 +98,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
         self._ransom = ransom
         self._formation = formation
         self._home_square = home_square
-        self._activity_state = activity_state
-        self._current_position = current_position
+        self._position = position
     
     @property
     def domain_class(self) -> Type[TokenContext]:
@@ -130,16 +129,16 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
         return self._color
     
     @property
+    def token_type(self) -> Optional[TokenType]:
+        return self._token_type
+    
+    @property
     def home_square(self) -> Optional[HomeSquare]:
         return self._home_square
     
     @property
-    def activity_state(self) -> Optional[TokenReadiness]:
-        return self._activity_state
-    
-    @property
-    def current_position(self) -> Optional[Coord]:
-        return self._current_position
+    def position(self) -> Optional[Coord]:
+        return self._position
     
     @property
     def to_dict(self) -> Dict[str, Any]:
@@ -150,9 +149,10 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
             "rank": self._rank,
             "color": self._color,
             "ransom": self._ransom,
+            "position": self._position,
             "formation": self._formation,
             "home_square": self._home_square,
-            "current_position": self._current_position,
+            "token_type": self._token_type,
         }
     
     

@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/roster/exception/work/interrupted.py
+# src/logic/square/database/kernel/operation/roster/exception/work/interrupted.py
 
 """
 Module: logic.square.database.kernel.operation.roster.exception.work.interrupted

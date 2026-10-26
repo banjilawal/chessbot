@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/pop/__init__.py
+# src/logic/coord/database/kernel/operation/crud/pop/__init__.py
 
 """
 Module: logic.coord.database.kernel.operation.crud.pop.__init__

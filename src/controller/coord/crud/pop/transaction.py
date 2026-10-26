@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/pop/validator.py
+# src/logic/coord/database/kernel/operation/crud/pop/validator.py
 
 """
 Module: logic.coord.database.kernel.operation.crud.pop.transaction

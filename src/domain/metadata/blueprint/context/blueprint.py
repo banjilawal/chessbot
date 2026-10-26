@@ -35,10 +35,11 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
      Super Class:
         Blueprint
      """
+    
+    _max_size: int
     _id: Optional[int]
     _name: Optional[str]
-    _max_size: Optional[int]
-    
+
     def __init__(
             self,
             domain_class: Type[T],
@@ -63,7 +64,6 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         self._name = name
         self._max_size = max_size or 1
         
-    
     @property
     def domain_class(self) -> Type[T]:
         return cast(Type[T], super().domain_class)

@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/crud/pop/validator.py
+# src/logic/square/database/kernel/operation/crud/pop/validator.py
 
 """
 Module: logic.square.database.kernel.operation.crud.pop.popper

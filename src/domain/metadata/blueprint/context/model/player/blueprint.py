@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from domain import Game, ModelContextBlueprint, PlayerCategory, PlayerContext, Team
+from domain import Account, Archetype, Arena, Game, ContextBlueprint, PlayerType, PlayerContext, Team
 from err import PlayerContextNullException
 
 
-class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
+class PlayerContextBlueprint(ContextBlueprint[PlayerContext]):
     """
      Role:
         1.  Metadata
@@ -25,12 +25,10 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
          
      Attributes:
         id: Optional[id]
-        name: Optional[str]
         game: Optional[Game]
-        wins: Option[bool]
-        losses: Optional[bool]
-        current_team: Optional[Team]
-        player_category: Optional[PlayerCategory]
+        arena: Optional[Arena]
+        account: Optional[Account]
+        player_type: Optional[Playertype]
         
         domain_class: Type[PlayerContext]
         domain_null_exception: PlayerContextNullException
@@ -38,52 +36,43 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
     
     _id: Optional[int]
-    _name: Optional[str]
     _game: Optional[Game]
-    _wins: Optional[bool]
-    _losses: Optional[bool]
-    _current_team: Optional[Team]
+    _account: Optional[Account]
+    _player_type: Optional[PlayerType]
+    _archetype: Optional[Archetype]
     
     def __init__(
             self,
             id: Optional[int] | None = None,
-            name: Optional[str] | None = None,
             game: Optional[Game] | None = None,
-            wins: Optional[bool] | None = None,
-            losses: Optional[bool] | None = None,
-            current_team: Optional[Team] | None = None,
-            player_category: Optional[PlayerCategory] | None = None,
+            account: Optional[Account] | None = None,
+            archetype: Optional[Archetype] | None = None,
+            player_type: Optional[PlayerType] | None = None,
             domain_class: Optional[Type[PlayerContext]] | None = None,
             domain_null_exception: Optional[PlayerContextNullException] | None = None,
     ):
         """
         Args:
             id: Optional[int]
-            name: Optional[str]
-            team: Optional[Team]
             game: Optional[Game]
-            wins: Optional[bool]
-            losses: Optional[bool]
-            current_team: Optional[Team]
-            player_category: Optional[PlayerCategory]
+            account: Optional[Account]
+            player_type: Optional[PlayerType]
             domain_class: Type[PlayerContext]
             domain_null_exception: PlayerContextNullException
         """
         super().__init__(
             id=id,
-            name=name,
             domain_class=domain_class or Type[PlayerContext],
             domain_null_exception=domain_null_exception or PlayerContextNullException(),
         )
         self._game = game
-        self._wins = wins
-        self._losses = losses
-        self._current_team = current_team
-        self._player_category = player_category
+        self._archetype = archetype
+        self._account = account
+        self._player_type = player_type
     
     @property
     def domain_class(self) -> Type[PlayerContext]:
@@ -98,31 +87,25 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
         return self._game
     
     @property
-    def wins(self) -> Optional[bool]:
-        return self._wins
+    def account(self) -> Optional[Account]:
+        return self._account
     
     @property
-    def losses(self) -> Optional[bool]:
-        return self._losses
+    def archetype(self) -> Optional[Archetype]:
+        return self._archetype
     
     @property
-    def current_team(self) -> Optional[Team]:
-        return self._current_team
-    
-    @property
-    def player_category(self) -> Optional[PlayerCategory]:
-        return self._player_category
+    def player_type(self) -> Optional[PlayerType]:
+        return self._player_type
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "name": self.name,
             "game": self._game,
-            "wins": self._wins,
-            "losses": self._losses,
-            "current_team": self._current_team,
-            "player_category": self._player_category,
+            "account": self._account,
+            "archetype": self._archetype,
+            "player_type": self._player_type,
         }
     
     

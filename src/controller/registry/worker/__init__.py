@@ -1,13 +1,13 @@
-# src/transit/controller/registry/worker/__init__.py
+# src/controller/registry/worker/__init__.py
 
 """
-Module: transit.controller.registry.worker.__init__
+Module: controller.registry.worker.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CONTROLLER.REGISTRY.WORKER PACKAGE ===========#
+# =========== CONTROLLER.REGISTRY.WORKER PACKAGE ===========#
 
 # Packages
 

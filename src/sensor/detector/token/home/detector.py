@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from bootstrapper import HomeDetectorBootstrapper
-from domain.search.context import TokenHomeContext
+from domain.context.context import TokenHomeContext
 from err import HomeSquareDetectorException
 from domain.model import HomeSquare
 from artifcat import Result

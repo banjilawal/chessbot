@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/token/exception/work/exist.py
+# src/logic/square/database/kernel/operation/token/exception/work/exist.py
 
 """
 Module: logic.square.database.kernel.operation.token.work.exception.exist

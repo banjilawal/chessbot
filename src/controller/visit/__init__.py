@@ -1,13 +1,13 @@
-# src/transit/controller/visit/__init__.py
+# src/controller/visit/__init__.py
 
 """
-Module: transit.controller.visit.__init__
+Module: controller.visit.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CONTROLLER.VISIT PACKAGE ===========#
+# =========== CONTROLLER.VISIT PACKAGE ===========#
 
 # Packages
 

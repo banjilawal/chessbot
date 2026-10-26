@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from domain import Board, Coord, ModelContextBlueprint, SquareContext, SquareState, SquareType, Token
+from domain import Board, Coord, ContextBlueprint, SquareContext, SquareState, SquareType, Token
 from err import SquareContextNullException
 
 
-class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
+class SquareContextBlueprint(ContextBlueprint[SquareContext]):
     """
      Role:
         1.  Metadata
@@ -25,7 +25,6 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
          
      Attributes:
         id: Optional[int]
-        id: Optional[str]
         board: Optional[Board]
         coord: Optional[Coord]
         occupant: Optional[Token]
@@ -38,7 +37,7 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
     _board: Optional[Board]
     _coord: Optional[Coord]
@@ -84,12 +83,10 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
         self._occupant = occupant
         self._square_type = square_type
 
-    
     @property
     def domain_class(self) -> Type[SquareContext]:
         return cast(Type[SquareContext], super().domain_class)
-    
-    
+      
     @property
     def domain_null_exception(self) -> SquareContextNullException:
         return  cast(SquareContextNullException, super().domain_null_exception)
@@ -98,22 +95,18 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
     @property
     def coord(self) -> Optional[Coord]:
         return self._coord
-    
-    
+     
     @property
     def board(self) -> Optional[Board]:
         return self._board
-    
     
     @property
     def occupant(self) -> Optional[Token]:
         return self._occupant
     
-    
     @property
     def state(self) -> Optional[SquareState]:
         return self._state
-    
     
     @property
     def square_type(self)-> Optional[SquareType]:

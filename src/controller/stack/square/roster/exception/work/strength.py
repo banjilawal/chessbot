@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/roster/exception/work/strength.py
+# src/logic/square/database/kernel/operation/roster/exception/work/strength.py
 
 """
 Module: logic.square.database.kernel.operation.roster.exception.work.strength

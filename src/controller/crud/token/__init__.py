@@ -1,13 +1,13 @@
-# src/transit/controller/crud/token/__init__.py
+# src/controller/crud/token/__init__.py
 
 """
-Module: transit.controller.crud.token.__init__
+Module: controller.crud.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CONTROLLER.CRUD.TOKEN PACKAGE ===========#
+# =========== CONTROLLER.CRUD.TOKEN PACKAGE ===========#
 
 # Packages
 

@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/token/__init__.py
+# src/logic/square/database/kernel/operation/token/__init__.py
 
 """
 Module: logic.square.database.kernel.operation.token.__init__

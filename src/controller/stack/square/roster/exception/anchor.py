@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/roster/exception/anchor.py
+# src/logic/square/database/kernel/operation/roster/exception/anchor.py
 
 """
 Module: logic.square.database.kernel.operation.roster.exception.anchor

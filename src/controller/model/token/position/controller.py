@@ -1,7 +1,7 @@
-# src/transit/controller/model/token/position/controller.py
+# src/controller/model/token/position/controller.py
 
 """
-Module: transit.controller.model.token.position.controller
+Module: controller.model.token.position.controller
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

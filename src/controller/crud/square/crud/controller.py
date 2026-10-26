@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/exception.py
+# src/logic/square/database/kernel/operation/exception.py
 
 """
 Module: logic.square.database.kernel.operation.operation

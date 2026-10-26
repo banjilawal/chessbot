@@ -1,13 +1,13 @@
-# src/transit/controller/registry/__init__.py
+# src/controller/registry/__init__.py
 
 """
-Module: transit.controller.registry.__init__
+Module: controller.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CONTROLLER.REGISTRY PACKAGE ===========#
+# =========== CONTROLLER.REGISTRY PACKAGE ===========#
 
 # Packages
 from .service import *

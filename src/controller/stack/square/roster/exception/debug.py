@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/roster/exception/debug.py
+# src/logic/square/database/kernel/operation/roster/exception/debug.py
 
 """
 Module: logic.square.database.kernel.operation.roster.exception.debug

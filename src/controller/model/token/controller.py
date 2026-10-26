@@ -1,4 +1,4 @@
-# src/transit/logic/token/service/operation/controller.py
+# src/logic/token/service/operation/controller.py
 
 """
 Module: logic.token.service.operation.controller
@@ -12,11 +12,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from sensor.analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
-from transit.dispatcher.builder import TokenBuilder
+from dispatcher.builder import TokenBuilder
 from detection import TokenHomeDetector, TokenCollisionDetector
 from operation import TokenHomePlacer, TokenPositionController
 from operation.microservice.token import PawnPromoter
-from transit.dispatcher.validator import TokenValidationDispatcher
+from dispatcher.validator import TokenValidationDispatcher
 
 
 @dataclass

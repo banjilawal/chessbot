@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from bootstrapper import AnalyzerBootstrapper, PrimingValidator
-from domain.search.context import TokenContext
+from domain.context.context import TokenContext
 from domain.model import Rank
 from artifcat.report import RankQuotaReport
 from artifcat import AnalysisResult, MethodResultType

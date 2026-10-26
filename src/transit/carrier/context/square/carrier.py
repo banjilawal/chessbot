@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import HomeSquare, Square, SquareBlueprint
+from domain import SquareContext, SquareContextBlueprint
 from transit import ContextCarrier
 
 
@@ -32,7 +32,7 @@ class SquareContextCarrier(ContextCarrier[SquareContext]):
         entity: [Square|SquareContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[SquareContextBlueprint]
+        -   def extract_blueprint() -> Optional[SquareContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class SquareContextCarrier(ContextCarrier[SquareContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Square | SquareContextBlueprint]:
+    def entity(self) -> Optional[SquareContext | SquareContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class SquareContextCarrier(ContextCarrier[SquareContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Square)
+                isinstance(self._model, SquareContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, SquareBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, SquareContextBlueprint)
         )
     
     @property
@@ -90,32 +91,17 @@ class SquareContextCarrier(ContextCarrier[SquareContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    @property
-    def is_home_square_modelCarrier(self) -> bool:
-        return (
-                self.has_model and
-                isinstance(self._model, HomeSquare)
-        )
-
-    def extract_ContextBlueprint(self) -> Optional[SquareContextBlueprint]:
+    def extract_blueprint(self) -> Optional[SquareContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
-        if self.is_home_square_carrier:
-            home_square = cast(HomeSquareContext, self._model)
-            return SquareContextBlueprint(
-                id=home_square.id,
-                name=home_square.name,
-                board=home_square.board,
-                coord=home_square.coord,
-                occupant=home_square.occupant,
-                formation=home_square.formation,
-            )
-        context = cast(SquareContext, self._model)
+
+        model = cast(SquareContext, self._model)
         return SquareContextBlueprint(
-            id=context.id,
-            name=context.name,
-            board=context.board,
-            coord=context.coord,
-            occupant=context.occupant,
+            id=model.id,
+            name=model.name,
+            board=model.board,
+            coord=model.coord,
+            occupant=model.occupant,
+            square_type=model.square_type,
         )
 

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from domain import ModelContextBlueprint, PathContext, Square
+from domain import ContextBlueprint, PathContext, Square
 from err import PathContextNullException
 
 
-class PathContextBlueprint(ModelContextBlueprint[PathContext]):
+class PathContextBlueprint(ContextBlueprint[PathContext]):
     """
      Role:
         1.  Metadata
@@ -34,7 +34,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
 
     _label: Optional[int]
@@ -59,7 +59,6 @@ class PathContextBlueprint(ModelContextBlueprint[PathContext]):
             domain_null_exception: PathContextNullException
         """
         super().__init__(
-            id=id,
             domain_class=domain_class or Type[PathContext],
             domain_null_exception=domain_null_exception or PathContextNullException(),
         )
@@ -72,26 +71,21 @@ class PathContextBlueprint(ModelContextBlueprint[PathContext]):
     def domain_class(self) -> Type[PathContext]:
         return cast(Type[PathContext], super().domain_class)
     
-    
     @property
     def domain_null_exception(self) -> PathContextNullException:
         return  cast(PathContextNullException, super().domain_null_exception)
     
-    
     @property
     def label(self) -> Optional[int]:
         return self._label
-    
-    
+     
     @property
     def origin(self) -> Optional[Square]:
         return self._origin
     
-    
     @property
     def destination(self) -> Optional[Square]:
         return self._destination
-    
     
     @property
     def to_dict(self) -> Dict[str, Any]:

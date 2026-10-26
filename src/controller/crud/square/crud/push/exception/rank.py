@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/crud/push/exception/rank.py
+# src/logic/square/database/kernel/operation/crud/push/exception/rank.py
 
 """
 Module: logic.square.database.kernel.operation.crud.push.exception.rank

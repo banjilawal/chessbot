@@ -1,7 +1,7 @@
-# src/transit/controller/visit/controller.py
+# src/controller/visit/controller.py
 
 """
-Module: transit.controller.visit.controller
+Module: controller.visit.controller
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

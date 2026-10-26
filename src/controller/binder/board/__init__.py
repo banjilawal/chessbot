@@ -1,13 +1,13 @@
-# src/transit/controller/binder/board/__init__.py
+# src/controller/binder/board/__init__.py
 
 """
-Module: transit.controller.binder.board.__init__
+Module: controller.binder.board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CONTROLLER.BINDER.BOARD PACKAGE ===========#
+# =========== CONTROLLER.BINDER.BOARD PACKAGE ===========#
 
 # Packages
 

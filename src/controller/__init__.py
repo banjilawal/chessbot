@@ -1,13 +1,13 @@
-# src/transit/controller/__init__.py
+# src/controller/__init__.py
 
 """
-Module: transit.controller.__init__
+Module: controller.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CONTROLLER PACKAGE ===========#
+# =========== CONTROLLER PACKAGE ===========#
 
 # Packages
 from .binder import *

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import Archetype, Board, GameState, ModelContextBlueprint, Player, TeamContext, TeamState
+from domain import Archetype, Board,  ContextBlueprint, Player, TeamContext
 from err import TeamContextNullException
 
 
-class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
+class TeamContextBlueprint(ContextBlueprint[TeamContext]):
     """
      Role:
         1.  Metadata
@@ -38,12 +38,10 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
     _board: Optional[Board]
     _owner: Optional[Player]
-    _state: Optional[GameState]
-    _color: Optional[GameColor]
     _archetype: Optional[Archetype]
 
     
@@ -52,8 +50,6 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
             id: Optional[int] | None = None,
             board: Optional[Board] | None = None,
             owner: Optional[Player] | None = None,
-            state: Optional[TeamState] | None = None,
-            color: Optional[GameColor] | None = None,
             archetype: Optional[Archetype] | None = None,
             domain_class: Optional[Type[TeamContext]] | None = None,
             domain_null_exception: Optional[TeamContextNullException] | None = None,
@@ -63,8 +59,6 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
             id: Optional[int]
             board: Optional[Board]
             owner: Optional[Player]
-            state: Optional[TeamState]
-            color: Optional[GameColor]
             archetype: Optional[Archetype
             domain_class: Type[TeamContext]
             domain_null_exception: TeamContextNullException
@@ -76,8 +70,6 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
         )
         self._board = board
         self._owner = owner
-        self._state = state
-        self._color = color
         self._archetype = archetype
     
     @property
@@ -87,14 +79,6 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
     @property
     def owner(self) -> Optional[Player]:
         return self._owner
-    
-    @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
-    
-    @property
-    def state(self) -> Optional[GameState]:
-        return self._state
     
     @property
     def archetype(self) -> Optional[Archetype]:
@@ -114,8 +98,6 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
             "id": self.id,
             "board": self._board,
             "owner": self._owner,
-            "stat": self._state,
-            "color": self._color,
             "archetype": self._archetype,
         }
     

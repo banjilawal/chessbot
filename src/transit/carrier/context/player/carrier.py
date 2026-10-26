@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Player, PlayerBlueprint
+from domain import PlayerBlueprint, PlayerContext, PlayerContextBlueprint
 from transit import ContextCarrier
 
 
@@ -32,7 +32,7 @@ class PlayerContextCarrier(ContextCarrier[PlayerContext]):
         entity: [Player|PlayerContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[PlayerContextBlueprint]
+        -   def extract_blueprint() -> Optional[PlayerContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class PlayerContextCarrier(ContextCarrier[PlayerContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Player | PlayerContextBlueprint]:
+    def entity(self) -> Optional[PlayerContext | PlayerContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class PlayerContextCarrier(ContextCarrier[PlayerContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Player)
+                isinstance(self._model, PlayerContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, PlayerBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, PlayerContextBlueprint)
         )
     
     @property
@@ -90,15 +91,16 @@ class PlayerContextCarrier(ContextCarrier[PlayerContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    def extract_ContextBlueprint(self) -> Optional[PlayerContextBlueprint]:
+    def extract_blueprint(self) -> Optional[PlayerContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(PlayerContext, self._model)
+        model = cast(PlayerContext, self._model)
         return PlayerContextBlueprint(
-            id=context.id,
-            name=context.name,
-            adviser=context.adviser,
+            id=model.id,
+            account=model.account,
+            game=model.game,
+            player_type=model.player_type,
         )
     
     

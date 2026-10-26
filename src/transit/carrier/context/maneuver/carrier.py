@@ -1,0 +1,105 @@
+# src/transit/carrier/context/maneuver/carrier.py
+
+"""
+Module: transit.carrier.context.maneuver.carrier
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from domain import ManeuverContext, ManeuverContextBlueprint
+from transit import ContextCarrier
+
+
+class ManeuverContextCarrier(ContextCarrier[ManeuverContext]):
+    """
+    Role:
+        - Boundary Carrier Interface
+
+    Responsibilities:
+        1.  Transport a hydrated ManeuverContext or its Blueprint.
+
+    Attributes:
+        size: int
+        is_empty: bool
+        is_not_consistent: bool
+        has_model: bool
+        has_blueprint: bool
+        entity: [Maneuver|ManeuverContextBlueprint]
+
+    Provides:
+        -   def extract_blueprint() -> Optional[ManeuverContextBlueprint]
+
+    Super Class:
+        ContextCarrier
+    """
+    
+    _model: Optional[ManeuverContext]
+    _blueprint: Optional[ManeuverContextBlueprint]
+    
+    def __init__(
+            self,
+            model: Optional[ManeuverContext] | None = None,
+            blueprint: Optional[ManeuverContextBlueprint] | None = None,
+    ):
+        """
+        Args:
+            model: Optional[ManeuverContext]
+            blueprint: Optional[ManeuverContextBlueprint]
+        """
+        super().__init__()
+        self._model = model
+        self._blueprint = blueprint
+    
+    @property
+    def entity(self) -> Optional[ManeuverContext | ManeuverContextBlueprint]:
+        if self.is_empty:
+            return None
+        if self.has_model:
+            return self._model
+        return self._blueprint
+    
+    @property
+    def has_model(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, ManeuverContext)
+        )
+    
+    @property
+    def has_blueprint(self) -> bool:
+        return (
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, ManeuverContextBlueprint)
+        )
+    
+    @property
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return self.size > 1
+    
+    def extract_blueprint(self) -> Optional[ManeuverContextBlueprint]:
+        if self.is_empty: return None
+        if self.has_blueprint: return self._blueprint
+        
+        model = cast(ManeuverContext, self._model)
+        return ManeuverContextBlueprint(
+             traveler=model.traveler,
+             path=model.path,
+             benefit=model.benefit,
+            id=model.id,
+        )
+

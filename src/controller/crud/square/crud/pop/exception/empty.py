@@ -1,4 +1,4 @@
-# src/transit/logic/square/database/kernel/operation/crud/pop/exception/empty.py
+# src/logic/square/database/kernel/operation/crud/pop/exception/empty.py
 
 """
 Module: logic.square.database.kernel.operation.crud.pop.exception.empty

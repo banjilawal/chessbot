@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/controller.py
+# src/logic/coord/database/kernel/operation/controller.py
 
 """
 Module: logic.coord.database.kernel.operation.controller

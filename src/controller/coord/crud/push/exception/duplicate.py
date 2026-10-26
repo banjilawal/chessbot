@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/push/exception/duplicate.py
+# src/logic/coord/database/kernel/operation/crud/push/exception/duplicate.py
 
 """
 Module: logic.coord.database.kernel.operation.crud.push.exception.duplicate

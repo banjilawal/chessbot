@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import ArenaContext, Board, Game, ModelContextBlueprint, Player
+from domain import ArenaContext, Board, Game, ContextBlueprint, Player
 from err import ArenaContextNullException
 
 
-class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
+class ArenaContextBlueprint(ContextBlueprint[ArenaContext]):
     """
      Role:
         1.  Metadata
@@ -37,13 +37,12 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
 
     _game: Optional[Game]
     _board: Optional[Board]
     _player: Optional[Player]
-    _player_color: Optional[GameColor]
     
     def __init__(
             self,
@@ -51,7 +50,6 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
             player: Optional[Player] | None = None,
-            player_color: Optional[GameColor] | None = None,
             domain_class: Optional[Type[ArenaContext]] | None = None,
             domain_null_exception: Optional[ArenaContextNullException] | None = None,
     ):
@@ -60,7 +58,6 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
-            player_color: Optional[GameColor]
             domain_class: Type[ArenaContext]
             domain_null_exception: ArenaContextNullException
         """
@@ -72,8 +69,6 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
         self._game = game
         self._board = board
         self._player = player
-        self._player_color = player_color
-
     
     @property
     def domain_class(self) -> Type[ArenaContext]:
@@ -96,17 +91,12 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
         return self._board
     
     @property
-    def player_color(self) -> Optional[GameColor]:
-        return self._player_color
-    
-    @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
             "game": self._game,
             "board": self._board,
             "player": self._player,
-            "player_color": self._player_color,
         }
     
     

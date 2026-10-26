@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Coord, CoordBlueprint
+from domain import CoordContext, CoordContextBlueprint
 from transit import ContextCarrier
 
 
@@ -32,7 +32,7 @@ class CoordContextCarrier(ContextCarrier[CoordContext]):
         entity: [Coord|CoordContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[CoordContextBlueprint]
+        -   def extract_blueprint() -> Optional[CoordContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class CoordContextCarrier(ContextCarrier[CoordContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Coord | CoordContextBlueprint]:
+    def entity(self) -> Optional[CoordContext | CoordContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class CoordContextCarrier(ContextCarrier[CoordContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Coord)
+                isinstance(self._model, CoordContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, CoordBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, CoordContextBlueprint)
         )
     
     @property
@@ -90,13 +91,13 @@ class CoordContextCarrier(ContextCarrier[CoordContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    def extract_ContextBlueprint(self) -> Optional[CoordContextBlueprint]:
+    def extract_blueprint(self) -> Optional[CoordContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(CoordContext, self._model)
+        model = cast(CoordContext, self._model)
         return CoordContextBlueprint(
-            row=context.row,
-            column=context.column,
+            row=model.row,
+            column=model.column,
         )
 

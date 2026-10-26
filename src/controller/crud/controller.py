@@ -1,7 +1,7 @@
-# src/transit/controller/crud/controller.py
+# src/controller/crud/controller.py
 
 """
-Module: transit.controller.crud.controller
+Module: controller.crud.controller
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

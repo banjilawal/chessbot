@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, BoardBlueprint
+from domain import Board, BoardContext, BoardContextBlueprint
 from transit import ContextCarrier
 
 
@@ -32,7 +32,7 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
         entity: [Board|BoardContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[BoardContextBlueprint]
+        -   def extract_blueprint() -> Optional[BoardContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Board|BoardContextBlueprint]:
+    def entity(self) -> Optional[BoardContext | BoardContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Board)
+                isinstance(self._model, BoardContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, BoardBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, BoardContextBlueprint)
         )
     
     @property
@@ -90,18 +91,14 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    def extract_ContextBlueprint(self) -> Optional[BoardContextBlueprint]:
+    def extract_blueprint(self) -> Optional[BoardContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(BoardContext, self._model)
+        model = cast(BoardContext, self._model)
         return BoardContextBlueprint(
-            id=context.id,
-            arena=context.arena,
-            squares=context.squares,
-            maneuver_log=context.maneuver_log,
-            attack_records=context.attack_records,
-            captured_tokens=context.captured_tokens,
-            team_binder=context.binder,
+            id=model.id,
+            arena=model.arena,
+            state=model.state,
         )
 

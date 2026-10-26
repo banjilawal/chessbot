@@ -29,10 +29,10 @@ class VectorContextCarrier(ContextCarrier[VectorContext]):
         is_not_consistent: bool
         has_model: bool
         has_blueprint: bool
-        entity: [Vector|VectorContextBlueprint]
+        entity: [VectorContext|VectorContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[VectorContextBlueprint]
+        -   def extract_blueprint() -> Optional[VectorContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class VectorContextCarrier(ContextCarrier[VectorContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Vector|VectorContextBlueprint]:
+    def entity(self) -> Optional[VectorContext |VectorContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class VectorContextCarrier(ContextCarrier[VectorContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Vector)
+                isinstance(self._model, VectorContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, VectorBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, VectorContextBlueprint)
         )
     
     @property
@@ -90,13 +91,13 @@ class VectorContextCarrier(ContextCarrier[VectorContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
      
-    def extract_ContextBlueprint(self) -> Optional[VectorContextBlueprint]:
+    def extract_blueprint(self) -> Optional[VectorContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(VectorContext, self._model)
+        model = cast(VectorContext, self._model)
         return VectorContextBlueprint(
-            x=context.x,
-            y=context.y,
+            x=model.x,
+            y=model.y,
         )
 

@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/__init__.py
+# src/logic/coord/database/kernel/operation/crud/__init__.py
 
 """
 Module: logic.coord.database.kernel.OPERATION.CRUD.__init__

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Arena, ArenaBlueprint
+from domain import ArenaContext, ArenaContextBlueprint
 from transit import ContextCarrier
 
 
@@ -29,10 +29,10 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
         is_not_consistent: bool
         has_model: bool
         has_blueprint: bool
-        entity: [Arena|ArenaContextBlueprint]
+        entity: [ArenaContext | ArenaContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[ArenaContextBlueprint]
+        -   def extract_blueprint() -> Optional[ArenaContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Arena|ArenaContextBlueprint]:
+    def entity(self) -> Optional[ArenaContext | ArenaContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Arena)
+                isinstance(self._model, ArenaContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, ArenaBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, ArenaContextBlueprint)
         )
     
     @property
@@ -90,15 +91,15 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    def extract_ContextBlueprint(self) -> Optional[ArenaContextBlueprint]:
+    def extract_blueprint(self) -> Optional[ArenaContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(ArenaContext, self._model)
+        model = cast(ArenaContext, self._model)
         return ArenaContextBlueprint(
-            id=context.id,
-            game=context.game,
-            board=context.board,
-            player_binder=context.player_binder,
+            id=model.id,
+            game=model.game,
+            board=model.board,
+            player=model.player,
         )
 

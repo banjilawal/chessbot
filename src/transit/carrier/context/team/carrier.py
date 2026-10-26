@@ -32,7 +32,7 @@ class TeamContextCarrier(ContextCarrier[TeamContext]):
         entity: [Team|TeamContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[TeamContextBlueprint]
+        -   def extract_blueprint() -> Optional[TeamContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -72,10 +72,11 @@ class TeamContextCarrier(ContextCarrier[TeamContext]):
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, TeamBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, TeamContextBlueprint)
         )
     
     @property
@@ -90,16 +91,16 @@ class TeamContextCarrier(ContextCarrier[TeamContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    def extract_ContextBlueprint(self) -> Optional[TeamContextBlueprint]:
+    def extract_blueprint(self) -> Optional[TeamContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(TeamContext, self._model)
+        model = cast(TeamContext, self._model)
         return TeamContextBlueprint(
-            id=context.id,
-            board=context.board,
-            owner=context.owner,
-            roster=context.roster,
-            archetype=context.archetype,
+            id=model.id,
+            board=model.board,
+            owner=model.owner,
+            roster=model.roster,
+            archetype=model.archetype,
         )
 

@@ -1,4 +1,4 @@
-# src/transit/logic/token/database/kernel/operation/exception.py
+# src/logic/token/database/kernel/operation/exception.py
 
 """
 Module: logic.token.database.kernel.operation.operation

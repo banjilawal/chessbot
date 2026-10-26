@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from domain import AttackContext, KingToken, Maneuver, ModelContextBlueprint, Token
+from domain import AttackContext, KingToken, Maneuver, ContextBlueprint, Token
 from err import AttackContextNullException
 
 
-class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
+class AttackContextBlueprint(ContextBlueprint[AttackContext]):
     """
      Role:
         1.  Metadata
@@ -37,7 +37,7 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
 
     _attacker: Optional[Token]

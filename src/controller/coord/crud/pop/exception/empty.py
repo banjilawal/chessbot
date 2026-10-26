@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/pop/exception/empty.py
+# src/logic/coord/database/kernel/operation/crud/pop/exception/empty.py
 
 """
 Module: logic.coord.database.kernel.operation.crud.pop.exception.empty

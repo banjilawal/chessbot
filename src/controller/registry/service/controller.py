@@ -1,7 +1,7 @@
-# src/transit/controller/registry/service/controller.py
+# src/controller/registry/service/controller.py
 
 """
-Module: transit.controller.registry.service.controller
+Module: controller.registry.service.controller
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

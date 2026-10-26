@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import Arena, GameContext, GameState, ModelContextBlueprint, Player
+from domain import Arena, GameContext, GameState, ContextBlueprint, Player
 from err import GameContextNullException
-from sync import GameResult
 
 
-class GameContextBlueprint(ModelContextBlueprint[GameContext]):
+class GameContextBlueprint(ContextBlueprint[GameContext]):
     """
      Role:
         1.  Metadata
@@ -27,7 +26,6 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
          
      Attributes:
         id: Optional[int]
-        win: Optional[GameWin]
         arena: Optional[Arena]
         player: Optional[Player]
         state: Optional[GameState]
@@ -38,31 +36,27 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
     
-    _win: Optional[GameResult]
     _arena: Optional[Arena]
     _player: Optional[Player]
     _state: Optional[GameState]
-    _player_color: Optional[GameColor]
     
     def __init__(
             self,
+            domain_class: Optional[Type[GameContext]] | None = None,
+            domain_null_exception: Optional[GameContextNullException] | None = None,
             id: Optional[int] | None = None,
             arena: Optional[Arena] | None = None,
             player: Optional[Player] | None = None,
-            domain_class: Optional[Type[GameContext]] | None = None,
-            domain_null_exception: Optional[GameContextNullException] | None = None,
             state: Optional[GameState] | None = None,
-            player_color: Optional[GameColor] | None = None,
     ):
         """
         Args:
             arena: Optional[Arena]
             player: Optional[Player]
             state: Optional[GameState]
-            player_color: Optional[GameColor]
             domain_class: Type[GameContext]
             domain_null_exception: GameContextNullException
         """
@@ -71,11 +65,9 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
             domain_class=domain_class or Type[GameContext],
             domain_null_exception=domain_null_exception or GameContextNullException(),
         )
-        self._win = win
         self._arena = arena
         self._player = player
         self._state = state
-        self._player_color = player_color
     
     @property
     def domain_class(self) -> Type[GameContext]:
@@ -84,11 +76,7 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
     @property
     def domain_null_exception(self) -> GameContextNullException:
         return  cast(GameContextNullException, super().domain_null_exception)
-    
-    @property
-    def win(self) -> Optional[GameResult]:
-        return self._win
-    
+
     @property
     def player(self) -> Optional[Player]:
         return self._player
@@ -102,18 +90,12 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
         return self._state
     
     @property
-    def player_color(self) -> Optional[GameColor]:
-        return self._player_color
-    
-    @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "win": self._win,
             "arena": self._arena,
             "player": self._player,
             "state": self._state,
-            "player_color": self._player_color
         }
     
     

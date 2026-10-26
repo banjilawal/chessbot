@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/exception.py
+# src/logic/coord/database/kernel/operation/exception.py
 
 """
 Module: logic.coord.database.kernel.operation.pusher

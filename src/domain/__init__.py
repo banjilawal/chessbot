@@ -10,13 +10,13 @@ version: 0.0.2
 # =========== DOMAIN PACKAGE ===========#
 
 # Packages
+from .context import *
 from .extract import *
 from .graph import *
 from .interface import *
 from .metadata import *
 from .model import *
 from .schema import *
-from .search import *
 from .struct import *
 
 # Modules

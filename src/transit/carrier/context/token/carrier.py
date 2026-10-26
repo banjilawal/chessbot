@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Token, TokenBlueprint
+from domain import TokenContext, TokenContextBlueprint
 from transit import ContextCarrier
 
 
@@ -32,7 +32,7 @@ class TokenContextCarrier(ContextCarrier[TokenContext]):
         entity: [Token|TokenContextBlueprint]
 
     Provides:
-        -   def extract_ContextBlueprint() -> Optional[TokenContextBlueprint]
+        -   def extract_blueprint() -> Optional[TokenContextBlueprint]
 
     Super Class:
         ContextCarrier
@@ -56,7 +56,7 @@ class TokenContextCarrier(ContextCarrier[TokenContext]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Token | TokenContextBlueprint]:
+    def entity(self) -> Optional[TokenContext | TokenContextBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,15 @@ class TokenContextCarrier(ContextCarrier[TokenContext]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Token)
+                isinstance(self._model, TokenContext)
         )
     
     @property
-    def is_carrying_ContextBlueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
-                not self.has_model and
-                isinstance(self._blueprint, TokenBlueprint)
+                self._model is None and
+                self._blueprint is not None and
+                isinstance(self._blueprint, TokenContextBlueprint)
         )
     
     @property
@@ -90,18 +91,22 @@ class TokenContextCarrier(ContextCarrier[TokenContext]):
     def is_not_consistent(self) -> bool:
         return self.size > 1
     
-    def extract_ContextBlueprint(self) -> Optional[TokenContextBlueprint]:
+    def extract_blueprint(self) -> Optional[TokenContextBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        context = cast(Type[self._modelContext]Context, self._model)
+        model = cast(TokenContext, self._model)
         return TokenContextBlueprint(
-            id=context.id,
-            team=context.victim,
-            rank=context.rank,
-            formation=context.formation,
-            positions=context.positions,
-            home_square=context.home_square,
+            id=model.id,
+            name=model.name,
+            rank=model.rank,
+            team=model.team,
+            color=model.color,
+            ransom=model.ransom,
+            position=model.position,
+            formation=model.formation,
+            token_type=model.token_type,
+            home_square=model.home_square,
         )
 
 

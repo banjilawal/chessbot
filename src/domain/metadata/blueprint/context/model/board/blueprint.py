@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import Arena, BoardContext, BoardState, ModelContextBlueprint, Team
+from domain import Arena, BoardContext, BoardState, ContextBlueprint, Team
 from err import BoardContextNullException
 
 
-class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
+class BoardContextBlueprint(ContextBlueprint[BoardContext]):
     """
      Role:
         1.  Metadata
@@ -29,7 +29,6 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
         team: Optional[Team]
         arena: Optional[Arena]
         state: Optional[BoardState]
-        color: Optional[GameColor]
         
         domain_class: Type[BoardContext]
         domain_null_exception: BoardContextNullException
@@ -37,13 +36,11 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ContextBlueprint
      """
     
     _team: Optional[Team]
     _arena: Optional[Arena]
-    _state: Optional[BoardState]
-    _team_color: Optional[GameColor]
     
     def __init__(
             self,
@@ -51,7 +48,6 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
             team: Optional[Team] | None = None,
             arena: Optional[Arena] | None = None,
             state: Optional[BoardState] | None = None,
-            team_color: Optional[GameColor] | None = None,
             domain_class: Optional[Type[BoardContext]] | None = None,
             domain_null_exception: Optional[BoardContextNullException] | None = None,
     ):
@@ -61,7 +57,6 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
             team: Optional[Team]
             arena: Optional[Arena]
             state: Optional[BoardState]
-            team_color: Optional[GameColor]
             domain_class: Type[BoardContext]
             domain_null_exception: BoardContextNullException
         """
@@ -73,8 +68,6 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
         self._team = team
         self._state = state
         self._arena = arena
-        self._team_color = team_color
-
     
     @property
     def domain_class(self) -> Type[BoardContext]:
@@ -97,17 +90,12 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
         return self._arena
     
     @property
-    def team_color(self) -> Optional[GameColor]:
-        return self._team_color
-    
-    @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
             "team": self._team,
             "state": self._state,
             "arena": self._arena,
-            "color": self._team_color,
         }
     
     

@@ -1,4 +1,4 @@
-# src/transit/logic/coord/database/kernel/operation/crud/exception/push/validator.py
+# src/logic/coord/database/kernel/operation/crud/exception/push/validator.py
 
 """
 Module: logic.coord.database.kernel.OPERATION.CRUD.exception.push.work
