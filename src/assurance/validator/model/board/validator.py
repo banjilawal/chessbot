@@ -174,7 +174,7 @@ class BoardValidator(ModelValidator[Board]):
             )
         # --- PROCESS_THE_BOARD_BINDER_ATTRIBUTE. ---#
         binder_validation = self.toolkit.wrapper.binder.extract_model.execute(
-            request=TeamBinderValidationRequest(
+            candidate=TeamBinderValidationRequest(
                 item=TeamBinderCarrier(model=fingerprint.binder),
                 id=IdFactory.next_id(class_name="TeamBinderValidationRequest")
             )

@@ -131,7 +131,7 @@ class AddVector(Computation[CartesianToggle]):
                 y=register.a.entity.y + register.b.entity.y,
             )
             build_result = operand_toolkit.vector_builder.execute(
-                request=blueprint,
+                candidate=blueprint,
             )
         if register.category == RegisterContentType.COORD_REGISTER:
             blueprint = CoordBlueprint(
@@ -139,7 +139,7 @@ class AddVector(Computation[CartesianToggle]):
                 column=register.a.entity.column + register.b.entity.column,
             )
             build_result = operand_toolkit.coord_builder.execute(
-                request=blueprint,
+                candidate=blueprint,
             )
         # Handle the case that the build did not produce a result.
         if build_result.is_failure:

@@ -15,13 +15,13 @@ from artifcat import ArenaValidationResponse, ValidationResult
 from domain import Arena, ArenaBlueprint
 from err import ArenaValidationResponderException, ArenaValidationServerException, EmptyArenaCarrierException
 from exchange import (
-    ArenaValidationResponder, ModelValidationServer, ArenaValidationRequest
+    ArenaValidationResponder, ModelValidationService, ArenaValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class ArenaValidationServer(
-    ModelValidationServer[Arena]
+    ModelValidationService[Arena]
 ):
     """
     Role

@@ -93,7 +93,7 @@ class CoordBuilder(ModelBuilder[Coord]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 CoordBlueprint,
                 blueprint_validation.payload
             )

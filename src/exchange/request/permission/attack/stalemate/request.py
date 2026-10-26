@@ -40,8 +40,8 @@ class StalematePermissionRequest(AttackPermissionRequest[StalemateRequest]):
     
     
     @property
-    def candidate(self) -> StalemateRequest:
-        return cast(StalemateRequest, super().candidate)
+    def payload(self) -> StalemateRequest:
+        return cast(StalemateRequest, super().payload)
 
     def __eq__(self, other):
         if other is self: return True

@@ -66,7 +66,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionPermissionReques
         # Send an exception chain in the denial.
         if priming.is_failure:
             return PromotionDecision.denial(
-                request=request.candidate,
+                request=request.payload,
                 exception=PromotionAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,

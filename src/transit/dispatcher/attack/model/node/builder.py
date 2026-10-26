@@ -93,7 +93,7 @@ class NodeAttack(ModelAttack[Node]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 NodeBlueprint,
                 blueprint_validation.payload
             )

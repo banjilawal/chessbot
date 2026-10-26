@@ -15,13 +15,13 @@ from artifcat import ScalarValidationResponse, ValidationResult
 from domain import Scalar, ScalarBlueprint
 from err import ScalarValidationResponderException, ScalarValidationServerException, ScalarCarrierEmptyException
 from exchange import (
-    ScalarValidationResponder, ModelValidationServer, ScalarValidationRequest
+    ScalarValidationResponder, ModelValidationService, ScalarValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class ScalarValidationServer(
-    ModelValidationServer[Scalar]
+    ModelValidationService[Scalar]
 ):
     """
     Role

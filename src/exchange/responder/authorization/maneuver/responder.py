@@ -65,7 +65,7 @@ class PromotionAuthorizationResponder(
         decision = self.dispatcher.execute(request)
         if decision.request_is_denied:
             return PromotionDecision.denial(
-                request=request.candidate,
+                request=request.payload,
                 exception=PromotionAuthorizationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

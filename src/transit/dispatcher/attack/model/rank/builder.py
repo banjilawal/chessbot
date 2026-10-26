@@ -93,7 +93,7 @@ class RankAttack(ModelAttack[Rank]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 RankBlueprint,
                 blueprint_validation.payload
             )

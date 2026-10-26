@@ -93,7 +93,7 @@ class TeamAttack(ModelAttack[Team]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 TeamBlueprint,
                 blueprint_validation.payload
             )

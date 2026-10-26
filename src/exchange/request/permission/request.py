@@ -50,7 +50,7 @@ class PermissionRequest(ABC, Generic[T]):
         return self._id
     
     @property
-    def candidate(self) -> T:
+    def payload(self) -> T:
         return self._candidate
     
     @abstractmethod

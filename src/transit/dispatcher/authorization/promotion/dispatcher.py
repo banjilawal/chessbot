@@ -69,7 +69,7 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionPermissi
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
-                request=request.candidate,
+                request=request.payload,
                 exception=PromotionAuthorizationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

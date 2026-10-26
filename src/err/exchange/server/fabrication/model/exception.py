@@ -17,17 +17,17 @@ from err import ValidationServerException
 
 __all__ = [
     # ======================# MODEL_VALIDATION_SERVER_FAILURE #======================#
-    "ModelValidationServerException",
+    "ModelValidationServiceException",
 ]
 
 # ======================# MODEL_VALIDATION_SERVER_FAILURE #======================#
-class ModelValidationServerException(ValidationServerException):
+class ModelValidationServiceException(ValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ModelValidationServer encountered and error.
+        1.  Indicating a ModelValidationService encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ModelValidationServerException(ValidationServerException):
     Super Class:
         ValidationServerException
     """
-    MSG = "ModelValidationServer error."
+    MSG = "ModelValidationService error."
     ERR_CODE = "MODEL_VALIDATION_SERVER_FAILURE"
     
     def __init__(

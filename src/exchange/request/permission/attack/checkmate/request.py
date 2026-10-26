@@ -40,8 +40,8 @@ class CheckmatePermissionRequest(AttackPermissionRequest[CheckmateRequest]):
     
     
     @property
-    def candidate(self) -> CheckmateRequest:
-        return cast(CheckmateRequest, super().candidate)
+    def payload(self) -> CheckmateRequest:
+        return cast(CheckmateRequest, super().payload)
 
     def __eq__(self, other):
         if other is self: return True

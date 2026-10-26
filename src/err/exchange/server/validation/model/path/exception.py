@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationServerException
+from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# PATH_VALIDATION_SERVER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# PATH_VALIDATION_SERVER_FAILURE #======================#
-class PathValidationServerException(ModelValidationServerException):
+class PathValidationServerException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class PathValidationServerException(ModelValidationServerException):
     Provides:
 
     Super Class:
-        ModelValidationServerException
+        ModelValidationServiceException
     """
     MSG = "PathValidationServer error."
     ERR_CODE = "PATH_VALIDATION_SERVER_FAILURE"

@@ -15,13 +15,13 @@ from artifcat import AttackValidationResponse, ValidationResult
 from domain import Encounter, AttackBlueprint
 from err import AttackValidationResponderException, AttackValidationServerException, EncounterCarrierEmptyException
 from exchange import (
-    AttackValidationResponder, ModelValidationServer, AttackValidationRequest
+    AttackValidationResponder, ModelValidationService, AttackValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class EncounterValidationServer(
-    ModelValidationServer[Encounter]
+    ModelValidationService[Encounter]
 ):
     """
     Role

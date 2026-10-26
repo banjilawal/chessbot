@@ -18,13 +18,13 @@ from err import (
     BoardCarrierEmptyException
 )
 from exchange import (
-    BoardValidationResponder, ModelValidationServer, BoardValidationRequest
+    BoardValidationResponder, ModelValidationService, BoardValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class BoardValidationServer(
-    ModelValidationServer[Board]
+    ModelValidationService[Board]
 ):
     """
     Role

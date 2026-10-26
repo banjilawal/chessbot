@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision
+from authorization import AccountPushPermitter
 from exchange import AccountPushPermissionRequest, AccountPushRequest
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
@@ -28,7 +29,7 @@ class AccountPushPermissionDispatcher(
         1.  Direct the AccountBuild workflow.
 
     Attributes:
-        authorizer: AccountPushAuthorizer
+        authorizer: AccountPushPermitter
 
     Provides:
         -   def execute(request: AccountPushPermissionRequest) -> Decision
@@ -39,23 +40,23 @@ class AccountPushPermissionDispatcher(
 
     def __init__(
             self,
-            authorizer: Optional[AccountPushAuthorizer] | None = None,
+            authorizer: Optional[AccountPushPermitter] | None = None,
     ):
         """
         Args:
-            authorizer: Optional[AccountPushAuthorizer]
+            authorizer: Optional[AccountPushPermitter]
         """
-        super().__init__(authorizer=authorizer or AccountPushAuthorizer())
+        super().__init__(authorizer=authorizer or AccountPushPermitter())
         
     @property
-    def authorizer(self) -> AccountPushAuthorizer:
-        return cast(AccountPushAuthorizer, super().authorizer)
+    def authorizer(self) -> AccountPushPermitter:
+        return cast(AccountPushPermitter, super().authorizer)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushPermissionRequest) -> Decision:
         """
-        Forward a job to a AccountPushAuthorizer then deliver the result.
+        Forward a job to a AccountPushPermitter then deliver the result.
 
         Action:
             1.  Send an exception chain in the CrudRequest if the crudAuthorizer cannot

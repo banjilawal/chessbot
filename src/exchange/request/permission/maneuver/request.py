@@ -41,8 +41,8 @@ class ManeuverPermissionRequest(PermissionRequest[ManeuverRequest]):
         super().__init__(id=id, candidate=candidate)
     
     @property
-    def candidate(self) -> ManeuverRequest:
-        return cast(ManeuverRequest, super().candidate)
+    def payload(self) -> ManeuverRequest:
+        return cast(ManeuverRequest, super().payload)
 
     def __eq__(self, other):
         if other is self: return True

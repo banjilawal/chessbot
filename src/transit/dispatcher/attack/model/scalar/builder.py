@@ -93,7 +93,7 @@ class ScalarAttack(ModelAttack[Scalar]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 ScalarBlueprint,
                 blueprint_validation.payload
             )

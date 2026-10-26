@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import BuildResult
 from domain import Model, ModelBlueprint
-from exchange import BuildRequest, ModelBuildRequest, ModelValidationServer
+from exchange import BuildRequest, ModelBuildRequest, ModelValidationService
 from fabrication import BuildLoader
 from util import LoggingLevelRouter
 
@@ -32,7 +32,7 @@ class ModelBuildLoader(BuildLoader[T], ABC, Generic[T]):
             inspecting the job's requirements.
 
     Attributes:
-        validator: ModelValidationServer[T]
+        validator: ModelValidationService[T]
         
     Provides:
         -   def execute(request: BuildRequest[T]) -> BuildResult[ModelBlueprint[T]]
@@ -42,16 +42,16 @@ class ModelBuildLoader(BuildLoader[T], ABC, Generic[T]):
     """
 
     
-    def __init__(self, validator: ModelValidationServer[T]):
+    def __init__(self, validator: ModelValidationService[T]):
         """
         Args:
-            validator: ModelValidationServer[T]
+            validator: ModelValidationService[T]
         """
         super().__init__(validator=validator)
     
     @property
-    def validator(self) -> ModelValidationServer[T]:
-        return cast(ModelValidationServer[T], super().validator)
+    def validator(self) -> ModelValidationService[T]:
+        return cast(ModelValidationService[T], super().validator)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -15,13 +15,13 @@ from artifcat import CoordValidationResponse, ValidationResult
 from domain import Coord, CoordBlueprint
 from err import CoordValidationResponderException, CoordValidationServerException, CoordCarrierEmptyException
 from exchange import (
-    CoordValidationResponder, ModelValidationServer, CoordValidationRequest
+    CoordValidationResponder, ModelValidationService, CoordValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class CoordValidationServer(
-    ModelValidationServer[Coord]
+    ModelValidationService[Coord]
 ):
     """
     Role

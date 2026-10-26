@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationServerException
+from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# ARENA_VALIDATION_SERVER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# ARENA_VALIDATION_SERVER_FAILURE #======================#
-class ArenaValidationServerException(ModelValidationServerException):
+class ArenaValidationServerException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class ArenaValidationServerException(ModelValidationServerException):
     Provides:
 
     Super Class:
-        ModelValidationServerException
+        ModelValidationServiceException
     """
     MSG = "ArenaValidationServer error."
     ERR_CODE = "ARENA_VALIDATION_SERVER_FAILURE"

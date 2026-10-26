@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationServerException
+from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# COORD_VALIDATION_SERVER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# COORD_VALIDATION_SERVER_FAILURE #======================#
-class CoordValidationServerException(ModelValidationServerException):
+class CoordValidationServerException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class CoordValidationServerException(ModelValidationServerException):
     Provides:
 
     Super Class:
-        ModelValidationServerException
+        ModelValidationServiceException
     """
     MSG = "CoordValidationServer error."
     ERR_CODE = "COORD_VALIDATION_SERVER_FAILURE"

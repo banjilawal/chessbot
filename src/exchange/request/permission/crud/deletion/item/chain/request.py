@@ -46,7 +46,7 @@ class RemoveNodePermissionRequest(DeleteItemPermissionRequest, ABC, Generic[T]):
     
     @property
     def item(self) -> T:
-        return cast(T, super().candidate)
+        return cast(T, super().payload)
         
     @property
     def chain(self) -> Chain[T]:

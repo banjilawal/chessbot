@@ -40,8 +40,8 @@ class KillPermissionRequest(AttackPermissionRequest[KillRequest]):
     
     
     @property
-    def candidate(self) -> KillRequest:
-        return cast(KillRequest, super().candidate)
+    def payload(self) -> KillRequest:
+        return cast(KillRequest, super().payload)
 
     def __eq__(self, other):
         if other is self: return True

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationServerException
+from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# FOOTSTEP_VALIDATION_SERVER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 
 # ======================# FOOTSTEP_VALIDATION_SERVER_FAILURE #======================#
 class FootstepValidationServerException(
-    ModelValidationServerException
+    ModelValidationServiceException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class FootstepValidationServerException(
     Provides:
 
     Super Class:
-        ModelValidationServerException
+        ModelValidationServiceException
     """
     MSG = "FootstepValidationServer error."
     ERR_CODE = "FOOTSTEP_VALIDATION_SERVER_FAILURE"

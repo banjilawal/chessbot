@@ -73,7 +73,7 @@ class Mover(Worker[ManeuverResult]):
                     ex=decision.exception,
                 )
             )
-        safe = cast(ManeuverRequest, decision.candidate)
+        safe = cast(ManeuverRequest, decision.payload)
         token = safe.token
         origin = safe.path.origin
         destination = safe.path.destination

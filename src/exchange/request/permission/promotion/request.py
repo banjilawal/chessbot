@@ -43,8 +43,8 @@ class PromotionPermissionRequest(
         super().__init__(id=id, candidate=candidate)
     
     @property
-    def candidate(self) -> PermissionRequest:
-        return cast(PromotionRequest, super().candidate)
+    def payload(self) -> PermissionRequest:
+        return cast(PromotionRequest, super().payload)
     
     def __eq__(self, other) -> bool:
         if other is self: return True

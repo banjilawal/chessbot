@@ -93,7 +93,7 @@ class SnapshotAttack(ModelAttack[Snapshot]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 SnapshotBlueprint,
                 blueprint_validation.payload
             )

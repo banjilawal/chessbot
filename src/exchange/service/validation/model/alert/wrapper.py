@@ -15,13 +15,13 @@ from artifcat import AlertValidationResponse, ValidationResult
 from domain import Alert, AlertBlueprint
 from err import AlertValidationResponderException, AlertValidationServerException, EmptyAlertCarrierException
 from exchange import (
-    AlertValidationResponder, ModelValidationServer, AlertValidationRequest
+    AlertValidationResponder, ModelValidationService, AlertValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class AlertValidationServer(
-    ModelValidationServer[Alert]
+    ModelValidationService[Alert]
 ):
     """
     Role

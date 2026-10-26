@@ -94,7 +94,7 @@ class TokenBuilder(ModelBuilder[Token]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            request=cast(TokenBlueprint, validation.payload)
+            candidate=cast(TokenBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

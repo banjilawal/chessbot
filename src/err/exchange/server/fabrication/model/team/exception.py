@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationServerException
+from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# TEAM_VALIDATION_SERVER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# TEAM_VALIDATION_SERVER_FAILURE #======================#
-class TeamValidationServerException(ModelValidationServerException):
+class TeamValidationServerException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class TeamValidationServerException(ModelValidationServerException):
     Provides:
 
     Super Class:
-        ModelValidationServerException
+        ModelValidationServiceException
     """
     MSG = "TeamValidationServer error."
     ERR_CODE = "TEAM_VALIDATION_SERVER_FAILURE"

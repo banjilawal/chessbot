@@ -93,7 +93,7 @@ class SquareAttack(ModelAttack[Square]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 SquareBlueprint,
                 blueprint_validation.payload
             )

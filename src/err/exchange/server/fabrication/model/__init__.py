@@ -28,4 +28,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import ModelValidationServerException
+from .exception import ModelValidationServiceException

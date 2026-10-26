@@ -93,7 +93,7 @@ class GameAttack(ModelAttack[Game]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 GameBlueprint,
                 blueprint_validation.payload
             )

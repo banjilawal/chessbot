@@ -46,8 +46,8 @@ class CrudPermissionRequest(
         super().__init__(id, candidate=candidate)
     
     @property
-    def candidate(self) -> T:
-        return cast(T, super().candidate)
+    def payload(self) -> T:
+        return cast(T, super().payload)
     
     def __eq__(self, other):
         if other is self: return True

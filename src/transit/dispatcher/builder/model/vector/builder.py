@@ -93,7 +93,7 @@ class VectorBuilder(ModelBuilder[Vector]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 VectorBlueprint,
                 blueprint_validation.payload
             )

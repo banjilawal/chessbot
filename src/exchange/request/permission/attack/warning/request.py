@@ -40,8 +40,8 @@ class WarningPermissionRequest(AttackPermissionRequest[WarningRequest]):
     
     
     @property
-    def candidate(self) -> WarningRequest:
-        return cast(WarningRequest, super().candidate)
+    def payload(self) -> WarningRequest:
+        return cast(WarningRequest, super().payload)
 
     def __eq__(self, other):
         if other is self: return True

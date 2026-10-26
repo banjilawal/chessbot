@@ -15,13 +15,13 @@ from artifcat import SquareValidationResponse, ValidationResult
 from domain import Square, SquareBlueprint
 from err import SquareValidationResponderException, SquareValidationServerException, SquareCarrierEmptyException
 from exchange import (
-    SquareValidationResponder, ModelValidationServer, SquareValidationRequest
+    SquareValidationResponder, ModelValidationService, SquareValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class SquareValidationServer(
-    ModelValidationServer[Square]
+    ModelValidationService[Square]
 ):
     """
     Role

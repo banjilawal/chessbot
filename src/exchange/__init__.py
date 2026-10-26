@@ -12,6 +12,6 @@ version: 0.0.2
 # Packages
 from .request import *
 from .responder import *
-from .server import *
+from .service import *
 
 # Modules

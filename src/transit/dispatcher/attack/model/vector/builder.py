@@ -93,7 +93,7 @@ class VectorAttack(ModelAttack[Vector]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(
+            candidate=cast(
                 VectorBlueprint,
                 blueprint_validation.payload
             )

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationServerException
+from err import ModelValidationServiceException
 
 __all__ = [
     # ======================# MANEUVER_VALIDATION_SERVER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_VALIDATION_SERVER_FAILURE #======================#
-class ManeuverValidationServerException(ModelValidationServerException):
+class ManeuverValidationServerException(ModelValidationServiceException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class ManeuverValidationServerException(ModelValidationServerException):
     Provides:
 
     Super Class:
-        ModelValidationServerException
+        ModelValidationServiceException
     """
     MSG = "ManeuverValidationServer error."
     ERR_CODE = "MANEUVER_VALIDATION_SERVER_FAILURE"

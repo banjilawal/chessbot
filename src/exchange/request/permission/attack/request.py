@@ -42,8 +42,8 @@ class AttackPermissionRequest(PermissionRequest[T], Generic[T]):
     
     
     @property
-    def candidate(self) -> T:
-        return cast(T, super().candidate)
+    def payload(self) -> T:
+        return cast(T, super().payload)
 
     def __eq__(self, other):
         if other is self: return True

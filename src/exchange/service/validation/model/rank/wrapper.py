@@ -15,13 +15,13 @@ from artifcat import RankValidationResponse, ValidationResult
 from domain import Rank, RankBlueprint
 from err import RankValidationResponderException, RankValidationServerException, RankCarrierEmptyException
 from exchange import (
-    RankValidationResponder, ModelValidationServer, RankValidationRequest
+    RankValidationResponder, ModelValidationService, RankValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class RankValidationServer(
-    ModelValidationServer[Rank]
+    ModelValidationService[Rank]
 ):
     """
     Role

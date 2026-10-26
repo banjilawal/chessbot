@@ -94,7 +94,7 @@ class QuadrantReservoirAttack(SpaceReservoirAttackDispatcher[QuadrantReservoir])
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(QuadrantReservoirBlueprint, validation.payload)
+            candidate=cast(QuadrantReservoirBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

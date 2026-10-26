@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from artifcat import Decision
 from assurance import PrimingValidator
-from exchange import PermissionRequest
+from exchange import PermissionRequest, ValidationService
 from microservice import IdentityService
 from util import LoggingLevelRouter
 
@@ -31,26 +31,31 @@ class AuthorizationLoader(ABC, Generic[T]):
     Attributes:
         identity_service: IdentityService
         priming_validator: PrimingValidator
+        validation_service: ValidationService
 
     Provides:
         -   def execute(request: T) -> Decision[T]
 
     Super Class:
     """
+
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
-
+    _validation_service: ValidationService
     
     def __init__(
             self,
+            validation_service: ValidationService,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
+            validation_service: ValidationService
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
+        self._validation_service = validation_service
         self._identity_service = identity_service or IdentityService()
         self._priming_validator = priming_validator or PrimingValidator()
     
@@ -61,6 +66,10 @@ class AuthorizationLoader(ABC, Generic[T]):
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
+    
+    @property
+    def validation_service(self) -> ValidationService:
+        return self._validation_service
     
     @abstractmethod
     @LoggingLevelRouter.monitor

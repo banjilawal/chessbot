@@ -41,8 +41,8 @@ class AccountPushPermissionRequest(ModelPushPermissionRequest[AccountPushRequest
         super().__init__(id, candidate=candidate)
         
     @property
-    def candidate(self) -> AccountPushRequest:
-        return cast(AccountPushRequest, super().candidate)
+    def payload(self) -> AccountPushRequest:
+        return cast(AccountPushRequest, super().payload)
         
     def __eq__(self, other):
         if other is self: return True

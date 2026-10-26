@@ -46,7 +46,7 @@ class DeleteStackItemPermissionRequest(DeleteItemPermissionRequest, ABC, Generic
     
     @property
     def item(self) -> T:
-        return cast(T, super().candidate)
+        return cast(T, super().payload)
         
     @property
     def stack(self) -> StackService[T]:

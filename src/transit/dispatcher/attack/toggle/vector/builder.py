@@ -91,7 +91,7 @@ class CartesianToggleAttack(ToggleAttackDispatcher[CartesianToggle]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            request=cast(CartesianToggleBlueprint, blueprint_validation.payload)
+            candidate=cast(CartesianToggleBlueprint, blueprint_validation.payload)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.
