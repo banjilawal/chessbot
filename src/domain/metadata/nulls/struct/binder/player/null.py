@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import BinderNullGroup, PlayerBinder
+from domain import BinderNullWarningSet, PlayerBinder
 from err import (
     PlayerBinderBlueprintNullException, PlayerBinderCarrierNullException,
     PlayerBinderNullException
 )
 
 
-class PlayerBinderNullGroup(BinderNullGroup[PlayerBinder]):
+class PlayerBinderNullWarningSet(BinderNullWarningSet[PlayerBinder]):
     """
     Role:
         - Metadata

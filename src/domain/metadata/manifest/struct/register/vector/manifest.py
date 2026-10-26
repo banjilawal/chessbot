@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RegisterManifest, VectorRegister, VectorRegisterNullGroup, VectorRegisterLayer
+from domain import RegisterManifest, VectorRegister, VectorRegisterNullWarningSet, VectorRegisterLayer
 
 
 class VectorRegisterManifest(RegisterManifest[VectorRegister]):
@@ -36,7 +36,7 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
     def __init__(
             self,
             types: Optional[VectorRegisterLayer] | None = None,
-            nulls: Optional[VectorRegisterNullGroup] | None = None,
+            nulls: Optional[VectorRegisterNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -45,7 +45,7 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
         """
         super().__init__(
             types=types or VectorRegisterLayer(),
-            nulls=nulls or VectorRegisterNullGroup(),
+            nulls=nulls or VectorRegisterNullWarningSet(),
         )
 
         
@@ -54,5 +54,5 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
         return cast(VectorRegisterLayer, super().types)
     
     @property
-    def nulls(self) -> VectorRegisterNullGroup:
-        return cast(VectorRegisterNullGroup, super().nulls)
+    def nulls(self) -> VectorRegisterNullWarningSet:
+        return cast(VectorRegisterNullWarningSet, super().nulls)

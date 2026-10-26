@@ -20,7 +20,7 @@ from err import (
 T = TypeVar("T", bound="Struct")
 
 
-class StructNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
+class StructNullWarningSet(NullExceptionGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import EncounterWarningNode, NodeNullGroup
+from domain import EncounterWarningNode, NodeNullWarningSet
 from err import EncounterWarningNodeCarrierNullException
 
 
-class EncounterWarningNodeNullGroup(NodeNullGroup[EncounterWarningNode]):
+class EncounterWarningNodeNullWarningSet(NodeNullWarningSet[EncounterWarningNode]):
     """
     Role:
         - Metadata

@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RegisterNullGroup, VectorRegister
+from domain import RegisterNullWarningSet, VectorRegister
 from err import (
     VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException,
     VectorRegisterNullException
 )
 
 
-class VectorRegisterNullGroup(RegisterNullGroup[VectorRegister]):
+class VectorRegisterNullWarningSet(RegisterNullWarningSet[VectorRegister]):
     """
     Role:
         - Metadata

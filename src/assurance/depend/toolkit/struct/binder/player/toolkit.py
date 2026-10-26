@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import BinderValidatorToolkit, PlayerBinderDependency
 from domain import (
-    PlayerBinder, PlayerBinderManifest, PlayerBinderNullGroup,
+    PlayerBinder, PlayerBinderManifest, PlayerBinderNullWarningSet,
     PlayerBinderLayer
 )
 
@@ -59,7 +59,7 @@ class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
         return cast(PlayerBinderManifest, super().metadata)
     
     @property
-    def nulls(self) -> PlayerBinderNullGroup:
+    def nulls(self) -> PlayerBinderNullWarningSet:
         return self.metadata.nulls
     
     @property

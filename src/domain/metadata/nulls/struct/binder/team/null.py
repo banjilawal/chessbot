@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import BinderNullGroup, TeamBinder
+from domain import BinderNullWarningSet, TeamBinder
 from err import (
     TeamBinderBlueprintNullException, TeamBinderCarrierNullException,
     TeamBinderNullException
 )
 
 
-class TeamBinderNullGroup(BinderNullGroup[TeamBinder]):
+class TeamBinderNullWarningSet(BinderNullWarningSet[TeamBinder]):
     """
     Role:
         - Metadata

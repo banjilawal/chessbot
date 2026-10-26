@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import NodeValidatorToolkit, VectorNodeDependency
 from domain import (
-    VectorNode, VectorNodeManifest, VectorNodeNullGroup,
+    VectorNode, VectorNodeManifest, VectorNodeNullWarningSet,
     VectorNodeLayer
 )
 
@@ -59,7 +59,7 @@ class VectorNodeValidatorToolkit(NodeValidatorToolkit[VectorNode]):
         return cast(VectorNodeManifest, super().metadata)
     
     @property
-    def nulls(self) -> VectorNodeNullGroup:
+    def nulls(self) -> VectorNodeNullWarningSet:
         return self.metadata.nulls
     
     @property

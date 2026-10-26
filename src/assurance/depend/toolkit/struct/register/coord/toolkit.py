@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import RegisterValidatorToolkit, CoordRegisterDependency
 from domain import (
-    CoordRegister, CoordRegisterManifest, CoordRegisterNullGroup,
+    CoordRegister, CoordRegisterManifest, CoordRegisterNullWarningSet,
     CoordRegisterLayer
 )
 
@@ -59,7 +59,7 @@ class CoordRegisterValidatorToolkit(RegisterValidatorToolkit[CoordRegister]):
         return cast(CoordRegisterManifest, super().metadata)
     
     @property
-    def nulls(self) -> CoordRegisterNullGroup:
+    def nulls(self) -> CoordRegisterNullWarningSet:
         return self.metadata.nulls
     
     @property

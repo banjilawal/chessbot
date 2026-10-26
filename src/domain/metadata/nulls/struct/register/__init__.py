@@ -15,4 +15,4 @@ from .square import *
 from .vector import *
 
 # Modules
-from .group import RegisterNullGroup
+from .null import RegisterNullWarningSet

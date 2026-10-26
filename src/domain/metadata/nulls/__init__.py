@@ -15,4 +15,4 @@ from .model import *
 from .struct import *
 
 # Modules
-from group import NullExceptionGroup
+from null import NullExceptionGroup

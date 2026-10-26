@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import RegisterValidatorToolkit, SquareRegisterDependency
 from domain import (
-    SquareRegister, SquareRegisterManifest, SquareRegisterNullGroup,
+    SquareRegister, SquareRegisterManifest, SquareRegisterNullWarningSet,
     SquareRegisterLayer
 )
 
@@ -59,7 +59,7 @@ class SquareRegisterValidatorToolkit(RegisterValidatorToolkit[SquareRegister]):
         return cast(SquareRegisterManifest, super().metadata)
     
     @property
-    def nulls(self) -> SquareRegisterNullGroup:
+    def nulls(self) -> SquareRegisterNullWarningSet:
         return self.metadata.nulls
     
     @property

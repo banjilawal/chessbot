@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RegisterNullGroup, CoordRegister
+from domain import RegisterNullWarningSet, CoordRegister
 from err import (
     CoordRegisterBlueprintNullException, CoordRegisterCarrierNullException,
     CoordRegisterNullException
 )
 
 
-class CoordRegisterNullGroup(RegisterNullGroup[CoordRegister]):
+class CoordRegisterNullWarningSet(RegisterNullWarningSet[CoordRegister]):
     """
     Role:
         - Metadata

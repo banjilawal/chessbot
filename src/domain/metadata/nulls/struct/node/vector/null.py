@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NodeNullGroup, VectorNode
+from domain import NodeNullWarningSet, VectorNode
 from err import (
     VectorNodeBlueprintNullException, VectorNodeCarrierNullException,
     VectorNodeNullException
 )
 
 
-class VectorNodeNullGroup(NodeNullGroup[VectorNode]):
+class VectorNodeNullWarningSet(NodeNullWarningSet[VectorNode]):
     """
     Role:
         - Metadata

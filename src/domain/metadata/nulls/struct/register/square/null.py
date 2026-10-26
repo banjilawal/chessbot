@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RegisterNullGroup, SquareRegister
+from domain import RegisterNullWarningSet, SquareRegister
 from err import (
     SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException,
     SquareRegisterNullException
 )
 
 
-class SquareRegisterNullGroup(RegisterNullGroup[SquareRegister]):
+class SquareRegisterNullWarningSet(RegisterNullWarningSet[SquareRegister]):
     """
     Role:
         - Metadata

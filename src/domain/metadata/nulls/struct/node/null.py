@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Node, StructNullGroup
+from domain import Node, StructNullWarningSet
 from err import (
     NodeBlueprintNullException, NodeCarrierNullException, NodeNullException
 )
 
 T = TypeVar("T", bound="Node")
 
-class NodeNullGroup(StructNullGroup[T], ABC, Generic[T]):
+class NodeNullWarningSet(StructNullWarningSet[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

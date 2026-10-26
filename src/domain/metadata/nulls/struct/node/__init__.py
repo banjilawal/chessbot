@@ -14,4 +14,4 @@ from .vector import *
 from .warning import *
 
 # Modules
-from .group import NodeNullGroup
+from .null import NodeNullWarningSet

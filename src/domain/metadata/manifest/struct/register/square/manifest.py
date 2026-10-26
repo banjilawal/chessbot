@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RegisterManifest, SquareRegister, SquareRegisterNullGroup, SquareRegisterLayer
+from domain import RegisterManifest, SquareRegister, SquareRegisterNullWarningSet, SquareRegisterLayer
 
 
 class SquareRegisterManifest(RegisterManifest[SquareRegister]):
@@ -36,7 +36,7 @@ class SquareRegisterManifest(RegisterManifest[SquareRegister]):
     def __init__(
             self,
             types: Optional[SquareRegisterLayer] | None = None,
-            nulls: Optional[SquareRegisterNullGroup] | None = None,
+            nulls: Optional[SquareRegisterNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -45,7 +45,7 @@ class SquareRegisterManifest(RegisterManifest[SquareRegister]):
         """
         super().__init__(
             types=types or SquareRegisterLayer(),
-            nulls=nulls or SquareRegisterNullGroup(),
+            nulls=nulls or SquareRegisterNullWarningSet(),
         )
 
         
@@ -54,5 +54,5 @@ class SquareRegisterManifest(RegisterManifest[SquareRegister]):
         return cast(SquareRegisterLayer, super().types)
     
     @property
-    def nulls(self) -> SquareRegisterNullGroup:
-        return cast(SquareRegisterNullGroup, super().nulls)
+    def nulls(self) -> SquareRegisterNullWarningSet:
+        return cast(SquareRegisterNullWarningSet, super().nulls)

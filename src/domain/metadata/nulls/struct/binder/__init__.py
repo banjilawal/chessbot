@@ -13,4 +13,4 @@ version: 0.0.2
 from .player import *
 
 # Modules
-from .group import BinderNullGroup
+from .null import BinderNullWarningSet

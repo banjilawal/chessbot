@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import ArchetypeBinder, StructNullGroup
+from domain import ArchetypeBinder, StructNullWarningSet
 from err import (
     BinderBlueprintNullException, ArchetypeBinderNullException, BinderCarrierNullException
 )
 
 T = TypeVar("T", bound="ArchetypeBinder")
 
-class BinderNullGroup(StructNullGroup[T], ABC, Generic[T]):
+class BinderNullWarningSet(StructNullWarningSet[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

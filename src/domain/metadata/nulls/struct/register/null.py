@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Register, StructNullGroup
+from domain import Register, StructNullWarningSet
 from err import (
     RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
 )
 
 T = TypeVar("T", bound="Register")
 
-class RegisterNullGroup(StructNullGroup[T], ABC, Generic[T]):
+class RegisterNullWarningSet(StructNullWarningSet[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import RegisterValidatorToolkit, VectorRegisterDependency
 from domain import (
-    VectorRegister, VectorRegisterManifest, VectorRegisterNullGroup,
+    VectorRegister, VectorRegisterManifest, VectorRegisterNullWarningSet,
     VectorRegisterLayer
 )
 
@@ -59,7 +59,7 @@ class VectorRegisterValidatorToolkit(RegisterValidatorToolkit[VectorRegister]):
         return cast(VectorRegisterManifest, super().metadata)
     
     @property
-    def nulls(self) -> VectorRegisterNullGroup:
+    def nulls(self) -> VectorRegisterNullWarningSet:
         return self.metadata.nulls
     
     @property

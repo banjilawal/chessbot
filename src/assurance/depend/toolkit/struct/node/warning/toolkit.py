@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import NodeValidatorToolkit, EncounterWarningNodeDependency
 from domain import (
-    EncounterWarningNode, EncounterWarningNodeManifest, EncounterWarningNodeNullGroup,
+    EncounterWarningNode, EncounterWarningNodeManifest, EncounterWarningNodeNullWarningSet,
     EncounterWarningNodeLayer
 )
 
@@ -59,7 +59,7 @@ class EncounterWarningNodeValidatorToolkit(NodeValidatorToolkit[EncounterWarning
         return cast(EncounterWarningNodeManifest, super().metadata)
     
     @property
-    def nulls(self) -> EncounterWarningNodeNullGroup:
+    def nulls(self) -> EncounterWarningNodeNullWarningSet:
         return self.metadata.nulls
     
     @property

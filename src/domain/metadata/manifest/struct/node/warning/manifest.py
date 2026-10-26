@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    NodeManifest, EncounterWarningNode, EncounterWarningNodeNullGroup,
+    NodeManifest, EncounterWarningNode, EncounterWarningNodeNullWarningSet,
     EncounterWarningNodeLayer
 )
 
@@ -39,7 +39,7 @@ class EncounterWarningNodeManifest(NodeManifest[EncounterWarningNode]):
     def __init__(
             self,
             types: Optional[EncounterWarningNodeLayer] | None = None,
-            nulls: Optional[EncounterWarningNodeNullGroup] | None = None,
+            nulls: Optional[EncounterWarningNodeNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -48,7 +48,7 @@ class EncounterWarningNodeManifest(NodeManifest[EncounterWarningNode]):
         """
         super().__init__(
             types=types or EncounterWarningNodeLayer(),
-            nulls=nulls or EncounterWarningNodeNullGroup(),
+            nulls=nulls or EncounterWarningNodeNullWarningSet(),
         )
 
         
@@ -57,5 +57,5 @@ class EncounterWarningNodeManifest(NodeManifest[EncounterWarningNode]):
         return cast(EncounterWarningNodeLayer, super().types)
     
     @property
-    def nulls(self) -> EncounterWarningNodeNullGroup:
-        return cast(EncounterWarningNodeNullGroup, super().nulls)
+    def nulls(self) -> EncounterWarningNodeNullWarningSet:
+        return cast(EncounterWarningNodeNullWarningSet, super().nulls)

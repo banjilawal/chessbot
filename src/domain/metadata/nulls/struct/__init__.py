@@ -16,4 +16,4 @@ from .node import *
 from .register import *
 
 # Modules
-from group import StructNullGroup
+from null import StructNullWarningSet
