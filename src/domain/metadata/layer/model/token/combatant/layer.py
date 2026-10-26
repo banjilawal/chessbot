@@ -1,0 +1,66 @@
+# src/domain/metadata/unions/model/token/combatant/types.py
+
+"""
+Module: domain.metadata.unions.token.combatant.types
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+
+from typing import Optional, Type, cast
+
+from domain import CombatantTokenBlueprint, CombatantToken, TokenLayer
+from transit import CombatantTokenCarrier
+
+
+class CombatantTokenLayer(TokenLayer[CombatantToken]):
+    """
+    Role:
+        - Metadata
+
+    Responsibilities:
+        1. Catalog of types associated with building and validating a CombatantToken.
+
+    Attributes:
+        model: Type[CombatantToken]
+        carrier: Type[CombatantCarrier]
+        blueprint: Type[CombatantBlueprint]
+
+    Provides:
+
+    Super Class:
+        TokenTypeUnion
+    """
+    
+    def __init__(
+            self, 
+            model: Optional[Type[CombatantToken]] | None = None,
+            carrier: Optional[Type[CombatantTokenCarrier]] | None = None,
+            blueprint: Optional[Type[CombatantTokenBlueprint]] | None = None,
+    ):
+        """
+        Args:
+            model: Optional[Type[CombatantToken]]
+            carrier: Optional[Type[CombatantCarrier]]
+            blueprint: Optional[Type[CombatantBlueprint]]
+        """
+        super().__init__(
+            model=model or CombatantToken,
+            carrier=carrier or CombatantTokenCarrier,
+            blueprint=blueprint or CombatantTokenBlueprint
+        )
+    
+    @property
+    def model(self) -> Type[CombatantToken]:
+        return cast(Type[CombatantToken], super().model)
+    
+    @property
+    def carrier(self) -> Type[CombatantTokenCarrier]:
+        return cast(Type[CombatantTokenCarrier], super().carrier)
+    
+    @property
+    def blueprint(self) -> Type[CombatantTokenBlueprint]:
+        return cast(Type[CombatantTokenBlueprint], super().blueprint)

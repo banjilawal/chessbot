@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextManifest, Vector, VectorContextNullGroup, VectorContextTypeUnion
+from domain import ContextManifest, Vector, VectorContextNullGroup, VectorContextLayer
 
 
 class VectorContextManifest(ContextManifest[Vector]):
@@ -34,7 +34,7 @@ class VectorContextManifest(ContextManifest[Vector]):
     
     def __init__(
             self,
-            types: Optional[VectorContextTypeUnion] | None = None,
+            types: Optional[VectorContextLayer] | None = None,
             nulls: Optional[VectorContextNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class VectorContextManifest(ContextManifest[Vector]):
             nulls: Optional[VectorContextNullGroup]
         """
         super().__init__(
-            types=types or VectorContextTypeUnion(),
+            types=types or VectorContextLayer(),
             nulls=nulls or VectorContextNullGroup(),
         )
         
     @property
-    def types(self) -> VectorContextTypeUnion:
-        return cast(VectorContextTypeUnion, super().types)
+    def types(self) -> VectorContextLayer:
+        return cast(VectorContextLayer, super().types)
     
     @property
     def nulls(self) -> VectorContextNullGroup:

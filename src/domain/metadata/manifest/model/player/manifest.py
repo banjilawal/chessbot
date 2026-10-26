@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Player, PlayerNullGroup, PlayerTypeUnion, ModelManifest
+from domain import Player, PlayerNullGroup, PlayerLayer, ModelManifest
 
 
 class PlayerManifest(ModelManifest[Player]):
@@ -34,7 +34,7 @@ class PlayerManifest(ModelManifest[Player]):
     
     def __init__(
             self,
-            types: Optional[PlayerTypeUnion] | None = None,
+            types: Optional[PlayerLayer] | None = None,
             nulls: Optional[PlayerNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class PlayerManifest(ModelManifest[Player]):
             nulls: Optional[PlayerNullGroup]
         """
         super().__init__(
-            types=types or PlayerTypeUnion(),
+            types=types or PlayerLayer(),
             nulls=nulls or PlayerNullGroup(),
         )
         
     @property
-    def types(self) -> PlayerTypeUnion:
-        return cast(PlayerTypeUnion, super().types)
+    def types(self) -> PlayerLayer:
+        return cast(PlayerLayer, super().types)
     
     @property
     def nulls(self) -> PlayerNullGroup:

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import King, KingNullGroup, KingTypeUnion, RankManifest
+from domain import King, KingNullGroup, KingLayer, RankManifest
 
 
 class KingManifest(RankManifest[King]):
@@ -34,7 +34,7 @@ class KingManifest(RankManifest[King]):
     
     def __init__(
             self,
-            types: Optional[KingTypeUnion] | None = None,
+            types: Optional[KingLayer] | None = None,
             nulls: Optional[KingNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class KingManifest(RankManifest[King]):
             nulls: Optional[KingNullGroup]
         """
         super().__init__(
-            types=types or KingTypeUnion(),
+            types=types or KingLayer(),
             nulls=nulls or KingNullGroup(),
         )
         
     @property
-    def types(self) -> KingTypeUnion:
-        return cast(KingTypeUnion, super().types)
+    def types(self) -> KingLayer:
+        return cast(KingLayer, super().types)
     
     @property
     def nulls(self) -> KingNullGroup:

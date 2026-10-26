@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Node, StructManifest, NodeNullGroup, NodeTypeUnion
+from domain import Node, StructManifest, NodeNullGroup, NodeLayer
 
 T = TypeVar("T", bound="Node")
 
@@ -36,7 +36,7 @@ class NodeManifest(StructManifest[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            types: NodeTypeUnion[T],
+            types: NodeLayer[T],
             nulls: NodeNullGroup[T],
     ):
         """
@@ -48,8 +48,8 @@ class NodeManifest(StructManifest[T], ABC, Generic[T]):
 
         
     @property
-    def types(self) -> NodeTypeUnion[T]:
-        return cast(NodeTypeUnion[T], super().types)
+    def types(self) -> NodeLayer[T]:
+        return cast(NodeLayer[T], super().types)
     
     @property
     def nulls(self) -> NodeNullGroup:

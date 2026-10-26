@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from domain import (
     CheckmateEncounter, CheckmateEncounterNullGroup,
-    CheckmateEncounterTypeUnion, EncounterManifest
+    CheckmateLayer, EncounterManifest
 )
 
 class CheckmateEncounterManifest(EncounterManifest[CheckmateEncounter]):
@@ -37,7 +37,7 @@ class CheckmateEncounterManifest(EncounterManifest[CheckmateEncounter]):
     
     def __init__(
             self,
-            types: Optional[CheckmateEncounterTypeUnion] | None = None,
+            types: Optional[CheckmateLayer] | None = None,
             nulls: Optional[CheckmateEncounterNullGroup] | None = None,
     ):
         """
@@ -46,13 +46,13 @@ class CheckmateEncounterManifest(EncounterManifest[CheckmateEncounter]):
             nulls: Optional[CheckmateEncounterNullGroup]
         """
         super().__init__(
-            types=types or CheckmateEncounterTypeUnion(),
+            types=types or CheckmateLayer(),
             nulls=nulls or CheckmateEncounterNullGroup(),
         )
     
     @property
-    def types(self) -> CheckmateEncounterTypeUnion:
-        return cast(CheckmateEncounterTypeUnion, super().types)
+    def types(self) -> CheckmateLayer:
+        return cast(CheckmateLayer, super().types)
     
     @property
     def nulls(self) -> CheckmateEncounterNullGroup:

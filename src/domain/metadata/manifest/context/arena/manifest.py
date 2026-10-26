@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Arena, ArenaContextNullGroup, ArenaContextTypeUnion, ContextManifest
+from domain import Arena, ArenaContextNullGroup, ArenaContextLayer, ContextManifest
 
 
 class ArenaContextManifest(ContextManifest[Arena]):
@@ -34,7 +34,7 @@ class ArenaContextManifest(ContextManifest[Arena]):
     
     def __init__(
             self,
-            types: Optional[ArenaContextTypeUnion] | None = None,
+            types: Optional[ArenaContextLayer] | None = None,
             nulls: Optional[ArenaContextNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class ArenaContextManifest(ContextManifest[Arena]):
             nulls: Optional[ArenaContextNullGroup]
         """
         super().__init__(
-            types=types or ArenaContextTypeUnion(),
+            types=types or ArenaContextLayer(),
             nulls=nulls or ArenaContextNullGroup(),
         )
         
     @property
-    def types(self) -> ArenaContextTypeUnion:
-        return cast(ArenaContextTypeUnion, super().types)
+    def types(self) -> ArenaContextLayer:
+        return cast(ArenaContextLayer, super().types)
     
     @property
     def nulls(self) -> ArenaContextNullGroup:

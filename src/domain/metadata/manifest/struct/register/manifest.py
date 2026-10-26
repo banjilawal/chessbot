@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Register, StructManifest, RegisterNullGroup, RegisterTypeUnion
+from domain import Register, StructManifest, RegisterNullGroup, RegisterLayer
 
 T = TypeVar("T", bound="Register")
 
@@ -36,7 +36,7 @@ class RegisterManifest(StructManifest[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            types: RegisterTypeUnion[T],
+            types: RegisterLayer[T],
             nulls: RegisterNullGroup[T],
     ):
         """
@@ -48,8 +48,8 @@ class RegisterManifest(StructManifest[T], ABC, Generic[T]):
 
         
     @property
-    def types(self) -> RegisterTypeUnion[T]:
-        return cast(RegisterTypeUnion[T], super().types)
+    def types(self) -> RegisterLayer[T]:
+        return cast(RegisterLayer[T], super().types)
     
     @property
     def nulls(self) -> RegisterNullGroup:

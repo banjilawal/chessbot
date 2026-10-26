@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import BinderManifest, PlayerBinder, PlayerBinderNullGroup, PlayerBinderTypeUnion
+from domain import BinderManifest, PlayerBinder, PlayerBinderNullGroup, PlayerBinderLayer
 
 
 class PlayerBinderManifest(BinderManifest[PlayerBinder]):
@@ -35,7 +35,7 @@ class PlayerBinderManifest(BinderManifest[PlayerBinder]):
     
     def __init__(
             self,
-            types: Optional[PlayerBinderTypeUnion] | None = None,
+            types: Optional[PlayerBinderLayer] | None = None,
             nulls: Optional[PlayerBinderNullGroup] | None = None,
     ):
         """
@@ -44,13 +44,13 @@ class PlayerBinderManifest(BinderManifest[PlayerBinder]):
             nulls: Optional[PlayerBinderNullGroup]
         """
         super().__init__(
-            types=types or PlayerBinderTypeUnion(),
+            types=types or PlayerBinderLayer(),
             nulls=nulls or PlayerBinderNullGroup(),
         )
         
     @property
-    def types(self) -> PlayerBinderTypeUnion:
-        return cast(PlayerBinderTypeUnion, super().types)
+    def types(self) -> PlayerBinderLayer:
+        return cast(PlayerBinderLayer, super().types)
     
     @property
     def nulls(self) -> PlayerBinderNullGroup:

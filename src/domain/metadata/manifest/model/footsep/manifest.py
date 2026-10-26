@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ModelManifest, Footstep, FootstepNullGroup, FootstepTypeUnion
+from domain import ModelManifest, Footstep, FootstepNullGroup, FootstepLayer
 
 
 class FootstepManifest(ModelManifest[Footstep]):
@@ -35,7 +35,7 @@ class FootstepManifest(ModelManifest[Footstep]):
     
     def __init__(
             self,
-            types: Optional[FootstepTypeUnion] | None = None,
+            types: Optional[FootstepLayer] | None = None,
             nulls: Optional[FootstepNullGroup] | None = None,
     ):
         """
@@ -44,13 +44,13 @@ class FootstepManifest(ModelManifest[Footstep]):
             nulls: Optional[FootstepNullGroup]
         """
         super().__init__(
-            types=types or FootstepTypeUnion(),
+            types=types or FootstepLayer(),
             nulls=nulls or FootstepNullGroup(),
         )
   
     @property
-    def types(self) -> FootstepTypeUnion:
-        return cast(FootstepTypeUnion, super().types)
+    def types(self) -> FootstepLayer:
+        return cast(FootstepLayer, super().types)
     
     @property
     def nulls(self) -> FootstepNullGroup:

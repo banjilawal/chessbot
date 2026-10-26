@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from domain import SquareContextNullGroup, ContextManifest, Square, SquareContextTypeUnion
+from domain import SquareContextNullGroup, ContextManifest, Square, SquareContextLayer
 
 
 class SquareContextManifest(ContextManifest[Square]):
@@ -34,7 +34,7 @@ class SquareContextManifest(ContextManifest[Square]):
     
     def __init__(
             self,
-            types: SquareContextTypeUnion,
+            types: SquareContextLayer,
             nulls: SquareContextNullGroup
     ):
         """
@@ -45,8 +45,8 @@ class SquareContextManifest(ContextManifest[Square]):
         super().__init__(types=types, nulls=nulls)
     
     @property
-    def types(self) -> SquareContextTypeUnion[T]:
-        return cast(SquareContextTypeUnion[T], super().types)
+    def types(self) -> SquareContextLayer[T]:
+        return cast(SquareContextLayer[T], super().types)
     
     @property
     def nulls(self) -> SquareContextNullGroup[T]:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, GameWrapperDependency
-from domain import Game, GameManifest, GameNullGroup, GameTypeUnion
+from domain import Game, GameManifest, GameNullGroup, GameLayer
 
 
 class GameValidatorToolkit(ModelValidatorToolkit[Game]):
@@ -61,5 +61,5 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> GameTypeUnion:
+    def types(self) -> GameLayer:
         return self.metadata.types

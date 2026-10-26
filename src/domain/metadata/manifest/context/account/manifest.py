@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import AccountContext, AccountContextNullGroup, AccountContextTypeUnion
+from domain import AccountContext, AccountContextNullGroup, AccountContextLayer
 
 
 class AccountContextManifest(ContextManifest[AccountContext]):
@@ -35,7 +35,7 @@ class AccountContextManifest(ContextManifest[AccountContext]):
 
     def __init__(
             self,
-            types: Optional[AccountContextTypeUnion] | None = None,
+            types: Optional[AccountContextLayer] | None = None,
             nulls: Optional[AccountContextNullGroup] | None = None,
     ):
         """
@@ -44,13 +44,13 @@ class AccountContextManifest(ContextManifest[AccountContext]):
             nulls: AccountContextNullGroup
         """
         super().__init__(
-            types=types or AccountContextTypeUnion(),
+            types=types or AccountContextLayer(),
             nulls=nulls or AccountContextNullGroup(),
         )
 
     @property
-    def types(self) -> AccountContextTypeUnion:
-        return cast(AccountContextTypeUnion, super().types)
+    def types(self) -> AccountContextLayer:
+        return cast(AccountContextLayer, super().types)
 
     @property
     def nulls(self) -> AccountContextNullGroup:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    KingTokenNullGroup, KingToken, TokenManifest, KingTokenTypeUnion
+    KingTokenNullGroup, KingToken, TokenManifest, KingTokenLayer
 )
 
 
@@ -37,7 +37,7 @@ class KingTokenManifest(TokenManifest[KingToken]):
     
     def __init__(
             self,
-            types: Optional[KingTokenTypeUnion] | None = None,
+            types: Optional[KingTokenLayer] | None = None,
             nulls: Optional[KingTokenNullGroup] | None = None,
     ):
         """
@@ -46,13 +46,13 @@ class KingTokenManifest(TokenManifest[KingToken]):
             nulls: Optional[KingTokenNullGroup]
         """
         super().__init__(
-            types=types or KingTokenTypeUnion(),
+            types=types or KingTokenLayer(),
             nulls=nulls or KingTokenNullGroup(),
         )
     
     @property
-    def types(self) -> KingTokenTypeUnion:
-        return cast(KingTokenTypeUnion, super().types)
+    def types(self) -> KingTokenLayer:
+        return cast(KingTokenLayer, super().types)
     
     @property
     def nulls(self) -> KingTokenNullGroup:

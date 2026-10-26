@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import BinderValidatorToolkit, PlayerBinderDependency
 from domain import (
     PlayerBinder, PlayerBinderManifest, PlayerBinderNullGroup,
-    PlayerBinderTypeUnion
+    PlayerBinderLayer
 )
 
 
@@ -63,5 +63,5 @@ class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> PlayerBinderTypeUnion:
+    def types(self) -> PlayerBinderLayer:
         return self.metadata.types

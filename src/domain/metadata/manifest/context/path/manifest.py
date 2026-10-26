@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Path, PathContextNullGroup, PathContextTypeUnion, ContextManifest
+from domain import Path, PathContextNullGroup, PathContextLayer, ContextManifest
 
 
 class PathContextManifest(ContextManifest[Path]):
@@ -35,7 +35,7 @@ class PathContextManifest(ContextManifest[Path]):
     
     def __init__(
             self,
-            types: Optional[PathContextTypeUnion] | None = None,
+            types: Optional[PathContextLayer] | None = None,
             nulls: Optional[PathContextNullGroup] | None = None,
     ):
         """
@@ -44,13 +44,13 @@ class PathContextManifest(ContextManifest[Path]):
             nulls: Optional[PathContextNullGroup]
         """
         super().__init__(
-            types=types or PathContextTypeUnion(),
+            types=types or PathContextLayer(),
             nulls=nulls or PathContextNullGroup(),
         )
         
     @property
-    def types(self) -> PathContextTypeUnion:
-        return cast(PathContextTypeUnion, super().types)
+    def types(self) -> PathContextLayer:
+        return cast(PathContextLayer, super().types)
     
     @property
     def nulls(self) -> PathContextNullGroup:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, RankWrapperDependency
-from domain import Rank, RankManifest, RankNullGroup, RankTypeUnion
+from domain import Rank, RankManifest, RankNullGroup, RankLayer
 
 
 class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
@@ -61,5 +61,5 @@ class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> RankTypeUnion:
+    def types(self) -> RankLayer:
         return self.metadata.types

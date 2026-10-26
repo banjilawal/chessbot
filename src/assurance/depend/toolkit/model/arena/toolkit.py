@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, ArenaWrapperDependency
-from domain import Arena, ArenaManifest, ArenaNullGroup, ArenaTypeUnion
+from domain import Arena, ArenaManifest, ArenaNullGroup, ArenaLayer
 
 class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
     """
@@ -60,5 +60,5 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> ArenaTypeUnion:
+    def types(self) -> ArenaLayer:
         return self.metadata.types

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Player, PlayerContextNullGroup, PlayerContextTypeUnion, ContextManifest
+from domain import Player, PlayerContextNullGroup, PlayerContextLayer, ContextManifest
 
 
 class PlayerContextManifest(ContextManifest[Player]):
@@ -34,7 +34,7 @@ class PlayerContextManifest(ContextManifest[Player]):
     
     def __init__(
             self,
-            types: Optional[PlayerContextTypeUnion] | None = None,
+            types: Optional[PlayerContextLayer] | None = None,
             nulls: Optional[PlayerContextNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class PlayerContextManifest(ContextManifest[Player]):
             nulls: Optional[PlayerContextNullGroup]
         """
         super().__init__(
-            types=types or PlayerContextTypeUnion(),
+            types=types or PlayerContextLayer(),
             nulls=nulls or PlayerContextNullGroup(),
         )
         
     @property
-    def types(self) -> PlayerContextTypeUnion:
-        return cast(PlayerContextTypeUnion, super().types)
+    def types(self) -> PlayerContextLayer:
+        return cast(PlayerContextLayer, super().types)
     
     @property
     def nulls(self) -> PlayerContextNullGroup:

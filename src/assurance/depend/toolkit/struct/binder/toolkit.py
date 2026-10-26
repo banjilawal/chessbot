@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import BinderDependency, StructValidatorToolkit
-from domain import Binder, BinderManifest, BinderNullGroup, BinderTypeUnion
+from domain import Binder, BinderManifest, BinderNullGroup, BinderLayer
 
 T = TypeVar("T", bound="Binder")
 
@@ -61,5 +61,5 @@ class BinderValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> BinderTypeUnion[T]:
+    def types(self) -> BinderLayer[T]:
         return self.metadata.types

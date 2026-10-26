@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, VectorWrapperDependency
-from domain import Vector, VectorManifest, VectorNullGroup, VectorTypeUnion
+from domain import Vector, VectorManifest, VectorNullGroup, VectorLayer
 
 
 class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
@@ -61,5 +61,5 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> VectorTypeUnion:
+    def types(self) -> VectorLayer:
         return self.metadata.types

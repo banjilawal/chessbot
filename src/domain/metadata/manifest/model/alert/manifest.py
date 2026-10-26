@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Alert, AlertNullGroup, AlertTypeUnion, ModelManifest
+from domain import Alert, AlertNullGroup, AlertLayer, ModelManifest
 
 
 class AlertManifest(ModelManifest[Alert]):
@@ -34,7 +34,7 @@ class AlertManifest(ModelManifest[Alert]):
     
     def __init__(
             self,
-            types: Optional[AlertTypeUnion] | None = None,
+            types: Optional[AlertLayer] | None = None,
             nulls: Optional[AlertNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class AlertManifest(ModelManifest[Alert]):
             nulls: Optional[AlertNullGroup]
         """
         super().__init__(
-            types=types or AlertTypeUnion(),
+            types=types or AlertLayer(),
             nulls=nulls or AlertNullGroup(),
         )
         
     @property
-    def types(self) -> AlertTypeUnion:
-        return cast(AlertTypeUnion, super().types)
+    def types(self) -> AlertLayer:
+        return cast(AlertLayer, super().types)
     
     @property
     def nulls(self) -> AlertNullGroup:

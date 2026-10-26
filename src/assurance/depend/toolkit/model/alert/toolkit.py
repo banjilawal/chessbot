@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, AlertWrapperDependency
-from domain import Alert, AlertManifest, AlertNullGroup, AlertTypeUnion
+from domain import Alert, AlertManifest, AlertNullGroup, AlertLayer
 
 class AlertValidatorToolkit(ModelValidatorToolkit[Alert]):
     """
@@ -60,5 +60,5 @@ class AlertValidatorToolkit(ModelValidatorToolkit[Alert]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> AlertTypeUnion:
+    def types(self) -> AlertLayer:
         return self.metadata.types

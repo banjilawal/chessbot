@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Model, ModelNullGroup, ModelTypeUnion, DomainManifest
+from domain import Model, ModelNullGroup, ModelLayer, DomainManifest
 
 T = TypeVar("T", bound="Model")
 
@@ -36,7 +36,7 @@ class ModelManifest(DomainManifest[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            types: ModelTypeUnion[T],
+            types: ModelLayer[T],
             nulls: ModelNullGroup[T],
     ):
         """
@@ -48,8 +48,8 @@ class ModelManifest(DomainManifest[T], ABC, Generic[T]):
 
         
     @property
-    def types(self) -> ModelTypeUnion[T]:
-        return cast(ModelTypeUnion[T], super().types)
+    def types(self) -> ModelLayer[T]:
+        return cast(ModelLayer[T], super().types)
     
     @property
     def nulls(self) -> ModelNullGroup:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    HumanAccountNullGroup, HumanAccount, HumanAccountTypeUnion, AccountManifest
+    HumanAccountNullGroup, HumanAccount, HumanAccountLayer, AccountManifest
 )
 
 
@@ -37,7 +37,7 @@ class HumanAccountManifest(AccountManifest[HumanAccount]):
     
     def __init__(
             self,
-            types: Optional[HumanAccountTypeUnion] | None = None,
+            types: Optional[HumanAccountLayer] | None = None,
             nulls: Optional[HumanAccountNullGroup] | None = None,
     ):
         """
@@ -46,13 +46,13 @@ class HumanAccountManifest(AccountManifest[HumanAccount]):
             nulls: Optional[HumanAccountNullGroup]
         """
         super().__init__(
-            types=types or HumanAccountTypeUnion(),
+            types=types or HumanAccountLayer(),
             nulls=nulls or HumanAccountNullGroup(),
         )
     
     @property
-    def types(self) -> HumanAccountTypeUnion:
-        return cast(HumanAccountTypeUnion, super().types)
+    def types(self) -> HumanAccountLayer:
+        return cast(HumanAccountLayer, super().types)
     
     @property
     def nulls(self) -> HumanAccountNullGroup:

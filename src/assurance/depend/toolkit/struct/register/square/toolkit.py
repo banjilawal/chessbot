@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import RegisterValidatorToolkit, SquareRegisterDependency
 from domain import (
     SquareRegister, SquareRegisterManifest, SquareRegisterNullGroup,
-    SquareRegisterTypeUnion
+    SquareRegisterLayer
 )
 
 
@@ -63,5 +63,5 @@ class SquareRegisterValidatorToolkit(RegisterValidatorToolkit[SquareRegister]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> SquareRegisterTypeUnion:
+    def types(self) -> SquareRegisterLayer:
         return self.metadata.types

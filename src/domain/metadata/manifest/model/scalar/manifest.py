@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Scalar, ScalarNullGroup, ScalarTypeUnion, ModelManifest
+from domain import Scalar, ScalarNullGroup, ScalarLayer, ModelManifest
 
 
 class ScalarManifest(ModelManifest[Scalar]):
@@ -34,7 +34,7 @@ class ScalarManifest(ModelManifest[Scalar]):
     
     def __init__(
             self,
-            types: Optional[ScalarTypeUnion] | None = None,
+            types: Optional[ScalarLayer] | None = None,
             nulls: Optional[ScalarNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class ScalarManifest(ModelManifest[Scalar]):
             nulls: Optional[ScalarNullGroup]
         """
         super().__init__(
-            types=types or ScalarTypeUnion(),
+            types=types or ScalarLayer(),
             nulls=nulls or ScalarNullGroup(),
         )
         
     @property
-    def types(self) -> ScalarTypeUnion:
-        return cast(ScalarTypeUnion, super().types)
+    def types(self) -> ScalarLayer:
+        return cast(ScalarLayer, super().types)
     
     @property
     def nulls(self) -> ScalarNullGroup:

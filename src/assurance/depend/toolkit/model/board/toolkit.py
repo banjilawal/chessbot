@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, BoardWrapperDependency
-from domain import Board, BoardManifest, BoardNullGroup, BoardTypeUnion
+from domain import Board, BoardManifest, BoardNullGroup, BoardLayer
 
 
 class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
@@ -61,5 +61,5 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> BoardTypeUnion:
+    def types(self) -> BoardLayer:
         return self.metadata.types

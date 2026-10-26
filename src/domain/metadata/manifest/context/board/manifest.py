@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, BoardContextNullGroup, BoardContextTypeUnion, ContextManifest
+from domain import Board, BoardContextNullGroup, BoardContextLayer, ContextManifest
 
 
 class BoardContextManifest(ContextManifest[Board]):
@@ -34,7 +34,7 @@ class BoardContextManifest(ContextManifest[Board]):
     
     def __init__(
             self,
-            types: Optional[BoardContextTypeUnion] | None = None,
+            types: Optional[BoardContextLayer] | None = None,
             nulls: Optional[BoardContextNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class BoardContextManifest(ContextManifest[Board]):
             nulls: Optional[BoardContextNullGroup]
         """
         super().__init__(
-            types=types or BoardContextTypeUnion(),
+            types=types or BoardContextLayer(),
             nulls=nulls or BoardContextNullGroup(),
         )
         
     @property
-    def types(self) -> BoardContextTypeUnion:
-        return cast(BoardContextTypeUnion, super().types)
+    def types(self) -> BoardContextLayer:
+        return cast(BoardContextLayer, super().types)
     
     @property
     def nulls(self) -> BoardContextNullGroup:

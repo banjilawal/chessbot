@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    MachineAccountNullGroup, MachineAccount, MachineAccountTypeUnion, AccountManifest
+    MachineAccountNullGroup, MachineAccount, MachineAccountLayer, AccountManifest
 )
 
 
@@ -37,7 +37,7 @@ class MachineAccountManifest(AccountManifest[MachineAccount]):
     
     def __init__(
             self,
-            types: Optional[MachineAccountTypeUnion] | None = None,
+            types: Optional[MachineAccountLayer] | None = None,
             nulls: Optional[MachineAccountNullGroup] | None = None,
     ):
         """
@@ -46,13 +46,13 @@ class MachineAccountManifest(AccountManifest[MachineAccount]):
             nulls: Optional[MachineAccountNullGroup]
         """
         super().__init__(
-            types=types or MachineAccountTypeUnion(),
+            types=types or MachineAccountLayer(),
             nulls=nulls or MachineAccountNullGroup(),
         )
     
     @property
-    def types(self) -> MachineAccountTypeUnion:
-        return cast(MachineAccountTypeUnion, super().types)
+    def types(self) -> MachineAccountLayer:
+        return cast(MachineAccountLayer, super().types)
     
     @property
     def nulls(self) -> MachineAccountNullGroup:

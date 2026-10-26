@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, FootstepDependency
-from domain import Footstep, FootstepManifest, FootstepNullGroup, FootstepTypeUnion
+from domain import Footstep, FootstepManifest, FootstepNullGroup, FootstepLayer
 
 
 class FootstepValidatorToolkit(ModelValidatorToolkit[Footstep]):
@@ -60,5 +60,5 @@ class FootstepValidatorToolkit(ModelValidatorToolkit[Footstep]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> FootstepTypeUnion:
+    def types(self) -> FootstepLayer:
         return self.metadata.types

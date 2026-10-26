@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Knight, KnightNullGroup, KnightTypeUnion, RankManifest
+from domain import Knight, KnightNullGroup, KnightLayer, RankManifest
 
 
 class KnightManifest(RankManifest[Knight]):
@@ -34,7 +34,7 @@ class KnightManifest(RankManifest[Knight]):
     
     def __init__(
             self,
-            types: Optional[KnightTypeUnion] | None = None,
+            types: Optional[KnightLayer] | None = None,
             nulls: Optional[KnightNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class KnightManifest(RankManifest[Knight]):
             nulls: Optional[KnightNullGroup]
         """
         super().__init__(
-            types=types or KnightTypeUnion(),
+            types=types or KnightLayer(),
             nulls=nulls or KnightNullGroup(),
         )
         
     @property
-    def types(self) -> KnightTypeUnion:
-        return cast(KnightTypeUnion, super().types)
+    def types(self) -> KnightLayer:
+        return cast(KnightLayer, super().types)
     
     @property
     def nulls(self) -> KnightNullGroup:

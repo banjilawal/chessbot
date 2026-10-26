@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import NodeDependency, StructValidatorToolkit
-from domain import Node, NodeManifest, NodeNullGroup, NodeTypeUnion
+from domain import Node, NodeManifest, NodeNullGroup, NodeLayer
 
 T = TypeVar("T", bound="Node")
 
@@ -61,5 +61,5 @@ class NodeValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> NodeTypeUnion[T]:
+    def types(self) -> NodeLayer[T]:
         return self.metadata.types

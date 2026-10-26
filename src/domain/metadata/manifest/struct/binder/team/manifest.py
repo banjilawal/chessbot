@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import BinderManifest, TeamBinder, TeamBinderNullGroup, TeamBinderTypeUnion
+from domain import BinderManifest, TeamBinder, TeamBinderNullGroup, TeamBinderLayer
 
 
 class TeamBinderManifest(BinderManifest[TeamBinder]):
@@ -35,7 +35,7 @@ class TeamBinderManifest(BinderManifest[TeamBinder]):
     
     def __init__(
             self,
-            types: Optional[TeamBinderTypeUnion] | None = None,
+            types: Optional[TeamBinderLayer] | None = None,
             nulls: Optional[TeamBinderNullGroup] | None = None,
     ):
         """
@@ -44,13 +44,13 @@ class TeamBinderManifest(BinderManifest[TeamBinder]):
             nulls: Optional[TeamBinderNullGroup]
         """
         super().__init__(
-            types=types or TeamBinderTypeUnion(),
+            types=types or TeamBinderLayer(),
             nulls=nulls or TeamBinderNullGroup(),
         )
         
     @property
-    def types(self) -> TeamBinderTypeUnion:
-        return cast(TeamBinderTypeUnion, super().types)
+    def types(self) -> TeamBinderLayer:
+        return cast(TeamBinderLayer, super().types)
     
     @property
     def nulls(self) -> TeamBinderNullGroup:

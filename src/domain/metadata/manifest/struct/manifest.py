@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import DomainManifest, Struct, StructNullGroup, StructTypeUnion
+from domain import DomainManifest, Struct, StructNullGroup, StructLayer
 
 T = TypeVar("T", bound="Struct")
 
@@ -36,7 +36,7 @@ class StructManifest(DomainManifest[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            types: StructTypeUnion[T],
+            types: StructLayer[T],
             nulls: StructNullGroup[T],
     ):
         """
@@ -48,8 +48,8 @@ class StructManifest(DomainManifest[T], ABC, Generic[T]):
 
         
     @property
-    def types(self) -> StructTypeUnion[T]:
-        return cast(StructTypeUnion[T], super().types)
+    def types(self) -> StructLayer[T]:
+        return cast(StructLayer[T], super().types)
     
     @property
     def nulls(self) -> StructNullGroup:

@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import RegisterDependency, StructValidatorToolkit
-from domain import Register, RegisterManifest, RegisterNullGroup, RegisterTypeUnion
+from domain import Register, RegisterManifest, RegisterNullGroup, RegisterLayer
 
 T = TypeVar("T", bound="Register")
 
@@ -61,5 +61,5 @@ class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> RegisterTypeUnion[T]:
+    def types(self) -> RegisterLayer[T]:
         return self.metadata.types

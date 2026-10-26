@@ -17,7 +17,7 @@ from assurance import (
     NumberValidator, PrimingValidator
 )
 from authorization import BlueprintIdExtractor
-from domain import NullExceptionGroup, DomainManifest, TypeUnion
+from domain import NullExceptionGroup, DomainManifest, Layer
 from microservice import IdentityService
 
 T = TypeVar("T")
@@ -90,7 +90,7 @@ class ValidatorToolkit(ABC, Generic[T]):
         return self._metadata.nulls
     
     @property
-    def types(self) -> TypeUnion[T]:
+    def types(self) -> Layer[T]:
         return self._metadata.types
     
 

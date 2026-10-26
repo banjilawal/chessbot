@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, CoordWrapperDependency
-from domain import Coord, CoordManifest, CoordNullGroup, CoordTypeUnion
+from domain import Coord, CoordManifest, CoordNullGroup, CoordLayer
 
 
 class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
@@ -61,5 +61,5 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> CoordTypeUnion:
+    def types(self) -> CoordLayer:
         return self.metadata.types

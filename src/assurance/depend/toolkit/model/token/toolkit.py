@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, TokenWrapperDependency
 from authorization import HomeSquareExtractor
-from domain import Token, TokenManifest, TokenNullGroup, TokenTypeUnion
+from domain import Token, TokenManifest, TokenNullGroup, TokenLayer
 
 
 class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
@@ -72,5 +72,5 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> TokenTypeUnion:
+    def types(self) -> TokenLayer:
         return self.metadata.types

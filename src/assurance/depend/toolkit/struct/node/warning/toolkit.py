@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import NodeValidatorToolkit, EncounterWarningNodeDependency
 from domain import (
     EncounterWarningNode, EncounterWarningNodeManifest, EncounterWarningNodeNullGroup,
-    EncounterWarningNodeTypeUnion
+    EncounterWarningNodeLayer
 )
 
 
@@ -63,5 +63,5 @@ class EncounterWarningNodeValidatorToolkit(NodeValidatorToolkit[EncounterWarning
         return self.metadata.nulls
     
     @property
-    def types(self) -> EncounterWarningNodeTypeUnion:
+    def types(self) -> EncounterWarningNodeLayer:
         return self.metadata.types

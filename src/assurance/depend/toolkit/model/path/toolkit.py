@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, PathWrapperDependency
-from domain import Path, PathManifest, PathNullGroup, PathTypeUnion
+from domain import Path, PathManifest, PathNullGroup, PathLayer
 
 
 class PathValidatorToolkit(ModelValidatorToolkit[Path]):
@@ -61,5 +61,5 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> PathTypeUnion:
+    def types(self) -> PathLayer:
         return self.metadata.types

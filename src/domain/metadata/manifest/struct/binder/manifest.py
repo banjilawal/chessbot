@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import ArchetypeBinder, BinderNullGroup, StructManifest, BinderTypeUnion
+from domain import ArchetypeBinder, BinderNullGroup, StructManifest, BinderLayer
 
 T = TypeVar("T", bound="ArchetypeBinder")
 
@@ -36,7 +36,7 @@ class BinderManifest(StructManifest[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            types: BinderTypeUnion[T],
+            types: BinderLayer[T],
             nulls: BinderNullGroup[T],
     ):
         """
@@ -48,8 +48,8 @@ class BinderManifest(StructManifest[T], ABC, Generic[T]):
 
         
     @property
-    def types(self) -> BinderTypeUnion[T]:
-        return cast(BinderTypeUnion[T], super().types)
+    def types(self) -> BinderLayer[T]:
+        return cast(BinderLayer[T], super().types)
     
     @property
     def nulls(self) -> BinderNullGroup:

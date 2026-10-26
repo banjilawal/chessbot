@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Coord, CoordNullGroup, CoordTypeUnion, ModelManifest
+from domain import Coord, CoordNullGroup, CoordLayer, ModelManifest
 
 
 class CoordManifest(ModelManifest[Coord]):
@@ -34,7 +34,7 @@ class CoordManifest(ModelManifest[Coord]):
     
     def __init__(
             self,
-            types: Optional[CoordTypeUnion] | None = None,
+            types: Optional[CoordLayer] | None = None,
             nulls: Optional[CoordNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class CoordManifest(ModelManifest[Coord]):
             nulls: Optional[CoordNullGroup]
         """
         super().__init__(
-            types=types or CoordTypeUnion(),
+            types=types or CoordLayer(),
             nulls=nulls or CoordNullGroup(),
         )
         
     @property
-    def types(self) -> CoordTypeUnion:
-        return cast(CoordTypeUnion, super().types)
+    def types(self) -> CoordLayer:
+        return cast(CoordLayer, super().types)
     
     @property
     def nulls(self) -> CoordNullGroup:

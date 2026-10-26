@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    Maneuver, ManeuverNullGroup, ManeuverTypeUnion, ModelManifest
+    Maneuver, ManeuverNullGroup, ManeuverLayer, ModelManifest
 )
 
 class ManeuverManifest(ModelManifest[Maneuver]):
@@ -36,7 +36,7 @@ class ManeuverManifest(ModelManifest[Maneuver]):
     
     def __init__(
             self,
-            types: Optional[ManeuverTypeUnion] | None = None,
+            types: Optional[ManeuverLayer] | None = None,
             nulls: Optional[ManeuverNullGroup] | None = None,
     ):
         """
@@ -45,13 +45,13 @@ class ManeuverManifest(ModelManifest[Maneuver]):
             nulls: Optional[ManeuverNullGroup]
         """
         super().__init__(
-            types=types or ManeuverTypeUnion(),
+            types=types or ManeuverLayer(),
             nulls=nulls or ManeuverNullGroup(),
         )
         
     @property
-    def types(self) -> ManeuverTypeUnion:
-        return cast(ManeuverTypeUnion, super().types)
+    def types(self) -> ManeuverLayer:
+        return cast(ManeuverLayer, super().types)
     
     @property
     def nulls(self) -> ManeuverNullGroup:

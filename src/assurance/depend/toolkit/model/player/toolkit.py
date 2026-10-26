@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, PlayerWrapperDependency
 from domain import (
-    Player, PlayerManifest, PlayerNullGroup, PlayerTypeUnion
+    Player, PlayerManifest, PlayerNullGroup, PlayerLayer
 )
 
 class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
@@ -62,5 +62,5 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> PlayerTypeUnion:
+    def types(self) -> PlayerLayer:
         return self.metadata.types

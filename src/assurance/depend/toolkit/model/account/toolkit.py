@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, AccountWrapperDependency
 from domain import (
-    Account, AccountManifest, AccountNullGroup, AccountTypeUnion
+    Account, AccountManifest, AccountNullGroup, AccountLayer
 )
 
 class AccountValidatorToolkit(ModelValidatorToolkit[Account]):
@@ -62,5 +62,5 @@ class AccountValidatorToolkit(ModelValidatorToolkit[Account]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> AccountTypeUnion:
+    def types(self) -> AccountLayer:
         return self.metadata.types

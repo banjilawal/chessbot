@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, SquareWrapperDependency
-from domain import Square, SquareManifest, SquareNullGroup, SquareTypeUnion
+from domain import Square, SquareManifest, SquareNullGroup, SquareLayer
 
 
 class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
@@ -61,5 +61,5 @@ class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> SquareTypeUnion:
+    def types(self) -> SquareLayer:
         return self.metadata.types

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import RegisterValidatorToolkit, CoordRegisterDependency
 from domain import (
     CoordRegister, CoordRegisterManifest, CoordRegisterNullGroup,
-    CoordRegisterTypeUnion
+    CoordRegisterLayer
 )
 
 
@@ -63,5 +63,5 @@ class CoordRegisterValidatorToolkit(RegisterValidatorToolkit[CoordRegister]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> CoordRegisterTypeUnion:
+    def types(self) -> CoordRegisterLayer:
         return self.metadata.types

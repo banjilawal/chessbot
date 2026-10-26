@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, BoardNullGroup, BoardTypeUnion, ModelManifest
+from domain import Board, BoardNullGroup, BoardLayer, ModelManifest
 
 
 class BoardManifest(ModelManifest[Board]):
@@ -34,7 +34,7 @@ class BoardManifest(ModelManifest[Board]):
     
     def __init__(
             self,
-            types: Optional[BoardTypeUnion] | None = None,
+            types: Optional[BoardLayer] | None = None,
             nulls: Optional[BoardNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class BoardManifest(ModelManifest[Board]):
             nulls: Optional[BoardNullGroup]
         """
         super().__init__(
-            types=types or BoardTypeUnion(),
+            types=types or BoardLayer(),
             nulls=nulls or BoardNullGroup(),
         )
         
     @property
-    def types(self) -> BoardTypeUnion:
-        return cast(BoardTypeUnion, super().types)
+    def types(self) -> BoardLayer:
+        return cast(BoardLayer, super().types)
     
     @property
     def nulls(self) -> BoardNullGroup:

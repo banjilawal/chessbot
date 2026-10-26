@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RegisterManifest, VectorRegister, VectorRegisterNullGroup, VectorRegisterTypeUnion
+from domain import RegisterManifest, VectorRegister, VectorRegisterNullGroup, VectorRegisterLayer
 
 
 class VectorRegisterManifest(RegisterManifest[VectorRegister]):
@@ -35,7 +35,7 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
     
     def __init__(
             self,
-            types: Optional[VectorRegisterTypeUnion] | None = None,
+            types: Optional[VectorRegisterLayer] | None = None,
             nulls: Optional[VectorRegisterNullGroup] | None = None,
     ):
         """
@@ -44,14 +44,14 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
             nulls: Optional[VectorRegisterNullGroup]
         """
         super().__init__(
-            types=types or VectorRegisterTypeUnion(),
+            types=types or VectorRegisterLayer(),
             nulls=nulls or VectorRegisterNullGroup(),
         )
 
         
     @property
-    def types(self) -> VectorRegisterTypeUnion:
-        return cast(VectorRegisterTypeUnion, super().types)
+    def types(self) -> VectorRegisterLayer:
+        return cast(VectorRegisterLayer, super().types)
     
     @property
     def nulls(self) -> VectorRegisterNullGroup:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    KillEncounterNullGroup, KillEncounter, EncounterManifest, KillEncounterTypeUnion
+    KillEncounterNullGroup, KillEncounter, EncounterManifest, KillLayer
 )
 
 
@@ -37,7 +37,7 @@ class KillEncounterManifest(EncounterManifest[KillEncounter]):
     
     def __init__(
             self,
-            types: Optional[KillEncounterTypeUnion] | None = None,
+            types: Optional[KillLayer] | None = None,
             nulls: Optional[KillEncounterNullGroup] | None = None,
     ):
         """
@@ -46,13 +46,13 @@ class KillEncounterManifest(EncounterManifest[KillEncounter]):
             nulls: Optional[KillEncounterNullGroup]
         """
         super().__init__(
-            types=types or KillEncounterTypeUnion(),
+            types=types or KillLayer(),
             nulls=nulls or KillEncounterNullGroup(),
         )
     
     @property
-    def types(self) -> KillEncounterTypeUnion:
-        return cast(KillEncounterTypeUnion, super().types)
+    def types(self) -> KillLayer:
+        return cast(KillLayer, super().types)
     
     @property
     def nulls(self) -> KillEncounterNullGroup:

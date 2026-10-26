@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Bishop, BishopNullGroup, BishopTypeUnion, RankManifest
+from domain import Bishop, BishopNullGroup, BishopLayer, RankManifest
 
 
 class BishopManifest(RankManifest[Bishop]):
@@ -34,7 +34,7 @@ class BishopManifest(RankManifest[Bishop]):
     
     def __init__(
             self,
-            types: Optional[BishopTypeUnion] | None = None,
+            types: Optional[BishopLayer] | None = None,
             nulls: Optional[BishopNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class BishopManifest(RankManifest[Bishop]):
             nulls: Optional[BishopNullGroup]
         """
         super().__init__(
-            types=types or BishopTypeUnion(),
+            types=types or BishopLayer(),
             nulls=nulls or BishopNullGroup(),
         )
         
     @property
-    def types(self) -> BishopTypeUnion:
-        return cast(BishopTypeUnion, super().types)
+    def types(self) -> BishopLayer:
+        return cast(BishopLayer, super().types)
     
     @property
     def nulls(self) -> BishopNullGroup:

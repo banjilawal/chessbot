@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import BinderValidatorToolkit, TeamBinderDependency
 from domain import (
     TeamBinder, TeamBinderManifest, TeamBinderNullGroup,
-    TeamBinderTypeUnion
+    TeamBinderLayer
 )
 
 
@@ -63,5 +63,5 @@ class TeamBinderValidatorToolkit(BinderValidatorToolkit[TeamBinder]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> TeamBinderTypeUnion:
+    def types(self) -> TeamBinderLayer:
         return self.metadata.types

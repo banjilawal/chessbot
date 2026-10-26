@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import RegisterValidatorToolkit, VectorRegisterDependency
 from domain import (
     VectorRegister, VectorRegisterManifest, VectorRegisterNullGroup,
-    VectorRegisterTypeUnion
+    VectorRegisterLayer
 )
 
 
@@ -63,5 +63,5 @@ class VectorRegisterValidatorToolkit(RegisterValidatorToolkit[VectorRegister]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> VectorRegisterTypeUnion:
+    def types(self) -> VectorRegisterLayer:
         return self.metadata.types

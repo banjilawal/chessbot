@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import NullExceptionGroup, TypeUnion
+from domain import NullExceptionGroup, Layer
 
 T = TypeVar("T")
 
@@ -33,12 +33,12 @@ class DomainManifest(ABC, Generic[T]):
      Super Class:
      """
     
-    _types: TypeUnion[T]
+    _types: Layer[T]
     _nulls: NullExceptionGroup[T]
     
     def __init__(
             self,
-            types: TypeUnion[T],
+            types: Layer[T],
             nulls: NullExceptionGroup[T]
     ):
         """
@@ -50,7 +50,7 @@ class DomainManifest(ABC, Generic[T]):
         self._nulls = nulls
         
     @property
-    def types(self) -> TypeUnion[T]:
+    def types(self) -> Layer[T]:
         return self._types
     
     @property

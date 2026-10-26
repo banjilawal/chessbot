@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import NodeValidatorToolkit, VectorNodeDependency
 from domain import (
     VectorNode, VectorNodeManifest, VectorNodeNullGroup,
-    VectorNodeTypeUnion
+    VectorNodeLayer
 )
 
 
@@ -63,5 +63,5 @@ class VectorNodeValidatorToolkit(NodeValidatorToolkit[VectorNode]):
         return self.metadata.nulls
     
     @property
-    def types(self) -> VectorNodeTypeUnion:
+    def types(self) -> VectorNodeLayer:
         return self.metadata.types

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Path, PathNullGroup, PathTypeUnion, ModelManifest
+from domain import Path, PathNullGroup, PathLayer, ModelManifest
 
 
 class PathManifest(ModelManifest[Path]):
@@ -35,7 +35,7 @@ class PathManifest(ModelManifest[Path]):
     
     def __init__(
             self,
-            types: Optional[PathTypeUnion] | None = None,
+            types: Optional[PathLayer] | None = None,
             nulls: Optional[PathNullGroup] | None = None,
     ):
         """
@@ -44,13 +44,13 @@ class PathManifest(ModelManifest[Path]):
             nulls: Optional[PathNullGroup]
         """
         super().__init__(
-            types=types or PathTypeUnion(),
+            types=types or PathLayer(),
             nulls=nulls or PathNullGroup(),
         )
         
     @property
-    def types(self) -> PathTypeUnion:
-        return cast(PathTypeUnion, super().types)
+    def types(self) -> PathLayer:
+        return cast(PathLayer, super().types)
     
     @property
     def nulls(self) -> PathNullGroup:

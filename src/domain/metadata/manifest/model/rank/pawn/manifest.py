@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Pawn, PawnNullGroup, PawnTypeUnion, RankManifest
+from domain import Pawn, PawnNullGroup, PawnLayer, RankManifest
 
 
 class PawnManifest(RankManifest[Pawn]):
@@ -34,7 +34,7 @@ class PawnManifest(RankManifest[Pawn]):
     
     def __init__(
             self,
-            types: Optional[PawnTypeUnion] | None = None,
+            types: Optional[PawnLayer] | None = None,
             nulls: Optional[PawnNullGroup] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class PawnManifest(RankManifest[Pawn]):
             nulls: Optional[PawnNullGroup]
         """
         super().__init__(
-            types=types or PawnTypeUnion(),
+            types=types or PawnLayer(),
             nulls=nulls or PawnNullGroup(),
         )
         
     @property
-    def types(self) -> PawnTypeUnion:
-        return cast(PawnTypeUnion, super().types)
+    def types(self) -> PawnLayer:
+        return cast(PawnLayer, super().types)
     
     @property
     def nulls(self) -> PawnNullGroup:
