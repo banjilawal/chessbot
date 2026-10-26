@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Decision
+from artifcat import InsertionDecision
 from authorization import AccountPushPermitter
 from exchange import AccountPushPermissionRequest, AccountPushRequest
 from transit import PushPermissionDispatcher
@@ -54,7 +54,7 @@ class AccountPushPermissionDispatcher(
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushPermissionRequest) -> Decision:
+    def execute(self, request: AccountPushPermissionRequest) -> InsertionDecision:
         """
         Forward a job to a AccountPushPermitter then deliver the result.
 

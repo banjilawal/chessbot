@@ -18,7 +18,7 @@ from exchange import Request, InsertionRequest
 
 T = TypeVar("T",)
 
-class InsertionResponse(Response[InsertionResult], ABC, Generic[T]):
+class InsertionResponse(Response[InsertionResult], Generic[T]):
     """
     Role:
         -   Persistence
@@ -106,18 +106,13 @@ class InsertionResponse(Response[InsertionResult], ABC, Generic[T]):
     @classmethod
     def success(
             cls,
-            request: Request,
             result: InsertionResult,
-    ) -> InsertionResponse[T]:
-        # Downcast the request into a InsertionRequest.
-        insertion_request = cast(
-            InsertionRequest[T],
-            request,
-        )
+            request: T,
+    ) -> InsertionResponse:
         # Send a success Response using the cast.
         return cls(
             result=result,
-            request=insertion_request,
+            request=request,
             state=ResponseState.SUCCESS,
         )
     

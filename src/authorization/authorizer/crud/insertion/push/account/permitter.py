@@ -30,10 +30,10 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             AccountPushPermitter.
 
     Attributes:
-        validation_service: AccountValidationService
         loader: PushPermissionLoader
+        
     Provides:
-        -   def execute(request: AccountPushPermissionRequest) -> Decision
+        -   def execute(request: AccountPushPermissionRequest) -> InsertionDecision
 
     Super Class:
         PushPermitter
@@ -41,8 +41,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     
     def __init__(
-            self,
-            loader: Optional[AccountPushPermissionLoader] | None = None,
+            self, loader: Optional[AccountPushPermissionLoader] | None = None,
     ):
         """
         Args:
@@ -59,10 +58,15 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         """
         Grant permission for a stack push.
         
+        Action:
+            1.  Send an exception chain in the InsertionDecision if the request cannot be
+                loaded.
+            2.  If the item already exists in the collection, return a do_nothing decision.
+            3.  Otherwise, send an approval decision.
         Args:
             request: AccountPushPermissionRequest
         Returns:
-           Decision
+           InsertionDecision
         Raises:
             AccountPushPermitterException
         """

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import InsertionResult
+from artifcat import InsertionResponse, InsertionResult, ResponseState
 from collection import AccountStack
 from domain import Account
 from err import AccountPusherException
@@ -49,14 +49,12 @@ class AccountPusher(Pusher[AccountPushRequest]):
         """
         super().__init__(permitter=permitter or AccountPushPermissionDispatcher())
     
-    
     @property
     def permitter(self) -> AccountPushPermissionDispatcher:
         return cast(AccountPushPermissionDispatcher, super().permitter)
     
-    
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushRequest) -> InsertionResult:
+    def execute(self, request: AccountPushRequest) -> InsertionResponse:
         """
         Args:
             request: AccountPushRequest
@@ -83,13 +81,20 @@ class AccountPusher(Pusher[AccountPushRequest]):
                     ex=permission.exception,
                 )
             )
-        approved = cast(AccountPushRequest, permission.approval)
+        approved_request = cast(AccountPushRequest, permission.approval)
+        null_response = InsertionResponse.success(
+            request=approved_request,
+            result=InsertionResult.already_inserted(),
+        )
+        if permission.item_already_exists:
+            return null_response
         
-        item = cast(Account, approved.item)
-        collection = cast(AccountStack, approved.collection)
-        
-        if item in collection.items:
-            return InsertionResult.already_inserted()
+        item = cast(Account, approved_request.item)
+        collection = cast(AccountStack, approved_request.collection)
         collection.items.append(item)
         
-        return InsertionResult.success()
+        
+        return InsertionResponse.success(
+            request=approved_request,
+            result=InsertionResult.success(),
+        )

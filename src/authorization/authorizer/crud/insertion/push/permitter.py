@@ -38,24 +38,16 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         InsertionPermitter
     """
     
-    def __init__(
-            self,
-            loader: CrudAuthorizationLoader[T],
-            validation_service: ValidationService[T]
-    ):
+    def __init__(self,  loader: CrudAuthorizationLoader[T]):
         """
         Args:
             loader: CrudAuthorizationLoader[T]
         """
-        super().__init__(loader=loader, validation_service=validation_service)
+        super().__init__(loader=loader)
     
     @property
     def loader(self) -> CrudAuthorizationLoader[T]:
         return cast(CrudAuthorizationLoader[T], super().loader)
-    
-    @property
-    def validation_service(self) -> ValidationService[T]:
-        return cast(ValidationService[T], super().validation_service)
         
     @abstractmethod
     @LoggingLevelRouter.monitor
