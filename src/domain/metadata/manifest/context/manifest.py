@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Context, ContextNullGroup, ContextLayer, DomainManifest
+from domain import Context, ContextNullWarningSet, ContextLayer, DomainManifest
 
 T = TypeVar("T", bound="Context")
 
@@ -37,7 +37,7 @@ class ContextManifest(DomainManifest[T], ABC, Generic[T]):
     def __init__(
             self,
             types: ContextLayer[T],
-            nulls: ContextNullGroup[T],
+            nulls: ContextNullWarningSet[T],
     ):
         """
         Args:
@@ -52,5 +52,5 @@ class ContextManifest(DomainManifest[T], ABC, Generic[T]):
         return cast(ContextLayer[T], super().types)
     
     @property
-    def nulls(self) -> ContextNullGroup:
-        return cast(ContextNullGroup, super().nulls)
+    def nulls(self) -> ContextNullWarningSet:
+        return cast(ContextNullWarningSet, super().nulls)

@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextNullGroup,
+from domain import ContextNullWarningSet,
     TeamContextBlueprintNullException, TeamContextCarrierNullException, TeamContextNullException
 )
 
 
-class TeamContextNullGroup(ContextNullGroup[TeamContext]):
+class TeamContextNullWarningSet(ContextNullWarningSet[TeamContext]):
     """
     Role:
         - Metadata

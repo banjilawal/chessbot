@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextNullGroup
+from domain import ContextNullWarningSet
 from err import (
     VectorContextBlueprintNullException, VectorContextCarrierNullException, VectorContextNullException
 )
 
 
-class VectorContextNullGroup(ContextNullGroup[VectorContext]):
+class VectorContextNullWarningSet(ContextNullWarningSet[VectorContext]):
     """
     Role:
         - Metadata

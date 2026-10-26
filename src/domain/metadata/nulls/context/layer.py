@@ -17,7 +17,7 @@ from err import ContextCarrierNullException, ContextBlueprintNullException, Cont
 
 T = TypeVar("T", bound="Context")
 
-class ContextNullGroup(NullExceptionGroup[T], ABC, Generic[T):
+class ContextNullWarningSet(NullExceptionGroup[T], ABC, Generic[T):
     """
     Role:
         - Metadata

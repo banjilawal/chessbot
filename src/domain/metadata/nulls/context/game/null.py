@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Game, ContextNullGroup
+from domain import Game, ContextNullWarningSet
 from err import (
     GameContextBlueprintNullException, GameContextCarrierNullException, GameContextNullException
 )
 
 
-class GameContextNullGroup(ContextNullGroup[GameContext]):
+class GameContextNullWarningSet(ContextNullWarningSet[GameContext]):
     """
     Role:
         - Metadata

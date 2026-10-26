@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Arena, ContextNullGroup
+from domain import Arena, ContextNullWarningSet
 from err import (
     ArenaContextBlueprintNullException, ArenaContextCarrierNullException, ArenaContextNullException
 )
 
 
-class ArenaContextNullGroup(ContextNullGroup[ArenaContext]):
+class ArenaContextNullWarningSet(ContextNullWarningSet[ArenaContext]):
     """
     Role:
         - Metadata

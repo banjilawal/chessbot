@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, BoardContextNullGroup, BoardContextLayer, ContextManifest
+from domain import Board, BoardContextNullWarningSet, BoardContextLayer, ContextManifest
 
 
 class BoardContextManifest(ContextManifest[Board]):
@@ -35,7 +35,7 @@ class BoardContextManifest(ContextManifest[Board]):
     def __init__(
             self,
             types: Optional[BoardContextLayer] | None = None,
-            nulls: Optional[BoardContextNullGroup] | None = None,
+            nulls: Optional[BoardContextNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class BoardContextManifest(ContextManifest[Board]):
         """
         super().__init__(
             types=types or BoardContextLayer(),
-            nulls=nulls or BoardContextNullGroup(),
+            nulls=nulls or BoardContextNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class BoardContextManifest(ContextManifest[Board]):
         return cast(BoardContextLayer, super().types)
     
     @property
-    def nulls(self) -> BoardContextNullGroup:
-        return cast(BoardContextNullGroup, super().nulls)
+    def nulls(self) -> BoardContextNullWarningSet:
+        return cast(BoardContextNullWarningSet, super().nulls)

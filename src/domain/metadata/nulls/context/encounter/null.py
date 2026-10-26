@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ContextNullGroup, Encounter
+from domain import ContextNullWarningSet, Encounter
 from err import (
     EncounterContextBlueprintNullException, EncounterContextCarrierNullException,
     EncounterContextNullException
@@ -20,7 +20,7 @@ from err import (
 
 T = TypeVar("T", bound="Encounter")
 
-class EncounterContextNullGroup(ContextNullGroup[T], Generic[TContext]):
+class EncounterContextNullWarningSet(ContextNullWarningSet[T], Generic[TContext]):
     """
     Role:
         - Metadata

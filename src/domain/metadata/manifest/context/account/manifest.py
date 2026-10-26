@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import AccountContext, AccountContextNullGroup, AccountContextLayer
+from domain import AccountContext, AccountContextNullWarningSet, AccountContextLayer
 
 
 class AccountContextManifest(ContextManifest[AccountContext]):
@@ -36,7 +36,7 @@ class AccountContextManifest(ContextManifest[AccountContext]):
     def __init__(
             self,
             types: Optional[AccountContextLayer] | None = None,
-            nulls: Optional[AccountContextNullGroup] | None = None,
+            nulls: Optional[AccountContextNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -45,7 +45,7 @@ class AccountContextManifest(ContextManifest[AccountContext]):
         """
         super().__init__(
             types=types or AccountContextLayer(),
-            nulls=nulls or AccountContextNullGroup(),
+            nulls=nulls or AccountContextNullWarningSet(),
         )
 
     @property
@@ -53,5 +53,5 @@ class AccountContextManifest(ContextManifest[AccountContext]):
         return cast(AccountContextLayer, super().types)
 
     @property
-    def nulls(self) -> AccountContextNullGroup:
-        return cast(AccountContextNullGroup, super().nulls)
+    def nulls(self) -> AccountContextNullWarningSet:
+        return cast(AccountContextNullWarningSet, super().nulls)

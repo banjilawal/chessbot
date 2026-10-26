@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ContextNullGroup, Account
+from domain import ContextNullWarningSet, Account
 from err import (
     AccountContextBlueprintNullException, AccountContextCarrierNullException, AccountContextNullException
 )
 
 T = TypeVar("T", bound="Account")
 
-class AccountContextNullGroup(ContextNullGroup[T], Generic[TContext]):
+class AccountContextNullWarningSet(ContextNullWarningSet[T], Generic[TContext]):
     """
     Role:
         - Metadata

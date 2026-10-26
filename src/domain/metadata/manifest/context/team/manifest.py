@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Team, TeamContextNullGroup, TeamContextLayer, ContextManifest
+from domain import Team, TeamContextNullWarningSet, TeamContextLayer, ContextManifest
 
 
 class TeamContextManifest(ContextManifest[Team]):
@@ -35,7 +35,7 @@ class TeamContextManifest(ContextManifest[Team]):
     def __init__(
             self,
             types: Optional[TeamContextLayer] | None = None,
-            nulls: Optional[TeamContextNullGroup] | None = None,
+            nulls: Optional[TeamContextNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class TeamContextManifest(ContextManifest[Team]):
         """
         super().__init__(
             types=types or TeamContextLayer(),
-            nulls=nulls or TeamContextNullGroup(),
+            nulls=nulls or TeamContextNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class TeamContextManifest(ContextManifest[Team]):
         return cast(TeamContextLayer, super().types)
     
     @property
-    def nulls(self) -> TeamContextNullGroup:
-        return cast(TeamContextNullGroup, super().nulls)
+    def nulls(self) -> TeamContextNullWarningSet:
+        return cast(TeamContextNullWarningSet, super().nulls)

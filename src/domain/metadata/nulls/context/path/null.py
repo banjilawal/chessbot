@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextNullGroup
+from domain import ContextNullWarningSet
 from err import (
     PathContextBlueprintNullException, PathContextCarrierNullException, PathContextNullException
 )
 
 
-class PathContextNullGroup(ContextNullGroup[PathContext]):
+class PathContextNullWarningSet(ContextNullWarningSet[PathContext]):
     """
     Role:
         - Metadata

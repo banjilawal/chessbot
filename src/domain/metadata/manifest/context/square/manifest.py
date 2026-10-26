@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from domain import SquareContextNullGroup, ContextManifest, Square, SquareContextLayer
+from domain import SquareContextNullWarningSet, ContextManifest, Square, SquareContextLayer
 
 
 class SquareContextManifest(ContextManifest[Square]):
@@ -35,7 +35,7 @@ class SquareContextManifest(ContextManifest[Square]):
     def __init__(
             self,
             types: SquareContextLayer,
-            nulls: SquareContextNullGroup
+            nulls: SquareContextNullWarningSet
     ):
         """
         Args:
@@ -49,5 +49,5 @@ class SquareContextManifest(ContextManifest[Square]):
         return cast(SquareContextLayer[T], super().types)
     
     @property
-    def nulls(self) -> SquareContextNullGroup[T]:
-        return cast(SquareContextNullGroup[T], super().nulls)
+    def nulls(self) -> SquareContextNullWarningSet[T]:
+        return cast(SquareContextNullWarningSet[T], super().nulls)

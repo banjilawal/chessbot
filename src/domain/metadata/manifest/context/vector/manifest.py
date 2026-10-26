@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextManifest, Vector, VectorContextNullGroup, VectorContextLayer
+from domain import ContextManifest, Vector, VectorContextNullWarningSet, VectorContextLayer
 
 
 class VectorContextManifest(ContextManifest[Vector]):
@@ -35,7 +35,7 @@ class VectorContextManifest(ContextManifest[Vector]):
     def __init__(
             self,
             types: Optional[VectorContextLayer] | None = None,
-            nulls: Optional[VectorContextNullGroup] | None = None,
+            nulls: Optional[VectorContextNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class VectorContextManifest(ContextManifest[Vector]):
         """
         super().__init__(
             types=types or VectorContextLayer(),
-            nulls=nulls or VectorContextNullGroup(),
+            nulls=nulls or VectorContextNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class VectorContextManifest(ContextManifest[Vector]):
         return cast(VectorContextLayer, super().types)
     
     @property
-    def nulls(self) -> VectorContextNullGroup:
-        return cast(VectorContextNullGroup, super().nulls)
+    def nulls(self) -> VectorContextNullWarningSet:
+        return cast(VectorContextNullWarningSet, super().nulls)

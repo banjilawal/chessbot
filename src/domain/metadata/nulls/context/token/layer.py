@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ContextNullGroup, Token
+from domain import ContextNullWarningSet, Token, TokenContext
 from err import (
     TokenContextBlueprintNullException, TokenContextCarrierNullException, TokenContextNullException
 )
 
-T = TypeVar("T", bound="Token")
 
-class TokenContextNullGroup(ContextNullGroup[TokenContext]):
+class TokenContextNullWarningSet(ContextNullWarningSet[TokenContext]):
     """
     Role:
         - Metadata

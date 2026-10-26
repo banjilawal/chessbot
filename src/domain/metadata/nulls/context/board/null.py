@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, ContextNullGroup
+from domain import Board, ContextNullWarningSet
 from err import (
     BoardContextBlueprintNullException, BoardContextCarrierNullException, BoardContextNullException
 )
 
 
-class BoardContextNullGroup(ContextNullGroup[BoardContext]):
+class BoardContextNullWarningSet(ContextNullWarningSet[BoardContext]):
     """
     Role:
         - Metadata

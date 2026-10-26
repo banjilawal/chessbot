@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Maneuver, ContextNullGroup
+from domain import Maneuver, ContextNullWarningSet
 from err import (
     ManeuverContextBlueprintNullException, ManeuverContextCarrierNullException, ManeuverContextNullException
 )
 
 
-class ManeuverContextNullGroup(ContextNullGroup[ManeuverContext]):
+class ManeuverContextNullWarningSet(ContextNullWarningSet[ManeuverContext]):
     """
     Role:
         - Metadata
