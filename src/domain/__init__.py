@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN PACKAGE ===========#
 
 # Packages
-from .context import *
+from.context import *
 from .extract import *
 from .graph import *
 from .interface import *

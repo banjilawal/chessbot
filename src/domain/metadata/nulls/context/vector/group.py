@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ContextNullGroup,
+from domain import ContextNullGroup
 from err import (
     VectorContextBlueprintNullException, VectorContextCarrierNullException, VectorContextNullException
 )

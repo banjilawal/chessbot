@@ -14,4 +14,4 @@ from .model import *
 from .struct import *
 
 # Modules
-from .manifest import ObjectManifest
+from .manifest import DomainManifest

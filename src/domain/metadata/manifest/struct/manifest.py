@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import ObjectManifest, Struct, StructNullGroup, StructTypeUnion
+from domain import DomainManifest, Struct, StructNullGroup, StructTypeUnion
 
 T = TypeVar("T", bound="Struct")
 
-class StructManifest(ObjectManifest[T], ABC, Generic[T]):
+class StructManifest(DomainManifest[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata

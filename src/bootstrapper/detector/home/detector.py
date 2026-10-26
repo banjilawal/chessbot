@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from bootstrapper import DetectorBootstrapper
-from domain.context.context import TokenHomeContext
+from domain.context.search import TokenHomeContext
 from err import (
     ExcessToggleActivationException, HomeDetectorBootstrapperException, HomeSquareSearchResultEmptyException,
     NoActiveTogglesException

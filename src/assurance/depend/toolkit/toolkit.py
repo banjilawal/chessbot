@@ -17,7 +17,7 @@ from assurance import (
     NumberValidator, PrimingValidator
 )
 from authorization import BlueprintIdExtractor
-from domain import NullExceptionGroup, ObjectManifest, TypeUnion
+from domain import NullExceptionGroup, DomainManifest, TypeUnion
 from microservice import IdentityService
 
 T = TypeVar("T")
@@ -41,14 +41,14 @@ class ValidatorToolkit(ABC, Generic[T]):
 
     Super Class:
     """
-    _metadata: ObjectManifest[T]
+    _metadata: DomainManifest[T]
     _wrapper: WrapperDependency[T]
     _common: CommonValidatorToolkit
     
     def __init__(
             self,
             wrapper: WrapperDependency[T],
-            metadata: ObjectManifest[T],
+            metadata: DomainManifest[T],
             common: Optional[CommonValidatorToolkit] | None = None,
     ):
         """
@@ -66,7 +66,7 @@ class ValidatorToolkit(ABC, Generic[T]):
         return self._wrapper
     
     @property
-    def metadata(self) -> ObjectManifest[T]:
+    def metadata(self) -> DomainManifest[T]:
         return self._metadata
     
     @property

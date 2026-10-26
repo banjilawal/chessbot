@@ -16,7 +16,7 @@ from domain import NullExceptionGroup, TypeUnion
 
 T = TypeVar("T")
 
-class ObjectManifest(ABC, Generic[T]):
+class DomainManifest(ABC, Generic[T]):
     """
      Role:
         1.  Metadata

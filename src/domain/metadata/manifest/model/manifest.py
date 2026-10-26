@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Model, ModelNullGroup, ModelTypeUnion, ObjectManifest
+from domain import Model, ModelNullGroup, ModelTypeUnion, DomainManifest
 
 T = TypeVar("T", bound="Model")
 
-class ModelManifest(ObjectManifest[T], ABC, Generic[T]):
+class ModelManifest(DomainManifest[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata

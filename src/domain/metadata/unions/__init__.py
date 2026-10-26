@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.UNIONS PACKAGE ===========#
 
 # Packages
+from .context import *
 from .model import *
 from .struct import *
 
