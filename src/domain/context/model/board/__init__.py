@@ -1,13 +1,13 @@
-# src/domain/search/model/board/__init__.py
+# src/domain/context/model/board/__init__.py
 
 """
-Module: domain.search.model.board.__init__
+Module: domain.context.model.board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.SEARCH.MODEL.BOARD PACKAGE ===========#
+# =========== DOMAIN.CONTEXT.MODEL.BOARD PACKAGE ===========#
 
 # Packages
 

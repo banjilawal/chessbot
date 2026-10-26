@@ -1,7 +1,7 @@
-# src/domain/search/model/arena/context.py
+# src/domain/context/model/arena/context.py
 
 """
-Module: domain.search.model.arena.context
+Module: domain.context.model.arena.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

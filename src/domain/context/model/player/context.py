@@ -1,7 +1,7 @@
-# src/domain/search/model/player/context.py
+# src/domain/context/model/player/context.py
 
 """
-Module: domain.search.model.player.context
+Module: domain.context.model.player.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

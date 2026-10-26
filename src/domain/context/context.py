@@ -1,7 +1,7 @@
-# src/domain/search/context.py
+# src/domain/context/context.py
 
 """
-Module: domain.search.context
+Module: domain.context.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

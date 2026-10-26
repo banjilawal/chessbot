@@ -1,7 +1,7 @@
-# src/domain/search/struct/context.py
+# src/domain/context/struct/context.py
 
 """
-Module: domain.search.struct.context
+Module: domain.context.struct.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

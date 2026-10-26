@@ -1,7 +1,7 @@
-# src/domain/search/model/square/context.py
+# src/domain/context/model/square/context.py
 
 """
-Module: domain.search.model.square.comtext
+Module: domain.context.model.square.comtext
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -19,7 +19,7 @@ from transit import EntityCarrier
 T = TypeVar("T", bound="Context")
 
 
-class ContextCarrier(EntityCarrier[TContext], ABC, Generic[TContext]):
+class ContextCarrier(EntityCarrier[Context], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -33,11 +33,11 @@ class ContextCarrier(EntityCarrier[TContext], ABC, Generic[TContext]):
         is_not_consistent: bool
         has_model: bool
         has_blueprint: bool
-        entity: [T|Blueprint[TContext]Context]
+        entity: [Context | ContextBlueprint]
 
 
     Provides:
-        -   def extract_blueprint() -> Optional[Blueprint[TContext]Context]
+        -   def extract_blueprint() -> Optional[ContextBluerint]
 
     Super Class:
         EntityCarrier

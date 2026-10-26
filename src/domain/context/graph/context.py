@@ -1,7 +1,7 @@
-# src/domain/search/graph/context.py
+# src/domain/context/graph/context.py
 
 """
-Module: domain.search.graph
+Module: domain.context.graph
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,13 +1,13 @@
-# src/domain/search/__init__.py
+# src/domain/context/__init__.py
 
 """
-Module: domain.search.__init__
+Module: domain.context.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.SEARCH PACKAGE ===========#
+# =========== DOMAIN.CONTEXT PACKAGE ===========#
 
 # Packages
 from .graph import *

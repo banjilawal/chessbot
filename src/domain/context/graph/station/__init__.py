@@ -1,13 +1,13 @@
-# src/domain/search/graph/station/__init__.py
+# src/domain/context/graph/station/__init__.py
 
 """
-Module: domain.search.graph.station.__init__
+Module: domain.context.graph.station.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.SEARCH.GRAPH.STATION PACKAGE ===========#
+# =========== DOMAIN.CONTEXT.GRAPH.STATION PACKAGE ===========#
 
 # Packages
 

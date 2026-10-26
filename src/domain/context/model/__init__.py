@@ -1,13 +1,13 @@
-# src/domain/search/model/__init__.py
+# src/domain/context/model/__init__.py
 
 """
-Module: domain.search.model.__init__
+Module: domain.context.model.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.SEARCH.MODEL PACKAGE ===========#
+# =========== DOMAIN.CONTEXT.MODEL PACKAGE ===========#
 
 # Packages
 from .account import *

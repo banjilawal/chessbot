@@ -1,7 +1,7 @@
-# src/domain/search/model/board/context.py
+# src/domain/context/model/board/context.py
 
 """
-Module: domain.search.model.board.context
+Module: domain.context.model.board.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

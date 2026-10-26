@@ -1,7 +1,7 @@
-# src/domain/search/graph/edge/context.py
+# src/domain/context/graph/edge/context.py
 
 """
-Module: domain.search.graph.edge
+Module: domain.context.graph.edge
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

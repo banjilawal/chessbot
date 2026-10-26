@@ -1,7 +1,7 @@
-# src/domain/search/model/vector/context.py
+# src/domain/context/model/vector/context.py
 
 """
-Module: domain.search.model.vector
+Module: domain.context.model.vector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

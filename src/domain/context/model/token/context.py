@@ -1,7 +1,7 @@
-# src/domain/search/model/token/context.py
+# src/domain/context/model/token/context.py
 
 """
-Module: domain.search.model.token
+Module: domain.context.model.token
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Coord, Formation, HomeSquare, Rank, Context, Team, Token
+from domain import Coord, Formation, HomeSquare, Rank, Context, Team, Token, TokenType
 
 
 class TokenContext(Context[Token]):

@@ -1,7 +1,7 @@
-# src/domain/search/model/path/context.py
+# src/domain/context/model/path/context.py
 
 """
-Module: domain.search.model.path.context
+Module: domain.context.model.path.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
