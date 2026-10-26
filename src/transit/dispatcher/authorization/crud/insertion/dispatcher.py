@@ -1,7 +1,7 @@
-# src/transit/dispatcher/authorization/crud/insertion/account/dispatcher.py
+# src/transit/dispatcher/authorization/crud/insertion/dispatcher.py
 
 """
-Module: transit.dispatcher.authorization.crud.insertion.account.dispatcher
+Module: transit.dispatcher.authorization.crud.insertion.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,16 +10,18 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic
+from typing import Generic, TypeVar, cast
 
+from artifcat import InsertionDecision
+from authorization import InsertionPermitter
 from exchange import PushPermissionRequest
 from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
-TypeVar = ("T")
+T = TypeVar("T", bound="PushPermissionRequest")
 
 class PushPermissionDispatcher(
-    CrudPermissionDispatcher[PushPermissionRequest], ABC, Generic[T]
+    CrudPermissionDispatcher[T], ABC, Generic[T]
 ):
     """
     Role
@@ -29,7 +31,7 @@ class PushPermissionDispatcher(
         1.  Direct the InsertionBuild workflow.
 
     Attributes:
-        authorizer: InsertionCrudAuthorizer[T]
+        authorizer: InsertionPermitter[T]
         
     Provides:
         -   def execute(request: t) -> CrudRequest[InsertionCarrier]
@@ -38,28 +40,28 @@ class PushPermissionDispatcher(
         PushPermissionDispatcher
     """
     
-    def __init__(self, authorizer: Optional[AccountPushAuthorizer] |  None = None):
+    def __init__(self, authorizer:InsertionPermitter[T]):
         """
         Args:
-            authorizer: Optional[AccountPushAuthorizer]
+            authorizer: InsertionPermitter
         """
-        super().__init__(authorizer=authorizer or AccountPushAuthorizer())
+        super().__init__(authorizer=authorizer)
 
 
     @property
-    def authorizer(self) -> AccountPushAuthorizer:
-        return cast(AccountPushAuthorizer, super().authorizer)
+    def authorizer(self) -> InsertionPermitter[T]:
+        return cast(InsertionPermitter[T], super().authorizer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushPermissionRequest) -> Decision:
+    def execute(self, request: T) -> InsertionDecision:
         """
         Verify a candidate is an EntityCarrier whose payload is safe.
         Args:
-            request: AccountPushPermissionRequest
+            request: T
         Returns:
-            Decision
+            InsertionDecision
         Raises:
-            AccountPermissionDispatcherException
+            PermissionDispatcherException
         """
         pass
     

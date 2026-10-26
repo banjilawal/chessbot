@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional, Type, cast
 
-from artifcat import InsertionResponse, InsertionResult, ResponseState
+from artifcat import InsertionResult, InsertionResult
 from collection import AccountStack
 from domain import Account
 from err import AccountPusherException
@@ -54,8 +54,14 @@ class AccountPusher(Pusher[AccountPushRequest]):
         return cast(AccountPushPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushRequest) -> InsertionResponse:
+    def execute(self, request: AccountPushRequest) -> InsertionResult:
         """
+        Add a new, unique account to the collection.
+        
+        Action:
+            1.  Send an exception in the Response if the permitter sends a denial.
+            2.  If the item already exists, send a success Response.
+            3.  Otherwise, append to the collection before sending the success.
         Args:
             request: AccountPushRequest
         Result:
@@ -65,6 +71,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the permission_dispatcher sends a denial.
         permission = self.permitter.execute(
             request=AccountPushPermissionRequest(
                 candidate=request,
@@ -72,6 +79,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
             )
         )
         if permission.request_is_denied:
+            # Send a failure in the Response
             return InsertionResult.failure(
                 AccountPusherException(
                     cls_mthd=method,
@@ -81,20 +89,12 @@ class AccountPusher(Pusher[AccountPushRequest]):
                     ex=permission.exception,
                 )
             )
-        approved_request = cast(AccountPushRequest, permission.approval)
-        null_response = InsertionResponse.success(
-            request=approved_request,
-            result=InsertionResult.already_inserted(),
-        )
+        # If the 
         if permission.item_already_exists:
-            return null_response
+            return InsertionResult.already_inserted()
         
+        approved_request = cast(AccountPushRequest, permission.approval)
         item = cast(Account, approved_request.item)
         collection = cast(AccountStack, approved_request.collection)
         collection.items.append(item)
-        
-        
-        return InsertionResponse.success(
-            request=approved_request,
-            result=InsertionResult.success(),
-        )
+        return InsertionResult.success()
