@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    MachineAccountNullGroup, MachineAccount, MachineAccountLayer, AccountManifest
+    MachineAccountNullWarningSet, MachineAccount, MachineAccountLayer, AccountManifest
 )
 
 
@@ -38,7 +38,7 @@ class MachineAccountManifest(AccountManifest[MachineAccount]):
     def __init__(
             self,
             types: Optional[MachineAccountLayer] | None = None,
-            nulls: Optional[MachineAccountNullGroup] | None = None,
+            nulls: Optional[MachineAccountNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class MachineAccountManifest(AccountManifest[MachineAccount]):
         """
         super().__init__(
             types=types or MachineAccountLayer(),
-            nulls=nulls or MachineAccountNullGroup(),
+            nulls=nulls or MachineAccountNullWarningSet(),
         )
     
     @property
@@ -55,5 +55,5 @@ class MachineAccountManifest(AccountManifest[MachineAccount]):
         return cast(MachineAccountLayer, super().types)
     
     @property
-    def nulls(self) -> MachineAccountNullGroup:
-        return cast(MachineAccountNullGroup, super().nulls)
+    def nulls(self) -> MachineAccountNullWarningSet:
+        return cast(MachineAccountNullWarningSet, super().nulls)

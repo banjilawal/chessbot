@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from domain import SquareNullGroup, ModelManifest, Square, SquareLayer
+from domain import SquareNullWarningSet, ModelManifest, Square, SquareLayer
 
 
 class SquareManifest(ModelManifest[Square]):
@@ -35,7 +35,7 @@ class SquareManifest(ModelManifest[Square]):
     def __init__(
             self,
             types: SquareLayer,
-            nulls: SquareNullGroup
+            nulls: SquareNullWarningSet
     ):
         """
         Args:
@@ -49,5 +49,5 @@ class SquareManifest(ModelManifest[Square]):
         return cast(SquareLayer[T], super().types)
     
     @property
-    def nulls(self) -> SquareNullGroup[T]:
-        return cast(SquareNullGroup[T], super().nulls)
+    def nulls(self) -> SquareNullWarningSet[T]:
+        return cast(SquareNullWarningSet[T], super().nulls)

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    StalemateEncounter, StalemateEncounterNullGroup,
+    StalemateEncounter, StalemateNullWarningSet,
     StalemateEncounterTypeUnion, EncounterManifest
 )
 
@@ -38,7 +38,7 @@ class StalemateEncounterManifest(EncounterManifest[StalemateEncounter]):
     def __init__(
             self,
             types: Optional[StalemateEncounterTypeUnion] | None = None,
-            nulls: Optional[StalemateEncounterNullGroup] | None = None,
+            nulls: Optional[StalemateNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class StalemateEncounterManifest(EncounterManifest[StalemateEncounter]):
         """
         super().__init__(
             types=types or StalemateEncounterTypeUnion(),
-            nulls=nulls or StalemateEncounterNullGroup(),
+            nulls=nulls or StalemateNullWarningSet(),
         )
     
     @property
@@ -55,5 +55,5 @@ class StalemateEncounterManifest(EncounterManifest[StalemateEncounter]):
         return cast(StalemateEncounterTypeUnion, super().types)
     
     @property
-    def nulls(self) -> StalemateEncounterNullGroup:
-        return cast(StalemateEncounterNullGroup, super().nulls)
+    def nulls(self) -> StalemateNullWarningSet:
+        return cast(StalemateNullWarningSet, super().nulls)

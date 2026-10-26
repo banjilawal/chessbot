@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, ArenaWrapperDependency
-from domain import Arena, ArenaManifest, ArenaNullGroup, ArenaLayer
+from domain import Arena, ArenaManifest, ArenaNullWarningSet, ArenaLayer
 
 class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
     """
@@ -56,7 +56,7 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
         return cast(ArenaManifest, super().metadata)
     
     @property
-    def nulls(self) -> ArenaNullGroup:
+    def nulls(self) -> ArenaNullWarningSet:
         return self.metadata.nulls
     
     @property

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Alert, AlertNullGroup, AlertLayer, ModelManifest
+from domain import Alert, AlertNullWarningSet, AlertLayer, ModelManifest
 
 
 class AlertManifest(ModelManifest[Alert]):
@@ -35,7 +35,7 @@ class AlertManifest(ModelManifest[Alert]):
     def __init__(
             self,
             types: Optional[AlertLayer] | None = None,
-            nulls: Optional[AlertNullGroup] | None = None,
+            nulls: Optional[AlertNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class AlertManifest(ModelManifest[Alert]):
         """
         super().__init__(
             types=types or AlertLayer(),
-            nulls=nulls or AlertNullGroup(),
+            nulls=nulls or AlertNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class AlertManifest(ModelManifest[Alert]):
         return cast(AlertLayer, super().types)
     
     @property
-    def nulls(self) -> AlertNullGroup:
-        return cast(AlertNullGroup, super().nulls)
+    def nulls(self) -> AlertNullWarningSet:
+        return cast(AlertNullWarningSet, super().nulls)

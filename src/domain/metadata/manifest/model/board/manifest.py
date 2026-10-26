@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, BoardNullGroup, BoardLayer, ModelManifest
+from domain import Board, BoardNullWarningSet, BoardLayer, ModelManifest
 
 
 class BoardManifest(ModelManifest[Board]):
@@ -35,7 +35,7 @@ class BoardManifest(ModelManifest[Board]):
     def __init__(
             self,
             types: Optional[BoardLayer] | None = None,
-            nulls: Optional[BoardNullGroup] | None = None,
+            nulls: Optional[BoardNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class BoardManifest(ModelManifest[Board]):
         """
         super().__init__(
             types=types or BoardLayer(),
-            nulls=nulls or BoardNullGroup(),
+            nulls=nulls or BoardNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class BoardManifest(ModelManifest[Board]):
         return cast(BoardLayer, super().types)
     
     @property
-    def nulls(self) -> BoardNullGroup:
-        return cast(BoardNullGroup, super().nulls)
+    def nulls(self) -> BoardNullWarningSet:
+        return cast(BoardNullWarningSet, super().nulls)

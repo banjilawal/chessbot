@@ -14,4 +14,4 @@ from .combatant import *
 from .king import *
 
 # Modules
-from .group import TokenNullGroup
+from .null import TokenNullWarningSet

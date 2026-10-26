@@ -29,4 +29,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from group import ModelNullGroup
+from null import ModelNullWarningSet

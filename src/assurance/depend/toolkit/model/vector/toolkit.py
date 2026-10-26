@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, VectorWrapperDependency
-from domain import Vector, VectorManifest, VectorNullGroup, VectorLayer
+from domain import Vector, VectorManifest, VectorNullWarningSet, VectorLayer
 
 
 class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
@@ -57,7 +57,7 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
         return cast(VectorManifest, super().metadata)
     
     @property
-    def nulls(self) -> VectorNullGroup:
+    def nulls(self) -> VectorNullWarningSet:
         return self.metadata.nulls
     
     @property

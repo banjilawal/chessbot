@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, PlayerWrapperDependency
 from domain import (
-    Player, PlayerManifest, PlayerNullGroup, PlayerLayer
+    Player, PlayerManifest, PlayerNullWarningSet, PlayerLayer
 )
 
 class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
@@ -58,7 +58,7 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
         return cast(PlayerManifest, super().metadata)
     
     @property
-    def nulls(self) -> PlayerNullGroup:
+    def nulls(self) -> PlayerNullWarningSet:
         return self.metadata.nulls
     
     @property

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, TeamWrapperDependency
-from domain import Team, TeamManifest, TeamNullGroup, TeamLayer
+from domain import Team, TeamManifest, TeamNullWarningSet, TeamLayer
 
 
 class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
@@ -57,7 +57,7 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
         return cast(TeamManifest, super().metadata)
     
     @property
-    def nulls(self) -> TeamNullGroup:
+    def nulls(self) -> TeamNullWarningSet:
         return self.metadata.nulls
     
     @property

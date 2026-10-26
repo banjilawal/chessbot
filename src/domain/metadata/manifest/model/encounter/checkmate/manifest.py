@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    CheckmateEncounter, CheckmateEncounterNullGroup,
+    CheckmateEncounter, CheckmateNullWarningSet,
     CheckmateLayer, EncounterManifest
 )
 
@@ -38,7 +38,7 @@ class CheckmateEncounterManifest(EncounterManifest[CheckmateEncounter]):
     def __init__(
             self,
             types: Optional[CheckmateLayer] | None = None,
-            nulls: Optional[CheckmateEncounterNullGroup] | None = None,
+            nulls: Optional[CheckmateNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class CheckmateEncounterManifest(EncounterManifest[CheckmateEncounter]):
         """
         super().__init__(
             types=types or CheckmateLayer(),
-            nulls=nulls or CheckmateEncounterNullGroup(),
+            nulls=nulls or CheckmateNullWarningSet(),
         )
     
     @property
@@ -55,5 +55,5 @@ class CheckmateEncounterManifest(EncounterManifest[CheckmateEncounter]):
         return cast(CheckmateLayer, super().types)
     
     @property
-    def nulls(self) -> CheckmateEncounterNullGroup:
-        return cast(CheckmateEncounterNullGroup, super().nulls)
+    def nulls(self) -> CheckmateNullWarningSet:
+        return cast(CheckmateNullWarningSet, super().nulls)

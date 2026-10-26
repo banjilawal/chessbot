@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Scalar, ScalarNullGroup, ScalarLayer, ModelManifest
+from domain import Scalar, ScalarNullWarningSet, ScalarLayer, ModelManifest
 
 
 class ScalarManifest(ModelManifest[Scalar]):
@@ -35,7 +35,7 @@ class ScalarManifest(ModelManifest[Scalar]):
     def __init__(
             self,
             types: Optional[ScalarLayer] | None = None,
-            nulls: Optional[ScalarNullGroup] | None = None,
+            nulls: Optional[ScalarNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class ScalarManifest(ModelManifest[Scalar]):
         """
         super().__init__(
             types=types or ScalarLayer(),
-            nulls=nulls or ScalarNullGroup(),
+            nulls=nulls or ScalarNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class ScalarManifest(ModelManifest[Scalar]):
         return cast(ScalarLayer, super().types)
     
     @property
-    def nulls(self) -> ScalarNullGroup:
-        return cast(ScalarNullGroup, super().nulls)
+    def nulls(self) -> ScalarNullWarningSet:
+        return cast(ScalarNullWarningSet, super().nulls)

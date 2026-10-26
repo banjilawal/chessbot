@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Model, ModelNullGroup, ModelLayer, DomainManifest
+from domain import Model, ModelNullWarningSet, ModelLayer, DomainManifest
 
 T = TypeVar("T", bound="Model")
 
@@ -37,7 +37,7 @@ class ModelManifest(DomainManifest[T], ABC, Generic[T]):
     def __init__(
             self,
             types: ModelLayer[T],
-            nulls: ModelNullGroup[T],
+            nulls: ModelNullWarningSet[T],
     ):
         """
         Args:
@@ -52,5 +52,5 @@ class ModelManifest(DomainManifest[T], ABC, Generic[T]):
         return cast(ModelLayer[T], super().types)
     
     @property
-    def nulls(self) -> ModelNullGroup:
-        return cast(ModelNullGroup, super().nulls)
+    def nulls(self) -> ModelNullWarningSet:
+        return cast(ModelNullWarningSet, super().nulls)

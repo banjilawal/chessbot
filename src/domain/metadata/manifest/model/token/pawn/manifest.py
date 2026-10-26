@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    PawnToken, PawnTokenTokenNullGroup, PawnTokenLayer, TokenManifest
+    PawnToken, PawnTokenNullWarningSet, PawnTokenLayer, TokenManifest
 )
 
 
@@ -38,7 +38,7 @@ class PawnTokenManifest(TokenManifest[PawnToken]):
     def __init__(
             self,
             types: Optional[PawnTokenLayer] | None = None,
-            nulls: Optional[PawnTokenTokenNullGroup] | None = None,
+            nulls: Optional[PawnTokenNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class PawnTokenManifest(TokenManifest[PawnToken]):
         """
         super().__init__(
             types=types or PawnTokenLayer(),
-            nulls=nulls or PawnTokenTokenNullGroup(),
+            nulls=nulls or PawnTokenNullWarningSet(),
         )
     
     @property
@@ -55,5 +55,5 @@ class PawnTokenManifest(TokenManifest[PawnToken]):
         return cast(PawnTokenLayer, super().types)
     
     @property
-    def nulls(self) -> PawnTokenTokenNullGroup:
-        return cast(PawnTokenTokenNullGroup, super().nulls)
+    def nulls(self) -> PawnTokenNullWarningSet:
+        return cast(PawnTokenNullWarningSet, super().nulls)

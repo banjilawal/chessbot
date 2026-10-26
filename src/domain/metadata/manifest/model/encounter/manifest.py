@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ModelManifest, Encounter, EncounterNullGroup, EncounterLayer
+from domain import ModelManifest, Encounter, EncounterNullWarningSet, EncounterLayer
 
 T = TypeVar("T", bound="Encounter")
 
@@ -38,7 +38,7 @@ class EncounterManifest(ModelManifest[T], Generic[T]):
     def __init__(
             self,
             types: Optional[EncounterLayer[T]] | None = None,
-            nulls: Optional[EncounterNullGroup[T]] | None = None,
+            nulls: Optional[EncounterNullWarningSet[T]] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class EncounterManifest(ModelManifest[T], Generic[T]):
         """
         super().__init__(
             types=types or EncounterLayer(),
-            nulls=nulls or EncounterNullGroup(),
+            nulls=nulls or EncounterNullWarningSet(),
         )
 
     @property
@@ -55,5 +55,5 @@ class EncounterManifest(ModelManifest[T], Generic[T]):
         return cast(EncounterLayer[T], super().types)
 
     @property
-    def nulls(self) -> EncounterNullGroup[T]:
-        return cast(EncounterNullGroup[T], super().nulls)
+    def nulls(self) -> EncounterNullWarningSet[T]:
+        return cast(EncounterNullWarningSet[T], super().nulls)

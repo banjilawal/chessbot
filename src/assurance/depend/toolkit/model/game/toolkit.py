@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, GameWrapperDependency
-from domain import Game, GameManifest, GameNullGroup, GameLayer
+from domain import Game, GameManifest, GameNullWarningSet, GameLayer
 
 
 class GameValidatorToolkit(ModelValidatorToolkit[Game]):
@@ -57,7 +57,7 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
         return cast(GameManifest, super().metadata)
     
     @property
-    def nulls(self) -> GameNullGroup:
+    def nulls(self) -> GameNullWarningSet:
         return self.metadata.nulls
     
     @property

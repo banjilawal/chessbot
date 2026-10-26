@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ModelManifest, Token, TokenNullGroup, TokenLayer
+from domain import ModelManifest, Token, TokenNullWarningSet, TokenLayer
 
 T = TypeVar("T", bound="Token")
 
@@ -38,7 +38,7 @@ class TokenManifest(ModelManifest[T], Generic[T]):
     def __init__(
             self,
             types: Optional[TokenLayer[T]] | None = None,
-            nulls: Optional[TokenNullGroup[T]] | None = None,
+            nulls: Optional[TokenNullWarningSet[T]] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class TokenManifest(ModelManifest[T], Generic[T]):
         """
         super().__init__(
             types=types or TokenLayer(),
-            nulls=nulls or TokenNullGroup(),
+            nulls=nulls or TokenNullWarningSet(),
         )
 
     @property
@@ -55,5 +55,5 @@ class TokenManifest(ModelManifest[T], Generic[T]):
         return cast(TokenLayer[T], super().types)
 
     @property
-    def nulls(self) -> TokenNullGroup[T]:
-        return cast(TokenNullGroup[T], super().nulls)
+    def nulls(self) -> TokenNullWarningSet[T]:
+        return cast(TokenNullWarningSet[T], super().nulls)

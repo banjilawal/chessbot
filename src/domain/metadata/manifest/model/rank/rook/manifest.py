@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankManifest, Rook, RookNullGroup, RookLayer
+from domain import RankManifest, Rook, RookNullWarningSet, RookLayer
 
 
 class RookManifest(RankManifest[Rook]):
@@ -35,7 +35,7 @@ class RookManifest(RankManifest[Rook]):
     def __init__(
             self,
             types: Optional[RookLayer] | None = None,
-            nulls: Optional[RookNullGroup] | None = None,
+            nulls: Optional[RookNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class RookManifest(RankManifest[Rook]):
         """
         super().__init__(
             types=types or RookLayer(),
-            nulls=nulls or RookNullGroup(),
+            nulls=nulls or RookNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class RookManifest(RankManifest[Rook]):
         return cast(RookLayer, super().types)
     
     @property
-    def nulls(self) -> RookNullGroup:
-        return cast(RookNullGroup, super().nulls)
+    def nulls(self) -> RookNullWarningSet:
+        return cast(RookNullWarningSet, super().nulls)

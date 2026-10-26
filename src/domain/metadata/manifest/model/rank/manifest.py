@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import RankNullGroup, ModelManifest, Rank, RankLayer
+from domain import RankNullWarningSet, ModelManifest, Rank, RankLayer
 
 T = TypeVar("T", bound="Rank")
 
@@ -38,7 +38,7 @@ class RankManifest(ModelManifest[T], Generic[T]):
     def __init__(
             self,
             types: Optional[RankLayer[T]] | None = None,
-            nulls: Optional[RankNullGroup[T]] | None = None,
+            nulls: Optional[RankNullWarningSet[T]] | None = None,
     ):
         """
         Args:
@@ -52,5 +52,5 @@ class RankManifest(ModelManifest[T], Generic[T]):
         return cast(RankLayer[T], super().types)
     
     @property
-    def nulls(self) -> RankNullGroup[T]:
-        return cast(RankNullGroup[T], super().nulls)
+    def nulls(self) -> RankNullWarningSet[T]:
+        return cast(RankNullWarningSet[T], super().nulls)

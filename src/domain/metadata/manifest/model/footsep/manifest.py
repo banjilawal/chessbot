@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ModelManifest, Footstep, FootstepNullGroup, FootstepLayer
+from domain import ModelManifest, Footstep, FootstepNullWarningSet, FootstepLayer
 
 
 class FootstepManifest(ModelManifest[Footstep]):
@@ -36,7 +36,7 @@ class FootstepManifest(ModelManifest[Footstep]):
     def __init__(
             self,
             types: Optional[FootstepLayer] | None = None,
-            nulls: Optional[FootstepNullGroup] | None = None,
+            nulls: Optional[FootstepNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -45,7 +45,7 @@ class FootstepManifest(ModelManifest[Footstep]):
         """
         super().__init__(
             types=types or FootstepLayer(),
-            nulls=nulls or FootstepNullGroup(),
+            nulls=nulls or FootstepNullWarningSet(),
         )
   
     @property
@@ -53,5 +53,5 @@ class FootstepManifest(ModelManifest[Footstep]):
         return cast(FootstepLayer, super().types)
     
     @property
-    def nulls(self) -> FootstepNullGroup:
-        return cast(FootstepNullGroup, super().nulls)
+    def nulls(self) -> FootstepNullWarningSet:
+        return cast(FootstepNullWarningSet, super().nulls)

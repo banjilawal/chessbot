@@ -18,4 +18,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .group import RankNullGroup
+from .null import RankNullWarningSet

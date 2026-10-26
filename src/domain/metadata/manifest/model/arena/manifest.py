@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Arena, ArenaNullGroup, ArenaLayer, ModelManifest
+from domain import Arena, ArenaNullWarningSet, ArenaLayer, ModelManifest
 
 
 class ArenaManifest(ModelManifest[Arena]):
@@ -35,7 +35,7 @@ class ArenaManifest(ModelManifest[Arena]):
     def __init__(
             self,
             types: Optional[ArenaLayer] | None = None,
-            nulls: Optional[ArenaNullGroup] | None = None,
+            nulls: Optional[ArenaNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class ArenaManifest(ModelManifest[Arena]):
         """
         super().__init__(
             types=types or ArenaLayer(),
-            nulls=nulls or ArenaNullGroup(),
+            nulls=nulls or ArenaNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class ArenaManifest(ModelManifest[Arena]):
         return cast(ArenaLayer, super().types)
     
     @property
-    def nulls(self) -> ArenaNullGroup:
-        return cast(ArenaNullGroup, super().nulls)
+    def nulls(self) -> ArenaNullWarningSet:
+        return cast(ArenaNullWarningSet, super().nulls)

@@ -13,4 +13,4 @@ version: 0.0.2
 from .home import *
 
 # Modules
-from .group import SquareNullGroup
+from .null import SquareNullWarningSet

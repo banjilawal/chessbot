@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, PathWrapperDependency
-from domain import Path, PathManifest, PathNullGroup, PathLayer
+from domain import Path, PathManifest, PathNullWarningSet, PathLayer
 
 
 class PathValidatorToolkit(ModelValidatorToolkit[Path]):
@@ -57,7 +57,7 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
         return cast(PathManifest, super().metadata)
     
     @property
-    def nulls(self) -> PathNullGroup:
+    def nulls(self) -> PathNullWarningSet:
         return self.metadata.nulls
     
     @property

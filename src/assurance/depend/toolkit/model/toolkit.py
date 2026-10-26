@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import ModelValidationLoader, ModelWrapperDependency, ValidatorToolkit
-from domain import Model, ModelManifest, ModelNullGroup, ModelLayer
+from domain import Model, ModelManifest, ModelNullWarningSet, ModelLayer
 
 T = TypeVar("T", bound="Model")
 
@@ -58,7 +58,7 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         return cast(ModelManifest[T], super().metadata)
     
     @property
-    def nulls(self) -> ModelNullGroup[T]:
+    def nulls(self) -> ModelNullWarningSet[T]:
         return self.metadata.nulls
     
     @property

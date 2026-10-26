@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Team, TeamNullGroup, TeamLayer, ModelManifest
+from domain import Team, TeamNullWarningSet, TeamLayer, ModelManifest
 
 
 class TeamManifest(ModelManifest[Team]):
@@ -35,7 +35,7 @@ class TeamManifest(ModelManifest[Team]):
     def __init__(
             self,
             types: Optional[TeamLayer] | None = None,
-            nulls: Optional[TeamNullGroup] | None = None,
+            nulls: Optional[TeamNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class TeamManifest(ModelManifest[Team]):
         """
         super().__init__(
             types=types or TeamLayer(),
-            nulls=nulls or TeamNullGroup(),
+            nulls=nulls or TeamNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class TeamManifest(ModelManifest[Team]):
         return cast(TeamLayer, super().types)
     
     @property
-    def nulls(self) -> TeamNullGroup:
-        return cast(TeamNullGroup, super().nulls)
+    def nulls(self) -> TeamNullWarningSet:
+        return cast(TeamNullWarningSet, super().nulls)

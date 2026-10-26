@@ -25,4 +25,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from layer import ContextNullWarningSet
+from null import ContextNullWarningSet

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Queen, QueenNullGroup, QueenLayer, RankManifest
+from domain import Queen, QueenNullWarningSet, QueenLayer, RankManifest
 
 
 class QueenManifest(RankManifest[Queen]):
@@ -35,7 +35,7 @@ class QueenManifest(RankManifest[Queen]):
     def __init__(
             self,
             types: Optional[QueenLayer] | None = None,
-            nulls: Optional[QueenNullGroup] | None = None,
+            nulls: Optional[QueenNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class QueenManifest(RankManifest[Queen]):
         """
         super().__init__(
             types=types or QueenLayer(),
-            nulls=nulls or QueenNullGroup(),
+            nulls=nulls or QueenNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class QueenManifest(RankManifest[Queen]):
         return cast(QueenLayer, super().types)
     
     @property
-    def nulls(self) -> QueenNullGroup:
-        return cast(QueenNullGroup, super().nulls)
+    def nulls(self) -> QueenNullWarningSet:
+        return cast(QueenNullWarningSet, super().nulls)

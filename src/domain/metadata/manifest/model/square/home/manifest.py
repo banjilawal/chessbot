@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import HomeSquareNullGroup, HomeSquareTypeUnion, SquareManifest
+from domain import HomeSquareNullWarningSet, HomeSquareTypeUnion, SquareManifest
 
 
 class HomeSquareManifest(SquareManifest):
@@ -36,7 +36,7 @@ class HomeSquareManifest(SquareManifest):
     def __init__(
             self,
             types: Optional[HomeSquareTypeUnion] | None = None,
-            nulls: Optional[HomeSquareNullGroup] | None = None,
+            nulls: Optional[HomeSquareNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -45,7 +45,7 @@ class HomeSquareManifest(SquareManifest):
         """
         super().__init__(
             types=types or HomeSquareTypeUnion(),
-            nulls=nulls or HomeSquareNullGroup(),
+            nulls=nulls or HomeSquareNullWarningSet(),
         )
         
     @property
@@ -53,5 +53,5 @@ class HomeSquareManifest(SquareManifest):
         return cast(HomeSquareTypeUnion, super().types)
     
     @property
-    def nulls(self) -> HomeSquareNullGroup:
-        return cast(HomeSquareNullGroup, super().nulls)
+    def nulls(self) -> HomeSquareNullWarningSet:
+        return cast(HomeSquareNullWarningSet, super().nulls)

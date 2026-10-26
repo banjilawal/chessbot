@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ModelManifest, Vector, VectorNullGroup, VectorLayer
+from domain import ModelManifest, Vector, VectorNullWarningSet, VectorLayer
 
 
 class VectorManifest(ModelManifest[Vector]):
@@ -35,7 +35,7 @@ class VectorManifest(ModelManifest[Vector]):
     def __init__(
             self,
             types: Optional[VectorLayer] | None = None,
-            nulls: Optional[VectorNullGroup] | None = None,
+            nulls: Optional[VectorNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class VectorManifest(ModelManifest[Vector]):
         """
         super().__init__(
             types=types or VectorLayer(),
-            nulls=nulls or VectorNullGroup(),
+            nulls=nulls or VectorNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class VectorManifest(ModelManifest[Vector]):
         return cast(VectorLayer, super().types)
     
     @property
-    def nulls(self) -> VectorNullGroup:
-        return cast(VectorNullGroup, super().nulls)
+    def nulls(self) -> VectorNullWarningSet:
+        return cast(VectorNullWarningSet, super().nulls)

@@ -16,4 +16,4 @@ from .stalemate import *
 from .warning import *
 
 # Modules
-from .group import EncounterNullGroup
+from .null import EncounterNullWarningSet

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Game, GameNullGroup, GameLayer, ModelManifest
+from domain import Game, GameNullWarningSet, GameLayer, ModelManifest
 
 
 class GameManifest(ModelManifest[Game]):
@@ -35,7 +35,7 @@ class GameManifest(ModelManifest[Game]):
     def __init__(
             self,
             types: Optional[GameLayer] | None = None,
-            nulls: Optional[GameNullGroup] | None = None,
+            nulls: Optional[GameNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -44,7 +44,7 @@ class GameManifest(ModelManifest[Game]):
         """
         super().__init__(
             types=types or GameLayer(),
-            nulls=nulls or GameNullGroup(),
+            nulls=nulls or GameNullWarningSet(),
         )
         
     @property
@@ -52,5 +52,5 @@ class GameManifest(ModelManifest[Game]):
         return cast(GameLayer, super().types)
     
     @property
-    def nulls(self) -> GameNullGroup:
-        return cast(GameNullGroup, super().nulls)
+    def nulls(self) -> GameNullWarningSet:
+        return cast(GameNullWarningSet, super().nulls)

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, EncounterWrapperDependency
 from domain import (
-    Encounter, EncounterManifest, EncounterNullGroup, EncounterLayer
+    Encounter, EncounterManifest, EncounterNullWarningSet, EncounterLayer
 )
 
 class EncounterValidatorToolkit(ModelValidatorToolkit[Encounter]):
@@ -58,7 +58,7 @@ class EncounterValidatorToolkit(ModelValidatorToolkit[Encounter]):
         return cast(EncounterManifest, super().metadata)
     
     @property
-    def nulls(self) -> EncounterNullGroup:
+    def nulls(self) -> EncounterNullWarningSet:
         return self.metadata.nulls
     
     @property

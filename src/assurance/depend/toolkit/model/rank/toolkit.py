@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, RankWrapperDependency
-from domain import Rank, RankManifest, RankNullGroup, RankLayer
+from domain import Rank, RankManifest, RankNullWarningSet, RankLayer
 
 
 class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
@@ -57,7 +57,7 @@ class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
         return cast(RankManifest, super().metadata)
     
     @property
-    def nulls(self) -> RankNullGroup:
+    def nulls(self) -> RankNullWarningSet:
         return self.metadata.nulls
     
     @property

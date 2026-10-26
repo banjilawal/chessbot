@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ModelManifest, Account, AccountNullGroup, AccountLayer
+from domain import ModelManifest, Account, AccountNullWarningSet, AccountLayer
 
 T = TypeVar("T", bound="Account")
 
@@ -38,7 +38,7 @@ class AccountManifest(ModelManifest[T], Generic[T]):
     def __init__(
             self,
             types: Optional[AccountLayer[T]] | None = None,
-            nulls: Optional[AccountNullGroup[T]] | None = None,
+            nulls: Optional[AccountNullWarningSet[T]] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class AccountManifest(ModelManifest[T], Generic[T]):
         """
         super().__init__(
             types=types or AccountLayer(),
-            nulls=nulls or AccountNullGroup(),
+            nulls=nulls or AccountNullWarningSet(),
         )
 
     @property
@@ -55,5 +55,5 @@ class AccountManifest(ModelManifest[T], Generic[T]):
         return cast(AccountLayer[T], super().types)
 
     @property
-    def nulls(self) -> AccountNullGroup[T]:
-        return cast(AccountNullGroup[T], super().nulls)
+    def nulls(self) -> AccountNullWarningSet[T]:
+        return cast(AccountNullWarningSet[T], super().nulls)

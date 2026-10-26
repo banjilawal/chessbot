@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    CombatantTokenNullGroup, CombatantToken, TokenManifest, CombatantTokenLayer
+    CombatantTokenNullWarningSet, CombatantToken, TokenManifest, CombatantTokenLayer
 )
 
 
@@ -38,7 +38,7 @@ class CombatantTokenManifest(TokenManifest[CombatantToken]):
     def __init__(
             self,
             types: Optional[CombatantTokenLayer] | None = None,
-            nulls: Optional[CombatantTokenNullGroup] | None = None,
+            nulls: Optional[CombatantTokenNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -47,7 +47,7 @@ class CombatantTokenManifest(TokenManifest[CombatantToken]):
         """
         super().__init__(
             types=types or CombatantTokenLayer(),
-            nulls=nulls or CombatantTokenNullGroup(),
+            nulls=nulls or CombatantTokenNullWarningSet(),
         )
     
     @property
@@ -55,5 +55,5 @@ class CombatantTokenManifest(TokenManifest[CombatantToken]):
         return cast(CombatantTokenLayer, super().types)
     
     @property
-    def nulls(self) -> CombatantTokenNullGroup:
-        return cast(CombatantTokenNullGroup, super().nulls)
+    def nulls(self) -> CombatantTokenNullWarningSet:
+        return cast(CombatantTokenNullWarningSet, super().nulls)

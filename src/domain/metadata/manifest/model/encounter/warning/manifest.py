@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    EncounterWarningNullGroup, EncounterWarning, KingWarningLayer,
+    EncounterWarningNullWarningSet, EncounterWarning, KingWarningLayer,
     EncounterManifest
 )
 
@@ -39,7 +39,7 @@ class EncounterWarningManifest(EncounterManifest[EncounterWarning]):
     def __init__(
             self,
             types: Optional[KingWarningLayer] | None = None,
-            nulls: Optional[EncounterWarningNullGroup] | None = None,
+            nulls: Optional[EncounterWarningNullWarningSet] | None = None,
     ):
         """
         Args:
@@ -48,7 +48,7 @@ class EncounterWarningManifest(EncounterManifest[EncounterWarning]):
         """
         super().__init__(
             types=types or KingWarningLayer(),
-            nulls=nulls or EncounterWarningNullGroup(),
+            nulls=nulls or EncounterWarningNullWarningSet(),
         )
     
     @property
@@ -56,5 +56,5 @@ class EncounterWarningManifest(EncounterManifest[EncounterWarning]):
         return cast(KingWarningLayer, super().types)
     
     @property
-    def nulls(self) -> EncounterWarningNullGroup:
-        return cast(EncounterWarningNullGroup, super().nulls)
+    def nulls(self) -> EncounterWarningNullWarningSet:
+        return cast(EncounterWarningNullWarningSet, super().nulls)

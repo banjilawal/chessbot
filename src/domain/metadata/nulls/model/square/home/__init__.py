@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .group import HomeSquareNullGroup
+from .null import HomeSquareNullWarningSet
