@@ -1,7 +1,7 @@
-# src/transit/dispatcher/authorization/crud/insertion/account/dispatcher.py
+# src/transit/dispatcher/authorization/crud/insertion/stack/account/dispatcher.py
 
 """
-Module: transit.dispatcher.authorization.crud.insertion.account.dispatcher
+Module: transit.dispatcher.authorization.crud.insertion.stack.account.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
