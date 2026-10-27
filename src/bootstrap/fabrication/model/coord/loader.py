@@ -74,7 +74,7 @@ class CoordBuildLoader(ModelBuildLoader[Coord]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=CoordBuildRequest,
             null_exception=CoordBuildRequestNullException(),
         )

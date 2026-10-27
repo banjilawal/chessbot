@@ -74,7 +74,7 @@ class FootstepBuildLoader(ModelBuildLoader[Footstep]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=FootstepBuildRequest,
             null_exception=FootstepBuildRequestNullException(),
         )

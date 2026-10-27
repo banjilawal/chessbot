@@ -80,7 +80,7 @@ class VectorContextValidationLoader(ContextValidationLoader[VectorContext]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            item=candidate,
             target_model=VectorContextValidationRequest,
             null_exception=VectorContextValidationRequestNullException(),
         )
@@ -100,7 +100,7 @@ class VectorContextValidationLoader(ContextValidationLoader[VectorContext]):
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
-            candidate=request.item,
+            item=request.item,
             target_model=self.toolkit.types.carrier,
             null_exception=self.toolkit.nulls.carrier,
         )

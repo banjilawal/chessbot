@@ -110,7 +110,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
-            candidate=blueprint,
+            item=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.metadata.types.blueprint,
             blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,

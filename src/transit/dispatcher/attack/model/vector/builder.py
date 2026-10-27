@@ -77,7 +77,7 @@ class VectorAttack(ModelAttack[Vector]):
         
         # Handle the case that the blueprint is not certified safe.
         blueprint_validation = self.attack_toolkit.root_certifier.execute(
-            candidate=blueprint
+            item=blueprint
         )
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.
@@ -93,7 +93,7 @@ class VectorAttack(ModelAttack[Vector]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 VectorBlueprint,
                 blueprint_validation.payload
             )

@@ -94,7 +94,7 @@ class AxisReservoirBuilder(SpaceReservoirBuildDispatcher[AxisReservoir]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(AxisReservoirBlueprint, validation.payload)
+            item=cast(AxisReservoirBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

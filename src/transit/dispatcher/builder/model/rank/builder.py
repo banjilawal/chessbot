@@ -93,7 +93,7 @@ class RankBuilder(ModelBuilder[Rank]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 RankBlueprint,
                 blueprint_validation.payload
             )

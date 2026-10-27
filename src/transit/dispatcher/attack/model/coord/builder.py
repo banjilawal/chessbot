@@ -93,7 +93,7 @@ class CoordAttack(ModelAttack[Coord]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 CoordBlueprint,
                 blueprint_validation.payload
             )

@@ -74,7 +74,7 @@ class ScalarBuildLoader(ModelBuildLoader[Scalar]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=ScalarBuildRequest,
             null_exception=ScalarBuildRequestNullException(),
         )

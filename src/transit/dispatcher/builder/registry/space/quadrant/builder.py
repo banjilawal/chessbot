@@ -94,7 +94,7 @@ class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir])
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(QuadrantReservoirBlueprint, validation.payload)
+            item=cast(QuadrantReservoirBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

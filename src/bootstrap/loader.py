@@ -9,10 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
+from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar
 
-T = TypeVar("T")
+from artifcat import Result
+from util import LoggingLevelRouter
+
+T = TypeVar("T", bound="Result")
 
 class Loader(ABC, Generic[T]):
     pass
+
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, item: Any) -> Result[T]:
+        pass

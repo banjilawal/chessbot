@@ -24,7 +24,7 @@ class AccountContextValidationLoader(
 ):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Boostrap
 
     Responsibilities:
         1.  Run type safety checks on a Candidate for:
@@ -59,7 +59,7 @@ class AccountContextValidationLoader(
         return cast(AccountValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[AccountContextPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[AccountContextPrimeExtract]:
         """
         Extract the AccountBlueprint to validate the candidate.
 
@@ -72,10 +72,10 @@ class AccountContextValidationLoader(
                         -   Not a AccountCarrier
                         -   An empty AccountCarrier.
                 -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a AccountContextPrimeExtract
-                for the success result.
+            2.  Otherwise, pack the original carrier and the blueprint in an
+                AccountContextPrimeExtract for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[AccountContextPrimeExtract]
         Raises:
@@ -85,7 +85,7 @@ class AccountContextValidationLoader(
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=AccountContextValidationRequest,
             null_exception=AccountContextValidationRequestNullException(),
         )

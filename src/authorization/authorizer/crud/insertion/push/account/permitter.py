@@ -73,7 +73,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request cannot be loaded.
-        decision = self.loader.execute(candidate=request)
+        decision = self.loader.execute(item=request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return InsertionDecision.denial(

@@ -90,7 +90,7 @@ class SoutheastQuadrantAttack(QuadrantAttack[SoutheastQuadrant]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(SoutheastQuadrantBlueprint, validation.payload)
+            item=cast(SoutheastQuadrantBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

@@ -121,7 +121,7 @@ class BoardValidator(ModelValidator[Board]):
             )
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
-            candidate=fingerprint,
+            item=fingerprint,
             blueprint_owner_name=fingerprint.domain_class_name,
             blueprint_type=self.toolkit.metadata.types.blueprint,
             blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
@@ -174,7 +174,7 @@ class BoardValidator(ModelValidator[Board]):
             )
         # --- PROCESS_THE_BOARD_BINDER_ATTRIBUTE. ---#
         binder_validation = self.toolkit.wrapper.binder.extract_model.execute(
-            candidate=TeamBinderValidationRequest(
+            item=TeamBinderValidationRequest(
                 item=TeamBinderCarrier(model=fingerprint.binder),
                 id=IdFactory.next_id(class_name="TeamBinderValidationRequest")
             )

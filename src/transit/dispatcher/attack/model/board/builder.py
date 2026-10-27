@@ -93,7 +93,7 @@ class BoardAttack(ModelAttack[Board]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 BoardBlueprint,
                 blueprint_validation.payload
             )

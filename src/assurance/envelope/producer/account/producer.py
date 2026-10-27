@@ -116,7 +116,7 @@ class AccountEnvelopeProducer(RootEnvelopeProducer[Account]):
             )
         # --- PROCESS_THE_ID_ATTRIBUTE. ---#
         id_validation = self.toolkit.blueprint_id_extractor.execute(
-            candidate=blueprint,
+            item=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.types.blueprint,
             blueprint_null_exception=self.toolkit.nulls.blueprint,

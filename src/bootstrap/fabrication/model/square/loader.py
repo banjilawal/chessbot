@@ -74,7 +74,7 @@ class SquareBuildLoader(ModelBuildLoader[Square]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=SquareBuildRequest,
             null_exception=SquareBuildRequestNullException(),
         )

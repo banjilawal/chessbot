@@ -74,7 +74,7 @@ class TeamBuildLoader(ModelBuildLoader[Team]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=TeamBuildRequest,
             null_exception=TeamBuildRequestNullException(),
         )

@@ -93,7 +93,7 @@ class ArenaAttack(ModelAttack[Arena]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 ArenaBlueprint,
                 blueprint_validation.payload
             )

@@ -59,7 +59,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
-            candidate=target,
+            item=target,
             target_model=ManeuverPermissionRequest,
             null_exception=ManeuverPermissionRequestNullException(),
         )

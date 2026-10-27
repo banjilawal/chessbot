@@ -74,7 +74,7 @@ class GameBuildLoader(ModelBuildLoader[Game]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=GameBuildRequest,
             null_exception=GameBuildRequestNullException(),
         )

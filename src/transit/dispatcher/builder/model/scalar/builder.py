@@ -93,7 +93,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 ScalarBlueprint,
                 blueprint_validation.payload
             )

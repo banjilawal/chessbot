@@ -92,7 +92,7 @@ class NorthEastQuadrantAttack(
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(NortheastQuadrantBlueprint, validation.payload)
+            item=cast(NortheastQuadrantBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

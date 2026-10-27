@@ -93,7 +93,7 @@ class SquareBuilder(ModelBuilder[Square]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(
+            item=cast(
                 SquareBlueprint,
                 blueprint_validation.payload
             )

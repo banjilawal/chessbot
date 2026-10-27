@@ -74,7 +74,7 @@ class BoardBuildLoader(ModelBuildLoader[Board]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            candidate=request,
+            item=request,
             target_model=BoardBuildRequest,
             null_exception=BoardBuildRequestNullException(),
         )
