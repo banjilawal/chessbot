@@ -13,6 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from domain import Blueprint
+from domain.blueprint.state import BlueprintState
 from transit import EntityCarrier
 
 T = TypeVar("T")
@@ -65,20 +66,34 @@ class PrimeExtract(ABC, Generic[T]):
     def recipient_wants_model(self) -> bool:
         return (
                 self._reference.has_model and
-                self.blueprint_does_not_exist
+                self.secure_blueprint_exists
         )
     
     @property
     def recipient_wants_blueprint(self) -> bool:
         return (
                 self._reference.has_blueprint and
-                self.blueprint_exists
+                self.secure_blueprint_exists
         )
     
     @property
-    def blueprint_exists(self) -> bool:
-        return self._blueprint is not None
+    def no_secure_blueprint_exist(self):
+        return not self.secure_blueprint_exists
     
     @property
-    def blueprint_does_not_exist(self):
-        return not self.blueprint_exists
+    def secure_blueprint_exists(self) -> bool:
+        return (
+                self._blueprint is not None and
+                self._blueprint.state == BlueprintState.VALIDATED_BLUEPRINT
+        )
+
+    @property
+    def is_consistent(self) -> bool:
+        return (
+            self._blueprint is None or
+            self.secure_blueprint_exists
+        )
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.is_consistent
