@@ -27,35 +27,36 @@ class Context(ABC, Generic[T]):
         1.  Supply an attribute-value tuple used to search a DomainObjectCollection.
                 
     Attributes:
+        capacity: int
         id: Optional[int]
         name: Optional[str]
-        max_size: int
         
     Provides:
         -   def to_dict() -> Dict[str, Any]
         
     Super Class:
     """
+    
+    _capacity: int
     _id: Optional[int]
     _name: Optional[str]
-    _max_size: int
 
     def __init__(
             self,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
-            max_size: Optional[int] | None = None,
+            capacity: Optional[int] | None = None,
     ):
         """
         Args:
             id: Optional[int]
             name: Optional[str]
-            max_size: Optional[int]
+            capacity: Optional[int]
         """
         super().__init__()
         self._id = id
         self._name = name
-        self._max_size = max_size or 1
+        self._capacity = capacity or 1
 
     @property
     def id(self) -> Optional[int]:
@@ -66,16 +67,16 @@ class Context(ABC, Generic[T]):
         return self._name
     
     @property
-    def max_size(self) -> int:
-        return self._max_size
+    def capacity(self) -> int:
+        return self._capacity
     
     @property
     def is_empty(self) -> bool:
         return self.size == 0
     
     @property
-    def is_above_max_size(self) -> bool:
-        return self.size > self._max_size
+    def exceeds_capacity(self) -> bool:
+        return self.size > self._capacity
     
     @property
     def size(self) -> int:

@@ -11,6 +11,6 @@ from __future__ import annotations
 from enum import Enum, auto
 
 class ValidationState(Enum):
-    VALIDATED = auto(),
+    BLUEPRINT_VALIDATED = auto(),
     NOT_VALIDATED = auto(),
     

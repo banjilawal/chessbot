@@ -12,7 +12,6 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from domain import AccountContext, ContextBlueprint
-from err import AccountContextNullException
 
 
 class AccountContextBlueprint(ContextBlueprint[AccountContext]):
@@ -25,10 +24,12 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
          
      Attributes:
         id: Optional[int]
-        firstname: Optional[str]
-        lastname: Optional[str]
         email: Optional[str]
-        email_color: Optional[firstnameColor]
+        lastname: Optional[str]
+        firstname: Optional[str]
+        machine_name: Optional[str]
+        human_account: Optional[bool]
+        machine_account: Optional[bool]
         
         domain_class: Type[AccountContext]
         domain_null_exception: AccountContextNullException
@@ -38,25 +39,34 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
      Super Class:
         ContextBlueprint
      """
-
+    
+    _email: Optional[str]
     _firstname: Optional[str]
     _lastname: Optional[str]
-    _email: Optional[str]
+    _machine_name: Optional[str]
+    _human_account: Optional[bool]
+    _machine_account: Optional[bool]
     
     def __init__(
             self,
             id: Optional[int] | None = None,
+            email: Optional[str] | None = None,
             firstname: Optional[str] | None = None,
             lastname: Optional[str] | None = None,
-            email: Optional[str] | None = None,
+            machine_name: Optional[str] | None = None,
+            human_account: Optional[bool] | None = None,
+            machine_account: Optional[bool] | None = None,
             domain_class: Optional[Type[AccountContext]] | None = None,
             domain_null_exception: Optional[AccountContextNullException] | None = None,
     ):
         """
         Args:
+            email: Optional[str]
             firstname: Optional[str]
             lastname: Optional[str]
-            email: Optional[str]
+            machine_name: Optional[str]
+            human_account: Optional[str]
+            machine_account: Optional[str
             domain_class: Type[AccountContext]
             domain_null_exception: AccountContextNullException
         """
@@ -65,9 +75,12 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
             domain_class=domain_class or Type[AccountContext],
             domain_null_exception=domain_null_exception or AccountContextNullException(),
         )
-        self._firstname = firstname
-        self._lastname = lastname
         self._email = email
+        self._lastname = lastname
+        self._firstname = firstname
+        self._machine_name = machine_name
+        self._human_account = human_account
+        self._machine_account = machine_account
     
     @property
     def domain_class(self) -> Type[AccountContext]:
@@ -78,6 +91,10 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
         return  cast(AccountContextNullException, super().domain_null_exception)
     
     @property
+    def email(self) -> Optional[str]:
+        return self._email
+    
+    @property
     def firstname(self) -> Optional[str]:
         return self._firstname
     
@@ -86,21 +103,24 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
         return self._lastname
     
     @property
-    def email(self) -> Optional[str]:
-        return self._email
+    def machine_name(self) -> Optional[str]:
+        return self._machine_name
     
     @property
+    def human_account(self) -> Optional[bool]:
+        return self._human_account
+    
+    @property
+    def machine_account(self) -> Optional[bool]:
+        return self._machine_account
+    
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "firstname": self._firstname,
-            "lastname": self._lastname,
             "email": self._email,
+            "lastname": self._lastname,
+            "firstname": self._firstname,
+            "machine_name": self._machine_name,
+            "human_account": self._human_account,
+            "machine_account": self._machine_account,
         }
-    
-    
-    
-    
-    
-
-

@@ -13,7 +13,8 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, ContextLayerToolkit, Validator
+from assurance import Validator
+from bootstrap import ContextValidationLoader
 from domain import Context
 from transit import ContextCarrier
 from util import LoggingLevelRouter
@@ -21,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Context")
 
 
-class ContextValidator(Validator[], ABC, Generic[T]):
+class ContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
         - Integrity Assurance Worker
@@ -31,7 +32,7 @@ class ContextValidator(Validator[], ABC, Generic[T]):
         2.  Run safety checks on contexts and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        loader: ContextLoader[T]
+        loader: ContextValidationLoader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ContextCarrier[T]]:
@@ -50,10 +51,6 @@ class ContextValidator(Validator[], ABC, Generic[T]):
     @property
     def loader(self) -> ContextValidationLoader[T]:
         return cast(ContextValidationLoader[T], super().loader)
-    
-    @property
-    def toolkit(self) -> ContextLayerToolkit[T]:
-        return self.toolkit
     
     @abstractmethod
     @LoggingLevelRouter.monitor

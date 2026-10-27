@@ -10,11 +10,8 @@ version: 0.0.2
 # =========== TRANSIT.ROUTE.VALIDATION PACKAGE ===========#
 
 # Packages
-from .account import *
-from .encounter import *
-from .rank import *
-from .square import *
-from .token import *
+from .context import *
+from .model import *
 
 # Module
 from .router import ValidationRouter

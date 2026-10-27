@@ -1,4 +1,4 @@
-# src/transit/route/validation/envelope/router.py
+# src/transit/route/validation/router.py
 
 """
 Module: transit.route.validation.router
@@ -14,13 +14,12 @@ from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
 from assurance import LayerToolkit
-from domain import Model
-from transit import ModelCarrier, ProductEnvelope
+from transit import ModelCarrier, ProductEnvelope, Router
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T")
 
-class ValidationRouter(ABC, Generic[T]):
+class ValidationRouter(Router[ValidationResult], ABC, Generic[T]):
     """
     Role
         -   Router

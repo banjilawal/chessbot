@@ -11,6 +11,9 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
+from domain import AccountContext, AccountContextBlueprint, ContextPrimeExtract
+from transit import AccountContextCarrier
+
 
 class AccountContextPrimeExtract(ContextPrimeExtract[AccountContext]):
     """

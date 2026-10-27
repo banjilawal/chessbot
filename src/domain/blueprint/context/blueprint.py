@@ -28,7 +28,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Context.
          
      Attributes:
-        max_size: int
+        capacity: int
         flag_state: FlagState
 
         domain_class: Type[T]
@@ -47,7 +47,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         Blueprint
      """
     
-    _max_size: int
+    _capacity: int
     _flag_state: FlagState
     _id: Optional[int]
     _name: Optional[str]
@@ -58,7 +58,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
             domain_null_exception: ContextNullException,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
-            max_size: Optional[int] | None = None,
+            capacity: Optional[int] | None = None,
     ):
         """
         Args:
@@ -66,7 +66,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
             domain_null_exception: ContextNullException
             id: Optional[int]
             name: Optional[str]
-            max_size: Optional[int]
+            capacity: Optional[int]
         """
         super().__init__(
             domain_class=domain_class,
@@ -74,7 +74,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         )
         self._id = id
         self._name = name
-        self._max_size = max_size or 1
+        self._capacity = capacity or 1
         self._flag_state = FlagState.UNKNOWN
         
     @property
@@ -95,7 +95,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     
     @property
     def capacity(self) -> int:
-        return self._max_size
+        return self._capacity
     
     @property
     def size(self) -> int:
@@ -124,6 +124,10 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     @property
     def is_valid_size(self) -> bool:
         return 1 <= self.size < self.capacity + 1
+    
+    @property
+    def is_wrong_size(self) -> bool:
+        return not self.is_valid_size
     
     @property
     @abstractmethod

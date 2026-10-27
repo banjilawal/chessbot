@@ -10,6 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
+from os import MFD_ALLOW_SEALING
 from typing import Generic, Optional, TypeVar, cast
 
 from domain import Context, ContextBlueprint, PrimeExtract
@@ -54,4 +55,17 @@ class ContextPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
     @property
     def blueprint(self) -> Optional[ContextBlueprint[T]]:
         return cast(ContextBlueprint[T], super().blueprint)
+        
+    @property
+    def is_valid_context_size(self) -> bool:
+        blueprint =  self.blueprint
+        if blueprint is None:
+            return False
+        return blueprint.is_valid_size
+    
+    @property
+    def has_wrong_context_size(self) -> bool:
+        return not self.is_valid_context_size
+        
+ 
     

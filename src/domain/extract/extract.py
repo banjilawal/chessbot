@@ -12,8 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from domain import Blueprint
-from domain.blueprint.state import BlueprintState
+from domain import Blueprint, ValidationState
 from transit import EntityCarrier
 
 T = TypeVar("T")
@@ -77,6 +76,14 @@ class PrimeExtract(ABC, Generic[T]):
         )
     
     @property
+    def blueprint_exists(self) -> bool:
+        return self._blueprint is None
+    
+    @property
+    def no_blueprint_exists(self) -> bool:
+        return not self.blueprint_exists
+    
+    @property
     def no_secure_blueprint_exist(self):
         return not self.secure_blueprint_exists
     
@@ -84,7 +91,7 @@ class PrimeExtract(ABC, Generic[T]):
     def secure_blueprint_exists(self) -> bool:
         return (
                 self._blueprint is not None and
-                self._blueprint.validation_state == BlueprintState.VALIDATED
+                self._blueprint.validation_state == ValidationState.BLUEPRINT_VALIDATED
         )
 
     @property

@@ -71,7 +71,7 @@ class Blueprint(ABC, Generic[T]):
     def validation_state(self, other: ValidationState):
         if (
                 self._validation_state != ValidationState.NOT_VALIDATED and
-                other == ValidationState.VALIDATED
+                other == ValidationState.BLUEPRINT_VALIDATED
         ):
             self._validation_state = other
     
@@ -102,5 +102,5 @@ class Blueprint(ABC, Generic[T]):
     
     def mark_as_validated(self):
         if self._validation_state == ValidationState.NOT_VALIDATED:
-            self._validation_state = ValidationState.VALIDATED
+            self._validation_state = ValidationState.BLUEPRINT_VALIDATED
 

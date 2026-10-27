@@ -12,6 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
+from artifcat import Result
+
 T = TypeVar("T", bound="Result")
 
 class Router(ABC, Generic[T]):
