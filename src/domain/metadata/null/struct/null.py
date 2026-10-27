@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Struct, NullExceptionGroup
+from domain import Struct, NullWarningSet
 from err import (
     StructCarrierNullException, StructBlueprintNullException, StructNullException
 )
@@ -20,7 +20,7 @@ from err import (
 T = TypeVar("T", bound="Struct")
 
 
-class StructNullWarningSet(NullExceptionGroup[T], ABC, Generic[T]):
+class StructNullWarningSet(NullWarningSet[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -36,7 +36,7 @@ class StructNullWarningSet(NullExceptionGroup[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

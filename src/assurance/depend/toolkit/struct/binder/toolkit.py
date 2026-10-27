@@ -12,54 +12,54 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import BinderDependency, StructValidatorToolkit
+from assurance import BinderServiceDependency, StructLayerToolkit
 from domain import Binder, BinderManifest, BinderNullWarningSet, BinderLayer
 
 T = TypeVar("T", bound="Binder")
 
 
-class BinderValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
+class BinderLayerToolkit(StructLayerToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
-            wrapper: BinderWrapperDependency[T]
-            metadata: BinderManifest[T]
+            wrapper: BinderServiceDependency[T]
+            manifest: BinderManifest[T]
 
     Provides:
 
     Super Class:
-        StructValidatorToolkit
+        StructLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: BinderDependency[T],
-            metadata: BinderManifest[T],
+            dependency: BinderServiceDependency[T],
+            manifest: BinderManifest[T],
     ):
         """
-            wrapper: BinderWrapperDependency[T]
-            metadata: BinderManifest[T]
+            wrapper: BinderServiceDependency[T]
+            manifest: BinderManifest[T]
         """
-        super().__init__(wrapper=wrapper, metadata=metadata)
+        super().__init__(dependency=dependency, manifest=manifest)
     
     
     @property
-    def wrapper(self) -> BinderDependency[T]:
-        return cast(BinderDependency, super().wrapper)
+    def dependency(self) -> BinderServiceDependency[T]:
+        return cast(BinderServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> BinderManifest[T]:
-        return cast(BinderManifest, super().metadata)
+    def manifest(self) -> BinderManifest[T]:
+        return cast(BinderManifest, super().manifest)
     
     @property
     def nulls(self) -> BinderNullWarningSet[T]:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> BinderLayer[T]:
-        return self.metadata.types
+        return self.manifest.types

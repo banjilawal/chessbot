@@ -33,7 +33,7 @@ class PawnNullWarningSet(RankNullWarningSet[Pawn]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

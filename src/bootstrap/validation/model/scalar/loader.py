@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, ScalarValidatorToolkit
+from assurance import ModelValidationLoader, ScalarLayerToolkit
 from domain import Scalar, ScalarPrimeExtract
 from err import (
     ScalarCarrierEmptyException, ScalarValidationLoaderException, ScalarValidationRequestNullException
@@ -35,7 +35,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
             -   ScalarBlueprint
 
     Attributes:
-        toolkit: ScalarValidatorToolkit
+        toolkit: ScalarLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
     
     def __init__(
             self,
-            toolkit: Optional[ScalarValidatorToolkit] | None = None,
+            toolkit: Optional[ScalarLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ScalarValidatorToolkit]
+            toolkit: Optional[ScalarLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or ScalarValidatorToolkit())
+        super().__init__(toolkit=toolkit or ScalarLayerToolkit())
     
     @property
-    def toolkit(self) -> ScalarValidatorToolkit:
-        return cast(ScalarValidatorToolkit, super().toolkit)
+    def toolkit(self) -> ScalarLayerToolkit:
+        return cast(ScalarLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ScalarPrimeExtract]:

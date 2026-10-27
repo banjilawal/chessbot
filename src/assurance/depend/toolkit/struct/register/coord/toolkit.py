@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import RegisterValidatorToolkit, CoordRegisterDependency
+from assurance import RegisterLayerToolkit, CoordRegisterDependency
 from domain import (
     CoordRegister, CoordRegisterManifest, CoordRegisterNullWarningSet,
     CoordRegisterLayer
 )
 
 
-class CoordRegisterValidatorToolkit(RegisterValidatorToolkit[CoordRegister]):
+class CoordRegisterLayerToolkit(RegisterLayerToolkit[CoordRegister]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: CoordRegisterDependency
-            metadata: CoordRegisterManifest
+            manifest: CoordRegisterManifest
 
     Provides:
 
     Super Class:
-       RegisterValidatorToolkit
+       RegisterLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[CoordRegisterDependency] | None = None,
-            metadata: Optional[CoordRegisterManifest] | None = None,
+            dependency: Optional[CoordRegisterDependency] | None = None,
+            manifest: Optional[CoordRegisterManifest] | None = None,
     ):
         """
             wrapper: Optional[CoordRegisterDependency]
-            metadata: Optional[CoordRegisterManifest]
+            manifest: Optional[CoordRegisterManifest]
         """
         super().__init__(
-            wrapper=wrapper or CoordRegisterDependency(),
-            metadata=metadata or CoordRegisterManifest(),
+            dependency=dependency or CoordRegisterDependency(),
+            manifest=manifest or CoordRegisterManifest(),
         )
     
     @property
-    def wrapper(self) -> CoordRegisterDependency:
-        return cast(CoordRegisterDependency, super().wrapper)
+    def dependency(self) -> CoordRegisterDependency:
+        return cast(CoordRegisterDependency, super().dependency)
     
     @property
-    def metadata(self) -> CoordRegisterManifest:
-        return cast(CoordRegisterManifest, super().metadata)
+    def manifest(self) -> CoordRegisterManifest:
+        return cast(CoordRegisterManifest, super().manifest)
     
     @property
     def nulls(self) -> CoordRegisterNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> CoordRegisterLayer:
-        return self.metadata.types
+        return self.manifest.types

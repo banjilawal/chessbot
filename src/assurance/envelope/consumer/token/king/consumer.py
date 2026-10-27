@@ -37,7 +37,7 @@ class KingTokenEnvelopeConsumer(
         1.  Assure a KingToken covered by a RootTokenEnvelope is safe.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: TokenLayerToolkit
 
     Provides:
         -   def execute(
@@ -170,7 +170,7 @@ class KingTokenEnvelopeConsumer(
                 )
             )
         # --- START_THE_ALERT_VALIDATION_PROCESS ---#
-        alert_validation = self.toolkit.wrapper.alert.extract_model(
+        alert_validation = self.toolkit.dependency.alert.extract_model(
             request=AlertValidationRequest(
                 item=AlertCarrier(model=blueprint.alert),
                 id=IdFactory.next_id(class_name="AlertValidationRequest")
@@ -191,7 +191,7 @@ class KingTokenEnvelopeConsumer(
         # --- START_THE_POTENTAIL_DESTINATION_VALIDATION_PROCESS ---#
         potential_destination = blueprint.potential_destination
         if potential_destination is not None:
-            potential_destination_validation = self.toolkit.wrapper.square.extract_model(
+            potential_destination_validation = self.toolkit.dependency.square.extract_model(
                 request=SquareValidationRequest(
                     item=SquareCarrier(model=blueprint.potential_destination),
                     id=IdFactory.next_id(class_name="SquareValidationRequest")

@@ -37,7 +37,7 @@ class CombatantTokenEnvelopeConsumer(
         1.  Assure a CombatantToken covered by a RootTokenEnvelope is safe.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: TokenLayerToolkit
 
     Provides:
         -   def execute(

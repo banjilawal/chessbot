@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, TeamWrapperDependency
+from assurance import ModelLayerToolkit, TeamServiceDependency
 from domain import Team, TeamManifest, TeamNullWarningSet, TeamLayer
 
 
-class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
+class TeamLayerToolkit(ModelLayerToolkit[Team]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Team attribute validators and type metadata.
+        1.  Single source of truth for Team attribute validators and type manifest.
 
     Attributes:
         helper: TeamManifest
-        metadata: TeamWrapperDependency
+        manifest: TeamServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[TeamManifest] | None = None,
-            wrapper: Optional[TeamWrapperDependency] | None = None,
+            manifest: Optional[TeamManifest] | None = None,
+            dependency: Optional[TeamServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[TeamManifest]
-            metadata: Optional[TeamWrapperDependency]
+            dependency: Optional[TeamManifest]
+            manifest: Optional[TeamServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or TeamWrapperDependency(),
-            metadata=metadata or TeamManifest(),
+            dependency=dependency or TeamServiceDependency(),
+            manifest=manifest or TeamManifest(),
         )
     
     @property
-    def wrapper(self) -> TeamWrapperDependency:
-        return cast(TeamWrapperDependency, super().wrapper)
+    def dependency(self) -> TeamServiceDependency:
+        return cast(TeamServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> TeamManifest:
-        return cast(TeamManifest, super().metadata)
+    def manifest(self) -> TeamManifest:
+        return cast(TeamManifest, super().manifest)
     
     @property
     def nulls(self) -> TeamNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> TeamLayer:
-        return self.metadata.types
+        return self.manifest.types

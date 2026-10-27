@@ -32,7 +32,7 @@ class PawnEnvelopeConsumer(RankEnvelopeConsumer[Pawn]):
         1.  Assure a Pawn covered by a RootRankEnvelope is safe.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(

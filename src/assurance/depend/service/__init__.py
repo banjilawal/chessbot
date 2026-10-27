@@ -14,4 +14,4 @@ from .model import *
 from .struct import *
 
 # Module
-from .depend import Dependency
+from .depend import ServiceDependency

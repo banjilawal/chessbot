@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import (
     CombatantTokenEnvelopeConsumer, KingTokenEnvelopeConsumer, PawnTokenEnvelopeConsumer,
-    TokenValidatorToolkit
+    TokenLayerToolkit
 )
 from domain import Token
 from err import RootTokenEnvelopeNullException, TokenValidationRouteMissingException, TokenValidationRouterException
@@ -32,7 +32,7 @@ class TokenValidationRouter(ValidationRouter[Token]):
             by Carrier type.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: TokenLayerToolkit
         pawn_consumer: PawnTokenEnvelopeConsumer
         king_consumer: KingTokenEnvelopeConsumer
         combatant_consumer: CombatantTokenEnvelopeConsumer
@@ -52,24 +52,24 @@ class TokenValidationRouter(ValidationRouter[Token]):
             pawn_consumer: Optional[PawnTokenEnvelopeConsumer] | None = None,
             king_consumer: Optional[KingTokenEnvelopeConsumer] | None = None,
             combatant_consumer: Optional[CombatantTokenEnvelopeConsumer] | None = None,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            toolkit: Optional[TokenLayerToolkit] | None = None,
     ):
         """
         Args:
             pawn_consumer: Optional[PawnTokenEnvelopeConsumer]
             king_consumer: Optional[KingTokenEnvelopeConsumer]
             combatant_consumer: Optional[CombatantTokenEnvelopeConsumer]
-            toolkit: Optional[TokenValidatorToolkit]
+            toolkit: Optional[TokenLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
+        super().__init__(toolkit=toolkit or TokenLayerToolkit())
         self._pawn_consumer = pawn_consumer or PawnTokenEnvelopeConsumer()
         self._king_consumer = king_consumer or KingTokenEnvelopeConsumer()
         self._combatant_consumer = combatant_consumer or CombatantTokenEnvelopeConsumer()
 
     
     @property
-    def toolkit(self) -> TokenValidatorToolkit:
-        return cast(TokenValidatorToolkit, super().toolkit)
+    def toolkit(self) -> TokenLayerToolkit:
+        return cast(TokenLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, envelope: RootTokenEnvelope) -> ValidationResult[TokenCarrier]:

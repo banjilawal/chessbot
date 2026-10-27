@@ -35,7 +35,7 @@ class AccountNullWarningSet(ModelNullWarningSet[T], Generic[T]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

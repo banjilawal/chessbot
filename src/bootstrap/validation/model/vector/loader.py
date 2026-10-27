@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, VectorValidatorToolkit
+from assurance import ModelValidationLoader, VectorLayerToolkit
 from domain import Vector, VectorPrimeExtract
 from err import (
     VectorCarrierEmptyException, VectorValidationLoaderException, VectorValidationRequestNullException
@@ -35,7 +35,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
             -   VectorBlueprint
 
     Attributes:
-        toolkit: VectorValidatorToolkit
+        toolkit: VectorLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
     
     def __init__(
             self,
-            toolkit: Optional[VectorValidatorToolkit] | None = None,
+            toolkit: Optional[VectorLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[VectorValidatorToolkit]
+            toolkit: Optional[VectorLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or VectorValidatorToolkit())
+        super().__init__(toolkit=toolkit or VectorLayerToolkit())
     
     @property
-    def toolkit(self) -> VectorValidatorToolkit:
-        return cast(VectorValidatorToolkit, super().toolkit)
+    def toolkit(self) -> VectorLayerToolkit:
+        return cast(VectorLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorPrimeExtract]:

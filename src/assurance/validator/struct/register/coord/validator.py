@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidator, CoordRegisterLoader, CoordRegisterValidatorToolkit
+from assurance import RegisterValidator, CoordRegisterLoader, CoordRegisterLayerToolkit
 from domain import Coord, CoordRegister
 from err import CoordRegisterConsistencyException, CoordRegisterValidatorException
 from exchange import CoordValidationRequest
@@ -54,7 +54,7 @@ class CoordRegisterValidator(RegisterValidator[CoordRegister]):
         return cast(CoordRegisterLoader, super().loader)
     
     @property
-    def toolkit(self) -> CoordRegisterValidatorToolkit:
+    def toolkit(self) -> CoordRegisterLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -119,7 +119,7 @@ class CoordRegisterValidator(RegisterValidator[CoordRegister]):
         entry = struct.to_dict
         endpoints: Dict[str, Coord] = {}
         for key in struct.to_dict:
-            coord_validation = self.toolkit.wrapper.coord.extract_model(
+            coord_validation = self.toolkit.dependency.coord.extract_model(
                 request=CoordValidationRequest(
                     item=CoordCarrier(model=entry[key]),
                     id=IdFactory.next_id(class_name="CoordRegisterRequest")

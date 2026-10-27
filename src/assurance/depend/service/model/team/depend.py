@@ -12,29 +12,29 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Team
 from exchange import (
     BoardValidationService, PlayerValidationService
 )
 
 
-class TeamDependency(ModelDependency[Team]):
+class TeamServiceDependency(ServiceDependency[Team]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy TeamValidator's ResponseService dependencies.
+        1.  Satisfy TeamValidator's ValidationService dependencies.
 
     Attributes:
-        board: BoardValidatorResponseService
-        owner: PlayerValidatorResponseService
+        board: BoardValidatorValidationService
+        owner: PlayerValidatorValidationService
 
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _board: BoardValidationService
     _owner: PlayerValidationService
@@ -46,8 +46,8 @@ class TeamDependency(ModelDependency[Team]):
     ):
         """
         Args:
-            board: Optional[BoardValidatorResponseService]
-            owner: Optional[PlayerValidatorResponseService]
+            board: Optional[BoardValidatorValidationService]
+            owner: Optional[PlayerValidatorValidationService]
         """
         super().__init__()
         self._board = board or BoardValidationService()

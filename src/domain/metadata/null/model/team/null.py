@@ -33,7 +33,7 @@ class TeamNullWarningSet(ModelNullWarningSet[Team]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

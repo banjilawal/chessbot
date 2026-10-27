@@ -33,7 +33,7 @@ class VectorNullWarningSet(ModelNullWarningSet[Vector]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

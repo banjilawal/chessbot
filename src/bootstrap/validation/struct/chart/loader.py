@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ChartValidatorToolkit, StructValidationLoader
+from assurance import ChartLayerToolkit, StructValidationLoader
 from domain import Chart, Chart
 from util import LoggingLevelRouter
 
@@ -41,16 +41,16 @@ class ChartValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
         Loader
     """
     
-    def __init__(self, toolkit: ChartValidatorToolkit[T]):
+    def __init__(self, toolkit: ChartLayerToolkit[T]):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            toolkit: LayerToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> ChartValidatorToolkit[T]:
-        return cast(ChartValidatorToolkit[T], super().toolkit)
+    def toolkit(self) -> ChartLayerToolkit[T]:
+        return cast(ChartLayerToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

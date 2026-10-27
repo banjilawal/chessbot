@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, ScalarWrapperDependency
+from assurance import ModelLayerToolkit, ScalarServiceDependency
 from domain import Scalar, ScalarManifest, ScalarNullWarningSet, ScalarLayer
 
 
-class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
+class ScalarLayerToolkit(ModelLayerToolkit[Scalar]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Scalar attribute validators and type metadata.
+        1.  Single source of truth for Scalar attribute validators and type manifest.
 
     Attributes:
         helper: ScalarManifest
-        metadata: ScalarWrapperDependency
+        manifest: ScalarServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[ScalarManifest] | None = None,
-            wrapper: Optional[ScalarWrapperDependency] | None = None,
+            manifest: Optional[ScalarManifest] | None = None,
+            dependency: Optional[ScalarServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[ScalarManifest]
-            metadata: Optional[ScalarWrapperDependency]
+            dependency: Optional[ScalarManifest]
+            manifest: Optional[ScalarServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or ScalarWrapperDependency(),
-            metadata=metadata or ScalarManifest(),
+            dependency=dependency or ScalarServiceDependency(),
+            manifest=manifest or ScalarManifest(),
         )
     
     @property
-    def wrapper(self) -> ScalarWrapperDependency:
-        return cast(ScalarWrapperDependency, super().wrapper)
+    def dependency(self) -> ScalarServiceDependency:
+        return cast(ScalarServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> ScalarManifest:
-        return cast(ScalarManifest, super().metadata)
+    def manifest(self) -> ScalarManifest:
+        return cast(ScalarManifest, super().manifest)
     
     @property
     def nulls(self) -> ScalarNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> ScalarLayer:
-        return self.metadata.types
+        return self.manifest.types

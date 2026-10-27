@@ -12,20 +12,20 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Square
 from exchange import (
     BoardValidationService, CoordValidationService, TokenValidationService
 )
 
 
-class SquareDependency(ModelDependency[Square]):
+class SquareServiceDependency(ServiceDependency[Square]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy SqaureValidator's ResponseService dependencies.
+        1.  Satisfy SqaureValidator's ValidationService dependencies.
 
     Attributes:
         board: BoardValidationService
@@ -35,7 +35,7 @@ class SquareDependency(ModelDependency[Square]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _board: BoardValidationService
     _coord: CoordValidationService

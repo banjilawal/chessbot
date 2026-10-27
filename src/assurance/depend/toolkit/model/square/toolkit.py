@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, SquareWrapperDependency
+from assurance import ModelLayerToolkit, SquareServiceDependency
 from domain import Square, SquareManifest, SquareNullWarningSet, SquareLayer
 
 
-class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
+class SquareLayerToolkit(ModelLayerToolkit[Square]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Square attribute validators and type metadata.
+        1.  Single source of truth for Square attribute validators and type manifest.
 
     Attributes:
         helper: SquareManifest
-        metadata: SquareWrapperDependency
+        manifest: SquareServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[SquareManifest] | None = None,
-            wrapper: Optional[SquareWrapperDependency] | None = None,
+            manifest: Optional[SquareManifest] | None = None,
+            dependency: Optional[SquareServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[SquareManifest]
-            metadata: Optional[SquareWrapperDependency]
+            dependency: Optional[SquareManifest]
+            manifest: Optional[SquareServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or SquareWrapperDependency(),
-            metadata=metadata or SquareManifest(),
+            dependency=dependency or SquareServiceDependency(),
+            manifest=manifest or SquareManifest(),
         )
     
     @property
-    def wrapper(self) -> SquareWrapperDependency:
-        return cast(SquareWrapperDependency, super().wrapper)
+    def dependency(self) -> SquareServiceDependency:
+        return cast(SquareServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> SquareManifest:
-        return cast(SquareManifest, super().metadata)
+    def manifest(self) -> SquareManifest:
+        return cast(SquareManifest, super().manifest)
     
     @property
     def nulls(self) -> SquareNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> SquareLayer:
-        return self.metadata.types
+        return self.manifest.types

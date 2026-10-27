@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, RankValidatorToolkit
+from assurance import ContextValidationLoader, RankLayerToolkit
 from domain import Rank, RankContextPrimeExtract
 from err import (
     RankCarrierEmptyException, RankContextValidationLoaderException, RankContextValidationRequestNullException
@@ -35,7 +35,7 @@ class RankContextValidationLoader(ContextValidationLoader[RankContext]):
             -   RankBlueprint
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class RankContextValidationLoader(ContextValidationLoader[RankContext]):
     
     def __init__(
             self,
-            toolkit: Optional[RankValidatorToolkit] | None = None,
+            toolkit: Optional[RankLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[RankValidatorToolkit]
+            toolkit: Optional[RankLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or RankValidatorToolkit())
+        super().__init__(toolkit=toolkit or RankLayerToolkit())
     
     @property
-    def toolkit(self) -> RankValidatorToolkit:
-        return cast(RankValidatorToolkit, super().toolkit)
+    def toolkit(self) -> RankLayerToolkit:
+        return cast(RankLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[RankContextPrimeExtract]:

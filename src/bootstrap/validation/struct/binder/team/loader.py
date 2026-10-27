@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import BinderValidationLoader, TeamBinderValidatorToolkit
+from assurance import BinderValidationLoader, TeamBinderLayerToolkit
 from domain import TeamBinder, TeamBinderPrimeExtract
 from err import (
     TeamBinderCarrierEmptyException, TeamBinderConsistencyException,
@@ -36,7 +36,7 @@ class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
             -   TeamBinderBlueprint
 
     Attributes:
-        toolkit: TeamBinderValidatorToolkit
+        toolkit: TeamBinderLayerToolkit
 
     Provides:
         -   def execute(
@@ -49,17 +49,17 @@ class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
     
     def __init__(
             self,
-            toolkit: Optional[TeamBinderValidatorToolkit] | None = None,
+            toolkit: Optional[TeamBinderLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TeamBinderValidatorToolkit]
+            toolkit: Optional[TeamBinderLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or TeamBinderValidatorToolkit())
+        super().__init__(toolkit=toolkit or TeamBinderLayerToolkit())
     
     @property
-    def toolkit(self) -> TeamBinderValidatorToolkit:
-        return cast(TeamBinderValidatorToolkit, super().toolkit)
+    def toolkit(self) -> TeamBinderLayerToolkit:
+        return cast(TeamBinderLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TeamBinderPrimeExtract]:

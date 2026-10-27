@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidatorToolkit, StructValidationLoader
+from assurance import RegisterLayerToolkit, StructValidationLoader
 from domain import Register, Register
 from util import LoggingLevelRouter
 
@@ -41,16 +41,16 @@ class RegisterValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
         Loader
     """
     
-    def __init__(self, toolkit: RegisterValidatorToolkit[T]):
+    def __init__(self, toolkit: RegisterLayerToolkit[T]):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            toolkit: LayerToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> RegisterValidatorToolkit[T]:
-        return cast(RegisterValidatorToolkit[T], super().toolkit)
+    def toolkit(self) -> RegisterLayerToolkit[T]:
+        return cast(RegisterLayerToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

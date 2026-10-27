@@ -14,4 +14,4 @@ from .vector import *
 from .warning import *
 
 # Module
-from .depend import NodeDependency
+from .depend import NodeServiceDependency

@@ -11,54 +11,54 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, FootstepDependency
+from assurance import ModelLayerToolkit, FootstepServiceDependency
 from domain import Footstep, FootstepManifest, FootstepNullWarningSet, FootstepLayer
 
 
-class FootstepValidatorToolkit(ModelValidatorToolkit[Footstep]):
+class FootstepLayerToolkit(ModelLayerToolkit[Footstep]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: FootstepDependency
-            metadata: FootstepManifest
+            manifest: FootstepManifest
 
     Provides:
 
     Super Class:
-       ModelValidatorToolkit
+       ModelLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[FootstepDependency] | None = None,
-            metadata: Optional[FootstepManifest] | None = None,
+            dependency: Optional[FootstepServiceDependency] | None = None,
+            manifest: Optional[FootstepManifest] | None = None,
     ):
         """
             wrapper: Optional[FootstepDependency]
-            metadata: Optional[FootstepManifest]
+            manifest: Optional[FootstepManifest]
         """
         super().__init__(
-            wrapper=wrapper or FootstepDependency(),
-            metadata=metadata or FootstepManifest(),
+            dependency=dependency or FootstepServiceDependency(),
+            manifest=manifest or FootstepManifest(),
         )
     
     @property
-    def wrapper(self) -> FootstepDependency:
-        return cast(FootstepDependency, super().wrapper)
+    def dependency(self) -> FootstepServiceDependency:
+        return cast(FootstepServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> FootstepManifest:
-        return cast(FootstepManifest, super().metadata)
+    def manifest(self) -> FootstepManifest:
+        return cast(FootstepManifest, super().manifest)
     
     @property
     def nulls(self) -> FootstepNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> FootstepLayer:
-        return self.metadata.types
+        return self.manifest.types

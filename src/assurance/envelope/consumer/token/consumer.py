@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import TokenValidatorToolkit, RootEnvelopeConsumer
+from assurance import TokenLayerToolkit, RootEnvelopeConsumer
 from domain import Token
 from transit import TokenCarrier, RootTokenEnvelope
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class TokenEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
         1.  Assure an Token covered by a RootEncounerEnvelope is safe.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: TokenLayerToolkit
 
     Provides:
         -   def execute(envelope: RootTokenEnvelope) -> ValidationResult[TokenCarrier]
@@ -38,14 +38,14 @@ class TokenEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
     Super Class:
         RootEnvelopeConsumer
     """
-    _toolkit: TokenValidatorToolkit
+    _toolkit: TokenLayerToolkit
     
-    def __init__(self, toolkit: Optional[TokenValidatorToolkit] | None = None):
-        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
+    def __init__(self, toolkit: Optional[TokenLayerToolkit] | None = None):
+        super().__init__(toolkit=toolkit or TokenLayerToolkit())
         
     @property
-    def toolkit(self) -> TokenValidatorToolkit:
-        return cast(TokenValidatorToolkit, super().toolkit)
+    def toolkit(self) -> TokenLayerToolkit:
+        return cast(TokenLayerToolkit, super().toolkit)
         
 
     @abstractmethod

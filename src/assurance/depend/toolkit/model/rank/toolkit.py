@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, RankWrapperDependency
+from assurance import ModelLayerToolkit, RankServiceDependency
 from domain import Rank, RankManifest, RankNullWarningSet, RankLayer
 
 
-class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
+class RankLayerToolkit(ModelLayerToolkit[Rank]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Rank attribute validators and type metadata.
+        1.  Single source of truth for Rank attribute validators and type manifest.
 
     Attributes:
         helper: RankManifest
-        metadata: RankWrapperDependency
+        manifest: RankServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[RankManifest] | None = None,
-            wrapper: Optional[RankWrapperDependency] | None = None,
+            manifest: Optional[RankManifest] | None = None,
+            dependency: Optional[RankServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[RankManifest]
-            metadata: Optional[RankWrapperDependency]
+            dependency: Optional[RankManifest]
+            manifest: Optional[RankServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or RankWrapperDependency(),
-            metadata=metadata or RankManifest(),
+            dependency=dependency or RankServiceDependency(),
+            manifest=manifest or RankManifest(),
         )
     
     @property
-    def wrapper(self) -> RankWrapperDependency:
-        return cast(RankWrapperDependency, super().wrapper)
+    def dependency(self) -> RankServiceDependency:
+        return cast(RankServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> RankManifest:
-        return cast(RankManifest, super().metadata)
+    def manifest(self) -> RankManifest:
+        return cast(RankManifest, super().manifest)
     
     @property
     def nulls(self) -> RankNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> RankLayer:
-        return self.metadata.types
+        return self.manifest.types

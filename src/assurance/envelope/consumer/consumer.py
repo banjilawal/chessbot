@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidatorToolkit
+from assurance import LayerToolkit
 from domain import Model
 from transit import ModelCarrier, ProductEnvelope
 from util import LoggingLevelRouter
@@ -30,20 +30,20 @@ class RootEnvelopeConsumer(ABC, Generic[T]):
         1.  Assure a subclass instance covered by a ProductEnvelope is safe.
 
     Attributes:
-        toolkit: ValidatorToolkit[T]
+        toolkit: LayerToolkit[T]
 
     Provides:
         -   def execute(envelope: ProductEnvelope[T]) -> ValidationResult[ModelCarrier[T]]
 
     Super Class:
     """
-    _toolkit: ValidatorToolkit[T]
+    _toolkit: LayerToolkit[T]
     
-    def __init__(self, toolkit: ValidatorToolkit[T]):
+    def __init__(self, toolkit: LayerToolkit[T]):
         self._toolkit = toolkit
         
     @property
-    def toolkit(self) -> ValidatorToolkit:
+    def toolkit(self) -> LayerToolkit:
         return self._toolkit
         
 

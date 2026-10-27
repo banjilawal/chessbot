@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ValidatorToolkit
+from assurance import LayerToolkit
 from bootstrap import ValidationLoader
 from domain import Context, ContextPrimeExtract
 from util import LoggingLevelRouter
@@ -42,10 +42,10 @@ class ContextValidationLoader(ValidationLoader[T], ABC, Generic[T]):
         Loader
     """
     
-    def __init__(self, toolkit: ValidatorToolkit):
+    def __init__(self, toolkit: LayerToolkit):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            toolkit: LayerToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

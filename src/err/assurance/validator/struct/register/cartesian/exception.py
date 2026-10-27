@@ -27,7 +27,7 @@ class CartesianRegisterValidatorException(RegisterValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CartesianRegisterValidator failed.
+        1.  Indicating a CartesianRegisterValidator failed.
 
     Attributes:
             msg: Optional[str]

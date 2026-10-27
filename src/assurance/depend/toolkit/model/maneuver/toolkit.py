@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, ManeuverWrapperDependency
+from assurance import ModelLayerToolkit, ManeuverServiceDependency
 from domain import Maneuver, ManeuverManifest, ManeuverNullWarningSet, ManeuverLayer
 
 
-class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
+class ManeuverLayerToolkit(ModelLayerToolkit[Maneuver]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Maneuver attribute validators and type metadata.
+        1.  Single source of truth for Maneuver attribute validators and type manifest.
 
     Attributes:
         helper: ManeuverManifest
-        metadata: ManeuverWrapperDependency
+        manifest: ManeuverServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[ManeuverManifest] | None = None,
-            wrapper: Optional[ManeuverWrapperDependency] | None = None,
+            manifest: Optional[ManeuverManifest] | None = None,
+            dependency: Optional[ManeuverServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[ManeuverManifest]
-            metadata: Optional[ManeuverWrapperDependency]
+            dependency: Optional[ManeuverManifest]
+            manifest: Optional[ManeuverServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or ManeuverWrapperDependency(),
-            metadata=metadata or ManeuverManifest(),
+            dependency=dependency or ManeuverServiceDependency(),
+            manifest=manifest or ManeuverManifest(),
         )
     
     @property
-    def wrapper(self) -> ManeuverWrapperDependency:
-        return cast(ManeuverWrapperDependency, super().wrapper)
+    def dependency(self) -> ManeuverServiceDependency:
+        return cast(ManeuverServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> ManeuverManifest:
-        return cast(ManeuverManifest, super().metadata)
+    def manifest(self) -> ManeuverManifest:
+        return cast(ManeuverManifest, super().manifest)
     
     @property
     def nulls(self) -> ManeuverNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> ManeuverLayer:
-        return self.metadata.types
+        return self.manifest.types

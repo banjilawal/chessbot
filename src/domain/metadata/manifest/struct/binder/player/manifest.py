@@ -30,7 +30,7 @@ class PlayerBinderManifest(BinderManifest[PlayerBinder]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

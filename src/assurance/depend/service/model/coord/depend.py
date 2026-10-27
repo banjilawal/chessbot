@@ -12,18 +12,18 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Coord
 from exchange import BoardValidationService
 
 
-class CoordDependency(ModelDependency[Coord]):
+class CoordServiceDependency(ServiceDependency[Coord]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy CoordValidator's ResponseService dependencies.
+        1.  Satisfy CoordValidator's ValidationService dependencies.
 
     Attributes:
         board: BoardValidationService
@@ -31,7 +31,7 @@ class CoordDependency(ModelDependency[Coord]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     _board: BoardValidationService

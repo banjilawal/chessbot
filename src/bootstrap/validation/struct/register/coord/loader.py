@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidationLoader, CoordRegisterValidatorToolkit
+from assurance import RegisterValidationLoader, CoordRegisterLayerToolkit
 from domain import CoordRegister
 from err import (
     CoordRegisterConsistencyException, CoordRegisterEmptyException, CoordRegisterLoaderException,
@@ -35,7 +35,7 @@ class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
             -   CoordRegisterBlueprint
 
     Attributes:
-        toolkit: CoordRegisterValidatorToolkit
+        toolkit: CoordRegisterLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
     
     def __init__(
             self,
-            toolkit: Optional[CoordRegisterValidatorToolkit] | None = None,
+            toolkit: Optional[CoordRegisterLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[CoordRegisterValidatorToolkit]
+            toolkit: Optional[CoordRegisterLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or CoordRegisterValidatorToolkit())
+        super().__init__(toolkit=toolkit or CoordRegisterLayerToolkit())
     
     @property
-    def toolkit(self) -> CoordRegisterValidatorToolkit:
-        return cast(CoordRegisterValidatorToolkit, super().toolkit)
+    def toolkit(self) -> CoordRegisterLayerToolkit:
+        return cast(CoordRegisterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[CoordRegister]:

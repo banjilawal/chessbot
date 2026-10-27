@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, TeamValidatorToolkit
+from assurance import ContextValidationLoader, TeamLayerToolkit
 from domain import Team, TeamContextPrimeExtract
 from err import (
     TeamCarrierEmptyException, TeamContextValidationLoaderException, TeamContextValidationRequestNullException
@@ -35,7 +35,7 @@ class TeamContextValidationLoader(ContextValidationLoader[TeamContext]):
             -   TeamBlueprint
 
     Attributes:
-        toolkit: TeamValidatorToolkit
+        toolkit: TeamLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class TeamContextValidationLoader(ContextValidationLoader[TeamContext]):
     
     def __init__(
             self,
-            toolkit: Optional[TeamValidatorToolkit] | None = None,
+            toolkit: Optional[TeamLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TeamValidatorToolkit]
+            toolkit: Optional[TeamLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or TeamValidatorToolkit())
+        super().__init__(toolkit=toolkit or TeamLayerToolkit())
     
     @property
-    def toolkit(self) -> TeamValidatorToolkit:
-        return cast(TeamValidatorToolkit, super().toolkit)
+    def toolkit(self) -> TeamLayerToolkit:
+        return cast(TeamLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TeamContextPrimeExtract]:

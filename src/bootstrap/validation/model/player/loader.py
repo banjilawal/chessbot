@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, PlayerValidatorToolkit
+from assurance import ModelValidationLoader, PlayerLayerToolkit
 from domain import Player, PlayerPrimeExtract
 from err import (
     PlayerCarrierEmptyException, PlayerValidationLoaderException, PlayerValidationRequestNullException
@@ -35,7 +35,7 @@ class PlayerValidationLoader(ModelValidationLoader[Player]):
             -   PlayerBlueprint
 
     Attributes:
-        toolkit: PlayerValidatorToolkit
+        toolkit: PlayerLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class PlayerValidationLoader(ModelValidationLoader[Player]):
     
     def __init__(
             self,
-            toolkit: Optional[PlayerValidatorToolkit] | None = None,
+            toolkit: Optional[PlayerLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[PlayerValidatorToolkit]
+            toolkit: Optional[PlayerLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or PlayerValidatorToolkit())
+        super().__init__(toolkit=toolkit or PlayerLayerToolkit())
     
     @property
-    def toolkit(self) -> PlayerValidatorToolkit:
-        return cast(PlayerValidatorToolkit, super().toolkit)
+    def toolkit(self) -> PlayerLayerToolkit:
+        return cast(PlayerLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[PlayerPrimeExtract]:

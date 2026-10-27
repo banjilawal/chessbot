@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import BinderDependency
+from assurance import BinderServiceDependency
 from domain import TeamBinder
 from exchange import TeamValidationService
 
 
-class TeamBinderDependency(BinderDependency[TeamBinder]):
+class TeamBinderDependency(BinderServiceDependency[TeamBinder]):
     """
     Role:
         - Toolkit

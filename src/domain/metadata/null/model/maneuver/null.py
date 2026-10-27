@@ -33,7 +33,7 @@ class ManeuverNullWarningSet(ModelNullWarningSet[Maneuver]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

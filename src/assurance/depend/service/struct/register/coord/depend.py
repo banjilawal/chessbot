@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterDependency
+from assurance import RegisterServiceDependency
 from domain import CoordRegister
 from exchange import CoordValidationService
 
 
-class CoordRegisterDependency(RegisterDependency[CoordRegister]):
+class CoordRegisterDependency(RegisterServiceDependency[CoordRegister]):
     """
     Role:
         - Toolkit

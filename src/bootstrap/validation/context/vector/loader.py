@@ -28,7 +28,7 @@ class VectorContextValidationLoader(ContextValidationLoader[VectorContext]):
             -   VectorBlueprint
 
     Attributes:
-        toolkit: VectorValidatorToolkit
+        toolkit: VectorLayerToolkit
 
     Provides:
         -   def execute(
@@ -41,17 +41,17 @@ class VectorContextValidationLoader(ContextValidationLoader[VectorContext]):
     
     def __init__(
             self,
-            toolkit: Optional[VectorValidatorToolkit] | None = None,
+            toolkit: Optional[VectorLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[VectorValidatorToolkit]
+            toolkit: Optional[VectorLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or VectorValidatorToolkit())
+        super().__init__(toolkit=toolkit or VectorLayerToolkit())
     
     @property
-    def toolkit(self) -> VectorValidatorToolkit:
-        return cast(VectorValidatorToolkit, super().toolkit)
+    def toolkit(self) -> VectorLayerToolkit:
+        return cast(VectorLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorContextPrimeExtract]:

@@ -33,7 +33,7 @@ class ManeuverContextNullWarningSet(ContextNullWarningSet[ManeuverContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

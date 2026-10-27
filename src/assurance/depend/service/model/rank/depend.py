@@ -10,24 +10,24 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Rank
 
 
-class RankDependency(ModelDependency[Rank]):
+class RankServiceDependency(ServiceDependency[Rank]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy RankValidator's ResponseService dependencies.
+        1.  Satisfy RankValidator's ValidationService dependencies.
 
     Attributes:
 
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     def __init__(self):

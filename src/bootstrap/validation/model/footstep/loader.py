@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, FootstepValidatorToolkit
+from assurance import ModelValidationLoader, FootstepLayerToolkit
 from domain import Footstep, FootstepPrimeExtract
 from err import (
     FootstepCarrierEmptyException, FootstepValidationLoaderException,
@@ -36,7 +36,7 @@ class FootstepValidationLoader(ModelValidationLoader[Footstep]):
             -   FootstepBlueprint
 
     Attributes:
-        toolkit: FootstepValidatorToolkit
+        toolkit: FootstepLayerToolkit
 
     Provides:
         -   def execute(
@@ -49,17 +49,17 @@ class FootstepValidationLoader(ModelValidationLoader[Footstep]):
     
     def __init__(
             self,
-            toolkit: Optional[FootstepValidatorToolkit] | None = None,
+            toolkit: Optional[FootstepLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[FootstepValidatorToolkit]
+            toolkit: Optional[FootstepLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or FootstepValidatorToolkit())
+        super().__init__(toolkit=toolkit or FootstepLayerToolkit())
     
     @property
-    def toolkit(self) -> FootstepValidatorToolkit:
-        return cast(FootstepValidatorToolkit, super().toolkit)
+    def toolkit(self) -> FootstepLayerToolkit:
+        return cast(FootstepLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[FootstepPrimeExtract]:

@@ -27,7 +27,7 @@ class CombatantPathValidatorException(PathValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CombatantPathValidator failed.
+        1.  Indicating a CombatantPathValidator failed.
 
     Attributes:
             msg: Optional[str]

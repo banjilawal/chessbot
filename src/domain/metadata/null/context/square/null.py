@@ -33,7 +33,7 @@ class SquareContextNullWarningSet(ContextNullWarningSet[SquareContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

@@ -11,56 +11,56 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, PlayerWrapperDependency
+from assurance import ModelLayerToolkit, PlayerServiceDependency
 from domain import (
     Player, PlayerManifest, PlayerNullWarningSet, PlayerLayer
 )
 
-class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
+class PlayerLayerToolkit(ModelLayerToolkit[Player]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Player attribute validators and type metadata.
+        1.  Single source of truth for Player attribute validators and type manifest.
 
     Attributes:
         helper: PlayerManifest
-        metadata: PlayerWrapperDependency
+        manifest: PlayerServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[PlayerManifest] | None = None,
-            wrapper: Optional[PlayerWrapperDependency] | None = None,
+            manifest: Optional[PlayerManifest] | None = None,
+            dependency: Optional[PlayerServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[PlayerManifest]
-            metadata: Optional[PlayerWrapperDependency]
+            dependency: Optional[PlayerManifest]
+            manifest: Optional[PlayerServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or PlayerWrapperDependency(),
-            metadata=metadata or PlayerManifest(),
+            dependency=dependency or PlayerServiceDependency(),
+            manifest=manifest or PlayerManifest(),
         )
     
     @property
-    def wrapper(self) -> PlayerWrapperDependency:
-        return cast(PlayerWrapperDependency, super().wrapper)
+    def dependency(self) -> PlayerServiceDependency:
+        return cast(PlayerServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> PlayerManifest:
-        return cast(PlayerManifest, super().metadata)
+    def manifest(self) -> PlayerManifest:
+        return cast(PlayerManifest, super().manifest)
     
     @property
     def nulls(self) -> PlayerNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> PlayerLayer:
-        return self.metadata.types
+        return self.manifest.types

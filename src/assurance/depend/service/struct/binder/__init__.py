@@ -14,4 +14,4 @@ from .team import *
 from .player import *
 
 # Module
-from .depend import BinderDependency
+from .depend import BinderServiceDependency

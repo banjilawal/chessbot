@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Encounter
 from exchange import (
     ManeuverValidationService, ParticipationValidationService,
@@ -20,13 +20,13 @@ from exchange import (
 )
 
 
-class EncounterDependency(ModelDependency[Encounter]):
+class EncounterServiceDependency(ServiceDependency[Encounter]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy EncounterValidator's ResponseService dependencies.
+        1.  Satisfy EncounterValidator's ValidationService dependencies.
 
     Attributes:
         token: TokenValidationService
@@ -37,7 +37,7 @@ class EncounterDependency(ModelDependency[Encounter]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _token: TokenValidationService
     _square: SquareValidationService

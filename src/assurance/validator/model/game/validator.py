@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, GameValidationLoader, GameValidatorToolkit
+from assurance import ModelValidator, GameValidationLoader, GameLayerToolkit
 from domain import (
     Arena, Bishop, Game, GameBlueprint, GamePrimeExtract, King, Knight, Pawn, Persona, PlayerBinder,
     Queen, Rank, RankBlueprint, Rook
@@ -55,7 +55,7 @@ class GameValidator(ModelValidator[Game]):
         return cast(GameValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> GameValidatorToolkit:
+    def toolkit(self) -> GameLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -131,7 +131,7 @@ class GameValidator(ModelValidator[Game]):
                 )
             )
         # --- Handle the case that the binder is not safe. ---#
-        binder_validation = self.toolkit.wrapper.binder.extract_model(
+        binder_validation = self.toolkit.dependency.binder.extract_model(
             request=PlayerBinderValidationRequest(
                 item=PlayerBinderCarrier(model=fingerprint.binder),
                 id=IdFactory.next_id(class_name="PlayerBinderValidationRequest"),
@@ -149,7 +149,7 @@ class GameValidator(ModelValidator[Game]):
                 )
             )
         # --- Handle the case that the arena is not safe. ---#
-        arena_validation = self.toolkit.wrapper.arena.extract_model(
+        arena_validation = self.toolkit.dependency.arena.extract_model(
             request=ArenaValidationRequest(
                 item=ArenaCarrier(model=fingerprint.arena),
                 id=IdFactory.next_id(class_name="ArenaValidationRequest"),

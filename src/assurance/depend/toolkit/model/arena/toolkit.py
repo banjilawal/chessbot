@@ -11,54 +11,54 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, ArenaWrapperDependency
+from assurance import ModelLayerToolkit, ArenaServiceDependency
 from domain import Arena, ArenaManifest, ArenaNullWarningSet, ArenaLayer
 
-class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
+class ArenaLayerToolkit(ModelLayerToolkit[Arena]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Arena attribute validators and type metadata.
+        1.  Single source of truth for Arena attribute validators and type manifest.
 
     Attributes:
         helper: ArenaManifest
-        metadata: ArenaWrapperDependency
+        manifest: ArenaServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[ArenaManifest] | None = None,
-            wrapper: Optional[ArenaWrapperDependency] | None = None,
+            manifest: Optional[ArenaManifest] | None = None,
+            dependency: Optional[ArenaServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[ArenaManifest]
-            metadata: Optional[ArenaWrapperDependency]
+            dependency: Optional[ArenaManifest]
+            manifest: Optional[ArenaServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or ArenaWrapperDependency(),
-            metadata=metadata or ArenaManifest(),
+            dependency=dependency or ArenaServiceDependency(),
+            manifest=manifest or ArenaManifest(),
         )
     
     @property
-    def wrapper(self) -> ArenaWrapperDependency:
-        return cast(ArenaWrapperDependency, super().wrapper)
+    def dependency(self) -> ArenaServiceDependency:
+        return cast(ArenaServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> ArenaManifest:
-        return cast(ArenaManifest, super().metadata)
+    def manifest(self) -> ArenaManifest:
+        return cast(ArenaManifest, super().manifest)
     
     @property
     def nulls(self) -> ArenaNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> ArenaLayer:
-        return self.metadata.types
+        return self.manifest.types

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import (
     EncounterWarningEnvelopeConsumer, KillEncounterEnvelopeConsumer,
-    CheckmateEncounterEnvelopeConsumer, EncounterValidatorToolkit
+    CheckmateEncounterEnvelopeConsumer, EncounterLayerToolkit
 )
 from domain import Encounter
 from err import (
@@ -35,7 +35,7 @@ class EncounterValidationRouter(ValidationRouter[Encounter]):
             by Carrier type.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        toolkit: EncounterLayerToolkit
         kill_consumer: KillEncounterEnvelopeConsumer
         checkmate_consumer: CheckmateEncounterEnvelopeConsumer
         encounter_warning_consumer: EncounterWarningEnvelopeConsumer
@@ -52,7 +52,7 @@ class EncounterValidationRouter(ValidationRouter[Encounter]):
     
     def __init__(
             self,
-            toolkit: Optional[EncounterValidatorToolkit]
+            toolkit: Optional[EncounterLayerToolkit]
                      | None = None,
             kill_consumer: Optional[KillEncounterEnvelopeConsumer]
                            | None = None,
@@ -63,12 +63,12 @@ class EncounterValidationRouter(ValidationRouter[Encounter]):
     ):
         """
         Args:
-            toolkit: Optional[EncounterValidatorToolkit]
+            toolkit: Optional[EncounterLayerToolkit]
             kill_consumer: Optional[KillEncounterEnvelopeConsumer]
             checkmate_consumer: Optional[CheckmateEncounterEnvelopeConsumer]
             encounter_warning_consumer: Optional[EncounterWarningEnvelopeConsumer]
         """
-        super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
+        super().__init__(toolkit=toolkit or EncounterLayerToolkit())
         self._kill_consumer = (
                 kill_consumer or KillEncounterEnvelopeConsumer()
         )
@@ -80,8 +80,8 @@ class EncounterValidationRouter(ValidationRouter[Encounter]):
         )
     
     @property
-    def toolkit(self) -> EncounterValidatorToolkit:
-        return cast(EncounterValidatorToolkit, super().toolkit)
+    def toolkit(self) -> EncounterLayerToolkit:
+        return cast(EncounterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, envelope: RootEncounterEnvelope) -> ValidationResult[EncounterCarrier]:

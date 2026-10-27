@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeConsumer, SquareValidatorToolkit
+from assurance import RootEnvelopeConsumer, SquareLayerToolkit
 from domain import Square, SquareBlueprint
 from err import PublicSquareEnvelopeConsumerException, RootSquareEnvelopeNullException
 from transit import RootSquareEnvelope, SquareCarrier
@@ -29,7 +29,7 @@ class PublicSquareEnvelopeConsumer(RootEnvelopeConsumer[Square]):
         1.  Assure a Square covered by a SquareEnvelope is safe.
 
     Attributes:
-        toolkit: SquareValidatorToolkit
+        toolkit: SquareLayerToolkit
 
     Provides:
         -   def execute(envelope: RootSquareEnvelope) -> ValidationResult[SquareCarrier]
@@ -38,12 +38,12 @@ class PublicSquareEnvelopeConsumer(RootEnvelopeConsumer[Square]):
         EnvelopeConsumer
     """
     
-    def __init__(self, toolkit: Optional[SquareValidatorToolkit] | None = None):
-        super().__init__(toolkit=toolkit or SquareValidatorToolkit())
+    def __init__(self, toolkit: Optional[SquareLayerToolkit] | None = None):
+        super().__init__(toolkit=toolkit or SquareLayerToolkit())
     
     @property
-    def toolkit(self) -> SquareValidatorToolkit:
-        return cast(SquareValidatorToolkit, super().toolkit)
+    def toolkit(self) -> SquareLayerToolkit:
+        return cast(SquareLayerToolkit, super().toolkit)
 
     
     @LoggingLevelRouter.monitor

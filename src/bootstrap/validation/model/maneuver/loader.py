@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, ManeuverValidatorToolkit
+from assurance import ModelValidationLoader, ManeuverLayerToolkit
 from domain import Maneuver, ManeuverPrimeExtract
 from err import (
     ManeuverCarrierEmptyException, ManeuverValidationLoaderException, ManeuverValidationRequestNullException
@@ -35,7 +35,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
             -   ManeuverBlueprint
 
     Attributes:
-        toolkit: ManeuverValidatorToolkit
+        toolkit: ManeuverLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
     
     def __init__(
             self,
-            toolkit: Optional[ManeuverValidatorToolkit] | None = None,
+            toolkit: Optional[ManeuverLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ManeuverValidatorToolkit]
+            toolkit: Optional[ManeuverLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or ManeuverValidatorToolkit())
+        super().__init__(toolkit=toolkit or ManeuverLayerToolkit())
     
     @property
-    def toolkit(self) -> ManeuverValidatorToolkit:
-        return cast(ManeuverValidatorToolkit, super().toolkit)
+    def toolkit(self) -> ManeuverLayerToolkit:
+        return cast(ManeuverLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ManeuverPrimeExtract]:

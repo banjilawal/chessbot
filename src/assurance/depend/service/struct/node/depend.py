@@ -13,13 +13,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import StructDependency
+from assurance import ServiceDependency
 from domain import Node
 
 T = TypeVar("T", bound="Node")
 
 
-class NodeDependency(StructDependency[T], ABC, Generic[T]):
+class NodeServiceDependency(ServiceDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -33,7 +33,7 @@ class NodeDependency(StructDependency[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructDependency
+        Dependency
     """
     
     def __init__(self):

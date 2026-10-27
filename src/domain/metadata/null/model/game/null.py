@@ -33,7 +33,7 @@ class GameNullWarningSet(ModelNullWarningSet[Game]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

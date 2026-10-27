@@ -27,7 +27,7 @@ class ParticipationValidatorException(ChartValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ParticipationValidator failed.
+        1.  Indicating a ParticipationValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, PathWrapperDependency
+from assurance import ModelLayerToolkit, PathServiceDependency
 from domain import Path, PathManifest, PathNullWarningSet, PathLayer
 
 
-class PathValidatorToolkit(ModelValidatorToolkit[Path]):
+class PathLayerToolkit(ModelLayerToolkit[Path]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Path attribute validators and type metadata.
+        1.  Single source of truth for Path attribute validators and type manifest.
 
     Attributes:
         helper: PathManifest
-        metadata: PathWrapperDependency
+        manifest: PathServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[PathManifest] | None = None,
-            wrapper: Optional[PathWrapperDependency] | None = None,
+            manifest: Optional[PathManifest] | None = None,
+            dependency: Optional[PathServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[PathManifest]
-            metadata: Optional[PathWrapperDependency]
+            dependency: Optional[PathManifest]
+            manifest: Optional[PathServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or PathWrapperDependency(),
-            metadata=metadata or PathManifest(),
+            dependency=dependency or PathServiceDependency(),
+            manifest=manifest or PathManifest(),
         )
     
     @property
-    def wrapper(self) -> PathWrapperDependency:
-        return cast(PathWrapperDependency, super().wrapper)
+    def dependency(self) -> PathServiceDependency:
+        return cast(PathServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> PathManifest:
-        return cast(PathManifest, super().metadata)
+    def manifest(self) -> PathManifest:
+        return cast(PathManifest, super().manifest)
     
     @property
     def nulls(self) -> PathNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> PathLayer:
-        return self.metadata.types
+        return self.manifest.types

@@ -33,7 +33,7 @@ class BoardNullWarningSet(ModelNullWarningSet[Board]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

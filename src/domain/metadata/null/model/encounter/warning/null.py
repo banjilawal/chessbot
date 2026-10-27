@@ -34,7 +34,7 @@ class EncounterWarningNullWarningSet(EncounterNullWarningSet[EncounterWarning]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import AccountValidatorToolkit
+from assurance import AccountLayerToolkit
 from bootstrap import ContextValidationLoader
 from domain import AccountContext, AccountContextPrimeExtract, FlagState
 from transit import AccountContextCarrier
@@ -29,11 +29,11 @@ class AccountContextValidationLoader(
     Responsibilities:
         1.  Run type safety checks on a Candidate for:
             -   AccountContextValidationRequest
-            -   AccountCarrier
+            -   AccountContextCarrier
             -   AccountBlueprint
 
     Attributes:
-        toolkit: AccountValidatorToolkit
+        toolkit: AccountLayerToolkit
 
     Provides:
         -   def execute(
@@ -46,17 +46,17 @@ class AccountContextValidationLoader(
     
     def __init__(
             self,
-            toolkit: Optional[AccountValidatorToolkit] | None = None,
+            toolkit: Optional[AccountLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[AccountValidatorToolkit]
+            toolkit: Optional[AccountLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or AccountValidatorToolkit())
+        super().__init__(toolkit=toolkit or AccountLayerToolkit())
     
     @property
-    def toolkit(self) -> AccountValidatorToolkit:
-        return cast(AccountValidatorToolkit, super().toolkit)
+    def toolkit(self) -> AccountLayerToolkit:
+        return cast(AccountLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, item: Any) -> ValidationResult[AccountContextPrimeExtract]:
@@ -69,8 +69,8 @@ class AccountContextValidationLoader(
                 -   The candidate is null or not a AccountValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a AccountCarrier
-                        -   An empty AccountCarrier.
+                        -   Not a AccountContextCarrier
+                        -   An empty AccountContextCarrier.
                 -   A blueprint cannot be extracted from the carrier.
             2.  Otherwise, pack the original carrier and the blueprint in an
                 AccountContextPrimeExtract for the success result.
@@ -79,7 +79,7 @@ class AccountContextValidationLoader(
         Returns:
             ValidationResult[AccountContextPrimeExtract]
         Raises:
-            AccountLoaderException
+            AccountContextValidationLoaderException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -120,7 +120,7 @@ class AccountContextValidationLoader(
                     ex=carrier_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
+        # --- Cast carrier_validation payload then extract blueprint. ---#
         carrier = cast(AccountContextCarrier, carrier_validation.payload)
         blueprint = carrier.extract_blueprint()
         
@@ -133,43 +133,43 @@ class AccountContextValidationLoader(
                     cls_name=self.__class__.__name__,
                     msg=AccountContextValidationLoaderException.MSG,
                     err_code=AccountContextValidationLoaderException.ERR_CODE,
-                    ex=AccountCarrierEmptyException(
+                    ex=AccountContextCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AccountCarrierEmptyException.MSG,
-                        err_code=AccountCarrierEmptyException.ERR_CODE,
+                        msg=AccountContextCarrierEmptyException.MSG,
+                        err_code=AccountContextCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # Handle the case that the too many flags are enabled.
-        if blueprint.size > blueprint.max_size:
+        if blueprint.size > blueprint.capacity:
             return ValidationResult.failure(
                 AccountContextValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountContextValidationLoaderException.MSG,
                     err_code=AccountContextValidationLoaderException.ERR_CODE,
-                    ex=ExcessiveAccountContextFlagsException(
+                    ex=AccountContextCapacityException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ExcessiveAccountContextFlagsException.MSG,
-                        err_code=ExcessAccountContextFlagsException.ERR_CODE,
+                        msg=AccountContextCapacityException.MSG,
+                        err_code=AccountContextCapacityException.ERR_CODE,
                     ),
                 )
             )
         # Handle the case that no flags are enabled.
-        if blueprint.size > blueprint.max_size:
+        if blueprint.is_empty:
             return ValidationResult.failure(
                 AccountContextValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountContextValidationLoaderException.MSG,
                     err_code=AccountContextValidationLoaderException.ERR_CODE,
-                    ex=NoAccountContextFlagsException(
+                    ex=AccountContextEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NoAccountContextFlagsException.MSG,
-                        err_code=NoAccountContextFlagsException.ERR_CODE,
+                        msg=AccountContextEmptyException.MSG,
+                        err_code=AccountContextEmptyException.ERR_CODE,
                     ),
                 )
             )

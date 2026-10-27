@@ -11,9 +11,7 @@ version: 0.0.2
 
 # Packages
 from .binder import *
-from .chart import *
 from .node import *
 from .register import *
 
 # Module
-from .depend import StructDependency

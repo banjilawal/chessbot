@@ -27,7 +27,7 @@ class BinderValidatorException(StructValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BinderValidator failed.
+        1.  Indicating a BinderValidator failed.
 
     Attributes:
         msg: Optional[str]

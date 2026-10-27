@@ -27,7 +27,7 @@ class ManeuverValidatorException(ModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ManeuverValidator failed.
+        1.  Indicating a ManeuverValidator failed.
 
     Attributes:
         msg: Optional[str]

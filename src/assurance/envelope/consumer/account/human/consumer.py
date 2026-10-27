@@ -34,7 +34,7 @@ class HumanAccountEnvelopeConsumer(
         1.  Assure a HumanAccount covered by a RootSquareAccountEnvelope is safe.
 
     Attributes:
-        toolkit: AccountValidatorToolkit
+        toolkit: AccountLayerToolkit
 
     Provides:
         -   def execute(

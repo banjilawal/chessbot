@@ -30,7 +30,7 @@ class FootstepManifest(ModelManifest[Footstep]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Model, NullExceptionGroup
+from domain import Model, NullWarningSet
 from err import ModelCarrierNullException, ModelBlueprintNullException, ModelNullException
 
 T = TypeVar("T", bound="Model")
 
-class ModelNullWarningSet(NullExceptionGroup[T], ABC, Generic[T]):
+class ModelNullWarningSet(NullWarningSet[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -33,7 +33,7 @@ class ModelNullWarningSet(NullExceptionGroup[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

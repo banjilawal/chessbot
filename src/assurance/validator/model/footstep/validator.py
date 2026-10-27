@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, FootstepValidationLoader, FootstepValidatorToolkit
+from assurance import ModelValidator, FootstepValidationLoader, FootstepLayerToolkit
 from domain import Coord, FootstepBlueprint, FootstepPrimeExtract, Footstep
 from err import FootstepConsistencyException, FootstepValidatorException
 from exchange import CoordValidationRequest
@@ -50,7 +50,7 @@ class FootstepValidator(ModelValidator[Footstep]):
         return cast(FootstepValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> FootstepValidatorToolkit:
+    def toolkit(self) -> FootstepLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -112,7 +112,7 @@ class FootstepValidator(ModelValidator[Footstep]):
         candidate_points = blueprint.to_dict
         for key in candidate_points.keys():
             # Handle the case that a position is not a safe Coord.
-            coord_validation = self.toolkit.wrapper.coord.extract_model(
+            coord_validation = self.toolkit.dependency.coord.extract_model(
                 request=CoordValidationRequest(
                     item=CoordCarrier(model=candidate_points[key]),
                     id=IdFactory.next_id(class_name="CoordValidationRequest"),

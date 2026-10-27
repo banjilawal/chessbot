@@ -32,7 +32,7 @@ class QueenEnvelopeConsumer(RankEnvelopeConsumer[Queen]):
         1.  Assure a Queen covered by a RootRankEnvelope is safe.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(

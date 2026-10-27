@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ChartValidationLoader, ParticipationValidatorToolkit
+from assurance import ChartValidationLoader, ParticipationLayerToolkit
 from domain import Participation, Participation
 from err import (
     ParticipationCarrierEmptyException, ParticipationLoaderException,
@@ -36,7 +36,7 @@ class ParticipationLoader(ChartValidationLoader[Participation]):
             -   ParticipationBlueprint
 
     Attributes:
-        toolkit: ParticipationValidatorToolkit
+        toolkit: ParticipationLayerToolkit
 
     Provides:
         -   def execute(
@@ -49,17 +49,17 @@ class ParticipationLoader(ChartValidationLoader[Participation]):
     
     def __init__(
             self,
-            toolkit: Optional[ParticipationValidatorToolkit] | None = None,
+            toolkit: Optional[ParticipationLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ParticipationValidatorToolkit]
+            toolkit: Optional[ParticipationLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or ParticipationValidatorToolkit())
+        super().__init__(toolkit=toolkit or ParticipationLayerToolkit())
     
     @property
-    def toolkit(self) -> ParticipationValidatorToolkit:
-        return cast(ParticipationValidatorToolkit, super().toolkit)
+    def toolkit(self) -> ParticipationLayerToolkit:
+        return cast(ParticipationLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[Participation]:

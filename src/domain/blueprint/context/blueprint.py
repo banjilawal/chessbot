@@ -94,7 +94,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         return self._name
     
     @property
-    def max_size(self) -> int:
+    def capacity(self) -> int:
         return self._max_size
     
     @property
@@ -119,11 +119,11 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     
     @property
     def exceeds_capacity(self) -> bool:
-        return self.size > self.max_size
+        return self.size > self.capacity
     
     @property
     def is_valid_size(self) -> bool:
-        return 1 <= self.size < self.max_size + 1
+        return 1 <= self.size < self.capacity + 1
     
     @property
     @abstractmethod

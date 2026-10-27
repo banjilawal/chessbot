@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, ModelValidatorToolkit, Validator
+from assurance import ModelValidationLoader, ModelLayerToolkit, Validator
 from domain import Model
 from transit import ModelCarrier
 from util import LoggingLevelRouter
@@ -52,7 +52,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         return cast(ModelValidationLoader[T], super().loader)
     
     @property
-    def toolkit(self) -> ModelValidatorToolkit[T]:
+    def toolkit(self) -> ModelLayerToolkit[T]:
         return self.toolkit
     
     @abstractmethod

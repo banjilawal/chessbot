@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import BinderValidatorToolkit, TeamBinderDependency
+from assurance import BinderLayerToolkit, TeamBinderDependency
 from domain import (
     TeamBinder, TeamBinderManifest, TeamBinderNullGroup,
     TeamBinderLayer
 )
 
 
-class TeamBinderValidatorToolkit(BinderValidatorToolkit[TeamBinder]):
+class TeamBinderLayerToolkit(BinderLayerToolkit[TeamBinder]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: TeamBinderDependency
-            metadata: TeamBinderManifest
+            manifest: TeamBinderManifest
 
     Provides:
 
     Super Class:
-       BinderValidatorToolkit
+       BinderLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[TeamBinderDependency] | None = None,
-            metadata: Optional[TeamBinderManifest] | None = None,
+            dependency: Optional[TeamBinderDependency] | None = None,
+            manifest: Optional[TeamBinderManifest] | None = None,
     ):
         """
             wrapper: Optional[TeamBinderDependency]
-            metadata: Optional[TeamBinderManifest]
+            manifest: Optional[TeamBinderManifest]
         """
         super().__init__(
-            wrapper=wrapper or TeamBinderDependency(),
-            metadata=metadata or TeamBinderManifest(),
+            dependency=dependency or TeamBinderDependency(),
+            manifest=manifest or TeamBinderManifest(),
         )
     
     @property
-    def wrapper(self) -> TeamBinderDependency:
-        return cast(TeamBinderDependency, super().wrapper)
+    def dependency(self) -> TeamBinderDependency:
+        return cast(TeamBinderDependency, super().dependency)
     
     @property
-    def metadata(self) -> TeamBinderManifest:
-        return cast(TeamBinderManifest, super().metadata)
+    def manifest(self) -> TeamBinderManifest:
+        return cast(TeamBinderManifest, super().manifest)
     
     @property
     def nulls(self) -> TeamBinderNullGroup:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> TeamBinderLayer:
-        return self.metadata.types
+        return self.manifest.types

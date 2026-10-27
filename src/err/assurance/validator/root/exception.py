@@ -26,7 +26,7 @@ class RootValidatorException(AssuranceException):
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RootValidator failed.
+        1.  Indicating a RootValidator failed.
 
     Attributes:
         msg: str

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, VectorValidationLoader, VectorValidatorToolkit
+from assurance import ModelValidator, VectorValidationLoader, VectorLayerToolkit
 from domain import Vector, VectorBlueprint, VectorPrimeExtract
 from err import VectorCarrierEmptyException, VectorValidatorException
 from transit import VectorCarrier
@@ -52,7 +52,7 @@ class VectorValidator(ModelValidator[Vector]):
         return cast(VectorValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> VectorValidatorToolkit:
+    def toolkit(self) -> VectorLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor

@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import BinderValidatorToolkit, PlayerBinderDependency
+from assurance import BinderLayerToolkit, PlayerBinderDependency
 from domain import (
     PlayerBinder, PlayerBinderManifest, PlayerBinderNullWarningSet,
     PlayerBinderLayer
 )
 
 
-class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
+class PlayerBinderLayerToolkit(BinderLayerToolkit[PlayerBinder]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: PlayerBinderDependency
-            metadata: PlayerBinderManifest
+            manifest: PlayerBinderManifest
 
     Provides:
 
     Super Class:
-       BinderValidatorToolkit
+       BinderLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[PlayerBinderDependency] | None = None,
-            metadata: Optional[PlayerBinderManifest] | None = None,
+            dependency: Optional[PlayerBinderDependency] | None = None,
+            manifest: Optional[PlayerBinderManifest] | None = None,
     ):
         """
             wrapper: Optional[PlayerBinderDependency]
-            metadata: Optional[PlayerBinderManifest]
+            manifest: Optional[PlayerBinderManifest]
         """
         super().__init__(
-            wrapper=wrapper or PlayerBinderDependency(),
-            metadata=metadata or PlayerBinderManifest(),
+            dependency=dependency or PlayerBinderDependency(),
+            manifest=manifest or PlayerBinderManifest(),
         )
     
     @property
-    def wrapper(self) -> PlayerBinderDependency:
-        return cast(PlayerBinderDependency, super().wrapper)
+    def dependency(self) -> PlayerBinderDependency:
+        return cast(PlayerBinderDependency, super().dependency)
     
     @property
-    def metadata(self) -> PlayerBinderManifest:
-        return cast(PlayerBinderManifest, super().metadata)
+    def manifest(self) -> PlayerBinderManifest:
+        return cast(PlayerBinderManifest, super().manifest)
     
     @property
     def nulls(self) -> PlayerBinderNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> PlayerBinderLayer:
-        return self.metadata.types
+        return self.manifest.types

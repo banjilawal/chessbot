@@ -47,7 +47,7 @@ class EnemyKingStatusDetector(Analyzer):
     def execute(
             cls,
             king: KingToken,
-            bundle: TokenValidatorToolkit | None = None,
+            bundle: TokenLayerToolkit | None = None,
             token_validator: TokenValidationDispatcher | None = None,
     ) -> Result[FriendshipStatus]:
         """

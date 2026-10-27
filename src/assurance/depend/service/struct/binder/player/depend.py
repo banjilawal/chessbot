@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import BinderDependency
+from assurance import BinderServiceDependency
 from domain import PlayerBinder
 from exchange import PlayerValidationService
 
 
-class PlayerBinderDependency(BinderDependency[PlayerBinder]):
+class PlayerBinderDependency(BinderServiceDependency[PlayerBinder]):
     """
     Role:
         - Toolkit

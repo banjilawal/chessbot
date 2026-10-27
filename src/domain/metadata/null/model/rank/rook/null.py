@@ -33,7 +33,7 @@ class RookNullWarningSet(RankNullWarningSet[Rook]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

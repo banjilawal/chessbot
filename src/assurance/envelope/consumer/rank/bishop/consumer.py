@@ -32,7 +32,7 @@ class BishopEnvelopeConsumer(RankEnvelopeConsumer[Bishop]):
         1.  Assure a Bishop covered by a RootRankEnvelope is safe.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(

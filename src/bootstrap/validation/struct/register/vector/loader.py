@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidationLoader, VectorRegisterValidatorToolkit
+from assurance import RegisterValidationLoader, VectorRegisterLayerToolkit
 from domain import VectorRegister
 from err import (
     VectorRegisterConsistencyException, VectorRegisterEmptyException, VectorRegisterLoaderException,
@@ -35,7 +35,7 @@ class VectorRegisterLoader(RegisterValidationLoader[VectorRegister]):
             -   VectorRegisterBlueprint
 
     Attributes:
-        toolkit: VectorRegisterValidatorToolkit
+        toolkit: VectorRegisterLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class VectorRegisterLoader(RegisterValidationLoader[VectorRegister]):
     
     def __init__(
             self,
-            toolkit: Optional[VectorRegisterValidatorToolkit] | None = None,
+            toolkit: Optional[VectorRegisterLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[VectorRegisterValidatorToolkit]
+            toolkit: Optional[VectorRegisterLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or VectorRegisterValidatorToolkit())
+        super().__init__(toolkit=toolkit or VectorRegisterLayerToolkit())
     
     @property
-    def toolkit(self) -> VectorRegisterValidatorToolkit:
-        return cast(VectorRegisterValidatorToolkit, super().toolkit)
+    def toolkit(self) -> VectorRegisterLayerToolkit:
+        return cast(VectorRegisterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorRegister]:

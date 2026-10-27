@@ -18,7 +18,7 @@ from operation.toolkit import ModelManifest
 from transit.carrier import TokenCarrier
 
 
-class TokenValidatorToolkit(ModelManifest[Token]):
+class TokenLayerToolkit(ModelManifest[Token]):
     """
     Role:
         - Dependency Manager
@@ -39,7 +39,7 @@ class TokenValidatorToolkit(ModelManifest[Token]):
     Provides:
 
     Super
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     _defaults: Dict[str, Any]
     

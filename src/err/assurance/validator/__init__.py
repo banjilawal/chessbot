@@ -10,10 +10,10 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR PACKAGE ===========#
 
 # Packages
+from .context import *
 from .model import *
 from .query import *
 from .root import *
-from .search import *
 from .struct import *
 
 # Modules

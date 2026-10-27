@@ -28,7 +28,7 @@ class CartesianToggleValidatorException(ToggleValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CartesianToggleValidator failed.
+        1.  Indicating a CartesianToggleValidator failed.
 
     Attributes:
         msg: Optional[str]

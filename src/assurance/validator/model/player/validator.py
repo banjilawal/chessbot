@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, PlayerValidationLoader, PlayerValidatorToolkit
+from assurance import ModelValidator, PlayerValidationLoader, PlayerLayerToolkit
 from domain import Archetype, Account, Game, Player, PlayerBlueprint, PlayerPrimeExtract
 from err import (
     ArchetypeNullException, GameNullException, PlayerCarrierEmptyException,
@@ -53,7 +53,7 @@ class PlayerValidator(ModelValidator[Player]):
         return cast(PlayerValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> PlayerValidatorToolkit:
+    def toolkit(self) -> PlayerLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -145,7 +145,7 @@ class PlayerValidator(ModelValidator[Player]):
                 )
             )
         # --- Handle the case that the account is not safe. ---#
-        account_validation = self.toolkit.wrapper.account.extract_model(
+        account_validation = self.toolkit.dependency.account.extract_model(
             request=AccountValidationRequest(
                 item=AccountCarrier(model=fingerprint.account),
                 id=IdFactory.next_id(class_name="AccountValidationRequest"),

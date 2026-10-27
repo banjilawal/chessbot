@@ -15,4 +15,4 @@ from .token import *
 from .vector import *
 
 # Module
-from .toolkit import NodeValidatorToolkit
+from .toolkit import NodeLayerToolkit

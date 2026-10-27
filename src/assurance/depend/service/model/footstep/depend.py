@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Footstep
 from exchange import CoordValidationService
 
 
-class FootstepDependency(ModelDependency[Footstep]):
+class FootstepServiceDependency(ServiceDependency[Footstep]):
     """
     Role:
         - Toolkit
@@ -32,7 +32,7 @@ class FootstepDependency(ModelDependency[Footstep]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _coord: CoordValidationService
     

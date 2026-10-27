@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, TokenValidatorToolkit
+from assurance import ModelValidationLoader, TokenLayerToolkit
 from domain import Token, TokenBlueprint, TokenPrimeExtract
 from err import (
     TokenCarrierEmptyException, TokenValidationLoaderException, TokenValidationRequestNullException
@@ -35,7 +35,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
             -   TokenBlueprint
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: TokenLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            toolkit: Optional[TokenLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
+            toolkit: Optional[TokenLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
+        super().__init__(toolkit=toolkit or TokenLayerToolkit())
     
     @property
-    def toolkit(self) -> TokenValidatorToolkit:
-        return cast(TokenValidatorToolkit, super().toolkit)
+    def toolkit(self) -> TokenLayerToolkit:
+        return cast(TokenLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TokenPrimeExtract]:

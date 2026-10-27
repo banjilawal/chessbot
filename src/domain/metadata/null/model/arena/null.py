@@ -33,7 +33,7 @@ class ArenaNullWarningSet(ModelNullWarningSet[Arena]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, AccountValidatorToolkit
+from assurance import ModelValidationLoader, AccountLayerToolkit
 from domain import Account, AccountPrimeExtract
 from err import (
     AccountCarrierEmptyException, AccountValidationLoaderException, AccountValidationRequestNullException
@@ -35,7 +35,7 @@ class AccountValidationLoader(ModelValidationLoader[Account]):
             -   AccountBlueprint
 
     Attributes:
-        toolkit: AccountValidatorToolkit
+        toolkit: AccountLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class AccountValidationLoader(ModelValidationLoader[Account]):
     
     def __init__(
             self,
-            toolkit: Optional[AccountValidatorToolkit] | None = None,
+            toolkit: Optional[AccountLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[AccountValidatorToolkit]
+            toolkit: Optional[AccountLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or AccountValidatorToolkit())
+        super().__init__(toolkit=toolkit or AccountLayerToolkit())
     
     @property
-    def toolkit(self) -> AccountValidatorToolkit:
-        return cast(AccountValidatorToolkit, super().toolkit)
+    def toolkit(self) -> AccountLayerToolkit:
+        return cast(AccountLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[AccountPrimeExtract]:

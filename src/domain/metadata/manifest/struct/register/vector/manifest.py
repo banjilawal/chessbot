@@ -30,7 +30,7 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

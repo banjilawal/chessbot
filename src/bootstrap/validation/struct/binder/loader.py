@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import BinderValidatorToolkit, StructValidationLoader
+from assurance import BinderLayerToolkit, StructValidationLoader
 from domain import ArchetypeBinder
 from util import LoggingLevelRouter
 
@@ -41,16 +41,16 @@ class BinderValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
         Loader
     """
     
-    def __init__(self, toolkit: BinderValidatorToolkit[T]):
+    def __init__(self, toolkit: BinderLayerToolkit[T]):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            toolkit: LayerToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> BinderValidatorToolkit[T]:
-        return cast(BinderValidatorToolkit[T], super().toolkit)
+    def toolkit(self) -> BinderLayerToolkit[T]:
+        return cast(BinderLayerToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

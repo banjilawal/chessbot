@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import NodeDependency
+from assurance import NodeServiceDependency
 from domain import EncounterWarningNode
 from exchange import EncounterValidationService
 
 
-class EncounterWarningNodeDependency(NodeDependency[EncounterWarningNode]):
+class EncounterWarningNodeDependency(NodeServiceDependency[EncounterWarningNode]):
     """
     Role:
         - Toolkit

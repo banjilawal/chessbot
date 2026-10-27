@@ -34,7 +34,7 @@ class CheckmateEncounterEnvelopeConsumer(
         1.  Assure a CheckmateEncounter covered by a RootSquareEncounterEnvelope is safe.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        toolkit: EncounterLayerToolkit
 
     Provides:
         -   def execute(

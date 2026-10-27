@@ -30,7 +30,7 @@ class TeamBinderManifest(BinderManifest[TeamBinder]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

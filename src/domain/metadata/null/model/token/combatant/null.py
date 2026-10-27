@@ -33,7 +33,7 @@ class CombatantTokenNullWarningSet(TokenNullWarningSet[CombatantToken]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

@@ -26,7 +26,7 @@ class PlayerBinderValidatorException(BinderValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a PlayerBinderValidator failed.
+        1.  Indicating a PlayerBinderValidator failed.
 
     Attributes:
         msg: Optional[str]

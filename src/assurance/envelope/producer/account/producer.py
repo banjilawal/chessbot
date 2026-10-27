@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, AccountValidationLoader, AccountValidatorToolkit
+from assurance import RootEnvelopeProducer, AccountValidationLoader, AccountLayerToolkit
 from domain import Account, AccountPrimeExtract
 from err import AccountCarrierEmptyException, AccountEnvelopeProducerException
 
@@ -55,7 +55,7 @@ class AccountEnvelopeProducer(RootEnvelopeProducer[Account]):
         return cast(AccountValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> AccountValidatorToolkit:
+    def toolkit(self) -> AccountLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor

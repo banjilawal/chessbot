@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, GameValidatorToolkit
+from assurance import ContextValidationLoader, GameLayerToolkit
 from domain import Game, GameContextPrimeExtract
 from err import (
     GameCarrierEmptyException, GameContextValidationLoaderException, GameContextValidationRequestNullException
@@ -35,7 +35,7 @@ class GameContextValidationLoader(ContextValidationLoader[GameContext]):
             -   GameBlueprint
 
     Attributes:
-        toolkit: GameValidatorToolkit
+        toolkit: GameLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class GameContextValidationLoader(ContextValidationLoader[GameContext]):
     
     def __init__(
             self,
-            toolkit: Optional[GameValidatorToolkit] | None = None,
+            toolkit: Optional[GameLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[GameValidatorToolkit]
+            toolkit: Optional[GameLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or GameValidatorToolkit())
+        super().__init__(toolkit=toolkit or GameLayerToolkit())
     
     @property
-    def toolkit(self) -> GameValidatorToolkit:
-        return cast(GameValidatorToolkit, super().toolkit)
+    def toolkit(self) -> GameLayerToolkit:
+        return cast(GameLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[GameContextPrimeExtract]:

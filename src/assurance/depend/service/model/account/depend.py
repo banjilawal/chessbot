@@ -10,24 +10,24 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Account
 
 
-class AccountDependency(ModelDependency[Account]):
+class AccountServiceDependency(ServiceDependency[Account]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy AccountValidator's ResponseService dependencies.
+        1.  Satisfy AccountValidator's ValidationService dependencies.
 
     Attributes:
 
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     def __init__(self,):

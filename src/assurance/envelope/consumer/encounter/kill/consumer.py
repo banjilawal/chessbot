@@ -34,7 +34,7 @@ class KillEncounterEnvelopeConsumer(
         1.  Assure a KillEncounter covered by a RootSquareEncounterEnvelope is safe.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        toolkit: EncounterLayerToolkit
 
     Provides:
         -   def execute(envelope: RootEncounterEnvelope) -> ValidationResult[EncounterCarrier]

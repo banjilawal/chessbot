@@ -11,15 +11,15 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
-from assurance import StructDependency
+from assurance import ServiceDependency
 from domain import Register
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterDependency(StructDependency[T], ABC, Generic[T]):
+class RegisterServiceDependency(ServiceDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -33,7 +33,7 @@ class RegisterDependency(StructDependency[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructDependency
+        Dependency
     """
     
     def __init__(self):

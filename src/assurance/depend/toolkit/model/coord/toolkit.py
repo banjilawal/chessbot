@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, CoordWrapperDependency
+from assurance import ModelLayerToolkit, CoordServiceDependency
 from domain import Coord, CoordManifest, CoordNullWarningSet, CoordLayer
 
 
-class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
+class CoordLayerToolkit(ModelLayerToolkit[Coord]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Coord attribute validators and type metadata.
+        1.  Single source of truth for Coord attribute validators and type manifest.
 
     Attributes:
         helper: CoordManifest
-        metadata: CoordWrapperDependency
+        manifest: CoordServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[CoordManifest] | None = None,
-            wrapper: Optional[CoordWrapperDependency] | None = None,
+            manifest: Optional[CoordManifest] | None = None,
+            dependency: Optional[CoordServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[CoordManifest]
-            metadata: Optional[CoordWrapperDependency]
+            dependency: Optional[CoordManifest]
+            manifest: Optional[CoordServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or CoordWrapperDependency(),
-            metadata=metadata or CoordManifest(),
+            dependency=dependency or CoordServiceDependency(),
+            manifest=manifest or CoordManifest(),
         )
     
     @property
-    def wrapper(self) -> CoordWrapperDependency:
-        return cast(CoordWrapperDependency, super().wrapper)
+    def dependency(self) -> CoordServiceDependency:
+        return cast(CoordServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> CoordManifest:
-        return cast(CoordManifest, super().metadata)
+    def manifest(self) -> CoordManifest:
+        return cast(CoordManifest, super().manifest)
     
     @property
     def nulls(self) -> CoordNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> CoordLayer:
-        return self.metadata.types
+        return self.manifest.types

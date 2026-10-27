@@ -12,56 +12,56 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import ModelValidationLoader, ModelWrapperDependency, ValidatorToolkit
+from assurance import  LayerToolkit
 from domain import Model, ModelManifest, ModelNullWarningSet, ModelLayer
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
+class ModelLayerToolkit(LayerToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
-        helper: WrapperDependency[T]
-        metadata: ModelManifest[T]
+        helper: ServiceDependency[T]
+        manifest: ModelManifest[T]
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     
     def __init__(
             self,
-            wrapper: ModelWrapperDependency[T],
-            metadata: ModelManifest[T],
+            dependency: ModelServiceDependency[T],
+            manifest: ModelManifest[T],
     ):
         """
         Args:
-            wrapper: WrapperDependency[T]
-            metadata: ModelManifest[T]
+            dependency: ServiceDependency[T]
+            manifest: ModelManifest[T]
         """
-        super().__init__(wrapper=wrapper, metadata=metadata)
+        super().__init__(dependency=dependency, manifest=manifest)
     
     @property
-    def wrapper(self) -> ModelWrapperDependency[T]:
-        return cast(ModelWrapperDependency[T], super().wrapper)
+    def dependency(self) -> ModelServiceDependency[T]:
+        return cast(ModelServiceDependency[T], super().dependency)
     
     @property
-    def metadata(self) -> ModelManifest[T]:
-        return cast(ModelManifest[T], super().metadata)
+    def manifest(self) -> ModelManifest[T]:
+        return cast(ModelManifest[T], super().manifest)
     
     @property
     def nulls(self) -> ModelNullWarningSet[T]:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> ModelLayer[T]:
-        return self.metadata.types
+        return self.manifest.types
     

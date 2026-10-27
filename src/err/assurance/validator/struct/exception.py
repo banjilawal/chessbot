@@ -27,7 +27,7 @@ class StructValidatorException(ValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StructValidator failed.
+        1.  Indicating a StructValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -30,7 +30,7 @@ class ParticipationManifest(ChartManifest[Participation]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

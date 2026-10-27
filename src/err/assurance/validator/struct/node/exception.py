@@ -27,7 +27,7 @@ class NodeValidatorException(StructValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a NodeValidator failed.
+        1.  Indicating a NodeValidator failed.
 
     Attributes:
         msg: Optional[str]

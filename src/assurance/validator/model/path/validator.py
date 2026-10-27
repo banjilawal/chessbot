@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import PathValidationLoader, PathValidatorToolkit, ModelValidator
+from assurance import PathValidationLoader, PathLayerToolkit, ModelValidator
 from domain import Path, PathBlueprint, PathPrimeExtract, SquareRegister
 from err import PathCarrierEmptyException, PathValidatorException
 from exchange import SquareRegisterValidationRequest
@@ -54,7 +54,7 @@ class PathValidator(ModelValidator[Path]):
         return cast(PathValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> PathValidatorToolkit:
+    def toolkit(self) -> PathLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -132,7 +132,7 @@ class PathValidator(ModelValidator[Path]):
                 )
             label = cast(int, label_validation.payload)
         # --- PROCESS_THE_ENDPOINTS_ATTRIBUTE. ---#
-        endpoints_validation = self.toolkit.wrapper.square_register.extract_model(
+        endpoints_validation = self.toolkit.dependency.square_register.extract_model(
             request=SquareRegisterValidationRequest(
                 item=SquareRegisterCarrier(model=blueprint.endpoints),
                 id=IdFactory.next_id(class_name="SquareRegisterValidationRequest"),

@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ValidationLoader, ModelValidatorToolkit
+from assurance import ValidationLoader, ModelLayerToolkit
 from domain import Model, ModelPrimeExtract
 from util import LoggingLevelRouter
 
@@ -44,7 +44,7 @@ class ModelValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     def __init__(self, toolkit: ValifatorToolkit):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            toolkit: LayerToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

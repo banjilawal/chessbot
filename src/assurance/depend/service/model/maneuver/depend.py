@@ -12,18 +12,18 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Maneuver
 from exchange import PathValidationService, TokenValidationService
 
 
-class ManeuverDependency(ModelDependency[Maneuver]):
+class ManeuverServiceDependency(ServiceDependency[Maneuver]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy ManeuverValidator's ResponseService dependencies.
+        1.  Satisfy ManeuverValidator's ValidationService dependencies.
 
     Attributes:
         path: PathValidationService
@@ -32,7 +32,7 @@ class ManeuverDependency(ModelDependency[Maneuver]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _path: PathValidationService
     _token: TokenValidationService

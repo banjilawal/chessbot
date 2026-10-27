@@ -12,54 +12,54 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import ChartDependency, StructValidatorToolkit
+from assurance import ChartDependency, StructLayerToolkit
 from domain import Chart, ChartManifest, ChartNullGroup, ChartTypeUnion
 
 T = TypeVar("T", bound="Chart")
 
 
-class ChartValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
+class ChartLayerToolkit(StructLayerToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
-            wrapper: ChartWrapperDependency[T]
-            metadata: ChartManifest[T]
+            wrapper: ChartServiceDependency[T]
+            manifest: ChartManifest[T]
 
     Provides:
 
     Super Class:
-        StructValidatorToolkit
+        StructLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: ChartDependency[T],
-            metadata: ChartManifest[T],
+            dependency: ChartDependency[T],
+            manifest: ChartManifest[T],
     ):
         """
-            wrapper: ChartWrapperDependency[T]
-            metadata: ChartManifest[T]
+            wrapper: ChartServiceDependency[T]
+            manifest: ChartManifest[T]
         """
-        super().__init__(wrapper=wrapper, metadata=metadata)
+        super().__init__(dependency=dependency, manifest=manifest)
     
     
     @property
-    def wrapper(self) -> ChartDependency[T]:
-        return cast(ChartDependency, super().wrapper)
+    def dependency(self) -> ChartDependency[T]:
+        return cast(ChartDependency, super().dependency)
     
     @property
-    def metadata(self) -> ChartManifest[T]:
-        return cast(ChartManifest, super().metadata)
+    def manifest(self) -> ChartManifest[T]:
+        return cast(ChartManifest, super().manifest)
     
     @property
     def nulls(self) -> ChartNullGroup[T]:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> ChartTypeUnion[T]:
-        return self.metadata.types
+        return self.manifest.types

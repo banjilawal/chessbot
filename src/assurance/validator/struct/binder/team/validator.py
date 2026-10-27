@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import BinderValidator, TeamBinderLoader, TeamBinderValidatorToolkit
+from assurance import BinderValidator, TeamBinderLoader, TeamBinderLayerToolkit
 from domain import (
     Archetype, Team, TeamBinder, TeamBinderBlueprint,
     TeamBinderPrimeExtract
@@ -57,7 +57,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         return cast(TeamBinderLoader, super().loader)
     
     @property
-    def toolkit(self) -> TeamBinderValidatorToolkit:
+    def toolkit(self) -> TeamBinderLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -124,7 +124,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         # --- Cast priming_result into a request for additional tests. ---#
         entry: Dict[Archetype, Team] = {}
         for key in blueprint.bindings:
-            team_validation = self.toolkit.wrapper.team.extract_model(
+            team_validation = self.toolkit.dependency.team.extract_model(
                 request=TeamValidationRequest(
                     item=TeamCarrier(model=entry[key]),
                     id=IdFactory.next_id(class_name="TeamBinderRequest")

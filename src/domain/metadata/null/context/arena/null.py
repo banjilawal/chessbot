@@ -33,7 +33,7 @@ class ArenaContextNullWarningSet(ContextNullWarningSet[ArenaContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

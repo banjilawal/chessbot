@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import BinderValidator, PlayerBinderLoader, PlayerBinderValidatorToolkit
+from assurance import BinderValidator, PlayerBinderLoader, PlayerBinderLayerToolkit
 from domain import (
     Archetype, Player, PlayerBinder, PlayerBinderBlueprint,
     PlayerBinderPrimeExtract
@@ -57,7 +57,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         return cast(PlayerBinderLoader, super().loader)
     
     @property
-    def toolkit(self) -> PlayerBinderValidatorToolkit:
+    def toolkit(self) -> PlayerBinderLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -124,7 +124,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         # --- Cast priming_result into a request for additional tests. ---#
         entry: Dict[Archetype, Player] = {}
         for key in blueprint.bindings:
-            player_validation = self.toolkit.wrapper.player.extract_model(
+            player_validation = self.toolkit.dependency.player.extract_model(
                 request=PlayerValidationRequest(
                     item=PlayerCarrier(model=entry[key]),
                     id=IdFactory.next_id(class_name="PlayerBinderRequest")

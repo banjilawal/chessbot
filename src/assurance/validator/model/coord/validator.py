@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import CoordValidationLoader, CoordValidatorToolkit, ModelValidator
+from assurance import CoordValidationLoader, CoordLayerToolkit, ModelValidator
 from domain import Board, Coord, CoordBlueprint, CoordPrimeExtract
 from err import CoordCarrierEmptyException, CoordValidatorException
 from exchange import BoardValidationRequest
@@ -53,7 +53,7 @@ class CoordValidator(ModelValidator[Coord]):
         return cast(CoordValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> CoordValidatorToolkit:
+    def toolkit(self) -> CoordLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -117,7 +117,7 @@ class CoordValidator(ModelValidator[Coord]):
                 )
             )
         # --- PROCESS_THE_BOARD_ATTRIBUTE. ---#
-        board_validation = self.toolkit.wrapper.board.extract_model(
+        board_validation = self.toolkit.dependency.board.extract_model(
             request=BoardValidationRequest(
                 item=BoardCarrier(model=fingerprint.board),
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),

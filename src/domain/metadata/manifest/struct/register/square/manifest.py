@@ -30,7 +30,7 @@ class SquareRegisterManifest(RegisterManifest[SquareRegister]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

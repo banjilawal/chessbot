@@ -32,7 +32,7 @@ class KnightEnvelopeConsumer(RankEnvelopeConsumer[Knight]):
         1.  Assure a Knight covered by a RootRankEnvelope is safe.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(

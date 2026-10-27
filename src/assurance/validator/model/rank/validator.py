@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, RankValidationLoader, RankValidatorToolkit
+from assurance import ModelValidator, RankValidationLoader, RankLayerToolkit
 from domain import Arena, Rank, RankBlueprint, RankPrimeExtract, PlayerBinder
 from err import RankCarrierEmptyException, RankValidatorException
 from exchange import (
@@ -52,7 +52,7 @@ class RankValidator(ModelValidator[Rank]):
         return cast(RankValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> RankValidatorToolkit:
+    def toolkit(self) -> RankLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -114,8 +114,8 @@ class RankValidator(ModelValidator[Rank]):
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             item=fingerprint,
             blueprint_owner_name=fingerprint.domain_class_name,
-            blueprint_type=self.toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
+            blueprint_type=self.toolkit.manifest.types.blueprint,
+            blueprint_null_exception=self.toolkit.manifest.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -129,7 +129,7 @@ class RankValidator(ModelValidator[Rank]):
                 )
             )
         # --- Handle the case that the binder is not safe. ---#
-        binder_validation = self.toolkit.wrapper.binder.extract_model(
+        binder_validation = self.toolkit.dependency.binder.extract_model(
             request=PlayerBinderValidationRequest(
                 item=PlayerBinderCarrier(model=fingerprint.binder),
                 id=IdFactory.next_id(class_name="PlayerBinderValidationRequest"),
@@ -147,7 +147,7 @@ class RankValidator(ModelValidator[Rank]):
                 )
             )
         # --- Handle the case that the arena is not safe. ---#
-        arena_validation = self.toolkit.wrapper.arena.extract_model(
+        arena_validation = self.toolkit.dependency.arena.extract_model(
             request=ArenaValidationRequest(
                 item=ArenaCarrier(model=fingerprint.arena),
                 id=IdFactory.next_id(class_name="ArenaValidationRequest"),

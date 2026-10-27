@@ -12,18 +12,18 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Board
 from exchange import TeamBinderValidationService
 
 
-class BoardDependency(ModelDependency[Board]):
+class BoardServiceDependency(ServiceDependency[Board]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy BoardValidator's ResponseService dependencies.
+        1.  Satisfy BoardValidator's ValidationService dependencies.
 
     Attributes:
         binder: TeamBinderValidationService
@@ -31,7 +31,7 @@ class BoardDependency(ModelDependency[Board]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     _binder: TeamBinderValidationService

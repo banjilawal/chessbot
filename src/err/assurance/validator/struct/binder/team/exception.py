@@ -26,7 +26,7 @@ class TeamBinderValidatorException(BinderValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a TeamBinderValidator failed.
+        1.  Indicating a TeamBinderValidator failed.
 
     Attributes:
         msg: Optional[str]

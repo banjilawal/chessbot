@@ -33,7 +33,7 @@ class MachineAccountNullWarningSet(AccountNullWarningSet[MachineAccount]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

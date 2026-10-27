@@ -27,7 +27,7 @@ class RankValidatorException(ModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RankValidator failed.
+        1.  Indicating a RankValidator failed.
 
     Attributes:
         msg: Optional[str]

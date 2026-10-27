@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, BoardValidatorToolkit
+from assurance import ContextValidationLoader, BoardLayerToolkit
 from domain import Board, BoardContextPrimeExtract
 from err import (
     BoardCarrierEmptyException, BoardContextValidationLoaderException, BoardContextValidationRequestNullException
@@ -35,7 +35,7 @@ class BoardContextValidationLoader(ContextValidationLoader[BoardContext]):
             -   BoardBlueprint
 
     Attributes:
-        toolkit: BoardValidatorToolkit
+        toolkit: BoardLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class BoardContextValidationLoader(ContextValidationLoader[BoardContext]):
     
     def __init__(
             self,
-            toolkit: Optional[BoardValidatorToolkit] | None = None,
+            toolkit: Optional[BoardLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[BoardValidatorToolkit]
+            toolkit: Optional[BoardLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or BoardValidatorToolkit())
+        super().__init__(toolkit=toolkit or BoardLayerToolkit())
     
     @property
-    def toolkit(self) -> BoardValidatorToolkit:
-        return cast(BoardValidatorToolkit, super().toolkit)
+    def toolkit(self) -> BoardLayerToolkit:
+        return cast(BoardLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[BoardContextPrimeExtract]:

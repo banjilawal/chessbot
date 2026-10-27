@@ -33,7 +33,7 @@ class CoordContextNullWarningSet(ContextNullWarningSet[CoordContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

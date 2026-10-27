@@ -15,4 +15,4 @@ from .square import *
 from .vector import *
 
 # Module
-from .toolkit import RegisterValidatorToolkit
+from .toolkit import RegisterLayerToolkit

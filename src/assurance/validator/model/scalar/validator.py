@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, ScalarValidationLoader, ScalarValidatorToolkit
+from assurance import ModelValidator, ScalarValidationLoader, ScalarLayerToolkit
 from config import BoardSetting
 from domain import Scalar, ScalarBlueprint, ScalarPrimeExtract
 from err import ScalarCarrierEmptyException, ScalarValidatorException
@@ -51,7 +51,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         return cast(ScalarValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> ScalarValidatorToolkit:
+    def toolkit(self) -> ScalarLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, TeamValidationLoader, TeamValidatorToolkit
+from assurance import ModelValidator, TeamValidationLoader, TeamLayerToolkit
 from domain import Archetype, Board, Player, Team, TeamBlueprint, TeamPrimeExtract
 from err import ArchetypeNullException, TeamCarrierEmptyException, TeamValidatorException
 from exchange import BoardValidationRequest, PlayerValidationRequest
@@ -50,7 +50,7 @@ class TeamValidator(ModelValidator[Team]):
         return cast(TeamValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> TeamValidatorToolkit:
+    def toolkit(self) -> TeamLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -112,8 +112,8 @@ class TeamValidator(ModelValidator[Team]):
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             item=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self.toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
+            blueprint_type=self.toolkit.manifest.types.blueprint,
+            blueprint_null_exception=self.toolkit.manifest.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -144,7 +144,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Handle the case that the board is not safe. ---#
-        board_validation = self.toolkit.wrapper.board.extract_model(
+        board_validation = self.toolkit.dependency.board.extract_model(
             request=BoardValidationRequest(
                 item=BoardCarrier(model=blueprint.board),
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
@@ -162,7 +162,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Handle the case that the owner is not safe. ---#
-        owner_validation = self.toolkit.wrapper.owner.extract_model(
+        owner_validation = self.toolkit.dependency.owner.extract_model(
             request=PlayerValidationRequest(
                 item=PlayerCarrier(model=blueprint.owner),
                 id=IdFactory.next_id(class_name="PlayerValidationRequest"),

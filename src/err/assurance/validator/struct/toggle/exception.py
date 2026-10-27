@@ -28,7 +28,7 @@ class ToggleValidatorException(StructValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ToggleValidator failed.
+        1.  Indicating a ToggleValidator failed.
 
     Attributes:
         msg: Optional[str]

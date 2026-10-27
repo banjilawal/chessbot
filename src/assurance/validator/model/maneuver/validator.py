@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ManeuverValidationLoader, ManeuverValidatorToolkit, ModelValidator
+from assurance import ManeuverValidationLoader, ManeuverLayerToolkit, ModelValidator
 from domain import Path, Token, Maneuver, ManeuverBlueprint, ManeuverPrimeExtract
 from err import ManeuverCarrierEmptyException, ManeuverValidatorException
 from exchange import PathValidationRequest, TokenValidationRequest
@@ -53,7 +53,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         return cast(ManeuverValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> ManeuverValidatorToolkit:
+    def toolkit(self) -> ManeuverLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -116,7 +116,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                 )
             )
         # --- PROCESS_THE_TRAVELER_ATTRIBUTE. ---#
-        traveler_validation = self.toolkit.wrapper.token.extract_model(
+        traveler_validation = self.toolkit.dependency.token.extract_model(
             request=TokenValidationRequest(
                 item=TokenCarrier(model=blueprint.traveler),
                 id=IdFactory.next_id(class_name="TokenValidationRequest"),
@@ -136,7 +136,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                 )
             )
         # --- PROCESS_THE_PATH_ATTRIBUTE. ---#
-        path_validation = self.toolkit.wrapper.path.extract_model(
+        path_validation = self.toolkit.dependency.path.extract_model(
             request=PathValidationRequest(
                 item=PathCarrier(model=blueprint.path),
                 id=IdFactory.next_id(class_name="PathValidationRequest"),

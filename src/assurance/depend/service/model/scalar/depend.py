@@ -9,24 +9,24 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Scalar
 
 
-class ScalarDependency(ModelDependency[Scalar]):
+class ScalarServiceDependency(ServiceDependency[Scalar]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy ScalarValidator's ResponseService dependencies.
+        1.  Satisfy ScalarValidator's ValidationService dependencies.
 
     Attributes:
 
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     def __init__():

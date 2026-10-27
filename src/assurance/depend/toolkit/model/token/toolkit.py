@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, TokenWrapperDependency
+from assurance import ModelLayerToolkit, TokenServiceDependency
 from authorization import HomeSquareExtractor
 from domain import Token, TokenManifest, TokenNullWarningSet, TokenLayer
 
 
-class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
+class TokenLayerToolkit(ModelLayerToolkit[Token]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Token attribute validators and type metadata.
+        1.  Single source of truth for Token attribute validators and type manifest.
 
     Attributes:
         helper: TokenManifest
-        metadata: TokenWrapperDependency
+        manifest: TokenServiceDependency
         home_square_extractor: HomeSquareExtractor
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     _home_square_extractor: HomeSquareExtractor
     
     
     def __init__(
             self,
-            metadata: Optional[TokenManifest] | None = None,
-            wrapper: Optional[TokenWrapperDependency] | None = None,
+            manifest: Optional[TokenManifest] | None = None,
+            dependency: Optional[TokenServiceDependency] | None = None,
             home_square_extractor: Optional[HomeSquareExtractor] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[TokenManifest]
-            metadata: Optional[TokenWrapperDependency]
+            dependency: Optional[TokenManifest]
+            manifest: Optional[TokenServiceDependency]
             home_square_extractor: Optional[HomeSquareExtractor]
         """
         super().__init__(
-            wrapper=wrapper or TokenWrapperDependency(),
-            metadata=metadata or TokenManifest(),
+            dependency=dependency or TokenServiceDependency(),
+            manifest=manifest or TokenManifest(),
         )
         self._home_square_extractor = home_square_extractor or HomeSquareExtractor()
     
     @property
-    def wrapper(self) -> TokenWrapperDependency:
-        return cast(TokenWrapperDependency, super().wrapper)
+    def dependency(self) -> TokenServiceDependency:
+        return cast(TokenServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> TokenManifest:
-        return cast(TokenManifest, super().metadata)
+    def manifest(self) -> TokenManifest:
+        return cast(TokenManifest, super().manifest)
     
     @property
     def home_square_extractor(self) -> HomeSquareExtractor:
@@ -69,8 +69,8 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
     
     @property
     def nulls(self) -> TokenNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> TokenLayer:
-        return self.metadata.types
+        return self.manifest.types

@@ -31,7 +31,7 @@ class Validator(ABC, Generic[T]):
 
     Attributes:
         loader: ValidationLoader[T]
-        toolkit: ValidatorToolkit[T]
+        toolkit: LayerToolkit[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -44,7 +44,7 @@ class Validator(ABC, Generic[T]):
         """
         Args:
             loader: ValidationLoader[T]
-            toolkit: ValidatorToolkit[T]
+            toolkit: LayerToolkit[T]
         """
         self._loader = loader
      
@@ -53,7 +53,7 @@ class Validator(ABC, Generic[T]):
         return self._loader
         
     @property
-    def toolkit(self) -> ValidatorToolkit[T]:
+    def toolkit(self) -> LayerToolkit[T]:
         return self._loader.toolkit
     
     @abstractmethod

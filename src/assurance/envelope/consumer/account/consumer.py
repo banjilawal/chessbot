@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import AccountValidatorToolkit, RootEnvelopeConsumer
+from assurance import AccountLayerToolkit, RootEnvelopeConsumer
 from domain import Account
 from transit import AccountCarrier, RootAccountEnvelope
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class AccountEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
         1.  Assure an Account covered by a RootEncounerEnvelope is safe.
 
     Attributes:
-        toolkit: AccountValidatorToolkit
+        toolkit: AccountLayerToolkit
 
     Provides:
         -   def execute(envelope: RootAccountEnvelope) -> ValidationResult[AccountCarrier]
@@ -38,14 +38,14 @@ class AccountEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
     Super Class:
         RootEnvelopeConsumer
     """
-    _toolkit: AccountValidatorToolkit
+    _toolkit: AccountLayerToolkit
     
-    def __init__(self, toolkit: Optional[AccountValidatorToolkit] | None = None):
-        super().__init__(toolkit=toolkit or AccountValidatorToolkit())
+    def __init__(self, toolkit: Optional[AccountLayerToolkit] | None = None):
+        super().__init__(toolkit=toolkit or AccountLayerToolkit())
         
     @property
-    def toolkit(self) -> AccountValidatorToolkit:
-        return cast(AccountValidatorToolkit, super().toolkit)
+    def toolkit(self) -> AccountLayerToolkit:
+        return cast(AccountLayerToolkit, super().toolkit)
         
 
     @abstractmethod

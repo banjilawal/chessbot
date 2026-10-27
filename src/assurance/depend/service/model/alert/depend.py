@@ -12,18 +12,18 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Alert
 from exchange import EncounterValidationService, PlayerValidationService
 
 
-class AlertDependency(ModelDependency[Alert]):
+class AlertServiceDependency(ServiceDependency[Alert]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy AlertValidator's ResponseService dependencies.
+        1.  Satisfy AlertValidator's ValidationService dependencies.
 
     Attributes:
         encounter: EncounterValidationService
@@ -31,7 +31,7 @@ class AlertDependency(ModelDependency[Alert]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     _encounter: EncounterValidationService

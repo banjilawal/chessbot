@@ -33,7 +33,7 @@ class KnightNullWarningSet(RankNullWarningSet[Knight]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

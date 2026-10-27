@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, GameWrapperDependency
+from assurance import ModelLayerToolkit, GameServiceDependency
 from domain import Game, GameManifest, GameNullWarningSet, GameLayer
 
 
-class GameValidatorToolkit(ModelValidatorToolkit[Game]):
+class GameLayerToolkit(ModelLayerToolkit[Game]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Game attribute validators and type metadata.
+        1.  Single source of truth for Game attribute validators and type manifest.
 
     Attributes:
         helper: GameManifest
-        metadata: GameWrapperDependency
+        manifest: GameServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[GameManifest] | None = None,
-            wrapper: Optional[GameWrapperDependency] | None = None,
+            manifest: Optional[GameManifest] | None = None,
+            dependency: Optional[GameServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[GameManifest]
-            metadata: Optional[GameWrapperDependency]
+            dependency: Optional[GameManifest]
+            manifest: Optional[GameServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or GameWrapperDependency(),
-            metadata=metadata or GameManifest(),
+            dependency=dependency or GameServiceDependency(),
+            manifest=manifest or GameManifest(),
         )
     
     @property
-    def wrapper(self) -> GameWrapperDependency:
-        return cast(GameWrapperDependency, super().wrapper)
+    def dependency(self) -> GameServiceDependency:
+        return cast(GameServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> GameManifest:
-        return cast(GameManifest, super().metadata)
+    def manifest(self) -> GameManifest:
+        return cast(GameManifest, super().manifest)
     
     @property
     def nulls(self) -> GameNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> GameLayer:
-        return self.metadata.types
+        return self.manifest.types

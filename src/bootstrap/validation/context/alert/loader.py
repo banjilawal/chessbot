@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, AlertValidatorToolkit
+from assurance import ContextValidationLoader, AlertLayerToolkit
 from domain import Alert, AlertContextPrimeExtract
 from err import (
     AlertCarrierEmptyException, AlertContextValidationLoaderException, AlertContextValidationRequestNullException
@@ -35,7 +35,7 @@ class AlertContextValidationLoader(ContextValidationLoader[AlertContext]):
             -   AlertBlueprint
 
     Attributes:
-        toolkit: AlertValidatorToolkit
+        toolkit: AlertLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class AlertContextValidationLoader(ContextValidationLoader[AlertContext]):
     
     def __init__(
             self,
-            toolkit: Optional[AlertValidatorToolkit] | None = None,
+            toolkit: Optional[AlertLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[AlertValidatorToolkit]
+            toolkit: Optional[AlertLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or AlertValidatorToolkit())
+        super().__init__(toolkit=toolkit or AlertLayerToolkit())
     
     @property
-    def toolkit(self) -> AlertValidatorToolkit:
-        return cast(AlertValidatorToolkit, super().toolkit)
+    def toolkit(self) -> AlertLayerToolkit:
+        return cast(AlertLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[AlertContextPrimeExtract]:

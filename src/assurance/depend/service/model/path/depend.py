@@ -12,18 +12,18 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Path
 from exchange import SquareRegisterValidationService
 
 
-class PathDependency(ModelDependency[Path]):
+class PathServiceDependency(ServiceDependency[Path]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy PathValidator's ResponseService dependencies.
+        1.  Satisfy PathValidator's ValidationService dependencies.
 
     Attributes:
         square_register: SquareRegisterValidationService
@@ -31,7 +31,7 @@ class PathDependency(ModelDependency[Path]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     _square_register: SquareRegisterValidationService

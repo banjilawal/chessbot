@@ -10,22 +10,25 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional
+
 from assurance import NumberValidator, PrimingValidator
 from authorization import BlueprintIdExtractor
 from microservice import IdentityService
 
-class CommonValidatorToolkit:
+class CommonToolkit:
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Bundles non-generic dependencies common to ValidatorToolkits.
+        1.  Bundles non-generic dependencies common to LayerToolkits.
         
     Attributes:
         identity_service: IdentityService
         number_validator: NumberValidator
         priming_validator: PrimingValidator
+        blueprint_id_extractor: BlueprintIdExtractor
 
     Provides:
 

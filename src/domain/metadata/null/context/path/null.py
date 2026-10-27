@@ -33,7 +33,7 @@ class PathContextNullWarningSet(ContextNullWarningSet[PathContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

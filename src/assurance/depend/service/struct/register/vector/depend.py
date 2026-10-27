@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterDependency
+from assurance import RegisterServiceDependency
 from domain import VectorRegister
 from exchange import VectorValidationService
 
 
-class VectorRegisterDependency(RegisterDependency[VectorRegister]):
+class VectorRegisterDependency(RegisterServiceDependency[VectorRegister]):
     """
     Role:
         - Toolkit

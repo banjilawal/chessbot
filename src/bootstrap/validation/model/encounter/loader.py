@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, EncounterValidatorToolkit
+from assurance import ModelValidationLoader, EncounterLayerToolkit
 from domain import Encounter, EncounterPrimeExtract
 from err import (
     EncounterCarrierEmptyException, EncounterValidationLoaderException,
@@ -36,7 +36,7 @@ class EncounterValidationLoader(ModelValidationLoader[Encounter]):
             -   EncounterBlueprint
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        toolkit: EncounterLayerToolkit
 
     Provides:
         -   def execute(
@@ -49,17 +49,17 @@ class EncounterValidationLoader(ModelValidationLoader[Encounter]):
     
     def __init__(
             self,
-            toolkit: Optional[EncounterValidatorToolkit] | None = None,
+            toolkit: Optional[EncounterLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[EncounterValidatorToolkit]
+            toolkit: Optional[EncounterLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
+        super().__init__(toolkit=toolkit or EncounterLayerToolkit())
     
     @property
-    def toolkit(self) -> EncounterValidatorToolkit:
-        return cast(EncounterValidatorToolkit, super().toolkit)
+    def toolkit(self) -> EncounterLayerToolkit:
+        return cast(EncounterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[EncounterPrimeExtract]:

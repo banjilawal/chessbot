@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ChartValidatorToolkit, ParticipationDependency
+from assurance import ChartLayerToolkit, ParticipationDependency
 from domain import (
     Participation, ParticipationManifest, ParticipationNullGroup,
     ParticipationTypeUnion
 )
 
 
-class ParticipationValidatorToolkit(ChartValidatorToolkit[Participation]):
+class ParticipationLayerToolkit(ChartLayerToolkit[Participation]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: ParticipationDependency
-            metadata: ParticipationManifest
+            manifest: ParticipationManifest
 
     Provides:
 
     Super Class:
-       ChartValidatorToolkit
+       ChartLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[ParticipationDependency] | None = None,
-            metadata: Optional[ParticipationManifest] | None = None,
+            dependency: Optional[ParticipationDependency] | None = None,
+            manifest: Optional[ParticipationManifest] | None = None,
     ):
         """
             wrapper: Optional[ParticipationDependency]
-            metadata: Optional[ParticipationManifest]
+            manifest: Optional[ParticipationManifest]
         """
         super().__init__(
-            wrapper=wrapper or ParticipationDependency(),
-            metadata=metadata or ParticipationManifest(),
+            dependency=dependency or ParticipationDependency(),
+            manifest=manifest or ParticipationManifest(),
         )
     
     @property
-    def wrapper(self) -> ParticipationDependency:
-        return cast(ParticipationDependency, super().wrapper)
+    def dependency(self) -> ParticipationDependency:
+        return cast(ParticipationDependency, super().dependency)
     
     @property
-    def metadata(self) -> ParticipationManifest:
-        return cast(ParticipationManifest, super().metadata)
+    def manifest(self) -> ParticipationManifest:
+        return cast(ParticipationManifest, super().manifest)
     
     @property
     def nulls(self) -> ParticipationNullGroup:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> ParticipationTypeUnion:
-        return self.metadata.types
+        return self.manifest.types

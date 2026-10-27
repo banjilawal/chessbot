@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import NodeDependency
+from assurance import NodeServiceDependency
 from domain import VectorNode
 from exchange import VectorValidationService
 
 
-class VectorNodeDependency(NodeDependency[VectorNode]):
+class VectorNodeDependency(NodeServiceDependency[VectorNode]):
     """
     Role:
         - Toolkit

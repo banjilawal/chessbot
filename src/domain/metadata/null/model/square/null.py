@@ -33,7 +33,7 @@ class SquareNullWarningSet(ModelNullWarningSet[Square]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

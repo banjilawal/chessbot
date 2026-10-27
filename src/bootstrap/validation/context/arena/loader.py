@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, ArenaValidatorToolkit
+from assurance import ContextValidationLoader, ArenaLayerToolkit
 from domain import Arena, ArenaContextPrimeExtract
 from err import (
     ArenaCarrierEmptyException, ArenaContextValidationLoaderException, ArenaContextValidationRequestNullException
@@ -35,7 +35,7 @@ class ArenaContextValidationLoader(ContextValidationLoader[ArenaContext]):
             -   ArenaBlueprint
 
     Attributes:
-        toolkit: ArenaValidatorToolkit
+        toolkit: ArenaLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class ArenaContextValidationLoader(ContextValidationLoader[ArenaContext]):
     
     def __init__(
             self,
-            toolkit: Optional[ArenaValidatorToolkit] | None = None,
+            toolkit: Optional[ArenaLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ArenaValidatorToolkit]
+            toolkit: Optional[ArenaLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or ArenaValidatorToolkit())
+        super().__init__(toolkit=toolkit or ArenaLayerToolkit())
     
     @property
-    def toolkit(self) -> ArenaValidatorToolkit:
-        return cast(ArenaValidatorToolkit, super().toolkit)
+    def toolkit(self) -> ArenaLayerToolkit:
+        return cast(ArenaLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ArenaContextPrimeExtract]:

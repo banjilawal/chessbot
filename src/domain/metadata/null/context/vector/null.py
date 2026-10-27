@@ -33,7 +33,7 @@ class VectorContextNullWarningSet(ContextNullWarningSet[VectorContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

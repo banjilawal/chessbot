@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import RegisterValidatorToolkit, VectorRegisterDependency
+from assurance import RegisterLayerToolkit, VectorRegisterDependency
 from domain import (
     VectorRegister, VectorRegisterManifest, VectorRegisterNullWarningSet,
     VectorRegisterLayer
 )
 
 
-class VectorRegisterValidatorToolkit(RegisterValidatorToolkit[VectorRegister]):
+class VectorRegisterLayerToolkit(RegisterLayerToolkit[VectorRegister]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: VectorRegisterDependency
-            metadata: VectorRegisterManifest
+            manifest: VectorRegisterManifest
 
     Provides:
 
     Super Class:
-       RegisterValidatorToolkit
+       RegisterLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[VectorRegisterDependency] | None = None,
-            metadata: Optional[VectorRegisterManifest] | None = None,
+            dependency: Optional[VectorRegisterDependency] | None = None,
+            manifest: Optional[VectorRegisterManifest] | None = None,
     ):
         """
             wrapper: Optional[VectorRegisterDependency]
-            metadata: Optional[VectorRegisterManifest]
+            manifest: Optional[VectorRegisterManifest]
         """
         super().__init__(
-            wrapper=wrapper or VectorRegisterDependency(),
-            metadata=metadata or VectorRegisterManifest(),
+            dependency=dependency or VectorRegisterDependency(),
+            manifest=manifest or VectorRegisterManifest(),
         )
     
     @property
-    def wrapper(self) -> VectorRegisterDependency:
-        return cast(VectorRegisterDependency, super().wrapper)
+    def dependency(self) -> VectorRegisterDependency:
+        return cast(VectorRegisterDependency, super().dependency)
     
     @property
-    def metadata(self) -> VectorRegisterManifest:
-        return cast(VectorRegisterManifest, super().metadata)
+    def manifest(self) -> VectorRegisterManifest:
+        return cast(VectorRegisterManifest, super().manifest)
     
     @property
     def nulls(self) -> VectorRegisterNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> VectorRegisterLayer:
-        return self.metadata.types
+        return self.manifest.types

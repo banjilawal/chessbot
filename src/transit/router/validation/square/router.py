@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    HomeSquareEnvelopeConsumer, PublicSquareEnvelopeConsumer, SquareValidatorToolkit
+    HomeSquareEnvelopeConsumer, PublicSquareEnvelopeConsumer, SquareLayerToolkit
 )
 from domain import Square
 from err import RootSquareEnvelopeNullException, SquareValidationRouteMissingException, SquareValidationRouterException
@@ -31,7 +31,7 @@ class SquareValidationRouter(ValidationRouter[Square]):
             by Carrier type.
 
     Attributes:
-        toolkit: SquareValidatorToolkit
+        toolkit: SquareLayerToolkit
         home_consumer: HomeSquareEnvelopeConsumer
         public_consumer: PublicSquareEnvelopeConsumer
 
@@ -46,23 +46,23 @@ class SquareValidationRouter(ValidationRouter[Square]):
     
     def __init__(
             self,
-            toolkit: Optional[SquareValidatorToolkit] | None = None,
+            toolkit: Optional[SquareLayerToolkit] | None = None,
             home_consumer: Optional[HomeSquareEnvelopeConsumer] | None = None,
             public_consumer: Optional[PublicSquareEnvelopeConsumer] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[SquareValidatorToolkit]
+            toolkit: Optional[SquareLayerToolkit]
             home_consumer: Optional[HomeSquareEnvelopeConsumer]
             public_consumer: Optional[PublicSquareEnvelopeConsumer]
         """
-        super().__init__(toolkit=toolkit or SquareValidatorToolkit())
+        super().__init__(toolkit=toolkit or SquareLayerToolkit())
         self._home_consumer = home_consumer or HomeSquareEnvelopeConsumer()
         self._public_consumer = public_consumer or PublicSquareEnvelopeConsumer()
     
     @property
-    def toolkit(self) -> SquareValidatorToolkit:
-        return cast(SquareValidatorToolkit, super().toolkit)
+    def toolkit(self) -> SquareLayerToolkit:
+        return cast(SquareLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, envelope: RootSquareEnvelope) -> ValidationResult[SquareCarrier]:

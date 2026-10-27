@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Module
-from .toolkit import ParticipationValidatorToolkit
+from .toolkit import ParticipationLayerToolkit

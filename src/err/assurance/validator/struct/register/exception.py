@@ -27,7 +27,7 @@ class RegisterValidatorException(StructValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RegisterValidator failed.
+        1.  Indicating a RegisterValidator failed.
 
     Attributes:
             msg: Optional[str]

@@ -30,7 +30,7 @@ class CoordRegisterManifest(RegisterManifest[CoordRegister]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Game
 from exchange import (
     ArenaValidationService, PlayerBinderValidationService,
@@ -20,13 +20,13 @@ from exchange import (
 )
 
 
-class GameDependency(ModelDependency[Game]):
+class GameServiceDependency(ServiceDependency[Game]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy GameValidator's ResponseService dependencies.
+        1.  Satisfy GameValidator's ValidationService dependencies.
 
     Attributes:
         arena: ArenaValidationService
@@ -35,7 +35,7 @@ class GameDependency(ModelDependency[Game]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _arena: ArenaValidationService
     _binder: PlayerBinderValidationService

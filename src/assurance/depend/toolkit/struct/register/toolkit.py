@@ -12,54 +12,54 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import RegisterDependency, StructValidatorToolkit
+from assurance import RegisterServiceDependency, StructLayerToolkit
 from domain import Register, RegisterManifest, RegisterNullWarningSet, RegisterLayer
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
+class RegisterLayerToolkit(StructLayerToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
-            wrapper: RegisterWrapperDependency[T]
-            metadata: RegisterManifest[T]
+            wrapper: RegisterServiceDependency[T]
+            manifest: RegisterManifest[T]
 
     Provides:
 
     Super Class:
-        StructValidatorToolkit
+        StructLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: RegisterDependency[T],
-            metadata: RegisterManifest[T],
+            dependency: RegisterServiceDependency[T],
+            manifest: RegisterManifest[T],
     ):
         """
-            wrapper: RegisterWrapperDependency[T]
-            metadata: RegisterManifest[T]
+            wrapper: RegisterServiceDependency[T]
+            manifest: RegisterManifest[T]
         """
-        super().__init__(wrapper=wrapper, metadata=metadata)
+        super().__init__(dependency=dependency, manifest=manifest)
     
     
     @property
-    def wrapper(self) -> RegisterDependency[T]:
-        return cast(RegisterDependency, super().wrapper)
+    def dependency(self) -> RegisterServiceDependency[T]:
+        return cast(RegisterServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> RegisterManifest[T]:
-        return cast(RegisterManifest, super().metadata)
+    def manifest(self) -> RegisterManifest[T]:
+        return cast(RegisterManifest, super().manifest)
     
     @property
     def nulls(self) -> RegisterNullWarningSet[T]:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> RegisterLayer[T]:
-        return self.metadata.types
+        return self.manifest.types

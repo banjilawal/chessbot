@@ -27,7 +27,7 @@ class GameValidatorException(ModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a GameValidator failed.
+        1.  Indicating a GameValidator failed.
 
     Attributes:
             msg: Optional[str]

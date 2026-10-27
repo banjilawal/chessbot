@@ -18,7 +18,7 @@ from typing import Generic, TypeVar
 T = TypeVar("T")
 
 
-class Dependency(ABC, Generic[T]):
+class ServiceDependency(ABC, Generic[T]):
     """
     Role:
         - Toolkit

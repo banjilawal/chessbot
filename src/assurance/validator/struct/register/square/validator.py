@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidator, SquareRegisterLoader, SquareRegisterValidatorToolkit
+from assurance import RegisterValidator, SquareRegisterLoader, SquareRegisterLayerToolkit
 from domain import Square, SquareRegister
 from err import SquareRegisterConsistencyException, SquareRegisterValidatorException
 from exchange import SquareValidationRequest
@@ -54,7 +54,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         return cast(SquareRegisterLoader, super().loader)
     
     @property
-    def toolkit(self) -> SquareRegisterValidatorToolkit:
+    def toolkit(self) -> SquareRegisterLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -119,7 +119,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         entry = struct.to_dict
         endpoints: Dict[str, Square] = {}
         for key in struct.to_dict:
-            square_validation = self.toolkit.wrapper.square.extract_model(
+            square_validation = self.toolkit.dependency.square.extract_model(
                 request=SquareValidationRequest(
                     item=SquareCarrier(model=entry[key]),
                     id=IdFactory.next_id(class_name="SquareRegisterRequest")

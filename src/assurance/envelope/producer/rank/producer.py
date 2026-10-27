@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, RankValidationLoader, RankValidatorToolkit
+from assurance import RootEnvelopeProducer, RankValidationLoader, RankLayerToolkit
 from domain import Persona, Rank, RankPrimeExtract
 from err import (
     PersonaNullException, RankCarrierEmptyException, RankEnvelopeProducerException
@@ -55,7 +55,7 @@ class RankEnvelopeProducer(RootEnvelopeProducer[Rank]):
         return cast(RankValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> RankValidatorToolkit:
+    def toolkit(self) -> RankLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor

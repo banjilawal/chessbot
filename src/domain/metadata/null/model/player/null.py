@@ -33,7 +33,7 @@ class PlayerNullWarningSet(ModelNullWarningSet[Player]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

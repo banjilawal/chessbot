@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, CoordValidatorToolkit
+from assurance import ContextValidationLoader, CoordLayerToolkit
 from domain import Coord, CoordContextPrimeExtract
 from err import (
     CoordCarrierEmptyException, CoordContextValidationLoaderException, CoordContextValidationRequestNullException
@@ -35,7 +35,7 @@ class CoordContextValidationLoader(ContextValidationLoader[CoordContext]):
             -   CoordBlueprint
 
     Attributes:
-        toolkit: CoordValidatorToolkit
+        toolkit: CoordLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class CoordContextValidationLoader(ContextValidationLoader[CoordContext]):
     
     def __init__(
             self,
-            toolkit: Optional[CoordValidatorToolkit] | None = None,
+            toolkit: Optional[CoordLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[CoordValidatorToolkit]
+            toolkit: Optional[CoordLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or CoordValidatorToolkit())
+        super().__init__(toolkit=toolkit or CoordLayerToolkit())
     
     @property
-    def toolkit(self) -> CoordValidatorToolkit:
-        return cast(CoordValidatorToolkit, super().toolkit)
+    def toolkit(self) -> CoordLayerToolkit:
+        return cast(CoordLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[CoordContextPrimeExtract]:

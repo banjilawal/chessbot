@@ -32,7 +32,7 @@ class KingEnvelopeConsumer(RankEnvelopeConsumer[King]):
         1.  Assure a King covered by a RootRankEnvelope is safe.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(

@@ -33,7 +33,7 @@ class QueenNullWarningSet(RankNullWarningSet[Queen]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

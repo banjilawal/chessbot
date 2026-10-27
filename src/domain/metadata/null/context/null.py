@@ -33,7 +33,7 @@ class ContextNullWarningSet(NullWarningSet[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

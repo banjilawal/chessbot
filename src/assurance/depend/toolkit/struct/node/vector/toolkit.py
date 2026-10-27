@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import NodeValidatorToolkit, VectorNodeDependency
+from assurance import NodeLayerToolkit, VectorNodeDependency
 from domain import (
     VectorNode, VectorNodeManifest, VectorNodeNullWarningSet,
     VectorNodeLayer
 )
 
 
-class VectorNodeValidatorToolkit(NodeValidatorToolkit[VectorNode]):
+class VectorNodeLayerToolkit(NodeLayerToolkit[VectorNode]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: VectorNodeDependency
-            metadata: VectorNodeManifest
+            manifest: VectorNodeManifest
 
     Provides:
 
     Super Class:
-       NodeValidatorToolkit
+       NodeLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[VectorNodeDependency] | None = None,
-            metadata: Optional[VectorNodeManifest] | None = None,
+            dependency: Optional[VectorNodeDependency] | None = None,
+            manifest: Optional[VectorNodeManifest] | None = None,
     ):
         """
             wrapper: Optional[VectorNodeDependency]
-            metadata: Optional[VectorNodeManifest]
+            manifest: Optional[VectorNodeManifest]
         """
         super().__init__(
-            wrapper=wrapper or VectorNodeDependency(),
-            metadata=metadata or VectorNodeManifest(),
+            dependency=dependency or VectorNodeDependency(),
+            manifest=manifest or VectorNodeManifest(),
         )
     
     @property
-    def wrapper(self) -> VectorNodeDependency:
-        return cast(VectorNodeDependency, super().wrapper)
+    def dependency(self) -> VectorNodeDependency:
+        return cast(VectorNodeDependency, super().dependency)
     
     @property
-    def metadata(self) -> VectorNodeManifest:
-        return cast(VectorNodeManifest, super().metadata)
+    def manifest(self) -> VectorNodeManifest:
+        return cast(VectorNodeManifest, super().manifest)
     
     @property
     def nulls(self) -> VectorNodeNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> VectorNodeLayer:
-        return self.metadata.types
+        return self.manifest.types

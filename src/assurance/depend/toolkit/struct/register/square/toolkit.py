@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import RegisterValidatorToolkit, SquareRegisterDependency
+from assurance import RegisterLayerToolkit, SquareRegisterDependency
 from domain import (
     SquareRegister, SquareRegisterManifest, SquareRegisterNullWarningSet,
     SquareRegisterLayer
 )
 
 
-class SquareRegisterValidatorToolkit(RegisterValidatorToolkit[SquareRegister]):
+class SquareRegisterLayerToolkit(RegisterLayerToolkit[SquareRegister]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: SquareRegisterDependency
-            metadata: SquareRegisterManifest
+            manifest: SquareRegisterManifest
 
     Provides:
 
     Super Class:
-       RegisterValidatorToolkit
+       RegisterLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[SquareRegisterDependency] | None = None,
-            metadata: Optional[SquareRegisterManifest] | None = None,
+            dependency: Optional[SquareRegisterDependency] | None = None,
+            manifest: Optional[SquareRegisterManifest] | None = None,
     ):
         """
             wrapper: Optional[SquareRegisterDependency]
-            metadata: Optional[SquareRegisterManifest]
+            manifest: Optional[SquareRegisterManifest]
         """
         super().__init__(
-            wrapper=wrapper or SquareRegisterDependency(),
-            metadata=metadata or SquareRegisterManifest(),
+            dependency=dependency or SquareRegisterDependency(),
+            manifest=manifest or SquareRegisterManifest(),
         )
     
     @property
-    def wrapper(self) -> SquareRegisterDependency:
-        return cast(SquareRegisterDependency, super().wrapper)
+    def dependency(self) -> SquareRegisterDependency:
+        return cast(SquareRegisterDependency, super().dependency)
     
     @property
-    def metadata(self) -> SquareRegisterManifest:
-        return cast(SquareRegisterManifest, super().metadata)
+    def manifest(self) -> SquareRegisterManifest:
+        return cast(SquareRegisterManifest, super().manifest)
     
     @property
     def nulls(self) -> SquareRegisterNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> SquareRegisterLayer:
-        return self.metadata.types
+        return self.manifest.types

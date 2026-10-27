@@ -11,57 +11,57 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import NodeValidatorToolkit, EncounterWarningNodeDependency
+from assurance import NodeLayerToolkit, EncounterWarningNodeDependency
 from domain import (
     EncounterWarningNode, EncounterWarningNodeManifest, EncounterWarningNodeNullWarningSet,
     EncounterWarningNodeLayer
 )
 
 
-class EncounterWarningNodeValidatorToolkit(NodeValidatorToolkit[EncounterWarningNode]):
+class EncounterWarningNodeLayerToolkit(NodeLayerToolkit[EncounterWarningNode]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
             wrapper: EncounterWarningNodeDependency
-            metadata: EncounterWarningNodeManifest
+            manifest: EncounterWarningNodeManifest
 
     Provides:
 
     Super Class:
-       NodeValidatorToolkit
+       NodeLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[EncounterWarningNodeDependency] | None = None,
-            metadata: Optional[EncounterWarningNodeManifest] | None = None,
+            dependency: Optional[EncounterWarningNodeDependency] | None = None,
+            manifest: Optional[EncounterWarningNodeManifest] | None = None,
     ):
         """
             wrapper: Optional[EncounterWarningNodeDependency]
-            metadata: Optional[EncounterWarningNodeManifest]
+            manifest: Optional[EncounterWarningNodeManifest]
         """
         super().__init__(
-            wrapper=wrapper or EncounterWarningNodeDependency(),
-            metadata=metadata or EncounterWarningNodeManifest(),
+            dependency=dependency or EncounterWarningNodeDependency(),
+            manifest=manifest or EncounterWarningNodeManifest(),
         )
     
     @property
-    def wrapper(self) -> EncounterWarningNodeDependency:
-        return cast(EncounterWarningNodeDependency, super().wrapper)
+    def dependency(self) -> EncounterWarningNodeDependency:
+        return cast(EncounterWarningNodeDependency, super().dependency)
     
     @property
-    def metadata(self) -> EncounterWarningNodeManifest:
-        return cast(EncounterWarningNodeManifest, super().metadata)
+    def manifest(self) -> EncounterWarningNodeManifest:
+        return cast(EncounterWarningNodeManifest, super().manifest)
     
     @property
     def nulls(self) -> EncounterWarningNodeNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> EncounterWarningNodeLayer:
-        return self.metadata.types
+        return self.manifest.types

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import BoardValidationLoader, BoardValidatorToolkit, ModelValidator
+from assurance import BoardValidationLoader, BoardLayerToolkit, ModelValidator
 from domain import Arena, Board, BoardBlueprint, BoardPrimeExtract, BoardState, TeamBinder
 from err import (
     ArenaConsistencyException, ArenaNullException, BoardCarrierEmptyException,
@@ -56,7 +56,7 @@ class BoardValidator(ModelValidator[Board]):
         return cast(BoardValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> BoardValidatorToolkit:
+    def toolkit(self) -> BoardLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -123,8 +123,8 @@ class BoardValidator(ModelValidator[Board]):
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             item=fingerprint,
             blueprint_owner_name=fingerprint.domain_class_name,
-            blueprint_type=self.toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
+            blueprint_type=self.toolkit.manifest.types.blueprint,
+            blueprint_null_exception=self.toolkit.manifest.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -173,7 +173,7 @@ class BoardValidator(ModelValidator[Board]):
                 )
             )
         # --- PROCESS_THE_BOARD_BINDER_ATTRIBUTE. ---#
-        binder_validation = self.toolkit.wrapper.binder.extract_model.execute(
+        binder_validation = self.toolkit.dependency.binder.extract_model.execute(
             item=TeamBinderValidationRequest(
                 item=TeamBinderCarrier(model=fingerprint.binder),
                 id=IdFactory.next_id(class_name="TeamBinderValidationRequest")

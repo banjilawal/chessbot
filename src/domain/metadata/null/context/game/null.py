@@ -33,7 +33,7 @@ class GameContextNullWarningSet(ContextNullWarningSet[GameContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, SquareValidationLoader, SquareValidatorToolkit
+from assurance import RootEnvelopeProducer, SquareValidationLoader, SquareLayerToolkit
 from domain import Board, Coord, Square, SquarePrimeExtract, SquareState, Token
 from err import (
     SquareCarrierEmptyException, SquareOccupantConsistencyException,
@@ -57,7 +57,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         return cast(SquareValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> SquareValidatorToolkit:
+    def toolkit(self) -> SquareLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -186,7 +186,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                 )
             )
         # --- PROCESS_THE_COORD_ATTRIBUTE. ---#
-        coord_validation = self.toolkit.wrapper.coord.extract_model(
+        coord_validation = self.toolkit.dependency.coord.extract_model(
             request=CoordValidationRequest(
                 item=CoordCarrier(model=blueprint.coord),
                 id=IdFactory.next_id(class_name="CoordValidationRequest"),
@@ -207,7 +207,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         # --- PROCESS_THE_OCCUPANT_ATTRIBUTE. ---#
         occupant = blueprint.occupant
         if occupant is not None:
-            occupant_validation = self.toolkit.wrapper.token.extract_model(
+            occupant_validation = self.toolkit.dependency.token.extract_model(
                 request=TokenValidationRequest(
                     item=TokenCarrier(model=occupant),
                     id=IdFactory.next_id(class_name="TokenValidationRequest")

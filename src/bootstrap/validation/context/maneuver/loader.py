@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, ManeuverValidatorToolkit
+from assurance import ContextValidationLoader, ManeuverLayerToolkit
 from domain import Maneuver, ManeuverContextPrimeExtract
 from err import (
     ManeuverCarrierEmptyException, ManeuverContextValidationLoaderException, ManeuverContextValidationRequestNullException
@@ -35,7 +35,7 @@ class ManeuverContextValidationLoader(ContextValidationLoader[ManeuverContext]):
             -   ManeuverBlueprint
 
     Attributes:
-        toolkit: ManeuverValidatorToolkit
+        toolkit: ManeuverLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class ManeuverContextValidationLoader(ContextValidationLoader[ManeuverContext]):
     
     def __init__(
             self,
-            toolkit: Optional[ManeuverValidatorToolkit] | None = None,
+            toolkit: Optional[ManeuverLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ManeuverValidatorToolkit]
+            toolkit: Optional[ManeuverLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or ManeuverValidatorToolkit())
+        super().__init__(toolkit=toolkit or ManeuverLayerToolkit())
     
     @property
-    def toolkit(self) -> ManeuverValidatorToolkit:
-        return cast(ManeuverValidatorToolkit, super().toolkit)
+    def toolkit(self) -> ManeuverLayerToolkit:
+        return cast(ManeuverLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ManeuverContextPrimeExtract]:

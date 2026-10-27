@@ -18,7 +18,7 @@ from .fabrication import *
 from .maneuver import *
 from .promotion import *
 from .statement import *
-from .validator import *
+from .validation import *
 
 # Modules
 from .dispatcher import Dispatcher

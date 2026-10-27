@@ -12,54 +12,54 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import NodeDependency, StructValidatorToolkit
+from assurance import NodeServiceDependency, StructLayerToolkit
 from domain import Node, NodeManifest, NodeNullWarningSet, NodeLayer
 
 T = TypeVar("T", bound="Node")
 
 
-class NodeValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
+class NodeLayerToolkit(StructLayerToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
-            wrapper: NodeWrapperDependency[T]
-            metadata: NodeManifest[T]
+            wrapper: NodeServiceDependency[T]
+            manifest: NodeManifest[T]
 
     Provides:
 
     Super Class:
-        StructValidatorToolkit
+        StructLayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: NodeDependency[T],
-            metadata: NodeManifest[T],
+            dependency: NodeServiceDependency[T],
+            manifest: NodeManifest[T],
     ):
         """
-            wrapper: NodeWrapperDependency[T]
-            metadata: NodeManifest[T]
+            wrapper: NodeServiceDependency[T]
+            manifest: NodeManifest[T]
         """
-        super().__init__(wrapper=wrapper, metadata=metadata)
+        super().__init__(dependency=dependency, manifest=manifest)
     
     
     @property
-    def wrapper(self) -> NodeDependency[T]:
-        return cast(NodeDependency, super().wrapper)
+    def dependency(self) -> NodeServiceDependency[T]:
+        return cast(NodeServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> NodeManifest[T]:
-        return cast(NodeManifest, super().metadata)
+    def manifest(self) -> NodeManifest[T]:
+        return cast(NodeManifest, super().manifest)
     
     @property
     def nulls(self) -> NodeNullWarningSet[T]:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> NodeLayer[T]:
-        return self.metadata.types
+        return self.manifest.types

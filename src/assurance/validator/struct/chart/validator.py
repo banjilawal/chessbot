@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ChartValidationLoader, ChartValidatorToolkit, StructValidator
+from assurance import ChartValidationLoader, ChartLayerToolkit, StructValidator
 from domain import Chart
 from transit import ChartCarrier
 from util import LoggingLevelRouter
@@ -52,7 +52,7 @@ class ChartValidator(StructValidator[T], ABC, Generic[T]):
         return cast(ChartValidationLoader[T], super().loader)
     
     @property
-    def toolkit(self) -> ChartValidatorToolkit[T]:
+    def toolkit(self) -> ChartLayerToolkit[T]:
         return self.loader.toolkit
     
     @abstractmethod

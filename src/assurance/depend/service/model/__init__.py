@@ -29,4 +29,3 @@ from .token import *
 from .vector import *
 
 # Module
-from .depend import ModelDependency

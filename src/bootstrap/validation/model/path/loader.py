@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, PathValidatorToolkit
+from assurance import ModelValidationLoader, PathLayerToolkit
 from domain import Path, PathPrimeExtract
 from err import (
     PathCarrierEmptyException, PathValidationLoaderException, PathValidationRequestNullException
@@ -35,7 +35,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
             -   PathBlueprint
 
     Attributes:
-        toolkit: PathValidatorToolkit
+        toolkit: PathLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class PathValidationLoader(ModelValidationLoader[Path]):
     
     def __init__(
             self,
-            toolkit: Optional[PathValidatorToolkit] | None = None,
+            toolkit: Optional[PathLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[PathValidatorToolkit]
+            toolkit: Optional[PathLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or PathValidatorToolkit())
+        super().__init__(toolkit=toolkit or PathLayerToolkit())
     
     @property
-    def toolkit(self) -> PathValidatorToolkit:
-        return cast(PathValidatorToolkit, super().toolkit)
+    def toolkit(self) -> PathLayerToolkit:
+        return cast(PathLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[PathPrimeExtract]:

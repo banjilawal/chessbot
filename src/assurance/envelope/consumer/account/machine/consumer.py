@@ -34,7 +34,7 @@ class MachineAccountEnvelopeConsumer(
         1.  Assure a MachineAccount covered by a RootSquareAccountEnvelope is safe.
 
     Attributes:
-        toolkit: AccountValidatorToolkit
+        toolkit: AccountLayerToolkit
 
     Provides:
         -   def execute(

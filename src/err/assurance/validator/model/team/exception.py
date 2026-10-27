@@ -27,7 +27,7 @@ class TeamValidatorException(ModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a TeamValidator failed.
+        1.  Indicating a TeamValidator failed.
 
     Attributes:
             msg: Optional[str]

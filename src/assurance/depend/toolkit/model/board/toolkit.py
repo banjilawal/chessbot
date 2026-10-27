@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, BoardWrapperDependency
+from assurance import ModelLayerToolkit, BoardServiceDependency
 from domain import Board, BoardManifest, BoardNullWarningSet, BoardLayer
 
 
-class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
+class BoardLayerToolkit(ModelLayerToolkit[Board]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Board attribute validators and type metadata.
+        1.  Single source of truth for Board attribute validators and type manifest.
 
     Attributes:
         helper: BoardManifest
-        metadata: BoardWrapperDependency
+        manifest: BoardServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[BoardManifest] | None = None,
-            wrapper: Optional[BoardWrapperDependency] | None = None,
+            manifest: Optional[BoardManifest] | None = None,
+            dependency: Optional[BoardServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[BoardManifest]
-            metadata: Optional[BoardWrapperDependency]
+            dependency: Optional[BoardManifest]
+            manifest: Optional[BoardServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or BoardWrapperDependency(),
-            metadata=metadata or BoardManifest(),
+            dependency=dependency or BoardServiceDependency(),
+            manifest=manifest or BoardManifest(),
         )
     
     @property
-    def wrapper(self) -> BoardWrapperDependency:
-        return cast(BoardWrapperDependency, super().wrapper)
+    def dependency(self) -> BoardServiceDependency:
+        return cast(BoardServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> BoardManifest:
-        return cast(BoardManifest, super().metadata)
+    def manifest(self) -> BoardManifest:
+        return cast(BoardManifest, super().manifest)
     
     @property
     def nulls(self) -> BoardNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> BoardLayer:
-        return self.metadata.types
+        return self.manifest.types

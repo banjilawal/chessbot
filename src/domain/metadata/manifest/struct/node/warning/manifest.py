@@ -33,7 +33,7 @@ class EncounterWarningNodeManifest(NodeManifest[EncounterWarningNode]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

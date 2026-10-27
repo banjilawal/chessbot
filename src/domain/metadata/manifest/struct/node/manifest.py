@@ -31,7 +31,7 @@ class NodeManifest(StructManifest[T], ABC, Generic[T]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        DomainManifest
      """
     
     def __init__(

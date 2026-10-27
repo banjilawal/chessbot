@@ -36,7 +36,7 @@ class EncounterContextNullWarningSet(ContextNullWarningSet[T], Generic[TContext]
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

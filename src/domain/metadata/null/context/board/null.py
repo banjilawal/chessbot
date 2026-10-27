@@ -33,7 +33,7 @@ class BoardContextNullWarningSet(ContextNullWarningSet[BoardContext]):
     Provides:
 
     Super Class:
-        ContextNullExceptionGroup
+        ContextNullWarningSet
     """
     
     def __init__(

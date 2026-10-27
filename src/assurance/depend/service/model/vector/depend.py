@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency, NumberValidator, PrimingValidator
+from assurance import ServiceDependency, NumberValidator, PrimingValidator
 from domain import Vector
 
 
-class VectorDependency(ModelDependency[Vector]):
+class VectorServiceDependency(ServiceDependency[Vector]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy VectorValidator's ResponseService dependencies.
+        1.  Satisfy VectorValidator's ValidationService dependencies.
 
     Attributes:
 
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     
     def __init__(self,):

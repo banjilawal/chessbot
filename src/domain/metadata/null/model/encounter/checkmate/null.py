@@ -34,7 +34,7 @@ class CheckmateNullWarningSet(EncounterNullWarningSet[CheckmateEncounter]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

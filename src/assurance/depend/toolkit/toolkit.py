@@ -12,18 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import (
-    WrapperDependency, ValidationLoader, CommonValidatorToolkit,
-    NumberValidator, PrimingValidator
-)
-from authorization import BlueprintIdExtractor
-from domain import NullExceptionGroup, DomainManifest, Layer
-from microservice import IdentityService
+from assurance import CommonToolkit, ServiceDependency, NumberValidator, PrimingValidator
+from domain import DomainManifest, Layer, NullWarningSet
+from microservice import BlueprintIdExtractor, IdentityService
 
 T = TypeVar("T")
 
 
-class ValidatorToolkit(ABC, Generic[T]):
+class LayerToolkit(ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -33,41 +29,41 @@ class ValidatorToolkit(ABC, Generic[T]):
             needs to run safety checks on a validation candidate.
 
     Attributes:
-        metadata: ObjectManifest[T]
-        helper: AttributeWrapperDependency[T]
-        common: CommonValidatorToolkit
+        manifest: DomainManifest[T]
+        helper: AttributeDependency[T]
+        common: CommonToolkit
 
     Provides:
 
     Super Class:
     """
-    _metadata: DomainManifest[T]
-    _wrapper: WrapperDependency[T]
-    _common: CommonValidatorToolkit
+    _manifest: DomainManifest[T]
+    _dependency: ServiceDependency[T]
+    _common: CommonToolkit
     
     def __init__(
             self,
-            wrapper: WrapperDependency[T],
-            metadata: DomainManifest[T],
-            common: Optional[CommonValidatorToolkit] | None = None,
+            dependency: ServiceDependency[T],
+            manifest: DomainManifest[T],
+            common: Optional[CommonToolkit] | None = None,
     ):
         """
         Args:
-            wrapper: WrapperDependency[T]
-            metadata: ObjectManifest[T]
-            common: Optional[CommonValidatorToolkit]
+            dependency: Dependency[T]
+            manifest: DomainManifest[T]
+            common: Optional[CommonToolkit]
         """
-        self._wrapper = wrapper
-        self._metadata = metadata
-        self._common = common or CommonValidatorToolkit()
+        self._dependency = dependency
+        self._manifest = manifest
+        self._common = common or CommonToolkit()
     
     @property
-    def wrapper(self) -> WrapperDependency[T]:
-        return self._wrapper
+    def dependency(self) -> ServiceDependency[T]:
+        return self._dependency
     
     @property
-    def metadata(self) -> DomainManifest[T]:
-        return self._metadata
+    def manifest(self) -> DomainManifest[T]:
+        return self._manifest
     
     @property
     def identity_service(self) -> IdentityService:
@@ -86,12 +82,12 @@ class ValidatorToolkit(ABC, Generic[T]):
         return self._common.blueprint_id_extractor
     
     @property
-    def nulls(self) -> NullExceptionGroup[T]:
-        return self._metadata.nulls
+    def nulls(self) -> NullWarningSet[T]:
+        return self._manifest.nulls
     
     @property
     def types(self) -> Layer[T]:
-        return self._metadata.types
+        return self._manifest.types
     
 
     

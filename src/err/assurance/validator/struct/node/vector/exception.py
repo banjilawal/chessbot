@@ -27,7 +27,7 @@ class VectorNodeValidatorException(NodeValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorNodeValidator failed.
+        1.  Indicating a VectorNodeValidator failed.
 
     Attributes:
         msg: Optional[str]

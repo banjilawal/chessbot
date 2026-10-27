@@ -11,56 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, AccountWrapperDependency
-from domain import (
-    Account, AccountManifest, AccountNullWarningSet, AccountLayer
-)
+from assurance import AccountServiceDependency, ModelLayerToolkit
+from domain import Account, AccountLayer, AccountManifest, AccountNullWarningSet
 
-class AccountValidatorToolkit(ModelValidatorToolkit[Account]):
+
+class AccountLayerToolkit(ModelLayerToolkit[Account]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Account attribute validators and type metadata.
+        1.  Single source of truth for Account attribute validators and type manifest.
 
     Attributes:
         helper: AccountManifest
-        metadata: AccountWrapperDependency
+        manifest: AccountServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[AccountManifest] | None = None,
-            wrapper: Optional[AccountWrapperDependency] | None = None,
+            manifest: Optional[AccountManifest] | None = None,
+            dependency: Optional[AccountServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[AccountManifest]
-            metadata: Optional[AccountWrapperDependency]
+            dependency: Optional[AccountManifest]
+            manifest: Optional[AccountServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or AccountWrapperDependency(),
-            metadata=metadata or AccountManifest(),
+            dependency=dependency or AccountServiceDependency(),
+            manifest=manifest or AccountManifest(),
         )
     
     @property
-    def wrapper(self) -> AccountWrapperDependency:
-        return cast(AccountWrapperDependency, super().wrapper)
+    def dependency(self) -> AccountServiceDependency:
+        return cast(AccountServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> AccountManifest:
-        return cast(AccountManifest, super().metadata)
+    def manifest(self) -> AccountManifest:
+        return cast(AccountManifest, super().manifest)
     
     @property
     def nulls(self) -> AccountNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> AccountLayer:
-        return self.metadata.types
+        return self.manifest.types

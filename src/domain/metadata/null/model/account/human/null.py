@@ -31,7 +31,7 @@ class HumanAccountNullWarningSet(AccountNullWarningSet[HumanAccount]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

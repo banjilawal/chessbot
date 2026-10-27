@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidatorToolkit
+from assurance import LayerToolkit
 from bootstrap import Loader
 from domain import PrimeExtract
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ValidationLoader(Loader[T], ABC, Generic[T]):
+class ValidationLoader(Loader[ValidationResult], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -32,24 +32,24 @@ class ValidationLoader(Loader[T], ABC, Generic[T]):
             -  Blueprint[T]
 
     Attributes:
-        toolkit: ValidatorToolkit[T]
+        toolkit: LayerToolkit[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[PrimeExtract[T]]:
 
     Super Class:
     """
-    _toolkit: ValidatorToolkit[T]
+    _toolkit: LayerToolkit[T]
     
-    def __init__(self, toolkit: ValidatorToolkit[T]):
+    def __init__(self, toolkit: LayerToolkit[T]):
         """
         Args:
-            toolkit: toolkit: Optional[ValidatorToolkit[T]]
+            toolkit: toolkit: LayerToolkit[T]
         """
         self._toolkit = toolkit
     
     @property
-    def toolkit(self) -> ValidatorToolkit[T]:
+    def toolkit(self) -> LayerToolkit[T]:
         return self._toolkit
     
     @abstractmethod
@@ -62,6 +62,6 @@ class ValidationLoader(Loader[T], ABC, Generic[T]):
         Returns:
             ValidationResult[Extract[T]]
         Raises:
-            ExtractLoaderException
+            ValidationLoaderException
         """
         pass

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import BinderValidationLoader, PlayerBinderValidatorToolkit
+from assurance import BinderValidationLoader, PlayerBinderLayerToolkit
 from domain import PlayerBinder, PlayerBinderPrimeExtract
 from err import (
     PlayerBinderCarrierEmptyException, PlayerBinderConsistencyException,
@@ -36,7 +36,7 @@ class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
             -   PlayerBinderBlueprint
 
     Attributes:
-        toolkit: PlayerBinderValidatorToolkit
+        toolkit: PlayerBinderLayerToolkit
 
     Provides:
         -   def execute(
@@ -49,17 +49,17 @@ class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
     
     def __init__(
             self,
-            toolkit: Optional[PlayerBinderValidatorToolkit] | None = None,
+            toolkit: Optional[PlayerBinderLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[PlayerBinderValidatorToolkit]
+            toolkit: Optional[PlayerBinderLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or PlayerBinderValidatorToolkit())
+        super().__init__(toolkit=toolkit or PlayerBinderLayerToolkit())
     
     @property
-    def toolkit(self) -> PlayerBinderValidatorToolkit:
-        return cast(PlayerBinderValidatorToolkit, super().toolkit)
+    def toolkit(self) -> PlayerBinderLayerToolkit:
+        return cast(PlayerBinderLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[PlayerBinderPrimeExtract]:

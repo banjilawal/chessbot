@@ -15,4 +15,4 @@ from .square import *
 from .vector import *
 
 # Module
-from .depend import RegisterDependency
+from .depend import RegisterServiceDependency

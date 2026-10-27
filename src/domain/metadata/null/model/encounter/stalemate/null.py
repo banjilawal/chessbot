@@ -34,7 +34,7 @@ class StalemateNullWarningSet(EncounterNullWarningSet[StalemateEncounter]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

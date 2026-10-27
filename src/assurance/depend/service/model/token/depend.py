@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelDependency
+from assurance import ServiceDependency
 from domain import Token
 from exchange import (
     AlertValidationService, RankValidationService,
@@ -20,13 +20,13 @@ from exchange import (
 )
 
 
-class TokenDependency(ModelDependency[Token]):
+class TokenServiceDependency(ServiceDependency[Token]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy TokenValidator's ResponseService dependencies.
+        1.  Satisfy TokenValidator's ValidationService dependencies.
 
     Attributes:
         team: TeamValidationService
@@ -38,7 +38,7 @@ class TokenDependency(ModelDependency[Token]):
     Provides:
 
     Super Class:
-        ModelDependency
+        Dependency
     """
     _team: TeamValidationService
     _rank: RankValidationService

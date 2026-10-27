@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Module
-from .toolkit import CommonValidatorToolkit
+from .toolkit import CommonToolkit

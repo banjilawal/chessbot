@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidatorToolkit
+from assurance import LayerToolkit
 from domain import Model
 from transit import ModelCarrier, ProductEnvelope
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class ValidationRouter(ABC, Generic[T]):
         1.  Use Carrier type to route a ProductEnvelope to a RootEnvelopeConsumer.
 
     Attributes:
-        toolkit: ValidatorToolkit[T]
+        toolkit: LayerToolkit[T]
 
     Provides:
         -   def execute(
@@ -38,13 +38,13 @@ class ValidationRouter(ABC, Generic[T]):
             ) -> ValidationResult[ModelCarrier[T]]
     Super Class:
     """
-    _toolkit: ValidatorToolkit[T]
+    _toolkit: LayerToolkit[T]
     
-    def __init__(self, toolkit: ValidatorToolkit[T]):
+    def __init__(self, toolkit: LayerToolkit[T]):
         self._toolkit = toolkit
     
     @property
-    def toolkit(self) -> ValidatorToolkit[T]:
+    def toolkit(self) -> LayerToolkit[T]:
         return self._toolkit
     
     @abstractmethod

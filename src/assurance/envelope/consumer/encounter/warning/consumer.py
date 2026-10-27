@@ -36,7 +36,7 @@ class EncounterWarningEnvelopeConsumer(
             is safe.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        toolkit: EncounterLayerToolkit
 
     Provides:
         -   def execute(
@@ -148,7 +148,7 @@ class EncounterWarningEnvelopeConsumer(
             )
         danger_zone = blueprint.danger_zone
         if danger_zone is not None:
-            danger_zone_validation = self.toolkit.wrapper.square.extract_model(
+            danger_zone_validation = self.toolkit.dependency.square.extract_model(
                 request=SquareValidationRequest(
                     item=SquareCarrier(model=danger_zone),
                     id=IdFactory.next_id(class_name="SquareValidationRequest"),

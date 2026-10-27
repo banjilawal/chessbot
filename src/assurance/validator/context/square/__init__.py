@@ -1,0 +1,18 @@
+# src/assurance/validator/context/square/__init__.py
+
+"""
+Module: assurance.validator.context.square.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== ASSURANCE.VALIDATOR.CONTEXT.SQUARE PACKAGE ===========#
+
+# Packages
+from .enemy import *
+from .king import *
+from .pawn import *
+
+# Modules
+from .validator import SquareValidator

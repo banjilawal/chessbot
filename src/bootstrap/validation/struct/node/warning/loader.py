@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import NodeValidationLoader, EncounterWarningNodeValidatorToolkit
+from assurance import NodeValidationLoader, EncounterWarningNodeLayerToolkit
 from domain import EncounterWarningNode, EncounterWarningNode
 from err import (
     EncounterWarningNodeCarrierEmptyException, EncounterWarningNodeLoaderException,
@@ -36,7 +36,7 @@ class EncounterWarningNodeLoader(NodeValidationLoader[EncounterWarningNode]):
             -   EncounterWarningNodeBlueprint
 
     Attributes:
-        toolkit: EncounterWarningNodeValidatorToolkit
+        toolkit: EncounterWarningNodeLayerToolkit
 
     Provides:
         -   def execute(
@@ -49,17 +49,17 @@ class EncounterWarningNodeLoader(NodeValidationLoader[EncounterWarningNode]):
     
     def __init__(
             self,
-            toolkit: Optional[EncounterWarningNodeValidatorToolkit] | None = None,
+            toolkit: Optional[EncounterWarningNodeLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[EncounterWarningNodeValidatorToolkit]
+            toolkit: Optional[EncounterWarningNodeLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or EncounterWarningNodeValidatorToolkit())
+        super().__init__(toolkit=toolkit or EncounterWarningNodeLayerToolkit())
     
     @property
-    def toolkit(self) -> EncounterWarningNodeValidatorToolkit:
-        return cast(EncounterWarningNodeValidatorToolkit, super().toolkit)
+    def toolkit(self) -> EncounterWarningNodeLayerToolkit:
+        return cast(EncounterWarningNodeLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[EncounterWarningNode]:

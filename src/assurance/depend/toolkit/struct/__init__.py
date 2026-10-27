@@ -16,4 +16,4 @@ from .node import *
 from .register import *
 
 # Module
-from .toolkit import StructValidatorToolkit
+from .toolkit import StructLayerToolkit

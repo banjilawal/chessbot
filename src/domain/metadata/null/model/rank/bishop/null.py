@@ -33,7 +33,7 @@ class BishopNullWarningSet(RankNullWarningSet[Bishop]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

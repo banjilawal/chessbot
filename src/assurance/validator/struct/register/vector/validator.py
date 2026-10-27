@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidator, VectorRegisterLoader, VectorRegisterValidatorToolkit
+from assurance import RegisterValidator, VectorRegisterLoader, VectorRegisterLayerToolkit
 from domain import Vector, VectorRegister
 from err import VectorRegisterConsistencyException, VectorRegisterValidatorException
 from exchange import VectorValidationRequest
@@ -54,7 +54,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         return cast(VectorRegisterLoader, super().loader)
     
     @property
-    def toolkit(self) -> VectorRegisterValidatorToolkit:
+    def toolkit(self) -> VectorRegisterLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -119,7 +119,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         entry = struct.to_dict
         endpoints: Dict[str, Vector] = {}
         for key in struct.to_dict:
-            vector_validation = self.toolkit.wrapper.vector.extract_model(
+            vector_validation = self.toolkit.dependency.vector.extract_model(
                 request=VectorValidationRequest(
                     item=VectorCarrier(model=entry[key]),
                     id=IdFactory.next_id(class_name="VectorRegisterRequest")

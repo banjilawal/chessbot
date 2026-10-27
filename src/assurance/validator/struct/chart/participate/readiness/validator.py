@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenValidatorToolkit
+from assurance import TokenLayerToolkit
 
 from domain import CombatantToken, KingToken, Token
 from err import DisabledTokenException, ParticipantReadinessValidatorException
@@ -28,24 +28,24 @@ class ParticipantReadinessValidator:
         1.  Runs validation checks on fields in Encounter superclass.
 
     Attributes:
-        loader: TokenValidatorToolkit
+        loader: TokenLayerToolkit
 
     Provides:
         -   def execute(participant: Token) -> ValidationResult[Token]:
 
     Super Class:
     """
-    _loader: TokenValidatorToolkit
+    _loader: TokenLayerToolkit
     
     def __init__(
             self,
-            loader: Optional[TokenValidatorToolkit] | None = None
+            loader: Optional[TokenLayerToolkit] | None = None
     ):
         """
         Args:
-            loader: Optional[TokenValidatorToolkit]
+            loader: Optional[TokenLayerToolkit]
         """
-        self._toolkit=toolkit or TokenValidatorToolkit()
+        self._toolkit= toolkit or TokenLayerToolkit()
 
     
     @LoggingLevelRouter.monitor

@@ -11,55 +11,55 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, VectorWrapperDependency
+from assurance import ModelLayerToolkit, VectorServiceDependency
 from domain import Vector, VectorManifest, VectorNullWarningSet, VectorLayer
 
 
-class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
+class VectorLayerToolkit(ModelLayerToolkit[Vector]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Vector attribute validators and type metadata.
+        1.  Single source of truth for Vector attribute validators and type manifest.
 
     Attributes:
         helper: VectorManifest
-        metadata: VectorWrapperDependency
+        manifest: VectorServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[VectorManifest] | None = None,
-            wrapper: Optional[VectorWrapperDependency] | None = None,
+            manifest: Optional[VectorManifest] | None = None,
+            dependency: Optional[VectorServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[VectorManifest]
-            metadata: Optional[VectorWrapperDependency]
+            dependency: Optional[VectorManifest]
+            manifest: Optional[VectorServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or VectorWrapperDependency(),
-            metadata=metadata or VectorManifest(),
+            dependency=dependency or VectorServiceDependency(),
+            manifest=manifest or VectorManifest(),
         )
     
     @property
-    def wrapper(self) -> VectorWrapperDependency:
-        return cast(VectorWrapperDependency, super().wrapper)
+    def dependency(self) -> VectorServiceDependency:
+        return cast(VectorServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> VectorManifest:
-        return cast(VectorManifest, super().metadata)
+    def manifest(self) -> VectorManifest:
+        return cast(VectorManifest, super().manifest)
     
     @property
     def nulls(self) -> VectorNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> VectorLayer:
-        return self.metadata.types
+        return self.manifest.types

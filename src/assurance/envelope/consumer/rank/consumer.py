@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import RankValidatorToolkit, RootEnvelopeConsumer
+from assurance import RankLayerToolkit, RootEnvelopeConsumer
 from domain import Rank
 from transit import RankCarrier, RootRankEnvelope
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class RankEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
         1.  Assure an Rank covered by a RootEncounerEnvelope is safe.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        toolkit: RankLayerToolkit
 
     Provides:
         -   def execute(envelope: RootRankEnvelope) -> ValidationResult[RankCarrier]
@@ -38,14 +38,14 @@ class RankEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
     Super Class:
         RootEnvelopeConsumer
     """
-    _toolkit: RankValidatorToolkit
+    _toolkit: RankLayerToolkit
     
-    def __init__(self, toolkit: Optional[RankValidatorToolkit] | None = None):
-        super().__init__(toolkit=toolkit or RankValidatorToolkit())
+    def __init__(self, toolkit: Optional[RankLayerToolkit] | None = None):
+        super().__init__(toolkit=toolkit or RankLayerToolkit())
         
     @property
-    def toolkit(self) -> RankValidatorToolkit:
-        return cast(RankValidatorToolkit, super().toolkit)
+    def toolkit(self) -> RankLayerToolkit:
+        return cast(RankLayerToolkit, super().toolkit)
         
 
     @abstractmethod

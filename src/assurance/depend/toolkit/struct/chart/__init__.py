@@ -13,4 +13,4 @@ version: 0.0.2
 from .participate import *
 
 # Module
-from .toolkit import ChartValidatorToolkit
+from .toolkit import ChartLayerToolkit

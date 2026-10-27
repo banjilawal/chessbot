@@ -12,54 +12,54 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import StructDependency, ValidatorToolkit
+from assurance import StructDependency, LayerToolkit
 from domain import Struct, StructManifest, StructNullWarningSet, StructLayer
 
 T = TypeVar("T", bound="Struct")
 
 
-class StructValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
+class StructLayerToolkit(LayerToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for attribute validators and type manifest.
 
     Attributes:
-            wrapper: StructWrapperDependency[T]
-            metadata: StructManifest[T]
+            wrapper: StructServiceDependency[T]
+            manifest: StructManifest[T]
 
     Provides:
 
     Super Class:
-        ValidatorToolkit
+        LayerToolkit
     """
     
     def __init__(
             self,
-            wrapper: StructDependency[T],
-            metadata: StructManifest[T],
+            dependency: StructDependency[T],
+            manifest: StructManifest[T],
     ):
         """
-            wrapper: StructWrapperDependency[T]
-            metadata: StructManifest[T]
+            wrapper: StructServiceDependency[T]
+            manifest: StructManifest[T]
         """
-        super().__init__(wrapper=wrapper, metadata=metadata)
+        super().__init__(dependency=dependency, manifest=manifest)
     
     
     @property
-    def wrapper(self) -> StructDependency[T]:
-        return cast(StructDependency, super().wrapper)
+    def dependency(self) -> StructDependency[T]:
+        return cast(StructDependency, super().dependency)
     
     @property
-    def metadata(self) -> StructManifest[T]:
-        return cast(StructManifest, super().metadata)
+    def manifest(self) -> StructManifest[T]:
+        return cast(StructManifest, super().manifest)
     
     @property
     def nulls(self) -> StructNullWarningSet[T]:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> StructLayer[T]:
-        return self.metadata.types
+        return self.manifest.types

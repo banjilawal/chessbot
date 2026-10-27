@@ -27,7 +27,7 @@ class ChartValidatorException(StructValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ChartValidator failed.
+        1.  Indicating a ChartValidator failed.
 
     Attributes:
         msg: Optional[str]

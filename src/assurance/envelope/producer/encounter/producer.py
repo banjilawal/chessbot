@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidationLoader, EncounterValidatorToolkit, RootEnvelopeProducer
+from assurance import EncounterValidationLoader, EncounterLayerToolkit, RootEnvelopeProducer
 from config import NumericSetting
 from domain import (
     Encounter, EncounterPrimeExtract, Maneuver, Square, Token
@@ -62,7 +62,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         return cast(EncounterValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> EncounterValidatorToolkit:
+    def toolkit(self) -> EncounterLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -141,7 +141,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_LOCATION_ATTRIBUTE. ---#
-        location_validation = self.toolkit.wrapper.square.extract_model(
+        location_validation = self.toolkit.dependency.square.extract_model(
             request=SquareValidationRequest(
                 item=SquareCarrier(model=blueprint.location),
                 id=IdFactory.next_id(class_name="SquareValidationRequest"),
@@ -160,7 +160,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_VICTIM_ATTRIBUTE. ---#
-        victim_validation = self.toolkit.wrapper.token.extract_model(
+        victim_validation = self.toolkit.dependency.token.extract_model(
             request=TokenValidationRequest(
                 item=TokenCarrier(model=blueprint.victim),
                 id=IdFactory.next_id(class_name="TokenValidationRequest"),
@@ -179,7 +179,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_ATTACKER_MANEUVER_ATTRIBUTE. ---#
-        attacker_maneuver_validation = self.toolkit.wrapper.maneuver.extract_model(
+        attacker_maneuver_validation = self.toolkit.dependency.maneuver.extract_model(
             request=ManeuverValidationRequest(
                 item=ManeuverCarrier(model=blueprint.attacker_maneuver),
                 id=IdFactory.next_id(class_name="TManeuverValidationRequest"),

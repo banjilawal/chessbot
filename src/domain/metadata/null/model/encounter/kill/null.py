@@ -34,7 +34,7 @@ class KillNullWarningSet(EncounterNullWarningSet[KillEncounter]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

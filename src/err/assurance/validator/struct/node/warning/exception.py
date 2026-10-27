@@ -27,7 +27,7 @@ class EncounterWarningNodeValidatorException(NodeValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a WarningNodeValidator failed.
+        1.  Indicating a WarningNodeValidator failed.
 
     Attributes:
         msg: Optional[str]

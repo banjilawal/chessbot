@@ -27,7 +27,7 @@ class QueryValidatorException(ValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a QueryValidator failed.
+        1.  Indicating a QueryValidator failed.
 
     Attributes:
         msg: Optional[str]

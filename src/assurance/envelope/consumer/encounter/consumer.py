@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidatorToolkit, RootEnvelopeConsumer
+from assurance import EncounterLayerToolkit, RootEnvelopeConsumer
 from domain import Encounter
 from transit import EncounterCarrier, RootEncounterEnvelope
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class EncounterEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
         1.  Assure an Encounter covered by a RootEncounerEnvelope is safe.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        toolkit: EncounterLayerToolkit
 
     Provides:
         -   def execute(envelope: RootEncounterEnvelope) -> ValidationResult[EncounterCarrier]
@@ -38,14 +38,14 @@ class EncounterEnvelopeConsumer(RootEnvelopeConsumer[T], ABC, Generic[T]):
     Super Class:
         RootEnvelopeConsumer
     """
-    _toolkit: EncounterValidatorToolkit
+    _toolkit: EncounterLayerToolkit
     
-    def __init__(self, toolkit: Optional[EncounterValidatorToolkit] | None = None):
-        super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
+    def __init__(self, toolkit: Optional[EncounterLayerToolkit] | None = None):
+        super().__init__(toolkit=toolkit or EncounterLayerToolkit())
         
     @property
-    def toolkit(self) -> EncounterValidatorToolkit:
-        return cast(EncounterValidatorToolkit, super().toolkit)
+    def toolkit(self) -> EncounterLayerToolkit:
+        return cast(EncounterLayerToolkit, super().toolkit)
         
 
     @abstractmethod

@@ -14,4 +14,4 @@ from .player import *
 from .team import *
 
 # Module
-from .toolkit import BinderValidatorToolkit
+from .toolkit import BinderLayerToolkit

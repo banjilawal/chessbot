@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidationLoader, SquareRegisterValidatorToolkit
+from assurance import RegisterValidationLoader, SquareRegisterLayerToolkit
 from domain import SquareRegister
 from err import (
     SquareRegisterConsistencyException, SquareRegisterEmptyException, SquareRegisterLoaderException,
@@ -35,7 +35,7 @@ class SquareRegisterLoader(RegisterValidationLoader[SquareRegister]):
             -   SquareRegisterBlueprint
 
     Attributes:
-        toolkit: SquareRegisterValidatorToolkit
+        toolkit: SquareRegisterLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class SquareRegisterLoader(RegisterValidationLoader[SquareRegister]):
     
     def __init__(
             self,
-            toolkit: Optional[SquareRegisterValidatorToolkit] | None = None,
+            toolkit: Optional[SquareRegisterLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[SquareRegisterValidatorToolkit]
+            toolkit: Optional[SquareRegisterLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or SquareRegisterValidatorToolkit())
+        super().__init__(toolkit=toolkit or SquareRegisterLayerToolkit())
     
     @property
-    def toolkit(self) -> SquareRegisterValidatorToolkit:
-        return cast(SquareRegisterValidatorToolkit, super().toolkit)
+    def toolkit(self) -> SquareRegisterLayerToolkit:
+        return cast(SquareRegisterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[SquareRegister]:

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    MachineAccountEnvelopeConsumer, HumanAccountEnvelopeConsumer, AccountValidatorToolkit
+    MachineAccountEnvelopeConsumer, HumanAccountEnvelopeConsumer, AccountLayerToolkit
 )
 from domain import Account
 from err import (
@@ -34,7 +34,7 @@ class AccountValidationRouter(ValidationRouter[Account]):
             by Carrier type.
 
     Attributes:
-        toolkit: AccountValidatorToolkit
+        toolkit: AccountLayerToolkit
         human_consumer: HumanAccountEnvelopeConsumer
         machine_consumer: MachineAccountEnvelopeConsumer
         combatant_consumer: CombatantAccountEnvelopeConsumer
@@ -52,22 +52,22 @@ class AccountValidationRouter(ValidationRouter[Account]):
             self,
             human_consumer: Optional[HumanAccountEnvelopeConsumer] | None = None,
             machine_consumer: Optional[MachineAccountEnvelopeConsumer] | None = None,
-            toolkit: Optional[AccountValidatorToolkit] | None = None,
+            toolkit: Optional[AccountLayerToolkit] | None = None,
     ):
         """
         Args:
             human_consumer: Optional[HumanAccountEnvelopeConsumer]
             machine_consumer: Optional[MachineAccountEnvelopeConsumer]
-            toolkit: Optional[AccountValidatorToolkit]
+            toolkit: Optional[AccountLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or AccountValidatorToolkit())
+        super().__init__(toolkit=toolkit or AccountLayerToolkit())
         self._human_consumer = human_consumer or HumanAccountEnvelopeConsumer()
         self._machine_consumer = machine_consumer or MachineAccountEnvelopeConsumer()
 
     
     @property
-    def toolkit(self) -> AccountValidatorToolkit:
-        return cast(AccountValidatorToolkit, super().toolkit)
+    def toolkit(self) -> AccountLayerToolkit:
+        return cast(AccountLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, envelope: RootAccountEnvelope) -> ValidationResult[AccountCarrier]:

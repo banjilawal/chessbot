@@ -35,7 +35,7 @@ class RankNullWarningSet(ModelNullWarningSet[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

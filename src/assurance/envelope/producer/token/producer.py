@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, TokenValidationLoader, TokenValidatorToolkit
+from assurance import RootEnvelopeProducer, TokenValidationLoader, TokenLayerToolkit
 from domain import (
     Footstep, Formation, HomeSquare, Team, Token, TokenDeployment,
     TokenPrimeExtract
@@ -61,7 +61,7 @@ class TokenEnvelopeProducer(RootEnvelopeProducer[Token]):
         return cast(TokenValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> TokenValidatorToolkit:
+    def toolkit(self) -> TokenLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -140,7 +140,7 @@ class TokenEnvelopeProducer(RootEnvelopeProducer[Token]):
                 )
             )
         # --- PROCESS_THE_TEAM_ATTRIBUTE. ---#
-        team_validation = self.toolkit.wrapper.team.extract_model(
+        team_validation = self.toolkit.dependency.team.extract_model(
             request=TeamValidationRequest(
                 item=TeamCarrier(model=blueprint.team),
                 id=IdFactory.next_id(class_name="TeamValidationRequest"),
@@ -159,7 +159,7 @@ class TokenEnvelopeProducer(RootEnvelopeProducer[Token]):
                 )
             )
         # --- PROCESS_THE_FOOTSTEP_ATTRIBUTE. ---#
-        footstep_validation = self.toolkit.wrapper.footstep.extract_model(
+        footstep_validation = self.toolkit.dependency.footstep.extract_model(
             request=FootstepValidationRequest(
                 item=FootstepCarrier(model=blueprint.footstep),
                 id=IdFactory.next_id(class_name="FootstepValidationRequest"),

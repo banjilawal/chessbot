@@ -27,7 +27,7 @@ class CoordRegisterValidatorException(RegisterValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CoordRegisterValidator failed.
+        1.  Indicating a CoordRegisterValidator failed.
 
     Attributes:
             msg: Optional[str]

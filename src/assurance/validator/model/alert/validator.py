@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import AlertValidationLoader, AlertValidatorToolkit, ModelValidator
+from assurance import AlertValidationLoader, AlertLayerToolkit, ModelValidator
 from domain import CheckmateEncounter, Encounter, Alert, AlertBlueprint, AlertPrimeExtract, EncounterWarning
 from err import AlertCarrierEmptyException, AlertValidatorException
 from exchange import EncounterValidationRequest
@@ -53,7 +53,7 @@ class AlertValidator(ModelValidator[Alert]):
         return cast(AlertValidationLoader, super().loader)
     
     @property
-    def toolkit(self) -> AlertValidatorToolkit:
+    def toolkit(self) -> AlertLayerToolkit:
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
@@ -118,7 +118,7 @@ class AlertValidator(ModelValidator[Alert]):
         # --- PROCESS_THE_THREAT_ATTRIBUTE. ---#
         threat = blueprint.threat
         if threat is not None:
-            threat_validation = self.toolkit.wrapper.encounter.extract_model(
+            threat_validation = self.toolkit.dependency.encounter.extract_model(
                 request=EncounterValidationRequest(
                     item=EncounterWarningCarrier(model=blueprint.threat),
                     id=IdFactory.next_id(class_name="EncounterValidationRequest"),
@@ -140,7 +140,7 @@ class AlertValidator(ModelValidator[Alert]):
         # --- PROCESS_THE_CHECKMATE_ATTRIBUTE. ---#
         checkmate = blueprint.checkmate
         if checkmate is not None:
-            checkmate_validation = self.toolkit.wrapper.encounter.extract_model(
+            checkmate_validation = self.toolkit.dependency.encounter.extract_model(
                 request=EncounterValidationRequest(
                     item=CheckmateEncounterCarrier(model=blueprint.checkmate),
                     id=IdFactory.next_id(class_name="EncounterValidationRequest"),

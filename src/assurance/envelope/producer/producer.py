@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidationLoader, ValidatorToolkit
+from assurance import ValidationLoader, LayerToolkit
 from domain import Model
 from transit import ProductEnvelope
 from util import LoggingLevelRouter
@@ -52,7 +52,7 @@ class RootEnvelopeProducer(ABC, Generic[T]):
         return self._loader
         
     @property
-    def toolkit(self) -> ValidatorToolkit[T]:
+    def toolkit(self) -> LayerToolkit[T]:
         return self.loader.toolkit
     
     @abstractmethod

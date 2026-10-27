@@ -13,13 +13,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import StructDependency
+from assurance import ServiceDependency
 from domain import Binder
 
 T = TypeVar("T", bound="Binder")
 
 
-class BinderDependency(StructDependency[T], ABC, Generic[T]):
+class BinderServiceDependency(ServiceDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -33,7 +33,7 @@ class BinderDependency(StructDependency[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructDependency
+        Dependency
     """
     
     def __init__(self):

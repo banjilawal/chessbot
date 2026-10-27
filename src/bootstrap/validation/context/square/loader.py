@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidationLoader, SquareValidatorToolkit
+from assurance import ContextValidationLoader, SquareLayerToolkit
 from domain import Square, SquareContextPrimeExtract
 from err import (
     SquareCarrierEmptyException, SquareContextValidationLoaderException, SquareContextValidationRequestNullException
@@ -35,7 +35,7 @@ class SquareContextValidationLoader(ContextValidationLoader[SquareContext]):
             -   SquareBlueprint
 
     Attributes:
-        toolkit: SquareValidatorToolkit
+        toolkit: SquareLayerToolkit
 
     Provides:
         -   def execute(
@@ -48,17 +48,17 @@ class SquareContextValidationLoader(ContextValidationLoader[SquareContext]):
     
     def __init__(
             self,
-            toolkit: Optional[SquareValidatorToolkit] | None = None,
+            toolkit: Optional[SquareLayerToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[SquareValidatorToolkit]
+            toolkit: Optional[SquareLayerToolkit]
         """
-        super().__init__(toolkit=toolkit or SquareValidatorToolkit())
+        super().__init__(toolkit=toolkit or SquareLayerToolkit())
     
     @property
-    def toolkit(self) -> SquareValidatorToolkit:
-        return cast(SquareValidatorToolkit, super().toolkit)
+    def toolkit(self) -> SquareLayerToolkit:
+        return cast(SquareLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[SquareContextPrimeExtract]:

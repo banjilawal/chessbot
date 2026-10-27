@@ -41,7 +41,7 @@ class PawnTokenEnvelopeConsumer(
         1.  Assure a PawnToken covered by a RootTokenEnvelope is safe.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: TokenLayerToolkit
         combatant_consumer: CombatantTokenEnvelopeConsumer
 
     Provides:
@@ -205,7 +205,7 @@ class PawnTokenEnvelopeConsumer(
                 )
             )
         # --- START_THE_RANK_VALIDATION_PROCESS ---#
-        rank_validation = self.toolkit.wrapper.rank.extract_model(
+        rank_validation = self.toolkit.dependency.rank.extract_model(
             request=RankValidationRequest(
                 item=RankCarrier(model=blueprint.rank),
                 id=IdFactory.next_id(class_name="RankValidationRequest")

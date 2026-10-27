@@ -11,56 +11,56 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, EncounterWrapperDependency
+from assurance import ModelLayerToolkit, EncounterServiceDependency
 from domain import (
     Encounter, EncounterManifest, EncounterNullWarningSet, EncounterLayer
 )
 
-class EncounterValidatorToolkit(ModelValidatorToolkit[Encounter]):
+class EncounterLayerToolkit(ModelLayerToolkit[Encounter]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for Encounter attribute validators and type metadata.
+        1.  Single source of truth for Encounter attribute validators and type manifest.
 
     Attributes:
         helper: EncounterManifest
-        metadata: EncounterWrapperDependency
+        manifest: EncounterServiceDependency
 
     Provides:
 
     Super Class:
-        ModelValidatorToolkit
+        ModelLayerToolkit
     """
     
     def __init__(
             self,
-            metadata: Optional[EncounterManifest] | None = None,
-            wrapper: Optional[EncounterWrapperDependency] | None = None,
+            manifest: Optional[EncounterManifest] | None = None,
+            dependency: Optional[EncounterServiceDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[EncounterManifest]
-            metadata: Optional[EncounterWrapperDependency]
+            dependency: Optional[EncounterManifest]
+            manifest: Optional[EncounterServiceDependency]
         """
         super().__init__(
-            wrapper=wrapper or EncounterWrapperDependency(),
-            metadata=metadata or EncounterManifest(),
+            dependency=dependency or EncounterServiceDependency(),
+            manifest=manifest or EncounterManifest(),
         )
     
     @property
-    def wrapper(self) -> EncounterWrapperDependency:
-        return cast(EncounterWrapperDependency, super().wrapper)
+    def dependency(self) -> EncounterServiceDependency:
+        return cast(EncounterServiceDependency, super().dependency)
     
     @property
-    def metadata(self) -> EncounterManifest:
-        return cast(EncounterManifest, super().metadata)
+    def manifest(self) -> EncounterManifest:
+        return cast(EncounterManifest, super().manifest)
     
     @property
     def nulls(self) -> EncounterNullWarningSet:
-        return self.metadata.nulls
+        return self.manifest.nulls
     
     @property
     def types(self) -> EncounterLayer:
-        return self.metadata.types
+        return self.manifest.types

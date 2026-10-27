@@ -27,7 +27,7 @@ class FootstepValidatorException(ModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a FootstepValidator failed.
+        1.  Indicating a FootstepValidator failed.
 
     Attributes:
         msg: Optional[str]

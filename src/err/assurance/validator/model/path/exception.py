@@ -27,7 +27,7 @@ class PathValidatorException(ModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a PathValidation check.
+        1.  Indicating a PathValidation check.
 
     Attributes:
             msg: Optional[str]

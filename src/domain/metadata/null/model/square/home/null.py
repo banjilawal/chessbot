@@ -33,7 +33,7 @@ class HomeSquareNullWarningSet(SquareNullWarningSet):
     Provides:
 
     Super Class:
-        NullExceptionGroup
+        NullWarningSet
     """
     
     def __init__(

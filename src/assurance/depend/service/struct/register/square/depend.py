@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterDependency
+from assurance import RegisterServiceDependency
 from domain import SquareRegister
 from exchange import SquareValidationService
 
 
-class SquareRegisterDependency(RegisterDependency[SquareRegister]):
+class SquareRegisterDependency(RegisterServiceDependency[SquareRegister]):
     """
     Role:
         - Toolkit
