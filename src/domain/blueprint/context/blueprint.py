@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, Optional, Type, TypeVar, cast
 
-from domain import Blueprint, Context
+from domain import Blueprint, BlueprintState, Context
+from domain.blueprint.context.state import FlagState
 from err import ContextNullException
 
 T = TypeVar("T", bound="Context")
@@ -27,16 +28,51 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Context.
          
      Attributes:
+        max_size: int
+        flag_state: FlagState
+
         domain_class: Type[T]
         domain_null_exception: ContextNullException
 
      Provides:
+    @flag_state.setter
+    def flag_state(self, other: FlagState):
+        if (
+                not self.is_valid_size and
+                self._flag_state != FlagState.CORRECT_FLAG_COUNT
+        ):
+            self._flag_state = other
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_over_capacity(self) -> bool:
+        return self.size > self.max_size
+    
+    @property
+    def is_valid_size(self) -> bool:
+        return 1 <= self.size < self.max_size + 1
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, Any]:
+        pass
+    
+    @property
+    def is_consistent(self) -> bool:
+        return (
+                self.is_valid_size and
+                self._flag_state == FlagState.CORRECT_FLAG_COUNT
+        )
 
      Super Class:
         Blueprint
      """
     
     _max_size: int
+    _flag_state: FlagState
     _id: Optional[int]
     _name: Optional[str]
 
@@ -63,6 +99,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         self._id = id
         self._name = name
         self._max_size = max_size or 1
+        self._flag_state = FlagState.UNKNOWN
         
     @property
     def domain_class(self) -> Type[T]:
@@ -89,8 +126,37 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         return len(self.to_dict)
     
     @property
+    def flag_state(self) -> FlagState:
+        return self._flag_state
+    
+    @flag_state.setter
+    def flag_state(self, other: FlagState):
+        if (
+                not self.is_valid_size and
+                self._flag_state != FlagState.CORRECT_FLAG_COUNT
+        ):
+            self._flag_state = other
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_over_capacity(self) -> bool:
+        return self.size > self.max_size
+    
+    @property
+    def is_valid_size(self) -> bool:
+        return 1 <= self.size < self.max_size + 1
+    
+    @property
     @abstractmethod
     def to_dict(self) -> Dict[str, Any]:
         pass
-
-
+    
+    @property
+    def is_consistent(self) -> bool:
+        return (
+                self.is_valid_size and
+                self._flag_state == FlagState.CORRECT_FLAG_COUNT
+        )

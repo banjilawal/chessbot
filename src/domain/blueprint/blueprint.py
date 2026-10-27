@@ -28,11 +28,13 @@ class Blueprint(ABC, Generic[T]):
 
      Attributes:
         state: BlueprintState
+        
         domain_class: Type[T]
         domain_class_mane: str
         domain_null_exception: NullException
 
      Provides:
+        -   def mark_as_validated(self)
 
      Super Class:
      """

@@ -173,7 +173,7 @@ class AccountContextValidationLoader(
                     ),
                 )
             )
-        
+        blueprint.mark_as_validated()
         # --- Send the work product. ---#
         extract = AccountContextPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)
