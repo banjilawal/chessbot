@@ -99,6 +99,6 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
         return BoardContextBlueprint(
             id=model.id,
             arena=model.arena,
-            state=model.state,
+            validation_state=model.state,
         )
 

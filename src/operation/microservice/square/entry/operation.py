@@ -138,7 +138,7 @@ class SquareEntry:
         pre_update_square = deepcopy(square)
         # --- Set the square side of the relationship. ---#
         square.occupant = token
-        square.state = SquareState.OCCUPIED
+        square.validation_state = SquareState.OCCUPIED
         
         # --- Push the square's coord onto the schema. ---#
         coord_insertion_result = token.positions.push(square.coord)
@@ -147,7 +147,7 @@ class SquareEntry:
         if coord_insertion_result.is_failure:
             # Rollback the square.
             square.occupant = None
-            square.state = SquareState.EMPTY
+            square.validation_state = SquareState.EMPTY
             
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

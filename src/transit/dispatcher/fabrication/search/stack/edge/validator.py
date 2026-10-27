@@ -182,8 +182,8 @@ class EdgeContextBuilder(ContextBuilder[Edge]):
             return BuildResult.success(payload=context)
         
         # Build for the search-by-state.
-        if context.state is not None:
-            if not isinstance(context.state, EdgeState):
+        if context.validation_state is not None:
+            if not isinstance(context.validation_state, EdgeState):
                 # Send the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuilderException(

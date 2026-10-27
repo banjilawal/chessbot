@@ -15,6 +15,6 @@ from enum import Enum, auto
 class FlagState(Enum):
     NO_FLAGS = auto(),
     TOO_MANY_FLAGS = auto(),
-    CORRECT_FLAG_COUNT = auto(),
+    VALID_SIZE = auto(),
     UNKNOWN = auto(),
     

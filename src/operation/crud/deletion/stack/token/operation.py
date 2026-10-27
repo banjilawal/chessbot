@@ -87,7 +87,7 @@ class TokenStackPop(StackPop[Token]):
         product = stack.items.remove(item)
         # Maintain state.
         if stack.is_blank:
-            stack.state = TokenStackState.DEPLOYED_ON_BOARD
+            stack.validation_state = TokenStackState.DEPLOYED_ON_BOARD
         
         # --- Send the work product ---#
         return DeletionResult.success(product)

@@ -159,7 +159,7 @@ class TokenDeploymentWorker(Worker):
         square_stack.items.append(square)
         # Maintain state.
         if square_stack.has_both_slots_occupied:
-            square_stack.state = SquareStackState.READY_FOR_DEPLOYMENT
+            square_stack.validation_state = SquareStackState.READY_FOR_DEPLOYMENT
         
         # --- Send the work product ---#
         return InsertionResult.success()

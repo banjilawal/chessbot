@@ -184,8 +184,8 @@ class EdgeValidator(ModelValidator[Edge]):
             return ValidationResult.success(payload=blueprint)
         
         # Certification for the search-by-state.
-        if blueprint.state is not None:
-            if not isinstance(blueprint.state, EdgeState):
+        if blueprint.validation_state is not None:
+            if not isinstance(blueprint.validation_state, EdgeState):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeValidatorException(

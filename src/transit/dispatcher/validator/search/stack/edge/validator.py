@@ -182,8 +182,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             return ValidationResult.success(payload=context)
         
         # Validation for the search-by-state.
-        if context.state is not None:
-            if not isinstance(context.state, EdgeState):
+        if context.validation_state is not None:
+            if not isinstance(context.validation_state, EdgeState):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidatorException(

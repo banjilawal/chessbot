@@ -99,7 +99,7 @@ class GameContextCarrier(ContextCarrier[GameContext]):
         return GameContextBlueprint(
             id=model.id,
             arena=model.arena,
-            state=model.state,
+            validation_state=model.state,
             player=model.player,
             account=model.account,
         )

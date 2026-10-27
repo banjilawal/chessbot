@@ -14,7 +14,7 @@ from typing import Any, Optional, Type, cast
 from artifcat import ValidationResult
 from assurance import AccountValidatorToolkit
 from bootstrap import ContextValidationLoader
-from domain import AccountContext, AccountContextPrimeExtract
+from domain import AccountContext, AccountContextPrimeExtract, FlagState
 from transit import AccountContextCarrier
 from util import LoggingLevelRouter
 
@@ -173,7 +173,7 @@ class AccountContextValidationLoader(
                     ),
                 )
             )
-        blueprint.mark_as_validated()
+        blueprint.flag_state = FlagState.VALID_SIZE
         # --- Send the work product. ---#
         extract = AccountContextPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

@@ -33,40 +33,16 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
 
         domain_class: Type[T]
         domain_null_exception: ContextNullException
+        
+    Provides:
+        is_empty: bool
+        is_valid_size: bool
+        is_over_capacity: bool
+        is_consistent: bool
+        is_not_consistent: bool
 
-     Provides:
-    @flag_state.setter
-    def flag_state(self, other: FlagState):
-        if (
-                not self.is_valid_size and
-                self._flag_state != FlagState.CORRECT_FLAG_COUNT
-        ):
-            self._flag_state = other
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_over_capacity(self) -> bool:
-        return self.size > self.max_size
-    
-    @property
-    def is_valid_size(self) -> bool:
-        return 1 <= self.size < self.max_size + 1
-    
-    @property
-    @abstractmethod
-    def to_dict(self) -> Dict[str, Any]:
-        pass
-    
-    @property
-    def is_consistent(self) -> bool:
-        return (
-                self.is_valid_size and
-                self._flag_state == FlagState.CORRECT_FLAG_COUNT
-        )
-
+        -   def to_dict() -> Dict[str, Any]
+   
      Super Class:
         Blueprint
      """
@@ -133,7 +109,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     def flag_state(self, other: FlagState):
         if (
                 not self.is_valid_size and
-                self._flag_state != FlagState.CORRECT_FLAG_COUNT
+                self._flag_state != FlagState.VALID_SIZE
         ):
             self._flag_state = other
     
@@ -142,7 +118,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
+    def exceeds_capacity(self) -> bool:
         return self.size > self.max_size
     
     @property
@@ -158,5 +134,9 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     def is_consistent(self) -> bool:
         return (
                 self.is_valid_size and
-                self._flag_state == FlagState.CORRECT_FLAG_COUNT
+                self._flag_state == FlagState.VALID_SIZE
         )
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.is_consistent

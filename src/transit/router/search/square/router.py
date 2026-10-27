@@ -118,8 +118,8 @@ class SquareSearchRouter(SearchRouter[Square]):
                 return cls._find_by_formation(dataset=query.token_stack, coord=query.context.formation)
             
             # Entry point into searching by opening square's state.
-            if query.context.state is not None:
-                return cls._find_by_formation(dataset=query.token_stack, coord=query.context.state)
+            if query.context.validation_state is not None:
+                return cls._find_by_formation(dataset=query.token_stack, coord=query.context.validation_state)
             
             # The default path is only reached when a context.key does not have a search route. Return
             # the exception chain.

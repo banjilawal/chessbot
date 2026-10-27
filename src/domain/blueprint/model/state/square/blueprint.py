@@ -39,7 +39,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
      """
     _name: str
     _coord: Coord
-    _state: SquareState
+    _validation_state: SquareState
     _occupant: Optional[Token]
     
     def __init__(
@@ -47,7 +47,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             name: str,
             coord: Coord,
             occupant: Optional[Token] | None = None,
-            state: Optional[SquareState] | None = None,
+            validation_state: Optional[SquareState] | None = None,
             domain_class: Optional[Type[Square]] | None = None,
             domain_null_exception: Optional[SquareNullException] | None = None,
             id: Optional[int] | None = None,
@@ -57,7 +57,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             name: str
             coord: Coord
             occupant: Optional[Token]
-            state: Optional[SquareState]
+            validation_state: Optional[SquareState]
             domain_class: Optional[Type[Square]]
             domain_null_exception: Optional[SquareNullException]
             id: Optional[int]
@@ -70,7 +70,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         self._name = name
         self._coord = coord
         self._occupant = occupant
-        self._state = state or SquareState.EMPTY
+        self._state = validation_state or SquareState.EMPTY
     
     @property
     def name(self) -> str:
@@ -81,7 +81,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         return self._coord
     
     @property
-    def state(self) -> SquareState:
+    def validation_state(self) -> SquareState:
         return self._state
     
     @property

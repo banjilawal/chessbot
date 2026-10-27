@@ -175,7 +175,7 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
                 name=name,
                 board=board,
                 coord=coord,
-                state=state,
+                validation_state=state,
                 occupant=occupant,
                 formation=formation,
             )

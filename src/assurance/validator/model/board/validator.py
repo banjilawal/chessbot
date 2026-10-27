@@ -140,7 +140,7 @@ class BoardValidator(ModelValidator[Board]):
         # --- PROCESS_THE_BOARD_STATE_ATTRIBUTE. ---#
         # Handle the case that the archetype does not pass a validation check.
         state_validation = self.toolkit.priming_validator.execute(
-            candidate=fingerprint.state,
+            candidate=fingerprint.validation_state,
             target_model=BoardState,
             null_exception=BoardStateNullException(),
         )

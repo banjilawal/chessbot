@@ -123,10 +123,10 @@ class EdgeFinder(StackSearchRouter[Edge]):
         if context.board is not None:
             return cls._find_by_board(dataset=dataset, coord=context.occupant)
         # Entry point into searching by emptiness.
-        if context.state is not None and context.state == EdgeState.EMPTY:
+        if context.validation_state is not None and context.validation_state == EdgeState.EMPTY:
             return cls._find_by_empty_state(dataset=dataset)
         # Entry point into searching by fullness.
-        if context.state is not None and context.state == EdgeState.OCCUPIED:
+        if context.validation_state is not None and context.validation_state == EdgeState.OCCUPIED:
             return cls._find_by_occupied_state(dataset=dataset)
         
         # If a context does not have a search route defined send an exception chain.

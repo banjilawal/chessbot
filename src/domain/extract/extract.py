@@ -84,7 +84,7 @@ class PrimeExtract(ABC, Generic[T]):
     def secure_blueprint_exists(self) -> bool:
         return (
                 self._blueprint is not None and
-                self._blueprint.state == BlueprintState.VALIDATED_BLUEPRINT
+                self._blueprint.validation_state == BlueprintState.VALIDATED
         )
 
     @property

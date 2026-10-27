@@ -105,12 +105,12 @@ class ManeuverLauncher:
 
         token = report.attacker_maneuver.traveler
         maneuver.path.endpoints.destination.occupant = token
-        maneuver.path.endpoints.destination.state = SquareState.OCCUPIED
+        maneuver.path.endpoints.destination.validation_state = SquareState.OCCUPIED
         
         maneuver.path.endpoints.origin.occupant = None
-        maneuver.path.endpoints.origin.state = SquareState.EMPTY
+        maneuver.path.endpoints.origin.validation_state = SquareState.EMPTY
         
-        maneuver.state = ManeuverState.COMPLETED
+        maneuver.validation_state = ManeuverState.COMPLETED
         
         # --- Forward the work product to the caller. ---#
         return TurnResult.success(maneuver)

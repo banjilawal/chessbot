@@ -85,6 +85,6 @@ class SquareCarrier(ModelCarrier[Square]):
             board=model.board,
             coord=model.coord,
             occupant=model.occupant,
-            state=model.state,
+            validation_state=model.state,
         )
 

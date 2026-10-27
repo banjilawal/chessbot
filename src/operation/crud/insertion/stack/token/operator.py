@@ -85,7 +85,7 @@ class TokenPusher(StackPop[Token]):
         req.stack.items.append(req.item)
         # Maintain state.
         if req.stack.has_both_slots_occupied:
-            req.stack.state = TokenStackState.READY_FOR_DEPLOYMENT
+            req.stack.validation_state = TokenStackState.READY_FOR_DEPLOYMENT
         
         # --- Send the work product ---#
         return InsertionionResult.success()

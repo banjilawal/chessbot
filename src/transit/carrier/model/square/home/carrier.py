@@ -90,6 +90,6 @@ class HomeSquareCarrier(SquareCarrier):
             coord=model.coord,
             occupant=model.occupant,
             formation=model.formation,
-            state=model.state,
+            validation_state=model.state,
         )
 

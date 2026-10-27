@@ -169,7 +169,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             )
         # --- PROCESS_THE_STATE_ATTRIBUTE. ---#
         state_validation = self.toolkit.priming_validator.execute(
-            candidate=blueprint.state,
+            candidate=blueprint.validation_state,
             target_model=SquareState,
             null_exception=SquareStateNullException(),
         )

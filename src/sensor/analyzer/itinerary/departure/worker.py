@@ -105,7 +105,7 @@ class SquareDepartureProcess:
         token = square.occupant
         # Break the relationship between them and update the square's state.
         square.occupant = None
-        square.state = SquareState.EMPTY
+        square.validation_state = SquareState.EMPTY
         
         # --- Send the work product. ---#
         DeletionResult.success(payload=token)

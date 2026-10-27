@@ -41,7 +41,7 @@ class GameContextBlueprint(ContextBlueprint[GameContext]):
     
     _arena: Optional[Arena]
     _player: Optional[Player]
-    _state: Optional[GameState]
+    _validation_state: Optional[GameState]
     _account: Optional[Account]
     
     def __init__(
@@ -51,14 +51,14 @@ class GameContextBlueprint(ContextBlueprint[GameContext]):
             id: Optional[int] | None = None,
             arena: Optional[Arena] | None = None,
             player: Optional[Player] | None = None,
-            state: Optional[GameState] | None = None,
+            validation_state: Optional[GameState] | None = None,
             account: Optional[Account] | None = None,
     ):
         """
         Args:
             arena: Optional[Arena]
             player: Optional[Player]
-            state: Optional[GameState]
+            validation_state: Optional[GameState]
             account: Optional[Account]
             domain_class: Type[GameContext]
             domain_null_exception: GameContextNullException
@@ -70,7 +70,7 @@ class GameContextBlueprint(ContextBlueprint[GameContext]):
         )
         self._arena = arena
         self._player = player
-        self._state = state
+        self._state = validation_state
         self._account = account
     
     @property
@@ -90,7 +90,7 @@ class GameContextBlueprint(ContextBlueprint[GameContext]):
         return self._arena
     
     @property
-    def state(self) -> Optional[GameState]:
+    def validation_state(self) -> Optional[GameState]:
         return self._state
     
     @property

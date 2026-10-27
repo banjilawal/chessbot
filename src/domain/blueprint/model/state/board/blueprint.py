@@ -39,14 +39,14 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         StateModelBlueprint
      """
     _arena: Arena
-    _state: BoardState
+    _validation_state: BoardState
     _binder: TeamBinder
     
     def __init__(
             self,
             arena: Arena,
             binder: TeamBinder,
-            state: Optional[BoardState] | None = None,
+            validation_state: Optional[BoardState] | None = None,
             domain_class: Optional[Type[Board]] | None = None,
             domain_null_exception: Optional[BoardNullException] | None = None,
             id: Optional[int] | None = None,
@@ -55,7 +55,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         Args:
             arena: Arena
             binder: TeamBinder
-            state: Optional[BoardState]
+            validation_state: Optional[BoardState]
             domain_class: Optional[Type[Board]]
             domain_null_exception: Optional[BoardNullException]
             id: Optional[int]
@@ -67,7 +67,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         )
         self._arena = arena
         self._binder = binder
-        self._state = state or BoardState.IS_EMPTY
+        self._state = validation_state or BoardState.IS_EMPTY
         
     @property
     def arena(self) -> Arena:
@@ -78,7 +78,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         return self._binder
     
     @property
-    def state(self) -> BoardState:
+    def validation_state(self) -> BoardState:
         return self._state
     
     @property

@@ -43,7 +43,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             coord: Coord,
             formation: Formation,
             occupant: Optional[Token] | None = None,
-            state: Optional[SquareState] | None = None,
+            validation_state: Optional[SquareState] | None = None,
             domain_class: Optional[Type[HomeSquare]] | None = None,
             domain_null_exception: Optional[HomeSquareNullException] | None = None,
             id: Optional[int] | None = None,
@@ -54,7 +54,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             board: Board
             coord: Coord
             occupant: Optional[Token]
-            state: Optional[SquareState]
+            validation_state: Optional[SquareState]
             formation: Optional[Formation]
             domain_class: Optional[Type[Square]]
             domain_null_exception: Optional[HomeSquareNullException]
@@ -66,7 +66,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             board=board,
             coord=coord,
             occupant=occupant,
-            state=state or SquareState.EMPTY,
+            validation_state=validation_state or SquareState.EMPTY,
             domain_class=domain_class or Type[HomeSquare],
             domain_null_exception=domain_null_exception or HomeSquareNullException(),
         )

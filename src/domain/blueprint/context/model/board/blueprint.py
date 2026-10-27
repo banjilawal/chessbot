@@ -47,7 +47,7 @@ class BoardContextBlueprint(ContextBlueprint[BoardContext]):
             id: Optional[int] | None = None,
             team: Optional[Team] | None = None,
             arena: Optional[Arena] | None = None,
-            state: Optional[BoardState] | None = None,
+            validation_state: Optional[BoardState] | None = None,
             domain_class: Optional[Type[BoardContext]] | None = None,
             domain_null_exception: Optional[BoardContextNullException] | None = None,
     ):
@@ -56,7 +56,7 @@ class BoardContextBlueprint(ContextBlueprint[BoardContext]):
             id: Optional[int]
             team: Optional[Team]
             arena: Optional[Arena]
-            state: Optional[BoardState]
+            validation_state: Optional[BoardState]
             domain_class: Type[BoardContext]
             domain_null_exception: BoardContextNullException
         """
@@ -66,7 +66,7 @@ class BoardContextBlueprint(ContextBlueprint[BoardContext]):
             domain_null_exception=domain_null_exception or BoardContextNullException(),
         )
         self._team = team
-        self._state = state
+        self._state = validation_state
         self._arena = arena
     
     @property
@@ -82,7 +82,7 @@ class BoardContextBlueprint(ContextBlueprint[BoardContext]):
         return self._team
     
     @property
-    def state(self) -> Optional[BoardState]:
+    def validation_state(self) -> Optional[BoardState]:
         return self._state
     
     @property

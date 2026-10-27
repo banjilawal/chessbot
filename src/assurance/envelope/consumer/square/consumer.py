@@ -128,7 +128,7 @@ class PublicSquareEnvelopeConsumer(RootEnvelopeConsumer[Square]):
                 name=name,
                 board=board,
                 coord=coord,
-                state=state,
+                validation_state=state,
                 occupant=occupant,
             )
         )

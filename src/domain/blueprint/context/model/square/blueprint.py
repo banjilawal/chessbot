@@ -42,7 +42,7 @@ class SquareContextBlueprint(ContextBlueprint[SquareContext]):
     _board: Optional[Board]
     _coord: Optional[Coord]
     _occupant: Optional[Token]
-    _state: Optional[SquareState]
+    _validation_state: Optional[SquareState]
     _square_type: Optional[SquareType]
     
     
@@ -53,7 +53,7 @@ class SquareContextBlueprint(ContextBlueprint[SquareContext]):
             board: Optional[Board] | None = None,
             coord: Optional[Coord] | None = None,
             occupant: Optional[Token] | None = None,
-            state: Optional[SquareState] | None = None,
+            validation_state: Optional[SquareState] | None = None,
             square_type: Optional[SquareType] | None = None,
             domain_class: Optional[Type[SquareContext]] | None = None,
             domain_null_exception: Optional[SquareContextNullException] | None = None,
@@ -65,7 +65,7 @@ class SquareContextBlueprint(ContextBlueprint[SquareContext]):
             board: Optional[Board]
             coord: Optional[Coord]
             occupant: Optional[Token]
-            state: Optional[SquareState]
+            validation_state: Optional[SquareState]
             square_type: Optional[SquareType]
             domain_class: Type[SquareContext]
             domain_null_exception: SquareContextNullException
@@ -79,7 +79,7 @@ class SquareContextBlueprint(ContextBlueprint[SquareContext]):
         )
         self._coord = coord
         self._board = board
-        self._state = state
+        self._state = validation_state
         self._occupant = occupant
         self._square_type = square_type
 
@@ -105,7 +105,7 @@ class SquareContextBlueprint(ContextBlueprint[SquareContext]):
         return self._occupant
     
     @property
-    def state(self) -> Optional[SquareState]:
+    def validation_state(self) -> Optional[SquareState]:
         return self._state
     
     @property

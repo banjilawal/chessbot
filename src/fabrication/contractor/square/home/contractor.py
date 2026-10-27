@@ -83,5 +83,5 @@ class HomeSquareSubcontractor(SquareSubcontractor[HomeSquare]):
             formation=fingerprint.formation,
         )
         model.occupant = fingerprint.occupant
-        model.state = fingerprint.state
+        model.state = fingerprint.validation_state
         return BuildResult.success(model)
