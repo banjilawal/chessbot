@@ -57,11 +57,11 @@ class ChartValidator(StructValidator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ChartCarrier[T]]:
+    def execute(self, item: Any) -> ValidationResult[ChartCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: Any
+            item: Any
         Returns:
            ValidationResult[ChartCarrier[T]]
         Raises:

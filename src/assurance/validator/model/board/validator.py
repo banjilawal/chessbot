@@ -12,15 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import BoardValidationLoader, BoardLayerToolkit, ModelValidator
+from assurance import ModelValidator
+from bootstrap import BoardValidationLoader
 from domain import Arena, Board, BoardBlueprint, BoardPrimeExtract, BoardState, TeamBinder
 from err import (
-    ArenaConsistencyException, ArenaNullException, BoardCarrierEmptyException,
-    BoardStateNullException, BoardValidatorException
+    ArenaConsistencyException, ArenaNullException, BoardCarrierEmptyException, BoardStateNullException,
+    BoardValidatorException,
+    ConsistencyException, TeamBinderConsistencyException, TeamBinderNullException
 )
-from exchange import TeamBinderValidationRequest
-from transit import BoardCarrier, TeamBinderCarrier
-from util import IdFactory, LoggingLevelRouter
+from transit import BoardCarrier
+from util import LoggingLevelRouter
 
 
 class BoardValidator(ModelValidator[Board]):
@@ -55,12 +56,8 @@ class BoardValidator(ModelValidator[Board]):
     def loader(self) -> BoardValidationLoader:
         return cast(BoardValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> BoardLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[BoardCarrier]:
+    def execute(self, item: Any) -> ValidationResult[BoardCarrier]:
         """
         Assure a candidate is a safe BoardCarrier.
 
@@ -77,7 +74,7 @@ class BoardValidator(ModelValidator[Board]):
             2.  Otherwise, send the recipient a carrier which has either a safe model or
                 blueprint in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[BoardCarrier]
         Raises:
@@ -86,7 +83,7 @@ class BoardValidator(ModelValidator[Board]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +96,8 @@ class BoardValidator(ModelValidator[Board]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(BoardPrimeExtract, loading.payload)
-        reference = prime_extract.reference
+        extract = cast(BoardPrimeExtract, loading.payload)
+        reference = extract.reference
         fingerprint = reference.extract_blueprint()
         # Handle the case that the blueprint is null.
         if fingerprint is None:
@@ -120,11 +117,11 @@ class BoardValidator(ModelValidator[Board]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.blueprint_id_extractor.execute(
+        id_validation = self.loader.toolkit.blueprint_id_extractor.execute(
             item=fingerprint,
             blueprint_owner_name=fingerprint.domain_class_name,
-            blueprint_type=self.toolkit.manifest.types.blueprint,
-            blueprint_null_exception=self.toolkit.manifest.nulls.blueprint,
+            blueprint_type=self.loader.toolkit.manifest.types.blueprint,
+            blueprint_null_exception=self.loader.toolkit.manifest.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -139,7 +136,7 @@ class BoardValidator(ModelValidator[Board]):
             )
         # --- PROCESS_THE_BOARD_STATE_ATTRIBUTE. ---#
         # Handle the case that the archetype does not pass a validation check.
-        state_validation = self.toolkit.priming_validator.execute(
+        state_validation = self.loader.toolkit.priming_validator.execute(
             candidate=fingerprint.validation_state,
             target_model=BoardState,
             null_exception=BoardStateNullException(),
@@ -156,7 +153,7 @@ class BoardValidator(ModelValidator[Board]):
                 )
             )
         # --- PROCESS_THE_ARENA_ATTRIBUTE. ---#
-        arena_validation = self.toolkit.priming_validator.execute(
+        arena_validation = self.loader.toolkit.priming_validator.execute(
             candidate=fingerprint.arena,
             target_model=Arena,
             null_exception=ArenaNullException(),
@@ -173,11 +170,10 @@ class BoardValidator(ModelValidator[Board]):
                 )
             )
         # --- PROCESS_THE_BOARD_BINDER_ATTRIBUTE. ---#
-        binder_validation = self.toolkit.dependency.binder.extract_model.execute(
-            item=TeamBinderValidationRequest(
-                item=TeamBinderCarrier(model=fingerprint.binder),
-                id=IdFactory.next_id(class_name="TeamBinderValidationRequest")
-            )
+        binder_validation = self.loader.toolkit.priming_validator.execute(
+            candidate=fingerprint.binder,
+            target_model=TeamBinder,
+            null_exception=TeamBinderNullException(),
         )
         if binder_validation.is_failure:
             # Send the exception chain on failure.
@@ -190,8 +186,13 @@ class BoardValidator(ModelValidator[Board]):
                     ex=binder_validation.exception,
                 )
             )
-        # Handle the case that the board is flagged.
-        if arena_validation.is_failure:
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        id = cast(int, id_validation.payload)
+        arena = cast(Arena, arena_validation.payload)
+        binder = cast(TeamBinder, binder_validation.payload)
+        
+        # Handle the case that there are no teams.
+        if binder.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidatorException(
@@ -199,14 +200,27 @@ class BoardValidator(ModelValidator[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardValidatorException.MSG,
                     err_code=BoardValidatorException.ERR_CODE,
-                    ex=arena_validation.exception,
+                    ex=EmptyItemException(),
                 )
             )
-        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.payload)
-        arena = cast(Arena, arena_validation.payload)
-        binder = cast(TeamBinder, binder_validation.payload)
-        
+        # Handle the case that the are team inconsistencies.
+        if binder.is_not_consistent:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                BoardValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BoardValidatorException.MSG,
+                    err_code=BoardValidatorException.ERR_CODE,
+                    ex=TeamBinderConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamBinderConsistencyException.MSG,
+                        err_code=TeamBinderConsistencyException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that there is a board-arena inconsistency.
         model = Board(id=id, arena=arena, binder=binder)
         if model != arena.board:
             # Send the exception chain on failure.
@@ -216,23 +230,24 @@ class BoardValidator(ModelValidator[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardValidatorException.MSG,
                     err_code=BoardValidatorException.ERR_CODE,
-                    ex=ArenaConsistencyException(
+                    ex=ConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ArenaConsistencyException.MSG,
+                        msg="Inconsistency between board and arena",
                         err_code=ArenaConsistencyException.ERR_CODE,
                     ),
                 )
             )
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Board.
-        if prime_extract.recipient_wants_model:
-            carrier = BoardCarrier(model=model)
-            return ValidationResult.success(carrier)
+        if extract.recipient_wants_model:
+            payload = BoardCarrier(model=model)
+            return ValidationResult.success(payload)
         # Otherwise, the client is a BoardBuilder that needs a Blueprint.
         blueprint = BoardBlueprint(id=id, arena=arena, binder=binder)
-        carrier = BoardCarrier(blueprint=blueprint)
-        return ValidationResult.success(carrier)
+        blueprint.mark_as_validated()
+        payload = BoardCarrier(blueprint=blueprint)
+        return ValidationResult.success(payload)
 
 
 

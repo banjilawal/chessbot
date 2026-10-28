@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, ScalarValidationLoader, ScalarLayerToolkit
+from assurance import ModelValidator
+from bootstrap import ScalarValidationLoader
 from config import BoardSetting
 from domain import Scalar, ScalarBlueprint, ScalarPrimeExtract
 from err import ScalarCarrierEmptyException, ScalarValidatorException
@@ -50,12 +51,8 @@ class ScalarValidator(ModelValidator[Scalar]):
     def loader(self) -> ScalarValidationLoader:
         return cast(ScalarValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> ScalarLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ScalarCarrier]:
+    def execute(self, item: Any) -> ValidationResult[ScalarCarrier]:
         """
         Assure a candidate is a safe ScalarCarrier.
 
@@ -66,7 +63,7 @@ class ScalarValidator(ModelValidator[Scalar]):
                     -   Either the id, board, or owner are flagged unsafe.
             2.  Otherwise, send a ScalarCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[ScalarCarrier]
         Raises:
@@ -75,7 +72,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -88,8 +85,8 @@ class ScalarValidator(ModelValidator[Scalar]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(ScalarPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(ScalarPrimeExtract, loading.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         if blueprint is None:
@@ -110,8 +107,8 @@ class ScalarValidator(ModelValidator[Scalar]):
             )
         # Handle the case that the magnitude is out of bounds.
         ceiling = BoardSetting.diagonal_length() - 1
-        magnitude_validation = self.toolkit.number_validator.execute(
-            candidate=blueprint.magnitude,
+        magnitude_validation = self.loader.number_validator.execute(
+            item=blueprint.magnitude,
             floor= (-1 * ceiling),
             ceiling=ceiling,
         )
@@ -132,14 +129,12 @@ class ScalarValidator(ModelValidator[Scalar]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Scalar.
-        if prime_extract.recipient_wants_model:
-            payload = ScalarCarrier(
-                model=Scalar(magnitude=magnitude)
-            )
+        if extract.recipient_wants_model:
+            model = Scalar(magnitude)
+            payload = ScalarCarrier(model=model)
             return ValidationResult.success(payload)
-        
         # Otherwise, the client is a ScalarBuilder that needs a Blueprint.
-        payload = ScalarCarrier(
-            blueprint=ScalarBlueprint(magnitude=magnitude)
-        )
+        blueprint = ScalarBlueprint(magnitude=magnitude)
+        blueprint.mark_as_validated()
+        payload = ScalarCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)

@@ -12,7 +12,6 @@ version: 0.0.2
 # Packages
 from .builder import *
 from .contractor import *
-from fabrication.builder.factory import *
 from .finalizer import *
 
 # Modules

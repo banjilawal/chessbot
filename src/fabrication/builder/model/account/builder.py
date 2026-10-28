@@ -15,7 +15,8 @@ from artifcat import BuildResult
 from domain import Account, AccountBlueprint
 from err import AccountBuilderException
 from exchange import AccountBuildRequest
-from fabrication import BuildFactory, AccountBuildLoader
+from fabrication import AccountBuildLoader
+from production import BuildFactory
 from transit import AccountBuildRouter
 from util import LoggingLevelRouter
 

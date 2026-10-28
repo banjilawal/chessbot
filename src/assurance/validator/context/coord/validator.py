@@ -57,7 +57,7 @@ class CoordValidator(ContextValidator[Coord]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordCarrier]:
+    def execute(self, item: Any) -> ValidationResult[CoordCarrier]:
         """
         Assure a candidate is a safe CoordCarrier.
 
@@ -74,7 +74,7 @@ class CoordValidator(ContextValidator[Coord]):
             2.  Otherwise, send the recipient a carrier which has either a safe context or
                 blueprint in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[CoordCarrier]
         Raises:
@@ -83,7 +83,7 @@ class CoordValidator(ContextValidator[Coord]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -96,8 +96,8 @@ class CoordValidator(ContextValidator[Coord]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(CoordPrimeExtract, loading.payload)
-        reference = prime_extract.reference
+        extract = cast(CoordPrimeExtract, loading.payload)
+        reference = extract.reference
         fingerprint = reference.extract_blueprint()
         # Handle the case that the blueprint is null.
         if fingerprint is None:
@@ -159,7 +159,7 @@ class CoordValidator(ContextValidator[Coord]):
         column = components[1]
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Coord.
-        if prime_extract.recipient_wants_context:
+        if extract.recipient_wants_context:
             context = Coord(board=board, row=row, column=column)
             carrier = CoordCarrier(context=context)
             return ValidationResult.success(carrier)

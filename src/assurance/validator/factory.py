@@ -13,15 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer
-from domain import Model
-from transit import ValidationRouter
+from production import EnvelopeManager
+from transit import EntityCarrier
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T")
 
-
-class ValidationFactory(ABC, Generic[T]):
+class ValidationFactory(ABC, ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -33,44 +31,32 @@ class ValidationFactory(ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        producer: RootEnvelopeProducer[T]
-        router: ValidationRouter[T]
+        manager: EnvelopeManager[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
     Super
     """
-    _producer: RootEnvelopeProducer[T]
-    _router: ValidationRouter[T]
+    _manager: EnvelopeManager[T]
     
-    def __init__(
-            self, 
-            producer: RootEnvelopeProducer[T],
-            router: ValidationRouter[T],
-    ):
+    def __init__(self, manager: EnvelopeManager[T]):
         """
         Args:
-            producer: RootEnvelopeProducer[T]
-            router: ValidationRouter[T]
+            manager: EnvelopeManager[T]
         """
-        self._producer = producer
-        self._router = router
+        self._manager = manager
      
     @property
-    def producer(self) -> RootEnvelopeProducer[T]:
-        return self._producer
-        
-    @property
-    def router(self) -> ValidationRouter[T]:
-        return self._router
+    def manager(self) -> EnvelopeManager[T]:
+        return self._manager
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, item: Any) -> ValidationResult[EntityCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: Any
+            item: Any
         Returns:
            ValidationResult[T]
         Raises:

@@ -18,7 +18,7 @@ from domain import (
 from transit import CombatantTokenCarrier, KingTokenCarrier, PawnTokenCarrier, ProductEnvelope
 
 
-class RootTokenEnvelope(ProductEnvelope[Token]):
+class TokenEnvelope(ProductEnvelope[Token]):
     """
     Role
         -   Data Transfer

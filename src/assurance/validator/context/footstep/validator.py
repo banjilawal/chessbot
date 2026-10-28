@@ -54,7 +54,7 @@ class FootstepValidator(ContextValidator[Footstep]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[FootstepCarrier]:
+    def execute(self, item: Any) -> ValidationResult[FootstepCarrier]:
         """
         Assure a candidate is a safe FootstepCarrier.
 
@@ -63,9 +63,9 @@ class FootstepValidator(ContextValidator[Footstep]):
                     -   Loader fails.
                     -   The FootstepBlueprint has an inconsistency.
                     -   The CoordValidator flags either existing position.
-            2.  Otherwise, send the type of carrier prime_extract indicates.
+            2.  Otherwise, send the type of carrier extract indicates.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[Footstep]
         Raises:
@@ -74,7 +74,7 @@ class FootstepValidator(ContextValidator[Footstep]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -87,8 +87,8 @@ class FootstepValidator(ContextValidator[Footstep]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(FootstepPrimeExtract, loading.payload)
-        blueprint = cast(FootstepBlueprint, prime_extract.blueprint)
+        extract = cast(FootstepPrimeExtract, loading.payload)
+        blueprint = cast(FootstepBlueprint, extract.blueprint)
         
         # Handle the case that the footstep has an inconsistency.
         if blueprint.is_not_consistent:
@@ -133,7 +133,7 @@ class FootstepValidator(ContextValidator[Footstep]):
             safe_coords[key] = cast(Coord, coord_validation.payload)
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Team.
-        if prime_extract.recipient_wants_context:
+        if extract.recipient_wants_context:
             payload = FootstepCarrier(
                 context=Footstep(
                     position=safe_coords["position"],

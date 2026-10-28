@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import SquareEnvelopeProducer, ValidationFactory
 from domain import Square
 from err import SquareValidatorException
-from transit import SquareCarrier, SquareValidationRouter, RootSquareEnvelope
+from transit import SquareCarrier, SquareEnvelopeRouter, RootSquareEnvelope
 from util import LoggingLevelRouter
 
 
@@ -40,7 +40,7 @@ class SquareValidator(ValidationFactory[Square]):
     
     def __init__(
             self,
-            router: Optional[SquareValidationRouter] | None = None,
+            router: Optional[SquareEnvelopeRouter] | None = None,
             producer: Optional[SquareEnvelopeProducer] | None = None,
     ):
         """
@@ -49,13 +49,13 @@ class SquareValidator(ValidationFactory[Square]):
             producer: Optional[SquareEnvelopeProducer]
         """
         super().__init__(
-            router=router or SquareValidationRouter(),
+            router=router or SquareEnvelopeRouter(),
             producer=producer or SquareEnvelopeProducer(),
         )
     
     @property
-    def router(self) -> SquareValidationRouter:
-        return cast(SquareValidationRouter, super().router)
+    def router(self) -> SquareEnvelopeRouter:
+        return cast(SquareEnvelopeRouter, super().router)
     
     @property
     def producer(self) -> SquareEnvelopeProducer:
@@ -85,7 +85,7 @@ class SquareValidator(ValidationFactory[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self.producer.execute(candidate=candidate)
+        product = self.producer.execute(item=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 SquareValidatorException(

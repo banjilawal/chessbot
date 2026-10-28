@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .depend import *
-from assurance.envelope import *
 from .primitive import *
 from .validator import *
 

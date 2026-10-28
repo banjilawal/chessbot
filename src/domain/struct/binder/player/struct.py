@@ -98,10 +98,12 @@ class PlayerBinder(ArchetypeBinder[Player]):
     
     @property
     def is_not_balanced(self) -> bool:
-        return not self.is_balanced
+        return self.is_not_empty and not self.is_balanced
     
     @property
     def consistency_exists(self) -> bool:
+        if self.is_empty:
+            return True
         return (
                 self.is_balanced and
                 self.entries_are_unique and

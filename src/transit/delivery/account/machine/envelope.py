@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import cast
 
 from domain import MachineAccount, MachineAccountPrimeExtract
-from transit import RootAccountEnvelope
+from transit import AccountEnvelope
 
 
-class MachineAccountEnvelope(RootAccountEnvelope[MachineAccount]):
+class MachineAccountEnvelope(AccountEnvelope[MachineAccount]):
     """
     Role
         -   Data Transfer

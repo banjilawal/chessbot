@@ -9,9 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Any
+
+from artifcat import ValidationResult
+from assurance import ModelValidator
+from assurance.validator.model.validator import T
+from domain import Arena
+from transit import ModelCarrier
+
 
 class ArenaValidator(ModelValidator[Arena]):
     
-    @classmethod
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Arena]:
+    def execute(self, item: Any) -> ValidationResult[ModelCarrier[T]]:
         pass

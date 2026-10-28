@@ -17,7 +17,7 @@ from transit import MachineAccountCarrier, HumanAccountCarrier, ProductEnvelope
 
 T = TypeVar("T", bound="Account")
 
-class RootAccountEnvelope(ProductEnvelope[T], Generic[T]):
+class AccountEnvelope(ProductEnvelope[T], Generic[T]):
     """
     Role
         -   Data Transfer

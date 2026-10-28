@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_DELIVERY_NULL_ERROR #======================#
-    "RootTokenEnvelopeNullException",
+    "TokenEnvelopeNullException",
 ]
 
 # ======================# TOKEN_DELIVERY_NULL_ERROR #======================#
-class RootTokenEnvelopeNullException(ProductEnvelopeNullException):
+class TokenEnvelopeNullException(ProductEnvelopeNullException):
     """
     Role:
         - Error Tracing

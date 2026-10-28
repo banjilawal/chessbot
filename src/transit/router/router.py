@@ -10,9 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from artifcat import Result
+from assurance import PrimingValidator
 
 T = TypeVar("T", bound="Result")
 
@@ -26,10 +27,26 @@ class Router(ABC, Generic[T]):
         1.  Ensure data-holders are safe before they are used or saved.
 
     Attributes:
-
+        priming_validator: PrimingValidator
+        
     Provides:
-        - route(*args, **kwargs) -> Any
 
-    super Class:
+    Super Class:
     """
+    
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            priming_validator: Optional[PrimingValidator] | None = None,
+    ):
+        """
+        Args:
+            priming_validator: Optional[PrimingValidator]
+        """
+        self._priming_validator = priming_validator or PrimingValidator()
+    
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
     

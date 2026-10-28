@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import EncounterEnvelopeProducer, ValidationFactory
 from domain import Encounter
 from err import EncounterValidatorException
-from transit import EncounterCarrier, EncounterValidationRouter, RootEncounterEnvelope
+from transit import EncounterCarrier, EncounterEnvelopeRouter, RootEncounterEnvelope
 from util import LoggingLevelRouter
 
 
@@ -40,7 +40,7 @@ class EncounterValidator(ValidationFactory[Encounter]):
     
     def __init__(
             self,
-            router: Optional[EncounterValidationRouter] | None = None,
+            router: Optional[EncounterEnvelopeRouter] | None = None,
             producer: Optional[EncounterEnvelopeProducer] | None = None,
     ):
         """
@@ -49,13 +49,13 @@ class EncounterValidator(ValidationFactory[Encounter]):
             producer: Optional[EncounterEnvelopeProducer]
         """
         super().__init__(
-            router=router or EncounterValidationRouter(),
+            router=router or EncounterEnvelopeRouter(),
             producer=producer or EncounterEnvelopeProducer(),
         )
     
     @property
-    def router(self) -> EncounterValidationRouter:
-        return cast(EncounterValidationRouter, super().router)
+    def router(self) -> EncounterEnvelopeRouter:
+        return cast(EncounterEnvelopeRouter, super().router)
     
     @property
     def producer(self) -> EncounterEnvelopeProducer:
@@ -85,7 +85,7 @@ class EncounterValidator(ValidationFactory[Encounter]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self.producer.execute(candidate=candidate)
+        product = self.producer.execute(item=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 EncounterValidatorException(

@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, FootstepValidationLoader, FootstepLayerToolkit
-from domain import Coord, FootstepBlueprint, FootstepPrimeExtract, Footstep
+from assurance import ModelValidator
+from bootstrap import FootstepValidationLoader
+from domain import Coord, Footstep, FootstepBlueprint, FootstepPrimeExtract
 from err import FootstepConsistencyException, FootstepValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier, FootstepCarrier
@@ -49,12 +50,8 @@ class FootstepValidator(ModelValidator[Footstep]):
     def loader(self) -> FootstepValidationLoader:
         return cast(FootstepValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> FootstepLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[FootstepCarrier]:
+    def execute(self, item: Any) -> ValidationResult[FootstepCarrier]:
         """
         Assure a candidate is a safe FootstepCarrier.
 
@@ -63,9 +60,9 @@ class FootstepValidator(ModelValidator[Footstep]):
                     -   Loader fails.
                     -   The FootstepBlueprint has an inconsistency.
                     -   The CoordValidator flags either existing position.
-            2.  Otherwise, send the type of carrier prime_extract indicates.
+            2.  Otherwise, send the type of carrier extract indicates.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[Footstep]
         Raises:
@@ -74,7 +71,7 @@ class FootstepValidator(ModelValidator[Footstep]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -87,11 +84,11 @@ class FootstepValidator(ModelValidator[Footstep]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(FootstepPrimeExtract, loading.payload)
-        blueprint = cast(FootstepBlueprint, prime_extract.blueprint)
+        extract = cast(FootstepPrimeExtract, loading.payload)
+        fingerprint = cast(FootstepBlueprint, extract.blueprint)
         
         # Handle the case that the footstep has an inconsistency.
-        if blueprint.is_not_consistent:
+        if fingerprint.is_not_consistent:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 FootstepValidatorException(
@@ -109,10 +106,10 @@ class FootstepValidator(ModelValidator[Footstep]):
             )
         # --- VALIDATE_THE_FOOTSTEP_ENDPOINTS. ---#
         safe_coords: Dict[str, Coord] = {}
-        candidate_points = blueprint.to_dict
+        candidate_points = fingerprint.to_dict
         for key in candidate_points.keys():
             # Handle the case that a position is not a safe Coord.
-            coord_validation = self.toolkit.dependency.coord.extract_model(
+            coord_validation = self.loader.toolkit.dependency.coord.extract_model(
                 request=CoordValidationRequest(
                     item=CoordCarrier(model=candidate_points[key]),
                     id=IdFactory.next_id(class_name="CoordValidationRequest"),
@@ -131,22 +128,25 @@ class FootstepValidator(ModelValidator[Footstep]):
                 )
             # Otherwise, the add value to the safe_coords.
             safe_coords[key] = cast(Coord, coord_validation.payload)
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        position = safe_coords["position"]
+        previous_position = safe_coords["previous_position"]
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
+        
         # The client wants a safe Team.
-        if prime_extract.recipient_wants_model:
-            payload = FootstepCarrier(
-                model=Footstep(
-                    position=safe_coords["position"],
-                    previous_position=safe_coords["previous_position"],
-                )
+        if extract.recipient_wants_model:
+            model = Footstep(
+                position=position,
+                previous_position=previous_position,
             )
+            payload = FootstepCarrier(model=model)
             return ValidationResult.success(payload)
         # Otherwise, the client is a FootstepBuilder that needs a Blueprint.
-        payload = FootstepCarrier(
-            blueprint=FootstepBlueprint(
-                position=safe_coords["position"],
-                previous_position=safe_coords["previous_position"],
-            )
+        blueprint = FootstepBlueprint(
+            position=position,
+            previous_position=previous_position,
         )
+        blueprint.mark_as_validated()
+        payload = FootstepCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)
     

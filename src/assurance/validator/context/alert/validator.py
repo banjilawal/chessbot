@@ -57,7 +57,7 @@ class AlertValidator(ContextValidator[Alert]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[AlertCarrier]:
+    def execute(self, item: Any) -> ValidationResult[AlertCarrier]:
         """
         Assure a candidate is a safe AlertCarrier.
 
@@ -73,7 +73,7 @@ class AlertValidator(ContextValidator[Alert]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[AlertCarrier]
         Raises:
@@ -82,7 +82,7 @@ class AlertValidator(ContextValidator[Alert]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the loader fails.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -95,8 +95,8 @@ class AlertValidator(ContextValidator[Alert]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(AlertPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(AlertPrimeExtract, loading.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.
         if blueprint is None:
@@ -162,7 +162,7 @@ class AlertValidator(ContextValidator[Alert]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Alert.
-        if prime_extract.recipient_wants_context:
+        if extract.recipient_wants_context:
             payload = AlertCarrier(
                 context=Alert(
                     threat=threat,

@@ -13,4 +13,4 @@ version: 0.0.2
 from .combatant import *
 
 # Modules
-from .envelope import RootTokenEnvelope
+from .envelope import TokenEnvelope

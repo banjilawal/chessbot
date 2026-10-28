@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, VectorValidationLoader, VectorLayerToolkit
+from assurance import ModelValidator
+from bootstrap import VectorValidationLoader
 from domain import Vector, VectorBlueprint, VectorPrimeExtract
 from err import VectorCarrierEmptyException, VectorValidatorException
 from transit import VectorCarrier
@@ -51,12 +52,8 @@ class VectorValidator(ModelValidator[Vector]):
     def loader(self) -> VectorValidationLoader:
         return cast(VectorValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> VectorLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
+    def execute(self, item: Any) -> ValidationResult[VectorCarrier]:
         """
         Assure a candidate is a safe VectorCarrier.
 
@@ -67,7 +64,7 @@ class VectorValidator(ModelValidator[Vector]):
                     -   Either the x or y component is unsafe.
             2.  Otherwise, send a VectorCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[VectorCarrier]
         Raises:
@@ -76,7 +73,7 @@ class VectorValidator(ModelValidator[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -89,8 +86,8 @@ class VectorValidator(ModelValidator[Vector]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(VectorPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(VectorPrimeExtract, loading.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         if blueprint is None:
@@ -113,7 +110,7 @@ class VectorValidator(ModelValidator[Vector]):
         # Handle the case that any vector component in the blueprint is flagged.
         components = []
         for value in [blueprint.x, blueprint.y]:
-            validation = self.toolkit.number_validator.execute(value)
+            validation = self.loader.number_validator.execute(value)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -132,16 +129,14 @@ class VectorValidator(ModelValidator[Vector]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Vector.
-        if prime_extract.recipient_wants_model:
-            payload = VectorCarrier(
-                model=Vector(x=x, y=y)
-            )
+        if extract.recipient_wants_model:
+            model = Vector(x=x, y=y)
+            payload = VectorCarrier(model=model)
             return ValidationResult.success(payload)
-        
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
-        payload = VectorCarrier(
-            blueprint=VectorBlueprint(x=x, y=y)
-        )
+        blueprint = VectorBlueprint(x=x, y=y)
+        blueprint.mark_as_validated()
+        payload = VectorCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)
 
         

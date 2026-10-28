@@ -58,7 +58,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorRegister]:
+    def execute(self, item: Any) -> ValidationResult[VectorRegister]:
         """
         Certify a VectorRegister's payload is either a VectorRegister or a Blueprint 
         that is safe to use.
@@ -75,7 +75,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
             2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[VectorRegister]
         Raises:
@@ -84,7 +84,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        load = self.loader.execute(candidate)
+        load = self.loader.execute(item)
         if load.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

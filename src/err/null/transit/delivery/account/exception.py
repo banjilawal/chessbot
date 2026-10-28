@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ACCOUNT_DELIVERY_NULL_ERROR #======================#
-    "RootAccountEnvelopeNullException",
+    "AccountEnvelopeNullException",
 ]
 
 # ======================# ACCOUNT_DELIVERY_NULL_ERROR #======================#
-class RootAccountEnvelopeNullException(ProductEnvelopeNullException):
+class AccountEnvelopeNullException(ProductEnvelopeNullException):
     """
     Role:
         - Error Tracing

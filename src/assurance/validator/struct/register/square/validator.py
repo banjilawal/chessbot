@@ -58,7 +58,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareRegister]:
+    def execute(self, item: Any) -> ValidationResult[SquareRegister]:
         """
         Certify a SquareRegister's payload is either a SquareRegister or a Blueprint 
         that is safe to use.
@@ -75,7 +75,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
             2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[SquareRegister]
         Raises:
@@ -84,7 +84,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        load = self.loader.execute(candidate)
+        load = self.loader.execute(item)
         if load.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -12,9 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, TeamValidationLoader, TeamLayerToolkit
+from assurance import ModelValidator
+from bootstrap import TeamValidationLoader
 from domain import Archetype, Board, Player, Team, TeamBlueprint, TeamPrimeExtract
-from err import ArchetypeNullException, TeamCarrierEmptyException, TeamValidatorException
+from err import TeamCarrierEmptyException, TeamValidatorException
 from exchange import BoardValidationRequest, PlayerValidationRequest
 from transit import BoardCarrier, PlayerCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -49,12 +50,8 @@ class TeamValidator(ModelValidator[Team]):
     def loader(self) -> TeamValidationLoader:
         return cast(TeamValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> TeamLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
+    def execute(self, item: Any) -> ValidationResult[TeamCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -65,7 +62,7 @@ class TeamValidator(ModelValidator[Team]):
                     -   Either the id, board, or owner are flagged unsafe.
             2.  Otherwise, send a TeamCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[TeamCarrier]
         Raises:
@@ -74,7 +71,7 @@ class TeamValidator(ModelValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -87,8 +84,8 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(TeamPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(TeamPrimeExtract, loading.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.
@@ -109,11 +106,11 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.blueprint_id_extractor.execute(
+        id_validation = self.loader.blueprint_id_extractor.execute(
             item=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self.toolkit.manifest.types.blueprint,
-            blueprint_null_exception=self.toolkit.manifest.nulls.blueprint,
+            blueprint_type=self.loader.manifest.types.blueprint,
+            blueprint_null_exception=self.loader.manifest.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -127,8 +124,8 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # Handle the case that the archetype does not pass a validation check.
-        archetype_validation = self.toolkit.priming_validator.execute(
-            candidate=blueprint.archetype,
+        archetype_validation = self.loader.priming_validator.execute(
+            item=blueprint.archetype,
             target_model=Archetype,
             null_exception=ArchetypeNullException(),
         )
@@ -144,7 +141,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Handle the case that the board is not safe. ---#
-        board_validation = self.toolkit.dependency.board.extract_model(
+        board_validation = self.loader.dependency.board.extract_model(
             request=BoardValidationRequest(
                 item=BoardCarrier(model=blueprint.board),
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
@@ -162,7 +159,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Handle the case that the owner is not safe. ---#
-        owner_validation = self.toolkit.dependency.owner.extract_model(
+        owner_validation = self.loader.dependency.owner.extract_model(
             request=PlayerValidationRequest(
                 item=PlayerCarrier(model=blueprint.owner),
                 id=IdFactory.next_id(class_name="PlayerValidationRequest"),
@@ -188,25 +185,24 @@ class TeamValidator(ModelValidator[Team]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Team.
-        if prime_extract.recipient_wants_model:
-            payload = Team(
+        if extract.recipient_wants_model:
+            model = Team(
                 id=id,
                 board=board,
                 owner=owner,
                 archetype=archetype,
             )
-            return ValidationResult.success(
-                TeamCarrier(model=payload)
-            )
+            payload = TeamCarrier(model=model)
+            return ValidationResult.success(payload)
         # Otherwise, the client is a TeamBuilder that needs a Blueprint.
-        payload = TeamBlueprint(
+        blueprint = TeamBlueprint(
             id=id,
             board=board,
             owner=owner,
             archetype=archetype,
         )
-        return ValidationResult.success(
-            TeamCarrier(blueprint=payload)
-        )
+        blueprint.mark_as_validated()
+        payload = TeamCarrier(blueprint=blueprint)
+        return ValidationResult.success(payload)
 
 

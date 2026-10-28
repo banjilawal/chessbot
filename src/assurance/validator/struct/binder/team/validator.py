@@ -61,7 +61,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamBinderCarrier]:
+    def execute(self, item: Any) -> ValidationResult[TeamBinderCarrier]:
         """
         Certify a TeamBinder's payload is either a TeamBinder or a Blueprint 
         that is safe to use.
@@ -78,7 +78,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
             2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[TeamBinder]
         Raises:
@@ -87,7 +87,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        loader = self.loader.execute(candidate)
+        loader = self.loader.execute(item)
         if loader.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -100,8 +100,8 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(TeamBinderPrimeExtract, loader.payload)
-        carrier = prime_extract.reference
+        extract = cast(TeamBinderPrimeExtract, loader.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.
@@ -147,7 +147,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe TeamBinder.
-        if prime_extract.recipient_wants_model:
+        if extract.recipient_wants_model:
             model = TeamBinder(
                 white_team=entry[Archetype.WHITE],
                 black_team=entry[Archetype.BLACK],

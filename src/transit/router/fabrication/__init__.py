@@ -10,11 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.ROUTE.FABRICATION PACKAGE ===========#
 
 # Packages
-from .account import *
-from .encounter import *
-from .rank import *
-from .square import *
-from .token import *
+from .model import *
 
 # Modules
 from .router import BuildRouter

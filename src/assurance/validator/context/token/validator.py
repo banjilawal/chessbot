@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import TokenEnvelopeProducer, ValidationFactory
 from domain import Token
 from err import TokenValidatorException
-from transit import TokenCarrier, TokenValidationRouter, RootTokenEnvelope
+from transit import TokenCarrier, TokenEnvelopeRouter, TokenEnvelope
 from util import LoggingLevelRouter
 
 
@@ -40,7 +40,7 @@ class TokenValidator(ValidationFactory[Token]):
     
     def __init__(
             self,
-            router: Optional[TokenValidationRouter] | None = None,
+            router: Optional[TokenEnvelopeRouter] | None = None,
             producer: Optional[TokenEnvelopeProducer] | None = None,
     ):
         """
@@ -49,13 +49,13 @@ class TokenValidator(ValidationFactory[Token]):
             producer: Optional[TokenEnvelopeProducer]
         """
         super().__init__(
-            router=router or TokenValidationRouter(),
+            router=router or TokenEnvelopeRouter(),
             producer=producer or TokenEnvelopeProducer(),
         )
     
     @property
-    def router(self) -> TokenValidationRouter:
-        return cast(TokenValidationRouter, super().router)
+    def router(self) -> TokenEnvelopeRouter:
+        return cast(TokenEnvelopeRouter, super().router)
     
     @property
     def producer(self) -> TokenEnvelopeProducer:
@@ -85,7 +85,7 @@ class TokenValidator(ValidationFactory[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self.producer.execute(candidate=candidate)
+        product = self.producer.execute(item=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -96,7 +96,7 @@ class TokenValidator(ValidationFactory[Token]):
                     ex=product.exception,
                 )
             )
-        envelope = cast(RootTokenEnvelope, product.payload)
+        envelope = cast(TokenEnvelope, product.payload)
         
         validation = self.router.execute(envelope=envelope)
         if validation.is_failure:

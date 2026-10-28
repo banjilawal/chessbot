@@ -60,7 +60,7 @@ class BoardValidator(ContextValidator[Board]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[BoardCarrier]:
+    def execute(self, item: Any) -> ValidationResult[BoardCarrier]:
         """
         Assure a candidate is a safe BoardCarrier.
 
@@ -77,7 +77,7 @@ class BoardValidator(ContextValidator[Board]):
             2.  Otherwise, send the recipient a carrier which has either a safe context or
                 blueprint in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[BoardCarrier]
         Raises:
@@ -86,7 +86,7 @@ class BoardValidator(ContextValidator[Board]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class BoardValidator(ContextValidator[Board]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(BoardPrimeExtract, loading.payload)
-        reference = prime_extract.reference
+        extract = cast(BoardPrimeExtract, loading.payload)
+        reference = extract.reference
         fingerprint = reference.extract_blueprint()
         # Handle the case that the blueprint is null.
         if fingerprint is None:
@@ -226,7 +226,7 @@ class BoardValidator(ContextValidator[Board]):
             )
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Board.
-        if prime_extract.recipient_wants_context:
+        if extract.recipient_wants_context:
             carrier = BoardCarrier(context=context)
             return ValidationResult.success(carrier)
         # Otherwise, the client is a BoardBuilder that needs a Blueprint.

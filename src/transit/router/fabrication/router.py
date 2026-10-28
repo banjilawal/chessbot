@@ -37,22 +37,13 @@ class BuildRouter(Router[BuildResult], ABC, Generic[T]):
     Super Class:
         Router
     """
+
     
-    _priming_validator: PrimingValidator
-    
-    def __init__(
-            self,
-            priming_validator: Optional[PrimingValidator] | None = None,
-    ):
+    def __init__(self):
         """
         Args:
-            priming_validator: Optional[PrimingValidator]
         """
-        self._priming_validator = priming_validator
-        
-    @property
-    def priming_validator(self) -> PrimingValidator:
-        return self._priming_validator
+        super().__init__()
     
     @abstractmethod
     @LoggingLevelRouter.monitor

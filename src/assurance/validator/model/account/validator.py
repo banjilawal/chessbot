@@ -12,14 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import AccountEnvelopeProducer, ValidationFactory
+from assurance import ModelValidationFactory
 from domain import Account
 from err import AccountValidatorException
-from transit import AccountCarrier, AccountValidationRouter, RootAccountEnvelope
+from production import AccountEnvelopeManager
+from transit import AccountCarrier
 from util import LoggingLevelRouter
 
 
-class AccountValidator(ValidationFactory[Account]):
+class AccountValidator(ModelValidationFactory[Account]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -28,44 +29,25 @@ class AccountValidator(ValidationFactory[Account]):
         1.  Ensure an AccountCarrier is safe to use.
 
     Attributes:
-        router: Optional[AccountValidationRouter]
-        producer: Optional[AccountEnvelopeProducer]
+        manager: Optional[AccountEnvelopeManager]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[AccountCarrier]:
+        -   def execute(candidate: item) -> ValidationResult[AccountCarrier]:
 
     Super Class:
-        ModelValidator
+        ModelValidationFactory
     """
     
-    def __init__(
-            self,
-            router: Optional[AccountValidationRouter] | None = None,
-            producer: Optional[AccountEnvelopeProducer] | None = None,
-    ):
+    def __init__(self, manager: Optional[AccountEnvelopeManager]):
         """
         Args:
-            router: Optional[AccountValidationRouter]
-            producer: Optional[AccountEnvelopeProducer]
+            manager: Optional[AccountEnvelopeManager]
         """
-        super().__init__(
-            router=router or AccountValidationRouter(),
-            producer=producer or AccountEnvelopeProducer(),
-        )
-    
-    @property
-    def router(self) -> AccountValidationRouter:
-        return cast(AccountValidationRouter, super().router)
-    
-    @property
-    def producer(self) -> AccountEnvelopeProducer:
-        return cast(AccountEnvelopeProducer, super().producer)
+        super().__init__(manager=manager or AccountEnvelopeManager())
+
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: Any,
-    ) -> ValidationResult[AccountCarrier]:
+    def execute(self, item: Any) -> ValidationResult[AccountCarrier]:
         """
         Assure a candidate is a safe AccountCarrier.
 
@@ -77,7 +59,7 @@ class AccountValidator(ValidationFactory[Account]):
                     -   The producer does not return a product
             2.  Otherwise, send an AccountCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[AccountCarrier]
         Raises:
@@ -85,20 +67,7 @@ class AccountValidator(ValidationFactory[Account]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self.producer.execute(candidate=candidate)
-        if product.is_failure:
-            return ValidationResult.failure(
-                AccountValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountValidatorException.MSG,
-                    err_code=AccountValidatorException.ERR_CODE,
-                    ex=product.exception,
-                )
-            )
-        envelope = cast(RootAccountEnvelope, product.payload)
-        
-        validation = self.router.execute(envelope=envelope)
+        validation = self.manager.execute(item=item)
         if validation.is_failure:
             return ValidationResult.failure(
                 AccountValidatorException(

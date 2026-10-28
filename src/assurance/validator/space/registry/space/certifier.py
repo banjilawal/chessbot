@@ -51,7 +51,7 @@ class SpaceReservoirValidator(Validator, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult[T|SpaceReservoirBlueprint[T]]:
+    def execute(self, item: Any, ) -> ValidationResult[T | SpaceReservoirBlueprint[T]]:
         pass
     
     

@@ -119,7 +119,7 @@ class GamePlayerArchetypeBinderValidator:
                 )
             )
         game_validation = self._game_validator.execute(
-            candidate=GameValidationRequest(
+            item=GameValidationRequest(
                 item=GameCarrier(model=target.primary),
                 id=IdFactory.next_id(class_name="GameValidationRequest"),
             )
@@ -211,7 +211,7 @@ class GamePlayerArchetypeBinderValidator:
         player_dict: dict[str, Player]
         for key in target.to_dict:
             player_validation = self._player_validator.execute(
-                candidate=PlayerValidationRequest(
+                item=PlayerValidationRequest(
                     item=PlayerCarrier(model=target.to_dict[key]),
                     id=IdFactory.next_id("PlayerValidationRequest"),
                 )

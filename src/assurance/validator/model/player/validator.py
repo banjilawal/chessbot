@@ -12,11 +12,12 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, PlayerValidationLoader, PlayerLayerToolkit
-from domain import Archetype, Account, Game, Player, PlayerBlueprint, PlayerPrimeExtract
+from assurance import ModelValidator
+from bootstrap import PlayerValidationLoader
+from domain import Account, Archetype, Game, Player, PlayerBlueprint, PlayerPrimeExtract
 from err import (
-    ArchetypeNullException, GameNullException, PlayerCarrierEmptyException,
-    PlayerNotFoundException, PlayerValidatorException
+    ArchetypeNullException, GameNullException, PlayerCarrierEmptyException, PlayerNotFoundException,
+    PlayerValidatorException
 )
 from exchange import AccountValidationRequest
 from transit import AccountCarrier, PlayerCarrier
@@ -52,12 +53,8 @@ class PlayerValidator(ModelValidator[Player]):
     def loader(self) -> PlayerValidationLoader:
         return cast(PlayerValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> PlayerLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PlayerCarrier]:
+    def execute(self, item: Any) -> ValidationResult[PlayerCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -68,7 +65,7 @@ class PlayerValidator(ModelValidator[Player]):
                     -   Either the id, account, or game are flagged unsafe.
             2.  Otherwise, send a PlayerCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[PlayerCarrier]
         Raises:
@@ -77,7 +74,7 @@ class PlayerValidator(ModelValidator[Player]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -90,8 +87,8 @@ class PlayerValidator(ModelValidator[Player]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(PlayerPrimeExtract, loading.payload)
-        fingerprint = prime_extract.reference.extract_blueprint()
+        extract = cast(PlayerPrimeExtract, loading.payload)
+        fingerprint = extract.reference.extract_blueprint()
         
         # Handle the case that the blueprint is null.
         if fingerprint is None:
@@ -111,8 +108,8 @@ class PlayerValidator(ModelValidator[Player]):
                 )
             )
         # Handle the case that the archetype does not pass a validation check.
-        archetype_validation = self.toolkit.priming_validator.execute(
-            candidate=fingerprint.archetype,
+        archetype_validation = self.loader.priming_validator.execute(
+            item=fingerprint.archetype,
             target_model=Archetype,
             null_exception=ArchetypeNullException(),
         )
@@ -128,8 +125,8 @@ class PlayerValidator(ModelValidator[Player]):
                 )
             )
         # Handle the case that the game does not pass a validation check.
-        game_validation = self.toolkit.priming_validator.execute(
-            candidate=fingerprint.game,
+        game_validation = self.loader.priming_validator.execute(
+            item=fingerprint.game,
             target_model=Game,
             null_exception=GameNullException(),
         )
@@ -145,7 +142,7 @@ class PlayerValidator(ModelValidator[Player]):
                 )
             )
         # --- Handle the case that the account is not safe. ---#
-        account_validation = self.toolkit.dependency.account.extract_model(
+        account_validation = self.loader.dependency.account.extract_model(
             request=AccountValidationRequest(
                 item=AccountCarrier(model=fingerprint.account),
                 id=IdFactory.next_id(class_name="AccountValidationRequest"),
@@ -167,11 +164,7 @@ class PlayerValidator(ModelValidator[Player]):
         account = cast(Account, account_validation.payload)
         archetype = cast(Archetype, archetype_validation.payload)
         
-        model = Player(
-            game=game,
-            account=account,
-            archetype=archetype,
-        )
+        model = Player(game=game, account=account, archetype=archetype)
         if model not in game.binder.to_list:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -191,8 +184,7 @@ class PlayerValidator(ModelValidator[Player]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Player.
-        if prime_extract.recipient_wants_model:
-
+        if extract.recipient_wants_model:
             payload = PlayerCarrier(model=model)
             return ValidationResult.success(payload)
         # Otherwise, the client is a PlayerBuilder that needs a Blueprint.
@@ -201,6 +193,7 @@ class PlayerValidator(ModelValidator[Player]):
             account=account,
             archetype=archetype,
         )
+        blueprint.mark_as_validated()
         payload = PlayerCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)
 

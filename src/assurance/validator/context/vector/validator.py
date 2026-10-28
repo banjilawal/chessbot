@@ -56,7 +56,7 @@ class VectorValidator(ContextValidator[Vector]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
+    def execute(self, item: Any) -> ValidationResult[VectorCarrier]:
         """
         Assure a candidate is a safe VectorCarrier.
 
@@ -67,7 +67,7 @@ class VectorValidator(ContextValidator[Vector]):
                     -   Either the x or y component is unsafe.
             2.  Otherwise, send a VectorCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[VectorCarrier]
         Raises:
@@ -76,7 +76,7 @@ class VectorValidator(ContextValidator[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -89,8 +89,8 @@ class VectorValidator(ContextValidator[Vector]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(VectorPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(VectorPrimeExtract, loading.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         if blueprint is None:
@@ -132,7 +132,7 @@ class VectorValidator(ContextValidator[Vector]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Vector.
-        if prime_extract.recipient_wants_context:
+        if extract.recipient_wants_context:
             payload = VectorCarrier(
                 context=Vector(x=x, y=y)
             )

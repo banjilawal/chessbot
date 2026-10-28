@@ -59,7 +59,7 @@ class GameValidator(ContextValidator[Game]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[GameCarrier]:
+    def execute(self, item: Any) -> ValidationResult[GameCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -70,7 +70,7 @@ class GameValidator(ContextValidator[Game]):
                     -   Either the id, binder, or arena are flagged unsafe.
             2.  Otherwise, send a GameCarrier in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[GameCarrier]
         Raises:
@@ -79,7 +79,7 @@ class GameValidator(ContextValidator[Game]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -92,8 +92,8 @@ class GameValidator(ContextValidator[Game]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(GamePrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(GamePrimeExtract, loading.payload)
+        carrier = extract.reference
         fingerprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.
@@ -187,7 +187,7 @@ class GameValidator(ContextValidator[Game]):
         else:
             context = Rook()
 
-        if prime_extract.recipient_wants_context:
+        if extract.recipient_wants_context:
            return ValidationResult.success(RankCarrier(context=context))
         return ValidationResult.success(RankCarrier(blueprint=RankBlueprint(persona)))
 

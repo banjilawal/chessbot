@@ -14,4 +14,4 @@ from .human import *
 from .machine import *
 
 # Modules
-from .envelope import RootAccountEnvelope
+from .envelope import AccountEnvelope

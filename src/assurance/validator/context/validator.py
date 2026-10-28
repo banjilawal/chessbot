@@ -54,11 +54,11 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ContextCarrier[T]]:
+    def execute(self, item: Any) -> ValidationResult[ContextCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: Any
+            item: Any
         Returns:
            ValidationResult[T]
         Raises:

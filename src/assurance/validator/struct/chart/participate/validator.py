@@ -76,7 +76,7 @@ class ParticipationValidator(ChartValidator[Participation]):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ParticipationCarrier]:
+    def execute(self, item: Any) -> ValidationResult[ParticipationCarrier]:
         """
         Assure a candidate is a safe ParticipationCarrier.
 
@@ -85,9 +85,9 @@ class ParticipationValidator(ChartValidator[Participation]):
                     -   Loader fails.
                     -   The ParticipationBlueprint has an inconsistency.
                     -   The CoordValidator flags either existing position.
-            2.  Otherwise, send the type of carrier prime_extract indicates.
+            2.  Otherwise, send the type of carrier extract indicates.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[Participation]
         Raises:
@@ -96,7 +96,7 @@ class ParticipationValidator(ChartValidator[Participation]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.toolkit.loader.execute(candidate)
+        loading = self.toolkit.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -109,8 +109,8 @@ class ParticipationValidator(ChartValidator[Participation]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(ParticipationPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
+        extract = cast(ParticipationPrimeExtract, loading.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.
@@ -208,7 +208,7 @@ class ParticipationValidator(ChartValidator[Participation]):
                 )
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants safe Participants.
-        if prime_extract.recipient_wants_model:
+        if extract.recipient_wants_model:
             payload = ParticipationCarrier(
                 model=Participation(
                     victim=victim,

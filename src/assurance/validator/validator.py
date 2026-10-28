@@ -13,6 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
+from bootstrap import ValidationLoader
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
@@ -31,7 +32,6 @@ class Validator(ABC, Generic[T]):
 
     Attributes:
         loader: ValidationLoader[T]
-        toolkit: LayerToolkit[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -44,25 +44,20 @@ class Validator(ABC, Generic[T]):
         """
         Args:
             loader: ValidationLoader[T]
-            toolkit: LayerToolkit[T]
         """
         self._loader = loader
      
     @property
     def loader(self) -> ValidationLoader[T]:
         return self._loader
-        
-    @property
-    def toolkit(self) -> LayerToolkit[T]:
-        return self._loader.toolkit
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, item: Any) -> ValidationResult[T]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: Any
+            item: Any
         Returns:
            ValidationResult[T]
         Raises:

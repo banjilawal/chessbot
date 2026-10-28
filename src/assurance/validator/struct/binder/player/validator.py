@@ -61,7 +61,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PlayerBinderCarrier]:
+    def execute(self, item: Any) -> ValidationResult[PlayerBinderCarrier]:
         """
         Certify a PlayerBinder's payload is either a PlayerBinder or a Blueprint 
         that is safe to use.
@@ -78,7 +78,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
             2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[PlayerBinder]
         Raises:
@@ -87,7 +87,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        loader = self.loader.execute(candidate)
+        loader = self.loader.execute(item)
         if loader.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -100,8 +100,8 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(PlayerBinderPrimeExtract, loader.payload)
-        carrier = prime_extract.reference
+        extract = cast(PlayerBinderPrimeExtract, loader.payload)
+        carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.
@@ -147,7 +147,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe PlayerBinder.
-        if prime_extract.recipient_wants_model:
+        if extract.recipient_wants_model:
             model = PlayerBinder(
                 white_player=entry[Archetype.WHITE],
                 black_player=entry[Archetype.BLACK],

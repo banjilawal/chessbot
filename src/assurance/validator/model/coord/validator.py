@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import CoordValidationLoader, CoordLayerToolkit, ModelValidator
+from assurance import ModelValidator
+from bootstrap import CoordValidationLoader
 from domain import Board, Coord, CoordBlueprint, CoordPrimeExtract
 from err import CoordCarrierEmptyException, CoordValidatorException
 from exchange import BoardValidationRequest
@@ -52,12 +53,8 @@ class CoordValidator(ModelValidator[Coord]):
     def loader(self) -> CoordValidationLoader:
         return cast(CoordValidationLoader, super().loader)
     
-    @property
-    def toolkit(self) -> CoordLayerToolkit:
-        return self.loader.toolkit
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordCarrier]:
+    def execute(self, item: Any) -> ValidationResult[CoordCarrier]:
         """
         Assure a candidate is a safe CoordCarrier.
 
@@ -74,7 +71,7 @@ class CoordValidator(ModelValidator[Coord]):
             2.  Otherwise, send the recipient a carrier which has either a safe model or
                 blueprint in the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[CoordCarrier]
         Raises:
@@ -83,7 +80,7 @@ class CoordValidator(ModelValidator[Coord]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
+        loading = self.loader.execute(item)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -96,8 +93,8 @@ class CoordValidator(ModelValidator[Coord]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(CoordPrimeExtract, loading.payload)
-        reference = prime_extract.reference
+        extract = cast(CoordPrimeExtract, loading.payload)
+        reference = extract.reference
         fingerprint = reference.extract_blueprint()
         # Handle the case that the blueprint is null.
         if fingerprint is None:
@@ -117,11 +114,10 @@ class CoordValidator(ModelValidator[Coord]):
                 )
             )
         # --- PROCESS_THE_BOARD_ATTRIBUTE. ---#
-        board_validation = self.toolkit.dependency.board.extract_model(
+        board_validation = self.loader.toolkit.dependency.board.extract_model(
             request=BoardValidationRequest(
                 item=BoardCarrier(model=fingerprint.board),
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
-
             )
         )
         # Handle the case that the board is flagged.
@@ -140,7 +136,7 @@ class CoordValidator(ModelValidator[Coord]):
         components: List[int] = []
         for number in [fingerprint.row, fingerprint.column]:
             # Handle the case that any coord component in the blueprint is flagged.
-            validation = self.toolkit.number_validator.execute(number)
+            validation = self.loader.toolkit.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -157,16 +153,18 @@ class CoordValidator(ModelValidator[Coord]):
         board = cast(Board, board_validation.payload)
         row = components[0]
         column = components[1]
+        
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Coord.
-        if prime_extract.recipient_wants_model:
+        if extract.recipient_wants_model:
             model = Coord(board=board, row=row, column=column)
-            carrier = CoordCarrier(model=model)
-            return ValidationResult.success(carrier)
+            payload = CoordCarrier(model=model)
+            return ValidationResult.success(payload)
         # Otherwise, the client is a CoordBuilder that needs a Blueprint.
         blueprint = CoordBlueprint(board=board, row=row, column=column)
-        carrier = CoordCarrier(blueprint=blueprint)
-        return ValidationResult.success(carrier)
+        blueprint.mark_as_validated()
+        payload = CoordCarrier(blueprint=blueprint)
+        return ValidationResult.success(payload)
 
 
 

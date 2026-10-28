@@ -15,10 +15,10 @@ from domain import (
     CombatantReadiness, Footstep, Formation, HomeSquare, Team, Token,
     TokenDeployment, TokenPrimeExtract
 )
-from transit import RootTokenEnvelope
+from transit import TokenEnvelope
 
 
-class CombatantTokenEnvelope(RootTokenEnvelope):
+class CombatantTokenEnvelope(TokenEnvelope):
     """
     Role
         -   Data Transfer

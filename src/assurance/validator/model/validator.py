@@ -14,6 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidationLoader, ModelLayerToolkit, Validator
+from bootstrap import ValidationLoader
 from domain import Model
 from transit import ModelCarrier
 from util import LoggingLevelRouter
@@ -48,20 +49,16 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         super().__init__(loader=loader)
     
     @property
-    def loader(self) -> ModelValidationLoader[T]:
-        return cast(ModelValidationLoader[T], super().loader)
-    
-    @property
-    def toolkit(self) -> ModelLayerToolkit[T]:
-        return self.toolkit
+    def loader(self) -> ValidationLoader[T]:
+        return cast(ValidationLoader[T], super().loader)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ModelCarrier[T]]:
+    def execute(self, item: Any) -> ValidationResult[ModelCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: Any
+            item: Any
         Returns:
            ValidationResult[T]
         Raises:
