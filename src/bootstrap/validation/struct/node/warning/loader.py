@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import NodeValidationLoader, EncounterWarningNodeLayerToolkit
-from domain import EncounterWarningNode, EncounterWarningNode
+from assurance import EncounterWarningNodeLayerToolkit
+from bootstrap import NodeValidationLoader
+from domain import EncounterWarningNode
 from err import (
     EncounterWarningNodeCarrierEmptyException, EncounterWarningNodeLoaderException,
     EncounterWarningNodeValidationRequestNullException
@@ -39,9 +40,7 @@ class EncounterWarningNodeLoader(NodeValidationLoader[EncounterWarningNode]):
         toolkit: EncounterWarningNodeLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[EncounterWarningNode[T]
+        -   def execute(item: Any) -> ValidationResult[EncounterWarningNode[T]
 
     Super Class:
         NodeLoader

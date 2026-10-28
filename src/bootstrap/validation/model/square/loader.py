@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, SquareLayerToolkit
+from assurance import SquareLayerToolkit
 from domain import Square, SquarePrimeExtract
 from err import (
     SquareCarrierEmptyException, SquareValidationLoaderException, SquareValidationRequestNullException
@@ -38,9 +38,7 @@ class SquareValidationLoader(ModelValidationLoader[Square]):
         toolkit: SquareLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[SquarePrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[SquarePrimeExtract[T]
 
     Super Class:
         ModelLoader

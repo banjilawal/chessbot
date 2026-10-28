@@ -34,9 +34,7 @@ class ContextValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[ContextPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[ContextPrimeExtract[T]
 
     Super Class:
         Loader
@@ -51,11 +49,11 @@ class ContextValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ContextPrimeExtract[T]]:
+    def execute(self, item: Any) -> ValidationResult[ContextPrimeExtract[T]]:
         """
         Extract a safe ModelBlueprint from the candidate.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[ModelBlueprint[T]]
         Raises:

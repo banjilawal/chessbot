@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, TeamLayerToolkit
+from assurance import TeamLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Team, TeamPrimeExtract
 from err import (
     TeamCarrierEmptyException, TeamValidationLoaderException, TeamValidationRequestNullException
@@ -38,9 +39,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
         toolkit: TeamLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[TeamPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[TeamPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
         return cast(TeamLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[TeamPrimeExtract]:
         """
         Extract the TeamBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
             2.  Otherwise, pack the original carrier and the blueprint in a TeamPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[TeamPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=TeamValidationRequest,
             null_exception=TeamValidationRequestNullException(),
         )

@@ -1,13 +1,13 @@
-# src/production/resource/model/encounter/__init__.py
+# src/production/resource/producer/model/encounter/__init__.py
 
 """
-Module: production.resource.model.encounter.__init__
+Module: production.resource.producer.model.encounter.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== PRODUCTION.RESOURCE.MODEL.ENCOUNTER PACKAGE ===========#
+# =========== PRODUCTION.RESOURCE.PRODUCER.MODEL.ENCOUNTER PACKAGE ===========#
 
 # Packages
 

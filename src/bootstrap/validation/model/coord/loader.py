@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, CoordLayerToolkit
+from assurance import CoordLayerToolkit
 from domain import Coord, CoordPrimeExtract
 from err import (
     CoordCarrierEmptyException, CoordValidationLoaderException, CoordValidationRequestNullException
@@ -38,9 +38,7 @@ class CoordValidationLoader(ModelValidationLoader[Coord]):
         toolkit: CoordLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[CoordPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[CoordPrimeExtract[T]
 
     Super Class:
         ModelLoader

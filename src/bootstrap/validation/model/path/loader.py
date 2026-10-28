@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, PathLayerToolkit
+from assurance import PathLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Path, PathPrimeExtract
 from err import (
     PathCarrierEmptyException, PathValidationLoaderException, PathValidationRequestNullException
@@ -38,9 +39,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
         toolkit: PathLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[PathPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[PathPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
         return cast(PathLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PathPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[PathPrimeExtract]:
         """
         Extract the PathBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
             2.  Otherwise, pack the original carrier and the blueprint in a PathPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[PathPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=PathValidationRequest,
             null_exception=PathValidationRequestNullException(),
         )

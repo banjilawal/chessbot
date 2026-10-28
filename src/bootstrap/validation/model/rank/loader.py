@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, RankLayerToolkit
+from assurance import RankLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Rank, RankPrimeExtract
 from err import (
     RankCarrierEmptyException, RankValidationLoaderException, RankValidationRequestNullException
@@ -38,9 +39,7 @@ class RankValidationLoader(ModelValidationLoader[Rank]):
         toolkit: RankLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[RankPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[RankPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class RankValidationLoader(ModelValidationLoader[Rank]):
         return cast(RankLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[RankPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[RankPrimeExtract]:
         """
         Extract the RankBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class RankValidationLoader(ModelValidationLoader[Rank]):
             2.  Otherwise, pack the original carrier and the blueprint in a RankPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[RankPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class RankValidationLoader(ModelValidationLoader[Rank]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=RankValidationRequest,
             null_exception=RankValidationRequestNullException(),
         )

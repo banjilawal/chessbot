@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, EncounterLayerToolkit
+from assurance import EncounterLayerToolkit
 from domain import Encounter, EncounterPrimeExtract
 from err import (
     EncounterCarrierEmptyException, EncounterValidationLoaderException,
@@ -39,9 +39,7 @@ class EncounterValidationLoader(ModelValidationLoader[Encounter]):
         toolkit: EncounterLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[EncounterPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[EncounterPrimeExtract[T]
 
     Super Class:
         ModelLoader

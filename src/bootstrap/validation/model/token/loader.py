@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, TokenLayerToolkit
-from domain import Token, TokenBlueprint, TokenPrimeExtract
+from assurance import TokenLayerToolkit
+from bootstrap import ModelValidationLoader
+from domain import Token, TokenPrimeExtract
 from err import (
     TokenCarrierEmptyException, TokenValidationLoaderException, TokenValidationRequestNullException
 )
@@ -38,9 +39,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
         toolkit: TokenLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[TokenPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[TokenPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
         return cast(TokenLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[TokenPrimeExtract]:
         """
         Extract the TokenBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
             2.  Otherwise, pack the original carrier and the blueprint in a TokenPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[TokenPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=TokenValidationRequest,
             null_exception=TokenValidationRequestNullException(),
         )

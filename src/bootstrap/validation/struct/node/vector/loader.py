@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import NodeValidationLoader, VectorNodeLayerToolkit
-from domain import VectorNode, VectorNode
+from assurance import VectorNodeLayerToolkit
+from bootstrap import NodeValidationLoader
+from domain import VectorNode
 from err import (
     EmptyVectorNodeCarrierException, VectorNodeLoaderException,
     VectorNodeValidationRequestNullException
@@ -39,9 +40,7 @@ class VectorNodeLoader(NodeValidationLoader[VectorNode]):
         toolkit: VectorNodeLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[VectorNode[T]
+        -   def execute(item: Any) -> ValidationResult[VectorNode[T]
 
     Super Class:
         NodeLoader

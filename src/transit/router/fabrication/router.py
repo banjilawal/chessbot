@@ -10,10 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import BuildResult
-from assurance import PrimingValidator
 from domain import Blueprint
 from transit import Router
 from util import LoggingLevelRouter

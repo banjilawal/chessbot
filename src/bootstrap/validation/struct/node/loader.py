@@ -33,9 +33,7 @@ class NodeValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[Node[T]
+        -   def execute(item: Any) -> ValidationResult[Node[T]
 
     Super Class:
         Loader

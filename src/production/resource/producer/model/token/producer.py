@@ -1,7 +1,7 @@
-# src/production/resource/model/token/producer.py
+# src/production/resource/producer/model/token/producer.py
 
 """
-Module: production.resource.model.token.producer
+Module: production.resource.producer.model.token.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -13,7 +13,8 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ValidationLoader, ModelLayerToolkit
+from assurance import LayerToolkit, ModelLayerToolkit
+from bootstrap import ValidationLoader
 from domain import Model, ModelPrimeExtract
 from util import LoggingLevelRouter
 
@@ -33,32 +34,30 @@ class ModelValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[ModelPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[ModelPrimeExtract[T]
 
     Super Class:
-        Loader
+        ValidationLoader
     """
     
-    def __init__(self, toolkit: ValifatorToolkit):
+    def __init__(self, toolkit: ModelLayerToolkit[T]):
         """
         Args:
-            toolkit: LayerToolkit[T]
+            toolkit: ModelLayerToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> ValifatorToolkit:
-        return cast(ValifatorToolkit, super().toolkit)
+    def toolkit(self) -> LayerToolkit:
+        return cast(ModelLayerToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ModelPrimeExtract[T]]:
+    def execute(self, item: Any) -> ValidationResult[ModelPrimeExtract[T]]:
         """
         Extract a safe ModelBlueprint from the candidate.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[ModelBlueprint[T]]
         Raises:

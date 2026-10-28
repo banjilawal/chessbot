@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, GameLayerToolkit
+from assurance import GameLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Game, GamePrimeExtract
 from err import (
     GameCarrierEmptyException, GameValidationLoaderException, GameValidationRequestNullException
@@ -38,9 +39,7 @@ class GameValidationLoader(ModelValidationLoader[Game]):
         toolkit: GameLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[GamePrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[GamePrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class GameValidationLoader(ModelValidationLoader[Game]):
         return cast(GameLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[GamePrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[GamePrimeExtract]:
         """
         Extract the GameBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class GameValidationLoader(ModelValidationLoader[Game]):
             2.  Otherwise, pack the original carrier and the blueprint in a GamePrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[GamePrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class GameValidationLoader(ModelValidationLoader[Game]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=GameValidationRequest,
             null_exception=GameValidationRequestNullException(),
         )

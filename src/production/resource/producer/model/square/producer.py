@@ -1,7 +1,7 @@
-# src/production/resource/model/square/producer.py
+# src/production/resource/producer/model/square/producer.py
 
 """
-Module: production.resource.model.square.producer
+Module: production.resource.producer.model.square.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

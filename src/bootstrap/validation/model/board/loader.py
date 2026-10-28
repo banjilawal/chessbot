@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, BoardLayerToolkit
+from assurance import BoardLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Board, BoardPrimeExtract
 from err import (
     BoardCarrierEmptyException, BoardValidationLoaderException, BoardValidationRequestNullException
@@ -38,9 +39,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
         toolkit: BoardLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[BoardPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[BoardPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
         return cast(BoardLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[BoardPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[BoardPrimeExtract]:
         """
         Extract the BoardBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
             2.  Otherwise, pack the original carrier and the blueprint in a BoardPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[BoardPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=BoardValidationRequest,
             null_exception=BoardValidationRequestNullException(),
         )

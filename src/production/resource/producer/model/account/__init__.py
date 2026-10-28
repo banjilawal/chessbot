@@ -1,13 +1,13 @@
-# src/production/resource/model/account/__init__.py
+# src/production/resource/producer/model/account/__init__.py
 
 """
-Module: production.resource.model.account.__init__
+Module: production.resource.producer.model.account.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== PRODUCTION.RESOURCE.MODEL.ACCOUNT PACKAGE ===========#
+# =========== PRODUCTION.RESOURCE.PRODUCER.MODEL.ACCOUNT PACKAGE ===========#
 
 # Packages
 

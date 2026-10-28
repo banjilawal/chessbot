@@ -1,7 +1,7 @@
 # src/production/resource/producer/producer.py
 
 """
-Module: production.resource.producer
+Module: production.resource.producer.producer.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

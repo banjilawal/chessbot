@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, ArenaLayerToolkit
+from assurance import ArenaLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Arena, ArenaPrimeExtract
 from err import (
     ArenaCarrierEmptyException, ArenaValidationLoaderException, ArenaValidationRequestNullException
@@ -38,9 +39,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
         toolkit: ArenaLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[ArenaPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[ArenaPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
         return cast(ArenaLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ArenaPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[ArenaPrimeExtract]:
         """
         Extract the ArenaBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
             2.  Otherwise, pack the original carrier and the blueprint in a ArenaPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[ArenaPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=ArenaValidationRequest,
             null_exception=ArenaValidationRequestNullException(),
         )

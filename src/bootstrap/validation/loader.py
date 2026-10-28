@@ -54,11 +54,11 @@ class ValidationLoader(Loader[ValidationResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PrimeExtract[T]]:
+    def execute(self, item: Any) -> ValidationResult[PrimeExtract[T]]:
         """
         Extract a safe Extract[T] from the candidate.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[Extract[T]]
         Raises:

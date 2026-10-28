@@ -13,7 +13,8 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import BinderLayerToolkit, StructValidationLoader
+from assurance import BinderLayerToolkit
+from bootstrap import StructValidationLoader
 from domain import ArchetypeBinder
 from util import LoggingLevelRouter
 
@@ -33,9 +34,7 @@ class BinderValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[T
+        -   def execute(item: Any) -> ValidationResult[T
 
     Super Class:
         Loader
@@ -54,11 +53,11 @@ class BinderValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, item: Any) -> ValidationResult[T]:
         """
         Model a safe BinderBlueprint from the candidate.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[BinderBlueprint[T]]
         Raises:

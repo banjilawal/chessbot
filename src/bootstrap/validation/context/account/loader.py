@@ -15,6 +15,8 @@ from artifcat import ValidationResult
 from assurance import AccountLayerToolkit
 from bootstrap import ContextValidationLoader
 from domain import AccountContext, AccountContextPrimeExtract, FlagState
+from err import AccountContextValidationLoaderException
+from exchange import AccountContextValidationRequest
 from transit import AccountContextCarrier
 from util import LoggingLevelRouter
 
@@ -36,9 +38,7 @@ class AccountContextValidationLoader(
         toolkit: AccountLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[AccountContextPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[AccountContextPrimeExtract[T]
 
     Super Class:
         ContextValidationLoader

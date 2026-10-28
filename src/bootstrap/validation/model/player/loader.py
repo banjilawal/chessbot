@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, PlayerLayerToolkit
+from assurance import PlayerLayerToolkit
 from domain import Player, PlayerPrimeExtract
 from err import (
     PlayerCarrierEmptyException, PlayerValidationLoaderException, PlayerValidationRequestNullException
@@ -38,9 +38,7 @@ class PlayerValidationLoader(ModelValidationLoader[Player]):
         toolkit: PlayerLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[PlayerPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[PlayerPrimeExtract[T]
 
     Super Class:
         ModelLoader

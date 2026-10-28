@@ -1,7 +1,7 @@
-# src/production/resource/model/encounter/producer.py
+# src/production/resource/producer/model/encounter/producer.py
 
 """
-Module: production.resource.model.encounter.producer
+Module: production.resource.producer.model.encounter.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

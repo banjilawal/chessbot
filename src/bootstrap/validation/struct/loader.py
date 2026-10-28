@@ -13,8 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ValidationLoader, StructLayerToolkit
-from domain import Struct, Struct
+from assurance import StructLayerToolkit
+from bootstrap import ValidationLoader
+from domain import Struct
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Struct")
@@ -33,9 +34,7 @@ class StructValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[T]
+        -   def execute(item: Any) -> ValidationResult[T]
 
     Super Class:
         Loader
@@ -54,11 +53,11 @@ class StructValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, item: Any) -> ValidationResult[T]:
         """
         Model a safe StructBlueprint from the candidate.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[T]
         Raises:

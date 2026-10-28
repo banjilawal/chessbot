@@ -1,7 +1,7 @@
-# src/production/resource/model/account/producer.py
+# src/production/resource/producer/model/account/producer.py
 
 """
-Module: production.resource.model.account.producer
+Module: production.resource.producer.model.account.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

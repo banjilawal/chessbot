@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, FootstepLayerToolkit
+from assurance import FootstepLayerToolkit
 from domain import Footstep, FootstepPrimeExtract
 from err import (
     FootstepCarrierEmptyException, FootstepValidationLoaderException,
@@ -39,9 +39,7 @@ class FootstepValidationLoader(ModelValidationLoader[Footstep]):
         toolkit: FootstepLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[FootstepPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[FootstepPrimeExtract[T]
 
     Super Class:
         ModelLoader

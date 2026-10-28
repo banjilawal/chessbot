@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, VectorLayerToolkit
+from assurance import VectorLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Vector, VectorPrimeExtract
 from err import (
     VectorCarrierEmptyException, VectorValidationLoaderException, VectorValidationRequestNullException
@@ -38,9 +39,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
         toolkit: VectorLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[VectorPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[VectorPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
         return cast(VectorLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[VectorPrimeExtract]:
         """
         Extract the VectorBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
             2.  Otherwise, pack the original carrier and the blueprint in a VectorPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[VectorPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=VectorValidationRequest,
             null_exception=VectorValidationRequestNullException(),
         )

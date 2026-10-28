@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, ManeuverLayerToolkit
+from assurance import ManeuverLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Maneuver, ManeuverPrimeExtract
 from err import (
     ManeuverCarrierEmptyException, ManeuverValidationLoaderException, ManeuverValidationRequestNullException
@@ -38,9 +39,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
         toolkit: ManeuverLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[ManeuverPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[ManeuverPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
         return cast(ManeuverLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ManeuverPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[ManeuverPrimeExtract]:
         """
         Extract the ManeuverBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
             2.  Otherwise, pack the original carrier and the blueprint in a ManeuverPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[ManeuverPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=ManeuverValidationRequest,
             null_exception=ManeuverValidationRequestNullException(),
         )

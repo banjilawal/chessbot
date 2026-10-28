@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, AlertLayerToolkit
+from assurance import lertLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Alert, AlertPrimeExtract
 from err import (
     AlertCarrierEmptyException, AlertValidationLoaderException, AlertValidationRequestNullException
@@ -38,9 +39,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         toolkit: AlertLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[AlertPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[AlertPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         return cast(AlertLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[AlertPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[AlertPrimeExtract]:
         """
         Extract the AlertBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
             2.  Otherwise, pack the original carrier and the blueprint in a AlertPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[AlertPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            item=item,
             target_model=AlertValidationRequest,
             null_exception=AlertValidationRequestNullException(),
         )
@@ -107,7 +106,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
-            candidate=request.item,
+            item=request.item,
             target_model=self.toolkit.types.carrier,
             null_exception=self.toolkit.nulls.carrier,
         )

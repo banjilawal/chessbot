@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, ScalarLayerToolkit
+from assurance import ScalarLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Scalar, ScalarPrimeExtract
 from err import (
     ScalarCarrierEmptyException, ScalarValidationLoaderException, ScalarValidationRequestNullException
@@ -38,9 +39,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
         toolkit: ScalarLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[ScalarPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[ScalarPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,7 +60,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
         return cast(ScalarLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ScalarPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[ScalarPrimeExtract]:
         """
         Extract the ScalarBlueprint to validate the candidate.
 
@@ -77,7 +76,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
             2.  Otherwise, pack the original carrier and the blueprint in a ScalarPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[ScalarPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
         
         # Handle the case that the candidate is null or the wrong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=ScalarValidationRequest,
             null_exception=ScalarValidationRequestNullException(),
         )

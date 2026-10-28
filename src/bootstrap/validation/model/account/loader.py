@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationLoader, AccountLayerToolkit
+from assurance import AccountLayerToolkit
+from bootstrap import ModelValidationLoader
 from domain import Account, AccountPrimeExtract
 from err import (
     AccountCarrierEmptyException, AccountValidationLoaderException, AccountValidationRequestNullException
@@ -38,9 +39,7 @@ class AccountValidationLoader(ModelValidationLoader[Account]):
         toolkit: AccountLayerToolkit
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[AccountPrimeExtract[T]
+        -   def execute(item: Any) -> ValidationResult[AccountPrimeExtract[T]
 
     Super Class:
         ModelLoader
@@ -61,23 +60,23 @@ class AccountValidationLoader(ModelValidationLoader[Account]):
         return cast(AccountLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[AccountPrimeExtract]:
+    def execute(self, item: Any) -> ValidationResult[AccountPrimeExtract]:
         """
         Extract the AccountBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                -   The candidate is null or not a AccountValidatorRequest.
+                -   The candidate is null or not an AccountValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a AccountCarrier
+                        -   Not an AccountCarrier
                         -   An empty AccountCarrier.
                 -   A blueprint cannot be extracted from the carrier.
             2.  Otherwise, pack the original carrier and the blueprint in a AccountPrimeExtract
                 for the success result.
         Args:
-            candidate: Any
+            item: Any
         Returns:
             ValidationResult[AccountPrimeExtract]
         Raises:
@@ -87,7 +86,7 @@ class AccountValidationLoader(ModelValidationLoader[Account]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=item,
             target_model=AccountValidationRequest,
             null_exception=AccountValidationRequestNullException(),
         )
