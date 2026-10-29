@@ -55,7 +55,7 @@ class AccountFirstnameContextInspector(AccountContextInspector[str]):
                 occur
                     -   The prime_extract is faulty.
                     -   The blueprint.firstname attribute is null
-                    -   Either candidate or blueprint.firstname are flagged.
+                    -   Either candidate or blueprint.firstname is flagged.
                     -   THe candidate and blueprint.firstname do not match.
             2.  Otherwise, encapsulate the requested product in the success result.
         Args:
@@ -105,10 +105,10 @@ class AccountFirstnameContextInspector(AccountContextInspector[str]):
                     )
                 )
             )
-        # --- Process matching blueprint and candidate attributes. --#
-        values: List[str] = []
+        # --- Process corresponding blueprint and candidate attributes. --#
+        safe_values: List[str] = []
         for item in [candidate, fingerprint.firstname]:
-            # Handle the case that the candidate is not a valid name.
+            # Handle the case that an item is not a string
             validation = self.toolkit.identity_service.validate_name(item)
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -121,9 +121,9 @@ class AccountFirstnameContextInspector(AccountContextInspector[str]):
                         ex=validation.exception,
                     )
                 )
-            values.append = cast(str, validation.payload)
+            safe_values.append = cast(str, validation.payload)
         # Handle the case that candidate does not match the blueprint attribute
-        if values[0] == values[1]:
+        if safe_values[0] == safe_values[1]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AccountFirstnameContextInspectorException(
@@ -140,7 +140,7 @@ class AccountFirstnameContextInspector(AccountContextInspector[str]):
                 )
             )
         # --- Extract the validation payload. ---#
-        firstname = values[0]
+        firstname = safe_values[0]
         
         # --- Forward the appropriate work product to the caller. ---#
         

@@ -1,0 +1,150 @@
+# src/production/endpoint/validation/context/account/category/inspector.py
+
+"""
+Module: production.endpoint.validation.context.account.category.inspector
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, List, cast
+
+from artifcat import ValidationResult
+from domain import AccountContext, AccountContextBlueprint, AccountContextPrimeExtract, AccountType
+from err import NameNullException, NullException
+from production import AccountContextInspector
+from transit import AccountContextCarrier
+from util import LoggingLevelRouter
+
+class AccountCategoryContextInspector(AccountContextInspector[str]):
+    """
+    Role
+        - Integrity, Consistency Maintenance
+
+    Responsibilities:
+        1.  Ensure an AccountContextCarrier with a category payload is safe to use.
+        
+    Attributes:
+        toolkit: AccountLayerToolkit
+
+    Provides:
+        -   def execute(
+                    candidate: Any,
+                    prime_extract: AccountContextPrimeExtract,
+            ) -> ValidationResult[AccountContextCarrier]
+
+    Super Class:
+        AccountContextInspector
+    """
+    def __init__(self):
+        super().__init__()
+    
+    @LoggingLevelRouter.monitor
+    def execute(
+            self,
+            candidate: Any,
+            prime_extract: AccountContextPrimeExtract,
+    ) -> ValidationResult[AccountContextCarrier]:
+        """
+        Assure a candidate is a safe Account-category-Context to use or build.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The prime_extract is faulty.
+                    -   The blueprint.category attribute is null
+                    -   Either candidate or blueprint.category is flagged.
+                    -   THe candidate and blueprint.category do not match.
+            2.  Otherwise, encapsulate the requested product in the success result.
+        Args:
+            candidate: Any
+            prime_extract: AccountContextPrimeExtract
+        Returns:
+            ValidationResult[AccountContextCarrier]
+        Raises:
+            AccountCategoryContextInspectorException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        fingerprint = prime_extract.reference.extract_blueprint()
+        
+        # Handle the case that a blueprint cannot be created.
+        if fingerprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                AccountCategoryContextInspectorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountCategoryContextInspectorException.MSG,
+                    err_code=AccountCategoryContextInspectorException.ERR_CODE,
+                    ex=AccountContextCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AccountContextCarrierEmptyException.MSG,
+                        err_code=AccountContextCarrierEmptyException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that the category attribute is not set.
+        if fingerprint.account_type is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                AccountCategoryContextInspectorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountCategoryContextInspectorException.MSG,
+                    err_code=AccountCategoryContextInspectorException.ERR_CODE,
+                    ex=NameNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=NameNullException.MSG,
+                        err_code=NameNullException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Process corresponding blueprint and candidate attributes. --#
+        safe_values: List[AccountType] = []
+        for item in [candidate, fingerprint.account_type]:
+            # Handle the case that an item is not a string
+            validation = self.toolkit.priming_validator.execute(
+                candidate=item,
+                target_model=AccountType,
+                null_exception=NullException()
+            )
+            safe_values.append = cast(AccountType, validation.payload)
+        # Handle the case that candidate does not match the blueprint attribute
+        if safe_values[0] == safe_values[1]:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                AccountCategoryContextInspectorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountCategoryContextInspectorException.MSG,
+                    err_code=AccountCategoryContextInspectorException.ERR_CODE,
+                    ex=AccountContextConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AccountContextConsistencyExceptionn.MSG,
+                        err_code=AccountContextConsistencyException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Extract the validation payload. ---#
+        account_type = safe_values[0]
+        
+        # --- Forward the appropriate work product to the caller. ---#
+        
+        # The client wants a safe AccountContext.
+        if prime_extract.recipient_wants_model:
+            model = AccountContext(account_type=account_type)
+            payload = AccountContextCarrier(model=model)
+            return ValidationResult.success(payload)
+        
+        # Otherwise, the client is an AccountContextBuilder that needs a Blueprint.
+        blueprint = AccountContextBlueprint(account_type=account_type)
+        blueprint.mark_as_validated()
+        payload = AccountContextCarrier(blueprint=blueprint)
+        return ValidationResult.success(payload)

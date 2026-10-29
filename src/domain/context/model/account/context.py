@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Account, Context
+from domain import Account, AccountType, Context
 
 
 class AccountContext(Context[Account]):
@@ -28,8 +28,7 @@ class AccountContext(Context[Account]):
         lastname: Optional[str]
         firstname: Optional[str]
         machine_name: Optional[str]
-        human_account: Optional[bool]
-        machine_account: Optional[bool]
+        account_type: Optional[AccountType]
 
     Provides:
         - to_dict() -> Dict[str, Any]
@@ -42,8 +41,7 @@ class AccountContext(Context[Account]):
     _firstname: Optional[str]
     _lastname: Optional[str]
     _machine_name: Optional[str]
-    _human_account: Optional[bool]
-    _machine_account: Optional[bool]
+    _account_type: Optional[AccountType]
     
     def __init__(
             self,
@@ -52,8 +50,7 @@ class AccountContext(Context[Account]):
             firstname: Optional[str] | None = None,
             lastname: Optional[str] | None = None,
             machine_name: Optional[str] | None = None,
-            human_account: Optional[bool] | None = None,
-            machine_account: Optional[bool] | None = None,
+            account_type: Optional[AccountType] | None = None,
     ):
         """
         Args:
@@ -61,16 +58,14 @@ class AccountContext(Context[Account]):
             firstname: Optional[str]
             lastname: Optional[str]
             machine_name: Optional[str]
-            human_account: Optional[str]
-            machine_account: Optional[str
+            account_type: Optional[AccountType]
         """
         super().__init__(id=id)
         self._email = email
         self._lastname = lastname
         self._firstname = firstname
         self._machine_name = machine_name
-        self._human_account = human_account
-        self._machine_account = machine_account
+        self._account_type = account_type
         
     @property
     def email(self) -> Optional[str]:
@@ -89,12 +84,8 @@ class AccountContext(Context[Account]):
         return self._machine_name
     
     @property
-    def human_account(self) -> Optional[bool]:
-        return self._human_account
-    
-    @property
-    def machine_account(self) -> Optional[bool]:
-        return self._machine_account
+    def account_type(self) -> Optional[AccountType]:
+        return self._account_type
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -103,6 +94,5 @@ class AccountContext(Context[Account]):
             "lastname": self._lastname,
             "firstname": self._firstname,
             "machine_name": self._machine_name,
-            "human_account": self._human_account,
-            "machine_account": self._machine_account,
+            "account_type": self._account_type,
         }

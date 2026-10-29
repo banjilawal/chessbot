@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from domain import AccountContext, ContextBlueprint
+from domain import AccountContext, AccountType, ContextBlueprint
 
 
 class AccountContextBlueprint(ContextBlueprint[AccountContext]):
@@ -28,8 +28,7 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
         lastname: Optional[str]
         firstname: Optional[str]
         machine_name: Optional[str]
-        human_account: Optional[bool]
-        machine_account: Optional[bool]
+        account_type: Optional[AccountType]
         
         domain_class: Type[AccountContext]
         domain_null_exception: AccountContextNullException
@@ -44,8 +43,7 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
     _firstname: Optional[str]
     _lastname: Optional[str]
     _machine_name: Optional[str]
-    _human_account: Optional[bool]
-    _machine_account: Optional[bool]
+    _account_type: Optional[AccountType]
     
     def __init__(
             self,
@@ -54,8 +52,7 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
             firstname: Optional[str] | None = None,
             lastname: Optional[str] | None = None,
             machine_name: Optional[str] | None = None,
-            human_account: Optional[bool] | None = None,
-            machine_account: Optional[bool] | None = None,
+            account_type: Optional[AccountType] | None = None,
             domain_class: Optional[Type[AccountContext]] | None = None,
             domain_null_exception: Optional[AccountContextNullException] | None = None,
     ):
@@ -65,8 +62,7 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
             firstname: Optional[str]
             lastname: Optional[str]
             machine_name: Optional[str]
-            human_account: Optional[str]
-            machine_account: Optional[str
+            account_type: Optional[AccountType]
             domain_class: Type[AccountContext]
             domain_null_exception: AccountContextNullException
         """
@@ -79,8 +75,7 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
         self._lastname = lastname
         self._firstname = firstname
         self._machine_name = machine_name
-        self._human_account = human_account
-        self._machine_account = machine_account
+        self._account_type = account_type
     
     @property
     def domain_class(self) -> Type[AccountContext]:
@@ -107,12 +102,8 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
         return self._machine_name
     
     @property
-    def human_account(self) -> Optional[bool]:
-        return self._human_account
-    
-    @property
-    def machine_account(self) -> Optional[bool]:
-        return self._machine_account
+    def account_type(self) -> Optional[AccountType]:
+        return self._account_type
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -121,6 +112,5 @@ class AccountContextBlueprint(ContextBlueprint[AccountContext]):
             "lastname": self._lastname,
             "firstname": self._firstname,
             "machine_name": self._machine_name,
-            "human_account": self._human_account,
-            "machine_account": self._machine_account,
+            "account_type": self._account_type,
         }

@@ -108,7 +108,7 @@ class AccountIdContextInspector(IdContextInspector[AccountContext]):
                 )
             )
         # --- Validate the corresponding blueprint and candidate attributes. ---#
-        values: List[int] = []
+        safe_values: List[int] = []
         for item in [candidate, fingerprint.id]:
             # Handle the case that an item is not a number.
             validation = self.identity_service.validate_id(item)
@@ -124,9 +124,9 @@ class AccountIdContextInspector(IdContextInspector[AccountContext]):
                     )
                 )
             # Append the success
-            values.append(cast(int, validation.payload))
+            safe_values.append(cast(int, validation.payload))
         # Handle the case that candidate does not match the fingerprint attribute.
-        if values[0] == values[1]:
+        if safe_values[0] == safe_values[1]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AccountIdContextInspectorException(
@@ -143,7 +143,7 @@ class AccountIdContextInspector(IdContextInspector[AccountContext]):
                 )
             )
         # --- Extract the validation payload. ---#
-        id = values[0]
+        id = safe_values[0]
         # --- Forward the appropriate work product to the caller. ---#
         
         # The client wants a safe AccountContext.
