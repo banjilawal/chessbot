@@ -69,9 +69,8 @@ class BoardBuilder(ModelBuilder[Board]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 BoardBuilderException(
@@ -79,11 +78,11 @@ class BoardBuilder(ModelBuilder[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardBuilderException.MSG,
                     err_code=BoardBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(BoardBlueprint, loading.payload)
+        blueprint = cast(BoardBlueprint, bootstrap.payload)
         id = blueprint.id or IdFactory.next_id(class_name="Board")
         
         # --- Send the work product. ---#

@@ -79,9 +79,9 @@ class TokenEnvelopeProducer(EnvelopeProducer[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenEnvelopeProducerException(
@@ -89,11 +89,11 @@ class TokenEnvelopeProducer(EnvelopeProducer[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenEnvelopeProducerException.MSG,
                     err_code=TokenEnvelopeProducerException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(TokenPrimeExtract, loading.payload)
+        extract = cast(TokenPrimeExtract, bootstrap.payload)
         reference = extract.reference
         fingerprint = reference.extract_blueprint()
         

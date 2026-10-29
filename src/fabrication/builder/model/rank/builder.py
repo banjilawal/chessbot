@@ -69,9 +69,8 @@ class RankBuilder(ModelBuilder[Rank]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 RankBuilderException(
@@ -79,11 +78,11 @@ class RankBuilder(ModelBuilder[Rank]):
                     cls_name=self.__class__.__name__,
                     msg=RankBuilderException.MSG,
                     err_code=RankBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(RankBlueprint, loading.payload)
+        blueprint = cast(RankBlueprint, bootstrap.payload)
         persona = blueprint.persona
         
         # --- Send the work product. ---#

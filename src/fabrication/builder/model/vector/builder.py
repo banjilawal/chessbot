@@ -69,9 +69,8 @@ class VectorBuilder(ModelBuilder[Vector]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorBuilderException(
@@ -79,11 +78,11 @@ class VectorBuilder(ModelBuilder[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorBuilderException.MSG,
                     err_code=VectorBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(VectorBlueprint, loading.payload)
+        blueprint = cast(VectorBlueprint, bootstrap.payload)
         
         # --- Send the work product. ---#
         product = Vector(

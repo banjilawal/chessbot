@@ -76,9 +76,9 @@ class PathValidator(ModelValidator[Path]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(
@@ -86,11 +86,11 @@ class PathValidator(ModelValidator[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(PathPrimeExtract, loading.payload)
+        extract = cast(PathPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         fingerprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.

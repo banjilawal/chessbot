@@ -69,9 +69,8 @@ class GameBuilder(ModelBuilder[Game]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 GameBuilderException(
@@ -79,11 +78,11 @@ class GameBuilder(ModelBuilder[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameBuilderException.MSG,
                     err_code=GameBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(GameBlueprint, loading.payload)
+        blueprint = cast(GameBlueprint, bootstrap.payload)
         id = blueprint.id or IdFactory.next_id(class_name="Game")
         
         # --- Send the work product. ---#

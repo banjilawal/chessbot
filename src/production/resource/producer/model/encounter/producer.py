@@ -87,8 +87,8 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the loader cannot be extracted.
-        loading = self.loader.execute(candidate)
-        if loading.is_failure:
+        bootstrap = self.loader.execute(candidate)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 EncounterEnvelopeProducerException(
@@ -96,11 +96,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=EncounterEnvelopeProducerException.MSG,
                     err_code=EncounterEnvelopeProducerException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(EncounterPrimeExtract, loading.payload)
+        prime_extract = cast(EncounterPrimeExtract, bootstrap.payload)
         reference = prime_extract.reference
         blueprint = reference.extract_blueprint()
         

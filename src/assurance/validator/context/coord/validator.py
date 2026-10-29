@@ -82,9 +82,9 @@ class CoordValidator(ContextValidator[Coord]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidatorException(
@@ -92,11 +92,11 @@ class CoordValidator(ContextValidator[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordValidatorException.MSG,
                     err_code=CoordValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(CoordPrimeExtract, loading.payload)
+        extract = cast(CoordPrimeExtract, bootstrap.payload)
         reference = extract.reference
         fingerprint = reference.extract_blueprint()
         # Handle the case that the blueprint is null.
@@ -159,9 +159,9 @@ class CoordValidator(ContextValidator[Coord]):
         column = components[1]
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Coord.
-        if extract.recipient_wants_context:
-            context = Coord(board=board, row=row, column=column)
-            carrier = CoordCarrier(context=context)
+        if extract.recipient_wants_model:
+            model = Coord(board=board, row=row, column=column)
+            carrier = CoordCarrier(model=model)
             return ValidationResult.success(carrier)
         # Otherwise, the client is a CoordBuilder that needs a Blueprint.
         blueprint = CoordBlueprint(board=board, row=row, column=column)

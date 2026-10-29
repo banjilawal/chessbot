@@ -82,8 +82,8 @@ class AlertValidator(ContextValidator[Alert]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the loader fails.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AlertValidatorException(
@@ -91,11 +91,11 @@ class AlertValidator(ContextValidator[Alert]):
                     cls_name=self.__class__.__name__,
                     msg=AlertValidatorException.MSG,
                     err_code=AlertValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(AlertPrimeExtract, loading.payload)
+        extract = cast(AlertPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.
@@ -162,9 +162,9 @@ class AlertValidator(ContextValidator[Alert]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Alert.
-        if extract.recipient_wants_context:
-            payload = AlertCarrier(
-                context=Alert(
+        if extract.recipient_wants_model:
+            payload = AlertScalarCarrier(
+                model=Alert(
                     threat=threat,
                     checkmate=checkmate,
                 )

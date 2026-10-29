@@ -45,7 +45,7 @@ class AccountContext(Context[Account]):
     _human_account: Optional[bool]
     _machine_account: Optional[bool]
     
-    def ___init__(
+    def __init__(
             self,
             id: Optional[int] | None = None,
             email: Optional[str] | None = None,

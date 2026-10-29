@@ -81,9 +81,9 @@ class ManeuverValidator(ContextValidator[Maneuver]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -91,11 +91,11 @@ class ManeuverValidator(ContextValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(ManeuverPrimeExtract, loading.payload)
+        extract = cast(ManeuverPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.
@@ -174,9 +174,9 @@ class ManeuverValidator(ContextValidator[Maneuver]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Maneuver.
-        if extract.recipient_wants_context:
-            context = Maneuver(path=path, benefit=benefit, traveler=traveler)
-            payload = ManeuverCarrier(context=context)
+        if extract.recipient_wants_model:
+            model = Maneuver(path=path, benefit=benefit, traveler=traveler)
+            payload = ManeuverCarrier(model=model)
             return ValidationResult.success(payload)
         # Otherwise, the client is a ManeuverBuilder that needs a Blueprint.
         payload = ManeuverCarrier(

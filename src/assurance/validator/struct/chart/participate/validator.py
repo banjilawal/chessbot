@@ -95,9 +95,9 @@ class ParticipationValidator(ChartValidator[Participation]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.toolkit.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.toolkit.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ParticipationValidatorException(
@@ -105,11 +105,11 @@ class ParticipationValidator(ChartValidator[Participation]):
                     cls_name=self.__class__.__name__,
                     msg=ParticipationValidatorException.MSG,
                     err_code=ParticipationValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(ParticipationPrimeExtract, loading.payload)
+        extract = cast(ParticipationPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         

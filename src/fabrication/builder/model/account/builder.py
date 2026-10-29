@@ -15,7 +15,6 @@ from artifcat import BuildResult
 from domain import Account, AccountBlueprint
 from err import AccountBuilderException
 from exchange import AccountBuildRequest
-from fabrication import AccountBuildLoader
 from production import BuildFactory
 from transit import AccountBuildRouter
 from util import LoggingLevelRouter
@@ -81,10 +80,9 @@ class AccountBuilder(BuildFactory[Account]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint preparation. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+       # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 AccountBuilderException(
@@ -92,11 +90,11 @@ class AccountBuilder(BuildFactory[Account]):
                     cls_name=self.__class__.__name__,
                     msg=AccountBuilderException.MSG,
                     err_code=AccountBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(AccountBlueprint, loading.payload)
+        blueprint = cast(AccountBlueprint, bootstrap.payload)
         result = self.router.execute(blueprint)
         
         # Handle the case that a product is not routed back.
@@ -108,7 +106,7 @@ class AccountBuilder(BuildFactory[Account]):
                     cls_name=self.__class__.__name__,
                     msg=AccountBuilderException.MSG,
                     err_code=AccountBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Send the work product. ---#

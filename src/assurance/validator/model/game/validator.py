@@ -73,8 +73,8 @@ class GameValidator(ModelValidator[Game]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GameValidatorException(
@@ -82,11 +82,11 @@ class GameValidator(ModelValidator[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameValidatorException.MSG,
                     err_code=GameValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(GamePrimeExtract, loading.payload)
+        extract = cast(GamePrimeExtract, bootstrap.payload)
         carrier = extract.reference
         fingerprint = carrier.extract_blueprint()
         

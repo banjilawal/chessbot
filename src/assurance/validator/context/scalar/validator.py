@@ -74,9 +74,9 @@ class ScalarValidator(ContextValidator[Scalar]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidatorException(
@@ -84,15 +84,15 @@ class ScalarValidator(ContextValidator[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(ScalarPrimeExtract, loading.payload)
-        carrier = extract.reference
-        blueprint = carrier.extract_blueprint()
+        extract = cast(ScalarPrimeExtract, bootstrap.payload)
+        reference = extract.reference
+        fingerprint = reference.extract_blueprint()
         
-        if blueprint is None:
+        if fingerprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidatorException(
@@ -111,7 +111,7 @@ class ScalarValidator(ContextValidator[Scalar]):
         # Handle the case that the magnitude is out of bounds.
         ceiling = BoardSetting.diagonal_length() - 1
         magnitude_validation = self.toolkit.number_validator.execute(
-            candidate=blueprint.magnitude,
+            candidate=fingerprint.magnitude,
             floor= (-1 * ceiling),
             ceiling=ceiling,
         )
@@ -132,14 +132,12 @@ class ScalarValidator(ContextValidator[Scalar]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Scalar.
-        if extract.recipient_wants_context:
-            payload = ScalarCarrier(
-                context=Scalar(magnitude=magnitude)
-            )
+        if extract.recipient_wants_model:
+            model = Scalar(magnitude=magnitude)
+            payload = ScalarCarrier(model=model)
             return ValidationResult.success(payload)
-        
         # Otherwise, the client is a ScalarBuilder that needs a Blueprint.
-        payload = ScalarCarrier(
-            blueprint=ScalarBlueprint(magnitude=magnitude)
-        )
+        blueprint = ScalarBlueprint(magnitude=magnitude)
+        blueprint.mark_as_validated()
+        payload = ScalarCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)

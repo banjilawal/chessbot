@@ -71,8 +71,8 @@ class TeamValidator(ModelValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidatorException(
@@ -80,11 +80,11 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(TeamPrimeExtract, loading.payload)
+        extract = cast(TeamPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         

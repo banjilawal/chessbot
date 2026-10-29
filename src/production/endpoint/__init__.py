@@ -10,6 +10,6 @@ version: 0.0.2
 # =========== PRODUCTION.ENDPOINT PACKAGE ===========#
 
 # Packages
-from production.endpoint.validation.envelope import *
+from .validation import *
 
 # Modules

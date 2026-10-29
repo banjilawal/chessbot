@@ -75,9 +75,9 @@ class VectorValidator(ContextValidator[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidatorException(
@@ -85,11 +85,11 @@ class VectorValidator(ContextValidator[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorValidatorException.MSG,
                     err_code=VectorValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(VectorPrimeExtract, loading.payload)
+        extract = cast(VectorPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
@@ -132,9 +132,9 @@ class VectorValidator(ContextValidator[Vector]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Vector.
-        if extract.recipient_wants_context:
-            payload = VectorCarrier(
-                context=Vector(x=x, y=y)
+        if extract.recipient_wants_model:
+            payload = VectorScalarCarrier(
+                model=Vector(x=x, y=y)
             )
             return ValidationResult.success(payload)
         

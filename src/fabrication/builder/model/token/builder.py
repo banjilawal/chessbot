@@ -80,10 +80,9 @@ class TokenBuilder(BuildFactory[Token]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint preparation. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+       # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuilderException(
@@ -91,11 +90,11 @@ class TokenBuilder(BuildFactory[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(TokenBlueprint, loading.payload)
+        blueprint = cast(TokenBlueprint, bootstrap.payload)
         result = self.router.execute(blueprint)
         
         # Handle the case that a product is not routed back.
@@ -107,7 +106,7 @@ class TokenBuilder(BuildFactory[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Send the work product. ---#

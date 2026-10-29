@@ -24,9 +24,9 @@ class HumanAccount(Account):
         4.  Can look up their previous games.
 
      Attributes:
-        id: int
         firstname: str
         lastname: str
+        email: str
 
      Provides:
 
@@ -35,21 +35,25 @@ class HumanAccount(Account):
      """
     _firstname: str
     _lastname: str
+    _email: str
     
     def __init__(
             self,
             id: int,
             firstname: str,
             lastname: str,
+            email: str
     ):
         """
         Args:
             firstname: str
             lastname: str
+            email: str
         """
         super().__init__(id=id)
         self._firstname = firstname
         self._lastname = lastname
+        self._email = email
         
     @property
     def firstname(self) -> str:
@@ -58,6 +62,10 @@ class HumanAccount(Account):
     @property
     def lastname(self) -> str:
         return self._lastname
+    
+    @property
+    def email(self) -> str:
+        return self._email
     
     def __eq__(self, other):
         if other is self: return True

@@ -70,9 +70,9 @@ class FootstepValidator(ModelValidator[Footstep]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 FootstepValidatorException(
@@ -80,11 +80,11 @@ class FootstepValidator(ModelValidator[Footstep]):
                     cls_name=self.__class__.__name__,
                     msg=FootstepValidatorException.MSG,
                     err_code=FootstepValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(FootstepPrimeExtract, loading.payload)
+        extract = cast(FootstepPrimeExtract, bootstrap.payload)
         fingerprint = cast(FootstepBlueprint, extract.blueprint)
         
         # Handle the case that the footstep has an inconsistency.

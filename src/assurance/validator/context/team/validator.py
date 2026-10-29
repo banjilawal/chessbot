@@ -74,8 +74,8 @@ class TeamValidator(ContextValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidatorException(
@@ -83,11 +83,11 @@ class TeamValidator(ContextValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(TeamPrimeExtract, loading.payload)
+        extract = cast(TeamPrimeExtract, bootstrap.payload)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
@@ -188,7 +188,7 @@ class TeamValidator(ContextValidator[Team]):
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Team.
-        if extract.recipient_wants_context:
+        if extract.recipient_wants_model:
             payload = Team(
                 id=id,
                 board=board,

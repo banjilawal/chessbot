@@ -73,9 +73,9 @@ class FootstepValidator(ContextValidator[Footstep]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 FootstepValidatorException(
@@ -83,11 +83,11 @@ class FootstepValidator(ContextValidator[Footstep]):
                     cls_name=self.__class__.__name__,
                     msg=FootstepValidatorException.MSG,
                     err_code=FootstepValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(FootstepPrimeExtract, loading.payload)
+        extract = cast(FootstepPrimeExtract, bootstrap.payload)
         blueprint = cast(FootstepBlueprint, extract.blueprint)
         
         # Handle the case that the footstep has an inconsistency.
@@ -133,9 +133,9 @@ class FootstepValidator(ContextValidator[Footstep]):
             safe_coords[key] = cast(Coord, coord_validation.payload)
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Team.
-        if extract.recipient_wants_context:
-            payload = FootstepCarrier(
-                context=Footstep(
+        if extract.recipient_wants_model:
+            payload = FootstepScalarCarrier(
+                model=Footstep(
                     position=safe_coords["position"],
                     previous_position=safe_coords["previous_position"],
                 )

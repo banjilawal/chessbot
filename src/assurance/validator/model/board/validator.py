@@ -82,9 +82,9 @@ class BoardValidator(ModelValidator[Board]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(item)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(item)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidatorException(
@@ -92,11 +92,11 @@ class BoardValidator(ModelValidator[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardValidatorException.MSG,
                     err_code=BoardValidatorException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(BoardPrimeExtract, loading.payload)
+        extract = cast(BoardPrimeExtract, bootstrap.payload)
         reference = extract.reference
         fingerprint = reference.extract_blueprint()
         # Handle the case that the blueprint is null.

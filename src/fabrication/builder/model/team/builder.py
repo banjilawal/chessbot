@@ -69,9 +69,8 @@ class TeamBuilder(ModelBuilder[Team]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        loading = self.loader.execute(request=request)
-        # Handle the case that the loader aborts.
-        if loading.is_failure:
+        bootstrap = self.loader.execute(request=request)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamBuilderException(
@@ -79,11 +78,11 @@ class TeamBuilder(ModelBuilder[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamBuilderException.MSG,
                     err_code=TeamBuilderException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(TeamBlueprint, loading.payload)
+        blueprint = cast(TeamBlueprint, bootstrap.payload)
         id = blueprint.id or IdFactory.next_id(class_name="Team")
         
         # --- Assemble and send the work product. ---#

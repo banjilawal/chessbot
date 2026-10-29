@@ -80,9 +80,9 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        loading = self.loader.execute(candidate)
-        if loading.is_failure:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(candidate)
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareEnvelopeProducerException(
@@ -90,11 +90,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareEnvelopeProducerException.MSG,
                     err_code=SquareEnvelopeProducerException.ERR_CODE,
-                    ex=loading.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(SquarePrimeExtract, loading.payload)
+        prime_extract = cast(SquarePrimeExtract, bootstrap.payload)
         carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         
