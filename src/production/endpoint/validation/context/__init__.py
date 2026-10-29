@@ -15,4 +15,4 @@ from .id import *
 from .name import *
 
 # Modules
-from .flag import ContextFlagValidator
+from .inspector import ContextInspector

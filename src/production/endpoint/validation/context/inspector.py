@@ -20,7 +20,25 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Context")
 
-class ContextFlagValidator(ABC, Generic[T]):
+class ContextInspector(ABC, Generic[T]):
+    """
+    Role
+        - Integrity, Consistency Maintenance
+
+    Responsibilities:
+        1.  Ensure a ContextCarrier and its payload are safe to use.
+
+    Attributes:
+        toolkit: LayerToolkit
+
+    Provides:
+        -   def execute(
+                    candidate: Any,
+                    prime_extract: ContextPrimeExtract,
+            ) -> ValidationResult[ContextCarrier[T]]
+
+    Super Class:
+    """
     
     _toolkit: LayerToolkit
     
@@ -38,4 +56,15 @@ class ContextFlagValidator(ABC, Generic[T]):
             candidate: Any,
             prime_extract: ContextPrimeExtract[T],
     ) -> ValidationResult[ContextCarrier[T]]:
+        """
+        Assure a candidate is a safe Context to use or build.
+
+        Args:
+            candidate: Any
+            prime_extract: AccountContextPrimeExtract
+        Returns:
+            ValidationResult[ContextCarrier[T]]
+        Raises:
+            ContextInspectorException
+        """
         pass

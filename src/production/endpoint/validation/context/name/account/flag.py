@@ -13,12 +13,12 @@ from typing import Any, cast
 
 from artifcat import ValidationResult
 from domain import AccountContext, AccountContextBlueprint, AccountContextPrimeExtract
-from production import IdContextFlagValidator
+from production import IdContextInspector
 from transit import AccountContextCarrier
 from util import LoggingLevelRouter
 
 
-class AccountIdContextFlag(IdContextFlagValidator[AccountContext]):
+class AccountIdContextFlag(IdContextInspector[AccountContext]):
     
     def __init__(self):
         super().__init__()
@@ -34,11 +34,11 @@ class AccountIdContextFlag(IdContextFlagValidator[AccountContext]):
         fingerprint = prime_extract.reference.extract_blueprint()
         if fingerprint is None or fingerprint.id is None:
             return ValidationResult.failure(
-                AccountIdContextFlagException(
+                AccountIdContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountIdContextFlagException.MSG,
-                    err_code=AccountIdContextFlagException.ERR_CODE,
+                    msg=AccountIdContextInspectorException.MSG,
+                    err_code=AccountIdContextInspectorException.ERR_CODE,
                     ex=AccountContextCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -50,11 +50,11 @@ class AccountIdContextFlag(IdContextFlagValidator[AccountContext]):
         validation = self.identity_service.validate_id(candidate)
         if validation.is_failure:
             return ValidationResult.failure(
-                AccountIdContextFlagException(
+                AccountIdContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountIdContextFlagException.MSG,
-                    err_code=AccountIdContextFlagException.ERR_CODE,
+                    msg=AccountIdContextInspectorException.MSG,
+                    err_code=AccountIdContextInspectorException.ERR_CODE,
                     ex=validation.exception,
                 )
             )

@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Context")
 
-class NameContextFlagValidator(ABC, Generic[T]):
+class NameContextInspector(ABC, Generic[T]):
 
     identity_service: IdentityService
     

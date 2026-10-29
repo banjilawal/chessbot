@@ -1,7 +1,7 @@
-# src/production/endpoint/validation/context/flag.py
+# src/production/endpoint/validation/context/account/firstname/inspector.py
 
 """
-Module: production.endpoint.validation.context.flag
+Module: production.endpoint.validation.context.account.firstname.inspector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,25 +9,23 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Generic, List, Optional, TypeVar, cast
+from typing import Any, List, cast
 
 from artifcat import ValidationResult
-from assurance import AccountLayerToolkit
 from domain import AccountContext, AccountContextBlueprint, AccountContextPrimeExtract
-from err import ConsistencyException, ContextConsistencyException, NameNullException
-from production import AccountContextFlagValidator, ContextFlagValidator
+from err import NameNullException
+from production import AccountContextInspector
 from transit import AccountContextCarrier
 from util import LoggingLevelRouter
 
-class AccountFirstnameContext(AccountContextFlagValidator[str]):
+class AccountFirstnameContextInspector(AccountContextInspector[str]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  The context attribute is safe
-
+        1.  Ensure an AccountContextCarrier with a firstname payload is safe to use.
+        
     Attributes:
         toolkit: AccountLayerToolkit
 
@@ -38,7 +36,7 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
             ) -> ValidationResult[AccountContextCarrier]
 
     Super Class:
-        AccountContextFlagValidator
+        AccountContextInspector
     """
     def __init__(self):
         super().__init__()
@@ -50,21 +48,23 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
             prime_extract: AccountContextPrimeExtract,
     ) -> ValidationResult[AccountContextCarrier]:
         """
-        Assure a candidate is a firstname search context.
+        Assure a candidate is a safe Account-firstname-Context to use or build.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The prime_extract is faulty.
                     -   The blueprint.firstname attribute is null
-                    -   The candidate is marked unsafe.
+                    -   Either candidate or blueprint.firstname are flagged.
+                    -   THe candidate and blueprint.firstname do not match.
             2.  Otherwise, encapsulate the requested product in the success result.
         Args:
             candidate: Any
+            prime_extract: AccountContextPrimeExtract
         Returns:
             ValidationResult[AccountContextCarrier]
         Raises:
-            AccountFirstnameContextFlagException
+            AccountFirstnameContextInspectorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -75,11 +75,11 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
         if fingerprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountFirstnameContextFlagException(
+                AccountFirstnameContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountFirstnameContextFlagException.MSG,
-                    err_code=AccountFirstnameContextFlagException.ERR_CODE,
+                    msg=AccountFirstnameContextInspectorException.MSG,
+                    err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                     ex=AccountContextCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -92,11 +92,11 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
         if fingerprint.firstname is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountFirstnameContextFlagException(
+                AccountFirstnameContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountFirstnameContextFlagException.MSG,
-                    err_code=AccountFirstnameContextFlagException.ERR_CODE,
+                    msg=AccountFirstnameContextInspectorException.MSG,
+                    err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                     ex=NameNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -113,11 +113,11 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    AccountFirstnameContextFlagException(
+                    AccountFirstnameContextInspectorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AccountFirstnameContextFlagException.MSG,
-                        err_code=AccountFirstnameContextFlagException.ERR_CODE,
+                        msg=AccountFirstnameContextInspectorException.MSG,
+                        err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
@@ -126,11 +126,11 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
         if values[0] == values[1]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountFirstnameContextFlagException(
+                AccountFirstnameContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountFirstnameContextFlagException.MSG,
-                    err_code=AccountFirstnameContextFlagException.ERR_CODE,
+                    msg=AccountFirstnameContextInspectorException.MSG,
+                    err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                     ex=AccountContextConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -143,11 +143,13 @@ class AccountFirstnameContext(AccountContextFlagValidator[str]):
         firstname = values[0]
         
         # --- Forward the appropriate work product to the caller. ---#
+        
         # The client wants a safe AccountContext.
         if prime_extract.recipient_wants_model:
             model = AccountContext(firstname=firstname)
             payload = AccountContextCarrier(model=model)
             return ValidationResult.success(payload)
+        
         # Otherwise, the client is an AccountContextBuilder that needs a Blueprint.
         blueprint = AccountContextBlueprint(firstname=firstname)
         blueprint.mark_as_validated()
