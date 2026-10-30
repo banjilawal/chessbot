@@ -15,7 +15,6 @@ from typing import Generic, TypeVar, cast
 from artifcat import InsertionResult
 from exchange import InsertionRequest
 from operation import CrudWorker
-from transit import PushPermissionPermitter
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="InsertionRequest")

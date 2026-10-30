@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.CRUD PACKAGE ===========#
 
 # Packages
+from .decision import *
 from .insertion import *
+from .search import *
 
 # Modules
 from .decision import CrudDecision

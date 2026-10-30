@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Optional, cast
 
-from artifcat import InsertionResult, InsertionResult
+from artifcat import InsertionResult
 from collection import AccountStack
 from domain import Account
 from err import AccountPusherException
