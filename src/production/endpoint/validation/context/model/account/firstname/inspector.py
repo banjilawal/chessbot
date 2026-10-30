@@ -1,7 +1,7 @@
-# src/production/endpoint/validation/context/account/machine/inspector.py
+# src/production/endpoint/validation/context/model/account/firstname/inspector.py
 
 """
-Module: production.endpoint.validation.context.account.machine.inspector
+Module: production.endpoint.validation.context.model.account.firstname.inspector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -18,13 +18,13 @@ from production import AccountContextInspector
 from transit import AccountContextCarrier
 from util import LoggingLevelRouter
 
-class AccountMachineNameContextInspector(AccountContextInspector[str]):
+class AccountFirstnameContextInspector(AccountContextInspector[str]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure an AccountContextCarrier with a machine_name payload is safe to use.
+        1.  Ensure an AccountContextCarrier with a firstname payload is safe to use.
         
     Attributes:
         toolkit: AccountLayerToolkit
@@ -48,15 +48,15 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
             prime_extract: AccountContextPrimeExtract,
     ) -> ValidationResult[AccountContextCarrier]:
         """
-        Assure a candidate is a safe Account-machine_name-Context to use or build.
+        Assure a candidate is a safe Account-firstname-Context to use or build.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The prime_extract is faulty.
-                    -   The blueprint.machine_name attribute is null
-                    -   Either candidate or blueprint.machine_name is flagged.
-                    -   THe candidate and blueprint.machine_name do not match.
+                    -   The blueprint.firstname attribute is null
+                    -   Either candidate or blueprint.firstname is flagged.
+                    -   THe candidate and blueprint.firstname do not match.
             2.  Otherwise, encapsulate the requested product in the success result.
         Args:
             candidate: Any
@@ -64,7 +64,7 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
         Returns:
             ValidationResult[AccountContextCarrier]
         Raises:
-            AccountMachineNameContextInspectorException
+            AccountFirstnameContextInspectorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -75,11 +75,11 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
         if fingerprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountMachineNameContextInspectorException(
+                AccountFirstnameContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountMachineNameContextInspectorException.MSG,
-                    err_code=AccountMachineNameContextInspectorException.ERR_CODE,
+                    msg=AccountFirstnameContextInspectorException.MSG,
+                    err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                     ex=AccountContextCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -88,15 +88,15 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
                     )
                 )
             )
-        # Handle the case that the machine_name attribute is not set.
-        if fingerprint.machine_name is None:
+        # Handle the case that the firstname attribute is not set.
+        if fingerprint.firstname is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountMachineNameContextInspectorException(
+                AccountFirstnameContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountMachineNameContextInspectorException.MSG,
-                    err_code=AccountMachineNameContextInspectorException.ERR_CODE,
+                    msg=AccountFirstnameContextInspectorException.MSG,
+                    err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                     ex=NameNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -107,17 +107,17 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
             )
         # --- Process corresponding blueprint and candidate attributes. --#
         safe_values: List[str] = []
-        for item in [candidate, fingerprint.machine_name]:
+        for item in [candidate, fingerprint.firstname]:
             # Handle the case that an item is not a string
             validation = self.toolkit.identity_service.validate_name(item)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    AccountMachineNameContextInspectorException(
+                    AccountFirstnameContextInspectorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AccountMachineNameContextInspectorException.MSG,
-                        err_code=AccountMachineNameContextInspectorException.ERR_CODE,
+                        msg=AccountFirstnameContextInspectorException.MSG,
+                        err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
@@ -126,11 +126,11 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
         if safe_values[0] == safe_values[1]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountMachineNameContextInspectorException(
+                AccountFirstnameContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountMachineNameContextInspectorException.MSG,
-                    err_code=AccountMachineNameContextInspectorException.ERR_CODE,
+                    msg=AccountFirstnameContextInspectorException.MSG,
+                    err_code=AccountFirstnameContextInspectorException.ERR_CODE,
                     ex=AccountContextConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -140,18 +140,18 @@ class AccountMachineNameContextInspector(AccountContextInspector[str]):
                 )
             )
         # --- Extract the validation payload. ---#
-        machine_name = safe_values[0]
+        firstname = safe_values[0]
         
         # --- Forward the appropriate work product to the caller. ---#
         
         # The client wants a safe AccountContext.
         if prime_extract.recipient_wants_model:
-            model = AccountContext(machine_name=machine_name)
+            model = AccountContext(firstname=firstname)
             payload = AccountContextCarrier(model=model)
             return ValidationResult.success(payload)
         
         # Otherwise, the client is an AccountContextBuilder that needs a Blueprint.
-        blueprint = AccountContextBlueprint(machine_name=machine_name)
+        blueprint = AccountContextBlueprint(firstname=firstname)
         blueprint.mark_as_validated()
         payload = AccountContextCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)

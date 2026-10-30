@@ -1,7 +1,7 @@
-# src/production/endpoint/validation/context/account/lastname/inspector.py
+# src/production/endpoint/validation/context/model/account/category/inspector.py
 
 """
-Module: production.endpoint.validation.context.account.lastname.inspector
+Module: production.endpoint.validation.context.model.account.category.inspector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from artifcat import ValidationResult
-from domain import AccountContext, AccountContextBlueprint, AccountContextPrimeExtract
-from err import NameNullException
+from domain import AccountContext, AccountContextBlueprint, AccountContextPrimeExtract, AccountType
+from err import NameNullException, NullException
 from production import AccountContextInspector
 from transit import AccountContextCarrier
 from util import LoggingLevelRouter
 
-class AccountLastnameContextInspector(AccountContextInspector[str]):
+class AccountCategoryContextInspector(AccountContextInspector[str]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure an AccountContextCarrier with a lastname payload is safe to use.
+        1.  Ensure an AccountContextCarrier with a category payload is safe to use.
         
     Attributes:
         toolkit: AccountLayerToolkit
@@ -48,15 +48,15 @@ class AccountLastnameContextInspector(AccountContextInspector[str]):
             prime_extract: AccountContextPrimeExtract,
     ) -> ValidationResult[AccountContextCarrier]:
         """
-        Assure a candidate is a safe Account-lastname-Context to use or build.
+        Assure a candidate is a safe Account-category-Context to use or build.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The prime_extract is faulty.
-                    -   The blueprint.lastname attribute is null
-                    -   Either candidate or blueprint.lastname is flagged.
-                    -   THe candidate and blueprint.lastname do not match.
+                    -   The blueprint.category attribute is null
+                    -   Either candidate or blueprint.category is flagged.
+                    -   THe candidate and blueprint.category do not match.
             2.  Otherwise, encapsulate the requested product in the success result.
         Args:
             candidate: Any
@@ -64,7 +64,7 @@ class AccountLastnameContextInspector(AccountContextInspector[str]):
         Returns:
             ValidationResult[AccountContextCarrier]
         Raises:
-            AccountLastnameContextInspectorException
+            AccountCategoryContextInspectorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -75,11 +75,11 @@ class AccountLastnameContextInspector(AccountContextInspector[str]):
         if fingerprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountLastnameContextInspectorException(
+                AccountCategoryContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountLastnameContextInspectorException.MSG,
-                    err_code=AccountLastnameContextInspectorException.ERR_CODE,
+                    msg=AccountCategoryContextInspectorException.MSG,
+                    err_code=AccountCategoryContextInspectorException.ERR_CODE,
                     ex=AccountContextCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -88,15 +88,15 @@ class AccountLastnameContextInspector(AccountContextInspector[str]):
                     )
                 )
             )
-        # Handle the case that the lastname attribute is not set.
-        if fingerprint.lastname is None:
+        # Handle the case that the category attribute is not set.
+        if fingerprint.account_type is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountLastnameContextInspectorException(
+                AccountCategoryContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountLastnameContextInspectorException.MSG,
-                    err_code=AccountLastnameContextInspectorException.ERR_CODE,
+                    msg=AccountCategoryContextInspectorException.MSG,
+                    err_code=AccountCategoryContextInspectorException.ERR_CODE,
                     ex=NameNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -106,31 +106,24 @@ class AccountLastnameContextInspector(AccountContextInspector[str]):
                 )
             )
         # --- Process corresponding blueprint and candidate attributes. --#
-        safe_values: List[str] = []
-        for item in [candidate, fingerprint.lastname]:
+        safe_values: List[AccountType] = []
+        for item in [candidate, fingerprint.account_type]:
             # Handle the case that an item is not a string
-            validation = self.toolkit.identity_service.validate_name(item)
-            if validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    AccountLastnameContextInspectorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountLastnameContextInspectorException.MSG,
-                        err_code=AccountLastnameContextInspectorException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-            safe_values.append = cast(str, validation.payload)
+            validation = self.toolkit.priming_validator.execute(
+                candidate=item,
+                target_model=AccountType,
+                null_exception=NullException()
+            )
+            safe_values.append = cast(AccountType, validation.payload)
         # Handle the case that candidate does not match the blueprint attribute
         if safe_values[0] == safe_values[1]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountLastnameContextInspectorException(
+                AccountCategoryContextInspectorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountLastnameContextInspectorException.MSG,
-                    err_code=AccountLastnameContextInspectorException.ERR_CODE,
+                    msg=AccountCategoryContextInspectorException.MSG,
+                    err_code=AccountCategoryContextInspectorException.ERR_CODE,
                     ex=AccountContextConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -140,18 +133,18 @@ class AccountLastnameContextInspector(AccountContextInspector[str]):
                 )
             )
         # --- Extract the validation payload. ---#
-        lastname = safe_values[0]
+        account_type = safe_values[0]
         
         # --- Forward the appropriate work product to the caller. ---#
         
         # The client wants a safe AccountContext.
         if prime_extract.recipient_wants_model:
-            model = AccountContext(lastname=lastname)
+            model = AccountContext(account_type=account_type)
             payload = AccountContextCarrier(model=model)
             return ValidationResult.success(payload)
         
         # Otherwise, the client is an AccountContextBuilder that needs a Blueprint.
-        blueprint = AccountContextBlueprint(lastname=lastname)
+        blueprint = AccountContextBlueprint(account_type=account_type)
         blueprint.mark_as_validated()
         payload = AccountContextCarrier(blueprint=blueprint)
         return ValidationResult.success(payload)

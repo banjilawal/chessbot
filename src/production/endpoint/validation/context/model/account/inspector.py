@@ -1,7 +1,7 @@
-# src/production/endpoint/validation/context/account/inspector.py
+# src/production/endpoint/validation/context/model/account/inspector.py
 
 """
-Module: production.endpoint.validation.context.account.inspector
+Module: production.endpoint.validation.context.model.account.inspector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

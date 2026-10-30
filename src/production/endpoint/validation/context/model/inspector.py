@@ -1,7 +1,7 @@
-# src/production/endpoint/validation/context/flag.py
+# src/production/endpoint/validation/context/model/inspector.py
 
 """
-Module: production.endpoint.validation.context.flag
+Module: production.endpoint.validation.context.model.inspector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
