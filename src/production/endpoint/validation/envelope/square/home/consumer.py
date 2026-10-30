@@ -128,7 +128,7 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
             )
         # --- PROCESS_FORMATION_ATTRIBUTE. ---#
         formation_validation = self._toolkit.priming_validator.execute(
-            item=blueprint.formation,
+            candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),
         )

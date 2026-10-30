@@ -60,7 +60,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
         return cast(ManeuverLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ManeuverPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[ManeuverPrimeExtract]:
         """
         Extract the ManeuverBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
             2.  Otherwise, pack the original carrier and the blueprint in a ManeuverPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[ManeuverPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=ManeuverValidationRequest,
             null_exception=ManeuverValidationRequestNullException(),
         )

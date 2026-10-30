@@ -61,7 +61,7 @@ class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
         return cast(TeamBinderLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[TeamBinderPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[TeamBinderPrimeExtract]:
         """
         Extract the TeamBinderBlueprint to validate the candidate.
 
@@ -77,7 +77,7 @@ class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
             2.  Otherwise, pack the original carrier and the blueprint in a
                 TeamBinderPrimeExtract for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[TeamBinderPrimeExtract]
         Raises:
@@ -87,7 +87,7 @@ class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=TeamBinderValidationRequest,
             null_exception=TeamBinderValidationRequestNullException(),
         )

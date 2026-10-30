@@ -74,7 +74,7 @@ class EncounterBuildLoader(ModelBuildLoader[Encounter]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=EncounterBuildRequest,
             null_exception=EncounterBuildRequestNullException(),
         )

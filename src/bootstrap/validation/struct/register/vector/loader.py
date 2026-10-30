@@ -59,7 +59,7 @@ class VectorRegisterLoader(RegisterValidationLoader[VectorRegister]):
         return cast(VectorRegisterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[VectorRegister]:
+    def execute(self, bootstrap: Any) -> ValidationResult[VectorRegister]:
         """
         Model the VectorRegisterBlueprint to validate the candidate.
 
@@ -75,7 +75,7 @@ class VectorRegisterLoader(RegisterValidationLoader[VectorRegister]):
             2.  Otherwise, pack the original carrier and the blueprint in a VectorRegister
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[VectorRegister]
         Raises:
@@ -85,7 +85,7 @@ class VectorRegisterLoader(RegisterValidationLoader[VectorRegister]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=VectorRegisterValidationRequest,
             null_exception=VectorRegisterValidationRequestNullException(),
         )

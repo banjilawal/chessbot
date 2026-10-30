@@ -20,5 +20,5 @@ from transit import ModelCarrier
 
 class ArenaValidator(ModelValidator[Arena]):
     
-    def execute(self, item: Any) -> ValidationResult[ModelCarrier[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[ModelCarrier[T]]:
         pass

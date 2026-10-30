@@ -52,7 +52,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         return cast(ScalarValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ScalarCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[ScalarCarrier]:
         """
         Assure a candidate is a safe ScalarCarrier.
 
@@ -63,7 +63,7 @@ class ScalarValidator(ModelValidator[Scalar]):
                     -   Either the id, board, or owner are flagged unsafe.
             2.  Otherwise, send a ScalarCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[ScalarCarrier]
         Raises:
@@ -72,7 +72,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -108,7 +108,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         # Handle the case that the magnitude is out of bounds.
         ceiling = BoardSetting.diagonal_length() - 1
         magnitude_validation = self.loader.number_validator.execute(
-            item=blueprint.magnitude,
+            candidate=blueprint.magnitude,
             floor= (-1 * ceiling),
             ceiling=ceiling,
         )

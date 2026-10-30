@@ -58,7 +58,7 @@ class PathValidator(ContextValidator[Path]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[PathCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[PathCarrier]:
         """
         Assure a candidate is a safe PathCarrier.
 
@@ -72,7 +72,7 @@ class PathValidator(ContextValidator[Path]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[PathCarrier]
         Raises:
@@ -81,7 +81,7 @@ class PathValidator(ContextValidator[Path]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

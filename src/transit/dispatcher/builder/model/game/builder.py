@@ -93,7 +93,7 @@ class GameBuilder(ModelBuilder[Game]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            item=cast(
+            candidate=cast(
                 GameBlueprint,
                 blueprint_validation.payload
             )

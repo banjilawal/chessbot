@@ -60,7 +60,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
         return cast(ScalarLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ScalarPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[ScalarPrimeExtract]:
         """
         Extract the ScalarBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
             2.  Otherwise, pack the original carrier and the blueprint in a ScalarPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[ScalarPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
         
         # Handle the case that the candidate is null or the wrong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=ScalarValidationRequest,
             null_exception=ScalarValidationRequestNullException(),
         )

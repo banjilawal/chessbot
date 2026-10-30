@@ -93,7 +93,7 @@ class EdgeBuilder(ModelBuilder[Edge]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            item=cast(
+            candidate=cast(
                 EdgeBlueprint,
                 blueprint_validation.payload
             )

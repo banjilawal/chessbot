@@ -61,7 +61,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[TeamBinderCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamBinderCarrier]:
         """
         Certify a TeamBinder's payload is either a TeamBinder or a Blueprint 
         that is safe to use.
@@ -78,7 +78,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
             2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[TeamBinder]
         Raises:
@@ -87,7 +87,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        loader = self.loader.execute(item)
+        loader = self.loader.execute(candidate)
         if loader.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

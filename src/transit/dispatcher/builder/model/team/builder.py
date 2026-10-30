@@ -93,7 +93,7 @@ class TeamBuilder(ModelBuilder[Team]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            item=cast(
+            candidate=cast(
                 TeamBlueprint,
                 blueprint_validation.payload
             )

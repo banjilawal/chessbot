@@ -134,7 +134,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             )
         # --- PROCESS_THE_ID_ATTRIBUTE. ---#
         id_validation = self.toolkit.blueprint_id_extractor.execute(
-            item=blueprint,
+            candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.types.blueprint,
             blueprint_null_exception=self.toolkit.nulls.blueprint,
@@ -169,7 +169,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             )
         # --- PROCESS_THE_STATE_ATTRIBUTE. ---#
         state_validation = self.toolkit.priming_validator.execute(
-            item=blueprint.validation_state,
+            candidate=blueprint.validation_state,
             target_model=SquareState,
             null_exception=SquareStateNullException(),
         )

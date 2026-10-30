@@ -53,11 +53,11 @@ class ModelValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ModelPrimeExtract[T]]:
+    def execute(self, bootstrap: Any) -> ValidationResult[ModelPrimeExtract[T]]:
         """
         Extract a safe ModelBlueprint from the candidate.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[ModelBlueprint[T]]
         Raises:

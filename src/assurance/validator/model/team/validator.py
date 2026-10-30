@@ -51,7 +51,7 @@ class TeamValidator(ModelValidator[Team]):
         return cast(TeamValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[TeamCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -62,7 +62,7 @@ class TeamValidator(ModelValidator[Team]):
                     -   Either the id, board, or owner are flagged unsafe.
             2.  Otherwise, send a TeamCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[TeamCarrier]
         Raises:
@@ -71,7 +71,7 @@ class TeamValidator(ModelValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -107,7 +107,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.loader.blueprint_id_extractor.execute(
-            item=blueprint,
+            candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.loader.manifest.types.blueprint,
             blueprint_null_exception=self.loader.manifest.nulls.blueprint,
@@ -125,7 +125,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # Handle the case that the archetype does not pass a validation check.
         archetype_validation = self.loader.priming_validator.execute(
-            item=blueprint.archetype,
+            candidate=blueprint.archetype,
             target_model=Archetype,
             null_exception=ArchetypeNullException(),
         )

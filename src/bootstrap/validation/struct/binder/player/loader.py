@@ -60,7 +60,7 @@ class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
         return cast(PlayerBinderLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[PlayerBinderPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[PlayerBinderPrimeExtract]:
         """
         Extract the PlayerBinderBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
             2.  Otherwise, pack the original carrier and the blueprint in a
                 PlayerBinderPrimeExtract for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[PlayerBinderPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=PlayerBinderValidationRequest,
             null_exception=PlayerBinderValidationRequestNullException(),
         )

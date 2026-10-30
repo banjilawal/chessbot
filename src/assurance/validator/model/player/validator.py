@@ -54,7 +54,7 @@ class PlayerValidator(ModelValidator[Player]):
         return cast(PlayerValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[PlayerCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[PlayerCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -65,7 +65,7 @@ class PlayerValidator(ModelValidator[Player]):
                     -   Either the id, account, or game are flagged unsafe.
             2.  Otherwise, send a PlayerCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[PlayerCarrier]
         Raises:
@@ -74,7 +74,7 @@ class PlayerValidator(ModelValidator[Player]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -109,7 +109,7 @@ class PlayerValidator(ModelValidator[Player]):
             )
         # Handle the case that the archetype does not pass a validation check.
         archetype_validation = self.loader.priming_validator.execute(
-            item=fingerprint.archetype,
+            candidate=fingerprint.archetype,
             target_model=Archetype,
             null_exception=ArchetypeNullException(),
         )
@@ -126,7 +126,7 @@ class PlayerValidator(ModelValidator[Player]):
             )
         # Handle the case that the game does not pass a validation check.
         game_validation = self.loader.priming_validator.execute(
-            item=fingerprint.game,
+            candidate=fingerprint.game,
             target_model=Game,
             null_exception=GameNullException(),
         )

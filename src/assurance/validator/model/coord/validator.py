@@ -54,7 +54,7 @@ class CoordValidator(ModelValidator[Coord]):
         return cast(CoordValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[CoordCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordCarrier]:
         """
         Assure a candidate is a safe CoordCarrier.
 
@@ -71,7 +71,7 @@ class CoordValidator(ModelValidator[Coord]):
             2.  Otherwise, send the recipient a carrier which has either a safe model or
                 blueprint in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[CoordCarrier]
         Raises:
@@ -80,7 +80,7 @@ class CoordValidator(ModelValidator[Coord]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

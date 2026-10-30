@@ -60,7 +60,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
         return cast(TeamLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[TeamPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[TeamPrimeExtract]:
         """
         Extract the TeamBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
             2.  Otherwise, pack the original carrier and the blueprint in a TeamPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[TeamPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class TeamValidationLoader(ModelValidationLoader[Team]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=TeamValidationRequest,
             null_exception=TeamValidationRequestNullException(),
         )

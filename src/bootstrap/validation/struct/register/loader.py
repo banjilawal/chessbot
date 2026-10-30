@@ -53,11 +53,11 @@ class RegisterValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[T]:
+    def execute(self, bootstrap: Any) -> ValidationResult[T]:
         """
         Model a safe RegisterBlueprint from the candidate.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[RegisterBlueprint[T]]
         Raises:

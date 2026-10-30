@@ -226,7 +226,7 @@ class TokenStackService(StackService[Token]):
         
         # --- Handoff request fulfilment to the controller. ---#
         request_result = self._controller.pusher.execute(
-            item=item,
+            candidate=item,
             stack=self,
         )
         # Handle the case that the request was not fulfilled.

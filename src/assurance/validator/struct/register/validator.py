@@ -53,11 +53,11 @@ class RegisterValidator(StructValidator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[RegisterCarrier[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[RegisterCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            item: Any
+            candidate: Any
         Returns:
            ValidationResult[RegisterCarrier[T]]
         Raises:

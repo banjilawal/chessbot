@@ -51,7 +51,7 @@ class FootstepValidator(ModelValidator[Footstep]):
         return cast(FootstepValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[FootstepCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[FootstepCarrier]:
         """
         Assure a candidate is a safe FootstepCarrier.
 
@@ -62,7 +62,7 @@ class FootstepValidator(ModelValidator[Footstep]):
                     -   The CoordValidator flags either existing position.
             2.  Otherwise, send the type of carrier extract indicates.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[Footstep]
         Raises:
@@ -71,7 +71,7 @@ class FootstepValidator(ModelValidator[Footstep]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

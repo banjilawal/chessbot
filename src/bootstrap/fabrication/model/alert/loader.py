@@ -74,7 +74,7 @@ class AlertBuildLoader(ModelBuildLoader[Alert]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=AlertBuildRequest,
             null_exception=AlertBuildRequestNullException(),
         )

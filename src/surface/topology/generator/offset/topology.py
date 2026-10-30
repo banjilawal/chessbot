@@ -85,7 +85,7 @@ class OffsetTopologyGenerator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the origin is not safe to use.
-        origin_validation = self._math_toolkit.vector.validator.execute(item=origin)
+        origin_validation = self._math_toolkit.vector.validator.execute(candidate=origin)
         if origin_validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(

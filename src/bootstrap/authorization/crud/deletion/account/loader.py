@@ -82,7 +82,7 @@ class AccountPushPermissionLoader(
         
         # Handle the case that priming is not completed.
         priming = self.priming_validator.execute(
-            item=candidate,
+            candidate=candidate,
             target_model=AccountPushPermissionRequest,
             null_exception=PermissionRequestNullException()
         )
@@ -105,7 +105,7 @@ class AccountPushPermissionLoader(
         )
         # Handle the case that permission_request.payload gets flagged.
         permission_payload_validation = self.priming_validator.execute(
-            item=permission_request.payload,
+            candidate=permission_request.payload,
             target_model=AccountPushRequest,
             null_exception=CrudRequestNullException()
         )
@@ -128,7 +128,7 @@ class AccountPushPermissionLoader(
         )
         # Handle the case that the collection has an error.
         collection_validation = self.priming_validator.execute(
-            item=transaction_request.collection,
+            candidate=transaction_request.collection,
             target_model=AccountStack,
             null_exception=AccountStackNullException(),
         )

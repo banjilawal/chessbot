@@ -60,7 +60,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
         return cast(BoardLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[BoardPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[BoardPrimeExtract]:
         """
         Extract the BoardBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
             2.  Otherwise, pack the original carrier and the blueprint in a BoardPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[BoardPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class BoardValidationLoader(ModelValidationLoader[Board]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=BoardValidationRequest,
             null_exception=BoardValidationRequestNullException(),
         )

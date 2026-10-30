@@ -60,7 +60,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
         return cast(ArenaLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ArenaPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[ArenaPrimeExtract]:
         """
         Extract the ArenaBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
             2.  Otherwise, pack the original carrier and the blueprint in a ArenaPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[ArenaPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class ArenaValidationLoader(ModelValidationLoader[Arena]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=ArenaValidationRequest,
             null_exception=ArenaValidationRequestNullException(),
         )

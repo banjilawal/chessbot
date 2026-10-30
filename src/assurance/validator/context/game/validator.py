@@ -59,7 +59,7 @@ class GameValidator(ContextValidator[Game]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[GameCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[GameCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -70,7 +70,7 @@ class GameValidator(ContextValidator[Game]):
                     -   Either the id, binder, or arena are flagged unsafe.
             2.  Otherwise, send a GameCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[GameCarrier]
         Raises:
@@ -79,7 +79,7 @@ class GameValidator(ContextValidator[Game]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

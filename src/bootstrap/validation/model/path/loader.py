@@ -60,7 +60,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
         return cast(PathLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[PathPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[PathPrimeExtract]:
         """
         Extract the PathBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
             2.  Otherwise, pack the original carrier and the blueprint in a PathPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[PathPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class PathValidationLoader(ModelValidationLoader[Path]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=PathValidationRequest,
             null_exception=PathValidationRequestNullException(),
         )

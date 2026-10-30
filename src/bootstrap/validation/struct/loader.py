@@ -53,11 +53,11 @@ class StructValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[T]:
+    def execute(self, bootstrap: Any) -> ValidationResult[T]:
         """
         Model a safe StructBlueprint from the candidate.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[T]
         Raises:

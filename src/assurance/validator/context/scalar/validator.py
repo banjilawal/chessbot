@@ -55,7 +55,7 @@ class ScalarValidator(ContextValidator[Scalar]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ScalarCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[ScalarCarrier]:
         """
         Assure a candidate is a safe ScalarCarrier.
 
@@ -66,7 +66,7 @@ class ScalarValidator(ContextValidator[Scalar]):
                     -   Either the id, board, or owner are flagged unsafe.
             2.  Otherwise, send a ScalarCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[ScalarCarrier]
         Raises:
@@ -75,7 +75,7 @@ class ScalarValidator(ContextValidator[Scalar]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -74,7 +74,7 @@ class AccountBuildLoader(ModelBuildLoader[Account]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=AccountBuildRequest,
             null_exception=AccountBuildRequestNullException(),
         )

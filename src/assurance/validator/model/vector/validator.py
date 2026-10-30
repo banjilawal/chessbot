@@ -53,7 +53,7 @@ class VectorValidator(ModelValidator[Vector]):
         return cast(VectorValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[VectorCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
         """
         Assure a candidate is a safe VectorCarrier.
 
@@ -64,7 +64,7 @@ class VectorValidator(ModelValidator[Vector]):
                     -   Either the x or y component is unsafe.
             2.  Otherwise, send a VectorCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[VectorCarrier]
         Raises:
@@ -73,7 +73,7 @@ class VectorValidator(ModelValidator[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

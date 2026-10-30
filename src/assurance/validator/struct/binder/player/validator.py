@@ -61,7 +61,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[PlayerBinderCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[PlayerBinderCarrier]:
         """
         Certify a PlayerBinder's payload is either a PlayerBinder or a Blueprint 
         that is safe to use.
@@ -78,7 +78,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
             2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[PlayerBinder]
         Raises:
@@ -87,7 +87,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        loader = self.loader.execute(item)
+        loader = self.loader.execute(candidate)
         if loader.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

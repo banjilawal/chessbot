@@ -54,7 +54,7 @@ class TeamValidator(ContextValidator[Team]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[TeamCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -65,7 +65,7 @@ class TeamValidator(ContextValidator[Team]):
                     -   Either the id, board, or owner are flagged unsafe.
             2.  Otherwise, send a TeamCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[TeamCarrier]
         Raises:
@@ -74,7 +74,7 @@ class TeamValidator(ContextValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

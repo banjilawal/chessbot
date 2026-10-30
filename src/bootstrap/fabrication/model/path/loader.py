@@ -74,7 +74,7 @@ class PathBuildLoader(ModelBuildLoader[Path]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=PathBuildRequest,
             null_exception=PathBuildRequestNullException(),
         )

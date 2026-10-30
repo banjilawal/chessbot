@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import LayerToolkit
-from domain import Context, ContextPrimeExtract
+from bootstrap import ContextValidationLoader
+from domain import Context
 from transit import ContextCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -37,20 +37,20 @@ class ContextValidationRouter(ValidationRouter[T], ABC, Generic[T]):
         ValidationRouter[T]
     """
     
-    _toolkit: LayerToolkit
+    _loader: ContextValidationLoader
     
-    def __init__(self, toolkit: LayerToolkit):
+    def __init__(self, loader: ContextValidationLoader):
         """
         Args:
-            toolkit: LayerToolkit
+            loader: ContextValidationLoader
         """
         super().__init__()
     
     @property
-    def toolkit(self) -> LayerToolkit:
-        return self._toolkit
+    def toolkit(self) -> ContextValidationLoader:
+        return self._loader
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, prime_extract: ContextPrimeExtract[T]) -> ValidationResult[ContextCarrier[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[ContextCarrier[T]]:
         pass

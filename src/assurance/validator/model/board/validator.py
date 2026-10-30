@@ -57,7 +57,7 @@ class BoardValidator(ModelValidator[Board]):
         return cast(BoardValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[BoardCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[BoardCarrier]:
         """
         Assure a candidate is a safe BoardCarrier.
 
@@ -74,7 +74,7 @@ class BoardValidator(ModelValidator[Board]):
             2.  Otherwise, send the recipient a carrier which has either a safe model or
                 blueprint in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[BoardCarrier]
         Raises:
@@ -83,7 +83,7 @@ class BoardValidator(ModelValidator[Board]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

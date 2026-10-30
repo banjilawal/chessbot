@@ -56,7 +56,7 @@ class RankValidator(ModelValidator[Rank]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[RankCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[RankCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -67,7 +67,7 @@ class RankValidator(ModelValidator[Rank]):
                     -   Either the id, persona, or arena are flagged unsafe.
             2.  Otherwise, send a RankCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[RankCarrier]
         Raises:
@@ -76,7 +76,7 @@ class RankValidator(ModelValidator[Rank]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader fails.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -112,7 +112,7 @@ class RankValidator(ModelValidator[Rank]):
             )
         # --- Handle the case that the persona is missing. ---#
         persona_validation = self.loader.priming_validator.execute(
-            item=fingerprint.persona,
+            candidate=fingerprint.persona,
             target_model=self.loader.toolkit.types.model,
             null_exception=self.loader.toolkit.nulls.model,
         )

@@ -90,7 +90,7 @@ class AccountContextValidationManager(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        bootstrap = self.loader.execute(item=item)
+        bootstrap = self.loader.execute(bootstrap=item)
         if bootstrap.is_failure:
             return ValidationResult.failure(
                 AccountContextValidatorException(

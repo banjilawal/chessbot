@@ -22,5 +22,5 @@ class Loader(ABC, Generic[T]):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> Result[T]:
+    def execute(self, bootstrap: Any) -> Result[T]:
         pass

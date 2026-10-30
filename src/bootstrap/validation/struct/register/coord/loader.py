@@ -58,7 +58,7 @@ class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
         return cast(CoordRegisterLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[CoordRegister]:
+    def execute(self, bootstrap: Any) -> ValidationResult[CoordRegister]:
         """
         Model the CoordRegisterBlueprint to validate the candidate.
 
@@ -74,7 +74,7 @@ class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
             2.  Otherwise, pack the original carrier and the blueprint in a CoordRegister
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[CoordRegister]
         Raises:
@@ -84,7 +84,7 @@ class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=CoordRegisterValidationRequest,
             null_exception=CoordRegisterValidationRequestNullException(),
         )

@@ -60,7 +60,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
         return cast(TokenLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[TokenPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[TokenPrimeExtract]:
         """
         Extract the TokenBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
             2.  Otherwise, pack the original carrier and the blueprint in a TokenPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[TokenPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class TokenValidationLoader(ModelValidationLoader[Token]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=TokenValidationRequest,
             null_exception=TokenValidationRequestNullException(),
         )

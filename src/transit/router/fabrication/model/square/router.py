@@ -84,7 +84,7 @@ class SquareBuildRouter(ModelBuildRouter[Square]):
         
         # Handle the case that the router cannot be primed.
         validation = self.priming_validator.execute(
-            item=blueprint,
+            candidate=blueprint,
             target_model=SquareBlueprint,
             null_exception=SquareBlueprintNullException(),
         )

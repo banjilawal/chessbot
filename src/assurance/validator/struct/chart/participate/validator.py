@@ -76,7 +76,7 @@ class ParticipationValidator(ChartValidator[Participation]):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ParticipationCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[ParticipationCarrier]:
         """
         Assure a candidate is a safe ParticipationCarrier.
 
@@ -87,7 +87,7 @@ class ParticipationValidator(ChartValidator[Participation]):
                     -   The CoordValidator flags either existing position.
             2.  Otherwise, send the type of carrier extract indicates.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[Participation]
         Raises:
@@ -96,7 +96,7 @@ class ParticipationValidator(ChartValidator[Participation]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.toolkit.loader.execute(item)
+        bootstrap = self.toolkit.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

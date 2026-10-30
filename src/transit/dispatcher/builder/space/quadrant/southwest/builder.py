@@ -90,7 +90,7 @@ class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            item=cast(SouthwestQuadrantBlueprint, validation.payload)
+            candidate=cast(SouthwestQuadrantBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

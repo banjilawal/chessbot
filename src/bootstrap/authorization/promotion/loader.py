@@ -72,7 +72,7 @@ class PromotionAuthorizationLoader(
         
         # Handle the case that request gets flagged.
         priming = self.priming_validator.execute(
-            item=target,
+            candidate=target,
             target_model=PromotionPermissionRequest,
             null_exception=PromotionPermissionRequestNullException(),
         )

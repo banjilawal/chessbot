@@ -60,7 +60,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
         return cast(VectorLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[VectorPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[VectorPrimeExtract]:
         """
         Extract the VectorBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
             2.  Otherwise, pack the original carrier and the blueprint in a VectorPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[VectorPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class VectorValidationLoader(ModelValidationLoader[Vector]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=VectorValidationRequest,
             null_exception=VectorValidationRequestNullException(),
         )

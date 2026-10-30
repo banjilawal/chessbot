@@ -74,7 +74,7 @@ class TokenBuildLoader(ModelBuildLoader[Token]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=TokenBuildRequest,
             null_exception=TokenBuildRequestNullException(),
         )

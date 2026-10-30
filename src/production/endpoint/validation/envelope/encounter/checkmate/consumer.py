@@ -76,7 +76,7 @@ class CheckmateEncounterEnvelopeConsumer(
         
         # Handle the envelope cannot be primed.
         priming = self._toolkit.priming_validator.execute(
-            item=envelope,
+            candidate=envelope,
             target_model=RootEncounterEnvelope,
             null_exception=RootEncounterEnvelopeNullException(),
         )

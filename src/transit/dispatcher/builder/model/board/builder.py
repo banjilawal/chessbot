@@ -93,7 +93,7 @@ class BoardBuilder(ModelBuilder[Board]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            item=cast(
+            candidate=cast(
                 BoardBlueprint,
                 blueprint_validation.payload
             )

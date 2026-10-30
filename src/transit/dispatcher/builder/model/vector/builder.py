@@ -77,7 +77,7 @@ class VectorBuilder(ModelBuilder[Vector]):
         
         # Handle the case that the blueprint is not certified safe.
         blueprint_validation = self.builder_toolkit.root_certifier.execute(
-            item=blueprint
+            candidate=blueprint
         )
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.
@@ -93,7 +93,7 @@ class VectorBuilder(ModelBuilder[Vector]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            item=cast(
+            candidate=cast(
                 VectorBlueprint,
                 blueprint_validation.payload
             )

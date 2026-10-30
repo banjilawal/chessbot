@@ -60,7 +60,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         return cast(AlertLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[AlertPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[AlertPrimeExtract]:
         """
         Extract the AlertBlueprint to validate the candidate.
 
@@ -76,7 +76,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
             2.  Otherwise, pack the original carrier and the blueprint in a AlertPrimeExtract
                 for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[AlertPrimeExtract]
         Raises:
@@ -86,7 +86,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            item=item,
+            candidate=bootstrap,
             target_model=AlertValidationRequest,
             null_exception=AlertValidationRequestNullException(),
         )
@@ -106,7 +106,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
-            item=request.item,
+            candidate=request.item,
             target_model=self.toolkit.types.carrier,
             null_exception=self.toolkit.nulls.carrier,
         )

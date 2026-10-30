@@ -78,7 +78,7 @@ class TokenAttack(ModelAttack[Token]):
         
         # Handle the case that the blueprint is not certified safe.
         validation = self.attack_toolkit.root_certifier.execute(
-            item=blueprint
+            candidate=blueprint
         )
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -94,7 +94,7 @@ class TokenAttack(ModelAttack[Token]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            item=cast(TokenBlueprint, validation.payload)
+            candidate=cast(TokenBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

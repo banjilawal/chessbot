@@ -74,7 +74,7 @@ class RankBuildLoader(ModelBuildLoader[Rank]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=RankBuildRequest,
             null_exception=RankBuildRequestNullException(),
         )

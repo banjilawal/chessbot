@@ -79,7 +79,7 @@ class KingTokenEnvelopeConsumer(
         
         # --- INITIATE_THE_VALIDATION_PROCESS ---#
         priming = self.toolkit.priming_validator.execute(
-            item=envelope,
+            candidate=envelope,
             target_model=TokenEnvelope,
             null_exception=TokenEnvelopeNullException(),
         )
@@ -135,7 +135,7 @@ class KingTokenEnvelopeConsumer(
             )
         # --- START_THE_THREAT_LEVEL_VALIDATION_PROCESS ---#
         threat_level_validation = self._toolkit.priming_validator.execute(
-            item=blueprint.threat_level,
+            candidate=blueprint.threat_level,
             target_model=ThreatLevel,
             null_exception=ThreatLevelNullException(),
         )
@@ -153,7 +153,7 @@ class KingTokenEnvelopeConsumer(
             )
         # --- START_KING_TOKEN_READINESS_VALIDATION_PROCESS ---#
         readiness_validation = self._toolkit.priming_validator.execute(
-            item=blueprint.readiness,
+            candidate=blueprint.readiness,
             target_model=KingReadiness,
             null_exception=KingReadinessNullException(),
         )

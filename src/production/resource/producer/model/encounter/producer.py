@@ -123,7 +123,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
             )
         # --- PROCESS_THE_ID_ATTRIBUTE. ---#
         id_validation = self.toolkit.blueprint_id_extractor.execute(
-            item=blueprint,
+            candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.types.blueprint,
             blueprint_null_exception=self.toolkit.nulls.blueprint,
@@ -199,7 +199,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
             )
         # --- PROCESS_THE_ATTACKER_REWARD_ATTRIBUTE. ---#
         attacker_reward = self.toolkit.number_validator.execute(
-            item=blueprint.attacker_reward,
+            candidate=blueprint.attacker_reward,
             floor=NumericSetting.floor(),
             ceiling=NumericSetting.ceiling(),
         )

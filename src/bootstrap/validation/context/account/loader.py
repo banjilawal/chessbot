@@ -59,7 +59,7 @@ class AccountContextValidationLoader(
         return cast(AccountLayerToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[AccountContextPrimeExtract]:
+    def execute(self, bootstrap: Any) -> ValidationResult[AccountContextPrimeExtract]:
         """
         Extract the AccountBlueprint to validate the candidate.
 
@@ -75,7 +75,7 @@ class AccountContextValidationLoader(
             2.  Otherwise, pack the original carrier and the blueprint in an
                 AccountContextPrimeExtract for the success result.
         Args:
-            item: Any
+            bootstrap: Any
         Returns:
             ValidationResult[AccountContextPrimeExtract]
         Raises:
@@ -85,7 +85,7 @@ class AccountContextValidationLoader(
         
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=item,
+            candidate=bootstrap,
             target_model=AccountContextValidationRequest,
             null_exception=AccountContextValidationRequestNullException(),
         )

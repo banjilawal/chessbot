@@ -85,7 +85,7 @@ class SquareValidator(ValidationFactory[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self.producer.execute(item=candidate)
+        product = self.producer.execute(candidate=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 SquareValidatorException(

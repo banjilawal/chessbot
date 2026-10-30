@@ -74,7 +74,7 @@ class VectorBuildLoader(ModelBuildLoader[Vector]):
         
         # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
-            item=request,
+            candidate=request,
             target_model=VectorBuildRequest,
             null_exception=VectorBuildRequestNullException(),
         )

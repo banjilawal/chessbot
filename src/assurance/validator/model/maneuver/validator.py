@@ -54,7 +54,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         return cast(ManeuverValidationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[ManeuverCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[ManeuverCarrier]:
         """
         Assure a candidate is a safe ManeuverCarrier.
 
@@ -70,7 +70,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[ManeuverCarrier]
         Raises:
@@ -79,7 +79,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(item)
+        bootstrap = self.loader.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
