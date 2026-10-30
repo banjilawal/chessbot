@@ -1,7 +1,7 @@
-# src/exchange/permissionRequest/permission/crud/search/request.py
+# src/exchange/permissionRequest/permission/crud/insertion/request.py
 
 """
-Module: exchange.request.permission.crud.search.request
+Module: exchange.request.permission.crud.insertion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,52 +12,46 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ExchangeObjectCollection
-from exchange import CrudPermissionRequest, ExchangeDataObject, Context
-from artifcat import SearchRequest
+from exchange import CrudPermissionRequest, InsertionRequest
+
+T = TypeVar("T", bound="InsertionRequest")
 
 
-T = TypeVar("T", bound="ExchangeDataObject")
-
-
-class SearchPermissionRequest(CrudPermissionRequest[SearchRequest], ABC, Generic[T]):
+class InsertionPermissionRequest(
+    CrudPermissionRequest[T], ABC, Generic[T]
+):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1.  Transport information during the CrudOperation lifecycle.
+        1.  Provides an InsertionAuthorizer with job details.
 
      Attributes:
          id: int
-         context: Context[T]
-         collection: ExchangeObjectCollection[T]
+         candidate: : T
 
      Provides:
-     
+
      Super Class:
         CrudPermissionRequest
      """
-    _context: Context[T]
     
-    def __init__(self, id: int, context: Context[T], collection: ExchangeObjectCollection[T]):
+    def __init__(self, id: int, candidate: T):
         """
         Args:
             id: int
-            context: Context[T]
-            collection: ExchangeObjectCollection[T]
+            candidate: T
         """
-        super().__init__(id=id, collection=collection)
-        self._context = context
+        super().__init__(id, candidate=candidate)
     
     @property
-    def context(self) -> Context[T]:
-        return self._context
+    def payload(self) -> T:
+        return cast(T, super().payload)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, SearchPermissionRequest):
-            permissionRequest = cast(SearchPermissionRequest, other)
-            return self.id == permissionRequest.id
+        if isinstance(other, InsertionPermissionRequest):
+            return self.id == other.id
         return False

@@ -1,17 +1,16 @@
-# src/exchange/permissionRequest/permission/crud/search/__init__.py
+# src/exchange/permissionRequest/permission/crud/insertion/__init__.py
 
 """
-Module: exchange.request.permission.crud.search.__init__
+Module: exchange.request.permission.crud.insertion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.request.PERMISSION.CRUD.SEARCH PACKAGE ===========#
+# =========== EXCHANGE.request.PERMISSION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
-from .chain import *
-from .stack import *
+from .push import *
 
 # Modules
-from .request import SearchPermissionRequest
+from .request import InsertionPermissionRequest
