@@ -34,7 +34,7 @@ class DeletionAuthorizationLoader(
         validation_service: ValidationService
 
     Provides:
-        -   def execute(request: T) -> Decision
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
         CrudAuthorizationLoader
@@ -53,7 +53,7 @@ class DeletionAuthorizationLoader(
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, target: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision[T]:
         """
         Checks if the Request is the right type.
         
@@ -63,7 +63,7 @@ class DeletionAuthorizationLoader(
                     -   the wrong type.
             2.  Otherwise, send an approval.
         Args:
-            target: T
+            candidate: Any
         Returns:
            Decision[T]
         Raises:

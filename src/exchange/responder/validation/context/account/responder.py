@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import AccountContextValidationResponse, ValidationResult
 from domain import AccountContext
 from exchange import AccountContextValidationRequest, ContextValidationResponder
-from transit import AccountCarrier, AccountContextValidationDispatcher
+from transit import AccountContextCarrier, AccountContextValidationDispatcher
 from util import LoggingLevelRouter
 
 
@@ -29,13 +29,15 @@ class AccountContextValidationResponder(
         1.  Intermediary in the Account validation Request-Response workflow.
 
     Attributes:
-        dispatcher: AccountContextValidationDispatcher[T]
+        dispatcher: AccountContextValidationDispatcher
 
     Provides:
-        -   def execute(request: AccountContextValidationRequest[T]) -> AccountContextValidationResponse[T]
+        -   def execute(
+                    request: AccountContextValidationRequest
+            ) -> AccountContextValidationResponse
 
     Super Class:
-        ContextValidatorExchange
+        ContextValidationResponder
     """
     
     def __init__(
@@ -60,7 +62,7 @@ class AccountContextValidationResponder(
             request: AccountContextValidationRequest
     ) -> AccountContextValidationResponse:
         """
-        Certify a candidate is a AccountCarrier whose payload is either a Account
+        Certify a candidate is an AccountContextCarrier whose payload is either a Account
         or a Blueprint that is safe to use.
 
         Action:
@@ -74,7 +76,7 @@ class AccountContextValidationResponder(
         Raises:
             AccountContextValidationResponderException
         """
-        method = f"{self.__class__.__name__}.submit"
+        method = f"{self.__class__.__name__}.execute"
         
         result = self.dispatcher.execute(job=request)
         # Handle the case that the dispatcher marks the candidate unsafe.
@@ -91,7 +93,7 @@ class AccountContextValidationResponder(
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(AccountCarrier, result.payload)
+        carrier = cast(AccountContextCarrier, result.payload)
         return AccountContextValidationResponse.success(
             request=request,
             result=ValidationResult.success(carrier),

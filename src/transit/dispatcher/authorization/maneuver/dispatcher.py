@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ManeuverDecision
-from authorization import ManeuverAuthorizer
+from authorization import ManeuverPermitter
 from err import ManeuverAuthorizationDispatcherException
 from exchange import ManeuverPermissionRequest, ManeuverRequest
 from transit import AuthorizationDispatcher
@@ -37,16 +37,16 @@ class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverPermission
         Dispatcher
     """
     
-    def __init__(self, authorizer: Optional[ManeuverAuthorizer] | None = None):
+    def __init__(self, authorizer: Optional[ManeuverPermitter] | None = None):
         """
         Args:
              authorizer: Optional[ManeuverAuthorizer]
         """
-        super().__init__(authorizer=authorizer or ManeuverAuthorizer())
+        super().__init__(authorizer=authorizer or ManeuverPermitter())
         
     @property
-    def authorizer(self) -> ManeuverAuthorizer:
-        return cast(ManeuverAuthorizer, super().authorizer)
+    def authorizer(self) -> ManeuverPermitter:
+        return cast(ManeuverPermitter, super().authorizer)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:

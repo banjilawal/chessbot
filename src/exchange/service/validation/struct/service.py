@@ -33,7 +33,7 @@ class StructValidationService(ValidationService[T], ABC, Generic[T]):
             from a StructValidationResponse.
 
     Attributes:
-        service: StructValidationService[T]
+        responder: StructValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -50,15 +50,15 @@ class StructValidationService(ValidationService[T], ABC, Generic[T]):
         ValidationService
     """
     
-    def __init__(self, service: StructValidationService[T]):
+    def __init__(self, responder: StructValidationService[T]):
         """
         Args:
-            service: StructValidationService[T]
+            responder: StructValidationService[T]
         """
-        super().__init__(service=service)
+        super().__init__(responder=responder)
     
     @property
-    def service(self) -> StructValidationService[T]:
+    def responder(self) -> StructValidationService[T]:
         return cast(StructValidationService[T], super().service)
     
     @abstractmethod

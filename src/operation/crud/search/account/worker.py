@@ -15,7 +15,7 @@ from artifcat import SearchResult
 from authorization import AccountSearchPermitter
 from collection import AccountStack
 from domain import Account, AccountType, HumanAccount, MachineAccount
-from err import AccountSearcherException
+from err import AccountSearcherException, MissingSearchRouteException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from operation import Searcher
 from production.endpoint.validation.context.model.account import firstname
@@ -85,18 +85,34 @@ class AccountSearcher(Searcher[AccountSearchRequest]):
         
         firstname = context.firstname
         
+        result = SearchResult.failure(MissingSearchRouteException())
         if context.id is not None:
-            return self._find_by_id(id=context.id, collection=collection)
+            result = self._find_by_id(id=context.id, collection=collection)
         if firstname is not None:
-            return self._find_by_firstname(firstname=firstname, collection=collection)
+            result = self._find_by_firstname(firstname=firstname, collection=collection)
         if context.lastname is not None:
-            return self._find_by_lastname(lastname=context.lastname, collection=collection)
+            result = self._find_by_lastname(lastname=context.lastname, collection=collection)
         if context.email is not None:
-            return self._find_by_email(email=context.email, collection=collection)
+            result = self._find_by_email(email=context.email, collection=collection)
         if context.machine_name is not None:
-            return self._find_by_machine_name(machine_name=context.machine_name, collection=collection)
+            result = self._find_by_machine_name(machine_name=context.machine_name, collection=collection)
         if context.account_type is not None:
-            return self._find_by_account_type(account_type=context.account_type, collection=collection)
+           result = self._find_by_account_type(account_type=context.account_type, collection=collection)
+        
+        if result.is_failure:
+            return SearchResult.failure(
+                AccountSearcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountSearcherException.MSG,
+                    err_code=AccountSearcherException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        if result.is_empty:
+            return result
+        matches =  cast(List[Account], result.payload)
+        return SearchResult.success(matches)
           
     def _find_by_id(self, id, collection: AccountStack) -> SearchResult[Account]:
         for item in collection.iterator:
@@ -140,7 +156,7 @@ class AccountSearcher(Searcher[AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.success(matches)
     
-    def _find_by_type(self, account_type: AccountType, collection) -> SearchResult[Account]:
+    def _find_by_account_type(self, account_type: AccountType, collection) -> SearchResult[Account]:
         matches: List[Account] = []
         if account_type == AccountType.HUMAN_ACCOUNT:
             matches = self._humans(collection)

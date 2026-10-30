@@ -30,7 +30,7 @@ class EncounterWarningNodeValidationService(
             products from WarningNodeValidationService.
 
     Attributes:
-        service: WarningNodeValidationService
+        responder: WarningNodeValidationResponder
         
     Provides:
         -   def extract_model(
@@ -47,17 +47,17 @@ class EncounterWarningNodeValidationService(
     
     def __init__(
             self,
-            service: Optional[WarningNodeValidationService] | None = None,
+            responder: Optional[WarningNodeValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[WarningNodeValidationService]
+            responder: Optional[WarningNodeValidationResponder]
         """
-        super().__init__(service=service or WarningNodeValidationService())
+        super().__init__(responder=responder or WarningNodeValidationResponder())
     
     @property
-    def service(self) -> WarningNodeValidationService:
-        return cast(WarningNodeValidationService, super().service)
+    def responder(self) -> WarningNodeValidationResponder:
+        return cast(WarningNodeValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

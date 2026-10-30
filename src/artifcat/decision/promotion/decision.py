@@ -11,80 +11,106 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Decision, Permission
-from exchange import PromotionPermissionRequest, PromotionRequest
+from artifcat.decision import Decision, Permission
+from exchange import PermissionRequest, PromotionPermissionRequest, PromotionRequest
 
 
-class PromotionDecision(Decision[PromotionPermissionRequest]):
+class PromotionDecision(Decision[PromotionRequest]):
     """
     Role:
-        - Authorization Reporting
+        - Permission Reporting
 
     Responsibilities:
-        1.  Report if an action is permitted.
-        
+        1.  Report if a Promotion transaction is permitted.
+
     Attributes:
-        permission: Permission
-        exception: Optional[Exception]
-        request: PromotionPermissionRequest
-        
-        is_granted: bool
-        is_denied: bool
-        
+        approval: Optional[PromotionRequest]
+
     Provides:
-        -   def grant(request: PromotionRequest) -> PromotionDecision
-        -   def deny(request: PromotionRequest, exception: Exception) -> PromotionDecision
+        -   def grant(
+                    approval: PromotionRequest,
+                    permission_request: PermissionRequest,
+            ) -> PromotionDecision
+
+        -   def denial(
+                    permission_request: PermissionRequest,
+                    exception: Exception,
+            ) -> PromotionDecision
 
     Super Class:
-        Decision
     """
-
-  
+    
     def __init__(
             self,
             permission: Permission,
-            request: PromotionRequest,
+            permission_request: PromotionPermissionRequest,
             exception: Optional[Exception] | None = None,
+            approval: Optional[PromotionRequest] | None = None,
     ):
         """
         Args:
             permission: Permission
-            request: PromotionRequest
+            permission_request: PermissionRequest
             exception: Optional[Exception]
+            approval: Optional[PromotionRequest]
         """
-        super().__init__(request=request, permission=permission, exception=exception)
+        super().__init__(
+            permission_request=permission_request,
+            approval=approval,
+            exception=exception,
+            permission=permission,
+        )
     
     @property
-    def request(self) -> PromotionRequest:
-        return cast(PromotionRequest, super().request)
-        
-
+    def permission_request(self) -> PromotionPermissionRequest:
+        return cast(PromotionPermissionRequest, super().permission_request)
+    
+    @property
+    def approval(self) -> Optional[PromotionRequest]:
+        return cast(PromotionRequest, super().approval)
+    
     @property
     def request_is_granted(self) -> bool:
-        return super().request_is_granted and isinstance(self.request, PromotionRequest)
+        return (
+                super().request_is_granted and 
+                isinstance(self.approval, PromotionRequest)
+        )
     
     @property
     def request_is_denied(self) -> bool:
         return not self.request_is_granted
     
     @classmethod
-    def grant(cls, request: PromotionRequest) -> PromotionDecision:
-        return cls(request=request, permission=Permission.GRANTED)
+    def grant(
+            cls, 
+            approval: PromotionRequest, 
+            permission_request: PermissionRequest,
+    ) -> PromotionDecision:
+        role_request = cast(
+            PromotionPermissionRequest, 
+            permission_request,
+        )
+        return cls(
+            approval=approval,
+            permission_request=role_request,
+            permission=Permission.GRANTED,
+        )
     
     @classmethod
-    def denial(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
+    def denial(
+            cls, 
+            permission_request: PermissionRequest,
+            exception: Exception,
+    ) -> PromotionDecision:
+        role_request = cast(
+            PromotionPermissionRequest,
+            permission_request,
+        )
         return cls(
-            request=request,
             exception=exception,
+            permission_request=role_request,
             permission=Permission.DENIED,
         )
-    
-    @classmethod
-    def timed_out(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
-        return cls(
-            request=request,
-            exception=exception,
-            permission=Permission.TIMED_OUT,
-        )
-    
+
+
     

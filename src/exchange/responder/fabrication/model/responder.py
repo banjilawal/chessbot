@@ -34,7 +34,7 @@ class ModelBuildResponder(BuildResponder[T], ABC, Generic[T]):
         -   def execute(request: ModelBuildRequest[T]) -> ModelBuildResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: ModelBuildDispatcher[T]):

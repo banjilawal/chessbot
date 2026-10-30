@@ -39,7 +39,7 @@ class StructBuildResponder(
         -   def execute(request: StructBuildRequest[T]) -> StructBuildResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: StructBuildDispatcher[T]):

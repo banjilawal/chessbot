@@ -38,7 +38,7 @@ class RegisterBuildResponder(
         -   def execute(request: RegisterBuildRequest[T]) -> RegisterBuildResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: RegisterBuildDispatcher[T]):

@@ -34,7 +34,7 @@ class AlertContextValidationService(
             products from AlertContextValidationService.
 
     Attributes:
-        service: AlertContextValidationService
+        responder: AlertContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class AlertContextValidationService(
     
     def __init__(
             self,
-            service: Optional[AlertContextValidationService] | None = None,
+            responder: Optional[AlertContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[AlertContextValidationService]
+            responder: Optional[AlertContextValidationResponder]
         """
-        super().__init__(service=service or AlertContextValidationService())
+        super().__init__(responder=responder or AlertContextValidationResponder())
     
     @property
-    def service(self) -> AlertContextValidationService:
-        return cast(AlertContextValidationService, super().service)
+    def responder(self) -> AlertContextValidationResponder:
+        return cast(AlertContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

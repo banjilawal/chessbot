@@ -38,7 +38,7 @@ class ChartBuildResponder(
         -   def execute(request: ChartBuildRequest[T]) -> ChartBuildResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: ChartBuildDispatcher[T]):

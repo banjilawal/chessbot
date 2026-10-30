@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import PromotionDecision
-from authorization import PromotionAuthorizer
+from authorization import PromotionPermitter
 from err import PromotionAuthorizationDispatcherException
 from exchange import PromotionPermissionRequest, PromotionRequest
 from transit import AuthorizationDispatcher
@@ -37,16 +37,16 @@ class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionPermissi
         Dispatcher
     """
     
-    def __init__(self, authorizer: Optional[PromotionAuthorizer] | None = None):
+    def __init__(self, authorizer: Optional[PromotionPermitter] | None = None):
         """
         Args:
              authorizer: Optional[PromotionAuthorizer]
         """
-        super().__init__(authorizer=authorizer or PromotionAuthorizer())
+        super().__init__(authorizer=authorizer or PromotionPermitter())
         
     @property
-    def authorizer(self) -> PromotionAuthorizer:
-        return cast(PromotionAuthorizer, super().authorizer)
+    def authorizer(self) -> PromotionPermitter:
+        return cast(PromotionPermitter, super().authorizer)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:

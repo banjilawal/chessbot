@@ -38,7 +38,7 @@ class BinderValidationResponder(
         -   def execute(request: BinderValidationRequest[T]) -> BinderValidationResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: BinderValidationDispatcher[T]):

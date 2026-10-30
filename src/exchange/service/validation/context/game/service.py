@@ -34,7 +34,7 @@ class GameContextValidationService(
             products from GameContextValidationService.
 
     Attributes:
-        service: GameContextValidationService
+        responder: GameContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class GameContextValidationService(
     
     def __init__(
             self,
-            service: Optional[GameContextValidationService] | None = None,
+            responder: Optional[GameContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[GameContextValidationService]
+            responder: Optional[GameContextValidationResponder]
         """
-        super().__init__(service=service or GameContextValidationService())
+        super().__init__(responder=responder or GameContextValidationResponder())
     
     @property
-    def service(self) -> GameContextValidationService:
-        return cast(GameContextValidationService, super().service)
+    def responder(self) -> GameContextValidationResponder:
+        return cast(GameContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

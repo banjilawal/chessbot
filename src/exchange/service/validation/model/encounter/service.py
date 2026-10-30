@@ -34,7 +34,7 @@ class EncounterValidationService(
             products from AttackValidationService.
 
     Attributes:
-        service: AttackValidationService
+        responder: AttackValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class EncounterValidationService(
     
     def __init__(
             self,
-            service: Optional[AttackValidationService] | None = None,
+            responder: Optional[AttackValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[AttackValidationService]
+            responder: Optional[AttackValidationResponder]
         """
-        super().__init__(service=service or AttackValidationService())
+        super().__init__(responder=responder or AttackValidationResponder())
     
     @property
-    def service(self) -> AttackValidationService:
-        return cast(AttackValidationService, super().service)
+    def responder(self) -> AttackValidationResponder:
+        return cast(AttackValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

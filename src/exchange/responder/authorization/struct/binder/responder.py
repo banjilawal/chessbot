@@ -38,7 +38,7 @@ class BinderAuthorizationResponder(
         -   def execute(request: BinderPermissionRequest[T]) -> BinderDecision[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: BinderAuthorizationDispatcher[T]):

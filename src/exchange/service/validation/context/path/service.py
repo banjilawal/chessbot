@@ -34,7 +34,7 @@ class PathContextValidationService(
             products from PathContextValidationService.
 
     Attributes:
-        service: PathContextValidationService
+        responder: PathContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class PathContextValidationService(
     
     def __init__(
             self,
-            service: Optional[PathContextValidationService] | None = None,
+            responder: Optional[PathContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[PathContextValidationService]
+            responder: Optional[PathContextValidationResponder]
         """
-        super().__init__(service=service or PathContextValidationService())
+        super().__init__(responder=responder or PathContextValidationResponder())
     
     @property
-    def service(self) -> PathContextValidationService:
-        return cast(PathContextValidationService, super().service)
+    def responder(self) -> PathContextValidationResponder:
+        return cast(PathContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

@@ -34,7 +34,7 @@ class ArenaValidationService(
             products from ArenaValidationService.
 
     Attributes:
-        service: ArenaValidationService
+        responder: ArenaValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class ArenaValidationService(
     
     def __init__(
             self,
-            service: Optional[ArenaValidationService] | None = None,
+            responder: Optional[ArenaValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ArenaValidationService]
+            responder: Optional[ArenaValidationResponder]
         """
-        super().__init__(service=service or ArenaValidationService())
+        super().__init__(responder=responder or ArenaValidationResponder())
     
     @property
-    def service(self) -> ArenaValidationService:
-        return cast(ArenaValidationService, super().service)
+    def responder(self) -> ArenaValidationResponder:
+        return cast(ArenaValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

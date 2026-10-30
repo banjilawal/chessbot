@@ -38,7 +38,7 @@ class RegisterAuthorizationResponder(
         -   def execute(request: RegisterPermissionRequest[T]) -> RegisterDecision[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: RegisterAuthorizationDispatcher[T]):

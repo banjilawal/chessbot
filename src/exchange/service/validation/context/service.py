@@ -33,7 +33,7 @@ class ContextValidationService(ContextValidationService[T], ABC, Generic[T]):
             from a ContextValidationResponse.
 
     Attributes:
-        service: ContextValidationService[T]
+        responder: ContextValidationService[T]
         
     Provides:
         -   def extract_context(
@@ -50,15 +50,15 @@ class ContextValidationService(ContextValidationService[T], ABC, Generic[T]):
         ContextValidationService
     """
     
-    def __init__(self, service: ContextValidationService[T]):
+    def __init__(self, responder: ContextValidationService[T]):
         """
         Args:
-            service: ContextValidationService[T]
+            responder: ContextValidationService[T]
         """
-        super().__init__(service=service)
+        super().__init__(responder=responder)
     
     @property
-    def service(self) -> ContextValidationService[T]:
+    def responder(self) -> ContextValidationService[T]:
         return cast(ContextValidationService[T], super().service)
     
     @abstractmethod

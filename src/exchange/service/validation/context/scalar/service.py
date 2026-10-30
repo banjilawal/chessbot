@@ -34,7 +34,7 @@ class ScalarContextValidationService(
             products from ScalarContextValidationService.
 
     Attributes:
-        service: ScalarContextValidationService
+        responder: ScalarContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class ScalarContextValidationService(
     
     def __init__(
             self,
-            service: Optional[ScalarContextValidationService] | None = None,
+            responder: Optional[ScalarContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ScalarContextValidationService]
+            responder: Optional[ScalarContextValidationResponder]
         """
-        super().__init__(service=service or ScalarContextValidationService())
+        super().__init__(responder=responder or ScalarContextValidationResponder())
     
     @property
-    def service(self) -> ScalarContextValidationService:
-        return cast(ScalarContextValidationService, super().service)
+    def responder(self) -> ScalarContextValidationResponder:
+        return cast(ScalarContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

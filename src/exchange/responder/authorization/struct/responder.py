@@ -39,7 +39,7 @@ class StructAuthorizationResponder(
         -   def execute(request: StructPermissionRequest[T]) -> StructDecision[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: StructAuthorizationDispatcher[T]):

@@ -34,7 +34,7 @@ class VectorValidationService(
             products from VectorValidationService.
 
     Attributes:
-        service: VectorValidationService
+        responder: VectorValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class VectorValidationService(
     
     def __init__(
             self,
-            service: Optional[VectorValidationService] | None = None,
+            responder: Optional[VectorValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[VectorValidationService]
+            responder: Optional[VectorValidationResponder]
         """
-        super().__init__(service=service or VectorValidationService())
+        super().__init__(responder=responder or VectorValidationResponder())
     
     @property
-    def service(self) -> VectorValidationService:
-        return cast(VectorValidationService, super().service)
+    def responder(self) -> VectorValidationResponder:
+        return cast(VectorValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 
 from artifcat import Decision
-from authorization import Authorizer
+from authorization import Permitter
 from exchange import PermissionRequest
 from util import LoggingLevelRouter
 
@@ -38,9 +38,9 @@ class AuthorizationDispatcher(ABC, Generic[T]):
         Dispatcher
     """
     
-    _authorizer: Authorizer[T]
+    _authorizer: Permitter[T]
     
-    def __init__(self, authorizer: Authorizer[T]):
+    def __init__(self, authorizer: Permitter[T]):
         """
         Args:
             authorizer: Authorizer[T]
@@ -48,7 +48,7 @@ class AuthorizationDispatcher(ABC, Generic[T]):
         self._authorizer = authorizer
         
     @property
-    def authorizer(self) -> Authorizer[T]:
+    def authorizer(self) -> Permitter[T]:
         return self._authorizer
     
     @abstractmethod

@@ -34,7 +34,7 @@ class RankValidationService(
             products from RankValidationService.
 
     Attributes:
-        service: RankValidationService
+        responder: RankValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class RankValidationService(
     
     def __init__(
             self,
-            service: Optional[RankValidationService] | None = None,
+            responder: Optional[RankValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[RankValidationService]
+            responder: Optional[RankValidationResponder]
         """
-        super().__init__(service=service or RankValidationService())
+        super().__init__(responder=responder or RankValidationResponder())
     
     @property
-    def service(self) -> RankValidationService:
-        return cast(RankValidationService, super().service)
+    def responder(self) -> RankValidationResponder:
+        return cast(RankValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

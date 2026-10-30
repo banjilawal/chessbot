@@ -34,7 +34,7 @@ class PlayerContextValidationService(
             products from PlayerContextValidationService.
 
     Attributes:
-        service: PlayerContextValidationService
+        responder: PlayerContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class PlayerContextValidationService(
     
     def __init__(
             self,
-            service: Optional[PlayerContextValidationService] | None = None,
+            responder: Optional[PlayerContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[PlayerContextValidationService]
+            responder: Optional[PlayerContextValidationResponder]
         """
-        super().__init__(service=service or PlayerContextValidationService())
+        super().__init__(responder=responder or PlayerContextValidationResponder())
     
     @property
-    def service(self) -> PlayerContextValidationService:
-        return cast(PlayerContextValidationService, super().service)
+    def responder(self) -> PlayerContextValidationResponder:
+        return cast(PlayerContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

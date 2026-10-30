@@ -34,7 +34,7 @@ class TokenContextValidationService(
             products from TokenContextValidationService.
 
     Attributes:
-        service: TokenContextValidationService
+        responder: TokenContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class TokenContextValidationService(
     
     def __init__(
             self,
-            service: Optional[TokenContextValidationService] | None = None,
+            responder: Optional[TokenContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[TokenContextValidationService]
+            responder: Optional[TokenContextValidationResponder]
         """
-        super().__init__(service=service or TokenContextValidationService())
+        super().__init__(responder=responder or TokenContextValidationResponder())
     
     @property
-    def service(self) -> TokenContextValidationService:
-        return cast(TokenContextValidationService, super().service)
+    def responder(self) -> TokenContextValidationResponder:
+        return cast(TokenContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

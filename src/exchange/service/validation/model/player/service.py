@@ -34,7 +34,7 @@ class PlayerValidationService(
             products from PlayerValidationService.
 
     Attributes:
-        service: PlayerValidationService
+        responder: PlayerValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class PlayerValidationService(
     
     def __init__(
             self,
-            service: Optional[PlayerValidationService] | None = None,
+            responder: Optional[PlayerValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[PlayerValidationService]
+            responder: Optional[PlayerValidationResponder]
         """
-        super().__init__(service=service or PlayerValidationService())
+        super().__init__(responder=responder or PlayerValidationResponder())
     
     @property
-    def service(self) -> PlayerValidationService:
-        return cast(PlayerValidationService, super().service)
+    def responder(self) -> PlayerValidationResponder:
+        return cast(PlayerValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

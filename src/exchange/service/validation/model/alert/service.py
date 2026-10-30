@@ -34,7 +34,7 @@ class AlertValidationService(
             products from AlertValidationService.
 
     Attributes:
-        service: AlertValidationService
+        responder: AlertValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class AlertValidationService(
     
     def __init__(
             self,
-            service: Optional[AlertValidationService] | None = None,
+            responder: Optional[AlertValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[AlertValidationService]
+            responder: Optional[AlertValidationResponder]
         """
-        super().__init__(service=service or AlertValidationService())
+        super().__init__(responder=responder or AlertValidationResponder())
     
     @property
-    def service(self) -> AlertValidationService:
-        return cast(AlertValidationService, super().service)
+    def responder(self) -> AlertValidationResponder:
+        return cast(AlertValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

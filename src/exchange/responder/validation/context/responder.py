@@ -12,16 +12,14 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
+from artifcat import ContextValidationResponse
 from exchange import ContextValidationRequest, ValidationResponder
+from transit import ContextValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
-class ContextValidationResponder(
-    ValidationResponder[T],
-    ABC,
-    Generic[T],
-):
+class ContextValidationResponder(ValidationResponder[T], ABC, Generic[T]):
     """
     Role
         - Mediator
@@ -36,7 +34,7 @@ class ContextValidationResponder(
         -   def execute(request: ContextValidationRequest[T]) -> ContextValidationResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: ContextValidationDispatcher[T]):
@@ -50,13 +48,9 @@ class ContextValidationResponder(
     def dispatcher(self) -> ContextValidationDispatcher[T]:
         return cast(ContextValidationDispatcher, super().dispatcher)
     
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            request: ContextValidationRequest[T]
-    ) -> ContextValidationResponse[T]:
+    def execute(self, request: ContextValidationRequest[T]) -> ContextValidationResponse[T]:
         """
         Args:
             request: ContextValidationRequest[T]

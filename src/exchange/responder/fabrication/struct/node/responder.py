@@ -38,7 +38,7 @@ class NodeBuildResponder(
         -   def execute(request: NodeBuildRequest[T]) -> NodeBuildResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: NodeBuildDispatcher[T]):

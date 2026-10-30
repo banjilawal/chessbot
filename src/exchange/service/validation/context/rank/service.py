@@ -34,7 +34,7 @@ class RankContextValidationService(
             products from RankContextValidationService.
 
     Attributes:
-        service: RankContextValidationService
+        responder: RankContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class RankContextValidationService(
     
     def __init__(
             self,
-            service: Optional[RankContextValidationService] | None = None,
+            responder: Optional[RankContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[RankContextValidationService]
+            responder: Optional[RankContextValidationResponder]
         """
-        super().__init__(service=service or RankContextValidationService())
+        super().__init__(responder=responder or RankContextValidationResponder())
     
     @property
-    def service(self) -> RankContextValidationService:
-        return cast(RankContextValidationService, super().service)
+    def responder(self) -> RankContextValidationResponder:
+        return cast(RankContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

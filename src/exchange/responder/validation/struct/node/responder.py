@@ -38,7 +38,7 @@ class NodeValidationResponder(
         -   def execute(request: NodeValidationRequest[T]) -> NodeValidationResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: NodeValidationDispatcher[T]):

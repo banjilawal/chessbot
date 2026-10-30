@@ -34,7 +34,7 @@ class TokenValidationService(
             products from TokenValidationService.
 
     Attributes:
-        service: TokenValidationService
+        responder: TokenValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class TokenValidationService(
     
     def __init__(
             self,
-            service: Optional[TokenValidationService] | None = None,
+            responder: Optional[TokenValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[TokenValidationService]
+            responder: Optional[TokenValidationResponder]
         """
-        super().__init__(service=service or TokenValidationService())
+        super().__init__(responder=responder or TokenValidationResponder())
     
     @property
-    def service(self) -> TokenValidationService:
-        return cast(TokenValidationService, super().service)
+    def responder(self) -> TokenValidationResponder:
+        return cast(TokenValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

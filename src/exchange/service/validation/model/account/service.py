@@ -34,7 +34,7 @@ class AccountValidationService(
             products from AccountValidationService.
 
     Attributes:
-        service: AccountValidationService
+        responder: AccountValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class AccountValidationService(
     
     def __init__(
             self,
-            service: Optional[AccountValidationService] | None = None,
+            responder: Optional[AccountValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[AccountValidationService]
+            responder: Optional[AccountValidationResponder]
         """
-        super().__init__(service=service or AccountValidationService())
+        super().__init__(responder=responder or AccountValidationResponder())
     
     @property
-    def service(self) -> AccountValidationService:
-        return cast(AccountValidationService, super().service)
+    def responder(self) -> AccountValidationResponder:
+        return cast(AccountValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

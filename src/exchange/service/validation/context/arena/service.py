@@ -34,7 +34,7 @@ class ArenaContextValidationService(
             products from ArenaContextValidationService.
 
     Attributes:
-        service: ArenaContextValidationService
+        responder: ArenaContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class ArenaContextValidationService(
     
     def __init__(
             self,
-            service: Optional[ArenaContextValidationService] | None = None,
+            responder: Optional[ArenaContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ArenaContextValidationService]
+            responder: Optional[ArenaContextValidationResponder]
         """
-        super().__init__(service=service or ArenaContextValidationService())
+        super().__init__(responder=responder or ArenaContextValidationResponder())
     
     @property
-    def service(self) -> ArenaContextValidationService:
-        return cast(ArenaContextValidationService, super().service)
+    def responder(self) -> ArenaContextValidationResponder:
+        return cast(ArenaContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

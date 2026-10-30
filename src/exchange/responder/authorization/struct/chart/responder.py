@@ -38,7 +38,7 @@ class ChartAuthorizationResponder(
         -   def execute(request: ChartPermissionRequest[T]) -> ChartDecision[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: ChartAuthorizationDispatcher[T]):

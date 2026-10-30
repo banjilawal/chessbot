@@ -37,7 +37,7 @@ class FootstepContextValidationService(
             products from FootstepContextValidationService.
 
     Attributes:
-        service: FootstepContextValidationService
+        responder: FootstepContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -54,17 +54,17 @@ class FootstepContextValidationService(
     
     def __init__(
             self,
-            service: Optional[FootstepContextValidationService] | None = None,
+            responder: Optional[FootstepContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[FootstepContextValidationService]
+            responder: Optional[FootstepContextValidationResponder]
         """
-        super().__init__(service=service or FootstepContextValidationService())
+        super().__init__(responder=responder or FootstepContextValidationResponder())
     
     @property
-    def service(self) -> FootstepContextValidationService:
-        return cast(FootstepContextValidationService, super().service)
+    def responder(self) -> FootstepContextValidationResponder:
+        return cast(FootstepContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

@@ -37,7 +37,7 @@ class BoardValidationService(
             products from BoardValidationService.
 
     Attributes:
-        service: BoardValidationService
+        responder: BoardValidationResponder
         
     Provides:
         -   def extract_model(
@@ -54,17 +54,17 @@ class BoardValidationService(
     
     def __init__(
             self,
-            service: Optional[BoardValidationService] | None = None,
+            responder: Optional[BoardValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[BoardValidationService]
+            responder: Optional[BoardValidationResponder]
         """
-        super().__init__(service=service or BoardValidationService())
+        super().__init__(responder=responder or BoardValidationResponder())
     
     @property
-    def service(self) -> BoardValidationService:
-        return cast(BoardValidationService, super().service)
+    def responder(self) -> BoardValidationResponder:
+        return cast(BoardValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

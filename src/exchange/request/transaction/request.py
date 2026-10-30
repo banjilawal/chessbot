@@ -50,7 +50,7 @@ class TransactionRequest(ABC, Generic[T]):
         return self._id
         
     @property
-    def candidate(self) -> T:
+    def promotion_candidate(self) -> T:
         return self._candidate
 
     def __eq__(self, other):

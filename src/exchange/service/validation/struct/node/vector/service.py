@@ -30,7 +30,7 @@ class VectorNodeValidationService(
             products from VectorNodeValidationService.
 
     Attributes:
-        service: VectorNodeValidationService
+        responder: VectorNodeValidationResponder
         
     Provides:
         -   def extract_model(
@@ -47,17 +47,17 @@ class VectorNodeValidationService(
     
     def __init__(
             self,
-            service: Optional[VectorNodeValidationService] | None = None,
+            responder: Optional[VectorNodeValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[VectorNodeValidationService]
+            responder: Optional[VectorNodeValidationResponder]
         """
-        super().__init__(service=service or VectorNodeValidationService())
+        super().__init__(responder=responder or VectorNodeValidationResponder())
     
     @property
-    def service(self) -> VectorNodeValidationService:
-        return cast(VectorNodeValidationService, super().service)
+    def responder(self) -> VectorNodeValidationResponder:
+        return cast(VectorNodeValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

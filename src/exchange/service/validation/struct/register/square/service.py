@@ -32,7 +32,7 @@ class SquareRegisterValidationService(
             products from SquareRegisterValidationService.
 
     Attributes:
-        service: SquareRegisterValidationService
+        responder: SquareRegisterValidationResponder
         
     Provides:
         -   def extract_model(
@@ -49,17 +49,17 @@ class SquareRegisterValidationService(
     
     def __init__(
             self,
-            service: Optional[SquareRegisterValidationService] | None = None,
+            responder: Optional[SquareRegisterValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[SquareRegisterValidationService]
+            responder: Optional[SquareRegisterValidationResponder]
         """
-        super().__init__(service=service or SquareRegisterValidationService())
+        super().__init__(responder=responder or SquareRegisterValidationResponder())
     
     @property
-    def service(self) -> SquareRegisterValidationService:
-        return cast(SquareRegisterValidationService, super().service)
+    def responder(self) -> SquareRegisterValidationResponder:
+        return cast(SquareRegisterValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

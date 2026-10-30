@@ -32,7 +32,7 @@ class TeamBinderValidationService(
             products from TeamBinderValidationService.
 
     Attributes:
-        service: TeamBinderValidationService
+        responder: TeamBinderValidationResponder
         
     Provides:
         -   def extract_model(
@@ -49,17 +49,17 @@ class TeamBinderValidationService(
     
     def __init__(
             self,
-            service: Optional[TeamBinderValidationService] | None = None,
+            responder: Optional[TeamBinderValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[TeamBinderValidationService]
+            responder: Optional[TeamBinderValidationResponder]
         """
-        super().__init__(service=service or TeamBinderValidationService())
+        super().__init__(responder=responder or TeamBinderValidationResponder())
     
     @property
-    def service(self) -> TeamBinderValidationService:
-        return cast(TeamBinderValidationService, super().service)
+    def responder(self) -> TeamBinderValidationResponder:
+        return cast(TeamBinderValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

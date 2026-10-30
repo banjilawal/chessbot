@@ -38,7 +38,7 @@ class NodeAuthorizationResponder(
         -   def execute(request: NodePermissionRequest[T]) -> NodeDecision[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: NodeAuthorizationDispatcher[T]):

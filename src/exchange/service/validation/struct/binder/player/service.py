@@ -34,7 +34,7 @@ class PlayerBinderValidationService(
             products from PlayerBinderValidationService.
 
     Attributes:
-        service: PlayerBinderValidationService
+        responder: PlayerBinderValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class PlayerBinderValidationService(
     
     def __init__(
             self,
-            service: Optional[PlayerBinderValidationService] | None = None,
+            responder: Optional[PlayerBinderValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[PlayerBinderValidationService]
+            responder: Optional[PlayerBinderValidationResponder]
         """
-        super().__init__(service=service or PlayerBinderValidationService())
+        super().__init__(responder=responder or PlayerBinderValidationResponder())
     
     @property
-    def service(self) -> PlayerBinderValidationService:
-        return cast(PlayerBinderValidationService, super().service)
+    def responder(self) -> PlayerBinderValidationResponder:
+        return cast(PlayerBinderValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

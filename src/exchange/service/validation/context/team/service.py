@@ -34,7 +34,7 @@ class TeamContextValidationService(
             products from TeamContextValidationService.
 
     Attributes:
-        service: TeamContextValidationService
+        responder: TeamContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class TeamContextValidationService(
     
     def __init__(
             self,
-            service: Optional[TeamContextValidationService] | None = None,
+            responder: Optional[TeamContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[TeamContextValidationService]
+            responder: Optional[TeamContextValidationResponder]
         """
-        super().__init__(service=service or TeamContextValidationService())
+        super().__init__(responder=responder or TeamContextValidationResponder())
     
     @property
-    def service(self) -> TeamContextValidationService:
-        return cast(TeamContextValidationService, super().service)
+    def responder(self) -> TeamContextValidationResponder:
+        return cast(TeamContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

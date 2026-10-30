@@ -34,7 +34,7 @@ class CoordValidationService(
             products from CoordValidationService.
 
     Attributes:
-        service: CoordValidationService
+        responder: CoordValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class CoordValidationService(
     
     def __init__(
             self,
-            service: Optional[CoordValidationService] | None = None,
+            responder: Optional[CoordValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[CoordValidationService]
+            responder: Optional[CoordValidationResponder]
         """
-        super().__init__(service=service or CoordValidationService())
+        super().__init__(responder=responder or CoordValidationResponder())
     
     @property
-    def service(self) -> CoordValidationService:
-        return cast(CoordValidationService, super().service)
+    def responder(self) -> CoordValidationResponder:
+        return cast(CoordValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import Decision
-from authorization import Authorizer
+from authorization import Permitter
 from exchange import PermissionRequest
 from transit import AuthorizationDispatcher
 from util import LoggingLevelRouter
@@ -39,12 +39,12 @@ class AuthorizationResponder(ABC, Generic[T]):
         Responder
     """
     
-    _authorizer: Authorizer[T]
+    _authorizer: Permitter[T]
     _dispatcher: AuthorizationDispatcher[T]
     
     def __init__(
             self,
-            authorizer: Authorizer[T],
+            authorizer: Permitter[T],
             dispatcher: AuthorizationDispatcher[T]
     ):
         """

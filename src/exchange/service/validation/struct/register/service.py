@@ -37,7 +37,7 @@ class RegisterValidationService(
             from a RegisterValidationResponse.
 
     Attributes:
-        service: RegisterValidationService[T]
+        responder: RegisterValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -54,15 +54,15 @@ class RegisterValidationService(
         ValidationService
     """
     
-    def __init__(self, service: RegisterValidationService[T]):
+    def __init__(self, responder: RegisterValidationService[T]):
         """
         Args:
-            service: RegisterValidationService[T]
+            responder: RegisterValidationService[T]
         """
-        super().__init__(service=service)
+        super().__init__(responder=responder)
     
     @property
-    def service(self) -> RegisterValidationService[T]:
+    def responder(self) -> RegisterValidationService[T]:
         return cast(RegisterValidationService[T], super().service)
     
     @abstractmethod

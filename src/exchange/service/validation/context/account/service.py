@@ -12,16 +12,13 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AccountValidationResponse, ValidationResult
-from domain import Account, AccountBlueprint
+from domain import Account, AccountBlueprint, AccountContext
 from err import AccountContextValidationServiceException, AccountContextValidationServiceException
-from exchange import (
-    AccountContextValidationService, AccountValidationRequest, ContextValidationService
-)
 from util import LoggingLevelRouter
 
 
 class AccountContextValidationService(
-    ContextValidationService[Account]
+    ContextValidationService[AccountContext]
 ):
     """
     Role
@@ -34,7 +31,7 @@ class AccountContextValidationService(
             products from AccountContextValidationService.
 
     Attributes:
-        service: AccountContextValidationService
+        responder: AccountContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +48,17 @@ class AccountContextValidationService(
     
     def __init__(
             self,
-            service: Optional[AccountContextValidationService] | None = None,
+            responder: Optional[AccountContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[AccountContextValidationService]
+            responder: Optional[AccountContextValidationResponder]
         """
-        super().__init__(service=service or AccountContextValidationService())
+        super().__init__(responder=responder or AccountContextValidationResponder())
     
     @property
-    def service(self) -> AccountContextValidationService:
-        return cast(AccountContextValidationService, super().service)
+    def responder(self) -> AccountContextValidationResponder:
+        return cast(AccountContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

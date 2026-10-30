@@ -34,7 +34,7 @@ class VectorContextValidationService(
             products from VectorContextValidationService.
 
     Attributes:
-        service: VectorContextValidationService
+        responder: VectorContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class VectorContextValidationService(
     
     def __init__(
             self,
-            service: Optional[VectorContextValidationService] | None = None,
+            responder: Optional[VectorContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[VectorContextValidationService]
+            responder: Optional[VectorContextValidationResponder]
         """
-        super().__init__(service=service or VectorContextValidationService())
+        super().__init__(responder=responder or VectorContextValidationResponder())
     
     @property
-    def service(self) -> VectorContextValidationService:
-        return cast(VectorContextValidationService, super().service)
+    def responder(self) -> VectorContextValidationResponder:
+        return cast(VectorContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

@@ -34,7 +34,7 @@ class TeamValidationService(
             products from TeamValidationService.
 
     Attributes:
-        service: TeamValidationService
+        responder: TeamValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class TeamValidationService(
     
     def __init__(
             self,
-            service: Optional[TeamValidationService] | None = None,
+            responder: Optional[TeamValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[TeamValidationService]
+            responder: Optional[TeamValidationResponder]
         """
-        super().__init__(service=service or TeamValidationService())
+        super().__init__(responder=responder or TeamValidationResponder())
     
     @property
-    def service(self) -> TeamValidationService:
-        return cast(TeamValidationService, super().service)
+    def responder(self) -> TeamValidationResponder:
+        return cast(TeamValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

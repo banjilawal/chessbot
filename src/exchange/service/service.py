@@ -27,22 +27,22 @@ class ResponseService(ABC, Generic[T]):
         1.  Extract the payload from a Response.result.
 
     Attributes:
-        service: Service[T]
+        responder: Service[T]
 
     Provides:
         -   def execute(self, request[T]) -> Any
 
     Super Class:
     """
-    _service: Service[T]
+    _responder: Service[T]
     
-    def __init__(self, service: Service[T]):
+    def __init__(self, responder: Service[T]):
         """
         Args:
-            service: Service[T]
+            responder: Service[T]
         """
         self._service = service
         
     @property
-    def service(self) ->Service[T]:
+    def responder(self) ->Service[T]:
         return self._service

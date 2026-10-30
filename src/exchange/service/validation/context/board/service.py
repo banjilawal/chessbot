@@ -37,7 +37,7 @@ class BoardContextValidationService(
             products from BoardContextValidationService.
 
     Attributes:
-        service: BoardContextValidationService
+        responder: BoardContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -54,17 +54,17 @@ class BoardContextValidationService(
     
     def __init__(
             self,
-            service: Optional[BoardContextValidationService] | None = None,
+            responder: Optional[BoardContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[BoardContextValidationService]
+            responder: Optional[BoardContextValidationResponder]
         """
-        super().__init__(service=service or BoardContextValidationService())
+        super().__init__(responder=responder or BoardContextValidationResponder())
     
     @property
-    def service(self) -> BoardContextValidationService:
-        return cast(BoardContextValidationService, super().service)
+    def responder(self) -> BoardContextValidationResponder:
+        return cast(BoardContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

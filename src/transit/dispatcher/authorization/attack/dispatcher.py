@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AttackDecision
-from authorization import AttackAuthorizer
+from authorization import AttackPermitter
 from err import AttackAuthorizationDispatcherException
 from exchange import AttackRequest
 from transit import AuthorizationDispatcher
@@ -37,16 +37,16 @@ class AttackAuthorizationDispatcher(AuthorizationDispatcher[AttackRequest]):
         Dispatcher
     """
     
-    def __init__(self, authorizer: Optional[AttackAuthorizer]):
+    def __init__(self, authorizer: Optional[AttackPermitter]):
         """
         Args:
              authorizer: Optional[AttackAuthorizer]
         """
-        super().__init__(authorizer=authorizer or AttackAuthorizer())
+        super().__init__(authorizer=authorizer or AttackPermitter())
         
     @property
-    def authorizer(self) -> AttackAuthorizer:
-        return cast(AttackAuthorizer, super().authorizer)
+    def authorizer(self) -> AttackPermitter:
+        return cast(AttackPermitter, super().authorizer)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AttackRequest) -> AttackDecision:

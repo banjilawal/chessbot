@@ -34,7 +34,7 @@ class SquareContextValidationService(
             products from SquareContextValidationService.
 
     Attributes:
-        service: SquareContextValidationService
+        responder: SquareContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class SquareContextValidationService(
     
     def __init__(
             self,
-            service: Optional[SquareContextValidationService] | None = None,
+            responder: Optional[SquareContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[SquareContextValidationService]
+            responder: Optional[SquareContextValidationResponder]
         """
-        super().__init__(service=service or SquareContextValidationService())
+        super().__init__(responder=responder or SquareContextValidationResponder())
     
     @property
-    def service(self) -> SquareContextValidationService:
-        return cast(SquareContextValidationService, super().service)
+    def responder(self) -> SquareContextValidationResponder:
+        return cast(SquareContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

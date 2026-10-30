@@ -32,7 +32,7 @@ class AccountContextValidationDispatcher(
         validator: AccountContextValidator
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
+        -   def execute(candidate: Any) -> ValidationResult[AccountContextCarrier]
 
     Super Class:
         ContextValidationDispatcher
@@ -48,7 +48,6 @@ class AccountContextValidationDispatcher(
     def validator(self) -> AccountContextValidator:
         return cast(AccountContextValidator, super().validator)
     
-
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[AccountContextCarrier]:
         """
@@ -82,5 +81,5 @@ class AccountContextValidationDispatcher(
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(AccountContextCarrier, validation.authorization_applicant)
+        carrier = cast(AccountContextCarrier, validation.payload)
         return ValidationResult.success(carrier)

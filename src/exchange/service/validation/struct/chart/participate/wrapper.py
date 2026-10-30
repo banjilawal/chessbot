@@ -32,7 +32,7 @@ class ParticipationValidationService(
             products from ParticipationValidationService.
 
     Attributes:
-        service: ParticipationValidationService
+        responder: ParticipationValidationResponder
         
     Provides:
         -   def extract_model(
@@ -49,17 +49,17 @@ class ParticipationValidationService(
     
     def __init__(
             self,
-            service: Optional[ParticipationValidationService] | None = None,
+            responder: Optional[ParticipationValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ParticipationValidationService]
+            responder: Optional[ParticipationValidationResponder]
         """
-        super().__init__(service=service or ParticipationValidationService())
+        super().__init__(responder=responder or ParticipationValidationResponder())
     
     @property
-    def service(self) -> ParticipationValidationService:
-        return cast(ParticipationValidationService, super().service)
+    def responder(self) -> ParticipationValidationResponder:
+        return cast(ParticipationValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

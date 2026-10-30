@@ -34,7 +34,7 @@ class ManeuverContextValidationService(
             products from ManeuverContextValidationService.
 
     Attributes:
-        service: ManeuverContextValidationService
+        responder: ManeuverContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class ManeuverContextValidationService(
     
     def __init__(
             self,
-            service: Optional[ManeuverContextValidationService] | None = None,
+            responder: Optional[ManeuverContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ManeuverContextValidationService]
+            responder: Optional[ManeuverContextValidationResponder]
         """
-        super().__init__(service=service or ManeuverContextValidationService())
+        super().__init__(responder=responder or ManeuverContextValidationResponder())
     
     @property
-    def service(self) -> ManeuverContextValidationService:
-        return cast(ManeuverContextValidationService, super().service)
+    def responder(self) -> ManeuverContextValidationResponder:
+        return cast(ManeuverContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

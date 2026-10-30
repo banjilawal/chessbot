@@ -37,7 +37,7 @@ class FootstepValidationService(
             products from FootstepValidationService.
 
     Attributes:
-        service: FootstepValidationService
+        responder: FootstepValidationResponder
         
     Provides:
         -   def extract_model(
@@ -54,17 +54,17 @@ class FootstepValidationService(
     
     def __init__(
             self,
-            service: Optional[FootstepValidationService] | None = None,
+            responder: Optional[FootstepValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[FootstepValidationService]
+            responder: Optional[FootstepValidationResponder]
         """
-        super().__init__(service=service or FootstepValidationService())
+        super().__init__(responder=responder or FootstepValidationResponder())
     
     @property
-    def service(self) -> FootstepValidationService:
-        return cast(FootstepValidationService, super().service)
+    def responder(self) -> FootstepValidationResponder:
+        return cast(FootstepValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

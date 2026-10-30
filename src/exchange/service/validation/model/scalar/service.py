@@ -34,7 +34,7 @@ class ScalarValidationService(
             products from ScalarValidationService.
 
     Attributes:
-        service: ScalarValidationService
+        responder: ScalarValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class ScalarValidationService(
     
     def __init__(
             self,
-            service: Optional[ScalarValidationService] | None = None,
+            responder: Optional[ScalarValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ScalarValidationService]
+            responder: Optional[ScalarValidationResponder]
         """
-        super().__init__(service=service or ScalarValidationService())
+        super().__init__(responder=responder or ScalarValidationResponder())
     
     @property
-    def service(self) -> ScalarValidationService:
-        return cast(ScalarValidationService, super().service)
+    def responder(self) -> ScalarValidationResponder:
+        return cast(ScalarValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

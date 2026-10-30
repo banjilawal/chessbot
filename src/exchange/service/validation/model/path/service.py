@@ -34,7 +34,7 @@ class PathValidationService(
             products from PathValidationService.
 
     Attributes:
-        service: PathValidationService
+        responder: PathValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class PathValidationService(
     
     def __init__(
             self,
-            service: Optional[PathValidationService] | None = None,
+            responder: Optional[PathValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[PathValidationService]
+            responder: Optional[PathValidationResponder]
         """
-        super().__init__(service=service or PathValidationService())
+        super().__init__(responder=responder or PathValidationResponder())
     
     @property
-    def service(self) -> PathValidationService:
-        return cast(PathValidationService, super().service)
+    def responder(self) -> PathValidationResponder:
+        return cast(PathValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

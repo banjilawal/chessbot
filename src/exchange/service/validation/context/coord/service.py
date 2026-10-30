@@ -34,7 +34,7 @@ class CoordContextValidationService(
             products from CoordContextValidationService.
 
     Attributes:
-        service: CoordContextValidationService
+        responder: CoordContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class CoordContextValidationService(
     
     def __init__(
             self,
-            service: Optional[CoordContextValidationService] | None = None,
+            responder: Optional[CoordContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[CoordContextValidationService]
+            responder: Optional[CoordContextValidationResponder]
         """
-        super().__init__(service=service or CoordContextValidationService())
+        super().__init__(responder=responder or CoordContextValidationResponder())
     
     @property
-    def service(self) -> CoordContextValidationService:
-        return cast(CoordContextValidationService, super().service)
+    def responder(self) -> CoordContextValidationResponder:
+        return cast(CoordContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

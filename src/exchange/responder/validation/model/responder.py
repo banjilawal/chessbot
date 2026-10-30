@@ -38,7 +38,7 @@ class ModelValidationResponder(
         -   def execute(request: ModelValidationRequest[T]) -> ModelValidationResponse[T]
 
     Super Class:
-        ValidatorExchange
+        ValidationResponder
     """
     
     def __init__(self, dispatcher: ModelValidationDispatcher[T]):

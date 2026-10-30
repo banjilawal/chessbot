@@ -34,7 +34,7 @@ class EncounterContextValidationService(
             products from AttackContextValidationService.
 
     Attributes:
-        service: AttackContextValidationService
+        responder: AttackContextValidationResponder
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class EncounterContextValidationService(
     
     def __init__(
             self,
-            service: Optional[AttackContextValidationService] | None = None,
+            responder: Optional[AttackContextValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[AttackContextValidationService]
+            responder: Optional[AttackContextValidationResponder]
         """
-        super().__init__(service=service or AttackContextValidationService())
+        super().__init__(responder=responder or AttackContextValidationResponder())
     
     @property
-    def service(self) -> AttackContextValidationService:
-        return cast(AttackContextValidationService, super().service)
+    def responder(self) -> AttackContextValidationResponder:
+        return cast(AttackContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor

@@ -34,7 +34,7 @@ class ManeuverValidationService(
             products from ManeuverValidationService.
 
     Attributes:
-        service: ManeuverValidationService
+        responder: ManeuverValidationResponder
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class ManeuverValidationService(
     
     def __init__(
             self,
-            service: Optional[ManeuverValidationService] | None = None,
+            responder: Optional[ManeuverValidationResponder] | None = None,
     ):
         """
         Args:
-            service: Optional[ManeuverValidationService]
+            responder: Optional[ManeuverValidationResponder]
         """
-        super().__init__(service=service or ManeuverValidationService())
+        super().__init__(responder=responder or ManeuverValidationResponder())
     
     @property
-    def service(self) -> ManeuverValidationService:
-        return cast(ManeuverValidationService, super().service)
+    def responder(self) -> ManeuverValidationResponder:
+        return cast(ManeuverValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor
