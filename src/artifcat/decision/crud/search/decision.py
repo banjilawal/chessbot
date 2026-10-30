@@ -11,110 +11,89 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import Permission
-from artifcat.decision.crud import CrudDecision
-from exchange import SearchRequest, PermissionRequest
+from artifcat import CrudDecision, Permission
+from exchange import (
+    PermissionRequest, CrudPermissionRequest, SearchPermissionRequest, SearchRequest
+)
 
-T = TypeVar("T", bound="SearchRequest")
-
-class SearchDecision(CrudDecision[T], Generic[T]):
+class SearchDecision(CrudDecision[SearchRequest]):
     """
     Role:
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if an search is permitted or denied.
-        
+        1.  Report if a Crud transaction is permitted.
+
     Attributes:
-        permission: Permission
-        permission_request: PermissionRequest[T]
-        exception: Optional[Exception]
-        approval: Optional[T]
-        
+        approval: Optional[SearchRequest]
+
     Provides:
         -   def grant(
-                    approval: T,
-                    permission_request: PermissionRequest[T],
-            ) -> Decision[T]
-            
+                    approval: SearchRequest,
+                    permission_request: PermissionRequest,
+            ) -> SearchDecision
+
         -   def denial(
-                    permission_request: PermissionRequest[T],
+                    permission_request: PermissionRequest,
                     exception: Exception,
-            ) -> Decision[T]
-            
-        -   def do_nothing(
-                    permission_request: PermissionRequest[T]
             ) -> SearchDecision
 
     Super Class:
         CrudDecision
     """
-  
+    
     def __init__(
             self,
             permission: Permission,
             permission_request: PermissionRequest[T],
             exception: Optional[Exception] | None = None,
-            approval: Optional[T] | None = None,
+            approval: Optional[SearchRequest] | None = None,
     ):
         """
         Args:
             permission: Permission
             permission_request: PermissionRequest
             exception: Optional[Exception]
-            approval: Optional[TransactionRequest]
+            approval: Optional[T]
         """
         super().__init__(
+            permission_request=permission_request,
             approval=approval,
             exception=exception,
             permission=permission,
-            permission_request=permission_request,
-        )
-    
-    @property
-    def permission_request(self) -> PermissionRequest[T]:
-        return cast(PermissionRequest[T], super().permission_request)
-    
-    @property
-    def approval(self) -> Optional[T]:
-        return cast(T, super().approval)
-        
-    @property
-    def item_already_exists(self):
-        return (
-            self.exception is None and
-            self.approval is None and
-            self.permission == Permission.DO_NOTHING
         )
     
     @classmethod
     def grant(
-            cls,
-            approval: T,
-            permission_request: PermissionRequest[T],
-    ) -> SearchDecision[T]:
+            cls, 
+            approval: SearchRequest,
+            permission_request: PermissionRequest,
+    ) -> CrudDecision:
+        role_request = cast(
+            SearchPermissionRequest,
+            permission_request,
+        )
         return cls(
-            approval=approval, 
-            permission_request=permission_request, 
+            approval=approval,
+            permission_request=role_request,
             permission=Permission.GRANTED,
         )
     
     @classmethod
     def denial(
-            cls,
-            permission_request: PermissionRequest[T],
+            cls, 
+            permission_request: PermissionRequest,
             exception: Exception,
-    ) -> SearchDecision[T]:
+    ) -> CrudDecision:
+        role_request = cast(
+            CrudPermissionRequest,
+            permission_request,
+        )
         return cls(
             exception=exception,
-            permission_request=permission_request,
+            permission_request=role_request,
             permission=Permission.DENIED,
         )
-    
-    @classmethod
-    def do_nothing(cls, permission_request: PermissionRequest[T],) -> SearchDecision:
-        return cls(
-            permission_request=permission_request,
-            permission=Permission.DO_NOTHING,
-        )
+
+
     

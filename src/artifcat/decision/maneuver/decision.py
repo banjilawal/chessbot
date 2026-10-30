@@ -12,80 +12,106 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision, Permission
-from exchange import ManeuverPermissionRequest, ManeuverRequest
+from exchange import PermissionRequest, ManeuverPermissionRequest, ManeuverRequest
 
 
-class ManeuverDecision(Decision[ManeuverPermissionRequest]):
+class ManeuverDecision(Decision[ManeuverRequest]):
     """
     Role:
-        - Authorization Reporting
+        - Permission Reporting
 
     Responsibilities:
-        1.  Report if an action is permitted.
-        
-    Attributes:
-        permission: Permission
-        exception: Optional[Exception]
-        request: ManeuverPermissionRequest
+        1.  Report if a Maneuver transaction is permitted.
 
-        
-        is_granted: bool
-        is_denied: bool
-        
+    Attributes:
+        approval: Optional[ManeuverRequest]
+
     Provides:
-        -   def grant(request: ManeuverRequest) -> ManeuverDecision
-        -   def deny(request: ManeuverRequest, exception: Exception) -> ManeuverDecision
+        -   def grant(
+                    approval: ManeuverRequest,
+                    permission_request: PermissionRequest,
+            ) -> ManeuverDecision
+
+        -   def denial(
+                    permission_request: PermissionRequest,
+                    exception: Exception,
+            ) -> ManeuverDecision
 
     Super Class:
         Decision
     """
-
-  
+    
     def __init__(
             self,
             permission: Permission,
-            request: ManeuverRequest,
+            permission_request: ManeuverPermissionRequest,
             exception: Optional[Exception] | None = None,
+            approval: Optional[ManeuverRequest] | None = None,
     ):
         """
         Args:
             permission: Permission
-            request: ManeuverRequest
+            permission_request: PermissionRequest
             exception: Optional[Exception]
+            approval: Optional[ManeuverRequest]
         """
-        super().__init__(request=request, permission=permission, exception=exception)
+        super().__init__(
+            permission_request=permission_request,
+            approval=approval,
+            exception=exception,
+            permission=permission,
+        )
     
     @property
-    def request(self) -> ManeuverRequest:
-        return cast(ManeuverRequest, super().request)
-        
-
+    def permission_request(self) -> ManeuverPermissionRequest:
+        return cast(ManeuverPermissionRequest, super().permission_request)
+    
+    @property
+    def approval(self) -> Optional[ManeuverRequest]:
+        return cast(ManeuverRequest, super().approval)
+    
     @property
     def request_is_granted(self) -> bool:
-        return super().request_is_granted and isinstance(self.request, ManeuverRequest)
+        return (
+                super().request_is_granted and 
+                isinstance(self.approval, ManeuverRequest)
+        )
     
     @property
     def request_is_denied(self) -> bool:
         return not self.request_is_granted
     
     @classmethod
-    def grant(cls, request: ManeuverRequest) -> ManeuverDecision:
-        return cls(request=request, permission=Permission.GRANTED)
+    def grant(
+            cls, 
+            approval: ManeuverRequest, 
+            permission_request: PermissionRequest,
+    ) -> ManeuverDecision:
+        role_request = cast(
+            ManeuverPermissionRequest, 
+            permission_request,
+        )
+        return cls(
+            approval=approval,
+            permission_request=role_request,
+            permission=Permission.GRANTED,
+        )
     
     @classmethod
-    def denial(cls, request: ManeuverRequest, exception: Exception) -> ManeuverDecision:
+    def denial(
+            cls, 
+            permission_request: PermissionRequest,
+            exception: Exception,
+    ) -> ManeuverDecision:
+        role_request = cast(
+            ManeuverPermissionRequest,
+            permission_request,
+        )
         return cls(
-            request=request,
             exception=exception,
+            permission_request=role_request,
             permission=Permission.DENIED,
         )
-    
-    @classmethod
-    def timed_out(cls, request: ManeuverRequest, exception: Exception) -> ManeuverDecision:
-        return cls(
-            request=request,
-            exception=exception,
-            permission=Permission.TIMED_OUT,
-        )
-    
+
+
     

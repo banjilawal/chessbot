@@ -13,7 +13,6 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
-n
 from exchange import PermissionRequest, TransactionRequest
 
 T = TypeVar("T", bound="TransactionRequest")

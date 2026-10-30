@@ -13,9 +13,10 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Decision, Permission
-from exchange import PermissionRequest
+from exchange import PermissionRequest, CrudPermissionRequest, CrudRequest
 
-T = TypeVar("T", bound="CrudTransactionRequest")
+T = TypeVar("T", bound="CrudRequest")
+
 
 class CrudDecision(Decision[T], ABC, Generic[T]):
     """
@@ -23,32 +24,26 @@ class CrudDecision(Decision[T], ABC, Generic[T]):
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if an action is permitted.
-        
+        1.  Report if a Crud transaction is permitted.
+
     Attributes:
-        permission_request: PermissionRequest[T]
-        permission: Permission
         approval: Optional[T]
-        exception: Optional[Exception]
-        
-        is_granted: bool
-        is_denied: bool
-        
+
     Provides:
         -   def grant(
-                    approval: T,
-                    permission_request: PermissionRequest[T],
-            ) -> Decision[T]
-            
+                    approval: CrudRequest,
+                    permission_request: PermissionRequest,
+            ) -> CrudDecision[T]
+
         -   def denial(
-                    permission_request: PermissionRequest[T],
+                    permission_request: PermissionRequest,
                     exception: Exception,
-            ) -> Decision[T]
+            ) -> CrudDecision[T]
 
     Super Class:
         Decision
     """
-  
+    
     def __init__(
             self,
             permission: Permission,
@@ -64,33 +59,43 @@ class CrudDecision(Decision[T], ABC, Generic[T]):
             approval: Optional[T]
         """
         super().__init__(
+            permission_request=permission_request,
             approval=approval,
             exception=exception,
             permission=permission,
-            permission_request=permission_request,
         )
     
-    @property
-    def permission_request(self) -> PermissionRequest[T]:
-        return cast(PermissionRequest[T], super().permission_request)
-    
-    @property
-    def approval(self) -> Optional[T]:
-        return cast(T, super().approval)
-    
     @classmethod
-    def grant(cls, approval: T, permission_request: PermissionRequest[T]) -> Decision[T]:
+    def grant(
+            cls, 
+            approval: T,
+            permission_request: PermissionRequest,
+    ) -> CrudDecision:
+        role_request = cast(
+            CrudPermissionRequest, 
+            permission_request,
+        )
         return cls(
-            approval=approval, 
-            permission_request=permission_request, 
+            approval=approval,
+            permission_request=role_request,
             permission=Permission.GRANTED,
         )
     
     @classmethod
-    def denial(cls, permission_request: PermissionRequest[T], exception: Exception) -> Decision[T]:
+    def denial(
+            cls, 
+            permission_request: PermissionRequest,
+            exception: Exception,
+    ) -> CrudDecision:
+        role_request = cast(
+            CrudPermissionRequest,
+            permission_request,
+        )
         return cls(
             exception=exception,
-            permission_request=permission_request,
+            permission_request=role_request,
             permission=Permission.DENIED,
         )
+
+
     

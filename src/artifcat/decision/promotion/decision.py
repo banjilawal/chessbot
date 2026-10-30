@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat.decision import Decision, Permission
+from artifcat import Decision, Permission
 from exchange import PermissionRequest, PromotionPermissionRequest, PromotionRequest
 
 
@@ -38,6 +38,7 @@ class PromotionDecision(Decision[PromotionRequest]):
             ) -> PromotionDecision
 
     Super Class:
+        Decision
     """
     
     def __init__(
