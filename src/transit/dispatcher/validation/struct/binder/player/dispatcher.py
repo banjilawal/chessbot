@@ -82,5 +82,5 @@ class PlayerBinderValidationDispatcher(BinderValidationDispatcher[PlayerBinder])
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(PlayerBinderCarrier, validation.payload)
+            cast(PlayerBinderCarrier, validation.authorization_applicant)
         )

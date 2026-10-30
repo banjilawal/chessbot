@@ -30,18 +30,18 @@ class StalematePermissionRequest(AttackPermissionRequest[StalemateRequest]):
         Permission
      """
     
-    def __init__(self, id: int,  candidate: StalemateRequest):
+    def __init__(self, id: int,  authorization_applicant: StalemateRequest):
         """
         Args:
             id: int
-            candidate: StalemateRequest
+            authorization_applicant: StalemateRequest
         """
-        super().__init__(id=id, candidate=candidate)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     
     @property
-    def payload(self) -> StalemateRequest:
-        return cast(StalemateRequest, super().payload)
+    def authorization_applicant(self) -> StalemateRequest:
+        return cast(StalemateRequest, super().authorization_applicant)
 
     def __eq__(self, other):
         if other is self: return True

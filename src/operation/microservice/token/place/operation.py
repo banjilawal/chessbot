@@ -95,7 +95,7 @@ class TokenHomePlacer(Worker[Token]):
                     ex=analysis_result.exception,
                 )
             )
-        claim = cast(HomeSquareClaimReport, analysis_result.payload)
+        claim = cast(HomeSquareClaimReport, analysis_result.authorization_applicant)
         if claim.is_denied:
             return UpdateResult.update_failure(
                 original=token,
@@ -130,7 +130,7 @@ class TokenHomePlacer(Worker[Token]):
                 )
             )
         # --- Token has occupied its home square. Perform consistency maintenance tasks. ---#
-        home_square = cast(HomeSquare, visitation_result.payload)
+        home_square = cast(HomeSquare, visitation_result.authorization_applicant)
         claimant = home_square.occupant
         
         # Confirm claimant's place state is updated.

@@ -95,7 +95,7 @@ class BoardBuilder(ModelBuilder[Board]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 BoardBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class BoardBuilder(ModelBuilder[Board]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Board, assembly.payload))
+        return BuildResult.success(cast(Board, assembly.authorization_applicant))

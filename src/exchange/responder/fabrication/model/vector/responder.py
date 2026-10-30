@@ -91,7 +91,7 @@ class VectorBuildResponder(ModelBuildResponder[Vector]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(VectorCarrier, result.payload)
+        carrier = cast(VectorCarrier, result.authorization_applicant)
         return VectorBuildResponse.success(
             request=request,
             result=BuildResult(carrier),

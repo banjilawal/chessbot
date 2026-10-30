@@ -238,7 +238,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                     ),
                 )
             )
-        if occupant_check_result.payload is not None and occupant_check_result.payload != team:
+        if occupant_check_result.authorization_applicant is not None and occupant_check_result.authorization_applicant != team:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
@@ -253,7 +253,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                     ),
                 )
             )
-        if occupant_check_result.payload is not None and occupant_check_result.payload == team:
+        if occupant_check_result.authorization_applicant is not None and occupant_check_result.authorization_applicant == team:
             return UpdateResult.nothing_to_update()
         pre_update_binder = deepcopy(binder)
         binder.table[team.schema] = team

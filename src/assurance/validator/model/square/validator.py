@@ -96,7 +96,7 @@ class SquareValidator(ModelValidationFactory[Square]):
                     ex=product.exception,
                 )
             )
-        envelope = cast(RootSquareEnvelope, product.payload)
+        envelope = cast(RootSquareEnvelope, product.authorization_applicant)
         
         validation = self.router.execute(envelope=envelope)
         if validation.is_failure:

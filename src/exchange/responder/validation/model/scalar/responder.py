@@ -91,7 +91,7 @@ class ScalarValidationResponder(ModelValidationResponder[Scalar]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(ScalarCarrier, result.payload)
+        carrier = cast(ScalarCarrier, result.authorization_applicant)
         return ScalarValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),

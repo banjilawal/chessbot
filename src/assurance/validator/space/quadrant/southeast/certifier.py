@@ -86,7 +86,7 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(SoutheastQuadrantCarrier, carrier_validation.payload)
+        carrier = cast(SoutheastQuadrantCarrier, carrier_validation.authorization_applicant)
         if carrier.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -123,7 +123,7 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
                         ex=vector_validation.exception,
                     )
                 )
-            vectors.append(cast(Vector, vector_validation.payload))
+            vectors.append(cast(Vector, vector_validation.authorization_applicant))
         # --- Extract and cast payloads of the validation results. ---#
         origin = vectors[0]
         destination = None

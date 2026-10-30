@@ -91,7 +91,7 @@ class PlayerBinderAuthorizationResponder(BinderAuthorizationResponder[PlayerBind
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(PlayerBinderCarrier, result.payload)
+        carrier = cast(PlayerBinderCarrier, result.authorization_applicant)
         return PlayerBinderDecision.success(
             request=request,
             result=AuthorizationResult(carrier),

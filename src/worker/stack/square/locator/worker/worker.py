@@ -134,7 +134,7 @@ class HomeSquareLocator(Worker):
                 )
             )
         # Handle the case that there's no open slots for the square's rank.
-        if rank_quota_report.payload.rank_is_full:
+        if rank_quota_report.authorization_applicant.rank_is_full:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackExecuteException(

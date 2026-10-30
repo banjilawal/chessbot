@@ -91,7 +91,7 @@ class SquareRegisterAuthorizationResponder(RegisterAuthorizationResponder[Square
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(SquareRegisterCarrier, result.payload)
+        carrier = cast(SquareRegisterCarrier, result.authorization_applicant)
         return SquareRegisterDecision.success(
             request=request,
             result=AuthorizationResult(carrier),

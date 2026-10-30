@@ -101,7 +101,7 @@ class KingSpanner(Spanner):
                     )
                 )
             # Include the ray in the span.
-            span.rays.append(ray_computation_result.payload)
+            span.rays.append(ray_computation_result.authorization_applicant)
             
         # --- On success, send the dictionary in the success result. ---#
         return ComputationResult.success({"king": span})
@@ -144,7 +144,7 @@ class KingSpanner(Spanner):
                 )
             )
         # --- Put the new point in an array. ---#
-        points.append(addition_result.payload)
+        points.append(addition_result.authorization_applicant)
         
         # --- Create a new CoordRay and send in the success result. ---#
         return ComputationResult.success(CoordRay(origin=origin, points=points))

@@ -112,5 +112,5 @@ class MultiplyCoordTransaction:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        ComputationResult.success(product_build_result.payload)
+        ComputationResult.success(product_build_result.authorization_applicant)
     

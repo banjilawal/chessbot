@@ -39,7 +39,7 @@ class AttackLoader(Worker[T], ABC, Generic[T]):
     def execute(self, request: AttackRequest) -> AttackResult:
         method = f"{self.__class__.__name__}.execute"
         decision = self.permitter.execute(
-            AttackPermissionRequest(candidate=request)
+            AttackPermissionRequest(authorization_applicant=request)
         )
         if decision.request_is_denied:
             return AttackResult.failure(

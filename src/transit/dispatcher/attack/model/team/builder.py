@@ -95,7 +95,7 @@ class TeamAttack(ModelAttack[Team]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 TeamBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class TeamAttack(ModelAttack[Team]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Team, assembly.payload))
+        return AttackResult.success(cast(Team, assembly.authorization_applicant))

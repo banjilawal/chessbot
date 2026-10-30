@@ -91,7 +91,7 @@ class PathBuildLoader(ModelBuildLoader[Path]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(PathBuildRequest, priming.payload)
+        build_request = cast(PathBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

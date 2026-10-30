@@ -511,7 +511,7 @@ build_result = PieceFactory.search_service(name="WN2", rank=Knight(), team=white
 if not build_result.is_success():
     raise build_result.exception
 
-piece = cast(CombatantPiece, build_result.payload)
+piece = cast(CombatantPiece, build_result.authorization_applicant)
 ```
 ### Sequence Diagram for the Usage Example
 ```mermaid

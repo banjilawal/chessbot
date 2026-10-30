@@ -75,12 +75,12 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(ManeuverPermissionRequest, priming.payload)
+        approved_request = cast(ManeuverPermissionRequest, priming.authorization_applicant)
         # --- Prepare an approval from the completed chain. ---#
         approval = ManeuverPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
-            applicant=approved_request.applicant,
+            authorization_applicant=approved_request.applicant,
         )
         # --- Forward the approval. ---#
         return ManeuverDecision.grant(approval)

@@ -142,7 +142,7 @@ class Attack:
                 )
             )
         # Update the hostage's captor field and its status.
-        prisoner = captive_removal.payload
+        prisoner = captive_removal.authorization_applicant
         prisoner.captor = attacker
         prisoner.deployment = TokenDeployment.REMOVED_FROM_BOARD
         prisoner.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
@@ -185,5 +185,5 @@ class Attack:
                 )
             )
         
-        return AttackResult.success(manifest_build_result.payload)
+        return AttackResult.success(manifest_build_result.authorization_applicant)
             

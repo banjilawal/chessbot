@@ -52,7 +52,7 @@ class PromotionResult(TransactionResult[PawnToken]):
     
     @property
     def payload(self) -> Optional[PawnToken]:
-        return cast(PawnToken, super().payload)
+        return cast(PawnToken, super().authorization_applicant)
     
     @property
     def promotion(self) -> Optional[Rank]:

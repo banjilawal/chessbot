@@ -89,7 +89,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
                     ex=team_validation.exception
                 )
             )
-        team = cast(Team, team_validation.payload)
+        team = cast(Team, team_validation.authorization_applicant)
         
         # If the team is assigned to a different arena it's not a satellite of the area. They are not related.
         if arena != team.arena:

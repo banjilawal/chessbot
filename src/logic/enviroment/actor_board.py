@@ -70,7 +70,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       if actor_validation.is_failure():
         return ValidationResult.failure(actor_validation.exception)
 
-      actor = cast(Piece, actor_validation.payload)
+      actor = cast(Piece, actor_validation.authorization_applicant)
 
       # If the owner has no position history its not on the board and cannot owner.
       if actor.position is None or actor.positions.no_recurrences_exist():
@@ -102,7 +102,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
       
-      environment = cast(Board, environment_validation.payload)
+      environment = cast(Board, environment_validation.authorization_applicant)
       
       search_result = BoardPieceFinder.search_service(board=environment, search_context=BoardContext(id=actor.id))
       if search_result.no_recurrences_exist():

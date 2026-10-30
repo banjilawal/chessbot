@@ -57,7 +57,7 @@ class BishopPattern(TraversalSignature[Bishop]):
                 )
             )
         # Cast the validation product for additional processing.
-        recurrence_tables = cast(BishopRecurrenceRegistries, validation.payload)
+        recurrence_tables = cast(BishopRecurrenceRegistries, validation.authorization_applicant)
         
         computation = self.signature_generator.execute(
             collection=recurrence_tables
@@ -74,6 +74,6 @@ class BishopPattern(TraversalSignature[Bishop]):
                     ex=validation.exception
                 )
             )
-        pattern = cast(Tuple[VectorSet], computation.payload)
+        pattern = cast(Tuple[VectorSet], computation.authorization_applicant)
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(pattern)

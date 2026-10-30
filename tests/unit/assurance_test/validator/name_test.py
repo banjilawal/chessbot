@@ -39,7 +39,7 @@ class NameValidatorTest(unittest.TestCase):
 
   def test_valid_name_returns_result(self):
     result = NameValidator.search_service("A-1")
-    self.assertEqual(result.payload, "A-1")
+    self.assertEqual(result.authorization_applicant, "A-1")
 
 
 if __name__ == '__main__':

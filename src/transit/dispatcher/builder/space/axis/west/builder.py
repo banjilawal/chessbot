@@ -90,7 +90,7 @@ class WestAxisBuilder(AxisBuilder[WestAxis]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(WestAxisBlueprint, validation.payload)
+            blueprint=cast(WestAxisBlueprint, validation.authorization_applicant)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:
@@ -106,4 +106,4 @@ class WestAxisBuilder(AxisBuilder[WestAxis]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(WestAxis, assembly.payload))
+        return BuildResult.success(cast(WestAxis, assembly.authorization_applicant))

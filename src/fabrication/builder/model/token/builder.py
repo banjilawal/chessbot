@@ -94,7 +94,7 @@ class TokenBuilder(BuildFactory[Token]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(TokenBlueprint, bootstrap.payload)
+        blueprint = cast(TokenBlueprint, bootstrap.authorization_applicant)
         result = self.router.execute(blueprint)
         
         # Handle the case that a product is not routed back.

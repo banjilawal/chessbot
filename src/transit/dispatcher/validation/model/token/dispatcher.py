@@ -82,5 +82,5 @@ class TokenValidationDispatcher(ModelValidationDispatcher[Token]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(TokenCarrier, validation.payload)
+        carrier = cast(TokenCarrier, validation.authorization_applicant)
         return ValidationResult.success(carrier)

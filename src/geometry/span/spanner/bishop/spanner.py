@@ -79,7 +79,7 @@ class BishopSpanner(Spanner):
                 )
             )
         # --- On success, send the dictionary in the success result. ---#
-        return ComputationResult.success({"bishop": span_result.payload})
+        return ComputationResult.success({"bishop": span_result.authorization_applicant})
             
         
         

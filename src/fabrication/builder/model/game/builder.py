@@ -82,7 +82,7 @@ class GameBuilder(ModelBuilder[Game]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(GameBlueprint, bootstrap.payload)
+        blueprint = cast(GameBlueprint, bootstrap.authorization_applicant)
         id = blueprint.id or IdFactory.next_id(class_name="Game")
         
         # --- Send the work product. ---#

@@ -86,7 +86,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(AxisReservoirCarrier, carrier_validation.payload)
+        carrier = cast(AxisReservoirCarrier, carrier_validation.authorization_applicant)
         
         # --- Cast the candidate into a AxisReservoirBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
@@ -104,7 +104,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
                     ex=validation.exception
                 )
             )
-        origin = cast(Vector, validation.payload)
+        origin = cast(Vector, validation.authorization_applicant)
         if carrier.has_model:
             return ValidationResult.success(
                 AxisReservoirCarrier(model=AxisReservoir(origin=origin))

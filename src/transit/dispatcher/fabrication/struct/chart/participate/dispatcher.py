@@ -82,5 +82,5 @@ class ParticipationBuildDispatcher(ChartBuildDispatcher[Participation]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(ParticipationCarrier, build.payload)
+            cast(ParticipationCarrier, build.authorization_applicant)
         )

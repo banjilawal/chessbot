@@ -95,7 +95,7 @@ class PlayerBuilder(ModelBuilder[Player]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 PlayerBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class PlayerBuilder(ModelBuilder[Player]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Player, assembly.payload))
+        return BuildResult.success(cast(Player, assembly.authorization_applicant))

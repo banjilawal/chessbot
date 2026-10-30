@@ -47,7 +47,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
             if actor_square_validation.is_failure():
                 return BuildResult.failure(actor_square_validation.exception)
             
-            square = cast(Square, actor_square_validation.payload)
+            square = cast(Square, actor_square_validation.authorization_applicant)
             
             return BuildResult.success(
                 TurnScene(id=id, actor=piece, board=board, actor_square=square)

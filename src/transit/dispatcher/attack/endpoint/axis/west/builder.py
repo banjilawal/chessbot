@@ -114,7 +114,7 @@ class WestAxisEndpointAttack(AxisEndpointAttack[WestTraversalPattern]):
             )
         # Create the endpoint register.
         vector_register = VectorRegisterAttack.execute(
-            u=cast(Vector, validation.payload),
+            u=cast(Vector, validation.authorization_applicant),
             v=self._destination,
         )
         # --- Forward the work product to the caller. ---#
@@ -156,7 +156,7 @@ class WestAxisEndpointAttack(AxisEndpointAttack[WestTraversalPattern]):
         # Create the endpoint register.
         vector_register = VectorRegister(
             u=self._origin,
-            v=cast(Vector, result.payload)
+            v=cast(Vector, result.authorization_applicant)
         )
         # --- Forward the work product to the caller. ---#
     #     return AttackResult.success(payload=vector_register)

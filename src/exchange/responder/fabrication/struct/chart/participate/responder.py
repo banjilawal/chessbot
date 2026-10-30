@@ -91,7 +91,7 @@ class ParticipationBuildResponder(ChartBuildResponder[Participation]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(ParticipationCarrier, result.payload)
+        carrier = cast(ParticipationCarrier, result.authorization_applicant)
         return ParticipationBuildResponse.success(
             request=request,
             result=BuildResult(carrier),

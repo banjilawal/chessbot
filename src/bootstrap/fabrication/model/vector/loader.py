@@ -91,7 +91,7 @@ class VectorBuildLoader(ModelBuildLoader[Vector]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(VectorBuildRequest, priming.payload)
+        build_request = cast(VectorBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

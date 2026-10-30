@@ -94,7 +94,7 @@ class AxisReservoirAttack(SpaceReservoirAttackDispatcher[AxisReservoir]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(AxisReservoirBlueprint, validation.payload)
+            candidate=cast(AxisReservoirBlueprint, validation.authorization_applicant)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:
@@ -110,4 +110,4 @@ class AxisReservoirAttack(SpaceReservoirAttackDispatcher[AxisReservoir]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(AxisReservoir, assembly.payload))
+        return AttackResult.success(cast(AxisReservoir, assembly.authorization_applicant))

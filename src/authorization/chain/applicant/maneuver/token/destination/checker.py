@@ -87,7 +87,7 @@ class ManeuverTokenDestinationChecker(ManeuverTokenChecker):
         # --- Prepare an approval of the actor. ---#
         approval = ManeuverPermissionRequest(
             id=request.id,
-            applicant=request.applicant,
+            authorization_applicant=request.applicant,
             activity=request.activity,
         )
         # --- Forward the approval. ---#

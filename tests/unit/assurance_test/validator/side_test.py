@@ -67,7 +67,7 @@ class SideValidatorTest(unittest.TestCase):
   def test_side_validator_payload_equals_valid_side(self):
     side = Side(1, Commander(1, "owner"), TeamSchema.BLACK)
     validation = TeamValidator.search_service(side)
-    self.assertEqual(validation.payload, side)
+    self.assertEqual(validation.authorization_applicant, side)
 
 
 if __name__ == '__main__':

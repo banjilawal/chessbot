@@ -232,10 +232,10 @@ class SpannerEngine:
             )
         # --- Add the perpendicular and diagonal components to ge the queen's entire span. ---#
         queen_span = CoordSpan(origin=origin, rays=[])
-        for ray in diagonal_span_result.payload.rays:
+        for ray in diagonal_span_result.authorization_applicant.rays:
             queen_span.rays.append(ray)
         # Perpendicular rays next.
-        for ray in perpendicular_span_result.payload.rays:
+        for ray in perpendicular_span_result.authorization_applicant.rays:
             queen_span.rays.append(ray)
         
         # --- Send the success result to the caller. ---#
@@ -297,8 +297,8 @@ class SpannerEngine:
                     )
                 )
             # Add the ray to its span.
-            if ray_result.payload not in span.rays:
-                span.rays.append(ray_result.payload)
+            if ray_result.authorization_applicant not in span.rays:
+                span.rays.append(ray_result.authorization_applicant)
             
         # --- Send the success result to the caller. ---#
         return ComputationResult.success(span)
@@ -362,8 +362,8 @@ class SpannerEngine:
                     )
                 )
             # Add the ray to its span.
-            if ray_result.payload not in span.rays:
-                span.rays.append(ray_result.payload)
+            if ray_result.authorization_applicant not in span.rays:
+                span.rays.append(ray_result.authorization_applicant)
                 
         # --- Send the success result to the caller. ---#
         return ComputationResult.success(span)

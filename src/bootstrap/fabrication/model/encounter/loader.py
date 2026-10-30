@@ -91,7 +91,7 @@ class EncounterBuildLoader(ModelBuildLoader[Encounter]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(EncounterBuildRequest, priming.payload)
+        build_request = cast(EncounterBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

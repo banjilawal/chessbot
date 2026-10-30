@@ -95,7 +95,7 @@ class VectorAttack(ModelAttack[Vector]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 VectorBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class VectorAttack(ModelAttack[Vector]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Vector, assembly.payload))
+        return AttackResult.success(cast(Vector, assembly.authorization_applicant))

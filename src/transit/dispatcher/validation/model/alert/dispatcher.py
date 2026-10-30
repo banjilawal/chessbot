@@ -84,5 +84,5 @@ class AlertValidationDispatcher(
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(AlertCarrier, validation.payload)
+        carrier = cast(AlertCarrier, validation.authorization_applicant)
         return ValidationResult.success(carrier)

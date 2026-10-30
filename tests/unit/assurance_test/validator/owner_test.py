@@ -51,7 +51,7 @@ class CompetitorValidatorTest(unittest.TestCase):
   def test_competitor_validator_payload_equals_valid_competitor(self):
     competitor = CompetitorTest.valid_mock_competitor()
     validation = CommanderValidator.search_service(competitor)
-    self.assertEqual(validation.payload, competitor)
+    self.assertEqual(validation.authorization_applicant, competitor)
 
 
 if __name__ == '__main__':

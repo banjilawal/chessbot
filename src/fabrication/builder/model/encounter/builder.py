@@ -94,7 +94,7 @@ class EncounterBuilder(BuildFactory[Encounter]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(EncounterBlueprint, bootstrap.payload)
+        blueprint = cast(EncounterBlueprint, bootstrap.authorization_applicant)
         result = self.router.execute(blueprint)
         
         # Handle the case that a product is not routed back.
@@ -110,4 +110,4 @@ class EncounterBuilder(BuildFactory[Encounter]):
                 )
             )
         # --- Send the work product. ---#
-        return BuildResult.success(cast(Encounter, result.payload))
+        return BuildResult.success(cast(Encounter, result.authorization_applicant))

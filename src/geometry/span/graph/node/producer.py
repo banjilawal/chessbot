@@ -86,7 +86,7 @@ class NodeTreeProducer:
         return cls._production_helper(
             square_span=square_span,
             node_service=node_service,
-            tree_origin=root_node_build_result.payload
+            tree_origin=root_node_build_result.authorization_applicant
         )
 
     
@@ -134,7 +134,7 @@ class NodeTreeProducer:
                         ex=pair_list_build_result.exception,
                     )
                 )
-            node_tree.branches.append(pair_list_build_result.payload)
+            node_tree.branches.append(pair_list_build_result.authorization_applicant)
         return BuildResult.success(node_tree)
 
 

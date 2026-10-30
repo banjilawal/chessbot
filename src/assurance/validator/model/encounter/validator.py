@@ -96,7 +96,7 @@ class EncounterValidator(ModelValidationFactory[Encounter]):
                     ex=product.exception,
                 )
             )
-        envelope = cast(RootEncounterEnvelope, product.payload)
+        envelope = cast(RootEncounterEnvelope, product.authorization_applicant)
         
         validation = self.router.execute(envelope=envelope)
         if validation.is_failure:

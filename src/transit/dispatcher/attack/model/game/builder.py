@@ -95,7 +95,7 @@ class GameAttack(ModelAttack[Game]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 GameBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class GameAttack(ModelAttack[Game]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Game, assembly.payload))
+        return AttackResult.success(cast(Game, assembly.authorization_applicant))

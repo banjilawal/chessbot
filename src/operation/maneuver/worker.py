@@ -59,7 +59,7 @@ class Mover(Worker[ManeuverResult]):
         
         decision = self.permitter.execute(
             ManeuverPermissionRequest(
-                candidate=request,
+                authorization_applicant=request,
                 id=IdFactory.next_id(class_name="ManeuverPermissionRequest")
             )
         )
@@ -73,7 +73,7 @@ class Mover(Worker[ManeuverResult]):
                     ex=decision.exception,
                 )
             )
-        safe = cast(ManeuverRequest, decision.payload)
+        safe = cast(ManeuverRequest, decision.authorization_applicant)
         token = safe.token
         origin = safe.path.origin
         destination = safe.path.destination

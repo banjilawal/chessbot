@@ -169,7 +169,7 @@ class SquareStackRosterHandler:
                 team=team,
                 home_square=square,
                 square_stack=square_stack,
-                token=token_search_result.payload[0],
+                token=token_search_result.authorization_applicant[0],
             )
             # Handle the case that the update is not completed.
             if team_update_result.is_failure:
@@ -248,7 +248,7 @@ class SquareStackRosterHandler:
                 )
             )
         # --- Send the success result to the caller. ---#
-        return SearchResult.success(token_search_result.payload,)
+        return SearchResult.success(token_search_result.authorization_applicant, )
     
     @classmethod
     @LoggingLevelRouter.monitor

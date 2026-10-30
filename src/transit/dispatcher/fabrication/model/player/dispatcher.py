@@ -82,5 +82,5 @@ class PlayerBuildDispatcher(ModelBuildDispatcher[Player]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(PlayerCarrier, build.payload)
+        carrier = cast(PlayerCarrier, build.authorization_applicant)
         return BuildResult.success(carrier)

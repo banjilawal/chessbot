@@ -91,7 +91,7 @@ class CoordBuildLoader(ModelBuildLoader[Coord]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(CoordBuildRequest, priming.payload)
+        build_request = cast(CoordBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

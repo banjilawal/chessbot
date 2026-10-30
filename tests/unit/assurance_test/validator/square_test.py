@@ -67,7 +67,7 @@ class SquareValidatorTest(unittest.TestCase):
   def test_square_validator_payload_equals_valid_square(self):
     square = SquareTest.valid_mock_square()
     validation = SquareValidator.search_service(square)
-    self.assertEqual(validation.payload, square)
+    self.assertEqual(validation.authorization_applicant, square)
 
 
 if __name__ == '__main__':

@@ -91,7 +91,7 @@ class VectorNodeBuildResponder(NodeBuildResponder[VectorNode]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(VectorNodeCarrier, result.payload)
+        carrier = cast(VectorNodeCarrier, result.authorization_applicant)
         return VectorNodeBuildResponse.success(
             request=request,
             result=BuildResult(carrier),

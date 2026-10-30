@@ -82,7 +82,7 @@ class ArenaBuilder(ModelBuilder[Arena]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(ArenaBlueprint, bootstrap.payload)
+        blueprint = cast(ArenaBlueprint, bootstrap.authorization_applicant)
         id = blueprint.id or IdFactory.next_id(class_name="Arena")
         
         # --- Send the work product. ---#

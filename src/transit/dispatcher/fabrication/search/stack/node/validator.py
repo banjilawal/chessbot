@@ -85,7 +85,7 @@ class NodeContextBuilder(ContextBuilder[Node]):
                 )
             )
         # --- Cast the candidate into NodeContext for additional tests. ---#
-        context = cast(NodeContext, priming.payload)
+        context = cast(NodeContext, priming.authorization_applicant)
         
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())

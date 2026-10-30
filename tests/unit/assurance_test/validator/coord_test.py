@@ -106,7 +106,7 @@ class CoordValidatorTest(unittest.TestCase):
   def test_validation_payload_equals_input_param(self):
     mock_coord = CoordValidataorTest.valid_mock_coord(3, 4)
     result = CoordValidator.search_service(mock_coord)
-    self.assertEqual(result.payload, mock_coord)
+    self.assertEqual(result.authorization_applicant, mock_coord)
 
 
 if __name__ == '__main__':

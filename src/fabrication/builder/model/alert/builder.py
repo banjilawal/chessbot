@@ -82,7 +82,7 @@ class AlertBuilder(ModelBuilder[Alert]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(AlertBlueprint, bootstrap.payload)
+        blueprint = cast(AlertBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Alert(

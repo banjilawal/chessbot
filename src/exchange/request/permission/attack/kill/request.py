@@ -30,18 +30,18 @@ class KillPermissionRequest(AttackPermissionRequest[KillRequest]):
         Permission
      """
     
-    def __init__(self, id: int,  candidate: KillRequest):
+    def __init__(self, id: int,  authorization_applicant: KillRequest):
         """
         Args:
             id: int
-            candidate: KillRequest
+            authorization_applicant: KillRequest
         """
-        super().__init__(id=id, candidate=candidate)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     
     @property
-    def payload(self) -> KillRequest:
-        return cast(KillRequest, super().payload)
+    def authorization_applicant(self) -> KillRequest:
+        return cast(KillRequest, super().authorization_applicant)
 
     def __eq__(self, other):
         if other is self: return True

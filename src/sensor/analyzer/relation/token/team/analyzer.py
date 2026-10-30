@@ -95,7 +95,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
-        team = cast(Team, team_validation_result.payload)
+        team = cast(Team, team_validation_result.authorization_applicant)
         
         # Handle the case that the token is not certified as safe.
         token_validation_result = token_validator.execute(candidate_satellite)
@@ -111,7 +111,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
                     ex=token_validation_result.exception,
                 )
             )
-        token = cast(Token, token_validation_result.payload)
+        token = cast(Token, token_validation_result.authorization_applicant)
         
         if team.roster.is_empty and token.team == SENSOR.victim:
             return AnalysisResult.success(RelationReport.bidirectional(primary=team, satellite=token))

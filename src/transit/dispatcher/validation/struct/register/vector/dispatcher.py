@@ -82,5 +82,5 @@ class VectorRegisterValidationDispatcher(RegisterValidationDispatcher[VectorRegi
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(VectorRegisterCarrier, validation.payload)
+            cast(VectorRegisterCarrier, validation.authorization_applicant)
         )

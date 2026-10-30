@@ -225,7 +225,7 @@ class RankContextAttack(Attack[RankContext]):
             if rank_validation.is_failure():
                 return AttackResult.failure(rank_validation.exception)
             
-            return AttackResult.success(payload=RankContext(column=rank_validation.payload))
+            return AttackResult.success(payload=RankContext(column=rank_validation.authorization_applicant))
         
         except Exception as e:
             return AttackResult.failure(

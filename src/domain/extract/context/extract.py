@@ -57,7 +57,7 @@ class ContextPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
         return cast(ContextBlueprint[T], super().blueprint)
         
     @property
-    def is_valid_context_size(self) -> bool:
+    def is_valid_model_size(self) -> bool:
         blueprint =  self.blueprint
         if blueprint is None:
             return False
@@ -65,7 +65,7 @@ class ContextPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
     
     @property
     def has_wrong_context_size(self) -> bool:
-        return not self.is_valid_context_size
+        return not self.is_valid_model_size
         
  
     

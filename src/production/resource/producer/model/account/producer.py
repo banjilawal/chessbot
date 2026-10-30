@@ -92,7 +92,7 @@ class AccountEnvelopeProducer(ModelEnvelopeProducer[Account]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(AccountPrimeExtract, bootstrap.payload)
+        prime_extract = cast(AccountPrimeExtract, bootstrap.authorization_applicant)
         reference = prime_extract.reference
         blueprint = reference.extract_blueprint()
         
@@ -133,7 +133,7 @@ class AccountEnvelopeProducer(ModelEnvelopeProducer[Account]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.payload)
+        id = cast(int, id_validation.authorization_applicant)
         
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = AccountEnvelope(

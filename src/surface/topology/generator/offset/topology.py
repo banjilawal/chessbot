@@ -117,7 +117,7 @@ class OffsetTopologyGenerator:
                 ),
             )
         root = cast(Vector, origin_validation.payload)
-        offsets = cast(VectorSet, basis_validation.payload)
+        offsets = cast(VectorSet, basis_validation.authorization_applicant)
         
         solutions = []
         for offset in offsets.iterator:

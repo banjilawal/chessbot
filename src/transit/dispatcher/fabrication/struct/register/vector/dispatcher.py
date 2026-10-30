@@ -82,5 +82,5 @@ class VectorRegisterBuildDispatcher(RegisterBuildDispatcher[VectorRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(VectorRegisterCarrier, build.payload)
+            cast(VectorRegisterCarrier, build.authorization_applicant)
         )

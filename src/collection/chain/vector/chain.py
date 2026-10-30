@@ -54,7 +54,7 @@ class VectorChain(Chain[VectorNode]):
             )
         if search.is_empty:
             return SearchResult.empty()
-        nodes = cast(List[VectorNode], search.payload)
+        nodes = cast(List[VectorNode], search.authorization_applicant)
         return SearchResult.success(nodes)
     
     @LoggingLevelRouter.monitor
@@ -80,7 +80,7 @@ class VectorChain(Chain[VectorNode]):
         if search.is_empty:
             return DeletionResult.nothing_to_delete()
         
-        node = cast(VectorNode, search.payload[0])
+        node = cast(VectorNode, search.authorization_applicant[0])
         node.previous.next = node.next
         node.next.previous  = node.previous
         self._size = self._size - 1
@@ -196,7 +196,7 @@ class VectorChain(Chain[VectorNode]):
             )
         if search.is_empty:
             return DeletionResult.nothing_to_delete()
-        node = cast(VectorNode, search.payload[0])
+        node = cast(VectorNode, search.authorization_applicant[0])
         previous = node.previous
         next = node.next
         

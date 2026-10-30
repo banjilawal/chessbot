@@ -83,5 +83,5 @@ class CoordRegisterBuildDispatcher(RegisterBuildDispatcher[CoordRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(CoordRegisterCarrier, build.payload)
+            cast(CoordRegisterCarrier, build.authorization_applicant)
         )

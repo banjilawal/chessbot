@@ -106,7 +106,7 @@ class RosterUtil:
             )
 
         # --- Iterate through each formation to get each occupant's build params. ---#
-        for formation in formation_lookup_result.payload:
+        for formation in formation_lookup_result.authorization_applicant:
             
             # Build the token.
             token_build_result = team.roster.service.builder.execute(
@@ -129,7 +129,7 @@ class RosterUtil:
                     )
                 )
             # --- The build returns only instances of concrete tokens so don't cast during the insert.---#
-            insertion_result = team.roster.insert(token=token_build_result.payload)
+            insertion_result = team.roster.insert(token=token_build_result.authorization_applicant)
             
             # Handle the case that the insertion was not completed.
             if insertion_result.is_failure:

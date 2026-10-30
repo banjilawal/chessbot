@@ -47,7 +47,7 @@ class ContextValidationRouter(ValidationRouter[T], ABC, Generic[T]):
         super().__init__()
     
     @property
-    def toolkit(self) -> ContextValidationLoader:
+    def loader(self) -> ContextValidationLoader:
         return self._loader
     
     @abstractmethod

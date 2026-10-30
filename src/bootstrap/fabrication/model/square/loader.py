@@ -91,7 +91,7 @@ class SquareBuildLoader(ModelBuildLoader[Square]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(SquareBuildRequest, priming.payload)
+        build_request = cast(SquareBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

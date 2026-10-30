@@ -100,7 +100,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(TeamBinderPrimeExtract, loader.payload)
+        extract = cast(TeamBinderPrimeExtract, loader.authorization_applicant)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         

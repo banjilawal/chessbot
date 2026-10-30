@@ -82,7 +82,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(ScalarBlueprint, bootstrap.payload)
+        blueprint = cast(ScalarBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Scalar(

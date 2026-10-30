@@ -103,7 +103,7 @@ class NorthAxisEndpointBuilder:
             )
         # Create the endpoint register.
         vector_register = VectorRegister(
-            u=cast(Vector, validation.payload),
+            u=cast(Vector, validation.authorization_applicant),
             v=self._destination,
         )
         # --- Forward the work product to the caller. ---#

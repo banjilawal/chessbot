@@ -109,7 +109,7 @@ class ParticipationValidator(ChartValidator[Participation]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(ParticipationPrimeExtract, bootstrap.payload)
+        extract = cast(ParticipationPrimeExtract, bootstrap.authorization_applicant)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         
@@ -150,7 +150,7 @@ class ParticipationValidator(ChartValidator[Participation]):
                         ex=token_validation.exception,
                     )
                 )
-            tokens.append(cast(Token, token_validation.payload))
+            tokens.append(cast(Token, token_validation.authorization_applicant))
         victim = tokens[0]
         attacker = tokens[1]
         

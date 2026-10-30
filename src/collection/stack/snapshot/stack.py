@@ -48,7 +48,7 @@ class SnapshotStackService(StackService[Snapshot]):
             result = self.undo_result_push()
             if result.is_failure:
                 return DeletionResult.failure(result.exception)
-            return DeletionResult.success(cast(Snapshot, result.payload))
+            return DeletionResult.success(cast(Snapshot, result.authorization_applicant))
         except Exception as ex:
             return DeletionResult.failure(
                 GameTimelineException(ex=ex, msg=f"{method}: {GameTimelineException.MSG}")

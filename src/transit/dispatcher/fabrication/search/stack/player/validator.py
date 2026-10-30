@@ -79,7 +79,7 @@ class PlayerContextBuilder(ContextBuilder[Player]):
             
             # After existence and type checks are successful cast the candidate into an PlayerContext
             # for additional tests.
-            context = cast(PlayerContext, priming.payload)
+            context = cast(PlayerContext, priming.authorization_applicant)
             
             # Handle the no map flag enabled case.
             if len(context.to_dict()) == 0:

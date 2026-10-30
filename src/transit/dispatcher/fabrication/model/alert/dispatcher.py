@@ -84,5 +84,5 @@ class AlertBuildDispatcher(
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(AlertCarrier, build.payload)
+        carrier = cast(AlertCarrier, build.authorization_applicant)
         return BuildResult.success(carrier)

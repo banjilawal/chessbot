@@ -76,7 +76,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
                     ex=team_validation.exception,
                 )
             )
-        team = cast(Team, team_validation.payload)
+        team = cast(Team, team_validation.authorization_applicant)
         
         # Process the possible piece_validation outcomes.
         piece_validation = piece_service.execute.search_service(candidate_satellite)
@@ -87,7 +87,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
                     ex=piece_validation.exception,
                 )
             )
-        piece = cast(Token, piece_validation.payload)
+        piece = cast(Token, piece_validation.authorization_applicant)
         
         # If the piece is assigned to a different team it's not a satellite of the updated item. They are not related.
         if piece.team != team:

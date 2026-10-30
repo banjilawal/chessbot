@@ -80,4 +80,4 @@ class TokenHomeReporter(TokenEnvironmentReporter):
                 )
             )
         # --- Send the work product ---#
-        return Result.success(cast(HomeSquare, result.payload[0]))
+        return Result.success(cast(HomeSquare, result.authorization_applicant[0]))

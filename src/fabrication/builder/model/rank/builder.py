@@ -82,7 +82,7 @@ class RankBuilder(ModelBuilder[Rank]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(RankBlueprint, bootstrap.payload)
+        blueprint = cast(RankBlueprint, bootstrap.authorization_applicant)
         persona = blueprint.persona
         
         # --- Send the work product. ---#

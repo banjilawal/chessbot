@@ -97,7 +97,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                 )
             )
         # --- Cast priming_result into a request for additional tests. ---#
-        struct = cast(SquareRegister, load.payload)
+        struct = cast(SquareRegister, load.authorization_applicant)
         
         if struct.is_not_consistent:
             # Send the exception chain on failure.

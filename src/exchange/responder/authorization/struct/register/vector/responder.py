@@ -91,7 +91,7 @@ class VectorRegisterAuthorizationResponder(RegisterAuthorizationResponder[Vector
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(VectorRegisterCarrier, result.payload)
+        carrier = cast(VectorRegisterCarrier, result.authorization_applicant)
         return VectorRegisterDecision.success(
             request=request,
             result=AuthorizationResult(carrier),

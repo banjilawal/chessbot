@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 
 from assurance import AccountValidator
@@ -40,7 +40,7 @@ class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
 
     def __init__(
             self,
-            validator: AccountValidator | None = None,
+            validator: Optional[AccountValidator] | None = None,
     ):
         super().__init__(validator=validator or AccountValidator())
         
@@ -82,5 +82,5 @@ class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(AccountCarrier, validation.payload)
+        carrier = cast(AccountCarrier, validation.authorization_applicant)
         return ValidationResult.success(carrier)

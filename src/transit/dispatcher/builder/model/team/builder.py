@@ -95,7 +95,7 @@ class TeamBuilder(ModelBuilder[Team]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 TeamBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class TeamBuilder(ModelBuilder[Team]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Team, assembly.payload))
+        return BuildResult.success(cast(Team, assembly.authorization_applicant))

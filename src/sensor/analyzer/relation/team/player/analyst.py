@@ -71,7 +71,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary ue validation.payload for the cast.
-        player = cast(Player, player_validation.payload)
+        player = cast(Player, player_validation.authorization_applicant)
         
         # Handle the case that team validation fails.
         team_validation = player.teams.pair_service.execute.search_service(candidate_satellite)
@@ -84,7 +84,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
                 )
             )
         # Just incase things aren't Liskovian on the candidate_satellite ue validation.payload for the cast.
-        team = cast(Team, team_validation.payload)
+        team = cast(Team, team_validation.authorization_applicant)
         
         # If the team belongs to a different owner it's not a satellite of the owner. They are not related.
         if player != team.domain_class:

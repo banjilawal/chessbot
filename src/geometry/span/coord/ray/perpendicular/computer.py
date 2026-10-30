@@ -99,8 +99,8 @@ class PerpendicularRayComputer:
                     )
                 )
             # --- Add the coord if it's not in the list, then advance the cursor. ---#
-            if conversion_result.payload not in members:
-                members.append(conversion_result.payload)
+            if conversion_result.authorization_applicant not in members:
+                members.append(conversion_result.authorization_applicant)
             cursor_update_result = vector_service.add_vectors([cursor, factors.vector])
             
             # Handle the case that the cursor is not updated.
@@ -117,7 +117,7 @@ class PerpendicularRayComputer:
                     )
                 )
             # Otherwise the cursor advances.
-            cursor = cursor_update_result.payload
+            cursor = cursor_update_result.authorization_applicant
         # --- Do the clean steps when the loop finishes. ---#
             
         # Handle the case that there were no members in the ray.

@@ -59,7 +59,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                 )
             )
         # --- Use the origin_square search result to initialize the SquareRay. ---#
-        square_ray = SquareRay(origin=origin_member_square_search_result.payload[0])
+        square_ray = SquareRay(origin=origin_member_square_search_result.authorization_applicant[0])
         
         # --- Map the coord_ray's points to squares. ---#
         for coord in coord_ray.items:
@@ -79,8 +79,8 @@ class SquareRayBuilder(Builder[SquareRay]):
                     )
                 )
              # --- Append the found square into ray's members ---#
-            if member_square_search_result.payload[0] not in square_ray.items:
-                square_ray.items.append(member_square_search_result.payload[0])
+            if member_square_search_result.authorization_applicant[0] not in square_ray.items:
+                square_ray.items.append(member_square_search_result.authorization_applicant[0])
     
         # --- Send the built ray to the caller. ---#
         return BuildResult.success(square_ray)

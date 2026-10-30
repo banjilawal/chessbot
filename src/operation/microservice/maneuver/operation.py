@@ -86,7 +86,7 @@ class ManeuverLauncher:
                     ex=priming.exception,
                 )
             )
-        report = cast(ManeuverRequestDecision, priming.payload)
+        report = cast(ManeuverRequestDecision, priming.authorization_applicant)
         # Handle the case that the destination is not empty.
         if report.request_is_denied:
             # Send the exception chain on failure.

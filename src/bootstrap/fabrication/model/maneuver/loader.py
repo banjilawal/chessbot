@@ -91,7 +91,7 @@ class ManeuverBuildLoader(ModelBuildLoader[Maneuver]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(ManeuverBuildRequest, priming.payload)
+        build_request = cast(ManeuverBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

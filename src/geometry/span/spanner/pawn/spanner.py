@@ -144,7 +144,7 @@ class PawnSpanner(Spanner):
                     )
                 )
             # Add the span and its key to the hashtable.
-            span_hash[key] = span_result.payload
+            span_hash[key] = span_result.authorization_applicant
             
         # --- Send the success resul to the client. ---#
         return ComputationResult.success(span_hash)
@@ -199,7 +199,7 @@ class PawnSpanner(Spanner):
                     )
                 )
             # Append the ray to the attack span.
-            span.rays.append(ray_result.payload)
+            span.rays.append(ray_result.authorization_applicant)
                 
             # --- Send the success resul to the client. ---#
             return ComputationResult.success(span)
@@ -242,7 +242,7 @@ class PawnSpanner(Spanner):
                 )
             )
         # --- Put the new point in an array. ---#
-        points.append(addition_result.payload)
+        points.append(addition_result.authorization_applicant)
         
         # --- Create a new CoordRay and send in the success result. ---#
         return ComputationResult.success(CoordRay(origin=origin, points=points))

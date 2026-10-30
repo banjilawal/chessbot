@@ -95,7 +95,7 @@ class TurnSceneValidator(Validator[TurnScene]):
             search_context_build = BoardContextBuilder.search_service(coord=actor.position)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)
-            search_context = cast(BoardContext, search_context_build.payload)
+            search_context = cast(BoardContext, search_context_build.authorization_applicant)
             
             search_result = BoardSquareFinder.search_service(board=board, search_context=search_context)
             if search_result.is_failure():
@@ -106,7 +106,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                     SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.MSG}")
                 )
             
-            actor_square = cast(Square, search_result.payload)
+            actor_square = cast(Square, search_result.authorization_applicant)
             
             if actor_square.occupant is None:
                 actor_square.occupant = actor

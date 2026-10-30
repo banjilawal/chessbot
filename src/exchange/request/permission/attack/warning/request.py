@@ -30,18 +30,18 @@ class WarningPermissionRequest(AttackPermissionRequest[WarningRequest]):
         Permission
      """
     
-    def __init__(self, id: int,  candidate: WarningRequest):
+    def __init__(self, id: int,  authorization_applicant: WarningRequest):
         """
         Args:
             id: int
-            candidate: WarningRequest
+            authorization_applicant: WarningRequest
         """
-        super().__init__(id=id, candidate=candidate)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     
     @property
-    def payload(self) -> WarningRequest:
-        return cast(WarningRequest, super().payload)
+    def authorization_applicant(self) -> WarningRequest:
+        return cast(WarningRequest, super().authorization_applicant)
 
     def __eq__(self, other):
         if other is self: return True

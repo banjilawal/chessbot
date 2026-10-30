@@ -94,7 +94,7 @@ class KingTokenEnvelopeConsumer(
                     ex=priming.exception
                 )
             )
-        safe = cast(TokenEnvelope, priming.payload)
+        safe = cast(TokenEnvelope, priming.authorization_applicant)
         # Handle the case that the envelope wrong envelope was delivered.
         if not safe.for_king_token_consumer:
             # Send the exception chain on failure.
@@ -209,11 +209,11 @@ class KingTokenEnvelopeConsumer(
                         ex=potential_destination_validation.exception,
                     )
                 )
-            potential_destination = cast(Square, potential_destination_validation.payload)
+            potential_destination = cast(Square, potential_destination_validation.authorization_applicant)
         # --- Extract validation payloads. ---#
-        alert = cast(Alert, alert_validation.payload)
-        readiness = cast(KingReadiness, readiness_validation.payload)
-        threat_level = cast(ThreatLevel, threat_level_validation.payload)
+        alert = cast(Alert, alert_validation.authorization_applicant)
+        readiness = cast(KingReadiness, readiness_validation.authorization_applicant)
+        threat_level = cast(ThreatLevel, threat_level_validation.authorization_applicant)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe KingToken.

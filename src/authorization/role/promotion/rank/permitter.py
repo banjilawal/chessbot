@@ -107,7 +107,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
         approval = PromotionPermissionRequest(
             id=request.id,
             activity=activity,
-            applicant=request.applicant,
+            authorization_applicant=request.applicant,
         )
         # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)

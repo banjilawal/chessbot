@@ -83,5 +83,5 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(SquareRegisterCarrier, build.payload)
+            cast(SquareRegisterCarrier, build.authorization_applicant)
         )

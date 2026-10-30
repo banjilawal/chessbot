@@ -178,10 +178,10 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.payload)
-        board = cast(Board, board_validation.payload)
-        owner = cast(Player, owner_validation.payload)
-        archetype = cast(Archetype, archetype_validation.payload)
+        id = cast(int, id_validation.authorization_applicant)
+        board = cast(Board, board_validation.authorization_applicant)
+        owner = cast(Player, owner_validation.authorization_applicant)
+        archetype = cast(Archetype, archetype_validation.authorization_applicant)
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Team.

@@ -95,7 +95,7 @@ class RankAttack(ModelAttack[Rank]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 RankBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class RankAttack(ModelAttack[Rank]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Rank, assembly.payload))
+        return AttackResult.success(cast(Rank, assembly.authorization_applicant))

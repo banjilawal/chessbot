@@ -91,7 +91,7 @@ class TeamBinderAuthorizationResponder(BinderAuthorizationResponder[TeamBinder])
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(TeamBinderCarrier, result.payload)
+        carrier = cast(TeamBinderCarrier, result.authorization_applicant)
         return TeamBinderDecision.success(
             request=request,
             result=AuthorizationResult(carrier),

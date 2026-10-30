@@ -50,13 +50,13 @@ class BoardResourceValidator(Validator[Square, Board]):
       if resource_validation.is_failure():
         return ValidationResult.failure(resource_validation.exception)
 
-      resource = cast(Square, resource_validation.payload)
+      resource = cast(Square, resource_validation.authorization_applicant)
 
       environment_validation = Boardvalidator.execute(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
 
-      environment = cast(Board, environment_validation.payload)
+      environment = cast(Board, environment_validation.authorization_applicant)
 
       search_result = BoardSquareFinder.search_service(board=environment, search_context=BoardContext(id=resource.id))
       if search_result.no_recurrences_exist():

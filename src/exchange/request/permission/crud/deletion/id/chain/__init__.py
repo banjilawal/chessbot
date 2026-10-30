@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/delete/id/chain/__init__.py
+# src/exchange/request/permission/crud/delete/id/chain/__init__.py
 
 """
 Module: exchange.request.permission.crud.delete.id.chain.__init__
@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.request.PERMISSION.CRUD.DELETE.ID.CHAIN PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.PERMISSION.CRUD.DELETE.ID.CHAIN PACKAGE ===========#
 
 # Packages
 

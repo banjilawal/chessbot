@@ -94,7 +94,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(SquarePrimeExtract, bootstrap.payload)
+        prime_extract = cast(SquarePrimeExtract, bootstrap.authorization_applicant)
         carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         
@@ -226,13 +226,13 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                     )
                 )
             # Otherwise update the occupant temp variable.
-            occupant = cast(Token, occupant_validation.payload)
+            occupant = cast(Token, occupant_validation.authorization_applicant)
         
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.payload)
-        coord = cast(Coord, coord_validation.payload)
-        name = cast(str, name_validation.payload)
-        state = cast(SquareState, state_validation.payload)
+        id = cast(int, id_validation.authorization_applicant)
+        coord = cast(Coord, coord_validation.authorization_applicant)
+        name = cast(str, name_validation.authorization_applicant)
+        state = cast(SquareState, state_validation.authorization_applicant)
         
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootSquareEnvelope(

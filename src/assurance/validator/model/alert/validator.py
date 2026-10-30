@@ -95,7 +95,7 @@ class AlertValidator(ModelValidator[Alert]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(AlertPrimeExtract, bootstrap.payload)
+        extract = cast(AlertPrimeExtract, bootstrap.authorization_applicant)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.

@@ -139,7 +139,7 @@ class SquareStackDepartureWorker:
                         ex=deletion_result.exception
                     )
                 )
-            occupant = deletion_result.payload
+            occupant = deletion_result.authorization_applicant
         # --- After the loop completes return the success result to the client. ---#
         if occupant is None:
             return DeletionResult.nothing_to_delete()

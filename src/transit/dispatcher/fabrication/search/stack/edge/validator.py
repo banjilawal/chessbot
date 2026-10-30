@@ -86,7 +86,7 @@ class EdgeContextBuilder(ContextBuilder[Edge]):
                 )
             )
         # --- Cast the candidate into EdgeContext for additional tests. ---#
-        context = cast(EdgeContext, priming.payload)
+        context = cast(EdgeContext, priming.authorization_applicant)
         
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())

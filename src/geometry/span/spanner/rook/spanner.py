@@ -80,7 +80,7 @@ class RookSpanner(Spanner):
                 )
             )
         # --- On success, send the dictionary in the success result. ---#
-        return ComputationResult.success({"rook": span_result.payload})
+        return ComputationResult.success({"rook": span_result.authorization_applicant})
             
         
         

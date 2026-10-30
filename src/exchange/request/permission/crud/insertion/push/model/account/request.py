@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/insertion/push/model/account/request.py
+# src/exchange/request/permission/crud/insertion/push/model/account/request.py
 
 """
 Module: exchange.request.permission.crud.insertion.push.model.account.request
@@ -26,7 +26,7 @@ class AccountPushPermissionRequest(
 
      Attributes:
          id: int
-         candidate: : AccountPushRequest
+         authorization_applicant: : AccountPushRequest
 
      Provides:
 
@@ -34,17 +34,17 @@ class AccountPushPermissionRequest(
         ModelPushPermissionRequest
      """
     
-    def __init__(self, id: int, candidate: AccountPushRequest):
+    def __init__(self, id: int, authorization_applicant: AccountPushRequest):
         """
         Args:
             id: int
-            candidate: AccountPushRequest
+            authorization_applicant: AccountPushRequest
         """
-        super().__init__(id, candidate=candidate)
+        super().__init__(id, authorization_applicant=authorization_applicant)
         
     @property
-    def payload(self) -> AccountPushRequest:
-        return cast(AccountPushRequest, super().payload)
+    def authorization_applicant(self) -> AccountPushRequest:
+        return cast(AccountPushRequest, super().authorization_applicant)
         
     def __eq__(self, other):
         if other is self: return True

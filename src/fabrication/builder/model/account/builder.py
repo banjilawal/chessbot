@@ -94,7 +94,7 @@ class AccountBuilder(BuildFactory[Account]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(AccountBlueprint, bootstrap.payload)
+        blueprint = cast(AccountBlueprint, bootstrap.authorization_applicant)
         result = self.router.execute(blueprint)
         
         # Handle the case that a product is not routed back.

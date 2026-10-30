@@ -91,7 +91,7 @@ class VectorValidationResponder(ModelValidationResponder[Vector]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(VectorCarrier, result.payload)
+        carrier = cast(VectorCarrier, result.authorization_applicant)
         return VectorValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),

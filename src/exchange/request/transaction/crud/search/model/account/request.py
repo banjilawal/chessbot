@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import AccountStack
-from domain import Account
+from domain import Account, AccountContext
 from exchange import SearchRequest
 
 
@@ -26,7 +26,7 @@ class AccountSearchRequest(SearchRequest[Account]):
 
      Attributes:
          id: int
-         item: Account
+         context: AccountContext
          collection: AccountStack
 
      Provides:
@@ -39,14 +39,14 @@ class AccountSearchRequest(SearchRequest[Account]):
         """
         Args:
             id: int
-            item: Account
+            context: AccountContext
             collection: AccountStack
         """
         super().__init__(id, context=context, collection=collection)
         
     @property
-    def item(self) -> Account:
-        return cast(Account, super().item)
+    def context(self) -> AccountContext:
+        return cast(AccountContext, super().context)
     
     @property
     def collection(self) -> AccountStack:

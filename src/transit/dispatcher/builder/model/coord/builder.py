@@ -95,7 +95,7 @@ class CoordBuilder(ModelBuilder[Coord]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 CoordBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class CoordBuilder(ModelBuilder[Coord]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Coord, assembly.payload))
+        return BuildResult.success(cast(Coord, assembly.authorization_applicant))

@@ -95,7 +95,7 @@ class ArenaAttack(ModelAttack[Arena]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 ArenaBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class ArenaAttack(ModelAttack[Arena]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Arena, assembly.payload))
+        return AttackResult.success(cast(Arena, assembly.authorization_applicant))

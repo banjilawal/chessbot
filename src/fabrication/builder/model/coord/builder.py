@@ -82,7 +82,7 @@ class CoordBuilder(ModelBuilder[Coord]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(CoordBlueprint, bootstrap.payload)
+        blueprint = cast(CoordBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Coord(

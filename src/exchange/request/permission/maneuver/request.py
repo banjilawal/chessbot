@@ -24,7 +24,7 @@ class ManeuverPermissionRequest(PermissionRequest[ManeuverRequest]):
 
      Attributes:
         id: int
-        candidate: ManeuverRequest
+        authorization_applicant: ManeuverRequest
 
      Provides:
 
@@ -32,17 +32,17 @@ class ManeuverPermissionRequest(PermissionRequest[ManeuverRequest]):
         PermissionRequest
      """
     
-    def __init__(self, id: int, candidate: ManeuverRequest):
+    def __init__(self, id: int, authorization_applicant: ManeuverRequest):
         """
         Args:
             id: int
-            candidate: ManeuverRequest
+            authorization_applicant: ManeuverRequest
         """
-        super().__init__(id=id, candidate=candidate)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     @property
-    def payload(self) -> ManeuverRequest:
-        return cast(ManeuverRequest, super().payload)
+    def authorization_applicant(self) -> ManeuverRequest:
+        return cast(ManeuverRequest, super().authorization_applicant)
 
     def __eq__(self, other):
         if other is self: return True

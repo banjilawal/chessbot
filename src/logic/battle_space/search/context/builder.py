@@ -47,7 +47,7 @@ class ProjectionContextBuilder(Builder[ProjectionContext]):
                 id_validation = Idvalidator.execute(id)
                 if not id_validation.is_success():
                     return BuildResult(exception=id_validation.exception)
-                return BuildResult(payload=ProjectionContext(id=id_validation.payload))
+                return BuildResult(payload=ProjectionContext(id=id_validation.authorization_applicant))
 
             if coord is not None:
                 coord_validation =Coordvalidator.execute(coord)

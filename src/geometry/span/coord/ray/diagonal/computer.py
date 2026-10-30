@@ -102,7 +102,7 @@ class DiagonalRayComputer:
                 )
             )
         # --- The cursor has been initialized. ---#
-        cursor = cursor_initialization_result.payload
+        cursor = cursor_initialization_result.authorization_applicant
         
         while cursor != factors.end_vector:
             # --- Convert the cursor vector into a coord. ---#
@@ -122,8 +122,8 @@ class DiagonalRayComputer:
                     )
                 )
             # Add the coord if it's not in the list
-            if conversion_result.payload not in members:
-                members.append(conversion_result.payload)
+            if conversion_result.authorization_applicant not in members:
+                members.append(conversion_result.authorization_applicant)
             
             # --- Update the cursor. ---#
             cursor_update_result = vector_service.builder.execute(
@@ -144,7 +144,7 @@ class DiagonalRayComputer:
                     )
                 )
             # Otherwise the cursor advances.
-            cursor = cursor_update_result.payload
+            cursor = cursor_update_result.authorization_applicant
         # --- Do the clean steps when the loop finishes. ---#
         
         # Handle the case that there were no members in the ray.

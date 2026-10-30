@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/delete/item/stack/request.py
+# src/exchange/request/permission/crud/delete/item/stack/request.py
 
 """
 Module: exchange.request.permission.crud.delete.item.stack.request
@@ -46,7 +46,7 @@ class DeleteStackItemPermissionRequest(DeleteItemPermissionRequest, ABC, Generic
     
     @property
     def item(self) -> T:
-        return cast(T, super().payload)
+        return cast(T, super().authorization_applicant)
         
     @property
     def stack(self) -> StackService[T]:

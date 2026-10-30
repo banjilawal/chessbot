@@ -82,5 +82,5 @@ class TeamBinderBuildDispatcher(BinderBuildDispatcher[TeamBinder]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(TeamBinderCarrier, build.payload)
+            cast(TeamBinderCarrier, build.authorization_applicant)
         )

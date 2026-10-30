@@ -95,7 +95,7 @@ class SnapshotAttack(ModelAttack[Snapshot]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 SnapshotBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class SnapshotAttack(ModelAttack[Snapshot]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Snapshot, assembly.payload))
+        return AttackResult.success(cast(Snapshot, assembly.authorization_applicant))

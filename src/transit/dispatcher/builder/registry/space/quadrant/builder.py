@@ -94,7 +94,7 @@ class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir])
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(QuadrantReservoirBlueprint, validation.payload)
+            candidate=cast(QuadrantReservoirBlueprint, validation.authorization_applicant)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:
@@ -110,4 +110,4 @@ class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir])
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(QuadrantReservoir, assembly.payload))
+        return BuildResult.success(cast(QuadrantReservoir, assembly.authorization_applicant))

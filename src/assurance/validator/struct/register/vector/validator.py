@@ -97,7 +97,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
                 )
             )
         # --- Cast priming_result into a request for additional tests. ---#
-        struct = cast(VectorRegister, load.payload)
+        struct = cast(VectorRegister, load.authorization_applicant)
         
         if struct.is_not_consistent:
             # Send the exception chain on failure.

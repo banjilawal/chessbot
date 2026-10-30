@@ -69,7 +69,7 @@ class PromotionRowChecker(PromotionTokenChecker):
         # --- Prepare an approval of the actor. ---#
         approval = PromotionPermissionRequest(
             id=request.id,
-            applicant=request.applicant,
+            authorization_applicant=request.applicant,
             activity=request.activity,
         )
         # --- Forward the approval. ---#

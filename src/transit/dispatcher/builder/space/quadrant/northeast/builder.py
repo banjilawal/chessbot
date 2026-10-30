@@ -92,7 +92,7 @@ class NorthEastQuadrantBuilder(
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            candidate=cast(NortheastQuadrantBlueprint, validation.payload)
+            candidate=cast(NortheastQuadrantBlueprint, validation.authorization_applicant)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:
@@ -108,4 +108,4 @@ class NorthEastQuadrantBuilder(
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(NortheastQuadrant, assembly.payload))
+        return BuildResult.success(cast(NortheastQuadrant, assembly.authorization_applicant))

@@ -100,7 +100,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(PlayerBinderPrimeExtract, loader.payload)
+        extract = cast(PlayerBinderPrimeExtract, loader.authorization_applicant)
         carrier = extract.reference
         blueprint = carrier.extract_blueprint()
         

@@ -91,7 +91,7 @@ class ArenaBuildLoader(ModelBuildLoader[Arena]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(ArenaBuildRequest, priming.payload)
+        build_request = cast(ArenaBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

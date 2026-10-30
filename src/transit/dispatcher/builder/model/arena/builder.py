@@ -95,7 +95,7 @@ class ArenaBuilder(ModelBuilder[Arena]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 ArenaBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class ArenaBuilder(ModelBuilder[Arena]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Arena, assembly.payload))
+        return BuildResult.success(cast(Arena, assembly.authorization_applicant))

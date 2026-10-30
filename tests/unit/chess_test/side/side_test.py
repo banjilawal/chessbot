@@ -102,12 +102,12 @@ class SideTest(unittest.TestCase):
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
-    mock_id_validation.return_value.payload = 1
+    mock_id_validation.return_value.authorization_applicant = 1
 
 
     competitor = Commander(competitor_id=1, name="owner")
     mock_competitor_validation.return_value.is_success.return_value = True
-    mock_competitor_validation.return_value.payload = competitor
+    mock_competitor_validation.return_value.authorization_applicant = competitor
 
     for profile in TeamSchema:
       side = Side(side_id=1, controller=competitor, profile=profile)
@@ -118,12 +118,12 @@ class SideTest(unittest.TestCase):
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
-    mock_id_validation.return_value.payload = 1
+    mock_id_validation.return_value.authorization_applicant = 1
 
 
     competitor = Commander(competitor_id=1, name="owner")
     mock_competitor_validation.return_value.is_success.return_value = True
-    mock_competitor_validation.return_value.payload = competitor
+    mock_competitor_validation.return_value.authorization_applicant = competitor
 
     side = Side(side_id=1, controller=competitor, profile=TeamSchema.BLACK)
 

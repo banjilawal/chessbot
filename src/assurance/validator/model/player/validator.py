@@ -160,9 +160,9 @@ class PlayerValidator(ModelValidator[Player]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        game = cast(Game, game_validation.payload)
-        account = cast(Account, account_validation.payload)
-        archetype = cast(Archetype, archetype_validation.payload)
+        game = cast(Game, game_validation.authorization_applicant)
+        account = cast(Account, account_validation.authorization_applicant)
+        archetype = cast(Archetype, archetype_validation.authorization_applicant)
         
         model = Player(game=game, account=account, archetype=archetype)
         if model not in game.binder.to_list:

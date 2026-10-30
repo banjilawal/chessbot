@@ -95,7 +95,7 @@ class BoardAttack(ModelAttack[Board]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 BoardBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class BoardAttack(ModelAttack[Board]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Board, assembly.payload))
+        return AttackResult.success(cast(Board, assembly.authorization_applicant))

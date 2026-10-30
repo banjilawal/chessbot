@@ -58,7 +58,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         return cls._square_span_build_helper(
             coord_span=coord_span,
             square_stack=square_stack,
-            origin_square=square_span_origin_result.payload[0]
+            origin_square=square_span_origin_result.authorization_applicant[0]
         )
 
     @classmethod
@@ -106,7 +106,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     )
                 )
             # --- Append the ray derivation to its span. ---#
-            square_span.rays.append(derivation_result.payload)
+            square_span.rays.append(derivation_result.authorization_applicant)
         
         # --- Send the square_span to the caller. ---#
         return BuildResult.success(square_span)
@@ -152,7 +152,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                 )
             )
         # --- Use the origin_square search result to initialize the SquareRay. ---#
-        square_ray = SquareRay(origin=square_ray_origin_result.payload[0], points=[])
+        square_ray = SquareRay(origin=square_ray_origin_result.authorization_applicant[0], points=[])
         
         # --- Map the coord_ray's points to squares. ---#
         for coord in coord_ray.items:
@@ -174,8 +174,8 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     )
                 )
              # --- Append the found square into ray's members ---#
-            if square_search_result.payload[0] not in square_ray.items:
-                square_ray.items.append(square_search_result.payload[0])
+            if square_search_result.authorization_applicant[0] not in square_ray.items:
+                square_ray.items.append(square_search_result.authorization_applicant[0])
     
         # --- Send the built ray to the caller. ---#
         return ComputationResult.success(square_ray)

@@ -82,7 +82,7 @@ class ManeuverBuilder(ModelBuilder[Maneuver]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(ManeuverBlueprint, bootstrap.payload)
+        blueprint = cast(ManeuverBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Maneuver(

@@ -91,7 +91,7 @@ class ScalarBuildLoader(ModelBuildLoader[Scalar]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(ScalarBuildRequest, priming.payload)
+        build_request = cast(ScalarBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(
@@ -112,5 +112,5 @@ class ScalarBuildLoader(ModelBuildLoader[Scalar]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(ScalarBlueprint, blueprint_validation.payload)
+        blueprint = cast(ScalarBlueprint, blueprint_validation.authorization_applicant)
         return BuildResult.success(blueprint)

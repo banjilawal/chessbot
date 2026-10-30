@@ -82,7 +82,7 @@ class PathBuilder(ModelBuilder[Path]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(PathBlueprint, bootstrap.payload)
+        blueprint = cast(PathBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Path(

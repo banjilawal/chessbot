@@ -32,7 +32,7 @@ class CommandMenu(ABC, Generic[T]):
         
         if validation.is_failure:
             return InterpretationResult.failure(validation.exception)
-        statement = cast(UserStatement, validation.payload)
+        statement = cast(UserStatement, validation.authorization_applicant)
         
         if statement.name not in self._dispatchers.keys():
             return InterpretationResult.failure(f"Command {statement.name} not found")
@@ -40,7 +40,7 @@ class CommandMenu(ABC, Generic[T]):
         parse = dispatchers[statement.name].execute(statement)
         if parse.is_failure:
             return InterpretationResult(parse.exception)
-        request = cast(Request, parse.payload)
+        request = cast(Request, parse.authorization_applicant)
         
         return InterpreationResult(request)
         

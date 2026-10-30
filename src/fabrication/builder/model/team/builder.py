@@ -82,7 +82,7 @@ class TeamBuilder(ModelBuilder[Team]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(TeamBlueprint, bootstrap.payload)
+        blueprint = cast(TeamBlueprint, bootstrap.authorization_applicant)
         id = blueprint.id or IdFactory.next_id(class_name="Team")
         
         # --- Assemble and send the work product. ---#

@@ -102,7 +102,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
                 )
             )
         # --- Cast priming to request for additional tests. ---#
-        request = cast(Type[AlertValidationRequest], priming.payload)
+        request = cast(Type[AlertValidationRequest], priming.authorization_applicant)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -122,7 +122,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
                 )
             )
         # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(AlertCarrier, carrier_validation.payload)
+        carrier = cast(AlertCarrier, carrier_validation.authorization_applicant)
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.

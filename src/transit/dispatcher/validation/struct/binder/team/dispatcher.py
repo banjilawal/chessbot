@@ -82,5 +82,5 @@ class TeamBinderValidationDispatcher(BinderValidationDispatcher[TeamBinder]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(TeamBinderCarrier, validation.payload)
+            cast(TeamBinderCarrier, validation.authorization_applicant)
         )

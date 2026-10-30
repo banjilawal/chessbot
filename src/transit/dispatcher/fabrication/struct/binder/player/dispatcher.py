@@ -82,5 +82,5 @@ class PlayerBinderBuildDispatcher(BinderBuildDispatcher[PlayerBinder]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(PlayerBinderCarrier, build.payload)
+            cast(PlayerBinderCarrier, build.authorization_applicant)
         )

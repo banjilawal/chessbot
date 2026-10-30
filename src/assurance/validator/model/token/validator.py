@@ -88,7 +88,7 @@ class TokenValidator(ModelValidationFactory[Token]):
                     ex=product.exception,
                 )
             )
-        envelope = cast(TokenEnvelope, product.payload)
+        envelope = cast(TokenEnvelope, product.authorization_applicant)
         
         validation = self.router.execute(envelope=envelope)
         if validation.is_failure:
@@ -101,6 +101,6 @@ class TokenValidator(ModelValidationFactory[Token]):
                     ex=validation.exception,
                 )
             )
-        carrier = cast(TokenCarrier, validation.payload)
+        carrier = cast(TokenCarrier, validation.authorization_applicant)
         return ValidationResult.success(carrier)
     

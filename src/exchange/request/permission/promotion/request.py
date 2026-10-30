@@ -26,7 +26,7 @@ class PromotionPermissionRequest(
 
      Attributes:
          id: int
-         candidate: PromotionRequest
+         authorization_applicant: PromotionRequest
 
      Provides:
 
@@ -34,17 +34,17 @@ class PromotionPermissionRequest(
         PermissionRequest
      """
     
-    def __init__(self, id: int, candidate: PromotionRequest):
+    def __init__(self, id: int, authorization_applicant: PromotionRequest):
         """
         Args:
             id: int
-            candidate: PromotionRequest
+            authorization_applicant: PromotionRequest
         """
-        super().__init__(id=id, candidate=candidate)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     @property
-    def payload(self) -> PermissionRequest:
-        return cast(PromotionRequest, super().payload)
+    def authorization_applicant(self) -> PermissionRequest:
+        return cast(PromotionRequest, super().authorization_applicant)
     
     def __eq__(self, other) -> bool:
         if other is self: return True

@@ -91,7 +91,7 @@ class EncounterWaningNodeValidationResponder(NodeValidationResponder[EncounterWa
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(EncounterWaningNodeCarrier, result.payload)
+        carrier = cast(EncounterWaningNodeCarrier, result.authorization_applicant)
         return EncounterWaningNodeValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),

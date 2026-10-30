@@ -73,7 +73,7 @@ class PromotionPawnTokenChecker(PromotionTokenChecker):
         applicant = cast(PawnToken, request.applicant)
         approval = PromotionPermissionRequest(
             id=request.id,
-            applicant=applicant,
+            authorization_applicant=applicant,
             activity=request.activity,
         )
         # --- Forward the approval. ---#

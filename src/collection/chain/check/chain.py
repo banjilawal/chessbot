@@ -61,7 +61,7 @@ class CheckChain(Chain[CheckNode]):
             )
         if search.is_empty:
             return SearchResult.empty()
-        nodes = cast(List[CheckNode], search.payload)
+        nodes = cast(List[CheckNode], search.authorization_applicant)
         return SearchResult.success(nodes)
     
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class CheckChain(Chain[CheckNode]):
         if search.is_empty:
             return DeletionResult.nothing_to_delete()
         
-        node = cast(CheckNode, search.payload[0])
+        node = cast(CheckNode, search.authorization_applicant[0])
         node.previous.next = node.next
         node.next.previous  = node.previous
         self._size = self._size - 1
@@ -203,7 +203,7 @@ class CheckChain(Chain[CheckNode]):
             )
         if search.is_empty:
             return DeletionResult.nothing_to_delete()
-        node = cast(CheckNode, search.payload[0])
+        node = cast(CheckNode, search.authorization_applicant[0])
         previous = node.previous
         next = node.next
         

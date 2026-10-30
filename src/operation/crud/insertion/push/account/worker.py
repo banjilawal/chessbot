@@ -74,7 +74,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         # Handle the case that the permission_dispatcher sends a denial.
         permission = self.permitter.execute(
             request=AccountPushPermissionRequest(
-                candidate=request,
+                authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountPushPermissionRequest"),
             )
         )

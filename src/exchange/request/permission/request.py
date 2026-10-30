@@ -27,31 +27,31 @@ class PermissionRequest(ABC, Generic[T]):
 
      Attributes:
          id: int
-         candidate: : T
+         authorization_applicant: T
 
      Provides:
 
      Super Class:
      """
     _id: int
-    _candidate: T
+    _authorization_applicant: T
     
-    def __init__(self, id: int, candidate: T):
+    def __init__(self, id: int, authorization_applicant: T):
         """
         Args:
             id: int
-            candidate: T
+            authorization_applicant: T
         """
         self._id = id
-        self._candidate = candidate
+        self._authorization_applicant = authorization_applicant
         
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def payload(self) -> T:
-        return self._candidate
+    def authorization_applicant(self) -> T:
+        return self._authorization_applicant
     
     @abstractmethod
     def __eq__(self, other) -> bool:

@@ -94,5 +94,5 @@ class ConvertVectorToCoordTransaction:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        ComputationResult.success(conversion_result.payload)
+        ComputationResult.success(conversion_result.authorization_applicant)
     

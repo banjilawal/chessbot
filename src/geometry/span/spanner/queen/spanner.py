@@ -85,7 +85,7 @@ class QueenSpanner(Spanner):
                 )
             )
         # --- On success, send the dictionary in the success result. ---#
-        return ComputationResult.success({"queen": span_result.payload})
+        return ComputationResult.success({"queen": span_result.authorization_applicant})
             
         
         

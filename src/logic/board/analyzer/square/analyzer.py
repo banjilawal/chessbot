@@ -79,7 +79,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
-        board = cast(Board, board_validator.payload)
+        board = cast(Board, board_validator.authorization_applicant)
         
         # Handle the case that the square is unsecure.
         square_validation = square_service.execute.execute(candidate_satellite)
@@ -92,7 +92,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
                     ex=square_validation.exception,
                 )
             )
-        square = cast(Square, square_validation.payload)
+        square = cast(Square, square_validation.authorization_applicant)
         
 
         # --- Search the board's squares for the satellite-rank. ---#
@@ -113,10 +113,10 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         if board != square.board and square_search.no_recurrences_exist:
             return RelationReport.no_relation()
         
-        if len(square_search.payload) > 0 and square.board != board:
+        if len(square_search.authorization_applicant) > 0 and square.board != board:
             return RelationReport.stale_link(primary=board)
         
-        if len(square_search.payload) > 0 and square == board:
+        if len(square_search.authorization_applicant) > 0 and square == board:
             return RelationReport.registration_missing(satellite=square)
         
         return RelationReport.bidirectional(primary=board, satellite=square)

@@ -82,7 +82,7 @@ class FootstepBuilder(ModelBuilder[Footstep]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(FootstepBlueprint, bootstrap.payload)
+        blueprint = cast(FootstepBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Footstep(

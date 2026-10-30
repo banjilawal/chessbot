@@ -91,7 +91,7 @@ class CoordRegisterAuthorizationResponder(RegisterAuthorizationResponder[CoordRe
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(CoordRegisterCarrier, result.payload)
+        carrier = cast(CoordRegisterCarrier, result.authorization_applicant)
         return CoordRegisterDecision.success(
             request=request,
             result=AuthorizationResult(carrier),

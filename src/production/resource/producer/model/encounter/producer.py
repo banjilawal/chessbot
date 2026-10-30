@@ -100,7 +100,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(EncounterPrimeExtract, bootstrap.payload)
+        prime_extract = cast(EncounterPrimeExtract, bootstrap.authorization_applicant)
         reference = prime_extract.reference
         blueprint = reference.extract_blueprint()
         
@@ -216,11 +216,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.payload)
-        victim = cast(Token, victim_validation.payload)
-        location = cast(Square, location_validation.payload)
-        attacker_reward = cast(int, attacker_reward.payload)
-        attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
+        id = cast(int, id_validation.authorization_applicant)
+        victim = cast(Token, victim_validation.authorization_applicant)
+        location = cast(Square, location_validation.authorization_applicant)
+        attacker_reward = cast(int, attacker_reward.authorization_applicant)
+        attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.authorization_applicant)
         attacker = attacker_maneuver.traveler
         
         # Handle the case that the victim and attacker are the same.

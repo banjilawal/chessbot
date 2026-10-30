@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import ValidationResult
+from artifcat import Result, ValidationResult
 from assurance import ContextValidator
 from bootstrap import AccountContextValidationLoader
 from domain import AccountContext, AccountContextBlueprint, AccountContextPrimeExtract, ArenaContextNullWarningSet
@@ -70,7 +70,7 @@ class AccountContextValidationManager(
         return cast(AccountContextValidationRouter, super().router)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: Any) -> ValidationResult[AccountContextCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[AccountContextCarrier]:
         """
         Assure a candidate is a safe AccountContextCarrier.
 
@@ -82,7 +82,7 @@ class AccountContextValidationManager(
                     -   There is no route to validate the choice.
             2.  Otherwise, send an AccountContextCarrier in the success result.
         Args:
-            item: Any
+            candidate: Any
         Returns:
             ValidationResult[AccountContextCarrier]
         Raises:
@@ -90,124 +90,20 @@ class AccountContextValidationManager(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        bootstrap = self.loader.execute(bootstrap=item)
-        if bootstrap.is_failure:
+        result = self._router.execute(candidate)
+        if result.is_failure:
             return ValidationResult.failure(
-                AccountContextValidatorException(
+                AccountContextValidationManagerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountContextValidatorException.MSG,
-                    err_code=AccountContextValidatorException.ERR_CODE,
-                    ex=bootstrap.exception,
+                    msg=AccountValidationManagerException.MSG,
+                    err_code=AccountValidationManagerException.ERR_CODE,
+                    ex=result.exception,
                 )
             )
-        extract = cast(AccountContextPrimeExtract, bootstrap.payload)
-        item = extract.blueprint
-        if item is None:
-            return ValidationResult.failure(
-                AccountContextValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountContextValidatorException.MSG,
-                    err_code=AccountContextValidatorException.ERR_CODE,
-                    ex=AccountContextNullException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountContextNullException.MSG,
-                        err_code=AccountContextNullException.ERR_CODE,
-                    ),
-                )
-            )
-        if item.is_wrong_size:
-            return ValidationResult.failure(
-                AccountContextValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountContextValidatorException.MSG,
-                    err_code=AccountContextValidatorException.ERR_CODE,
-                    ex=CapacityException(),
-                )
-            )
-        blueprint = AccountContextBlueprint()
-        if item.email is not None:
-            validation = self.loader.toolkit.identity_service.validate_name(
-                candidate=item.email
-            )
-            if validation.is_failure:
-                return ValidationResult.failure(
-                    AccountContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountContextValidatorException.MSG,
-                        err_code=AccountContextValidatorException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-            email = cast(str, validation.payload)
-            blueprint = AccountContextBlueprint(email=email)
-        if item.firstname is not None:
-            validation = self.loader.toolkit.identity_service.validate_name(
-                candidate=item.firstname
-            )
-            if validation.is_failure:
-                return ValidationResult.failure(
-                    AccountContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountContextValidatorException.MSG,
-                        err_code=AccountContextValidatorException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-            firstname = cast(str, validation.payload)
-            blueprint = AccountContextBlueprint(firstname=firstname)
-        if item.lastname is not None:
-            validation = self.loader.toolkit.identity_service.validate_name(
-                candidate=item.lastname
-            )
-            if validation.is_failure:
-                return ValidationResult.failure(
-                    AccountContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountContextValidatorException.MSG,
-                        err_code=AccountContextValidatorException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-            lastname = cast(str, validation.payload)
-            blueprint = AccountContextBlueprint(email=lastname)
-        if item.machine_name is not None:
-            validation = self.loader.toolkit.identity_service.validate_name(
-                candidate=item.machine_name
-            )
-            if validation.is_failure:
-                return ValidationResult.failure(
-                    AccountContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountContextValidatorException.MSG,
-                        err_code=AccountContextValidatorException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-            item.machine_name = cast(str, validation.payload)
-            blueprint = AccountContextBlueprint(firstname=item.machine_name)
-        if item.machine_account is not None:
-            blueprint = AccountContextBlueprint(machine_account=True)
-        if item.human_account is not None:
-            blueprint = AccountContextBlueprint(human_account=True)
-        if blueprint.is_empty:
-            return ValidationResult.failure(
-                ValidationRouterException()
-            )
-        if extract.recipient_wants_blueprint:
-            return ValidationResult.success(
-                AccountContextCarrier(blueprint=blueprint)
-            )
-        return ValidationResult.success(
-            AccountContextCarrier(model=)
-        )
+        carrier = cast(AccountContextCarrier, result.authorization_applicant)
+        return ValidationResult.success(carrier)
+
 
 
 

@@ -11,7 +11,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.VALIDATOR PACKAGE ===========#
 
 # Packages
-from .search import *
+from .context import *
 from .model import *
 from .movement import *
 from .query import *

@@ -91,7 +91,7 @@ class BoardBuildLoader(ModelBuildLoader[Board]):
                 )
             )
         # --- Cast the priming result for additional processing. ---#
-        build_request = cast(BoardBuildRequest, priming.payload)
+        build_request = cast(BoardBuildRequest, priming.authorization_applicant)
         
         # Handle the case that the blueprint is faulty.
         blueprint_validation = self.validator.extract_blueprint(

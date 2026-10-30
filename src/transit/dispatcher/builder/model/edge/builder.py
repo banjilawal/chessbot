@@ -95,7 +95,7 @@ class EdgeBuilder(ModelBuilder[Edge]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 EdgeBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class EdgeBuilder(ModelBuilder[Edge]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Edge, assembly.payload))
+        return BuildResult.success(cast(Edge, assembly.authorization_applicant))

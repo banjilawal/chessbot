@@ -91,7 +91,7 @@ class ScalarBuildResponder(ModelBuildResponder[Scalar]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(ScalarCarrier, result.payload)
+        carrier = cast(ScalarCarrier, result.authorization_applicant)
         return ScalarBuildResponse.success(
             request=request,
             result=BuildResult(carrier),

@@ -75,7 +75,7 @@ class NodeEdgeHandler:
                         )
                     )
                 )
-            edges.append(build_result.payload)
+            edges.append(build_result.authorization_applicant)
         return BuildResult.success(edges)
     
     @classmethod
@@ -123,7 +123,7 @@ class NodeEdgeHandler:
                     )
                 )
             )
-        return BuildResult.success(List[build_result.payload])
+        return BuildResult.success(List[build_result.authorization_applicant])
     
     @classmethod
     @LoggingLevelRouter.monitor

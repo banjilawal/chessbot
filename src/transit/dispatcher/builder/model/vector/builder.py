@@ -112,4 +112,4 @@ class VectorBuilder(ModelBuilder[Vector]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Vector, assembly.payload))
+        return BuildResult.success(cast(Vector, assembly.authorization_applicant))

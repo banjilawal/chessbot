@@ -95,7 +95,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 ScalarBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class ScalarBuilder(ModelBuilder[Scalar]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Scalar, assembly.payload))
+        return BuildResult.success(cast(Scalar, assembly.authorization_applicant))

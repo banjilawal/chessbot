@@ -82,7 +82,7 @@ class VectorBuilder(ModelBuilder[Vector]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(VectorBlueprint, bootstrap.payload)
+        blueprint = cast(VectorBlueprint, bootstrap.authorization_applicant)
         
         # --- Send the work product. ---#
         product = Vector(

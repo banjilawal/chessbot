@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/delete/item/chain/request.py
+# src/exchange/request/permission/crud/delete/item/chain/request.py
 
 """
 Module: exchange.request.permission.crud.delete.item.chain.request
@@ -46,7 +46,7 @@ class RemoveNodePermissionRequest(DeleteItemPermissionRequest, ABC, Generic[T]):
     
     @property
     def item(self) -> T:
-        return cast(T, super().payload)
+        return cast(T, super().authorization_applicant)
         
     @property
     def chain(self) -> Chain[T]:

@@ -92,7 +92,7 @@ class VectorSequenceGenerator:
                 ),
             )
         # --- Cast the validation product and setup for the iteration. ---#
-        recur  = cast(Recurrence, validation.payload)
+        recur  = cast(Recurrence, validation.authorization_applicant)
         sequence: List[Vector] = []
         cursor = recur.space.origin
         

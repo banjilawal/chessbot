@@ -97,7 +97,7 @@ class CoordRegisterValidator(RegisterValidator[CoordRegister]):
                 )
             )
         # --- Cast priming_result into a request for additional tests. ---#
-        struct = cast(CoordRegister, load.payload)
+        struct = cast(CoordRegister, load.authorization_applicant)
         
         if struct.is_not_consistent:
             # Send the exception chain on failure.

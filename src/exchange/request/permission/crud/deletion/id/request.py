@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/delete/id/request.py
+# src/exchange/request/permission/crud/delete/id/request.py
 
 """
 Module: exchange.request.permission.crud.delete.id.request

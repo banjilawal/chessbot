@@ -225,7 +225,7 @@ class RankContextBuilder(Builder[RankContext]):
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             
-            return BuildResult.success(payload=RankContext(column=rank_validation.payload))
+            return BuildResult.success(payload=RankContext(column=rank_validation.authorization_applicant))
         
         except Exception as e:
             return BuildResult.failure(

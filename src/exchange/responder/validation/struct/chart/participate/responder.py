@@ -91,7 +91,7 @@ class ParticipationValidationResponder(ChartValidationResponder[Participation]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(ParticipationCarrier, result.payload)
+        carrier = cast(ParticipationCarrier, result.authorization_applicant)
         return ParticipationValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),

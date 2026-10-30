@@ -94,7 +94,7 @@ class NameValidator(Validator[str]):
                 )
             )
         # Handle the case tha the name is too short.
-        if len(string_validation_result.payload) < string_property_table.entry[StringProperty.MIN_LENGTH]:
+        if len(string_validation_result.authorization_applicant) < string_property_table.entry[StringProperty.MIN_LENGTH]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 NameValidatorException(
@@ -109,7 +109,7 @@ class NameValidator(Validator[str]):
                 )
             )
         # Handle the case tha the name is too long.
-        if len(string_validation_result.payload) > string_property_table.entry[StringProperty.MAX_LENGTH]:
+        if len(string_validation_result.authorization_applicant) > string_property_table.entry[StringProperty.MAX_LENGTH]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 NameValidatorException(

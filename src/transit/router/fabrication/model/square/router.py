@@ -100,7 +100,7 @@ class SquareBuildRouter(ModelBuildRouter[Square]):
                 )
             )
         # Otherwise cast the payload for additional prcoessing.
-        fingerprint = cast(SquareBlueprint, validation.payload)
+        fingerprint = cast(SquareBlueprint, validation.authorization_applicant)
         
         # Initialize the default failure result
         result = BuildResult.failure(

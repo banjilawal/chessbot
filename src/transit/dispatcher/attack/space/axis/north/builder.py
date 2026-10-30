@@ -86,7 +86,7 @@ class NorthAxisAttack(AxisAttack[NorthAxis]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            blueprint=cast(NorthAxisBlueprint, validation.payload)
+            blueprint=cast(NorthAxisBlueprint, validation.authorization_applicant)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:
@@ -102,4 +102,4 @@ class NorthAxisAttack(AxisAttack[NorthAxis]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(NorthAxis, assembly.payload))
+        return AttackResult.success(cast(NorthAxis, assembly.authorization_applicant))

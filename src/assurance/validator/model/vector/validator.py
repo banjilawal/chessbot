@@ -122,7 +122,7 @@ class VectorValidator(ModelValidator[Vector]):
                         ex=validation.exception,
                     )
                 )
-            components.append(cast(int, validation.payload))
+            components.append(cast(int, validation.authorization_applicant))
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         x = components[0]
         y = components[1]

@@ -111,7 +111,7 @@ class ManeuverPathPermitter(ManeuverRolePermitter[Maneuverable]):
         approval = ManeuverPermissionRequest(
             id=request.id,
             activity=activity,
-            applicant=request.applicant,
+            authorization_applicant=request.applicant,
         )
         # --- Forward the approval. ---#
         return ManeuverDecision.grant(approval)

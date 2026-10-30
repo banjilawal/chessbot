@@ -132,7 +132,7 @@ class FormationService(HashService[Formation]):
                     ex=formation_search_result.exception
                 )
             )
-        formation = formation_search_result.payload[0]
+        formation = formation_search_result.authorization_applicant[0]
         square_search_result = team.squares.search_service(context=SquareContext(name=formation.home_square_name))
         # Handle the case that the square search fails.
         if square_search_result.is_failure:
@@ -153,7 +153,7 @@ class FormationService(HashService[Formation]):
                 )
             )
         hash = {
-            "square": square_search_result.payload[0],
+            "square": square_search_result.authorization_applicant[0],
             "formation": formation,
         }
         # if square_search_result.is_failure:

@@ -88,7 +88,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
                 )
             )
         # --- Cast the candidate into HomeContext for routing attribute testing ---#
-        context = cast(TokenHomeContext, priming.payload)
+        context = cast(TokenHomeContext, priming.authorization_applicant)
         
         # Build for the search-by-id target.
         if context.id is not None:

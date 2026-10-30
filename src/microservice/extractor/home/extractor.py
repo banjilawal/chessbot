@@ -85,7 +85,7 @@ class HomeSquareExtractor:
                     )
                 )
             # --- Forward the work product to the caller. ---#
-            return ValidationResult.success(cast(HomeSquare, detection.payload))
+            return ValidationResult.success(cast(HomeSquare, detection.authorization_applicant))
         
         # --- For the default case, validate the home_square which already exists in the TokenBlueprint. ---#
         validation = self._validate_home_square(square=home_square)
@@ -101,7 +101,7 @@ class HomeSquareExtractor:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(cast(HomeSquare, validation.payload))
+        return ValidationResult.success(cast(HomeSquare, validation.authorization_applicant))
         
     @LoggingLevelRouter.monitor
     def _detect_home_square(self, board: Board, formation: Formation) -> ValidationResult:
@@ -148,7 +148,7 @@ class HomeSquareExtractor:
                 )
             )
         # --- Otherwise, forward the work product to the caller. ---#
-        home_square = cast(HomeSquare, search.payload)
+        home_square = cast(HomeSquare, search.authorization_applicant)
         return ValidationResult.success(home_square)
         
     @LoggingLevelRouter.monitor
@@ -192,5 +192,5 @@ class HomeSquareExtractor:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        home_square = cast(HomeSquare, validation.payload)
+        home_square = cast(HomeSquare, validation.authorization_applicant)
         return ValidationResult.success(home_square)

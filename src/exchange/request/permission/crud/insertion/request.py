@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/insertion/request.py
+# src/exchange/request/permission/crud/insertion/request.py
 
 """
 Module: exchange.request.permission.crud.insertion.request
@@ -29,7 +29,7 @@ class InsertionPermissionRequest(
 
      Attributes:
          id: int
-         candidate: : T
+         authorization_applicant: : T
 
      Provides:
 
@@ -37,17 +37,17 @@ class InsertionPermissionRequest(
         CrudPermissionRequest
      """
     
-    def __init__(self, id: int, candidate: T):
+    def __init__(self, id: int, authorization_applicant: T):
         """
         Args:
             id: int
-            candidate: T
+            authorization_applicant: T
         """
-        super().__init__(id, candidate=candidate)
+        super().__init__(id, authorization_applicant=authorization_applicant)
     
     @property
-    def payload(self) -> T:
-        return cast(T, super().payload)
+    def authorization_applicant(self) -> T:
+        return cast(T, super().authorization_applicant)
     
     def __eq__(self, other):
         if other is self: return True

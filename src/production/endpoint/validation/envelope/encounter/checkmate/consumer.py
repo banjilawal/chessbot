@@ -91,7 +91,7 @@ class CheckmateEncounterEnvelopeConsumer(
                     ex=priming.exception
                 )
             )
-        safe = cast(RootEncounterEnvelope, priming.payload)
+        safe = cast(RootEncounterEnvelope, priming.authorization_applicant)
         
         if not safe.for_checkmate_encounter_consumer:
             # Send the exception chain on failure.

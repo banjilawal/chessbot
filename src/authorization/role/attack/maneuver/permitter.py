@@ -130,7 +130,7 @@ class AttackManeuverPermitter(AttackRolePermitter[Attackable]):
         approval = AttackPermissionRequest(
             id=request.id,
             activity=activity,
-            applicant=request.applicant,
+            authorization_applicant=request.applicant,
         )
         # --- Forward the approval. ---#
         return AttackDecision.grant(approval)

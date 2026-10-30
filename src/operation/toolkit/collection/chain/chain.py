@@ -139,7 +139,7 @@ class Chain(ABC, Generic[T]):
         if search.is_empty:
             return DeletionResult.nothing_to_delete()
         
-        node = cast(Node[T], search.payload[0])
+        node = cast(Node[T], search.authorization_applicant[0])
         node.previous.next = node.next
         node.next.previous  = node.previous
         self._size = self._size - 1

@@ -140,7 +140,7 @@ class VectorService(Microservice[Vector]):
                     )
                 )
             # --- Update the accumulation. ---#
-            sum = summation_result.payload
+            sum = summation_result.authorization_applicant
         
         # --- Send the work product in the ComputationResult. ---#
         return ComputationResult.success(sum)
@@ -223,7 +223,7 @@ class VectorService(Microservice[Vector]):
                 )
             )
         # --- Send the work product. ---#
-        return ComputationResult.success(build_result.payload)
+        return ComputationResult.success(build_result.authorization_applicant)
     
     @LoggingLevelRouter.monitor
     def convert_coord_to_vector(

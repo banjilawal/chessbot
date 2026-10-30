@@ -141,10 +141,10 @@ class BishopSpanService(SpanMicroservice):
                                 ex=head_square_search_result.exception
                             )
                         )
-                    square_v = square_v_search.payload[0]
+                    square_v = square_v_search.authorization_applicant[0]
 
                     square_u_search_result = square_database.execute(context=SquareContext(coord=previous_point))
-                    square_u = square_u_search_result.payload[0]
+                    square_u = square_u_search_result.authorization_applicant[0]
                     
                     pair_build_result = self._build_pair(
                         head_square=square_u,
@@ -159,17 +159,17 @@ class BishopSpanService(SpanMicroservice):
                         square=square_u,
                         square_validator=square_database.microservice.execute,
                     )
-                    graph.vertices.push(u_build_result.payload)
-                    graph.vertices.push(v_build_result.payload)
+                    graph.vertices.push(u_build_result.authorization_applicant)
+                    graph.vertices.push(v_build_result.authorization_applicant)
                     
                     e = graph.edges.microservice.builder.execute(
-                        head=u_build_result.payload,
-                        tail=v_build_result.payload,
+                        head=u_build_result.authorization_applicant,
+                        tail=v_build_result.authorization_applicant,
                         coord_service=self.coord_service,
                     )
                     f = graph.edges.microservice.builder.execute(
-                        head=v_build_result.payload,
-                        tail=u_build_result.payload,
+                        head=v_build_result.authorization_applicant,
+                        tail=u_build_result.authorization_applicant,
                         coord_service=self.coord_service,
                     )
                     graph.edges.push(e)
@@ -236,10 +236,10 @@ class BishopSpanService(SpanMicroservice):
                                 ex=head_square_search_result.exception
                             )
                         )
-                    square_v = square_v_search.payload[0]
+                    square_v = square_v_search.authorization_applicant[0]
                     
                     square_u_search_result = square_database.execute(context=SquareContext(coord=previous_point))
-                    square_u = square_u_search_result.payload[0]
+                    square_u = square_u_search_result.authorization_applicant[0]
                     
                     pair_build_result = self._build_pair(
                         head_square=square_u,
@@ -254,17 +254,17 @@ class BishopSpanService(SpanMicroservice):
                         square=square_u,
                         square_validator=square_database.microservice.execute,
                     )
-                    graph.vertices.search_service(u_build_result.payload)
-                    graph.vertices.search_service(v_build_result.payload)
+                    graph.vertices.search_service(u_build_result.authorization_applicant)
+                    graph.vertices.search_service(v_build_result.authorization_applicant)
                     
                     e = graph.edges.pair_service.builder.search_service(
-                        head=u_build_result.payload,
-                        tail=v_build_result.payload,
+                        head=u_build_result.authorization_applicant,
+                        tail=v_build_result.authorization_applicant,
                         coord_service=self.coord_service,
                     )
                     f = graph.edges.pair_service.builder.search_service(
-                        head=v_build_result.payload,
-                        tail=u_build_result.payload,
+                        head=v_build_result.authorization_applicant,
+                        tail=u_build_result.authorization_applicant,
                         coord_service=self.coord_service,
                     )
                     graph.edges.search_service(e)
@@ -335,8 +335,8 @@ class BishopSpanService(SpanMicroservice):
                 )
             
             node_dict = {
-                "head": head_build_result.payload,
-                "tail": tail_build_result.payload
+                "head": head_build_result.authorization_applicant,
+                "tail": tail_build_result.authorization_applicant
             }
             BuildResult.success(payload=node_dict)
         
@@ -379,8 +379,8 @@ class BishopSpanService(SpanMicroservice):
                     )
                 )
             node_dict = {
-                "forward": forward_edge_result.payload,
-                "reverse": reverse_edge_result.payload
+                "forward": forward_edge_result.authorization_applicant,
+                "reverse": reverse_edge_result.authorization_applicant
             }
             BuildResult.success(payload=node_dict)
                     

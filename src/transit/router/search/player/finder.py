@@ -226,7 +226,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
                 # Put the first owner that matches inside a List then send the array inside a SearchResult.
                 # The exhaustive search is just to make sure there are no duplicates.
                 if team_search.is_success:
-                    return SearchResult.success(payload=List[team_search.payload])
+                    return SearchResult.success(payload=List[team_search.authorization_applicant])
             return SearchResult.empty()
             
             # Finally, if some exception is not handled by the checks wrap it inside an SearchException

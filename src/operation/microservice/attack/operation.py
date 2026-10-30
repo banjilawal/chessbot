@@ -137,7 +137,7 @@ class LaunchAttack:
                 attacker=report.recipient,
                 target_square=report.target_square,
                 enemy_combatant=hostage.prisoner,
-                child=maneuver_result.payload,
+                child=maneuver_result.authorization_applicant,
             )
         )
     

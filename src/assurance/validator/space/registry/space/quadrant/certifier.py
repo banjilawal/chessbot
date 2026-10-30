@@ -86,7 +86,7 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(QuadrantReservoirCarrier, carrier_validation.payload)
+        carrier = cast(QuadrantReservoirCarrier, carrier_validation.authorization_applicant)
         
         # --- Cast the candidate into a QuadrantReservoirBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
@@ -104,7 +104,7 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
                     ex=validation.exception
                 )
             )
-        origin = cast(Vector, validation.payload)
+        origin = cast(Vector, validation.authorization_applicant)
         if carrier.has_model:
             return ValidationResult.success(
                 QuadrantReservoirCarrier(model=QuadrantReservoir(origin=origin))

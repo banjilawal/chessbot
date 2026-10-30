@@ -95,7 +95,7 @@ class SquareBuilder(ModelBuilder[Square]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 SquareBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class SquareBuilder(ModelBuilder[Square]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Square, assembly.payload))
+        return BuildResult.success(cast(Square, assembly.authorization_applicant))

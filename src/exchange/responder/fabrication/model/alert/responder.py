@@ -91,7 +91,7 @@ class AlertBuildResponder(ModelBuildResponder[Alert]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(AlertCarrier, result.payload)
+        carrier = cast(AlertCarrier, result.authorization_applicant)
         return AlertBuildResponse.success(
             request=request,
             result=BuildResult(carrier),

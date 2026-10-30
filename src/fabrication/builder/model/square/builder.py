@@ -94,7 +94,7 @@ class SquareBuilder(BuildFactory[Square]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(SquareBlueprint, bootstrap.payload)
+        blueprint = cast(SquareBlueprint, bootstrap.authorization_applicant)
         result = self.router.execute(blueprint)
         
         # Handle the case that a product is not routed back.

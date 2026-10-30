@@ -30,18 +30,18 @@ class CheckmatePermissionRequest(AttackPermissionRequest[CheckmateRequest]):
         Permission
      """
     
-    def __init__(self, id: int,  candidate: CheckmateRequest):
+    def __init__(self, id: int,  authorization_applicant: CheckmateRequest):
         """
         Args:
             id: int
-            candidate: CheckmateRequest
+            authorization_applicant: CheckmateRequest
         """
-        super().__init__(id=id, candidate=candidate)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     
     @property
-    def payload(self) -> CheckmateRequest:
-        return cast(CheckmateRequest, super().payload)
+    def authorization_applicant(self) -> CheckmateRequest:
+        return cast(CheckmateRequest, super().authorization_applicant)
 
     def __eq__(self, other):
         if other is self: return True

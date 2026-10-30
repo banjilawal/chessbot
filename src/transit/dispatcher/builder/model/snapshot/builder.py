@@ -95,7 +95,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
         assembly = self.builder_toolkit.assembler.execute(
             candidate=cast(
                 SnapshotBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(Snapshot, assembly.payload))
+        return BuildResult.success(cast(Snapshot, assembly.authorization_applicant))

@@ -1,7 +1,7 @@
-# src/exchange/permissionRequest/permission/crud/insertion/request.py
+# src/exchange/request/permission/crud/search/request.py
 
 """
-Module: exchange.request.permission.crud.insertion.request
+Module: exchange.request.permission.crud.search.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from exchange import CrudPermissionRequest, InsertionRequest
+from exchange import CrudPermissionRequest, SearchRequest
 
-T = TypeVar("T", bound="InsertionRequest")
+T = TypeVar("T", bound="SearchRequest")
 
 
-class InsertionPermissionRequest(
+class SearchPermissionRequest(
     CrudPermissionRequest[T], ABC, Generic[T]
 ):
     """
@@ -25,11 +25,11 @@ class InsertionPermissionRequest(
          -  Messaging
 
      Responsibilities:
-        1.  Provides an InsertionAuthorizer with job details.
+        1.  Provides a SearchAuthorizer with job details.
 
      Attributes:
          id: int
-         candidate: : T
+         authorization_applicant: : T
 
      Provides:
 
@@ -37,21 +37,21 @@ class InsertionPermissionRequest(
         CrudPermissionRequest
      """
     
-    def __init__(self, id: int, candidate: T):
+    def __init__(self, id: int, authorization_applicant: T):
         """
         Args:
             id: int
-            candidate: T
+            authorization_applicant: T
         """
-        super().__init__(id, candidate=candidate)
+        super().__init__(id, authorization_applicant=authorization_applicant)
     
     @property
-    def payload(self) -> T:
-        return cast(T, super().payload)
+    def authorization_applicant(self) -> T:
+        return cast(T, super().authorization_applicant)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, InsertionPermissionRequest):
+        if isinstance(other, SearchPermissionRequest):
             return self.id == other.id
         return False

@@ -93,7 +93,7 @@ class EncounterWarningEnvelopeConsumer(
                     ex=priming.exception
                 )
             )
-        safe = cast(RootEncounterEnvelope, priming.payload)
+        safe = cast(RootEncounterEnvelope, priming.authorization_applicant)
         
         if not safe.for_encounter_warning_consumer:
             # Send the exception chain on failure.
@@ -165,7 +165,7 @@ class EncounterWarningEnvelopeConsumer(
                         ex=danger_zone_validation.exception,
                     )
                 )
-            danger_zone = cast(Square, danger_zone_validation.payload)
+            danger_zone = cast(Square, danger_zone_validation.authorization_applicant)
             
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = safe.id

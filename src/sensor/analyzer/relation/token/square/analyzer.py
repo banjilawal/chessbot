@@ -95,7 +95,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                 )
             )
         # Cast the validated primary as a Square.
-        square = cast(Square, square_validation_result.payload)
+        square = cast(Square, square_validation_result.authorization_applicant)
         
         # Handle the case that the token is flagged.
         token_validation_result = token_validator.execute(candidate_satellite)
@@ -112,7 +112,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                 )
             )
         # Cast the validated satellite as a Token.
-        token = cast(Token, token_validation_result.payload)
+        token = cast(Token, token_validation_result.authorization_applicant)
         # --- Validations have been passed. Run the relation analysis steps. ---#
         
         # Case No Relation: Tokens and squares on different boards or without a common coord.

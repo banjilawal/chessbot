@@ -95,7 +95,7 @@ class EdgeAttack(ModelAttack[Edge]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 EdgeBlueprint,
-                blueprint_validation.payload
+                blueprint_validation.authorization_applicant
             )
         )
         # Handle the case that assembler cannot satisfy the product request.
@@ -112,4 +112,4 @@ class EdgeAttack(ModelAttack[Edge]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(Edge, assembly.payload))
+        return AttackResult.success(cast(Edge, assembly.authorization_applicant))

@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/delete/id/chain/request.py
+# src/exchange/request/permission/crud/delete/id/chain/request.py
 
 """
 Module: exchange.request.permission.crud.delete.id.chain.request

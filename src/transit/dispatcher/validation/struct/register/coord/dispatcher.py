@@ -83,5 +83,5 @@ class CoordRegisterValidationDispatcher(RegisterValidationDispatcher[CoordRegist
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(CoordRegisterCarrier, validation.payload)
+            cast(CoordRegisterCarrier, validation.authorization_applicant)
         )

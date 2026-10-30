@@ -93,7 +93,7 @@ class TransformerRunner:
                         ex=computation.exception,
                     ),
                 )
-            solution_sets.append(cast(VectorSet, computation.payload))
+            solution_sets.append(cast(VectorSet, computation.authorization_applicant))
         return ComputationResult.success(solution_sets)
         
             

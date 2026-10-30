@@ -1,4 +1,4 @@
-# src/exchange/permissionRequest/permission/crud/insertion/__init__.py
+# src/exchange/request/permission/crud/insertion/__init__.py
 
 """
 Module: exchange.request.permission.crud.insertion.__init__
@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.request.PERMISSION.CRUD.INSERTION PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.PERMISSION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
 from .push import *

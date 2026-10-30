@@ -82,7 +82,7 @@ class BoardBuilder(ModelBuilder[Board]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(BoardBlueprint, bootstrap.payload)
+        blueprint = cast(BoardBlueprint, bootstrap.authorization_applicant)
         id = blueprint.id or IdFactory.next_id(class_name="Board")
         
         # --- Send the work product. ---#

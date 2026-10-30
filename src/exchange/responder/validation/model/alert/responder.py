@@ -91,7 +91,7 @@ class AlertValidationResponder(ModelValidationResponder[Alert]):
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(AlertCarrier, result.payload)
+        carrier = cast(AlertCarrier, result.authorization_applicant)
         return AlertValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),

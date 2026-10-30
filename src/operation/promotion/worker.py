@@ -61,7 +61,7 @@ class Promoter(Worker[PromotionResult]):
         
         decision = self.permitter.execute(
             PromotionPermissionRequest(
-                candidate=request,
+                authorization_applicant=request,
                 id=IdFactory.next_id(class_name="PromotionPermissionRequest")
             )
         )

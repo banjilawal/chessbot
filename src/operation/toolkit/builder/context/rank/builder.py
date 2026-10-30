@@ -221,7 +221,7 @@ class RankContextToolkit(Toolkit[RankContext]):
             if rank_validation.is_failure():
                 return ToolkitResult.failure(rank_validation.exception)
             
-            return ToolkitResult.success(payload=RankContext(column=rank_validation.payload))
+            return ToolkitResult.success(payload=RankContext(column=rank_validation.authorization_applicant))
         
         except Exception as e:
             return ToolkitResult.failure(

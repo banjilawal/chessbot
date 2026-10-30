@@ -136,4 +136,4 @@ class EuclideanDistance(Computation[Scalar]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Scalar, scalar_assembly_result.payload))
+        return ComputationResult.success(cast(Scalar, scalar_assembly_result.authorization_applicant))

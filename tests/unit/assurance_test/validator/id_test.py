@@ -28,7 +28,7 @@ class IdValidatorTest(unittest.TestCase):
 
   def test_validation_payload_equals_input_param(self):
     result = IdValidator.search_service(1)
-    self.assertEqual(result.payload, 1)
+    self.assertEqual(result.authorization_applicant, 1)
 
 
 if __name__ == '__main__':

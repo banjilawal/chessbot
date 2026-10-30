@@ -69,7 +69,7 @@ class ManeuverAuthorizationDispatcher(AuthorizationDispatcher[ManeuverPermission
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
-                request=request.payload,
+                request=request.authorization_applicant,
                 exception=ManeuverAuthorizationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

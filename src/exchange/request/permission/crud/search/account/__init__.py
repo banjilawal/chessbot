@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.request.PERMISSION.CRUD.SEARCH.ACCOUNT PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.PERMISSION.CRUD.SEARCH.ACCOUNT PACKAGE ===========#
 
 # Packages
 

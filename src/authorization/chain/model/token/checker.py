@@ -91,7 +91,7 @@ class ReadyTokenChecker(ReadyChecker):
             )
         approval = PermissionRequest(
             id=request.id,
-            applicant=applicant,
+            authorization_applicant=applicant,
             activity=request.activity,
         )
         return Decision.grant(approval)

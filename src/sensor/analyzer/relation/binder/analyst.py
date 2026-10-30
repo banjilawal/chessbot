@@ -95,7 +95,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
-        board = cast(Board, board_validator_result.payload)
+        board = cast(Board, board_validator_result.authorization_applicant)
         
         # Handle the case that the binder is not certified as safe.
         team_binder_validation_result = team_binder_validator.execute(candidate_satellite)
@@ -110,7 +110,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
                     ex=team_binder_validation_result.exception,
                 )
             )
-        team_binder = cast(BoardBinder, team_binder_validation_result.payload)
+        team_binder = cast(BoardBinder, team_binder_validation_result.authorization_applicant)
         
         # Handle the case that the binder belongs to a different board.
         if board.binder != team_binder and team_binder.primary != board :

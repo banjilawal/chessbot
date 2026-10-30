@@ -106,7 +106,7 @@ class TraversalTopologyGenerator:
                     ex=validation.exception,
                 ),
             )
-        collection = cast(RecurrenceRegistryCollection, validation.payload)
+        collection = cast(RecurrenceRegistryCollection, validation.authorization_applicant)
         registry_dict = collection.recurrence_registry_type_dict
         
         solution_sets = []

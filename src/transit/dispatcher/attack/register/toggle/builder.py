@@ -90,7 +90,7 @@ class VectorRegisterAttack(RegisterAttackDispatcher[VectorRegister]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(VectorRegisterBlueprint, blueprint_validation.payload)
+            candidate=cast(VectorRegisterBlueprint, blueprint_validation.authorization_applicant)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.
@@ -106,4 +106,4 @@ class VectorRegisterAttack(RegisterAttackDispatcher[VectorRegister]):
             )
         
         # --- Forward the work product to the caller. ---#
-        return AttackResult.success(cast(VectorRegister, assembly.payload))        
+        return AttackResult.success(cast(VectorRegister, assembly.authorization_applicant))

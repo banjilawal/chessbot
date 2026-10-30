@@ -16,6 +16,7 @@ from artifcat import ValidationResult
 from assurance import Validator
 from bootstrap import ContextValidationLoader
 from domain import Context
+from production import AccountContextValidationManager
 from transit import ContextCarrier
 from util import LoggingLevelRouter
 
@@ -32,7 +33,7 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         2.  Run safety checks on contexts and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        loader: ContextValidationLoader[T]
+        manager: COntextValidationManager[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ContextCarrier[T]]:
@@ -40,17 +41,23 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
     Super Class:
         Validator
     """
+    _manager: AccountContextValidationManager[T]
     
-    def __init__(self, loader: ContextValidationLoader[T]):
+    def __init__(self, manager: AccountContextValidationManager[T]):
         """
         Args:
-            loader: ContextLoader[T]
+            manager: AccountContextValidationManager[T]
         """
-        super().__init__(loader=loader)
+        super().__init__(loader=manager.loader)
+        self._manager = manager
     
     @property
     def loader(self) -> ContextValidationLoader[T]:
-        return cast(ContextValidationLoader[T], super().loader)
+        return self.manager.loader
+    
+    @property
+    def manager(self) -> AccountContextValidationManager[T]:
+        return self._manager
     
     @abstractmethod
     @LoggingLevelRouter.monitor
