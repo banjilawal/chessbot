@@ -52,12 +52,12 @@ class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[AccountCarrier]:
         """
-        Forward a job to a AccountValidator then deliver the result.
+        Forward a job to an AccountValidator then deliver the result.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the validator cannot
                 certify the job's content.
-            2.  Otherwise, cast the job payload into a AccountCarrier and send in
+            2.  Otherwise, cast the job payload into an AccountCarrier and send in
                 the success result.
         Args:
             job: Any

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from artifcat import Decision
+from artifcat import SearchDecision
 from authorization import CrudPermitter
 from bootstrap import CrudAuthorizationLoader
 from exchange import SearchPermissionRequest
@@ -57,7 +57,7 @@ class SearchPermitter(CrudPermitter[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, request: T) -> SearchDecision[T]:
         """
         Grant permission for an activity.
         
