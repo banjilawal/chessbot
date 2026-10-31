@@ -236,80 +236,12 @@ class PromotionAuthorizationLoader(
             applicant=pawn_token,
             elevatable=elevatable,
         )
-        approval = PromotionPermissionRequest(
+        permission_request = PromotionPermissionRequest(
             id=permission_form_id,
             authorization_applicant=approved_applicant,
         )
         # --- Forward the approval. ---#
-        return PromotionDecision.grant(approval)
-        
-        # Handle the case that loader does not bootstrap the process.
-        bootstrap = self.loader.execute(candidate)
-        if bootstrap.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PathValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PathValidatorException.MSG,
-                    err_code=PathValidatorException.ERR_CODE,
-                    ex=bootstrap.exception,
-                )
-            )
-        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        extract = cast(PathPrimeExtract, bootstrap.payload)
-        carrier = extract.reference
-        fingerprint = carrier.extract_blueprint()
-        # Handle the case that the blueprint is null.
-        if fingerprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PathValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PathValidatorException.MSG,
-                    err_code=PathValidatorException.ERR_CODE,
-                    ex=PathCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=PathCarrierEmptyException.MSG,
-                        err_code=PathCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
-
-        label = fingerprint.label
-        if label is not None:
-            label_validation = self.loader.toolkit.number_validator.execute(label)
-            # Handle the case that the endpoints are flagged.
-            if label_validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    PathValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=PathValidatorException.MSG,
-                        err_code=PathValidatorException.ERR_CODE,
-                        ex=label_validation.exception,
-                    )
-                )
-            label = cast(int, label_validation.payload)
-        # --- PROCESS_THE_ENDPOINTS_ATTRIBUTE. ---#
-        endpoints_validation = self.loader.toolkit.dependency.square_register.extract_model(
-            request=SquareRegisterValidationRequest(
-                item=SquareRegisterCarrier(model=fingerprint.endpoints),
-                id=IdFactory.next_id(class_name="SquareRegisterValidationRequest"),
-            )
+        return PromotionDecision.grant(
+            approval=approved_applicant,
+            permission_request=permission_request,
         )
-        # Handle the case that the endpoints are flagged.
-        if endpoints_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PathValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PathValidatorException.MSG,
-                    err_code=PathValidatorException.ERR_CODE,
-                    ex=endpoints_validation.exception,
-                )
-            )
