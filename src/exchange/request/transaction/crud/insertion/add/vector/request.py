@@ -1,0 +1,58 @@
+# src/exchange/request/transaction/crud/insertion/add/vector/request.py
+
+"""
+Module: exchange.request.transaction.crud.insertion.add.vector.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+
+from collection import VectorChain
+from domain import VectorNode
+from exchange import AddNodeRequest
+
+class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
+    """
+     Role:
+         -  Messaging
+
+     Responsibilities:
+         1. Provide job details to a VectorNodeAdder
+
+     Attributes:
+         id: int
+         item: VectorNode
+         collection: VectorChain
+
+     Provides:
+
+     Super Class:
+        AddNodeRequest
+     """
+    
+    def __init__(self, id: int, item: VectorNode, collection: VectorChain):
+        """
+        Args:
+            id: int
+            item: VectorNode
+            collection: VectorChain
+        """
+        super().__init__(id, item=item, collection=collection)
+        
+    @property
+    def item(self) -> T:
+        return cast(T, super().item)
+    
+    @property
+    def collection(self) -> VectorChain[T]:
+        return cast(VectorChain[T], super().collection)
+        
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, AddVectorNodeRequest):
+            return self.id == other.id
+        return False
