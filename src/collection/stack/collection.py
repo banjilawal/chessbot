@@ -14,8 +14,9 @@ from typing import Generic, Iterator, List, Optional, TypeVar
 
 from artifcat import DeletionResult, InsertionResult, SearchResult
 from collection import DataStruct
+from domain import Model
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
 
 class Stack(DataStruct, ABC, Generic[T]):

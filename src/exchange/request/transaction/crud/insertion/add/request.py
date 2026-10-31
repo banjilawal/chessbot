@@ -52,7 +52,7 @@ class AddNodeRequest(InsertionRequest[T], ABC, Generic[T]):
     
     @property
     def collection(self) -> Chain[T]:
-        return cast(Chain[T], super().colllection)
+        return cast(Chain[T], super().collection)
         
     def __eq__(self, other):
         if other is self: return True

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Collection, Generic, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import InsertionResult
 from collection import DataStruct
@@ -36,6 +36,8 @@ class InsertionRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
      Super Class:
         CrudRequest
      """
+    _item: T
+    _collection: DataStruct[T]
     
     def __init__(self, id: int, item: T, collection: DataStruct[T]):
         """
@@ -53,10 +55,9 @@ class InsertionRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
         return self._item
     
     @property
-    def collection(self) -> Collection[T]:
+    def collection(self) -> DataStruct[T]:
         return self._collection
         
-    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

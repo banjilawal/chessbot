@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/model/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/model/account/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/model/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collection/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collection/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collection/stack/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/model/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/model/account/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/account/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/model/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,61 +57,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.3042462609147403" />
-      <entry key="MS500" value="3.889418021287089" />
-      <entry key="S2" value="8.00323869862795" />
-      <entry key="S5" value="13.213291102164401" />
-      <entry key="S10" value="19.598184822538208" />
-      <entry key="S30" value="30.547175614808985" />
-      <entry key="S60" value="35.88775434168302" />
-      <entry key="M2" value="41.19910440154347" />
-      <entry key="M5" value="54.65808399936443" />
-      <entry key="M10" value="72.87975851187724" />
-      <entry key="M15" value="89.40307956463295" />
-      <entry key="M30" value="148.5445362079897" />
-      <entry key="H1" value="291.7500087418866" />
-      <entry key="H2" value="552.6704381791739" />
-      <entry key="H4" value="960.8440557951749" />
-      <entry key="D1" value="4045.9205454016205" />
-      <entry key="W1" value="29438.489992312723" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000320901714452" />
+      <entry key="S5" value="1.0266263306053829" />
+      <entry key="S10" value="1.3307888922598248" />
+      <entry key="S30" value="4.118101424240457" />
+      <entry key="S60" value="8.111558853002261" />
+      <entry key="M2" value="12.960165128650116" />
+      <entry key="M5" value="31.613939387431632" />
+      <entry key="M10" value="79.67676473724093" />
+      <entry key="M15" value="119.04835167649743" />
+      <entry key="M30" value="187.05202958845013" />
+      <entry key="H1" value="270.6410404635667" />
+      <entry key="H2" value="461.529633541185" />
+      <entry key="H4" value="855.5902704812518" />
+      <entry key="D1" value="4009.169180619827" />
+      <entry key="W1" value="29378.758711789003" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.7992797133101974E-235" />
-      <entry key="S2" value="3.3307842161631945E-59" />
-      <entry key="S5" value="5.9701397615744476E-24" />
-      <entry key="S10" value="3.436356314798242E-12" />
-      <entry key="S30" value="2.3941071943793348E-4" />
-      <entry key="S60" value="0.02240428587447965" />
-      <entry key="M2" value="0.2411202483720153" />
-      <entry key="M5" value="1.1911141784718506" />
-      <entry key="M10" value="2.1604994019642034" />
-      <entry key="M15" value="2.735474613379799" />
-      <entry key="M30" value="4.410940867167524" />
-      <entry key="H1" value="11.525461573593121" />
-      <entry key="H2" value="32.04582101618136" />
-      <entry key="H4" value="69.7287432734884" />
-      <entry key="D1" value="313.87980114585366" />
-      <entry key="W1" value="1750.6465888280065" />
+      <entry key="MS100" value="4.1070536145675185E-82" />
+      <entry key="MS500" value="5.2808772706514153E-17" />
+      <entry key="S2" value="8.524649246016838E-5" />
+      <entry key="S5" value="0.02356517164547255" />
+      <entry key="S10" value="0.15350990563397474" />
+      <entry key="S30" value="0.5427421418323322" />
+      <entry key="S60" value="0.8173724595934927" />
+      <entry key="M2" value="1.171210998490508" />
+      <entry key="M5" value="1.9805927425295042" />
+      <entry key="M10" value="2.885998521485872" />
+      <entry key="M15" value="3.3978657595870323" />
+      <entry key="M30" value="4.155737290752656" />
+      <entry key="H1" value="6.013009786686701" />
+      <entry key="H2" value="16.33246293834269" />
+      <entry key="H4" value="46.801550878739754" />
+      <entry key="D1" value="293.34960503550707" />
+      <entry key="W1" value="1734.5734730674662" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.087682160088472" />
-      <entry key="MS500" value="3.7594485052710334" />
-      <entry key="S2" value="7.934739288181446" />
-      <entry key="S5" value="13.168228927984034" />
-      <entry key="S10" value="19.563204604332938" />
-      <entry key="S30" value="30.51111156050655" />
-      <entry key="S60" value="35.87289359322107" />
-      <entry key="M2" value="41.40004171820936" />
-      <entry key="M5" value="55.78480046976657" />
-      <entry key="M10" value="74.96862428548911" />
-      <entry key="M15" value="92.07110443020653" />
-      <entry key="M30" value="152.90005611449513" />
-      <entry key="H1" value="303.22565181725327" />
-      <entry key="H2" value="584.6658681314842" />
-      <entry key="H4" value="1030.5216172339046" />
-      <entry key="D1" value="4359.7604499310355" />
-      <entry key="W1" value="31189.10542418832" />
+      <entry key="MS100" value="6.180452118995509E-4" />
+      <entry key="MS500" value="0.22814137213586297" />
+      <entry key="S2" value="0.691171248879007" />
+      <entry key="S5" value="0.9017243231314953" />
+      <entry key="S10" value="1.3627778092103793" />
+      <entry key="S30" value="4.521081087034813" />
+      <entry key="S60" value="8.792534974050694" />
+      <entry key="M2" value="14.023568904391666" />
+      <entry key="M5" value="33.525031212105695" />
+      <entry key="M10" value="82.5036134820121" />
+      <entry key="M15" value="122.3924214391835" />
+      <entry key="M30" value="191.16700367033707" />
+      <entry key="H1" value="276.6225724915739" />
+      <entry key="H2" value="477.82979903491486" />
+      <entry key="H4" value="902.3535574400211" />
+      <entry key="D1" value="4302.48081687954" />
+      <entry key="W1" value="31113.301213413837" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -162,11 +166,11 @@
       <recent name="$PROJECT_DIR$/src/artifcat/decision/crud/search/account" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push" />
       <recent name="$PROJECT_DIR$/src/authorization/authorizer/crud/search" />
       <recent name="$PROJECT_DIR$/src/exchange/request/permission/crud/search" />
       <recent name="$PROJECT_DIR$/src/production/endpoint/validation/context/model" />
       <recent name="$PROJECT_DIR$/src/production/endpoint/validation/envelope" />
-      <recent name="$PROJECT_DIR$/src/production/endpoint/validation" />
     </key>
   </component>
   <component name="RunManager" selected="Python.generator">
@@ -831,7 +835,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="39489000" />
+      <workItem from="1793360739922" duration="41806000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

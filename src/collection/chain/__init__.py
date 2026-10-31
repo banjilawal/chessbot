@@ -14,4 +14,4 @@ from .check import *
 from .vector import *
 
 # Modules
-from .chain import Chain
+from .collection import Chain

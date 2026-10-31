@@ -1,7 +1,7 @@
-# src/exchange/request/transaction/crud/insertion/push/model/account/request.py
+# src/exchange/request/transaction/crud/insertion/push/account/request.py
 
 """
-Module: exchange.request.transaction.crud.insertion.push.model.account.request
+Module: exchange.request.transaction.crud.insertion.push.account.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,10 +13,10 @@ from typing import cast
 
 from collection import AccountStack
 from domain import Account
-from exchange import ModelPushRequest
+from exchange import PushRequest
 
 
-class AccountPushRequest(ModelPushRequest[Account]):
+class AccountPushRequest(PushRequest[Account]):
     """
      Role:
          -  Messaging
@@ -32,10 +32,8 @@ class AccountPushRequest(ModelPushRequest[Account]):
      Provides:
 
      Super Class:
-        ModelPushRequest
+        PushRequest
      """
-    _item: Account
-    _collection: AccountStack
     
     def __init__(self, id: int, item: Account, collection: AccountStack):
         """
