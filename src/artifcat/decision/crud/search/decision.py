@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import CrudDecision, Permission
@@ -18,7 +19,7 @@ from exchange import (
 
 T = TypeVar("T", bound="SearchRequest")
 
-class SearchDecision(CrudDecision[T], Generic[T]):
+class SearchDecision(CrudDecision[T], ABC, Generic[T]):
     """
     Role:
         - Permission Reporting

@@ -29,13 +29,15 @@ class ModelSearchRequest(SearchRequest[T], ABC, Generic[T]):
      Attributes:
         id: int
         context: Context[T]
-        collection: DataStruct[T]
+        collection: Stack[T]
 
      Provides:
 
      Super Class:
         SearchRequest
      """
+    _context: Context[T]
+    _collection: Stack[T]
     
     def __init__(self, id: int, context: Context[T], collection: Stack[T]):
         """
@@ -44,15 +46,17 @@ class ModelSearchRequest(SearchRequest[T], ABC, Generic[T]):
             context: Context[T]
             collection: DataStruct[T]
         """
-        super().__init__(id=id, context=context, collection=collection)
+        super().__init__(id=id)
+        self._context = context
+        self._collection = collection
         
     @property
     def context(self) -> Context[T]:
-        return cast(Context[T], super().context)
+        return self._context
     
     @property
-    def collection(self) -> DataStruct[T]:
-        return cast(DataStruct[T], super().collection)
+    def collection(self) -> Stack[T]:
+        return self._collection
         
     def __eq__(self, other):
         if other is self: return True

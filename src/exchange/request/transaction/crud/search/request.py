@@ -14,10 +14,10 @@ from typing import Generic, TypeVar
 
 from artifcat import SearchResult
 from collection import DataStruct
-from domain import Context
+from domain import Context, Model
 from exchange import CrudRequest
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
 class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
     """
@@ -36,33 +36,34 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
      Super Class:
         CrudRequest
      """
+    pass
     
-    _context: Context[T]
-    _collection: DataStruct[T]
-    
-    def __init__(
-            self,
-            id: int,
-            context: Context[T],
-            collection: DataStruct[T],
-    ):
-        """
-        Args:
-            id: int
-            context: Context[T]
-            collection: DataStruct[T]
-        """
-        super().__init__(id)
-        self._context = context
-        self._collection = collection
-        
-    @property
-    def context(self) -> Context[T]:
-        return  self._context
-    
-    @property
-    def collection(self) -> DataStruct[T]:
-        return self._collection
+    # _context: Context[T]
+    # _collection: DataStruct[T]
+    #
+    # def __init__(
+    #         self,
+    #         id: int,
+    #         context: Context[T],
+    #         collection: DataStruct[T],
+    # ):
+    #     """
+    #     Args:
+    #         id: int
+    #         context: Context[T]
+    #         collection: DataStruct[T]
+    #     """
+    #     super().__init__(id)
+    #     self._context = context
+    #     self._collection = collection
+    #
+    # @property
+    # def context(self) -> Context[T]:
+    #     return  self._context
+    #
+    # @property
+    # def collection(self) -> DataStruct[T]:
+    #     return self._collection
     
     def __eq__(self, other):
         if other is self: return True
