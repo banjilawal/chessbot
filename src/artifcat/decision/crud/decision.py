@@ -47,7 +47,7 @@ class CrudDecision(Decision[T], ABC, Generic[T]):
     def __init__(
             self,
             permission: Permission,
-            permission_request: PermissionRequest[T],
+            permission_request: CrudPermissionRequest[T],
             exception: Optional[Exception] | None = None,
             approval: Optional[T] | None = None,
     ):
@@ -67,12 +67,12 @@ class CrudDecision(Decision[T], ABC, Generic[T]):
     
     @classmethod
     def grant(
-            cls, 
-            approval: T,
+            cls,
+            approval: CrudRequest,
             permission_request: PermissionRequest,
     ) -> CrudDecision:
         role_request = cast(
-            CrudPermissionRequest, 
+            CrudPermissionRequest,
             permission_request,
         )
         return cls(
@@ -80,10 +80,10 @@ class CrudDecision(Decision[T], ABC, Generic[T]):
             permission_request=role_request,
             permission=Permission.GRANTED,
         )
-    
+
     @classmethod
     def denial(
-            cls, 
+            cls,
             permission_request: PermissionRequest,
             exception: Exception,
     ) -> CrudDecision:

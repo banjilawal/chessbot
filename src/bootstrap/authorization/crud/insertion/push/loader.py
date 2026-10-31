@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
 
 from artifcat.decision import Decision
 from bootstrap import InsertionAuthorizationLoader
@@ -30,29 +30,20 @@ class PushAuthorizationLoader(
         1.  Ensure the correct Request type is loaded into a PushAuthorizer
         
     Attributes:
-        validation_service: ValidationService
 
     Provides:
-        -   def execute(candidate: Any) -> Decision
+        -   def execute(candidate: Any) -> PushDecision[T]
 
     Super Class:
         InsertionAuthorizationLoader
     """
     
-    def __init__(self, validation_service: ValidationService):
-        """
-        Args:
-            validation_service: ValidationService
-        """
-        super().__init__(validation_service=validation_service)
-    
-    @property
-    def validation_service(self) -> ValidationService:
-        return cast(ValidationService, super().validation_service)
+    def __init__(self):
+        super().__init__()
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> Decision[T]:
+    def execute(self, candidate: Any) -> PushDecision[T]:
         """
         Checks if the PushRequest is the right type and not null.
         

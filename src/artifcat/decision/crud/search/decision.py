@@ -16,7 +16,9 @@ from exchange import (
     PermissionRequest, CrudPermissionRequest, SearchPermissionRequest, SearchRequest
 )
 
-class SearchDecision(CrudDecision[SearchRequest]):
+T = TypeVar("T", bound="SearchRequest")
+
+class SearchDecision(CrudDecision[T], Generic[T]):
     """
     Role:
         - Permission Reporting
@@ -47,7 +49,7 @@ class SearchDecision(CrudDecision[SearchRequest]):
             permission: Permission,
             permission_request: PermissionRequest[T],
             exception: Optional[Exception] | None = None,
-            approval: Optional[SearchRequest] | None = None,
+            approval: Optional[T] | None = None,
     ):
         """
         Args:

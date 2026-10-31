@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
+from .push import *
 
 # Modules
 from .decision import InsertionDecision

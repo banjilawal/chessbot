@@ -9,47 +9,43 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import Permission
-from artifcat.decision.crud import CrudDecision
-from exchange import InsertionRequest, PermissionRequest
+from artifcat import CrudDecision, Permission
+from exchange import (
+    PermissionRequest, CrudPermissionRequest, InsertionPermissionRequest, InsertionRequest
+)
+
 
 T = TypeVar("T", bound="InsertionRequest")
 
-class InsertionDecision(CrudDecision[T], Generic[T]):
+class InsertionDecision(CrudDecision[T], ABC, Generic[T]):
     """
     Role:
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if an insertion is permitted or denied.
-        
+        1.  Report if a Crud transaction is permitted.
+
     Attributes:
-        permission: Permission
-        permission_request: PermissionRequest[T]
-        exception: Optional[Exception]
-        approval: Optional[T]
-        
+        approval: Optional[InsertionRequest]
+
     Provides:
         -   def grant(
-                    approval: T,
-                    permission_request: PermissionRequest[T],
-            ) -> Decision[T]
-            
+                    approval: InsertionRequest,
+                    permission_request: PermissionRequest,
+            ) -> InsertionDecision
+
         -   def denial(
-                    permission_request: PermissionRequest[T],
+                    permission_request: PermissionRequest,
                     exception: Exception,
-            ) -> Decision[T]
-            
-        -   def do_nothing(
-                    permission_request: PermissionRequest[T]
             ) -> InsertionDecision
 
     Super Class:
         CrudDecision
     """
-  
+    
     def __init__(
             self,
             permission: Permission,
@@ -62,59 +58,46 @@ class InsertionDecision(CrudDecision[T], Generic[T]):
             permission: Permission
             permission_request: PermissionRequest
             exception: Optional[Exception]
-            approval: Optional[TransactionRequest]
+            approval: Optional[T]
         """
         super().__init__(
+            permission_request=permission_request,
             approval=approval,
             exception=exception,
             permission=permission,
-            permission_request=permission_request,
-        )
-    
-    @property
-    def permission_request(self) -> PermissionRequest[T]:
-        return cast(PermissionRequest[T], super().permission_request)
-    
-    @property
-    def approval(self) -> Optional[T]:
-        return cast(T, super().approval)
-        
-    @property
-    def item_already_exists(self):
-        return (
-            self.exception is None and
-            self.approval is None and
-            self.permission == Permission.DO_NOTHING
         )
     
     @classmethod
     def grant(
-            cls,
-            approval: T,
-            permission_request: PermissionRequest[T],
-    ) -> InsertionDecision[T]:
+            cls, 
+            approval: InsertionRequest,
+            permission_request: PermissionRequest,
+    ) -> CrudDecision:
+        role_request = cast(
+            InsertionPermissionRequest,
+            permission_request,
+        )
         return cls(
-            approval=approval, 
-            permission_request=permission_request, 
+            approval=approval,
+            permission_request=role_request,
             permission=Permission.GRANTED,
         )
     
     @classmethod
     def denial(
-            cls,
-            permission_request: PermissionRequest[T],
+            cls, 
+            permission_request: PermissionRequest,
             exception: Exception,
-    ) -> InsertionDecision[T]:
+    ) -> CrudDecision:
+        role_request = cast(
+            CrudPermissionRequest,
+            permission_request,
+        )
         return cls(
             exception=exception,
-            permission_request=permission_request,
+            permission_request=role_request,
             permission=Permission.DENIED,
         )
-    
-    @classmethod
-    def do_nothing(cls, permission_request: PermissionRequest[T],) -> InsertionDecision:
-        return cls(
-            permission_request=permission_request,
-            permission=Permission.DO_NOTHING,
-        )
+
+
     
