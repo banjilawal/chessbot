@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.PERMISSION.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
-from .account import *
+from .model import *
+from .node import *
 
 # Modules
 from .request import SearchPermissionRequest

@@ -1,7 +1,7 @@
-# src/exchange/request/permission/crud/search/account/request.py
+# src/exchange/request/permission/crud/search/model/account/request.py
 
 """
-Module: exchange.request.permission.crud.search.account.request
+Module: exchange.request.permission.crud.search.model.account.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
