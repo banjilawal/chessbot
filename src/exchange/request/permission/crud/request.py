@@ -25,7 +25,7 @@ class CrudPermissionRequest(
          -  Messaging
 
      Responsibilities:
-        1.  Provides a CrudAuthorizer with job details.
+        1.  Provides a CrudPermitter with job details.
 
      Attributes:
          id: int

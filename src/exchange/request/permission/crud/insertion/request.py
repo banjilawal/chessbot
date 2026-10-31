@@ -25,7 +25,7 @@ class InsertionPermissionRequest(
          -  Messaging
 
      Responsibilities:
-        1.  Provides an InsertionAuthorizer with job details.
+        1.  Provides an InsertionPermitter with job details.
 
      Attributes:
          id: int

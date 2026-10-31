@@ -1,7 +1,7 @@
-# src/exchange/request/permission/crud/insertion/push/model/account/request.py
+# src/exchange/request/permission/crud/insertion/push/account/request.py
 
 """
-Module: exchange.request.permission.crud.insertion.push.model.account.request
+Module: exchange.request.permission.crud.insertion.push.account.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import AccountPushRequest, ModelPushPermissionRequest
+from exchange import AccountPushRequest, PushPermissionRequest
 
 
 class AccountPushPermissionRequest(
-    ModelPushPermissionRequest[AccountPushRequest]
+    PushPermissionRequest[AccountPushRequest]
 ):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Provides an AccountPushAuthorizer with job details.
+        1.  Provides an AccountPushPermitter with job details.
 
      Attributes:
          id: int
@@ -31,7 +31,7 @@ class AccountPushPermissionRequest(
      Provides:
 
      Super Class:
-        ModelPushPermissionRequest
+        PushPermissionRequest
      """
     
     def __init__(self, id: int, authorization_applicant: AccountPushRequest):

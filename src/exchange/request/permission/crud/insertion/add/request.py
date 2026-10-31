@@ -1,7 +1,7 @@
-# src/exchange/request/permission/crud/insertion/push/model/request.py
+# src/exchange/request/permission/crud/insertion/add/request.py
 
 """
-Module: exchange.request.permission.crud.insertion.push.model.request
+Module: exchange.request.permission.crud.insertion.add.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,20 +12,20 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from exchange import PushPermissionRequest
+from exchange import InsertionPermissionRequest, AddNodeRequest
 
-T = TypeVar("T", bound="ModelPushPermissionRequest")
+T = TypeVar("T", bound="AddNodeRequest")
 
 
-class ModelPushPermissionRequest(
-    PushPermissionRequest[T], ABC, Generic[T]
+class AddNodePermissionRequest(
+    InsertionPermissionRequest[T], ABC, Generic[T]
 ):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Provides a ModelPushAuthorizer with job details.
+        1.  Provides an AddNodePermitter with job details.
 
      Attributes:
          id: int
@@ -34,7 +34,7 @@ class ModelPushPermissionRequest(
      Provides:
 
      Super Class:
-        PushPermissionRequest
+        InsertionPermissionRequest
      """
     
     def __init__(self, id: int, authorization_applicant: T):
@@ -52,6 +52,6 @@ class ModelPushPermissionRequest(
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ModelPushPermissionRequest):
+        if isinstance(other, AddNodePermissionRequest):
             return self.id == other.id
         return False

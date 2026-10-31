@@ -25,7 +25,7 @@ class SearchPermissionRequest(
          -  Messaging
 
      Responsibilities:
-        1.  Provides a SearchAuthorizer with job details.
+        1.  Provides a SearchPermitter with job details.
 
      Attributes:
          id: int

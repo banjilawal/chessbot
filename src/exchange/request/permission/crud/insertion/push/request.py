@@ -25,7 +25,7 @@ class PushPermissionRequest(
          -  Messaging
 
      Responsibilities:
-        1.  Provides a PushAuthorizer with job details.
+        1.  Provides a PushPermitter with job details.
 
      Attributes:
          id: int
