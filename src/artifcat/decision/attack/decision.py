@@ -24,11 +24,11 @@ class AttackDecision(Decision[AttackRequest]):
         1.  Report if a Attack transaction is permitted.
 
     Attributes:
-        approval: Optional[AttackRequest]
+        transaction_request: Optional[AttackRequest]
 
     Provides:
         -   def grant(
-                    approval: AttackRequest,
+                    transaction_request: AttackRequest,
                     permission_request: PermissionRequest,
             ) -> AttackDecision
 
@@ -84,7 +84,7 @@ class AttackDecision(Decision[AttackRequest]):
     @classmethod
     def grant(
             cls, 
-            approval: AttackRequest, 
+            transaction_request: AttackRequest,
             permission_request: PermissionRequest,
     ) -> AttackDecision:
         role_request = cast(
@@ -92,7 +92,7 @@ class AttackDecision(Decision[AttackRequest]):
             permission_request,
         )
         return cls(
-            transaction_request=approval,
+            transaction_request=transaction_request,
             permission_request=role_request,
             permission=Permission.GRANTED,
         )

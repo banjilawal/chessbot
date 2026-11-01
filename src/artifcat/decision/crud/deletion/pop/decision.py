@@ -27,7 +27,7 @@ class PopDecision(DeletionDecision[P, T], Generic[P, T]):
         1.  Report if a Crud transaction is permitted.
 
     Attributes:
-        approval: Optional[PopRequest]
+        transaction_request: Optional[PopRequest]
 
     Provides:
 
@@ -38,14 +38,14 @@ class PopDecision(DeletionDecision[P, T], Generic[P, T]):
     def __init__(
             self,
             permission: Permission,
-            approval: Optional[T] | None = None,
+            transaction_request: Optional[T] | None = None,
             permission_request: Optional[P] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            approval: Optional[T]
+            transaction_request: Optional[T]
             permission_request: Optional[P]
             exception: Optional[Exception]
         """

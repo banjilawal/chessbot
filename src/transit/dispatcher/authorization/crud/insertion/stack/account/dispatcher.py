@@ -91,7 +91,7 @@ class AccountPushPermissionDispatcher(
         )
         approval = cast(AccountPushRequest, decision.transaction_request)
         return InsertionDecision.grant(
-            approval=approval,
+            transaction_request=approval,
             permission_request=permission_request,
         )
         
@@ -103,6 +103,6 @@ class AccountPushPermissionDispatcher(
         )
         # --- Forward the approval. ---#
         return InsertionDecision.grant(
-            approval=transaction_request,
+            transaction_request=transaction_request,
             permission_request=permission_request,
         )

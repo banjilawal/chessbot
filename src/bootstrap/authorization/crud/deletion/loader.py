@@ -53,7 +53,7 @@ class DeletionAuthorizationLoader(
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Checks if the Request is the right type.
         
@@ -65,7 +65,7 @@ class DeletionAuthorizationLoader(
         Args:
             candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
             DeletionAuthorizationLoaderException
         """

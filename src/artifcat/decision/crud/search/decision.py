@@ -25,10 +25,9 @@ class SearchDecision(CrudDecision[P, T], ABC, Generic[P, T]):
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if a Crud transaction is permitted.
+        1.  Report if a Search transaction is permitted.
 
     Attributes:
-        approval: Optional[SearchRequest[T]]
 
     Provides:
 
@@ -39,20 +38,20 @@ class SearchDecision(CrudDecision[P, T], ABC, Generic[P, T]):
     def __init__(
             self,
             permission: Permission,
-            transaction_request: Optional[T] | None = None,
-            permission_request: Optional[P] | None = None,
             exception: Optional[Exception] | None = None,
+            permission_request: Optional[P] | None = None,
+            transaction_request: Optional[T] | None = None,
     ):
         """
         Args:
             permission: Permission
-            transaction_request: Optional[T]
-            permission_request: Optional[P]
             exception: Optional[Exception]
+            permission_request: Optional[P]
+            transaction_request: Optional[T]
         """
         super().__init__(
-            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,
+            transaction_request=transaction_request,
         )

@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import Decision, PromotionDecision
+from artifcat import PromotionDecision
 from bootstrap import AuthorizationLoader
 from domain import Elevatable, PawnToken, Rank, Token
-from domain.interface.actionable import elevatable
 from err import PromotionRequestNullException
 from exchange import (
-    PromotionPermissionRequest, PromotionRequest, RankValidationRequest, RankValidationService, TokenValidationRequest,
-    TokenValidationService
+    PromotionPermissionRequest, PromotionRequest, RankValidationRequest, RankValidationService,
+    TokenValidationRequest, TokenValidationService
 )
 from transit import RankCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -37,7 +36,7 @@ class PromotionAuthorizationLoader(
     Attributes:
 
     Provides:
-        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
+        -   def execute(candidate: Any) -> PromotionDecision
 
     Super Class:
         AuthorizationLoader
@@ -242,6 +241,6 @@ class PromotionAuthorizationLoader(
         )
         # --- Forward the approval. ---#
         return PromotionDecision.grant(
-            approval=approved_applicant,
+            transaction_request=approved_applicant,
             permission_request=permission_request,
         )

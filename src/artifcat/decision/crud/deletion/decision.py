@@ -28,11 +28,11 @@ class DeletionDecision(CrudDecision[P, T], ABC, Generic[P, T]):
         1.  Report if a Crud transaction is permitted.
 
     Attributes:
-        approval: Optional[DeletionRequest]
+        transaction_request: Optional[DeletionRequest]
 
     Provides:
         -   def grant(
-                    approval: DeletionRequest,
+                    transaction_request: DeletionRequest,
                     permission_request: PermissionRequest,
             ) -> DeletionDecision
 

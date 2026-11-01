@@ -23,10 +23,9 @@ class AddVectorNodeDecision(
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if a Crud transaction is permitted.
+        1.  Report if an AddVectorNode transaction is permitted.
 
     Attributes:
-        approval: Optional[AddRequest]
 
     Provides:
 
@@ -37,20 +36,20 @@ class AddVectorNodeDecision(
     def __init__(
             self,
             permission: Permission,
+            exception: Optional[Exception] | None = None,
             transaction_request: Optional[AddVectorNodeRequest] | None = None,
             permission_request: Optional[AddVectorNodePermissionRequest] | None = None,
-            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
+            exception: Optional[Exception]
             transaction_request: Optional[AddVectorNodeRequest]
             permission_request: Optional[AddVectorNodePermissionRequest]
-            exception: Optional[Exception]
         """
         super().__init__(
-            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,
+            transaction_request=transaction_request,
         )

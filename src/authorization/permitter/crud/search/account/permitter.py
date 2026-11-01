@@ -106,7 +106,7 @@ class AccountSearchPermitter(SearchPermitter[AccountSearchPermissionRequest]):
         )
         # --- Forward the approval. ---#
         return SearchDecision.grant(
-            approval=transaction_request,
+            transaction_request=transaction_request,
             permission_request=permission_request,
         )
         

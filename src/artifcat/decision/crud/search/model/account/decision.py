@@ -23,10 +23,11 @@ class AccountSearchDecision(
         - Permission Reporting
 
     Responsibilities:
-        1.  Report if a Crud transaction is permitted.
+        1.  Report if an AccountSearch transaction is permitted.
 
     Attributes:
-        approval: Optional[SearchRequest]
+        transaction_request: Optional[AccountSearchRequest]
+        permission_request: Optional[AccountSearchPermissionRequest]
 
     Provides:
 
@@ -37,22 +38,22 @@ class AccountSearchDecision(
     def __init__(
             self,
             permission: Permission,
+            exception: Optional[Exception] | None = None,
             transaction_request: Optional[AccountSearchRequest] | None = None,
             permission_request: Optional[AccountSearchPermissionRequest] | None = None,
-            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            transaction_request: Optional[T]
-            permission_request: Optional[P]
             exception: Optional[Exception]
+            transaction_request: Optional[AccountSearchRequest]
+            permission_request: Optional[AccountSearchPermissionRequest]
         """
         super().__init__(
-            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,
+            transaction_request=transaction_request,
         )
 
 

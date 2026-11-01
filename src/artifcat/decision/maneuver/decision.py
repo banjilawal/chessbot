@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional
 
 from artifcat import Decision, Permission
-from exchange import PermissionRequest, ManeuverPermissionRequest, ManeuverRequest
+from exchange import ManeuverPermissionRequest, ManeuverRequest
 
 
 class ManeuverDecision(Decision[ManeuverPermissionRequest, ManeuverRequest]):
@@ -24,18 +24,10 @@ class ManeuverDecision(Decision[ManeuverPermissionRequest, ManeuverRequest]):
         1.  Report if a Maneuver transaction is permitted.
 
     Attributes:
-        approval: Optional[ManeuverRequest]
+        transaction_request: Optional[ManeuverRequest]
+        permission_request: Optional[ManeuverPermissionRequest]
 
     Provides:
-        -   def grant(
-                    approval: ManeuverRequest,
-                    permission_request: PermissionRequest,
-            ) -> ManeuverDecision
-
-        -   def denial(
-                    permission_request: PermissionRequest,
-                    exception: Exception,
-            ) -> ManeuverDecision
 
     Super Class:
         Decision
@@ -44,20 +36,20 @@ class ManeuverDecision(Decision[ManeuverPermissionRequest, ManeuverRequest]):
     def __init__(
             self,
             permission: Permission,
+            exception: Optional[Exception] | None = None,
             transaction_request: Optional[ManeuverRequest] | None = None,
             permission_request: Optional[ManeuverPermissionRequest] | None = None,
-            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
+            exception: Optional[Exception]
             transaction_request: Optional[ManeuverRequest]
             permission_request: Optional[ManeuverPermissionRequest]
-            exception: Optional[Exception]
         """
         super().__init__(
-            permission_request=permission_request,
-            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
+            permission_request=permission_request,
+            transaction_request=transaction_request,
         )

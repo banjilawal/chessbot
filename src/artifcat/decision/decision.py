@@ -27,24 +27,17 @@ class Decision(ABC, Generic[P, T]):
         1.  Report if an action is permitted.
         
     Attributes:
-        permission_request: Optional[P] | None = None
         permission: Permission
-        approval: Optional[T]
         exception: Optional[Exception]
-        
+        permission_request: Optional[P]
+        transaction_request: Optional[T]
+   
         is_granted: bool
         is_denied: bool
         
     Provides:
-        -   def grant(
-                    approval: T,
-                    permission_request: Optional[P] | None = None,
-            ) -> Decision[T]
-            
-        -   def denial(
-                    permission_request: Optional[P] | None = None,
-                    exception: Exception,
-            ) -> Decision[T]
+        -   def grant(transaction_request: T, permission_request: P) -> Decision
+        -   def denial(permission_request: P, exception: Exception) -> Decision
 
     Super Class:
     """
@@ -68,8 +61,8 @@ class Decision(ABC, Generic[P, T]):
             permission_request: Optional[PermissionRequest]
             transaction_request: Optional[TransactionRequest]
         """
-        self._exception = exception
         self._permission = permission
+        self._exception = exception
         self._permission_request = permission_request
         self._transaction_request = transaction_request
     
@@ -78,16 +71,16 @@ class Decision(ABC, Generic[P, T]):
         return self._permission
     
     @property
+    def exception(self) -> Optional[Exception]:
+        return self._exception
+    
+    @property
     def permission_request(self) -> Optional[P]:
         return self._permission_request
     
     @property
     def transaction_request(self) -> Optional[T]:
         return self._transaction_request
-    
-    @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
     
     @property
     def request_is_granted(self) -> bool:
@@ -103,9 +96,9 @@ class Decision(ABC, Generic[P, T]):
         return not self.request_is_granted
     
     @classmethod
-    def grant(cls, approval: T, permission_request: P) -> Self:
+    def grant(cls, transaction_request: T, permission_request: P) -> Self:
         return cls(
-            transaction_request=approval,
+            transaction_request=transaction_request,
             permission_request=permission_request, 
             permission=Permission.GRANTED,
         )

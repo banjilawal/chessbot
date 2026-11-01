@@ -15,7 +15,7 @@ from typing import Any, Generic, Optional, TypeVar
 from artifcat import Decision
 from assurance import PrimingValidator
 from bootstrap import Loader
-from exchange import PermissionRequest, ValidationService
+from exchange import PermissionRequest
 from microservice import IdentityService
 from util import LoggingLevelRouter
 
@@ -35,7 +35,7 @@ class AuthorizationLoader(Loader[T], ABC, Generic[T]):
         priming_validator: PrimingValidator
 
     Provides:
-        -   def execute(candidate: Any) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
         Loader
@@ -66,7 +66,7 @@ class AuthorizationLoader(Loader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Checks a
         
@@ -78,7 +78,7 @@ class AuthorizationLoader(Loader[T], ABC, Generic[T]):
         Args:
             candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
             AuthorizationLoaderException
         """

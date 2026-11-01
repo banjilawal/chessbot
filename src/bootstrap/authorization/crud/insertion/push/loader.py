@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar
 
-from artifcat.decision import Decision
+from artifcat import PushDecision
 from bootstrap import InsertionAuthorizationLoader
-from exchange import PushPermissionRequest, ValidationService
+from exchange import PushPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PushPermissionRequest")
@@ -32,7 +32,7 @@ class PushAuthorizationLoader(
     Attributes:
 
     Provides:
-        -   def execute(candidate: Any) -> PushDecision[T]
+        -   def execute(candidate: Any) -> PushDecision
 
     Super Class:
         InsertionAuthorizationLoader
@@ -43,7 +43,7 @@ class PushAuthorizationLoader(
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> PushDecision[T]:
+    def execute(self, candidate: Any) -> PushDecision:
         """
         Checks if the PushRequest is the right type and not null.
         
@@ -55,7 +55,7 @@ class PushAuthorizationLoader(
         Args:
             candidate: Any
         Returns:
-           PushDecision[T]
+           PushDecision
         Raises:
             PushAuthorizationLoaderException
         """

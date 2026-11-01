@@ -106,7 +106,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         )
         # --- Forward the approval. ---#
         return InsertionDecision.grant(
-            approval=transaction_request,
+            transaction_request=transaction_request,
             permission_request=permission_request,
         )
         

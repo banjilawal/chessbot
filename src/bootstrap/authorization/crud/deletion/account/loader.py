@@ -176,5 +176,5 @@ class AccountPushPermissionLoader(
         # --- Forward the approval. ---#
         return Decision.grant(
             permission_request=candidate,
-            approval=transaction_request,
+            transaction_request=transaction_request,
         )

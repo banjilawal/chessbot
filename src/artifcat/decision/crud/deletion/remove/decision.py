@@ -27,7 +27,7 @@ class RemoveNodeDecision(DeletionDecision[P, T], Generic[P, T]):
         1.  Report if a Crud transaction is permitted.
 
     Attributes:
-        approval: Optional[RemoveRequest]
+        transaction_request: Optional[RemoveRequest]
 
     Provides:
 

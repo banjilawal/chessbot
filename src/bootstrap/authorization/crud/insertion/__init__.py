@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== BOOTSTRAP.AUTHORIZATION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
-from .account import *
+from .push import *
 
 # Modules
 from .loader import InsertionAuthorizationLoader

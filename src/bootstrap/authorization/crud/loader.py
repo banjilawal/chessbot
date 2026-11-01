@@ -30,7 +30,7 @@ class CrudAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(candidate: Any) -> CrudDecision[T]
+        -   def execute(candidate: Any) -> CrudDecision
 
     Super Class:
         AuthorizationLoader
@@ -41,7 +41,7 @@ class CrudAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> CrudDecision[T]:
+    def execute(self, candidate: Any) -> CrudDecision:
         """
         Validates and type checks the candidate and its contents for the CrudPermitter.
         
@@ -53,7 +53,7 @@ class CrudAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
         Args:
             candidate: Any
         Returns:
-           CrudDecision[T]
+           CrudDecision
         Raises:
             CrudAuthorizationLoader
         """

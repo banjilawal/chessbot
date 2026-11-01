@@ -33,7 +33,7 @@ class InsertionAuthorizationLoader(
     Attributes:
 
     Provides:
-        -   def execute(candidate: Any) -> InsertionDecision[T]
+        -   def execute(candidate: Any) -> InsertionDecision
 
     Super Class:
         CrudAuthorizationLoader
@@ -57,7 +57,7 @@ class InsertionAuthorizationLoader(
         Args:
             candidate: Any
         Returns:
-           InsertionDecision[T]
+           InsertionDecision
         Raises:
             InsertionAuthorizationLoaderException
         """
