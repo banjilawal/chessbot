@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import ArenaStackService
+from repo.collection import ArenaStackService
 from exchange import StackSearchRequest, Arena, ArenaSearchContext
 
 

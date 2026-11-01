@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import  annotations
 
-from collection import VectorTree
+from repo.collection import VectorTree
 from domain.model import Rook
 from surface.topology import Topology
 

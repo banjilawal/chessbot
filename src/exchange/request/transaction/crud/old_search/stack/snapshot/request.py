@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import SnapshotStackService
+from repo.collection import SnapshotStackService
 from exchange import StackSearchRequest, Snapshot, SnapshotContext
 
 

@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import DeletionResult
-from collection import DataStruct
+from repo.collection import DataStruct
 from exchange import CrudRequest
 
 R = TypeVar("R", bound="DeletionResult")

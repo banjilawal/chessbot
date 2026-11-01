@@ -15,7 +15,7 @@ from err import RankQuotaAnalyzerException
 from domain.model import Rank
 from artifcat.report import RankQuotaReport
 from artifcat import AnalysisResult, MethodResultType
-from collection.stack import TokenStackService
+from repo.collection import TokenStackService
 from util import LoggingLevelRouter
 
 

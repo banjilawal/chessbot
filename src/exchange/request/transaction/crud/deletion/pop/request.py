@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from artifcat import DeletionResult
-from collection import Stack
+from repo.collection import Stack
 from domain import Model
 from exchange import DeletionRequest
 

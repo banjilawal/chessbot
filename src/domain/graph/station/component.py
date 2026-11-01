@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from collection import EdgeStackService
+from repo.collection import EdgeStackService
 from domain import DiscoveryStatus, Node
 
 

@@ -11,7 +11,7 @@ from __future__ import  annotations
 
 from typing import Optional, Type, TypeVar, cast
 
-from collection import VectorSet, VectorTree
+from repo.collection import VectorSet, VectorTree
 from err import TopologyGeneratorException, RecurrenceRegistryCollectionNullException
 from geometry import RecurrenceRegistryCollection
 from surface.topology import TransformerRunner

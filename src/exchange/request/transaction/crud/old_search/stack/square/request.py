@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import SquareStackService
+from repo.collection import SquareStackService
 from exchange import StackSearchRequest, Square, SquareSearchContext
 
 

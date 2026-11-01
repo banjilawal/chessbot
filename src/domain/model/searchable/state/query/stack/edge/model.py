@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Edge, EdgeContext
 from domain.model import StackQuery
-from collection.stack import EdgeStackService
+from repo.collection import EdgeStackService
 
 
 @dataclass

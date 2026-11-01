@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
+from repo.collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
 from config import BoardSetting
 from domain import Arena, BoardState, TeamBinder, StateModel
 

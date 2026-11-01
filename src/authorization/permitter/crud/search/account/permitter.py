@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import SearchDecision
 from authorization import SearchPermitter
-from collection import AccountStack
+from repo.collection import AccountStack
 from domain import Account
 from err import ChessException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest

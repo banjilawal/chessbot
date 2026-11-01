@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import InsertionResult
-from collection import AccountStack
+from repo.collection import AccountStack
 from domain import Account
 from exchange import PushRequest
 

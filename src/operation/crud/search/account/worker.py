@@ -13,12 +13,11 @@ from typing import List, Optional, cast
 
 from artifcat import SearchResult
 from authorization import AccountSearchPermitter
-from collection import AccountStack
+from repo.collection import AccountStack
 from domain import Account, AccountType, HumanAccount, MachineAccount
 from err import AccountSearcherException, MissingSearchRouteException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from operation import Searcher
-from production.endpoint.validation.context.model.account import firstname
 from util import IdFactory, LoggingLevelRouter
 
 

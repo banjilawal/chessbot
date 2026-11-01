@@ -11,7 +11,7 @@ from __future__ import  annotations
 
 from typing import List, Optional, Type, cast
 
-from collection import VectorSet
+from repo.collection import VectorSet
 from err import TopologyGeneratorException
 from geometry import RecurrenceRegistry
 from math import VectorSequenceGenerator

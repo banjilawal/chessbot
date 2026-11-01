@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from artifcat.report import CollisionReport
 from sensor import EnvironmentReporter
-from collection.stack import StackService
+from repo.collection import StackService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="EntityCarrier")

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from collection import VectorSet
+from repo.collection import VectorSet
 from surface.topology import PawnSignature
 
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, TypeVar
 
 from transit.dispatcher.attack import ContainerAttackDispatcher
-from collection import RegisterSet
+from repo.collection import RegisterSet
 from domain.model import TargetVectorSet
 from domain.struct.register import VectorRegister
 from artifcat import AttackResult

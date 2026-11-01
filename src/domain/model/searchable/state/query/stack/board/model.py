@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Board, BoardContext
 from domain.model import StackQuery
-from collection.stack import BoardStackService
+from repo.collection import BoardStackService
 
 
 @dataclass

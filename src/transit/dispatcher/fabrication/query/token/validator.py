@@ -17,7 +17,7 @@ from err import (
 )
 from domain.model import TokenQuery
 from artifcat import MethodResultType, BuildResult
-from collection.stack import TokenStackService
+from repo.collection import TokenStackService
 from util import LoggingLevelRouter
 from transit.dispatcher.fabrication import TokenContextBuilder, PrimingBuilder, BuildDispatcher
 

@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import StackQuery
 from domain.model import Team, TeamContext
-from collection.stack import TeamStackService
+from repo.collection import TeamStackService
 
 
 @dataclass

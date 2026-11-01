@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Square, SquareContext
 from domain.model import StackQuery
-from collection.stack import SquareStackService
+from repo.collection import SquareStackService
 
 
 @dataclass

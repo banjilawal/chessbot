@@ -1,0 +1,49 @@
+# src/repo/collection/sets/register/set.py
+
+"""
+Module: repo.collection.sets.register.set
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Iterator, Optional, Tuple, cast
+
+from repo.collection import SetCollection
+from domain.struct.register import Register
+
+
+class RegisterSet(SetCollection[Register]):
+    """
+    Role:
+        - Data Holder
+        
+    Responsibilities:
+        1.  A bag of registers whose order is not guaranteed.
+
+    Attributes:
+        items: Tuple[Register, ...]
+
+    Provides:
+
+    Super Class:
+        Collection
+    """
+    
+    def __init__(self, items: Optional[Tuple[Register, ...]] | None = None):
+        """
+        Args:
+            items: Optional[Tuple[Register, ...]]
+        """
+        super().__init__(items=items)
+        
+    @property
+    def items(self) -> Tuple[Register, ...]:
+        return cast(Tuple[Register, ...], self.items)
+    
+    @property
+    def iterator(self) -> Iterator[Register]:
+        return iter(self.items)
+        

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import VectorChain
+from repo.collection import VectorChain
 from domain import VectorContext, VectorNode
 from exchange import NodeSearchRequest
 

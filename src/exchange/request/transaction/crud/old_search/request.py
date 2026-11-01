@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ExchangeObjectCollection
+from repo.collection import ExchangeObjectCollection
 from exchange import CrudRequest, ExchangeDataObject, Context
 from artifcat import SearchResult
 

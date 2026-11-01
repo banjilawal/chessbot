@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from artifcat.report import CollisionReport
 from sensor import Collider
-from collection.stack import TokenStackService
+from repo.collection import TokenStackService
 from transit.carrier import TokenCarrier
 from util import LoggingLevelRouter
 

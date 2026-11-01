@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from collection import TokenDatabase
-from domain import Archetype, Board, Player, StateModelBlueprint, Team, TeamContext
+from repo.collection import TokenDatabase
+from domain import Archetype, Board, Player, StateModelBlueprint, Team
 from err import TeamNullException
 
 

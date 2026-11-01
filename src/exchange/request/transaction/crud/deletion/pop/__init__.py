@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.TRANSACTION.CRUD.DELETION.POP PACKAGE ===========#
 
 # Packages
-from .account import *
 
 # Modules
 from .request import PopRequest

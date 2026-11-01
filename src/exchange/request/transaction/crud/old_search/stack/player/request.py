@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import PlayerStackService
+from repo.collection import PlayerStackService
 from exchange import StackSearchRequest, Player, PlayerSearchContext
 
 

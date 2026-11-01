@@ -13,7 +13,7 @@ from __future__ import annotations
 from artifcat.report import CollisionReport
 from artifcat import AnalysisResult
 from sensor import Collider
-from collection.stack import SquareStackService
+from repo.collection import SquareStackService
 from transit.carrier import SquareCarrier
 from util import LoggingLevelRouter
 

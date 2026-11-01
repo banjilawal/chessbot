@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Coord, CoordContext
 from domain.model import StackQuery
-from collection.stack import CoordStackService
+from repo.collection import CoordStackService
 
 
 @dataclass

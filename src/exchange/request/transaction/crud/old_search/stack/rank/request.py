@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from collection import RankStackService
+from repo.collection import RankStackService
 from exchange import StackSearchRequest, Rank, RankContext
 
 

@@ -5,41 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/pop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/pop/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/vector/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/add/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/add/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/add/vector/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/account/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repo/interface/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repo/service/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/deletiom/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/deletiom/decision.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/id/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/id/chain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/id/chain/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/id/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/id/stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/id/stack/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/item/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/item/chain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/item/chain/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/item/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/item/stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/item/stack/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/pop/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/pop/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/account/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/account/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/deletion/pop/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/pop/account/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/pop/account/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repo/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,61 +57,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000241399847" />
-      <entry key="S5" value="1.0008976247873855" />
-      <entry key="S10" value="1.0300056977628052" />
-      <entry key="S30" value="1.6912073020973675" />
-      <entry key="S60" value="5.429345850537872" />
-      <entry key="M2" value="14.39315347363083" />
-      <entry key="M5" value="29.11483464696205" />
-      <entry key="M10" value="41.75908051831165" />
-      <entry key="M15" value="50.37476183418104" />
-      <entry key="M30" value="66.41343974464529" />
-      <entry key="H1" value="86.65226054407775" />
-      <entry key="H2" value="114.29313318941375" />
-      <entry key="H4" value="151.53464086980168" />
-      <entry key="D1" value="2249.948428103851" />
-      <entry key="W1" value="26958.495459928552" />
+      <entry key="MS100" value="1.0000000000001512" />
+      <entry key="MS500" value="1.0053231423226379" />
+      <entry key="S2" value="1.611501326108026" />
+      <entry key="S5" value="2.8772405390830924" />
+      <entry key="S10" value="4.3557427793870085" />
+      <entry key="S30" value="7.009875687714051" />
+      <entry key="S60" value="8.72498974157975" />
+      <entry key="M2" value="10.573519396317385" />
+      <entry key="M5" value="12.686306013296434" />
+      <entry key="M10" value="13.719304767625246" />
+      <entry key="M15" value="14.115493436153349" />
+      <entry key="M30" value="14.63767190115722" />
+      <entry key="H1" value="18.706266021431603" />
+      <entry key="H2" value="42.93228518232949" />
+      <entry key="H4" value="98.70046060969104" />
+      <entry key="D1" value="1996.4490810859031" />
+      <entry key="W1" value="26451.429605678648" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.6874744125364506E-97" />
-      <entry key="S5" value="2.5433201534133332E-39" />
-      <entry key="S10" value="6.23331648243377E-20" />
-      <entry key="S30" value="6.047555452255619E-7" />
-      <entry key="S60" value="0.0010989864552238848" />
-      <entry key="M2" value="0.05190701883291211" />
-      <entry key="M5" value="0.8596228847304297" />
-      <entry key="M10" value="3.0006654937776456" />
-      <entry key="M15" value="4.877797396618493" />
-      <entry key="M30" value="8.487942967486227" />
-      <entry key="H1" value="13.04748381803223" />
-      <entry key="H2" value="19.657783389746033" />
-      <entry key="H4" value="26.962739788052467" />
-      <entry key="D1" value="162.3905456046389" />
-      <entry key="W1" value="1579.1189618040955" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="1.0810005559382866E-195" />
+      <entry key="S60" value="4.6463868855912145E-98" />
+      <entry key="M2" value="3.3751074324982518E-49" />
+      <entry key="M5" value="1.1469185434347177E-19" />
+      <entry key="M10" value="1.0960487901883E-9" />
+      <entry key="M15" value="2.492481591720659E-6" />
+      <entry key="M30" value="0.006067454856420611" />
+      <entry key="H1" value="0.34884203987081097" />
+      <entry key="H2" value="3.21429379923245" />
+      <entry key="H4" value="10.90283734484178" />
+      <entry key="D1" value="139.6443363458582" />
+      <entry key="W1" value="1545.4407543631896" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9526379980439373" />
-      <entry key="MS500" value="0.9903428719330246" />
-      <entry key="S2" value="0.9975769493709972" />
-      <entry key="S5" value="0.9999271918151083" />
-      <entry key="S10" value="1.0295122189522057" />
-      <entry key="S30" value="1.690771970329899" />
-      <entry key="S60" value="5.428485860832234" />
-      <entry key="M2" value="14.437535695406218" />
-      <entry key="M5" value="29.950527259572045" />
-      <entry key="M10" value="44.721529527581325" />
-      <entry key="M15" value="55.21076790158251" />
-      <entry key="M30" value="74.86332400741291" />
-      <entry key="H1" value="99.66865106078887" />
-      <entry key="H2" value="133.92629246794135" />
-      <entry key="H4" value="178.479761413763" />
-      <entry key="D1" value="2412.3170760495505" />
-      <entry key="W1" value="28537.58584571365" />
+      <entry key="MS100" value="2.523511642601551E-8" />
+      <entry key="MS500" value="0.03470524802166425" />
+      <entry key="S2" value="0.9572810943368407" />
+      <entry key="S5" value="2.48763614728971" />
+      <entry key="S10" value="4.124213585648063" />
+      <entry key="S30" value="6.921813900688803" />
+      <entry key="S60" value="8.679305079295121" />
+      <entry key="M2" value="10.550197617367417" />
+      <entry key="M5" value="12.67683910288361" />
+      <entry key="M10" value="13.714544596173877" />
+      <entry key="M15" value="14.11231613624363" />
+      <entry key="M30" value="14.642118456948523" />
+      <entry key="H1" value="19.05347038595615" />
+      <entry key="H2" value="46.14212793053009" />
+      <entry key="H4" value="109.59594284174197" />
+      <entry key="D1" value="2136.074543029809" />
+      <entry key="W1" value="27996.842386983975" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -169,7 +145,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/exchange/request/permission/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/repo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -183,11 +159,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/repo" />
       <recent name="$PROJECT_DIR$/src/exchange/request/permission/crud" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/crud" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/add/vector" />
       <recent name="$PROJECT_DIR$/src/production/endpoint/authorization/role" />
-      <recent name="$PROJECT_DIR$/src/exchange/request/transaction/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/exchange/request/permission/crud/search/model" />
@@ -859,7 +835,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="72689000" />
+      <workItem from="1793360739922" duration="75600000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

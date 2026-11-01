@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC
 
-from collection import VectorSet
+from repo.collection import VectorSet
 from domain.model import Pawn
 from surface.topology import OffsetSignature
 

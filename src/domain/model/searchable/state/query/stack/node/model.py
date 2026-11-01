@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Node, NodeContext
 from domain.model import StackQuery
-from collection.stack import VertexStackService
+from repo.collection import VertexStackService
 
 
 @dataclass

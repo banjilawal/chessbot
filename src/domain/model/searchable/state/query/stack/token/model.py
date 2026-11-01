@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Token, TokenContext
 from domain.model import StackQuery
-from collection.stack import TokenStackService
+from repo.collection import TokenStackService
 
 
 @dataclass

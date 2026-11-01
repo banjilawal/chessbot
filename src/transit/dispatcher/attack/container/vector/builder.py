@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from transit.dispatcher.attack import ContainerAttackDispatcher
-from collection import VectorSet
+from repo.collection import VectorSet
 from artifcat import AttackResult
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import VectorValidator

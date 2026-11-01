@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from collection import CheckChain, TokenDatabase
+from repo.collection import CheckChain, TokenDatabase
 from domain import Archetype, Archetyped, Board, Player, StateModel, TeamState
 
 
