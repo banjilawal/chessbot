@@ -12,13 +12,15 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import DataStruct, Stack
+from artifcat import SearchResult
+from collection import Stack
 from domain import Context, Model
 from exchange import SearchRequest
 
+R = TypeVar("R", bound="SearchResult")
 T = TypeVar("T", bound="Model")
 
-class ModelSearchRequest(SearchRequest[T], ABC, Generic[T]):
+class ModelSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
     """
      Role:
          -  Messaging

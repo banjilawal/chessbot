@@ -10,14 +10,15 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, Self, TypeVar
 
 from artifcat import Permission
 from exchange import PermissionRequest, TransactionRequest
 
+P = TypeVar("P", bound="PermissionRequest")
 T = TypeVar("T", bound="TransactionRequest")
 
-class Decision(ABC, Generic[T]):
+class Decision(ABC, Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -26,7 +27,7 @@ class Decision(ABC, Generic[T]):
         1.  Report if an action is permitted.
         
     Attributes:
-        permission_request: PermissionRequest[T]
+        permission_request: Optional[P] | None = None
         permission: Permission
         approval: Optional[T]
         exception: Optional[Exception]
@@ -37,27 +38,27 @@ class Decision(ABC, Generic[T]):
     Provides:
         -   def grant(
                     approval: T,
-                    permission_request: PermissionRequest[T],
+                    permission_request: Optional[P] | None = None,
             ) -> Decision[T]
             
         -   def denial(
-                    permission_request: PermissionRequest[T],
+                    permission_request: Optional[P] | None = None,
                     exception: Exception,
             ) -> Decision[T]
 
     Super Class:
     """
-    _permission_request: PermissionRequest[T]
+    _permission_request: Optional[P] | None = None
     _permission: Permission
     _exception: Optional[Exception]
-    _approval: Optional[TransactionRequest]
+    _approval: Optional[T]
   
     def __init__(
             self,
             permission: Permission,
-            permission_request: PermissionRequest[T],
+            permission_request: Optional[P] | None = None,
             exception: Optional[Exception] | None = None,
-            approval: Optional[TransactionRequest] | None = None,
+            approval: Optional[T] | None = None,
     ):
         """
         Args:
@@ -72,7 +73,7 @@ class Decision(ABC, Generic[T]):
         self._permission_request = permission_request
     
     @property
-    def permission_request(self) -> PermissionRequest[T]:
+    def permission_request(self) -> P:
         return self._permission_request
         
     @property
@@ -92,6 +93,7 @@ class Decision(ABC, Generic[T]):
         return (
                 self._exception is None and
                 self._approval is not None and
+                self._permission_request is not None and
                 self._permission == Permission.GRANTED
         )
     
@@ -100,7 +102,7 @@ class Decision(ABC, Generic[T]):
         return not self.request_is_granted
     
     @classmethod
-    def grant(cls, approval: T, permission_request: PermissionRequest[T]) -> Decision[T]:
+    def grant(cls, approval: T, permission_request: P) -> Self:
         return cls(
             approval=approval, 
             permission_request=permission_request, 
@@ -108,10 +110,9 @@ class Decision(ABC, Generic[T]):
         )
     
     @classmethod
-    def denial(cls, permission_request: PermissionRequest[T], exception: Exception) -> Decision[T]:
+    def denial(cls, exception: Exception) -> Self:
         return cls(
             exception=exception,
-            permission_request=permission_request,
             permission=Permission.DENIED,
         )
     

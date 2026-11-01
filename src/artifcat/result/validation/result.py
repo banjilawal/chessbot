@@ -40,6 +40,7 @@ class ValidationResult(Result[T], Resultable, Generic[T]):
     Super Class:
         Result
     """
+    _state: ResultState
     
     def __init__(
             self,
@@ -54,11 +55,15 @@ class ValidationResult(Result[T], Resultable, Generic[T]):
             exception: Optional[Exception]
         """
         super().__init__(
-            super=state,
             payload=payload,
             exception=exception
         )
         """INTERNAL: Use validation methods instead of direct constructor."""
+        self._state = state
+    
+    @property
+    def state(self) -> ResultState:
+        return self._state
     
     @property
     def payload(self) -> Optional[T]:

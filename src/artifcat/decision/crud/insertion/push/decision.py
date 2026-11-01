@@ -9,16 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, Optional, TypeVar, cast
+from typing import Generic, Optional, TypeVar
 
 from artifcat import InsertionDecision, Permission
-from exchange import (
-    InsertionRequest, PermissionRequest, CrudPermissionRequest, PushPermissionRequest, PushRequest
-)
+from exchange import PushPermissionRequest, PushRequest
 
+P = TypeVar("P", bound="PushPermissionRequest")
 T = TypeVar("T", bound="PushRequest")
 
-class PushDecision(InsertionDecision[T], Generic[T]):
+
+class PushDecision(InsertionDecision[P, T], Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -30,15 +30,6 @@ class PushDecision(InsertionDecision[T], Generic[T]):
         approval: Optional[PushRequest]
 
     Provides:
-        -   def grant(
-                    approval: PushRequest,
-                    permission_request: PermissionRequest,
-            ) -> PushDecision
-
-        -   def denial(
-                    permission_request: PermissionRequest,
-                    exception: Exception,
-            ) -> PushDecision
 
     Super Class:
         InsertionDecision
@@ -47,59 +38,20 @@ class PushDecision(InsertionDecision[T], Generic[T]):
     def __init__(
             self,
             permission: Permission,
-            permission_request: PermissionRequest[T],
-            exception: Optional[Exception] | None = None,
             approval: Optional[T] | None = None,
+            permission_request: Optional[P] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            permission_request: PermissionRequest
-            exception: Optional[Exception]
             approval: Optional[T]
+            permission_request: Optional[P]
+            exception: Optional[Exception]
         """
         super().__init__(
-            permission_request=permission_request,
             approval=approval,
             exception=exception,
             permission=permission,
+            permission_request=permission_request,
         )
-        
-    @property
-    def approval(self) -> T:
-        return cast(T, super().approval)
-    
-    @classmethod
-    def grant(
-            cls, 
-            approval: InsertionRequest,
-            permission_request: PermissionRequest,
-    ) -> InsertionDecision:
-        role_request = cast(
-            PushPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            approval=approval,
-            permission_request=role_request,
-            permission=Permission.GRANTED,
-        )
-    
-    @classmethod
-    def denial(
-            cls, 
-            permission_request: PermissionRequest,
-            exception: Exception,
-    ) -> InsertionDecision:
-        role_request = cast(
-            CrudPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            exception=exception,
-            permission_request=role_request,
-            permission=Permission.DENIED,
-        )
-
-
-    

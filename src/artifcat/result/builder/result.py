@@ -42,6 +42,8 @@ class BuildResult(Result[T], Resultable, Generic[T]):
         Result
     """
     
+    _state: ResultState
+    
     def __init__(
             self,
             state: ResultState,

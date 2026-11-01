@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
+from .model import *
 
 # Modules
 from .decision import SearchDecision

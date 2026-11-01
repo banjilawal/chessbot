@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.CRUD.INSERTION.ADD PACKAGE ===========#
 
 # Packages
+from .vector import *
 
 # Modules
 from .decision import AddNodeDecision

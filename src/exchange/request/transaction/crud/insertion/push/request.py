@@ -12,13 +12,15 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
+from artifcat import InsertionResult
 from collection import Stack
 from domain import Model
 from exchange import InsertionRequest
 
+R = TypeVar("R", bound="InsertionResult")
 T = TypeVar("T", bound="Model")
 
-class PushRequest(InsertionRequest[T], ABC, Generic[T]):
+class PushRequest(InsertionRequest[R, T], ABC, Generic[R, T]):
     """
      Role:
          -  Messaging

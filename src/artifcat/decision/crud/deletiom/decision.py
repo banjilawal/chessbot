@@ -27,23 +27,23 @@ class DeletionDecision(CrudDecision[T], Generic[T]):
         
     Attributes:
         permission: Permission
-        permission_request: PermissionRequest[T]
+        permission_request: Optional[P] | None = None
         exception: Optional[Exception]
         approval: Optional[T]
         
     Provides:
         -   def grant(
                     approval: T,
-                    permission_request: PermissionRequest[T],
+                    permission_request: Optional[P] | None = None,
             ) -> Decision[T]
             
         -   def denial(
-                    permission_request: PermissionRequest[T],
+                    permission_request: Optional[P] | None = None,
                     exception: Exception,
             ) -> Decision[T]
             
         -   def do_nothing(
-                    permission_request: PermissionRequest[T]
+                    permission_request: Optional[P] | None = None
             ) -> DeletionDecision
 
     Super Class:
@@ -53,7 +53,7 @@ class DeletionDecision(CrudDecision[T], Generic[T]):
     def __init__(
             self,
             permission: Permission,
-            permission_request: PermissionRequest[T],
+            permission_request: Optional[P] | None = None,
             exception: Optional[Exception] | None = None,
             approval: Optional[T] | None = None,
     ):
@@ -72,8 +72,8 @@ class DeletionDecision(CrudDecision[T], Generic[T]):
         )
     
     @property
-    def permission_request(self) -> PermissionRequest[T]:
-        return cast(PermissionRequest[T], super().permission_request)
+    def permission_request(self) -> Optional[P] | None = None:
+        return cast(Optional[P] | None = None, super().permission_request)
     
     @property
     def approval(self) -> Optional[T]:
@@ -91,7 +91,7 @@ class DeletionDecision(CrudDecision[T], Generic[T]):
     def grant(
             cls,
             approval: T,
-            permission_request: PermissionRequest[T],
+            permission_request: Optional[P] | None = None,
     ) -> DeletionDecision[T]:
         return cls(
             approval=approval, 
@@ -102,7 +102,7 @@ class DeletionDecision(CrudDecision[T], Generic[T]):
     @classmethod
     def denial(
             cls,
-            permission_request: PermissionRequest[T],
+            permission_request: Optional[P] | None = None,
             exception: Exception,
     ) -> DeletionDecision[T]:
         return cls(
@@ -112,7 +112,7 @@ class DeletionDecision(CrudDecision[T], Generic[T]):
         )
     
     @classmethod
-    def do_nothing(cls, permission_request: PermissionRequest[T],) -> DeletionDecision:
+    def do_nothing(cls, permission_request: Optional[P] | None = None,) -> DeletionDecision:
         return cls(
             permission_request=permission_request,
             permission=Permission.DO_NOTHING,

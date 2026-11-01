@@ -36,6 +36,7 @@ class AttackResult(TransactionResult[T], TransactionResult, Generic[T]):
     Super Class:
         Result
     """
+    _state: ResultState
     
     def __init__(
             self,
@@ -49,7 +50,16 @@ class AttackResult(TransactionResult[T], TransactionResult, Generic[T]):
             payload: Optional[T]
             exception: Optional[Exception]
         """
-        super().__init__(state=state, payload=payload, exception=exception)
+        super().__init__(
+            payload=payload,
+            exception=exception
+        )
+        """INTERNAL: Use validation methods instead of direct constructor."""
+        self._state = state
+    
+    @property
+    def state(self) -> ResultState:
+        return self._state
     
     @property
     def payload(self) -> Optional[T]:

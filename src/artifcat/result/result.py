@@ -39,13 +39,12 @@ class Result(Generic[T]):
     Super Class:
     """
     
-    _state: ResultState
+
     _payload: Optional[T]
     _exception: Optional[Exception]
     
     def __init__(
             self,
-            state: ResultState,
             payload: Optional[T] | None = None,
             exception: Optional[Exception] | None = None,
     ):

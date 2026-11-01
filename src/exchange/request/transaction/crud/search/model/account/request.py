@@ -11,12 +11,13 @@ from __future__ import annotations
 
 from typing import cast
 
+from artifcat import SearchResult
 from collection import AccountStack
 from domain import Account, AccountContext
-from exchange import SearchRequest
+from exchange import ModelSearchRequest
 
 
-class AccountSearchRequest(SearchRequest[Account]):
+class AccountSearchRequest(ModelSearchRequest[SearchResult, Account]):
     """
      Role:
          -  Messaging

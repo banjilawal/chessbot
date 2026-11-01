@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional, TypeVar, Generic
 
-from artifcat import Transactional
+from artifcat import TransactionResult
 
 T = TypeVar("T")
 
 
-class CrudResult(ABC, Transactional, Generic[T]):
+class CrudResult(TransactionResult, ABC, Generic[T]):
     """
     Role:
         -   Persistence
@@ -32,15 +32,12 @@ class CrudResult(ABC, Transactional, Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> Result
+        -   def success(payload: T) -> CrudResult
         -   def failure(exception: Exception) -> Result
         
     Super Class:
         TransactionResult
     """
-    
-    _payload: Optional[T]
-    _exception: Optional[Exception]
     
     def __init__(
             self,
@@ -52,8 +49,7 @@ class CrudResult(ABC, Transactional, Generic[T]):
             payload: Optional[T]
             exception: Optional[Exception]
         """
-        self._payload = payload
-        self._exception = exception
+        super().__init__(payload=payload, exception=exception)
         
     @property
     def payload(self) -> Optional[T]:

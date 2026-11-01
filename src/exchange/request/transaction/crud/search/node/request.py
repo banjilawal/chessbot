@@ -12,13 +12,15 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
+from artifcat import SearchResult
 from collection import Chain
 from domain import Context, Node
 from exchange import SearchRequest
 
+R = TypeVar("R", bound="SearchResult")
 T = TypeVar("T", bound="Node")
 
-class NodeSearchRequest(SearchRequest[T], ABC, Generic[T]):
+class NodeSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
     """
      Role:
          -  Messaging

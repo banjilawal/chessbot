@@ -12,13 +12,15 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
+from artifcat import InsertionResult
 from collection import Chain
 from domain import Node
 from exchange import InsertionRequest
 
+R = TypeVar("R", bound="InsertionResult")
 T = TypeVar("T", bound="Node")
 
-class AddNodeRequest(InsertionRequest[T], ABC, Generic[T]):
+class AddNodeRequest(InsertionRequest[R, T], ABC, Generic[R, T]):
     """
      Role:
          -  Messaging

@@ -16,9 +16,10 @@ from artifcat import InsertionResult
 from collection import DataStruct
 from exchange import CrudRequest
 
+R = TypeVar("R", bound="InsertionResult")
 T = TypeVar("T")
 
-class InsertionRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
+class InsertionRequest(CrudRequest[R, T], ABC, Generic[R, T]):
     """
      Role:
          -  Messaging

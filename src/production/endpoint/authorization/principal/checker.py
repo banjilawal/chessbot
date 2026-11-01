@@ -17,12 +17,12 @@ from authorization import Checker
 from domain import Actor
 from exchange import ValidationService
 
-T = TypeVar("T", bound="Actor")
+P = TypeVar("P", bound="Prinicapl")
 
-class PrincipalChecker(Checker[T], ABC, Generic[T]):
+class PrincipalChecker(Checker[P], ABC, Generic[P]):
     
-    def __init__(self, validation_service: ValidationService[T]):
+    def __init__(self, validation_service: ValidationService[P]):
         super().__init__(validation_service=validation_service)
     
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, candidate: Any) -> ValidationResult[P]:
         pass

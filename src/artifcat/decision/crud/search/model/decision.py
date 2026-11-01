@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import CrudDecision, Permission, SearchDecision
-from exchange import (
-    PermissionRequest, CrudPermissionRequest, SearchPermissionRequest, SearchRequest
-)
+from artifcat import Permission, SearchDecision
+from exchange import ModelSearchRequest, SearchPermissionRequest
 
-T = TypeVar("T", bound="SearchRequest")
 
-class ModelSearchDecision(SearchDecision[T], ABC, Generic[T]):
+P = TypeVar("P", bound="SearchPermissionRequest")
+T = TypeVar("T", bound="ModelSearchRequest")
+
+class ModelSearchDecision(SearchDecision[P, T], ABC, Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -31,15 +31,6 @@ class ModelSearchDecision(SearchDecision[T], ABC, Generic[T]):
         approval: Optional[SearchRequest]
 
     Provides:
-        -   def grant(
-                    approval: SearchRequest,
-                    permission_request: PermissionRequest,
-            ) -> SearchDecision
-
-        -   def denial(
-                    permission_request: PermissionRequest,
-                    exception: Exception,
-            ) -> SearchDecision
 
     Super Class:
         CrudDecision
@@ -48,55 +39,20 @@ class ModelSearchDecision(SearchDecision[T], ABC, Generic[T]):
     def __init__(
             self,
             permission: Permission,
-            permission_request: PermissionRequest[T],
-            exception: Optional[Exception] | None = None,
             approval: Optional[T] | None = None,
+            permission_request: Optional[P] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            permission_request: PermissionRequest
-            exception: Optional[Exception]
             approval: Optional[T]
+            permission_request: Optional[P]
+            exception: Optional[Exception]
         """
         super().__init__(
-            permission_request=permission_request,
             approval=approval,
             exception=exception,
             permission=permission,
+            permission_request=permission_request,
         )
-    
-    @classmethod
-    def grant(
-            cls, 
-            approval: SearchRequest,
-            permission_request: PermissionRequest,
-    ) -> CrudDecision:
-        role_request = cast(
-            SearchPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            approval=approval,
-            permission_request=role_request,
-            permission=Permission.GRANTED,
-        )
-    
-    @classmethod
-    def denial(
-            cls, 
-            permission_request: PermissionRequest,
-            exception: Exception,
-    ) -> CrudDecision:
-        role_request = cast(
-            CrudPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            exception=exception,
-            permission_request=role_request,
-            permission=Permission.DENIED,
-        )
-
-
-    

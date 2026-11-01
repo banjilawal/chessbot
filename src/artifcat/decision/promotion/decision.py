@@ -15,7 +15,7 @@ from artifcat import Decision, Permission
 from exchange import PermissionRequest, PromotionPermissionRequest, PromotionRequest
 
 
-class PromotionDecision(Decision[PromotionRequest]):
+class PromotionDecision(Decision[PromotionPermissionRequest, PromotionRequest]):
     """
     Role:
         - Permission Reporting
@@ -80,38 +80,38 @@ class PromotionDecision(Decision[PromotionRequest]):
     @property
     def request_is_denied(self) -> bool:
         return not self.request_is_granted
-    
-    @classmethod
-    def grant(
-            cls, 
-            approval: PromotionRequest, 
-            permission_request: PermissionRequest,
-    ) -> PromotionDecision:
-        role_request = cast(
-            PromotionPermissionRequest, 
-            permission_request,
-        )
-        return cls(
-            approval=approval,
-            permission_request=role_request,
-            permission=Permission.GRANTED,
-        )
-    
-    @classmethod
-    def denial(
-            cls, 
-            permission_request: PermissionRequest,
-            exception: Exception,
-    ) -> PromotionDecision:
-        role_request = cast(
-            PromotionPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            exception=exception,
-            permission_request=role_request,
-            permission=Permission.DENIED,
-        )
-
+    #
+    # @classmethod
+    # def grant(
+    #         cls,
+    #         approval: PromotionRequest,
+    #         permission_request: PermissionRequest,
+    # ) -> PromotionDecision:
+    #     # role_request = cast(
+    #     #     PromotionPermissionRequest,
+    #     #     permission_request,
+    #     # )
+    #     return cls(
+    #         approval=approval,
+    #         permission_request=permission_request,
+    #         permission=Permission.GRANTED,
+    #     )
+    #
+    # @classmethod
+    # def denial(
+    #         cls,
+    #         permission_request: PermissionRequest,
+    #         exception: Exception,
+    # ) -> PromotionDecision:
+    #     role_request = cast(
+    #         PromotionPermissionRequest,
+    #         permission_request,
+    #     )
+    #     return cls(
+    #         exception=exception,
+    #         permission_request=role_request,
+    #         permission=Permission.DENIED,
+    #     )
+    #
 
     

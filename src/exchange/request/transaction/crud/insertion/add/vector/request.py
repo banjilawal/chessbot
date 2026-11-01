@@ -9,12 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import cast
 
+from artifcat import SearchResult
 from collection import VectorChain
 from domain import VectorNode
 from exchange import AddNodeRequest
 
-class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
+class AddVectorNodeRequest(AddNodeRequest[SearchResult, VectorNode]):
     """
      Role:
          -  Messaging
@@ -43,12 +45,12 @@ class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
         super().__init__(id, item=item, collection=collection)
         
     @property
-    def item(self) -> T:
-        return cast(T, super().item)
+    def item(self) -> VectorNode:
+        return cast(VectorNode, super().item)
     
     @property
-    def collection(self) -> VectorChain[T]:
-        return cast(VectorChain[T], super().collection)
+    def collection(self) -> VectorChain:
+        return cast(VectorChain, super().collection)
         
     def __eq__(self, other):
         if other is self: return True

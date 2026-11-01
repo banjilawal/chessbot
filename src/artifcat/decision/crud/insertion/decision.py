@@ -13,14 +13,13 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import CrudDecision, Permission
-from exchange import (
-    PermissionRequest, CrudPermissionRequest, InsertionPermissionRequest, InsertionRequest
-)
+from exchange import InsertionPermissionRequest, InsertionRequest
 
-
+P = TypeVar("P", bound="InsertionPermissionRequest")
 T = TypeVar("T", bound="InsertionRequest")
 
-class InsertionDecision(CrudDecision[T], ABC, Generic[T]):
+
+class InsertionDecision(CrudDecision[P, T], ABC, Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -49,55 +48,20 @@ class InsertionDecision(CrudDecision[T], ABC, Generic[T]):
     def __init__(
             self,
             permission: Permission,
-            permission_request: PermissionRequest[T],
-            exception: Optional[Exception] | None = None,
             approval: Optional[T] | None = None,
+            permission_request: Optional[P] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            permission_request: PermissionRequest
-            exception: Optional[Exception]
             approval: Optional[T]
+            permission_request: Optional[P]
+            exception: Optional[Exception]
         """
         super().__init__(
-            permission_request=permission_request,
             approval=approval,
             exception=exception,
             permission=permission,
+            permission_request=permission_request,
         )
-    
-    @classmethod
-    def grant(
-            cls, 
-            approval: InsertionRequest,
-            permission_request: PermissionRequest,
-    ) -> CrudDecision:
-        role_request = cast(
-            InsertionPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            approval=approval,
-            permission_request=role_request,
-            permission=Permission.GRANTED,
-        )
-    
-    @classmethod
-    def denial(
-            cls, 
-            permission_request: PermissionRequest,
-            exception: Exception,
-    ) -> CrudDecision:
-        role_request = cast(
-            CrudPermissionRequest,
-            permission_request,
-        )
-        return cls(
-            exception=exception,
-            permission_request=role_request,
-            permission=Permission.DENIED,
-        )
-
-
-    

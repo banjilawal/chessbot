@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from artifcat import Transactional
+from artifcat import TransactionResult
 
-T = TypeVar("T", bound="Transactional")
+R = TypeVar("R", bound="TransactionResult")
 
 
-class TransactionRequest(ABC, Generic[T]):
+class TransactionRequest(ABC, Generic[R]):
     """
      Role:
          -  Messaging
@@ -34,25 +34,18 @@ class TransactionRequest(ABC, Generic[T]):
      Super Class:
      """
     _id: int
-    _candidate: T
     
-    def __init__(self, id: int, candidate: T):
+    def __init__(self, id: int):
         """
         Args:
             id: int
-            candidate: T
         """
         self._id = id
-        self._candidate = candidate
         
     @property
     def id(self) -> int:
         return self._id
         
-    @property
-    def promotion_candidate(self) -> T:
-        return self._candidate
-
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

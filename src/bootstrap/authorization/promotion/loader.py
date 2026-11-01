@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import PromotionDecision
+from artifcat import Decision, PromotionDecision
 from bootstrap import AuthorizationLoader
 from domain import Elevatable, PawnToken, Rank, Token
 from domain.interface.actionable import elevatable
