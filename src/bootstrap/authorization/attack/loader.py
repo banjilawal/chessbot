@@ -75,7 +75,7 @@ class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(AttackPermissionRequest, priming.authorization_applicant)
+        approved_request = cast(AttackPermissionRequest, priming.permission_request)
         # --- Prepare an approval from the completed chain. ---#
         approval = AttackPermissionRequest(
             id=approved_request.id,

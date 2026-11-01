@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .deletion import *
 from .insertion import *
+from .search import *
 
 # Modules
 from .loader import CrudAuthorizationLoader

@@ -96,7 +96,7 @@ class AccountPushPermissionLoader(
         # --- Cast the candidate to a permission_form for additional processing. ---#
         permission_form = cast(
             AccountPushPermissionRequest,
-            priming.authorization_applicant,
+            priming.payload,
         )
         # Handle the case that the permissio_form does not have an id.
         permission_id_validation = self.identity_service.validate_id(
@@ -147,7 +147,6 @@ class AccountPushPermissionLoader(
                     ex=transaction_id_validation.exception,
                 )
             )
-        applicant_id = cast(int, transaction_id_validation.payload)
         # --- PROCESS_THE_ACCOUNT_PUSH_CANDIDATE_ATTRIBUTE. ---#
         item_validation = self._validation_service.extract_model(
             request=AccountValidationRequest(

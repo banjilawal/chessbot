@@ -101,7 +101,7 @@ class AccountPushPermissionLoader(
         # --- Cast the candidate to a permission_request for additional processing. ---#
         permission_request = cast(
             AccountPushPermissionRequest,
-            priming.authorization_applicant,
+            priming.payload,
         )
         # Handle the case that permission_request.payload gets flagged.
         permission_payload_validation = self.priming_validator.execute(
