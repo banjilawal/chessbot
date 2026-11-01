@@ -37,19 +37,19 @@ class AddVectorNodeDecision(
     def __init__(
             self,
             permission: Permission,
-            approval: Optional[AddVectorNodeRequest] | None = None,
+            transaction_request: Optional[AddVectorNodeRequest] | None = None,
             permission_request: Optional[AddVectorNodePermissionRequest] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            approval: Optional[AddVectorNodeRequest]
+            transaction_request: Optional[AddVectorNodeRequest]
             permission_request: Optional[AddVectorNodePermissionRequest]
             exception: Optional[Exception]
         """
         super().__init__(
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,

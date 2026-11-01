@@ -93,7 +93,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         if permission.item_already_exists:
             return InsertionResult.already_inserted()
         
-        approved_request = cast(AccountPushRequest, permission.approval)
+        approved_request = cast(AccountPushRequest, permission.transaction_request)
         item = cast(Account, approved_request.item)
         collection = cast(AccountStack, approved_request.collection)
         collection.items.append(item)

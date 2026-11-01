@@ -78,7 +78,7 @@ class AccountSearcher(Searcher[AccountSearchRequest]):
                     ex=decision.exception,
                 )
             )
-        approved_request = cast(AccountSearchRequest, decision.approval)
+        approved_request = cast(AccountSearchRequest, decision.transaction_request)
         context = approved_request.context
         collection = approved_request.collection
         

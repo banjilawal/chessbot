@@ -44,20 +44,20 @@ class ManeuverDecision(Decision[ManeuverPermissionRequest, ManeuverRequest]):
     def __init__(
             self,
             permission: Permission,
-            approval: Optional[ManeuverRequest] | None = None,
+            transaction_request: Optional[ManeuverRequest] | None = None,
             permission_request: Optional[ManeuverPermissionRequest] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            approval: Optional[ManeuverRequest]
+            transaction_request: Optional[ManeuverRequest]
             permission_request: Optional[ManeuverPermissionRequest]
             exception: Optional[Exception]
         """
         super().__init__(
             permission_request=permission_request,
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
         )

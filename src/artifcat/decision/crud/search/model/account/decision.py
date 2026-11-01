@@ -37,19 +37,19 @@ class AccountSearchDecision(
     def __init__(
             self,
             permission: Permission,
-            approval: Optional[AccountSearchRequest] | None = None,
+            transaction_request: Optional[AccountSearchRequest] | None = None,
             permission_request: Optional[AccountSearchPermissionRequest] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            approval: Optional[T]
+            transaction_request: Optional[T]
             permission_request: Optional[P]
             exception: Optional[Exception]
         """
         super().__init__(
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,

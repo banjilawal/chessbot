@@ -48,19 +48,19 @@ class CrudDecision(Decision[P, T], ABC, Generic[P, T]):
     def __init__(
             self,
             permission: Permission,
-            approval: Optional[T] | None = None,
+            transaction_request: Optional[T] | None = None,
             permission_request: Optional[P] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            approval: Optional[T]
+            transaction_request: Optional[T]
             permission_request: Optional[P]
             exception: Optional[Exception]
         """
         super().__init__(
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,

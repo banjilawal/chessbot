@@ -37,19 +37,19 @@ class RemoveVectorNodeDecision(
     def __init__(
             self,
             permission: Permission,
-            approval: Optional[RemoveVectorNodeRequest] | None = None,
+            transaction_request: Optional[RemoveVectorNodeRequest] | None = None,
             permission_request: Optional[RemoveVectorNodePermissionRequest] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            approval: Optional[RemoveVectorNodeRequest]
+            transaction_request: Optional[RemoveVectorNodeRequest]
             permission_request: Optional[RemoveVectorNodePermissionRequest]
             exception: Optional[Exception]
         """
         super().__init__(
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
             permission_request=permission_request,

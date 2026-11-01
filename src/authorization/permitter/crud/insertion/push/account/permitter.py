@@ -88,7 +88,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             )
         # --- Extract the transaction_request for processing. ---#
         permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
-        transaction_request = cast(AccountPushRequest, decision.approval)
+        transaction_request = cast(AccountPushRequest, decision.transaction_request)
         item = cast(Account, transaction_request.item)
         collection = cast(AccountStack, transaction_request.collection)
         

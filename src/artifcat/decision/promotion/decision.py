@@ -46,18 +46,18 @@ class PromotionDecision(Decision[PromotionPermissionRequest, PromotionRequest]):
             permission: Permission,
             permission_request: PromotionPermissionRequest,
             exception: Optional[Exception] | None = None,
-            approval: Optional[PromotionRequest] | None = None,
+            transaction_request: Optional[PromotionRequest] | None = None,
     ):
         """
         Args:
             permission: Permission
             permission_request: PermissionRequest
             exception: Optional[Exception]
-            approval: Optional[PromotionRequest]
+            transaction_request: Optional[PromotionRequest]
         """
         super().__init__(
             permission_request=permission_request,
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
         )
@@ -67,14 +67,14 @@ class PromotionDecision(Decision[PromotionPermissionRequest, PromotionRequest]):
         return cast(PromotionPermissionRequest, super().permission_request)
     
     @property
-    def approval(self) -> Optional[PromotionRequest]:
-        return cast(PromotionRequest, super().approval)
+    def transaction_request(self) -> Optional[PromotionRequest]:
+        return cast(PromotionRequest, super().transaction_request)
     
     @property
     def request_is_granted(self) -> bool:
         return (
                 super().request_is_granted and 
-                isinstance(self.approval, PromotionRequest)
+                isinstance(self.transaction_request, PromotionRequest)
         )
     
     @property

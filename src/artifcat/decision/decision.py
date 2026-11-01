@@ -48,41 +48,42 @@ class Decision(ABC, Generic[P, T]):
 
     Super Class:
     """
-    _permission_request: Optional[P] | None = None
+
     _permission: Permission
     _exception: Optional[Exception]
-    _approval: Optional[T]
+    _transaction_request: Optional[T]
+    _permission_request: Optional[P]
   
     def __init__(
             self,
             permission: Permission,
-            permission_request: Optional[P] | None = None,
             exception: Optional[Exception] | None = None,
-            approval: Optional[T] | None = None,
+            permission_request: Optional[P] | None = None,
+            transaction_request: Optional[T] | None = None,
     ):
         """
         Args:
             permission: Permission
-            permission_request: PermissionRequest
             exception: Optional[Exception]
-            approval: Optional[TransactionRequest]
+            permission_request: Optional[PermissionRequest]
+            transaction_request: Optional[TransactionRequest]
         """
-        self._approval = approval
         self._exception = exception
         self._permission = permission
         self._permission_request = permission_request
+        self._transaction_request = transaction_request
     
-    @property
-    def permission_request(self) -> P:
-        return self._permission_request
-        
     @property
     def permission(self) -> Permission:
         return self._permission
     
     @property
-    def approval(self) -> Optional[T]:
-        return 
+    def permission_request(self) -> Optional[P]:
+        return self._permission_request
+    
+    @property
+    def transaction_request(self) -> Optional[T]:
+        return self._transaction_request
     
     @property
     def exception(self) -> Optional[Exception]:
@@ -92,7 +93,7 @@ class Decision(ABC, Generic[P, T]):
     def request_is_granted(self) -> bool:
         return (
                 self._exception is None and
-                self._approval is not None and
+                self._transaction_request is not None and
                 self._permission_request is not None and
                 self._permission == Permission.GRANTED
         )
@@ -104,7 +105,7 @@ class Decision(ABC, Generic[P, T]):
     @classmethod
     def grant(cls, approval: T, permission_request: P) -> Self:
         return cls(
-            approval=approval, 
+            transaction_request=approval,
             permission_request=permission_request, 
             permission=Permission.GRANTED,
         )

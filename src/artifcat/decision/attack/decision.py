@@ -46,18 +46,18 @@ class AttackDecision(Decision[AttackRequest]):
             permission: Permission,
             permission_request: AttackPermissionRequest,
             exception: Optional[Exception] | None = None,
-            approval: Optional[AttackRequest] | None = None,
+            transaction_request: Optional[AttackRequest] | None = None,
     ):
         """
         Args:
             permission: Permission
             permission_request: PermissionRequest
             exception: Optional[Exception]
-            approval: Optional[AttackRequest]
+            transaction_request: Optional[AttackRequest]
         """
         super().__init__(
             permission_request=permission_request,
-            approval=approval,
+            transaction_request=transaction_request,
             exception=exception,
             permission=permission,
         )
@@ -67,14 +67,14 @@ class AttackDecision(Decision[AttackRequest]):
         return cast(AttackPermissionRequest, super().permission_request)
     
     @property
-    def approval(self) -> Optional[AttackRequest]:
-        return cast(AttackRequest, super().approval)
+    def transaction_request(self) -> Optional[AttackRequest]:
+        return cast(AttackRequest, super().transaction_request)
     
     @property
     def request_is_granted(self) -> bool:
         return (
                 super().request_is_granted and 
-                isinstance(self.approval, AttackRequest)
+                isinstance(self.transaction_request, AttackRequest)
         )
     
     @property
@@ -92,7 +92,7 @@ class AttackDecision(Decision[AttackRequest]):
             permission_request,
         )
         return cls(
-            approval=approval,
+            transaction_request=approval,
             permission_request=role_request,
             permission=Permission.GRANTED,
         )

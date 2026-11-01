@@ -88,7 +88,7 @@ class AccountSearchPermitter(SearchPermitter[AccountSearchPermissionRequest]):
             )
         # --- Extract the transaction_request for processing. ---#
         permission_request = cast(AccountSearchPermissionRequest, decision.permission_request)
-        transaction_request = cast(AccountSearchRequest, decision.approval)
+        transaction_request = cast(AccountSearchRequest, decision.transaction_request)
         item = cast(Account, transaction_request.item)
         collection = cast(AccountStack, transaction_request.collection)
         

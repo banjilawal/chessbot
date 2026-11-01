@@ -27,6 +27,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         1.  Ensure only not-null PermissionRequest is processed.
 
     Attributes:
+        token_valiation_service: TokenValidationService
 
     Provides:
         -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision

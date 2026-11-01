@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar
 
-from artifcat import Decision, InsertionDecision
+from artifcat import InsertionDecision
 from bootstrap import CrudAuthorizationLoader
-from exchange import InsertionPermissionRequest, ValidationService
+from exchange import InsertionPermissionRequest
 
 from util import LoggingLevelRouter
 
@@ -45,7 +45,7 @@ class InsertionAuthorizationLoader(
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> InsertionDecision[T]:
+    def execute(self, candidate: Any) -> InsertionDecision:
         """
         Checks if the Request is the right type.
         
