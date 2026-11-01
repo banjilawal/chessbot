@@ -1,18 +1,17 @@
-# src/exchange/request/permission/crud/delete/__init__.py
+# src/exchange/request/permission/crud/deletion/__init__.py
 
 """
-Module: exchange.request.permission.crud.delete.__init__
+Module: exchange.request.permission.crud.deletion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.REQUEST.PERMISSION.CRUD.DELETE PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.PERMISSION.CRUD.DELETION PACKAGE ===========#
 
 # Packages
-from .id import *
-from .item import *
-from .pop import *
+from .remove import *
+from .push import *
 
 # Modules
-from .request import DeletePermissionRequest
+from .request import DeletionPermissionRequest

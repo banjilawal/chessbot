@@ -1,7 +1,7 @@
-# src/exchange/request/permission/crud/delete/request.py
+# src/exchange/request/permission/crud/deletion/request.py
 
 """
-Module: exchange.request.permission.crud.delete.request
+Module: exchange.request.permission.crud.deletion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,44 +12,46 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ExchangeObjectCollection
-from exchange import CrudPermissionRequest, ExchangeDataObject
-from artifcat import DeletionRequest
+from exchange import CrudPermissionRequest, DeletionRequest
+
+T = TypeVar("T", bound="DeletionRequest")
 
 
-T = TypeVar("T", bound="ExchangeDataObject")
-
-
-class DeletePermissionRequest(CrudPermissionRequest[DeletionRequest], ABC, Generic[T]):
+class DeletionPermissionRequest(
+    CrudPermissionRequest[T], ABC, Generic[T]
+):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Provide a collection and details about the item a Deleter needs to run a job.
+        1.  Provides an DeletionPermitter with job details.
 
      Attributes:
          id: int
-         collection: ExchangeObjectCollection[T]
+         authorization_applicant: : T
 
      Provides:
-     
+
      Super Class:
         CrudPermissionRequest
      """
     
-    def __init__(self, id: int, collection: ExchangeObjectCollection[T]):
+    def __init__(self, id: int, authorization_applicant: T):
         """
         Args:
             id: int
-            collection: ExchangeObjectCollection[T]
+            authorization_applicant: T
         """
-        super().__init__(id, collection=collection)
+        super().__init__(id, authorization_applicant=authorization_applicant)
+    
+    @property
+    def authorization_applicant(self) -> T:
+        return cast(T, super().authorization_applicant)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, DeletePermissionRequest):
-            permissionRequest = cast(DeletePermissionRequest, other)
-            return self.id == permissionRequest.id
+        if isinstance(other, DeletionPermissionRequest):
+            return self.id == other.id
         return False

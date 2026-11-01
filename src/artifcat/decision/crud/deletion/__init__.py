@@ -10,6 +10,9 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.CRUD.DELETION PACKAGE ===========#
 
 # Packages
+from .pop import *
+from .remove import *
+
 
 # Modules
 from .decision import DeletionDecision
