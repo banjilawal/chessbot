@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
 from artifcat import InsertionDecision, Permission
-from exchange import PushPermissionRequest, PushRequest
+from exchange import PushPermissionRequest, ModelPushRequest
 
 P = TypeVar("P", bound="PushPermissionRequest")
-T = TypeVar("T", bound="PushRequest")
+T = TypeVar("T", bound="ModelPushRequest")
 
 
 class PushDecision(InsertionDecision[P, T], Generic[P, T]):

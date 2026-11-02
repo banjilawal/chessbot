@@ -30,32 +30,32 @@ class Deleter(CrudWorker[DeletionResult], ABC, Generic[T]):
         1.  Process an DeleteRequest.
 
     Attributes:
-        dispatcher: DeleteDispatcher[T]
+        dispatcher: DeleteDispatcher
 
     Provides:
-        -   def execute(self, request: T) -> DeletionResult
+        -   def execute(request: Q) -> DeletionResult
 
     Super Class:
         CrudOperation
     """
     
-    def __init__(self, dispatcher: DeleteDispatcher[T]):
+    def __init__(self, dispatcher: DeleteDispatcher):
         """
         Args:
-            dispatcher: DeleteDispatcher[T]
+            dispatcher: DeleteDispatcher
         """
         super().__init__(dispatcher=dispatcher)
     
     @property
-    def dispatcher(self) -> DeleteDispatcher[T]:
-        return cast(DeleteDispatcher[T], super().dispatcher)
+    def dispatcher(self) -> DeleteDispatcher:
+        return cast(DeleteDispatcher, super().dispatcher)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> DeletionResult:
+    def execute(self, request: Q) -> DeletionResult:
         """
         Args:
-            request: T
+            request: Q
         Result:
             DeletionResult
         Raises:

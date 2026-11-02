@@ -32,7 +32,7 @@ class TokenPusher(StackPop[Token]):
         dispatcher: TokenStackPushDispatcher
         
     Provides:
-        -   def execute(request: TokenStackPushDispatcher) -> InsertionionResult
+        -   def execute(request: QokenStackPushDispatcher) -> InsertionionResult
 
     Super Class:
         StackPush
@@ -46,19 +46,19 @@ class TokenPusher(StackPop[Token]):
         super().__init__(dispatcher=dispatcher or TokenStackPushDispatcher())
     
     @property
-    def dispatcher(self) -> TokenStackPushDispatcher:
+    def dispatcher(self) -> RokenStackPushDispatcher:
         return cast(TokenStackPushDispatcher, super().dispatcher)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: TokenStackPushRequest) -> InsertionionResult:
+    def execute(self, request: QokenStackPushRequest) -> InsertionionResult:
         """
         Action:
             1.  Return an exception chain in the InsertionionResult if permission is
                 not granted for the push.
             2.  Otherwise, perform the insertionion then, send the success result.
         Args:
-            request: TokenStackPushRequest
+            request: QokenStackPushRequest
         Returns:
             InsertionionResult
         Raises:

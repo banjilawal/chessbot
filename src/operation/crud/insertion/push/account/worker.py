@@ -12,16 +12,13 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import InsertionResult
-from repo.collection import AccountStack
-from domain import Account
-from err import AccountPusherException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
-from operation import Pusher
+from operation import ModelPusher
 from transit import AccountPushPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountPusher(Pusher[AccountPushRequest]):
+class AccountPusher(ModelPusher[InsertionResult, AccountPushRequest]):
     """
     Role:
         -   Transaction Worker
@@ -36,7 +33,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         -   def execute(request: AccountPushRequest) -> InsertionResult
 
     Super Class:
-        Pusher
+        ModelPusher
     """
     
     def __init__(
@@ -72,13 +69,13 @@ class AccountPusher(Pusher[AccountPushRequest]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the permission_dispatcher sends a denial.
-        permission = self.dispatcher.execute(
-            request=AccountPushPermissionRequest(
+        decision = self.dispatcher.execute(
+            candidate=AccountPushPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountPushPermissionRequest"),
             )
         )
-        if permission.request_is_denied:
+        if decision.request_is_denied:
             # Send a failure in the Response
             return InsertionResult.failure(
                 AccountPusherException(
@@ -86,15 +83,49 @@ class AccountPusher(Pusher[AccountPushRequest]):
                     cls_name=self.__class__.__name__,
                     msg=AccountPusherException.MSG,
                     err_code=AccountPusherException.ERR_CODE,
-                    ex=permission.exception,
+                    ex=decision.exception,
                 )
             )
-        # If the 
-        if permission.item_already_exists:
-            return InsertionResult.already_inserted()
+        if decision.request_is_denied:
+            return InsertionResult.failure(
+                AcountPusherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AcountPusherException.MSG,
+                    err_code=AcountPusherException.ERR_CODE,
+                    ex=decision.exception,
+                )
+            )
+        # --- Extract the requests for additional processing. ---#
+        permission_request = decision.permission_request
+        transaction_request = decision.transaction_request
         
-        approved_request = cast(AccountPushRequest, permission.transaction_request)
-        item = cast(Account, approved_request.item)
-        collection = cast(AccountStack, approved_request.collection)
+        # Handle the case that the permission_request is null.
+        if permission_request is None:
+            # Send the exception chain in the denial.
+            return InsertionResult.failure(
+                exception=AcountPusherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AcountPusherException.MSG,
+                    err_code=AcountPusherException.ERR_CODE,
+                    ex=AccountPushPermissionRequestNullException(),
+                )
+            )
+        # Handle the case that the transaction_request is null.
+        if transaction_request is None:
+            # Send the exception chain in the denial.
+            return InsertionResult.failure(
+                exception=AcountPusherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AcountPusherException.MSG,
+                    err_code=AcountPusherException.ERR_CODE,
+                    ex=AccountPushRequestNullException()
+                )
+            )
+        item = transaction_request.item
+        collection = transaction_request.collection
         collection.items.append(item)
+ 
         return InsertionResult.success()

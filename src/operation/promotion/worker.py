@@ -60,7 +60,7 @@ class Promoter(Worker[PromotionResult, PromotionRequest]):
         method = f"{self.__class__.__name__}.execute"
         
         decision = self.dispatcher.execute(
-            PromotionPermissionRequest(
+            candidate=PromotionPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="PromotionPermissionRequest")
             )
@@ -83,24 +83,24 @@ class Promoter(Worker[PromotionResult, PromotionRequest]):
         if permission_request is None:
             # Send the exception chain in the denial.
             return PromotionResult.failure(
-                exception=PromotionPermitterException(
+                exception=PromoterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionPermitterException.MSG,
-                    err_code=PromotionPermitterException.ERR_CODE,
-                    ex=AccountSearchPermissionRequestNullException(),
+                    msg=PromoterException.MSG,
+                    err_code=PromoterException.ERR_CODE,
+                    ex=PromotionPermissionRequestNullException(),
                 )
             )
         # Handle the case that the transaction_request is null.
         if transaction_request is None:
             # Send the exception chain in the denial.
             return PromotionResult.failure(
-                exception=PromotionPermitterException(
+                exception=PromoterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionPermitterException.MSG,
-                    err_code=PromotionPermitterException.ERR_CODE,
-                    ex=AccountSearchRequestNullException()
+                    msg=PromoterException.MSG,
+                    err_code=PromoterException.ERR_CODE,
+                    ex=PromotionRequestNullException()
                 )
             )
         pawn_token = transaction_request.applicant

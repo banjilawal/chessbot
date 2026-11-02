@@ -15,12 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import InsertionResult
 from exchange import InsertionRequest
 from operation import CrudWorker
+from transit import InsertionPermissionDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="InsertionRequest")
+R = TypeVar("R", bound="InsertionResult")
+Q = TypeVar("Q", bound="InsertionRequest")
 
 
-class Inserter(CrudWorker[InsertionResult], ABC, Generic[T]):
+class Inserter(CrudWorker[R, Q], ABC, Generic[R, Q]):
     """
     Role:
         -   Transaction Worker
@@ -29,36 +31,36 @@ class Inserter(CrudWorker[InsertionResult], ABC, Generic[T]):
         1.  Executes an InsertionRequest
 
     Attributes:
-        dispatcher: InsertionPermissionDispatcher[T]
+        dispatcher: InsertionPermissionDispatcher
 
     Provides:
-        -   def execute(self, request: T) -> InsertionResult
+        -   def execute(request: Q) ->R
 
     Super Class:
         CrudOperation
     """
     
-    def __init__(self, dispatcher: PushPermissionDispatcher[T]):
+    def __init__(self, dispatcher: InsertionPermissionDispatcher):
         """
         Args:
-            dispatcher: InsertionPermissionDispatcher[T]
+            dispatcher: InsertionPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher[T])
+        super().__init__(dispatcher=dispatcher)
     
     
     @property
-    def dispatcher(self) -> PushPermissionDispatcher[T]:
-        return cast(PushPermissionDispatcher[T], super().dispatcher)
+    def dispatcher(self) -> InsertionPermissionDispatcher:
+        return cast(InsertionPermissionDispatcher, super().dispatcher)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> InsertionResult:
+    def execute(self, request: Q) -> InsertionResult:
         """
         Args:
-            request: T
+            request: Q
         Result:
-            InsertionResult
+            R
         Raises:
             InserterException
         """

@@ -14,10 +14,10 @@ from typing import cast
 from artifcat import InsertionResult
 from repo.collection import AccountStack
 from domain import Account
-from exchange import PushRequest
+from exchange import ModelPushRequest
 
 
-class AccountPushRequest(PushRequest[InsertionResult, Account]):
+class AccountPushRequest(ModelPushRequest[InsertionResult, Account]):
     """
      Role:
          -  Messaging

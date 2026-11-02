@@ -20,7 +20,7 @@ from exchange import InsertionRequest
 R = TypeVar("R", bound="InsertionResult")
 T = TypeVar("T", bound="Model")
 
-class PushRequest(InsertionRequest[R, T], ABC, Generic[R, T]):
+class ModelPushRequest(InsertionRequest[R, T], ABC, Generic[R, T]):
     """
      Role:
          -  Messaging
@@ -59,6 +59,6 @@ class PushRequest(InsertionRequest[R, T], ABC, Generic[R, T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PushRequest):
+        if isinstance(other, ModelPushRequest):
             return self.id == other.id
         return False

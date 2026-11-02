@@ -32,7 +32,7 @@ class TokenStackPop(StackPop[Token]):
         dispatcher: TokenStackPopDispatcher
         
     Provides:
-        -   def execute(request: TokenStackPopDispatcher) -> DeletionResult
+        -   def execute(request: QokenStackPopDispatcher) -> DeletionResult
 
     Super Class:
         StackPop
@@ -46,19 +46,19 @@ class TokenStackPop(StackPop[Token]):
         super().__init__(dispatcher=dispatcher or TokenStackPopDispatcher())
     
     @property
-    def dispatcher(self) -> TokenStackPopDispatcher:
+    def dispatcher(self) -> RokenStackPopDispatcher:
         return cast(TokenStackPopDispatcher, super().dispatcher)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: TokenStackPopRequest) -> DeletionResult:
+    def execute(self, request: QokenStackPopRequest) -> DeletionResult:
         """
         Action:
             1.  Return an exception chain in the DeletionResult if permission is
                 not granted for the pop.
             2.  Otherwise, perform the deletion then, send the success result.
         Args:
-            request: TokenStackPopRequest
+            request: QokenStackPopRequest
         Returns:
             DeletionResult
         Raises:

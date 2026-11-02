@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== OPERATION.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
-from .account import *
+from .model import *
 
 # Modules
 from .worker import Searcher

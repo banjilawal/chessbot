@@ -21,7 +21,7 @@ class Router(ABC, Generic[T]):
     """
     Role
         - Transaction Worker
-        - Routing
+        -   Routing
 
     Responsibilities:
         1.  Ensure data-holders are safe before they are used or saved.

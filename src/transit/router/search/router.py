@@ -23,8 +23,7 @@ T = TypeVar("T")
 class SearchRouter(Router, Generic[T]):
     """
     Role
-        - Routing
-        - Stateless Search Engine
+        -   Routing
 
    Responsibilities:
         1.  Process a search query which contains:

@@ -13,15 +13,16 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import InsertionResult
-from exchange import PushRequest
+from exchange import ModelPushRequest
 from operation import Inserter
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="PushRequest")
+R = TypeVar("R", bound="InsertionResult")
+Q = TypeVar("Q", bound="ModelPushRequest")
 
 
-class Pusher(Inserter[T], ABC, Generic[T]):
+class ModelPusher(Inserter[R, Q], ABC, Generic[R, Q]):
     """
     Role:
         -   Transaction Worker
@@ -30,37 +31,37 @@ class Pusher(Inserter[T], ABC, Generic[T]):
         1.  Executes a PushRequest
 
     Attributes:
-        dispatcher: PushPermissionDispatcher[T]
+        dispatcher: PushPermissionDispatcher
 
     Provides:
-        -   def execute(self, request: T) -> InsertionResult
+        -   def execute(request: Q) ->R
 
     Super Class:
         Inserter
     """
     
-    def __init__(self, dispatcher: PushPermissionDispatcher[T]):
+    def __init__(self, dispatcher: PushPermissionDispatcher):
         """
         Args:
-            dispatcher: InsertionPermissionDispatcher[T]
+            dispatcher: PushPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher[T])
+        super().__init__(dispatcher=dispatcher)
     
     
     @property
-    def dispatcher(self) -> PushPermissionDispatcher[T]:
-        return cast(PushPermissionDispatcher[T], super().dispatcher)
+    def dispatcher(self) -> PushPermissionDispatcher:
+        return cast(PushPermissionDispatcher, super().dispatcher)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> InsertionResult:
+    def execute(self, request: Q) -> R:
         """
         Args:
-            request: T
+            request: Q
         Result:
-            InsertionResult
+            R
         Raises:
-            PusherException
+            ModelPusherException
         """
         pass

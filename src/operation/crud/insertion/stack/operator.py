@@ -31,7 +31,7 @@ class StackPusher(InsertionOperation[StackService], ABC, Generic[T]):
         1.  Execute a task on a Collection that produces an InsertionionResult.
 
     Attributes:
-        dispatcher: PushDispatcher[T]
+        dispatcher: PushDispatcher
         
     Provides:
         -   def execute(request: InsertionionRequest[T]) -> InsertionionResult
@@ -40,16 +40,16 @@ class StackPusher(InsertionOperation[StackService], ABC, Generic[T]):
         InsertionionOperation
     """
     
-    def __init__(self, dispatcher: StackPushDispatcher[T]):
+    def __init__(self, dispatcher: StackPushDispatcher):
         """
         Args:
-            dispatcher: PushDispatcher[T]
+            dispatcher: PushDispatcher
         """
         super().__init__(dispatcher=dispatcher)
     
     @property
-    def dispatcher(self) -> StackPushDispatcher[T]:
-        return cast(StackPushDispatcher[T], super().dispatcher)
+    def dispatcher(self) -> StackPushDispatcher:
+        return cast(StackPushDispatcher, super().dispatcher)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

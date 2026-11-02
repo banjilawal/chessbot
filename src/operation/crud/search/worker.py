@@ -15,12 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import SearchResult
 from exchange import SearchRequest
 from operation import CrudWorker
+from transit import SearchPermissionDispatcher, SearchRouter
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="SearchRequest")
+Q = TypeVar("Q", bound="SearchRequest")
+R = TypeVar("R", bound="SearchResult")
 
 
-class Searcher(CrudWorker[SearchResult], ABC, Generic[T]):
+class Searcher(CrudWorker[R, Q], ABC, Generic[R, Q]):
     """
     Role:
         -   Transaction Worker
@@ -29,36 +31,42 @@ class Searcher(CrudWorker[SearchResult], ABC, Generic[T]):
         1.  Executes an SearchRequest
 
     Attributes:
-        dispatcher: SearchPermissionDispatcher[T]
+        router: SearchRouter[Q]
+        dispatcher: SearchPermissionDispatcher
 
     Provides:
-        -   def execute(self, request: T) -> SearchResult
+        -   def execute(request: Q) -> R
 
     Super Class:
         CrudOperation
     """
     
-    def __init__(self, dispatcher: PushPermissionDispatcher[T]):
+    def __init__(
+            self,
+            router: SearchRouter[Q],
+            dispatcher: SearchPermissionDispatcher,
+    ):
         """
         Args:
-            dispatcher: SearchPermissionDispatcher[T]
+            router: SearchRouter[Q]
+            dispatcher: SearchPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher[T])
+        super().__init__(dispatcher=dispatcher)
     
     
     @property
-    def dispatcher(self) -> PushPermissionDispatcher[T]:
-        return cast(PushPermissionDispatcher[T], super().dispatcher)
+    def dispatcher(self) -> SearchPermissionDispatcher:
+        return cast(SearchPermissionDispatcher, super().dispatcher)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> SearchResult:
+    def execute(self, request: Q) -> R:
         """
         Args:
-            request: T
+            request: Q
         Result:
-            SearchResult
+            R
         Raises:
             SearcherException
         """

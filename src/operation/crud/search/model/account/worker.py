@@ -1,7 +1,7 @@
-# src/operation/crud/search/account/worker.py
+# src/operation/crud/search/model/account/worker.py
 
 """
-Module: operation.crud.search.account.worker
+Module: operation.crud.search.model.account.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,58 +12,68 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import SearchResult
-from authorization import AccountSearchDispatcher
-from repo.collection import AccountStack
-from domain import Account, AccountType, HumanAccount, MachineAccount
-from err import AccountSearcherException, MissingSearchRouteException
+from domain import Account
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
-from operation import Searcher
+from operation import ModelSearcher
+from transit import AccountSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountSearcher(Searcher[AccountSearchRequest]):
+class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
     """
     Role:
         -   Transaction Worker
 
     Responsibilities:
-        1.  Executes an SearchRequest
+        1.  Executes a SearchRequest
 
     Attributes:
-        dispatcher: SearchPermissionDispatcher[T]
+        dispatcher: AccountSearchPermissionDispatcher
 
     Provides:
-        -   def execute(self, request: T) -> SearchResult
+        -   def execute(request: AccountSearchRequest) -> SearchResult[List[Account]]
 
     Super Class:
-        CrudOperation
+        ModelSearcher
     """
     
-    def __init__(self, dispatcher: Optional[AccountSearchDispatcher] | None = None,):
+    def __init__(
+            self,
+            dispatcher: Optional[AccountSearchPermissionDispatcher] | None = None,
+    ):
         """
         Args:
-            dispatcher: SearchPermissionDispatcher[T]
+            dispatcher: Optional[AccountSearchPermissionDispatcher]
         """
-        super().__init__(dispatcher=dispatcher or AccountSearchDispatcher())
+        super().__init__(dispatcher=dispatcher or AccountSearchPermissionDispatcher())
     
     @property
-    def dispatcher(self) -> AccountSearchDispatcher:
-        return cast(AccountSearchDispatcher, super().dispatcher)
+    def dispatcher(self) -> AccountSearchPermissionDispatcher:
+        return cast(AccountSearchPermissionDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountSearchRequest) -> SearchResult:
+    def execute(self, request: AccountSearchRequest) -> SearchResult[List[Account]]:
         """
+        Search an AccountStack for context matches.
+        
+        Action:
+            1.  Send an exception chain in the SearchResult if any of the following
+                occur.
+                    -   The request is denied.
+                    -   An approved request lacks either the AccountSearchRequest or
+                        its PermissionRequest.
+            2.  If the search result is empy
         Args:
             request: AccountSearchRequest
         Result:
-            SearchResult
+            SearchResult[List[Account]]
         Raises:
             AccountSearcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
         decision = self.dispatcher.execute(
-            request=AccountSearchPermissionRequest(
+            candidate=AccountSearchPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountSearchPermissionRequest")
             )

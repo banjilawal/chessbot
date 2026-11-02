@@ -18,9 +18,9 @@ from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
 R = TypeVar("R", bound="TransactionResult")
-T = TypeVar("T", bound="TransactionRequest")
+Q = TypeVar("Q", bound="TransactionRequest")
 
-class Worker(ABC, Generic[R, T]):
+class Worker(ABC, Generic[R, Q]):
     """
     Role:
         -   Transaction Worker
@@ -29,16 +29,16 @@ class Worker(ABC, Generic[R, T]):
         1.  Executes a TransactionRequest
 
     Attributes:
-        dispatcher: PermissionDispatcher[T]
+        dispatcher: PermissionDispatcher
         
     Provides:
-        -   def execute(request: T) -> R
+        -   def execute(request: Q) -> R
 
     Super Class:
     """
-    _dispatcher: PermissionDispatcher[T]
+    _dispatcher: PermissionDispatcher
     
-    def __init__(self, dispatcher: PermissionDispatcher[T]):
+    def __init__(self, dispatcher: PermissionDispatcher):
         """
         Args:
             dispatcher: PermissionDispatcher
@@ -46,16 +46,16 @@ class Worker(ABC, Generic[R, T]):
         self._dispatcher = dispatcher
         
     @property
-    def dispatcher(self) -> PermissionDispatcher[T]:
+    def dispatcher(self) -> PermissionDispatcher:
         return self._dispatcher
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> R:
+    def execute(self, request: Q) -> R:
         """
         Args:
-            request: T
+            request: Q
         Result:
             R
         Raises:

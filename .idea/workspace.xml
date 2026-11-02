@@ -5,64 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/operation/crud/search/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/crud/search/model/worker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/manager/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/manager/search/manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/promotion/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/promotion/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/player/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/team/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/responder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/attack/kill/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/kill/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/attack/loader/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/loader/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/addition/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/distance/euclidean/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/distance/euclidean/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/product/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/product/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/push/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/push/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/insertion/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/insertion/push/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/account/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/account/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/search/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/maneuver/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/maneuver/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/promotion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/promotion/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/router/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/router/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/router/search/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/router/search/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,61 +78,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000094684" />
-      <entry key="MS500" value="1.006241030597259" />
-      <entry key="S2" value="1.2810697309446544" />
-      <entry key="S5" value="1.6019017848686652" />
-      <entry key="S10" value="1.7758232948736878" />
-      <entry key="S30" value="1.9188704216685095" />
-      <entry key="S60" value="1.9585772903989072" />
-      <entry key="M2" value="1.9790696856197294" />
-      <entry key="M5" value="2.0007516414849107" />
-      <entry key="M10" value="2.483749447464496" />
-      <entry key="M15" value="4.156463826936383" />
-      <entry key="M30" value="23.015636092274" />
-      <entry key="H1" value="109.60935820249193" />
-      <entry key="H2" value="279.0969174730706" />
-      <entry key="H4" value="517.4091214639178" />
-      <entry key="D1" value="2403.241634593821" />
-      <entry key="W1" value="26102.924045236836" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000175037929309" />
+      <entry key="S2" value="1.0689399568247118" />
+      <entry key="S5" value="1.447260053989815" />
+      <entry key="S10" value="1.933206278046295" />
+      <entry key="S30" value="3.0912157522245636" />
+      <entry key="S60" value="4.6624766396673865" />
+      <entry key="M2" value="7.822344675555894" />
+      <entry key="M5" value="17.20544795425181" />
+      <entry key="M10" value="31.10211507630634" />
+      <entry key="M15" value="46.16825948341832" />
+      <entry key="M30" value="87.66068373558365" />
+      <entry key="H1" value="152.8047683271921" />
+      <entry key="H2" value="285.88716336058934" />
+      <entry key="H4" value="538.0490255031242" />
+      <entry key="D1" value="2499.6168882220536" />
+      <entry key="W1" value="26055.422460730886" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="5.2469288984510374E-266" />
-      <entry key="S30" value="3.743705921429865E-89" />
-      <entry key="S60" value="6.118583414949383E-45" />
-      <entry key="M2" value="7.823953599948098E-23" />
-      <entry key="M5" value="1.526878070140722E-9" />
-      <entry key="M10" value="6.177364649678077E-5" />
-      <entry key="M15" value="0.002751539659095851" />
-      <entry key="M30" value="0.14651275705956004" />
-      <entry key="H1" value="1.1411374611033998" />
-      <entry key="H2" value="3.543431268736368" />
-      <entry key="H4" value="8.359853126822193" />
-      <entry key="D1" value="107.10716055832286" />
-      <entry key="W1" value="1467.7666701747003" />
+      <entry key="S2" value="2.441321576454875E-109" />
+      <entry key="S5" value="3.5896325594942527E-44" />
+      <entry key="S10" value="1.8946325658275415E-22" />
+      <entry key="S30" value="5.7434784949426864E-8" />
+      <entry key="S60" value="2.3965555585060195E-4" />
+      <entry key="M2" value="0.015482259774283899" />
+      <entry key="M5" value="0.19629244770355453" />
+      <entry key="M10" value="0.5904411312344491" />
+      <entry key="M15" value="1.038976549224999" />
+      <entry key="M30" value="2.45058031647216" />
+      <entry key="H1" value="5.843193587216599" />
+      <entry key="H2" value="12.463573790300826" />
+      <entry key="H4" value="21.85509490874474" />
+      <entry key="D1" value="121.5467625859545" />
+      <entry key="W1" value="1472.021907728904" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9395227492223696" />
-      <entry key="MS500" value="0.9936880847239702" />
-      <entry key="S2" value="1.2762074817384306" />
-      <entry key="S5" value="1.59915482682788" />
-      <entry key="S10" value="1.7742322930396819" />
-      <entry key="S30" value="1.918280431122297" />
-      <entry key="S60" value="1.9582740139062496" />
-      <entry key="M2" value="1.9789159089715158" />
-      <entry key="M5" value="2.000636237000759" />
-      <entry key="M10" value="2.4824965884943544" />
-      <entry key="M15" value="4.156044784219974" />
-      <entry key="M30" value="23.15572482349564" />
-      <entry key="H1" value="110.74215322551015" />
-      <entry key="H2" value="282.63145980296963" />
-      <entry key="H4" value="525.7596828974748" />
-      <entry key="D1" value="2510.33303039108" />
-      <entry key="W1" value="27570.663876429262" />
+      <entry key="MS100" value="4.950974022412249E-4" />
+      <entry key="MS500" value="0.2182452697895816" />
+      <entry key="S2" value="0.7294273610716161" />
+      <entry key="S5" value="1.2415882613381592" />
+      <entry key="S10" value="1.7916751469330925" />
+      <entry key="S30" value="3.012275448960835" />
+      <entry key="S60" value="4.600264161140596" />
+      <entry key="M2" value="7.786716939229964" />
+      <entry key="M5" value="17.359538027959026" />
+      <entry key="M10" value="31.65660548006673" />
+      <entry key="M15" value="47.17406225526903" />
+      <entry key="M30" value="90.08195803079244" />
+      <entry key="H1" value="158.62062612530354" />
+      <entry key="H2" value="298.3253642458864" />
+      <entry key="H4" value="559.8828699419851" />
+      <entry key="D1" value="2621.145681019986" />
+      <entry key="W1" value="27527.41736700609" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -184,6 +158,7 @@
     "Python.stack.executor": "Debug",
     "Python.table.executor": "Debug",
     "Python.validator (1).executor": "Run",
+    "Python.worker.executor": "Coverage",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -192,7 +167,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/authorization/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/crud/insertion/push",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -206,21 +181,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/crud/insertion/push" />
+      <recent name="$PROJECT_DIR$/src/production/manager/search" />
+      <recent name="$PROJECT_DIR$/src/operation/crud/search/model" />
+      <recent name="$PROJECT_DIR$/src/operation" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/account" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization" />
-      <recent name="$PROJECT_DIR$/src/bootstrap/authorization/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/crud/search/model" />
       <recent name="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push" />
       <recent name="$PROJECT_DIR$/src/repo" />
       <recent name="$PROJECT_DIR$/src/exchange/request/permission/crud/search/model" />
       <recent name="$PROJECT_DIR$/src/exchange/request/permission/crud/insertion/push" />
-      <recent name="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.generator">
+  <component name="RunManager" selected="Python.worker">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -396,31 +371,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="roster" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/assurance/manifest/roster/vector" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/manifest/roster/vector/roster.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="validator (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -471,13 +421,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="worker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/operation/crud/insertion/push" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.worker" />
         <item itemvalue="Python.generator" />
         <item itemvalue="Python.validator (1)" />
         <item itemvalue="Python.responder" />
         <item itemvalue="Python.validator" />
-        <item itemvalue="Python.roster" />
       </list>
     </recent_temporary>
   </component>
@@ -882,7 +857,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="105542000" />
+      <workItem from="1793360739922" duration="113769000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2839,6 +2814,21 @@
           <url>file://$PROJECT_DIR$/src/operation/promotion/worker.py</url>
           <line>11</line>
           <option name="timeStamp" value="661" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/promotion/worker.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="662" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/maneuver/worker.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="663" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/crud/search/worker.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="664" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

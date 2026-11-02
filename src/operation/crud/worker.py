@@ -15,12 +15,13 @@ from typing import Generic, TypeVar, cast
 from artifcat import CrudResult
 from exchange import CrudRequest
 from operation import Worker
+from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="CrudResult")
+R = TypeVar("R", bound="CrudResult")
+Q = TypeVar("T", bound="CrudRequest")
 
-
-class CrudWorker(Worker[T], ABC, Generic[T]):
+class CrudWorker(Worker[R, Q], ABC, Generic[R, Q]):
     """
     Role:
         -   Transaction Worker
@@ -29,34 +30,34 @@ class CrudWorker(Worker[T], ABC, Generic[T]):
         1.  Executes a CrudRequest
 
     Attributes:
-        dispatcher: CrudPermissionDispatcher[T]
+        dispatcher: CrudPermissionDispatcher
         
     Provides:
-        -   def execute(request: CrudRequest[T]) -> T
+        -   def execute(request: Q) -> R
 
     Super Class:
         Worker
     """
     
-    def __init__(self, dispatcher: CrudPermissionDispatcher[T]):
+    def __init__(self, dispatcher: CrudPermissionDispatcher):
         """
         Args:
-            dispatcher: CrudPermissionDispatcher[T]
+            dispatcher: CrudPermissionDispatcher
         """
         super().__init__(dispatcher=dispatcher)
     
     @property
-    def dispatcher(self) -> CrudPermissionDispatcher[T]:
-        return cast(CrudPermissionDispatcher[T], super().dispatcher)
+    def dispatcher(self) -> CrudPermissionDispatcher:
+        return cast(CrudPermissionDispatcher, super().dispatcher)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: CrudRequest[T]) -> T:
+    def execute(self, request: Q) -> R:
         """
         Args:
-            request: CrudRequest[T]
+            request: Q
         Result:
-            T
+            R
         Raises:
             CrudWorkerException
         """
