@@ -103,9 +103,12 @@ class Promoter(Worker[PromotionResult, PromotionRequest]):
                     ex=PromotionRequestNullException()
                 )
             )
+        # --- Extract the transaction participants. ---#
         pawn_token = transaction_request.applicant
         rank = transaction_request.elevatable_to_rank
-        promotion = None
+        promotion = Pawn()
+        
+        # --- Perform transaction and state management work. ---#
         if isinstance(rank, Bishop):
             promotion = Bishop()
         if isinstance(rank, Knight):
@@ -114,7 +117,7 @@ class Promoter(Worker[PromotionResult, PromotionRequest]):
             promotion = Queen()
         if isinstance(rank, Rook):
             promotion = Rook()
-        
+        # Handle the case that the rank is not covered by the process.
         if promotion is None or isinstance(promotion, (Pawn, King)):
             return PromotionResult.failure(
                 PromoterException(
@@ -122,15 +125,16 @@ class Promoter(Worker[PromotionResult, PromotionRequest]):
                     cls_name=self.__class__.__name__,
                     msg=PromoterException.MSG,
                     err_code=PromoterException.ERR_CODE,
-                    ex=PromotionRouteException(
+                    ex=PromotionRouteCoverageException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PromotionRouteException.MSG,
-                        err_code=NoPromotionRouteException.ERR_CODE,
+                        msg=PromotionRouteCoverageException.MSG,
+                        err_code=PromotionRouteCoverageException.ERR_CODE,
                     ),
                 )
             )
         pawn_token.rank = promotion
         pawn_token.promotion_state = PromotionState.PROMOTED
+        # --- Forward the work product to the client. ---#
         return PromotionResult.success(pawn_token)
         

@@ -56,9 +56,11 @@ class AccountPusher(ModelPusher[InsertionResult, AccountPushRequest]):
         Add a new, unique account to the collection.
         
         Action:
-            1.  Send an exception in the Response if the dispatcher sends a denial.
-            2.  If the item already exists, send a success Response.
-            3.  Otherwise, append to the collection before sending the success.
+            1.  Send an exception in the InsertionResult if any of the following occur.
+                    -   The request is denied.
+                    -   An approval lacks either the AccountPushRequest or its
+                        PermissionRequest.
+            2.  Otherwise, append to the collection before sending the success.
         Args:
             request: AccountPushRequest
         Result:
@@ -76,23 +78,13 @@ class AccountPusher(ModelPusher[InsertionResult, AccountPushRequest]):
             )
         )
         if decision.request_is_denied:
-            # Send a failure in the Response
+            # Send a failure in the Result
             return InsertionResult.failure(
                 AccountPusherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountPusherException.MSG,
                     err_code=AccountPusherException.ERR_CODE,
-                    ex=decision.exception,
-                )
-            )
-        if decision.request_is_denied:
-            return InsertionResult.failure(
-                AcountPusherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AcountPusherException.MSG,
-                    err_code=AcountPusherException.ERR_CODE,
                     ex=decision.exception,
                 )
             )
@@ -124,8 +116,11 @@ class AccountPusher(ModelPusher[InsertionResult, AccountPushRequest]):
                     ex=AccountPushRequestNullException()
                 )
             )
+        # --- Extract the transaction participants. ---#
         item = transaction_request.item
         collection = transaction_request.collection
+        
+        # --- Perform transaction and state management work. ---#
         collection.items.append(item)
- 
+        # --- Forward the work product to the client. ---#
         return InsertionResult.success()
