@@ -14,13 +14,14 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import SearchDecision
 from authorization import SearchPermitter
-from exchange import ModelSearchPermissionRequest, SearchPermissionRequest
+from exchange import ModelSearchPermissionRequest
+from transit import SearchPermissionDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="ModelSearchPermissionRequest")
 
 class ModelSearchPermissionDispatcher(
-    SearchPermissionRequest[T], ABC, Generic[T]
+    SearchPermissionDispatcher[T], ABC, Generic[T]
 ):
     """
     Role
@@ -31,7 +32,7 @@ class ModelSearchPermissionDispatcher(
             back to clients.
 
     Attributes:
-        permitter: SearchPermitter[T]
+        permitter: ModelSearchPermitter[T]
         
     Provides:
         -   def execute(candidate: Any) -> SearchDecision
@@ -40,17 +41,12 @@ class ModelSearchPermissionDispatcher(
         SearchPermissionDispatcher
     """
     
-    def __init__(self, permitter:SearchPermitter[T]):
+    def __init__(self, permitter: ModelSearchPermitter[T]):
         """
         Args:
             permitter: ModelSearchPermitter[T]
         """
         super().__init__(permitter=permitter)
-
-
-    @property
-    def permitter(self) -> SearchPermitter[T]:
-        return cast(SearchPermitter[T], super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> SearchDecision:

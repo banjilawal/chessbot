@@ -23,7 +23,7 @@ class VectorTransform(Computation[CartesianToggle]):
         1.  Bidirectional Coord<->Vector converter.
 
     Attributes:
-            permitter: Optional[VectorTransformPermitter]
+            dispatcher: Optional[VectorTransformDispatcher]
             
     Provides:
         -   def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]
@@ -32,16 +32,16 @@ class VectorTransform(Computation[CartesianToggle]):
         Computation
     """
     
-    def __init__(self, permitter: Optional[VectorTransformPermitter] | None = None):
+    def __init__(self, dispatcher: Optional[VectorTransformDispatcher] | None = None):
         """
         Args:
-            permitter: Optional[VectorTransformPermitter]
+            dispatcher: Optional[VectorTransformDispatcher]
         """
-        super().__init__(permitter=permitter or VectorTransformPermitter())
+        super().__init__(dispatcher=dispatcher or VectorTransformDispatcher())
     
     @property
-    def permitter(self) -> VectorTransformPermitter:
-        return cast(VectorTransformPermitter, super().permitter)
+    def dispatcher(self) -> VectorTransformDispatcher:
+        return cast(VectorTransformDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]:

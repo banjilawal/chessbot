@@ -30,7 +30,7 @@ class AddNode(InsertionOperation[Chain], ABC, Generic[T]):
         1.  Add a node to a Chain.
 
     Attributes:
-        permitter: AddNodePermitter[T]
+        dispatcher: AddNodeDispatcher[T]
 
     Provides:
         -   def execute(request: AddNodeRequest) -> InsertionionResult
@@ -39,16 +39,16 @@ class AddNode(InsertionOperation[Chain], ABC, Generic[T]):
         InsertionionOperation
     """
     
-    def __init__(self, permitter: AddNodePermitter[T]):
+    def __init__(self, dispatcher: AddNodeDispatcher[T]):
         """
         Args:
-            permitter: AddNodePermitter[T]
+            dispatcher: AddNodeDispatcher[T]
         """
-        super().__init__(permitter=permitter)
+        super().__init__(dispatcher=dispatcher)
         
     @property
-    def permitter(self) -> AddNodePermitter[T]:
-        return cast(AddNodePermitter[T], super().permitter)
+    def dispatcher(self) -> AddNodeDispatcher[T]:
+        return cast(AddNodeDispatcher[T], super().dispatcher)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

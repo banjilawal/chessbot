@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import SearchResult
-from authorization import AccountSearchPermitter
+from authorization import AccountSearchDispatcher
 from repo.collection import AccountStack
 from domain import Account, AccountType, HumanAccount, MachineAccount
 from err import AccountSearcherException, MissingSearchRouteException
@@ -30,7 +30,7 @@ class AccountSearcher(Searcher[AccountSearchRequest]):
         1.  Executes an SearchRequest
 
     Attributes:
-        permitter: SearchPermissionPermitter[T]
+        dispatcher: SearchPermissionDispatcher[T]
 
     Provides:
         -   def execute(self, request: T) -> SearchResult
@@ -39,16 +39,16 @@ class AccountSearcher(Searcher[AccountSearchRequest]):
         CrudOperation
     """
     
-    def __init__(self, permitter: Optional[AccountSearchPermitter] | None = None,):
+    def __init__(self, dispatcher: Optional[AccountSearchDispatcher] | None = None,):
         """
         Args:
-            permitter: SearchPermissionPermitter[T]
+            dispatcher: SearchPermissionDispatcher[T]
         """
-        super().__init__(permitter=permitter or AccountSearchPermitter())
+        super().__init__(dispatcher=dispatcher or AccountSearchDispatcher())
     
     @property
-    def permitter(self) -> AccountSearchPermitter:
-        return cast(AccountSearchPermitter, super().permitter)
+    def dispatcher(self) -> AccountSearchDispatcher:
+        return cast(AccountSearchDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountSearchRequest) -> SearchResult:
@@ -62,7 +62,7 @@ class AccountSearcher(Searcher[AccountSearchRequest]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        decision = self.permitter.execute(
+        decision = self.dispatcher.execute(
             request=AccountSearchPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountSearchPermissionRequest")

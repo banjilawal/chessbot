@@ -5,92 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/model/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/model/account/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/model/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/chain/applicant/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/chain/applicant/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/chain/model/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/chain/model/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/chain/request/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/chain/request/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/account/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/reviewer/reviewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/reviewer/reviewer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/role/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/role/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push/account/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/permission/crud/search/model/account/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/crud/search/model/account/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/attack/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/attack/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/maneuver/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/maneuver/responder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/promotion/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/promotion/responder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/player/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/binder/team/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/participate/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/chart/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/vector/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/node/warning/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/coord/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/square/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/register/vector/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/authorization/struct/responder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/attack/kill/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/kill/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/attack/loader/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/loader/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/addition/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/distance/euclidean/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/distance/euclidean/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/product/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/product/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/maneuver/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/maneuver/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/promotion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/promotion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/attack/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/stack/account/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/insertion/stack/account/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/account/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/encounter/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/encounter/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/context/account/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/context/account/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/context/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/context/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/account/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/account/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/alert/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/alert/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/arena/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/arena/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/board/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/board/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/coord/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/coord/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/encounter/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/encounter/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/game/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/game/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/maneuver/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/maneuver/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/path/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/path/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/player/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/player/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/rank/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/rank/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/scalar/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/scalar/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/square/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/square/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/team/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/team/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/token/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/token/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/vector/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/model/vector/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/binder/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/binder/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/chart/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/chart/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/register/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/register/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/toggle/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/toggle/dispatcher.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/toggle/orientation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/toggle/orientation/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/toggle/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/struct/toggle/vector/validator.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,61 +104,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000041457711367" />
-      <entry key="S2" value="1.08070661007355" />
-      <entry key="S5" value="1.4129731031738477" />
-      <entry key="S10" value="1.865974087917122" />
-      <entry key="S30" value="2.929228734906218" />
-      <entry key="S60" value="3.687365094050678" />
-      <entry key="M2" value="4.506336186541198" />
-      <entry key="M5" value="6.630950952165952" />
-      <entry key="M10" value="13.019591540891676" />
-      <entry key="M15" value="22.21961180638567" />
-      <entry key="M30" value="51.60498517699438" />
-      <entry key="H1" value="92.34641999920196" />
-      <entry key="H2" value="150.6104915419297" />
-      <entry key="H4" value="285.5435347327685" />
-      <entry key="D1" value="2072.3690973479274" />
-      <entry key="W1" value="25875.43527267951" />
+      <entry key="MS100" value="1.0000000000094684" />
+      <entry key="MS500" value="1.006241030597259" />
+      <entry key="S2" value="1.2810697309446544" />
+      <entry key="S5" value="1.6019017848686652" />
+      <entry key="S10" value="1.7758232948736878" />
+      <entry key="S30" value="1.9188704216685095" />
+      <entry key="S60" value="1.9585772903989072" />
+      <entry key="M2" value="1.9790696856197294" />
+      <entry key="M5" value="2.0007516414849107" />
+      <entry key="M10" value="2.483749447464496" />
+      <entry key="M15" value="4.156463826936383" />
+      <entry key="M30" value="23.015636092274" />
+      <entry key="H1" value="109.60935820249193" />
+      <entry key="H2" value="279.0969174730706" />
+      <entry key="H4" value="517.4091214639178" />
+      <entry key="D1" value="2403.241634593821" />
+      <entry key="W1" value="26102.924045236836" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.533543073717089E-158" />
-      <entry key="S2" value="4.614338352695859E-40" />
-      <entry key="S5" value="1.843502685674009E-16" />
-      <entry key="S10" value="1.357756489829457E-8" />
-      <entry key="S30" value="0.002385653124637522" />
-      <entry key="S60" value="0.048850427515710344" />
-      <entry key="M2" value="0.22807424807357335" />
-      <entry key="M5" value="0.9890604411033164" />
-      <entry key="M10" value="2.498346640383552" />
-      <entry key="M15" value="3.6048421654577862" />
-      <entry key="M30" value="5.32152779694618" />
-      <entry key="H1" value="6.575531543112498" />
-      <entry key="H2" value="8.162391435730681" />
-      <entry key="H4" value="12.472716305401253" />
-      <entry key="D1" value="115.04917932515124" />
-      <entry key="W1" value="1483.6926445856036" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="5.2469288984510374E-266" />
+      <entry key="S30" value="3.743705921429865E-89" />
+      <entry key="S60" value="6.118583414949383E-45" />
+      <entry key="M2" value="7.823953599948098E-23" />
+      <entry key="M5" value="1.526878070140722E-9" />
+      <entry key="M10" value="6.177364649678077E-5" />
+      <entry key="M15" value="0.002751539659095851" />
+      <entry key="M30" value="0.14651275705956004" />
+      <entry key="H1" value="1.1411374611033998" />
+      <entry key="H2" value="3.543431268736368" />
+      <entry key="H4" value="8.359853126822193" />
+      <entry key="D1" value="107.10716055832286" />
+      <entry key="W1" value="1467.7666701747003" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.409010862511744E-10" />
-      <entry key="MS500" value="0.014926389540438767" />
-      <entry key="S2" value="0.36718704670442" />
-      <entry key="S5" value="0.8865213051958641" />
-      <entry key="S10" value="1.4664096489324345" />
-      <entry key="S30" value="2.7025258891236335" />
-      <entry key="S60" value="3.5863764473418085" />
-      <entry key="M2" value="4.6378255798662025" />
-      <entry key="M5" value="7.564833960274098" />
-      <entry key="M10" value="15.479964293244155" />
-      <entry key="M15" value="25.79354819452419" />
-      <entry key="M30" value="56.90489550166306" />
-      <entry key="H1" value="98.90715918052335" />
-      <entry key="H2" value="158.76178528340506" />
-      <entry key="H4" value="298.00590911068275" />
-      <entry key="D1" value="2187.40183142867" />
-      <entry key="W1" value="27359.100856700363" />
+      <entry key="MS100" value="0.9395227492223696" />
+      <entry key="MS500" value="0.9936880847239702" />
+      <entry key="S2" value="1.2762074817384306" />
+      <entry key="S5" value="1.59915482682788" />
+      <entry key="S10" value="1.7742322930396819" />
+      <entry key="S30" value="1.918280431122297" />
+      <entry key="S60" value="1.9582740139062496" />
+      <entry key="M2" value="1.9789159089715158" />
+      <entry key="M5" value="2.000636237000759" />
+      <entry key="M10" value="2.4824965884943544" />
+      <entry key="M15" value="4.156044784219974" />
+      <entry key="M30" value="23.15572482349564" />
+      <entry key="H1" value="110.74215322551015" />
+      <entry key="H2" value="282.63145980296963" />
+      <entry key="H4" value="525.7596828974748" />
+      <entry key="D1" value="2510.33303039108" />
+      <entry key="W1" value="27570.663876429262" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -910,7 +882,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="101046000" />
+      <workItem from="1793360739922" duration="105542000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2862,6 +2834,11 @@
           <url>file://$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/__init__.py</url>
           <line>13</line>
           <option name="timeStamp" value="660" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/promotion/worker.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="661" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

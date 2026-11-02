@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import AttackResult
 from domain import Encounter
-from exchange import AttackAuthorizationResponder, AttackPermissionRequest, AttackRequest, AuthorizationResponder
+from exchange import AttackPermissionDispatcher, AttackPermissionRequest, AttackRequest, PermissionDispatcher
 from operation import Worker
 
 T = TypeVar("T", bound="AttackRequest")
@@ -23,22 +23,22 @@ class AttackLoader(Worker[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            permitter: Optional[AttackAuthorizationResponder] | None = None,
+            dispatcher: Optional[AttackPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            permitter: Optional[AttackAuthorizationResponder]
+            dispatcher: Optional[AttackPermissionDispatcher]
         """
-        super().__init__(permitter=permitter or AttackAuthorizationResponder())
+        super().__init__(dispatcher=dispatcher or AttackPermissionDispatcher())
         
     @property
-    def permitter(self) -> AttackAuthorizationResponder:
-        return cast(AttackAuthorizationResponder, super().permitter)
+    def dispatcher(self) -> AttackPermissionDispatcher:
+        return cast(AttackPermissionDispatcher, super().dispatcher)
         
     @property
     def execute(self, request: AttackRequest) -> AttackResult:
         method = f"{self.__class__.__name__}.execute"
-        decision = self.permitter.execute(
+        decision = self.dispatcher.execute(
             AttackPermissionRequest(authorization_applicant=request)
         )
         if decision.request_is_denied:

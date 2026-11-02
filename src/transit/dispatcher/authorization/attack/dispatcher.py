@@ -13,7 +13,6 @@ from typing import Any, Optional, cast
 
 from artifcat import AttackDecision
 from authorization import AttackPermitter
-from err import AttackPermissionDispatcherException
 from exchange import AttackPermissionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
@@ -54,7 +53,7 @@ class AttackPermissionDispatcher(
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> AttackDecision:
         """
-        Make a decision about a AttackRequest.
+        Make a decision about an AttackRequest.
         
         Action:
             1.  Send an exception chain in the denial if any of the

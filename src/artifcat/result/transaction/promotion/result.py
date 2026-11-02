@@ -73,3 +73,7 @@ class PromotionResult(TransactionResult[PawnToken]):
     @classmethod
     def success(cls, payload: PawnToken) -> PromotionResult:
         return cls(payload=payload, state=ResultState.SUCCESS)
+    
+    @classmethod
+    def failure(cls, exception:  Exception) -> PromotionResult:
+        return cls(exception=exception, state=ResultState.FAILURE)

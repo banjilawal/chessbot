@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import ComputationPermitter, ComputationRequest
+from authorization import ComputationDispatcher, ComputationRequest
 from operation import Worker
 from artifcat import ComputationResult
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class Computation(Worker[ComputationResult], ABC, Generic[T]):
         1.  Execute a task that produces a ComputationResult on success.
 
     Attributes:
-        permitter: ComputationPermitter
+        dispatcher: ComputationDispatcher
 
     Provides:
         - execute(request: ComputationRequest) -> ComputationResult
@@ -39,16 +39,16 @@ class Computation(Worker[ComputationResult], ABC, Generic[T]):
         Operation
     """
     
-    def __init__(self, permitter: ComputationPermitter):
+    def __init__(self, dispatcher: ComputationDispatcher):
         """
         Args:
-            permitter: ComputationPermitter
+            dispatcher: ComputationDispatcher
         """
-        super().__init__(permitter=permitter)
+        super().__init__(dispatcher=dispatcher)
     
     @property
-    def permitter(self) -> ComputationPermitter:
-        return cast(ComputationPermitter, super().permitter)
+    def dispatcher(self) -> ComputationDispatcher:
+        return cast(ComputationDispatcher, super().dispatcher)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -30,7 +30,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         1.  Executes an AccountPushRequest
 
     Attributes:
-        permitter: AccountPushPermissionDispatcher
+        dispatcher: AccountPushPermissionDispatcher
 
     Provides:
         -   def execute(request: AccountPushRequest) -> InsertionResult
@@ -41,17 +41,17 @@ class AccountPusher(Pusher[AccountPushRequest]):
     
     def __init__(
             self,
-            permitter: Optional[AccountPushPermissionDispatcher] | None = None,
+            dispatcher: Optional[AccountPushPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            permitter: Optional[AccountPushPermissionDispatcher]
+            dispatcher: Optional[AccountPushPermissionDispatcher]
         """
-        super().__init__(permitter=permitter or AccountPushPermissionDispatcher())
+        super().__init__(dispatcher=dispatcher or AccountPushPermissionDispatcher())
     
     @property
-    def permitter(self) -> AccountPushPermissionDispatcher:
-        return cast(AccountPushPermissionDispatcher, super().permitter)
+    def dispatcher(self) -> AccountPushPermissionDispatcher:
+        return cast(AccountPushPermissionDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushRequest) -> InsertionResult:
@@ -59,7 +59,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         Add a new, unique account to the collection.
         
         Action:
-            1.  Send an exception in the Response if the permitter sends a denial.
+            1.  Send an exception in the Response if the dispatcher sends a denial.
             2.  If the item already exists, send a success Response.
             3.  Otherwise, append to the collection before sending the success.
         Args:
@@ -72,7 +72,7 @@ class AccountPusher(Pusher[AccountPushRequest]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the permission_dispatcher sends a denial.
-        permission = self.permitter.execute(
+        permission = self.dispatcher.execute(
             request=AccountPushPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountPushPermissionRequest"),

@@ -29,7 +29,7 @@ class ScalarProduct(Computation[CartesianToggle]):
         1.  Multiply a Vector or Coord by a Scalar.
 
     Attributes:
-            permitter: Optional[ScalarProductPermitter]
+            dispatcher: Optional[ScalarProductDispatcher]
             
     Provides:
         -   def execute(self, request: ScalarProductRequest) -> ComputationResult[CartesianToggle]
@@ -38,16 +38,16 @@ class ScalarProduct(Computation[CartesianToggle]):
         Computation
     """
     
-    def __init__(self, permitter: Optional[ScalarProductPermitter] | None = None):
+    def __init__(self, dispatcher: Optional[ScalarProductDispatcher] | None = None):
         """
         Args:
-            permitter: Optional[ScalarProductPermitter]
+            dispatcher: Optional[ScalarProductDispatcher]
         """
-        super().__init__(permitter=permitter or ScalarProductPermitter())
+        super().__init__(dispatcher=dispatcher or ScalarProductDispatcher())
     
     @property
-    def permitter(self) -> ScalarProductPermitter:
-        return cast(ScalarProductPermitter, super().permitter)
+    def dispatcher(self) -> ScalarProductDispatcher:
+        return cast(ScalarProductDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: ScalarProductRequest) -> ComputationResult[CartesianToggle]:

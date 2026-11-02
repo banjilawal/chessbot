@@ -30,7 +30,7 @@ class Pusher(Inserter[T], ABC, Generic[T]):
         1.  Executes a PushRequest
 
     Attributes:
-        permitter: PushPermissionDispatcher[T]
+        dispatcher: PushPermissionDispatcher[T]
 
     Provides:
         -   def execute(self, request: T) -> InsertionResult
@@ -39,17 +39,17 @@ class Pusher(Inserter[T], ABC, Generic[T]):
         Inserter
     """
     
-    def __init__(self, permitter: PushPermissionDispatcher[T]):
+    def __init__(self, dispatcher: PushPermissionDispatcher[T]):
         """
         Args:
-            permitter: InsertionPermissionPermitter[T]
+            dispatcher: InsertionPermissionDispatcher[T]
         """
-        super().__init__(permitter=permitter[T])
+        super().__init__(dispatcher=dispatcher[T])
     
     
     @property
-    def permitter(self) -> PushPermissionDispatcher[T]:
-        return cast(PushPermissionDispatcher[T], super().permitter)
+    def dispatcher(self) -> PushPermissionDispatcher[T]:
+        return cast(PushPermissionDispatcher[T], super().dispatcher)
     
     
     @abstractmethod

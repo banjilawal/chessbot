@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar, cast
 from artifcat import AttackResult
 from domain import Encounter, KillEncounter, Maneuver
 from exchange import (
-    AttackAuthorizationResponder, AttackPermissionRequest, AttackRequest, AuthorizationResponder,
+    AttackPermissionDispatcher, AttackPermissionRequest, AttackRequest, PermissionDispatcher,
     KillRequest
 )
 from operation import Mover, Worker
@@ -30,19 +30,19 @@ class Killer(Worker[T], ABC, Generic[T]):
             self,
             mover: Optional[Mover] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
-            permitter: Optional[AttackAuthorizationResponder] | None = None,
+            dispatcher: Optional[AttackPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            permitter: Optional[AttackAuthorizationResponder]
+            dispatcher: Optional[AttackPermissionDispatcher]
         """
-        super().__init__(permitter=permitter or AttackAuthorizationResponder())
+        super().__init__(dispatcher=dispatcher or AttackPermissionDispatcher())
         self._priming_validator = priming_validator
         self_mover = mover
         
     @property
-    def permitter(self) -> AttackAuthorizationResponder:
-        return cast(AttackAuthorizationResponder, super().permitter)
+    def dispatcher(self) -> AttackPermissionDispatcher:
+        return cast(AttackPermissionDispatcher, super().dispatcher)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: KillRequest) -> AttackResult:

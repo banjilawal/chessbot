@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from authorization import TokenStackPopPermitter, TokenStackPopRequest
+from authorization import TokenStackPopDispatcher, TokenStackPopRequest
 from repo.collection import TokenStackState
 from err import TokenStackPopException
 from domain.model import Token
@@ -29,25 +29,25 @@ class TokenStackPop(StackPop[Token]):
         1.  Add an item to the TokenStackService
 
     Attributes:
-        permitter: TokenStackPopPermitter
+        dispatcher: TokenStackPopDispatcher
         
     Provides:
-        -   def execute(request: TokenStackPopPermitter) -> DeletionResult
+        -   def execute(request: TokenStackPopDispatcher) -> DeletionResult
 
     Super Class:
         StackPop
     """
     
-    def __init__(self, permitter: Optional[TokenStackPopPermitter] | None = None):
+    def __init__(self, dispatcher: Optional[TokenStackPopDispatcher] | None = None):
         """
         Args:
-            permitter: Optional[TokenStackPopPermitter]
+            dispatcher: Optional[TokenStackPopDispatcher]
         """
-        super().__init__(permitter=permitter or TokenStackPopPermitter())
+        super().__init__(dispatcher=dispatcher or TokenStackPopDispatcher())
     
     @property
-    def permitter(self) -> TokenStackPopPermitter:
-        return cast(TokenStackPopPermitter, super().permitter)
+    def dispatcher(self) -> TokenStackPopDispatcher:
+        return cast(TokenStackPopDispatcher, super().dispatcher)
     
     
     @LoggingLevelRouter.monitor
@@ -67,7 +67,7 @@ class TokenStackPop(StackPop[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that pop rights are not granted.
-        decision = self._permitter.execute(job=request)
+        decision = self._dispatcher.execute(job=request)
         if decision.request_is_denied:
             # Return the exception chain on failure
             return DeletionResult.failure(

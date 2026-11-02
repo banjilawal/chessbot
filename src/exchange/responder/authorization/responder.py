@@ -10,11 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar
 
 from artifcat import Decision
-from authorization import Permitter
-from exchange import PermissionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -32,27 +30,23 @@ class AuthorizationResponder(ABC, Generic[T]):
         dispatcher: AuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: PermissionRequest[T]) -> Decision
+        -   def execute(candidate: Any) -> Decision
 
 
     Super Class:
         Responder
     """
     
-    _authorizer: Permitter[T]
     _dispatcher: PermissionDispatcher[T]
     
     def __init__(
             self,
-            authorizer: Permitter[T],
             dispatcher: PermissionDispatcher[T]
     ):
         """
         Args:
-            authorizer: Authorizer[T]
             dispatcher: AuthorizationDispatcher[T]
         """
-        self._authorizer = authorizer
         self._dispatcher = dispatcher
         
     @property
@@ -62,10 +56,10 @@ class AuthorizationResponder(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PermissionRequest[T]) -> Decision:
+    def execute(self, candidate: Any) -> Decision:
         """
         Args:
-            request: PermissionRequest[T]
+            candidate: Any
         Result:
             Decision
         Raises:

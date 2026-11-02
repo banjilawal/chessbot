@@ -29,7 +29,7 @@ class Inserter(CrudWorker[InsertionResult], ABC, Generic[T]):
         1.  Executes an InsertionRequest
 
     Attributes:
-        permitter: InsertionPermissionPermitter[T]
+        dispatcher: InsertionPermissionDispatcher[T]
 
     Provides:
         -   def execute(self, request: T) -> InsertionResult
@@ -38,17 +38,17 @@ class Inserter(CrudWorker[InsertionResult], ABC, Generic[T]):
         CrudOperation
     """
     
-    def __init__(self, permitter: PushPermissionPermitter[T]):
+    def __init__(self, dispatcher: PushPermissionDispatcher[T]):
         """
         Args:
-            permitter: InsertionPermissionPermitter[T]
+            dispatcher: InsertionPermissionDispatcher[T]
         """
-        super().__init__(permitter=permitter[T])
+        super().__init__(dispatcher=dispatcher[T])
     
     
     @property
-    def permitter(self) -> PushPermissionPermitter[T]:
-        return cast(PushPermissionPermitter[T], super().permitter)
+    def dispatcher(self) -> PushPermissionDispatcher[T]:
+        return cast(PushPermissionDispatcher[T], super().dispatcher)
     
     
     @abstractmethod

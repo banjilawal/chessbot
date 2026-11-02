@@ -27,7 +27,7 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         1.  Add an item to a VectorNodeChain.
         
     Attributes:
-        permitter: RemoveVectorNodePermitter
+        dispatcher: RemoveVectorNodeDispatcher
 
     Provides:
         -   def execute(request: RemoveVectorNodeRequest) -> DeletionResult
@@ -36,16 +36,16 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         RemoveNode
     """
     
-    def __init__(self, permitter: Optional[RemoveVectorNodePermitter] | None = None):
+    def __init__(self, dispatcher: Optional[RemoveVectorNodeDispatcher] | None = None):
         """
         Args:
-            permitter: Optional[RemoveVectorNodePermitter]
+            dispatcher: Optional[RemoveVectorNodeDispatcher]
         """
-        super().__init__(permitter=permitter or RemoveVectorNodePermitter())
+        super().__init__(dispatcher=dispatcher or RemoveVectorNodeDispatcher())
     
     @property
-    def permitter(self) -> RemoveVectorNodePermitter:
-        return cast(RemoveVectorNodePermitter, super().permitter)
+    def dispatcher(self) -> RemoveVectorNodeDispatcher:
+        return cast(RemoveVectorNodeDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor

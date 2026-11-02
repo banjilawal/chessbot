@@ -10,15 +10,17 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, Self, TypeVar
 
-from artifcat import Result
-from exchange import AuthorizationResponder, Request
+from artifcat import TransactionResult
+from exchange import TransactionRequest
+from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Result")
+R = TypeVar("R", bound="TransactionResult")
+T = TypeVar("T", bound="TransactionRequest")
 
-class Worker(ABC, Generic[T]):
+class Worker(ABC, Generic[R, T]):
     """
     Role:
         -   Transaction Worker
@@ -27,35 +29,35 @@ class Worker(ABC, Generic[T]):
         1.  Executes a TransactionRequest
 
     Attributes:
-        permitter: AuthorizationResponder[T]
+        dispatcher: PermissionDispatcher[T]
         
     Provides:
-        -   def execute(request: Request[T]) -> T
+        -   def execute(request: T) -> R
 
     Super Class:
     """
-    _permitter: AuthorizationResponder
+    _dispatcher: PermissionDispatcher[T]
     
-    def __init__(self, permitter: AuthorizationResponder):
+    def __init__(self, dispatcher: PermissionDispatcher[T]):
         """
         Args:
-            permitter: AuthorizationResponder
+            dispatcher: PermissionDispatcher
         """
-        self._permitter = permitter
+        self._dispatcher = dispatcher
         
     @property
-    def permitter(self) -> AuthorizationResponder:
-        return self._permitter
+    def dispatcher(self) -> PermissionDispatcher[T]:
+        return self._dispatcher
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Request[T]) -> T:
+    def execute(self, request: T) -> R:
         """
         Args:
-            request: Request[T]
+            request: T
         Result:
-            T
+            R
         Raises:
             WorkerException
         """

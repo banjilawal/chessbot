@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import StackPushPermitter, StackPushRequest
+from authorization import StackPushDispatcher, StackPushRequest
 from repo.collection import StackService
 from operation import InsertionOperation
 from artifcat import InsertionionResult
@@ -31,7 +31,7 @@ class StackPusher(InsertionOperation[StackService], ABC, Generic[T]):
         1.  Execute a task on a Collection that produces an InsertionionResult.
 
     Attributes:
-        permitter: PushPermitter[T]
+        dispatcher: PushDispatcher[T]
         
     Provides:
         -   def execute(request: InsertionionRequest[T]) -> InsertionionResult
@@ -40,16 +40,16 @@ class StackPusher(InsertionOperation[StackService], ABC, Generic[T]):
         InsertionionOperation
     """
     
-    def __init__(self, permitter: StackPushPermitter[T]):
+    def __init__(self, dispatcher: StackPushDispatcher[T]):
         """
         Args:
-            permitter: PushPermitter[T]
+            dispatcher: PushDispatcher[T]
         """
-        super().__init__(permitter=permitter)
+        super().__init__(dispatcher=dispatcher)
     
     @property
-    def permitter(self) -> StackPushPermitter[T]:
-        return cast(StackPushPermitter[T], super().permitter)
+    def dispatcher(self) -> StackPushDispatcher[T]:
+        return cast(StackPushDispatcher[T], super().dispatcher)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

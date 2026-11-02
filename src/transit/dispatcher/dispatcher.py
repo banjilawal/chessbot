@@ -22,8 +22,7 @@ class Dispatcher(ABC, Generic[T]):
         -   Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a worker.
-        2.  Forward word results to clients.
+        1.  Direct jobs towards a worker then forward the results to clients.
 
     Attributes:
 

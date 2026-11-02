@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 
-from transit.permitter.builder import RegisterBuilpermitter, CartesianToggleRegisterBuilder
+from transit.dispatcher.builder import RegisterBuildispatcher, CartesianToggleRegisterBuilder
 from selector import CartesianToggle
 
 from operation.toolkit import CartesianToggleToolkit
@@ -29,7 +29,7 @@ class AddVector(Computation[CartesianToggle]):
         1.  Compute the contents of a VectorRegister to each other producing either a new Vector or a Coord.
 
     Attributes:
-            permitter: Optional[AddVectorPermitter]
+            dispatcher: Optional[AddVectorDispatcher]
             
     Provides:
         -   def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]
@@ -38,23 +38,23 @@ class AddVector(Computation[CartesianToggle]):
         Computation
     """
     
-    def __init__(self, permitter: Optional[AddVectorPermitter] | None = None):
+    def __init__(self, dispatcher: Optional[AddVectorDispatcher] | None = None):
         """
         Args:
-            permitter: Optional[AddVectorPermitter]
+            dispatcher: Optional[AddVectorDispatcher]
         """
-        super().__init__(permitter=permitter or AddVectorPermitter())
+        super().__init__(dispatcher=dispatcher or AddVectorDispatcher())
         
     @property
-    def permitter(self) -> AddVectorPermitter:
-        return cast(AddVectorPermitter, super().permitter)
+    def dispatcher(self) -> AddVectorDispatcher:
+        return cast(AddVectorDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]:
         pass
     
     
-    _register_builder: Optional[RegisterBuilpermitter]
+    _register_builder: Optional[RegisterBuildispatcher]
     _vector_toggle_toolkit: Optional[CartesianToggleToolkit]
     
     def __init__(

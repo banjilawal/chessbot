@@ -25,8 +25,8 @@ class CrudPermissionDispatcher(PermissionDispatcher[T]):
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a CrudPermitter then send the results
-            back to clients.
+        1.  Direct jobs towards a CrudPermitter then send the results back
+            to clients.
 
     Attributes:
         permitter: CrudPermitter[T]
