@@ -30,7 +30,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             AccountPushPermitter.
 
     Attributes:
-        loader: PushPermissionLoader
+        loader: PushAuthorizationLoader
         
     Provides:
         -   def execute(request: AccountPushPermissionRequest) -> InsertionDecision
@@ -41,17 +41,17 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     
     def __init__(
-            self, loader: Optional[AccountCrudPermissionLoader] | None = None,
+            self, loader: Optional[AccountCrudAuthorizationLoader] | None = None,
     ):
         """
         Args:
-            loader: Optional[PushPermissionLoader]
+            loader: Optional[PushAuthorizationLoader]
         """
-        super().__init__(loader=loader or AccountCrudPermissionLoader())
+        super().__init__(loader=loader or AccountCrudAuthorizationLoader())
     
     @property
-    def loader(self) -> AccountCrudPermissionLoader:
-        return cast(AccountCrudPermissionLoader, super().loader)
+    def loader(self) -> AccountCrudAuthorizationLoader:
+        return cast(AccountCrudAuthorizationLoader, super().loader)
 
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushPermissionRequest) -> InsertionDecision:
@@ -72,7 +72,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the request cannot be loaded.
+        # Handle the case that loader does not bootstrap the process.
         decision = self.loader.execute(candidate=request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.

@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class GameValidationDispatcher(ModelValidationDispatcher[Game]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the GameValidation workflow.
+        1.  Direct the GameValidator then send the results back to clients.
 
     Attributes:
         validator: GameValidator

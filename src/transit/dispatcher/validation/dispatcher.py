@@ -24,20 +24,21 @@ T = TypeVar("T")
 class ValidationDispatcher(Dispatcher[ValidationResult], ABC, Generic[T]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the Validation workflow.
+        1.  Direct Jobs towards a Validator then send the results back to clients.
 
     Attributes:
         validator: Validator[T]
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[T]
+        -   def execute(candidate: Any) -> ValidationResult[T]
 
     Super Class:
         Dispatcher
     """
+    
     _validator: Validator[T]
     
     def __init__(self, validator: Validator[T]):

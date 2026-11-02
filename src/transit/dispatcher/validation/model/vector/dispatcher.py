@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class VectorValidationDispatcher(ModelValidationDispatcher[Vector]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the VectorValidation workflow.
+        1.  Direct the VectorValidator then send the results back to clients.
 
     Attributes:
         validator: VectorValidator

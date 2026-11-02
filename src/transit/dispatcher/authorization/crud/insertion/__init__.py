@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.AUTHORIZATION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
-from transit.dispatcher.authorization.crud.insertion.stack.account import *
+from .push import *
 
 # Modules
-from .dispatcher import PushPermissionDispatcher
+from .dispatcher import InsertionPermissionDispatcher

@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class RankValidationDispatcher(ModelValidationDispatcher[Rank]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the RankValidation workflow.
+        1.  Direct the RankValidator then send the results back to clients.
 
     Attributes:
         validator: RankValidator

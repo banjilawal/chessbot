@@ -31,7 +31,7 @@ class CoordRegisterAuthorizationResponder(RegisterAuthorizationResponder[CoordRe
         dispatcher: CoordRegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: CoordRegisterPermissionRequest[T]) -> CoordRegisterDecision[T]
+        -   def execute(request: CoordRegisterPermissionRequest[T]) -> CoordRegisterDecision
 
     Super Class:
         RegisterValidatorExchange

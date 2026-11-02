@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class TeamValidationDispatcher(ModelValidationDispatcher[Team]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the TeamValidation workflow.
+        1.  Direct the TeamValidator then send the results back to clients.
 
     Attributes:
         validator: TeamValidator

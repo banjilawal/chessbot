@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from artifcat import Decision
 from authorization import Permitter
 from exchange import PermissionRequest
-from transit import AuthorizationDispatcher
+from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Decision")
@@ -32,7 +32,7 @@ class AuthorizationResponder(ABC, Generic[T]):
         dispatcher: AuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: PermissionRequest[T]) -> Decision[T]
+        -   def execute(request: PermissionRequest[T]) -> Decision
 
 
     Super Class:
@@ -40,12 +40,12 @@ class AuthorizationResponder(ABC, Generic[T]):
     """
     
     _authorizer: Permitter[T]
-    _dispatcher: AuthorizationDispatcher[T]
+    _dispatcher: PermissionDispatcher[T]
     
     def __init__(
             self,
             authorizer: Permitter[T],
-            dispatcher: AuthorizationDispatcher[T]
+            dispatcher: PermissionDispatcher[T]
     ):
         """
         Args:
@@ -56,18 +56,18 @@ class AuthorizationResponder(ABC, Generic[T]):
         self._dispatcher = dispatcher
         
     @property
-    def dispatcher(self) -> AuthorizationDispatcher[T]:
+    def dispatcher(self) -> PermissionDispatcher[T]:
         return self._authorizer
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PermissionRequest[T]) -> Decision[T]:
+    def execute(self, request: PermissionRequest[T]) -> Decision:
         """
         Args:
             request: PermissionRequest[T]
         Result:
-            Decision[T]
+            Decision
         Raises:
             AuthorizationResponderException
         """

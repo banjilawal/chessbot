@@ -10,8 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
-
+from typing import Any, Generic, TypeVar
 
 from artifcat import Decision
 from authorization import Permitter
@@ -20,47 +19,47 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PermissionRequest")
 
-class AuthorizationDispatcher(ABC, Generic[T]):
+class PermissionDispatcher(ABC, Generic[T]):
     """
     Role
-        -   Permission Authorization Manager
+        -   Authorization Process Flow
 
     Responsibilities:
-        1.  Grant
+        1.  Direct jobs towards a Permitter then send the results back to clients.
 
     Attributes:
-        authorizer: Authorizer[T]
+        permitter: Permitter[T]
 
     Provides:
-        -   def  execute(self, request: T) -> Decision[T]
+        -   def  execute(candidate: Any) -> Decision
 
     Super Class:
         Dispatcher
     """
     
-    _authorizer: Permitter[T]
+    _permitter: Permitter[T]
     
-    def __init__(self, authorizer: Permitter[T]):
+    def __init__(self, permitter: Permitter[T]):
         """
         Args:
-            authorizer: Authorizer[T]
+            permitter: Permitter[T]
         """
-        self._authorizer = authorizer
+        self._permitter = permitter
         
     @property
-    def authorizer(self) -> Permitter[T]:
-        return self._authorizer
+    def permitter(self) -> Permitter[T]:
+        return self._permitter
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
-        Decide if an activity can be performed.
+        Make a decision about a TransactionRequest
         Args:
-            request: T
+            candidate: Any
         Returns:
-            Decision[T]
+            Decision
         Raises:
-            AuthorizationDispatcherException
+            PermissionDispatcherException
         """
         pass

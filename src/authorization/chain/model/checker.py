@@ -31,7 +31,7 @@ class ReadyChecker(ActorChainable, ABC, Generic[T]):
         validation_service: ValidationService[T]
         
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
         
     Super Class:
     """
@@ -55,9 +55,9 @@ class ReadyChecker(ActorChainable, ABC, Generic[T]):
         """
         Run validation checks on a Request applicant.
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
           ModelCheckerException
         """

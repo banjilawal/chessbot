@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class BoardValidationDispatcher(ModelValidationDispatcher[Board]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the BoardValidation workflow.
+        1.  Direct the BoardValidator then send the results back to clients.
 
     Attributes:
         validator: BoardValidator

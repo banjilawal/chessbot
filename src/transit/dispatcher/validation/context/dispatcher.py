@@ -24,10 +24,10 @@ T = TypeVar("T", bound="Context")
 class ContextValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the ContextValidation workflow.
+        1.  Direct the ContextValidator then send the results back to clients.
 
     Attributes:
         validator: ContextValidator[T]

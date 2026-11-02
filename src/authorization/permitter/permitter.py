@@ -32,7 +32,7 @@ class Permitter(ABC, Generic[T]):
         validation_service: ValidationService[T]
         
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
     """
@@ -62,13 +62,13 @@ class Permitter(ABC, Generic[T]):
         return self._validation_service
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Grant permission for an activity.
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
             AuthorizerException
         """

@@ -35,7 +35,7 @@ class CrudPermitter(Permitter[T], ABC, Generic[T]):
         validation_service: ValidationService[T]
 
     Provides:
-        -   def execute(request: T) -> CrudDecision
+        -   def execute(candidate: Any) -> CrudDecision
 
     Super Class:
         Permitter
@@ -55,11 +55,11 @@ class CrudPermitter(Permitter[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> CrudDecision:
+    def execute(self, candidate: Any) -> CrudDecision:
         """
         Grant permission for a CRUD activity.
         Args:
-            request: T
+            candidate: Any
         Returns:
            CrudDecision
         Raises:

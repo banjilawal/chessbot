@@ -31,7 +31,7 @@ class SquareRegisterAuthorizationResponder(RegisterAuthorizationResponder[Square
         dispatcher: SquareRegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: SquareRegisterPermissionRequest[T]) -> SquareRegisterDecision[T]
+        -   def execute(request: SquareRegisterPermissionRequest[T]) -> SquareRegisterDecision
 
     Super Class:
         RegisterValidatorExchange

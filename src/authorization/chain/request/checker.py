@@ -23,5 +23,5 @@ class Checker(Chainable, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         pass

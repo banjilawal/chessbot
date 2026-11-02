@@ -36,7 +36,7 @@ class StructAuthorizationResponder(
         dispatcher: StructAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: StructPermissionRequest[T]) -> StructDecision[T]
+        -   def execute(request: StructPermissionRequest[T]) -> StructDecision
 
     Super Class:
         ValidationResponder
@@ -59,12 +59,12 @@ class StructAuthorizationResponder(
     def execute(
             self,
             request: StructPermissionRequest[T]
-    ) -> StructDecision[T]:
+    ) -> StructDecision:
         """
         Args:
             request: StructPermissionRequest[T]
         Result:
-            StructDecision[T]
+            StructDecision
         Raises:
             StructAuthorizationResponderException
         """

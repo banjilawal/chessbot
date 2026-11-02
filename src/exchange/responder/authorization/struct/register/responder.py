@@ -35,7 +35,7 @@ class RegisterAuthorizationResponder(
         dispatcher: RegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: RegisterPermissionRequest[T]) -> RegisterDecision[T]
+        -   def execute(request: RegisterPermissionRequest[T]) -> RegisterDecision
 
     Super Class:
         ValidationResponder
@@ -58,12 +58,12 @@ class RegisterAuthorizationResponder(
     def execute(
             self,
             request: RegisterPermissionRequest[T]
-    ) -> RegisterDecision[T]:
+    ) -> RegisterDecision:
         """
         Args:
             request: RegisterPermissionRequest[T]
         Result:
-            RegisterDecision[T]
+            RegisterDecision
         Raises:
             RegisterAuthorizationResponderException
         """

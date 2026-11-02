@@ -23,16 +23,16 @@ from util import LoggingLevelRouter
 class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the AccountValidation workflow.
+        1.  Direct the AccountValidator then send the results back to clients.
 
     Attributes:
         validator: AccountValidator
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
+        -   def execute(candidate: Any) -> ValidationResult[ValidationCarrier]
 
     Super Class:
         ModelValidationDispatcher

@@ -23,10 +23,10 @@ class AccountContextValidationDispatcher(
 ):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the AccountValidation workflow.
+        1.  Direct the AccountValidator then send the results back to clients.
 
     Attributes:
         validator: AccountContextValidator

@@ -35,7 +35,7 @@ class BinderAuthorizationResponder(
         dispatcher: BinderAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: BinderPermissionRequest[T]) -> BinderDecision[T]
+        -   def execute(request: BinderPermissionRequest[T]) -> BinderDecision
 
     Super Class:
         ValidationResponder
@@ -58,12 +58,12 @@ class BinderAuthorizationResponder(
     def execute(
             self,
             request: BinderPermissionRequest[T]
-    ) -> BinderDecision[T]:
+    ) -> BinderDecision:
         """
         Args:
             request: BinderPermissionRequest[T]
         Result:
-            BinderDecision[T]
+            BinderDecision
         Raises:
             BinderAuthorizationResponderException
         """

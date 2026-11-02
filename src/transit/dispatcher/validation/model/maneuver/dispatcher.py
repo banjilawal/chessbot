@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class ManeuverValidationDispatcher(ModelValidationDispatcher[Maneuver]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the ManeuverValidation workflow.
+        1.  Direct the ManeuverValidator then send the results back to clients.
 
     Attributes:
         validator: ManeuverValidator

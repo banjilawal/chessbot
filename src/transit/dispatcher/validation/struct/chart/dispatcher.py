@@ -23,10 +23,7 @@ T = TypeVar("T", bound="Chart")
 class ChartValidationDispatcher(StructValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        - Transaction Worker
-        - Integrity Maintenance
-        - Consistency Assurance
-        - Validation Process Owner
+        -   Assurance Process Flow
 
     Responsibilities:
         1.  Ensure a Model instance is certified safe, reliable, and consistent before use.

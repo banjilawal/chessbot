@@ -98,7 +98,7 @@ class AccountPushPermissionLoader(
             AccountPushPermissionRequest,
             priming.payload,
         )
-        # Handle the case that the permissio_form does not have an id.
+        # Handle the case that the permission_form does not have an id.
         permission_id_validation = self.identity_service.validate_id(
             candidate=permission_form.id
         )
@@ -133,7 +133,7 @@ class AccountPushPermissionLoader(
         # --- Get the permission_request for type checking the applicant. ---#
         applicant = cast(AccountPushRequest, applicant_signature.payload)
         
-        # --- PROCESS_THE_APPLICANT_ID_ATTRIBUTE. ---#
+        # --- PROCESS_THE_TRANSACTION_ID_ATTRIBUTE. ---#
         transaction_id_validation = self.identity_service.validate_id(applicant.id)
         # Handle the case that the id is not a number.
         if transaction_id_validation.is_failure:
@@ -147,7 +147,7 @@ class AccountPushPermissionLoader(
                     ex=transaction_id_validation.exception,
                 )
             )
-        # --- PROCESS_THE_ACCOUNT_PUSH_CANDIDATE_ATTRIBUTE. ---#
+        # --- PROCESS_THE_ACCOUNT_PUSH_ITEM_ATTRIBUTE. ---#
         item_validation = self._validation_service.extract_model(
             request=AccountValidationRequest(
                 item=AccountCarrier(model=applicant.item),

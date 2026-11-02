@@ -32,7 +32,7 @@ class ApplicantReviewer(ABC, Generic[T]):
         checkers: List[ActorChainable]
     
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
     """
@@ -54,13 +54,13 @@ class ApplicantReviewer(ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Decide if authorization should be granted.
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
           ApplicantReviewerException
         """

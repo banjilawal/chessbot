@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class EncounterValidationDispatcher(ModelValidationDispatcher[Encounter]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the EncounterValidation workflow.
+        1.  Direct the EncounterValidator then send the results back to clients.
 
     Attributes:
         validator: EncounterValidator

@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class SquareValidationDispatcher(ModelValidationDispatcher[Square]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the SquareValidation workflow.
+        1.  Direct the SquareValidator then send the results back to clients.
 
     Attributes:
         validator: SquareValidator

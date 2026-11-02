@@ -10,58 +10,60 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
 
 from artifcat import InsertionDecision
 from authorization import InsertionPermitter
-from exchange import PushPermissionRequest
+from exchange import InsertionPermissionRequest
 from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="PushPermissionRequest")
+T = TypeVar("T", bound="InsertionPermissionRequest")
 
-class PushPermissionDispatcher(
+class InsertionPermissionDispatcher(
     CrudPermissionDispatcher[T], ABC, Generic[T]
 ):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Authorization Management
 
     Responsibilities:
-        1.  Direct the InsertionBuild workflow.
+        1.  Direct jobs towards an InsertionPermitter then send the results back
+            to clients.
 
     Attributes:
-        authorizer: InsertionPermitter[T]
+        permitter: InsertionPermitter[T]
         
     Provides:
-        -   def execute(request: t) -> CrudRequest[InsertionCarrier]
+        -   def execute(candidate: Any) -> InsertionDecision
 
     Super Class:
-        PushPermissionDispatcher
+        CrudPermissionDispatcher
     """
     
-    def __init__(self, authorizer:InsertionPermitter[T]):
+    def __init__(self, permitter: InsertionPermitter[T]):
         """
         Args:
-            authorizer: InsertionPermitter
+            permitter: InsertionPermitter[T]
         """
-        super().__init__(authorizer=authorizer)
+        super().__init__(permitter=permitter)
 
 
     @property
-    def authorizer(self) -> InsertionPermitter[T]:
-        return cast(InsertionPermitter[T], super().authorizer)
+    def permitter(self) -> InsertionPermitter[T]:
+        return cast(InsertionPermitter[T], super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> InsertionDecision:
+    def execute(self, candidate: Any) -> InsertionDecision:
         """
-        Verify a candidate is an EntityCarrier whose payload is safe.
+        Make a decision about an InsertionRequest.
+
         Args:
-            request: T
+            candidate: Any
         Returns:
             InsertionDecision
         Raises:
-            PermissionDispatcherException
+            InsertionPermissionDispatcherException
         """
         pass
     

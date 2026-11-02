@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import AttackDecision
 from err import AttackAuthorizationResponderException
 from exchange import AuthorizationResponder, AttackPermissionRequest, EncounterRequest
-from transit import AttackAuthorizationDispatcher
+from transit import AttackPermissionDispatcher
 from util import LoggingLevelRouter
 
 
@@ -38,16 +38,16 @@ class AttackAuthorizationResponder(
         AuthorizationResponder
     """
     
-    def __init__(self, dispatcher: Optional[AttackAuthorizationDispatcher] | None = None,):
+    def __init__(self, dispatcher: Optional[AttackPermissionDispatcher] | None = None, ):
         """
         Args:
             dispatcher: Optional[AttackAuthorizationDispatcher]
         """
-        super().__init__(dispatcher=dispatcher or AttackAuthorizationDispatcher())
+        super().__init__(dispatcher=dispatcher or AttackPermissionDispatcher())
         
     @property
-    def dispatcher(self) -> AttackAuthorizationDispatcher:
-        return cast(AttackAuthorizationDispatcher, super().dispatcher)
+    def dispatcher(self) -> AttackPermissionDispatcher:
+        return cast(AttackPermissionDispatcher, super().dispatcher)
     
     
     @LoggingLevelRouter.monitor

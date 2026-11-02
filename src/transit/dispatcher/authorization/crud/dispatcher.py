@@ -3,63 +3,61 @@
 """
 Module: transit.dispatcher.authorization.crud.dispatcher
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, TypeVar, cast
 
-from artifcat import Decision
+from artifcat import CrudDecision
+from authorization import CrudPermitter
 from exchange import CrudPermissionRequest
-from transit import AuthorizationDispatcher
+from transit import PermissionDispatcher
 from util import LoggingLevelRouter
-
 
 T = TypeVar("T", bound="CrudPermissionRequest")
 
-
-class CrudPermissionDispatcher(AuthorizationDispatcher[T], ABC, Generic[T]):
+class CrudPermissionDispatcher(PermissionDispatcher[T]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct the Build workflow.
+        1.  Direct jobs towards a CrudPermitter then send the results
+            back to clients.
 
     Attributes:
-        authorizer: CrudAuthorizer[T]
+        permitter: CrudPermitter[T]
 
     Provides:
-        -   def execute(self, request: T) -> Decision[T]
+        -   def  execute(candidate: Any) -> CrudDecision
 
     Super Class:
-        Dispatcher
+        PermissionDispatcher
     """
-    _authorizer: CrudAuthorizer[T]
     
-    def __init__(self, authorizer: CrudAuthorizer[T]):
+    def __init__(self, permitter: CrudPermitter[T]):
         """
         Args:
-            authorizer: CrudAuthorizer[T]
+             permitter: CrudPermitter[T]
         """
-        super().__init__(authorizer=authorizer)
+        super().__init__(permitter=permitter)
         
     @property
-    def authorizer(self) -> CrudAuthorizer[T]:
-        return cast(CrudAuthorizer[T], super().authorizer)
-
-    @abstractmethod
+    def permitter(self) -> CrudPermitter:
+        return cast(CrudPermitter, super().permitter)
+    
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> CrudDecision:
         """
-        Verify a candidate is safe to use.
+        Make a decision about a CrudRequest.
+
         Args:
-            request: T
+            candidate: Any
         Returns:
-            Decision[T]
+            CrudDecision
         Raises:
             CrudPermissionDispatcherException
         """

@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the ArenaValidation workflow.
+        1.  Direct the ArenaValidator then send the results back to clients.
 
     Attributes:
         validator: ArenaValidator

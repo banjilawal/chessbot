@@ -9,13 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
-
-from assurance import AlertValidator
 from artifcat import ValidationResult
 from domain import Alert
-from err import AlertValidationDispatcherException
 from transit import ModelValidationDispatcher, AlertCarrier
 from util import LoggingLevelRouter
 
@@ -25,10 +22,10 @@ class AlertValidationDispatcher(
 ):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the AlertValidation workflow.
+        1.  Direct the AlertValidator then send the results back to clients.
 
     Attributes:
         validator: AlertValidator
@@ -42,7 +39,7 @@ class AlertValidationDispatcher(
 
     def __init__(
             self,
-            validator: AlertValidator | None = None,
+            validator: Optional[AlertValidator] | None = None,
     ):
         super().__init__(validator=validator or AlertValidator())
         

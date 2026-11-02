@@ -31,7 +31,7 @@ class VectorRegisterAuthorizationResponder(RegisterAuthorizationResponder[Vector
         dispatcher: VectorRegisterAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: VectorRegisterPermissionRequest[T]) -> VectorRegisterDecision[T]
+        -   def execute(request: VectorRegisterPermissionRequest[T]) -> VectorRegisterDecision
 
     Super Class:
         RegisterValidatorExchange

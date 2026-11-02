@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class CoordValidationDispatcher(ModelValidationDispatcher[Coord]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the CoordValidation workflow.
+        1.  Direct the CoordValidator then send the results back to clients.
 
     Attributes:
         validator: CoordValidator

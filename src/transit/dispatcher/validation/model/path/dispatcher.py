@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class PathValidationDispatcher(ModelValidationDispatcher[Path]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the PathValidation workflow.
+        1.  Direct the PathValidator then send the results back to clients.
 
     Attributes:
         validator: PathValidator

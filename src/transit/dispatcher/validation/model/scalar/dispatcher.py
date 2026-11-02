@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class ScalarValidationDispatcher(ModelValidationDispatcher[Scalar]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the ScalarValidation workflow.
+        1.  Direct the ScalarValidator then send the results back to clients.
 
     Attributes:
         validator: ScalarValidator

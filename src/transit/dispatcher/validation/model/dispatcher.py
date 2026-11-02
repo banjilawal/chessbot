@@ -24,10 +24,11 @@ T = TypeVar("T", bound="Model")
 class ModelValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the ModelValidation workflow.
+        1.  Direct jobs towards a ModelValidator then send the results
+            back to clients.
 
     Attributes:
         validator: ModelValidator[T]
@@ -46,11 +47,9 @@ class ModelValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
         """
         super().__init__(validator=validator)
 
-
     @property
     def validator(self) -> ModelValidator[T]:
         return cast(ModelValidator[T], super().validator)
-    
     
     @abstractmethod
     @LoggingLevelRouter.monitor

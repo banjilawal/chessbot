@@ -34,7 +34,7 @@ class InsertionPermitter(CrudPermitter[T], ABC, Generic[T]):
         validation_service: ValidationService
 
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
         CrudPermitter
@@ -54,14 +54,14 @@ class InsertionPermitter(CrudPermitter[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Grant permission for an activity.
         
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
             InsertionPermitterException
         """

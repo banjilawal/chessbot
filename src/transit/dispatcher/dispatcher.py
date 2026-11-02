@@ -19,11 +19,11 @@ T = TypeVar("T", bound="Result")
 class Dispatcher(ABC, Generic[T]):
     """
     Role
-        -   Director
+        -   Process Flow
 
     Responsibilities:
-        1.  Forward client jobs to a worker.
-        2.  Send the worker's product back to the caller.
+        1.  Direct jobs towards a worker.
+        2.  Forward word results to clients.
 
     Attributes:
 

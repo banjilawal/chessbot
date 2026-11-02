@@ -12,6 +12,7 @@ version: 0.0.2
 
 # Packages
 from .insertion import *
+from .search import *
 
 # Module
 from .dispatcher import CrudPermissionDispatcher

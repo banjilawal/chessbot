@@ -30,7 +30,7 @@ class RolePermitter(Checker[T], RoleChainable, ABC, Generic[T]):
     Attributes:
         
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
         Checker
@@ -52,13 +52,13 @@ class RolePermitter(Checker[T], RoleChainable, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Decide if a Request can be fulfilled with an Actionable.
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
           RoleCheckerException
         """

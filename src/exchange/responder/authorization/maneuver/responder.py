@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import PromotionDecision
 from err import PromotionAuthorizationResponderException
 from exchange import AuthorizationResponder, PromotionPermissionRequest, PromotionRequest
-from transit import PromotionAuthorizationDispatcher
+from transit import PromotionPermissionDispatcher
 from util import LoggingLevelRouter
 
 
@@ -38,16 +38,16 @@ class PromotionAuthorizationResponder(
         AuthorizationResponder
     """
     
-    def __init__(self, dispatcher: Optional[PromotionAuthorizationDispatcher] | None = None,):
+    def __init__(self, dispatcher: Optional[PromotionPermissionDispatcher] | None = None, ):
         """
         Args:
             dispatcher: Optional[PromotionAuthorizationDispatcher]
         """
-        super().__init__(dispatcher=dispatcher or PromotionAuthorizationDispatcher())
+        super().__init__(dispatcher=dispatcher or PromotionPermissionDispatcher())
         
     @property
-    def dispatcher(self) -> PromotionAuthorizationDispatcher:
-        return cast(PromotionAuthorizationDispatcher, super().dispatcher)
+    def dispatcher(self) -> PromotionPermissionDispatcher:
+        return cast(PromotionPermissionDispatcher, super().dispatcher)
     
     
     @LoggingLevelRouter.monitor

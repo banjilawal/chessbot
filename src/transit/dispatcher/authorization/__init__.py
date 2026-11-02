@@ -16,4 +16,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .dispatcher import AuthorizationDispatcher
+from .dispatcher import PermissionDispatcher

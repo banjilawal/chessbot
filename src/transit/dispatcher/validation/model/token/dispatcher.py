@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class TokenValidationDispatcher(ModelValidationDispatcher[Token]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the TokenValidation workflow.
+        1.  Direct the TokenValidator then send the results back to clients.
 
     Attributes:
         validator: TokenValidator

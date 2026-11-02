@@ -35,7 +35,7 @@ class NodeAuthorizationResponder(
         dispatcher: NodeAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: NodePermissionRequest[T]) -> NodeDecision[T]
+        -   def execute(request: NodePermissionRequest[T]) -> NodeDecision
 
     Super Class:
         ValidationResponder
@@ -58,12 +58,12 @@ class NodeAuthorizationResponder(
     def execute(
             self,
             request: NodePermissionRequest[T]
-    ) -> NodeDecision[T]:
+    ) -> NodeDecision:
         """
         Args:
             request: NodePermissionRequest[T]
         Result:
-            NodeDecision[T]
+            NodeDecision
         Raises:
             NodeAuthorizationResponderException
         """

@@ -9,75 +9,112 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import PromotionPermitter
-from err import PromotionAuthorizationDispatcherException
-from exchange import PromotionPermissionRequest, PromotionRequest
-from transit import AuthorizationDispatcher
+from err import PromotionPermissionDispatcherException
+from exchange import PromotionPermissionRequest
+from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class PromotionAuthorizationDispatcher(AuthorizationDispatcher[PromotionPermissionRequest]):
+class PromotionPermissionDispatcher(
+    PermissionDispatcher[PromotionPermissionRequest]
+):
     """
     Role
-        -   Permission Authorization Manager
+        -   Authorization Process Flow
 
     Responsibilities:
-        1.  Manaage promotion authorization.
+        1.  Direct jobs towards a PromotionPermitter then send the results
+            back to clients.
 
     Attributes:
-        authorizer: PromotionAuthorizer
+        permitter: PromotionPermitter
 
     Provides:
-        -   def  execute(request: PromotionRequest) -> PromotionDecision
+        -   def  execute(candidate: Any) -> PromotionDecision
 
     Super Class:
-        Dispatcher
+        PermissionDispatcher
     """
     
-    def __init__(self, authorizer: Optional[PromotionPermitter] | None = None):
+    def __init__(self, permitter: Optional[PromotionPermitter] | None = None):
         """
         Args:
-             authorizer: Optional[PromotionAuthorizer]
+             permitter: Optional[PromotionPermitter]
         """
-        super().__init__(authorizer=authorizer or PromotionPermitter())
+        super().__init__(permitter=permitter or PromotionPermitter())
         
     @property
-    def authorizer(self) -> PromotionPermitter:
-        return cast(PromotionPermitter, super().authorizer)
+    def permitter(self) -> PromotionPermitter:
+        return cast(PromotionPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
+    def execute(self, candidate: Any) -> PromotionDecision:
         """
-        Decide if a Token can be promoted.
+        Make a decision about a PromotionRequest.
         
         Action:
-            1.  Send
+            1.  Send an exception chain in the denial if any of the
+                following occur.
+                    -   The permitter issues a denial.
+                    -   Either the PromotionRequest or its PermissionRequest
+                        are null
+            2.  Otherwise, send a grant decision.
         Args:
-            request: PromotionRequest
+            candidate: Any
         Returns:
             PromotionDecision
         Raises:
-            PromotionAuthorizationDispatcherException
+            PromotionPermissionDispatcherException
         """
         method = f"{self.__class__.__name__}.execution"
         
-        # Handle the case that the authorizer does not grant permission.
-        decision = self.authorizer.execute(request)
+        # Handle the case that the permitter does not grant permission.
+        decision = self.permitter.execute(candidate)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
-                request=request.authorization_applicant,
-                exception=PromotionAuthorizationDispatcherException(
+                exception=PromotionPermissionDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionAuthorizationDispatcherException.MSG,
-                    err_code=PromotionAuthorizationDispatcherException.ERR_CODE,
+                    msg=PromotionPermissionDispatcherException.MSG,
+                    err_code=PromotionPermissionDispatcherException.ERR_CODE,
                     ex=decision.exception,
                 )
             )
-        approval = decision.request
-        # --- Forward the approval. ---#
-        return PromotionDecision.grant(approval)
+        # --- Extract the requests for additional processing. ---#
+        permission_request = decision.permission_request
+        transaction_request = decision.transaction_request
+        
+        # Handle the case that the permission_request is null.
+        if permission_request is None:
+            # Send the exception chain in the denial.
+            return PromotionDecision.denial(
+                exception=PromotionPermissionDispatcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPermissionDispatcherException.MSG,
+                    err_code=PromotionPermissionDispatcherException.ERR_CODE,
+                    ex=PromotionPermissionRequestNullException(),
+                )
+            )
+        # Handle the case that the transaction_request is null.
+        if transaction_request is None:
+            # Send the exception chain in the denial.
+            return PromotionDecision.denial(
+                exception=PromotionPermissionDispatcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPermissionDispatcherException.MSG,
+                    err_code=PromotionPermissionDispatcherException.ERR_CODE,
+                    ex=PromotionRequestNullException()
+                )
+            )
+        # --- Prepare and forward the transaction approval. ---#
+        return PromotionDecision.grant(
+            transaction_request=transaction_request,
+            permission_request=permission_request,
+        )

@@ -24,10 +24,11 @@ T = TypeVar("T", bound="Struct")
 class StructValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity Assurance Manager
+        -   Assurance Process Flow
 
     Responsibilities:
-        1.  Direct the StructValidation workflow.
+        1.  Direct jobs towards a StructValidator        1.  Direct Jobs towards a modelValidator then send the results 
+            back to clients.
 
     Attributes:
         validator: StructValidator[T]

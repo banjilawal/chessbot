@@ -9,81 +9,112 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import AttackDecision
 from authorization import AttackPermitter
-from err import AttackAuthorizationDispatcherException
-from exchange import AttackRequest
-from transit import AuthorizationDispatcher
+from err import AttackPermissionDispatcherException
+from exchange import AttackPermissionRequest
+from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class AttackAuthorizationDispatcher(AuthorizationDispatcher[AttackRequest]):
+class AttackPermissionDispatcher(
+    PermissionDispatcher[AttackPermissionRequest]
+):
     """
     Role
-        -   Permission Authorization Manager
+        -   Authorization Process Flow
 
     Responsibilities:
-        1.  Manaage attack authorization.
+        1.  Direct jobs towards a AttackPermitter then send the results
+            back to clients.
 
     Attributes:
-        authorizer: AttackAuthorizer
+        permitter: AttackPermitter
 
     Provides:
-        -   def  execute(request: AttackRequest) -> AttackDecision
+        -   def  execute(candidate: Any) -> AttackDecision
 
     Super Class:
-        Dispatcher
+        PermissionDispatcher
     """
     
-    def __init__(self, authorizer: Optional[AttackPermitter]):
+    def __init__(self, permitter: Optional[AttackPermitter] | None = None):
         """
         Args:
-             authorizer: Optional[AttackAuthorizer]
+             permitter: Optional[AttackPermitter]
         """
-        super().__init__(authorizer=authorizer or AttackPermitter())
+        super().__init__(permitter=permitter or AttackPermitter())
         
     @property
-    def authorizer(self) -> AttackPermitter:
-        return cast(AttackPermitter, super().authorizer)
+    def permitter(self) -> AttackPermitter:
+        return cast(AttackPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AttackRequest) -> AttackDecision:
+    def execute(self, candidate: Any) -> AttackDecision:
         """
-        Decide if a Token can be promoted.
+        Make a decision about a AttackRequest.
         
         Action:
-            1.  Send
+            1.  Send an exception chain in the denial if any of the
+                following occur.
+                    -   The permitter issues a denial.
+                    -   Either the AttackRequest or its PermissionRequest
+                        are null
+            2.  Otherwise, send a grant decision.
         Args:
-            request: AttackRequest
+            candidate: Any
         Returns:
             AttackDecision
         Raises:
-            AttackAuthorizationDispatcherException
+            AttackPermissionDispatcherException
         """
         method = f"{self.__class__.__name__}.execution"
         
-        # Handle the case that the authorizer does not grant permission.
-        decision = self.authorizer.execute(request)
+        # Handle the case that the permitter does not grant permission.
+        decision = self.permitter.execute(candidate)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return AttackDecision.denial(
-                request=request,
-                exception=AttackAuthorizationDispatcherException(
+                exception=AttackPermissionDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackAuthorizationDispatcherException.MSG,
-                    err_code=AttackAuthorizationDispatcherException.ERR_CODE,
+                    msg=AttackPermissionDispatcherException.MSG,
+                    err_code=AttackPermissionDispatcherException.ERR_CODE,
                     ex=decision.exception,
                 )
             )
-        approved_request = decision.request
-        # --- Prepare an approval from the completed chain. ---#
-        approval = AttackRequest(
-            id=approved_request.id,
-            activity=approved_request.activity,
-            applicant=approved_request.applicant,
+        # --- Extract the requests for additional processing. ---#
+        permission_request = decision.permission_request
+        transaction_request = decision.transaction_request
+        
+        # Handle the case that the permission_request is null.
+        if permission_request is None:
+            # Send the exception chain in the denial.
+            return AttackDecision.denial(
+                exception=AttackPermissionDispatcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AttackPermissionDispatcherException.MSG,
+                    err_code=AttackPermissionDispatcherException.ERR_CODE,
+                    ex=AttackPermissionRequestNullException(),
+                )
+            )
+        # Handle the case that the transaction_request is null.
+        if transaction_request is None:
+            # Send the exception chain in the denial.
+            return AttackDecision.denial(
+                exception=AttackPermissionDispatcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AttackPermissionDispatcherException.MSG,
+                    err_code=AttackPermissionDispatcherException.ERR_CODE,
+                    ex=AttackRequestNullException()
+                )
+            )
+        # --- Prepare and forward the transaction approval. ---#
+        return AttackDecision.grant(
+            transaction_request=transaction_request,
+            permission_request=permission_request,
         )
-        # --- Forward the approval. ---#
-        return AttackDecision.grant(approval)

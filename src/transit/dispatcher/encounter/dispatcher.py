@@ -31,7 +31,7 @@ class EncounterDispatcher(ABC, Generic[T]):
         authorizer: Authorizer[T]
 
     Provides:
-        -   def  execute(self, request: T) -> Decision[T]
+        -   def  execute(candidate: Any) -> Decision
 
     Super Class:
         Dispatcher
@@ -52,13 +52,13 @@ class EncounterDispatcher(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(candidate: Any) -> Decision:
         """
         Decide if an activity can be performed.
         Args:
             request: T
         Returns:
-            Decision[T]
+            Decision
         Raises:
             EncounterDispatcherException
         """

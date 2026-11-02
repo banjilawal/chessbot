@@ -31,7 +31,7 @@ class ParticipationAuthorizationResponder(ChartAuthorizationResponder[Participat
         dispatcher: ParticipationAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: ParticipationPermissionRequest[T]) -> ParticipationDecision[T]
+        -   def execute(request: ParticipationPermissionRequest[T]) -> ParticipationDecision
 
     Super Class:
         ChartValidatorExchange

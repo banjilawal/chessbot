@@ -30,7 +30,7 @@ class ApplicantChecker(Checker[T], ActorChainable, ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
         Checker
@@ -38,13 +38,13 @@ class ApplicantChecker(Checker[T], ActorChainable, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Decide if an Actor can be granted permission to an activity.
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
           ApplicantCheckerException
         """

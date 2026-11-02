@@ -27,14 +27,14 @@ class SearchPermitter(CrudPermitter[T], ABC, Generic[T]):
         -   Permission Authorization
 
     Responsibilities:
-        1.  Issue a decision about a SearchPermissionRequest then forward
-            that decision to a SearchWorker.
+        1.  Issue a searchDecision about a SearchPermissionRequest then forward
+            that searchDecision to a SearchWorker.
 
     Attributes:
         loader: CrudAuthorizationLoader[T]
 
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> SearchDecision
 
     Super Class:
         CrudPermitter
@@ -57,14 +57,14 @@ class SearchPermitter(CrudPermitter[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> SearchDecision[T]:
+    def execute(self, candidate: Any) -> SearchDecision:
         """
-        Grant permission for an activity.
+        Grant permission for a search activitu.
         
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           SearchDecision
         Raises:
             SearchPermitterException
         """

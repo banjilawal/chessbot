@@ -35,7 +35,7 @@ class ChartAuthorizationResponder(
         dispatcher: ChartAuthorizationDispatcher[T]
 
     Provides:
-        -   def execute(request: ChartPermissionRequest[T]) -> ChartDecision[T]
+        -   def execute(request: ChartPermissionRequest[T]) -> ChartDecision
 
     Super Class:
         ValidationResponder
@@ -58,12 +58,12 @@ class ChartAuthorizationResponder(
     def execute(
             self,
             request: ChartPermissionRequest[T]
-    ) -> ChartDecision[T]:
+    ) -> ChartDecision:
         """
         Args:
             request: ChartPermissionRequest[T]
         Result:
-            ChartDecision[T]
+            ChartDecision
         Raises:
             ChartAuthorizationResponderException
         """

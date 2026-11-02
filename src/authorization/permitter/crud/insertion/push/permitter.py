@@ -35,7 +35,7 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         validation_service: ValidationService
 
     Provides:
-        -   def execute(request: T) -> Decision[T]
+        -   def execute(candidate: Any) -> Decision
 
     Super Class:
         InsertionPermitter
@@ -55,14 +55,14 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, candidate: Any) -> Decision:
         """
         Grant permission for a stack push.
         
         Args:
-            request: T
+            candidate: Any
         Returns:
-           Decision[T]
+           Decision
         Raises:
             PushPermitterException
         """
