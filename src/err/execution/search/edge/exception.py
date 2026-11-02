@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import MissingSearchRouteException
+from err import SearchRouteCoverageException
 
 
 __all__ = [
     # ======================# MISSING_EDGE_SEARCH_ROUTE #======================#
-    "EdgeSearchRouteMissingException",
+    "EdgeSearchRouteCoverageException",
 ]
 
 # ======================# MISSING_EDGE_SEARCH_ROUTE #======================#
-class EdgeSearchRouteMissingException(MissingSearchRouteException):
+class EdgeSearchRouteCoverageException(SearchRouteCoverageException):
     """
     Role:
         - Error Tracing

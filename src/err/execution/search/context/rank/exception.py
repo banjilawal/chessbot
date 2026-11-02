@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import MissingSearchRouteException
+from err import SearchRouteCoverageException
 
 
 __all__ = [
@@ -20,11 +20,11 @@ __all__ = [
     "RankContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteMissingException
+from err import ContextSearchRouteCoverageException
 
 
 # ======================# MISSING_RANK_CONTEXT_SEARCH_ROUTE #======================#
-class RankContextSearchRouteMissingException(ContextSearchRouteMissingException):
+class RankContextSearchRouteMissingException(ContextSearchRouteCoverageException):
     """
     Role:
         - Error Tracing

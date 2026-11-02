@@ -5,9 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/production/factory/operation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/factory/operation/search/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/promotion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/promotion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/algebra/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/algebra/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/context/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/context/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/execution/search/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/execution/search/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,61 +104,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000007444128209" />
-      <entry key="MS500" value="1.1568492186553299" />
-      <entry key="S2" value="2.4007171754653287" />
-      <entry key="S5" value="3.6610587548011417" />
-      <entry key="S10" value="5.677479187728989" />
-      <entry key="S30" value="12.798155726777006" />
-      <entry key="S60" value="20.400202799767538" />
-      <entry key="M2" value="31.81934625547592" />
-      <entry key="M5" value="58.68903626690197" />
-      <entry key="M10" value="116.85853201560505" />
-      <entry key="M15" value="176.50989686877793" />
-      <entry key="M30" value="307.9063133063695" />
-      <entry key="H1" value="453.83542515182165" />
-      <entry key="H2" value="638.7377745720819" />
-      <entry key="H4" value="921.9465071815617" />
-      <entry key="D1" value="2922.0728296052466" />
-      <entry key="W1" value="26459.38623077417" />
+      <entry key="MS100" value="1.0000000684677575" />
+      <entry key="MS500" value="1.0369060206833949" />
+      <entry key="S2" value="1.4420057992303392" />
+      <entry key="S5" value="1.9933353996622158" />
+      <entry key="S10" value="3.3548610171841333" />
+      <entry key="S30" value="8.25602200557866" />
+      <entry key="S60" value="13.028353899422143" />
+      <entry key="M2" value="21.263703018717656" />
+      <entry key="M5" value="41.86266420021571" />
+      <entry key="M10" value="61.29567457455458" />
+      <entry key="M15" value="74.37957156068606" />
+      <entry key="M30" value="110.82695468270826" />
+      <entry key="H1" value="208.53578578514743" />
+      <entry key="H2" value="432.975785685635" />
+      <entry key="H4" value="807.3611341667882" />
+      <entry key="D1" value="3011.725951480258" />
+      <entry key="W1" value="26472.72846780588" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.3935536444214818E-298" />
-      <entry key="S5" value="1.0628935563649078E-119" />
-      <entry key="S10" value="5.072712282945959E-60" />
-      <entry key="S30" value="4.189164348320514E-20" />
-      <entry key="S60" value="4.4326444130964436E-10" />
-      <entry key="M2" value="4.669559550366839E-5" />
-      <entry key="M5" value="0.04939277893379223" />
-      <entry key="M10" value="0.5313798316465027" />
-      <entry key="M15" value="1.2357952635641565" />
-      <entry key="M30" value="3.2987162754896224" />
-      <entry key="H1" value="7.111261106641501" />
-      <entry key="H2" value="14.05773359373634" />
-      <entry key="H4" value="24.053281650451492" />
-      <entry key="D1" value="124.19282749539245" />
-      <entry key="W1" value="1473.044087085037" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.796004858397668E-188" />
+      <entry key="S10" value="1.9483338672819096E-94" />
+      <entry key="S30" value="5.797237950916967E-32" />
+      <entry key="S60" value="2.4077478757497037E-16" />
+      <entry key="M2" value="1.553817427351561E-8" />
+      <entry key="M5" value="8.4060204546149E-4" />
+      <entry key="M10" value="0.048816949390649345" />
+      <entry key="M15" value="0.2524639827381723" />
+      <entry key="M30" value="1.7116630576929976" />
+      <entry key="H1" value="5.470926083231981" />
+      <entry key="H2" value="12.638173467346988" />
+      <entry key="H4" value="24.309570548875424" />
+      <entry key="D1" value="126.41386473910302" />
+      <entry key="W1" value="1467.2918583165247" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7955425837206113" />
-      <entry key="MS500" value="1.107368133675232" />
-      <entry key="S2" value="2.3803628326387978" />
-      <entry key="S5" value="3.649956994714116" />
-      <entry key="S10" value="5.669751743787292" />
-      <entry key="S30" value="12.793244176450822" />
-      <entry key="S60" value="20.395956081883654" />
-      <entry key="M2" value="31.815488225784236" />
-      <entry key="M5" value="58.73360691729181" />
-      <entry key="M10" value="117.3773873925738" />
-      <entry key="M15" value="177.72715743133233" />
-      <entry key="M30" value="311.1798813233631" />
-      <entry key="H1" value="460.9197253508531" />
-      <entry key="H2" value="652.7695147434855" />
-      <entry key="H4" value="945.9776518475908" />
-      <entry key="D1" value="3046.2474538312904" />
-      <entry key="W1" value="27932.403306686196" />
+      <entry key="MS100" value="0.8888427420236353" />
+      <entry key="MS500" value="1.012754954133724" />
+      <entry key="S2" value="1.4335270657005585" />
+      <entry key="S5" value="1.9883513148680392" />
+      <entry key="S10" value="3.349925791092217" />
+      <entry key="S30" value="8.250898516476122" />
+      <entry key="S60" value="13.024137909003011" />
+      <entry key="M2" value="21.26042056007218" />
+      <entry key="M5" value="41.86111891042716" />
+      <entry key="M10" value="61.340820128822145" />
+      <entry key="M15" value="74.62361173284081" />
+      <entry key="M30" value="112.51664347493046" />
+      <entry key="H1" value="213.97658556413643" />
+      <entry key="H2" value="445.5832566174321" />
+      <entry key="H4" value="831.6437347193344" />
+      <entry key="D1" value="3138.1202664875304" />
+      <entry key="W1" value="27939.993233189332" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -117,39 +172,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.checker.executor": "Run",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.responder.executor": "Run",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "Python.table.executor": "Debug",
-    "Python.validator (1).executor": "Run",
-    "Python.worker.executor": "Coverage",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/crud/insertion/push",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/operation/crud/insertion/push&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/operation/crud/insertion/push" />
@@ -167,6 +222,31 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -317,6 +397,56 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/assurance/safe/generator" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/safe/generator/generator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="responder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/exchange/response/validation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exchange/response/validation/responder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="responder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -367,6 +497,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="validator (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/assurance/validator/model/token/enemy" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/validator/model/token/enemy/validator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="validator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -384,6 +539,56 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/checker/search/stack/coord/validator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="validator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/assurance/checker/search/stack/coord" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/checker/search/stack/coord/validator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="worker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/operation/crud/insertion/push" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -828,7 +1033,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="115944000" />
+      <workItem from="1793360739922" duration="125098000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

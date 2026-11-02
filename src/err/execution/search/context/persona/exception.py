@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import MissingSearchRouteException
+from err import SearchRouteCoverageException
 
 
 __all__ = [
@@ -20,11 +20,11 @@ __all__ = [
     "PersonaContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteMissingException
+from err import ContextSearchRouteCoverageException
 
 
 # ======================# MISSING_PERSONA_CONTEXT_SEARCH_ROUTE #======================#
-class PersonaContextSearchRouteMissingException(ContextSearchRouteMissingException):
+class PersonaContextSearchRouteMissingException(ContextSearchRouteCoverageException):
     """
     Role:
         - Error Tracing

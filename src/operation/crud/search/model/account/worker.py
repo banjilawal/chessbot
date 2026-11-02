@@ -12,9 +12,11 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import SearchResult
-from domain import Account
+from domain import Account, AccountType, HumanAccount, MachineAccount
+from err import SearchRouteCoverageException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from operation import ModelSearcher
+from repo import AccountStack
 from transit import AccountSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
@@ -25,7 +27,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         -   Transaction Worker
 
     Responsibilities:
-        1.  Executes a SearchRequest
+        1.  Executes an AccountSearchRequest
 
     Attributes:
         dispatcher: AccountSearchPermissionDispatcher
@@ -62,7 +64,8 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
                     -   The request is denied.
                     -   An approved request lacks either the AccountSearchRequest or
                         its PermissionRequest.
-            2.  If the search result is empy
+            2.  If the search result is empy send a SearchResult.empty otherwise, send
+                the success result.
         Args:
             request: AccountSearchRequest
         Result:
@@ -88,26 +91,50 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
                     ex=decision.exception,
                 )
             )
-        approved_request = cast(AccountSearchRequest, decision.transaction_request)
-        context = approved_request.context
-        collection = approved_request.collection
+        # --- Extract the requests for additional processing. ---#
+        transaction_request = cast(
+            AccountSearchRequest,
+            decision.permission_request,
+        )
+        # --- Extract the transaction participants. ---#
+        context = transaction_request.context
+        collection = transaction_request.collection
         
+        # Ge the context attributes for routing.
+        id = context.id
         firstname = context.firstname
+        lastname = context.lastname
+        email = context.email
+        machine_name = context.machine_name
+        account_type = context.account_type
+        # Initialize the result.
+        result = SearchResult.failure(
+            SearchRouteCoverageException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+            )
+        )
+        # --- Perform transaction and state management work. ---#
         
-        result = SearchResult.failure(MissingSearchRouteException())
-        if context.id is not None:
-            result = self._find_by_id(id=context.id, collection=collection)
+        # Entry point int finding by account id.
+        if id is not None:
+            result = self._find_by_id(id=id, collection=collection)
+        # Entry point into finding by firstname.
         if firstname is not None:
             result = self._find_by_firstname(firstname=firstname, collection=collection)
-        if context.lastname is not None:
-            result = self._find_by_lastname(lastname=context.lastname, collection=collection)
-        if context.email is not None:
-            result = self._find_by_email(email=context.email, collection=collection)
-        if context.machine_name is not None:
-            result = self._find_by_machine_name(machine_name=context.machine_name, collection=collection)
-        if context.account_type is not None:
-           result = self._find_by_account_type(account_type=context.account_type, collection=collection)
-        
+        # Entry point into finding by lastname.
+        if lastname is not None:
+            result = self._find_by_lastname(lastname=lastname, collection=collection)
+        # Entry point into finding by email.
+        if email is not None:
+            result = self._find_by_email(email=email, collection=collection)
+        # Entry point into finding by machine_name.
+        if machine_name is not None:
+            result = self._find_by_machine_name(machine_name=machine_name, collection=collection)
+        # Entry point into finding by account_type.
+        if account_type is not None:
+           result = self._find_by_account_type(account_type=account_type, collection=collection)
+        # Handle the case that attribute is not covered.
         if result.is_failure:
             return SearchResult.failure(
                 AccountSearcherException(
@@ -118,63 +145,67 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
                     ex=result.exception,
                 )
             )
+        # --- Perform transaction and state management work. ---#
+        
+        # Handle the case that no matches were found.
         if result.is_empty:
             return result
+        # Otherwise send the
         matches =  cast(List[Account], result.payload)
         return SearchResult.success(matches)
           
-    def _find_by_id(self, id, collection: AccountStack) -> SearchResult[Account]:
+    def _find_by_id(self, id, collection: AccountStack) -> SearchResult[List[Account]]:
+        matches: List[Account] = []
         for item in collection.iterator:
             if item.id == id:
-                return SearchResult.success([item])
-        return SearchResult.empty()
+                matches.append(item)
+        if len(matches) == 0:
+            return SearchResult.empty()
+        return SearchResult.succes(matches)
     
-    def _find_by_firstname(self, firstname: str, collection: AccountStack) -> SearchResult[Account]:
+    def _find_by_firstname(self, firstname: str, collection: AccountStack) -> SearchResult[List[Account]]:
         matches: List[Account] = []
         for account in self._humans(collection):
             if account.firstname.upper() == firstname.upper():
                 matches.append(account)
         if len(matches) == 0:
             return SearchResult.empty()
-        return SearchResult.success(matches)
+        return SearchResult.succes(matches)
     
-    def _find_by_lastname(self, lastname: str, collection: AccountStack) -> SearchResult[Account]:
+    def _find_by_lastname(self, lastname: str, collection: AccountStack) -> SearchResult[List[Account]]:
         matches: List[Account] = []
         for account in self._humans(collection):
             if account.lastname.upper() == lastname.upper():
                 matches.append(account)
         if len(matches) == 0:
             return SearchResult.empty()
-        return SearchResult.success(matches)
+        return SearchResult.succes(matches)
     
-    def _find_by_email(self, email: str, collection: AccountStack) -> SearchResult[Account]:
+    def _find_by_email(self, email: str, collection: AccountStack) -> SearchResult[List[Account]]:
         matches: List[Account] = []
         for account in self._humans(collection):
             if account.email.upper() == email.upper():
                 matches.append(account)
         if len(matches) == 0:
             return SearchResult.empty()
-        return SearchResult.success(matches)
+        return SearchResult.succes(matches)
     
-    def _find_by_machine_name(self, machine_name: str, collection: AccountStack) -> SearchResult[Account]:
+    def _find_by_machine_name(self, machine_name: str, collection: AccountStack) -> SearchResult[List[Account]]:
         matches: List[Account] = []
         for account in self._machines(collection):
             if account.name.upper() == machine_name.upper():
                 matches.append(account)
         if len(matches) == 0:
             return SearchResult.empty()
-        return SearchResult.success(matches)
+        return SearchResult.succes(matches)
     
-    def _find_by_account_type(self, account_type: AccountType, collection) -> SearchResult[Account]:
+    def _find_by_account_type(self, account_type: AccountType, collection: AccountStack) -> SearchResult[List[Account]]:
         matches: List[Account] = []
         if account_type == AccountType.HUMAN_ACCOUNT:
             matches = self._humans(collection)
-        else:
-            matches = self._machines(collection)
         if len(matches) == 0:
             return SearchResult.empty()
-        return SearchResult.success(matches)
-    
+        return SearchResult.succes(matches)
     
     def _humans(self, collection: AccountStack) -> List[HumanAccount]:
         matches: List[HumanAccount] = []

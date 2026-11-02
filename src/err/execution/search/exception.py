@@ -15,11 +15,11 @@ from err import ExecutionRouteMissingException
 
 __all__ = [
     # ======================# MISSING_SEARCH_ROUTE #======================#
-    "MissingSearchRouteException",
+    "SearchRouteCoverageException",
 ]
 
 # ======================# MISSING_SEARCH_ROUTE #======================#
-class MissingSearchRouteException(ExecutionRouteMissingException):
+class SearchRouteCoverageException(ExecutionRouteMissingException):
     """
     Role:
         - Error Tracing

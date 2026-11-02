@@ -27,4 +27,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .exception import ContextSearchRouteMissingException
+from .exception import ContextSearchRouteCoverageException
