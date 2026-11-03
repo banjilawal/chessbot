@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from artifcat import Decision, Permission
 from exchange import PromotionPermissionRequest, PromotionRequest
@@ -52,7 +52,12 @@ class PromotionDecision(Decision[PromotionPermissionRequest, PromotionRequest]):
             permission=permission,
             permission_request=permission_request,
             transaction_request=transaction_request,
-
         )
-
     
+    @property
+    def transaction_request(self) -> Optional[PromotionRequest]:
+        return cast(PromotionRequest, super().transaction_request)
+    
+    @property
+    def permission_request(self) -> Optional[PromotionPermissionRequest]:
+        return cast(PromotionPermissionRequest, super().permission_request)

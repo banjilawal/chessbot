@@ -9,9 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from artifcat import Permission, PushDecision
+from artifcat.decision.decision import T
 from exchange import AccountPushPermissionRequest, AccountPushRequest
 
 
@@ -53,3 +54,11 @@ class AccountPushDecision(
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
+        
+    @property
+    def transaction_request(self) -> Optional[AccountPushRequest]:
+        return cast(AccountPushRequest, super().transaction_request)
+    
+    @property
+    def permission_request(self) -> Optional[AccountPushPermissionRequest]:
+        return cast(AccountPushPermissionRequest, super().permission_request)

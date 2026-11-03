@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from artifcat import ModelSearchDecision, Permission
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
@@ -55,6 +55,14 @@ class AccountSearchDecision(
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
+    
+    @property
+    def transaction_request(self) -> Optional[AccountSearchRequest]:
+        return cast(AccountSearchRequest, super().transaction_request)
+    
+    @property
+    def permission_request(self) -> Optional[AccountSearchPermissionRequest]:
+        return cast(AccountSearchPermissionRequest, super().permission_request)
 
 
     

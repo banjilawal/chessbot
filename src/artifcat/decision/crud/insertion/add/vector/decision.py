@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from artifcat import AddNodeDecision, Permission
 from exchange import AddVectorNodePermissionRequest, AddVectorNodeRequest
@@ -53,3 +53,13 @@ class AddVectorNodeDecision(
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
+    
+    @property
+    def transaction_request(self) -> Optional[AddVectorNodeRequest]:
+        return cast(AddVectorNodeRequest, super().transaction_request)
+    
+    @property
+    def permission_request(self) -> Optional[AddVectorNodePermissionRequest]:
+        return cast(AddVectorNodePermissionRequest, super().permission_request)
+        
+    

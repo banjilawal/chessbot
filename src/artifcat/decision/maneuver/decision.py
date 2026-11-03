@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from artifcat import Decision, Permission
 from exchange import ManeuverPermissionRequest, ManeuverRequest
@@ -53,3 +53,11 @@ class ManeuverDecision(Decision[ManeuverPermissionRequest, ManeuverRequest]):
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
+    
+    @property
+    def transaction_request(self) -> Optional[ManeuverRequest]:
+        return cast(ManeuverRequest, super().transaction_request)
+    
+    @property
+    def permission_request(self) -> Optional[ManeuverPermissionRequest]:
+        return cast(ManeuverPermissionRequest, super().permission_request)
