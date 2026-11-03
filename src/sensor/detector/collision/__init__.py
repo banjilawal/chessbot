@@ -10,8 +10,9 @@ version: 0.0.2
 # =========== SENSOR.DETECTOR.COLLISION PACKAGE ===========#
 
 # Packages
+from .account import *
 from .square import *
 from .token import *
 
 # Modules
-from .detector import Collision
+from .detector import Collider
