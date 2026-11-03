@@ -11,8 +11,10 @@ version: 0.0.2
 
 # Packages
 from .applicant import *
+from .maneuver import *
 from .model import *
 from .request import *
 from .token import *
 
 # Modules
+from .checker import RoleChecker

@@ -1,7 +1,7 @@
-# src/authorization/chain/model/token/__init__.py
+# src/authorization/checker/token/checker.py
 
 """
-Module: authorization.chain.model.token.__init__
+Module: authorization.checker.token.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -39,7 +39,10 @@ class ReadyTokenChecker:
     
     _validation_service: TokenValidationService
     
-    def __init__(self, validation_service: Optional[TokenValidationService] | None = None):
+    def __init__(
+            self,
+            validation_service: Optional[TokenValidationService] | None = None,
+    ):
         """
         Args:
             validation_service: Optional[TokenValidationService]
@@ -53,8 +56,26 @@ class ReadyTokenChecker:
             permission_request: PermissionRequest,
             transaction_request: TransactionRequest,
     ) -> Decision:
+        """
+        Confirm a Token is in the ready state before use.
+
+        Action:
+            1.  Send an exception chain in the denial if either
+                    -   The candidate is not a valid token
+                    -   The token is not in an actionable state.
+            2.  Otherwise, send the Decision approval.
+        Args:
+            candidate: Token
+            permission_request: PermissionRequest
+            transaction_request: TransactionRequest
+        Result:
+            Decision
+        Raises:
+            ReadyTokenCheckerException
+        """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the candidate gets flagged.
         validation = self._validation_service.extract_model(
             request=TokenValidationRequest(
                 item=TokenCarrier(model=candidate),
@@ -62,6 +83,7 @@ class ReadyTokenChecker:
             )
         )
         if validation.is_failure:
+            # Send the exception chain in the denial.
             return Decision.denial(
                 exception=ReadyTokenCheckerException(
                     cls_mthd=method,
@@ -71,14 +93,19 @@ class ReadyTokenChecker:
                     ex=validation.exception,
                 )
             )
+        # --- Cast the validation payload for the readiness check. ---#
         item = cast(Token, validation.payload)
         token = item
         
+        # Access readiness method if item is a KingToken.
         if isinstance(item, KingToken):
             token = cast(KingToken, item)
+        # Access readiness method if the item is a CombatantToken.
         if isinstance(item, CombatantToken):
             token = cast(CombatantToken, item)
+        # Handle the case that the token is disabled
         if token.is_not_ready:
+            # Send the exception chain in the denial.
             return Decision.denial(
                 exception=ReadyTokenCheckerException(
                     cls_mthd=method,
@@ -93,6 +120,7 @@ class ReadyTokenChecker:
                     )
                 )
             )
+        # Otherwise, approve the token for use.
         return Decision.grant(
             transaction_request=transaction_request,
             permission_request=permission_request,

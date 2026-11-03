@@ -1,7 +1,7 @@
-# src/authorization/permitter/maneuver/authorizer.py
+# src/authorization/permitter/maneuver/permitter.py
 
 """
-Module: authorization.permitter.maneuver.authorizer
+Module: authorization.permitter.maneuver.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,11 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
-
-from artifcat import ManeuverDecision
 from authorization import Permitter, ReadyTokenChecker
-from bootstrap import ManeuverAuthorizationLoader
 from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
@@ -37,6 +33,8 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         Permitter
     """
     
+    _ready_token_checker: ReadyTokenChecker
+    
     def __init__(
             self,
             loader: Optional[ManeuverAuthorizationLoader] | None = None,
@@ -45,8 +43,14 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         """
         Args:
             loader: Optional[ManeuverAuthorizationLoader]
+            ready_token_checker: Optional[ReadyTokenChecker]
         """
         super().__init__(loader=loader or ManeuverAuthorizationLoader())
+        self._ready_token_checker = ready_token_checker or ReadyTokenChecker()
+        
+    @property
+    def ready_token_checker(self) -> ReadyTokenChecker:
+        return self._ready_token_checker
     
     @property
     def loader(self) -> ManeuverAuthorizationLoader:
@@ -66,7 +70,7 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         Returns:
            ManeuverDecision
         Raises:
-            ManeuverAuthorizerException
+            ManeuverPermitterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -91,21 +95,57 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         applicant_id = applicant.id
         # Get the applicant information
         token = applicant.token
-        path = applicant.path
+        origin= applicant.path.origin
+        destination = applicant.path.destination
         
-        # Handle the case that the case that the token is not at the path's origin.
-        if
+        # Handle the case that the token is disabled.
+        readiness = self._ready_token_checker.execute(
+            candidate=token,
+            permission_request=permission_form,
+            transaction_request=applicant,
+        )
+        if readiness.request_is_denied:
+            # Send the exception chain in the denial.
+            return ManeuverDecision.denial(
+                exception=ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    ex=readiness.exception,
+                ),
+            )
+        # Handle the case that the token is not at correct starting place.
+        if (
+                origin.occupant != token and
+                origin.coord != token.position
+        ):
+            # Send the exception chain in the denial.
+            return ManeuverDecision.denial(
+                exception=ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    ex=TokenPathOriginConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenPathOriginConsistencyException.MSG,
+                        err_code=TokenPathOriginConsistencyException.ERR_CODE,
+                    ),
+                ),
+            )
         approved_request = decision.request
         decision = self.role_permitter.execute(approved_request)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ManeuverAuthorizerException(
+                exception=ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverAuthorizerException.MSG,
-                    err_code=ManeuverAuthorizerException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     ex=decision.exception,
                 ),
             )
@@ -116,11 +156,11 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
                 request=request,
-                exception=ManeuverAuthorizerException(
+                exception=ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverAuthorizerException.MSG,
-                    err_code=ManeuverAuthorizerException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     ex=decision.exception,
                 ),
             )

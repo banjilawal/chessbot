@@ -14,4 +14,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .checker import Checker
+from .checker import RoleChecker

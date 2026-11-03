@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import ManeuverDecision
-from authorization import Checker
+from authorization import RoleChecker
 from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ManeuverChecker(Checker[ManeuverPermissionRequest], ABC, Generic[T]):
+class ManeuverChecker(RoleChecker[ManeuverPermissionRequest], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -1,7 +1,7 @@
-# src/authorization/chain/applicant/maneuver/checker.py
+# src/authorization/checker/maneuver/token/checker.py
 
 """
-Module: authorization.chain.applicant.maneuver.checker
+Module: authorization.checker.maneuver.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -10,24 +10,21 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
 
 from artifcat import ManeuverDecision
-from authorization import ApplicantChecker
-from domain import Actor
+from authorization import ManeuverApplicantChecker
+from domain import Token
 from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Actor")
 
-
-class ManeuverApplicantChecker(ApplicantChecker[ManeuverPermissionRequest], ABC, Generic[T]):
+class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Interface for implementing a check on an Actor's eligibility to perform a Maneuver.
+        1.  Interface for checking a Token attribute satisfies Maneuver requirements.
 
     Attributes:
 
@@ -35,19 +32,19 @@ class ManeuverApplicantChecker(ApplicantChecker[ManeuverPermissionRequest], ABC,
         -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
 
     Super Class:
-        ApplicantChecker
+        ManeuverApplicantChecker
     """
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
         """
-        Decide if an Actor can be granted permission to a Maneuver.
+        Decide if a Token can be granted permission to launch an Maneuver.
         Args:
             request: ManeuverPermissionRequest
         Returns:
            ManeuverDecision
         Raises:
-          ManeuverApplicantCheckerException
+          ManeuverTokenCheckerException
         """
         pass

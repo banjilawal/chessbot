@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .attack import *
-from .maneuver import *
 from .promotion import *
 
 # Modules

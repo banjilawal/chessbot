@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Decision
-from authorization import ActorChainable, Checker
+from authorization import ActorChainable, RoleChecker
 from exchange import PermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PermissionRequest")
 
-class ApplicantChecker(Checker[T], ActorChainable, ABC, Generic[T]):
+class ApplicantChecker(RoleChecker[T], ActorChainable, ABC, Generic[T]):
     """
     Role:
         -   Authorization
