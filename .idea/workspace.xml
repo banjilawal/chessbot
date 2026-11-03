@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/checker/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/destination/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/destination/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/origin/checker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/applicant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/applicant/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/token/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/token/destination/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/token/destination/checker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/token/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/origin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/applicant/maneuver/token/origin/checker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/request/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/request/checker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/request/maneuver/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/request/maneuver/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/request/promotion/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/request/promotion/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/checker/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/token/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/checker/maneuver/origin/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/maneuver/origin/checker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/authorization/permitter/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/maneuver/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/role/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/role/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/principal/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/principal/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/role/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/role/checker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,61 +49,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0039607798584664" />
-      <entry key="MS500" value="1.3457390126753992" />
-      <entry key="S2" value="2.4007625652057865" />
-      <entry key="S5" value="4.1016067471323225" />
-      <entry key="S10" value="6.321581015630151" />
-      <entry key="S30" value="12.890345897225359" />
-      <entry key="S60" value="19.504242082842627" />
-      <entry key="M2" value="29.568056762861435" />
-      <entry key="M5" value="52.65694297549948" />
-      <entry key="M10" value="72.72567791669012" />
-      <entry key="M15" value="82.6030734570042" />
-      <entry key="M30" value="95.58143734301946" />
-      <entry key="H1" value="127.48861249605267" />
-      <entry key="H2" value="299.45481366069697" />
-      <entry key="H4" value="761.2111208209459" />
-      <entry key="D1" value="3877.330713389332" />
-      <entry key="W1" value="27026.436985675176" />
+      <entry key="MS100" value="1.2417024499967646E-79" />
+      <entry key="MS500" value="1.6885017825266396E-16" />
+      <entry key="S2" value="1.6585754338842992E-4" />
+      <entry key="S5" value="0.06955378182038648" />
+      <entry key="S10" value="0.7826216152319247" />
+      <entry key="S30" value="6.394792766421794" />
+      <entry key="S60" value="13.065029426564895" />
+      <entry key="M2" value="20.60585969462029" />
+      <entry key="M5" value="33.32421637730839" />
+      <entry key="M10" value="65.9979938150698" />
+      <entry key="M15" value="104.23207044981146" />
+      <entry key="M30" value="195.1907764180292" />
+      <entry key="H1" value="299.52802411878133" />
+      <entry key="H2" value="486.76645471426036" />
+      <entry key="H4" value="933.8937251360901" />
+      <entry key="D1" value="4084.822850925707" />
+      <entry key="W1" value="27236.86112422873" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="6.86104597879534E-300" />
-      <entry key="MS500" value="1.520271202692927E-60" />
-      <entry key="S2" value="1.5749050487006505E-15" />
-      <entry key="S5" value="1.7809999079910361E-6" />
-      <entry key="S10" value="0.0018806834823690418" />
-      <entry key="S30" value="0.19579058020199094" />
-      <entry key="S60" value="0.6301504537267316" />
-      <entry key="M2" value="1.2673198204668579" />
-      <entry key="M5" value="2.8096141152163283" />
-      <entry key="M10" value="4.254480341953155" />
-      <entry key="M15" value="4.9787694205943485" />
-      <entry key="M30" value="5.922517860515161" />
-      <entry key="H1" value="7.725100163823327" />
-      <entry key="H2" value="16.457850214814034" />
-      <entry key="H4" value="40.32911478717315" />
-      <entry key="D1" value="198.8371874896881" />
-      <entry key="W1" value="1507.2643669901752" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000000622" />
+      <entry key="S2" value="1.0004992326809619" />
+      <entry key="S5" value="1.0477882585724834" />
+      <entry key="S10" value="1.218622401190047" />
+      <entry key="S30" value="1.6558533002440154" />
+      <entry key="S60" value="2.2861401572971327" />
+      <entry key="M2" value="3.579640315459167" />
+      <entry key="M5" value="5.743205584177054" />
+      <entry key="M10" value="8.064866905558706" />
+      <entry key="M15" value="10.173936177083144" />
+      <entry key="M30" value="15.103425153437229" />
+      <entry key="H1" value="20.905277272238084" />
+      <entry key="H2" value="30.844474027813252" />
+      <entry key="H4" value="54.18782238537814" />
+      <entry key="D1" value="214.81593533532322" />
+      <entry key="W1" value="1522.8150717188455" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.963063553230277" />
-      <entry key="MS500" value="1.3340995497503605" />
-      <entry key="S2" value="2.392550217652986" />
-      <entry key="S5" value="4.0953435578907325" />
-      <entry key="S10" value="6.317874421702063" />
-      <entry key="S30" value="13.051914758294032" />
-      <entry key="S60" value="20.07279078232474" />
-      <entry key="M2" value="30.768998290306968" />
-      <entry key="M5" value="55.40665872326825" />
-      <entry key="M10" value="76.93381098820463" />
-      <entry key="M15" value="87.5452433605857" />
-      <entry key="M30" value="101.48175563817311" />
-      <entry key="H1" value="135.19768373788298" />
-      <entry key="H2" value="315.89214146883455" />
-      <entry key="H4" value="801.5134162679991" />
-      <entry key="D1" value="4076.142958986804" />
-      <entry key="W1" value="28533.673955643433" />
+      <entry key="MS100" value="2.645419769448863E-7" />
+      <entry key="MS500" value="0.04836140604819992" />
+      <entry key="S2" value="0.46917766919090576" />
+      <entry key="S5" value="0.8266425333429955" />
+      <entry key="S10" value="1.7735851082572531" />
+      <entry key="S30" value="7.889799057829168" />
+      <entry key="S60" value="15.198122184951712" />
+      <entry key="M2" value="24.032066931362248" />
+      <entry key="M5" value="38.95088937385733" />
+      <entry key="M10" value="73.96456707309251" />
+      <entry key="M15" value="114.31342879187474" />
+      <entry key="M30" value="210.21724989427713" />
+      <entry key="H1" value="320.3778826997528" />
+      <entry key="H2" value="517.5690629612614" />
+      <entry key="H4" value="988.0443952237713" />
+      <entry key="D1" value="4299.611948909644" />
+      <entry key="W1" value="28759.64853727805" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -141,39 +117,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.checker.executor": "Run",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.responder.executor": "Run",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "Python.table.executor": "Debug",
-    "Python.validator (1).executor": "Run",
-    "Python.worker.executor": "Coverage",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/checker/maneuver",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/authorization/checker/maneuver&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/authorization/checker/maneuver" />
@@ -1002,7 +978,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="166007000" />
+      <workItem from="1793360739922" duration="169441000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

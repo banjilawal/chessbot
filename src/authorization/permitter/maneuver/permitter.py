@@ -10,7 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from authorization import Permitter, ReadyTokenChecker
-from exchange import ManeuverPermissionRequest
+from authorization.checker.maneuver.destination import ManeuverTokenDestinationChecker
+from authorization.checker.maneuver.origin import ManeuverTokenOriginChecker
+from exchange import ManeuverPermissionRequest, ManeuverRequest
 from util import LoggingLevelRouter
 
 
@@ -34,19 +36,27 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
     """
     
     _ready_token_checker: ReadyTokenChecker
+    _origin_checker: ManeuverTokenOriginChecker
+    _destination_checker: ManeuverTokenDestinationChecker
     
     def __init__(
             self,
             loader: Optional[ManeuverAuthorizationLoader] | None = None,
             ready_token_checker: Optional[ReadyTokenChecker] | None = None,
+            origin_checker: Optional[ManeuverTokenOriginChecker] | None = None,
+            destination_checker: Optional[ManeuverTokenDestinationChecker] | None = None,
     ):
         """
         Args:
             loader: Optional[ManeuverAuthorizationLoader]
             ready_token_checker: Optional[ReadyTokenChecker]
+            origin_checker: Optional[ManeuverTokenOriginChecker]
+            destination_checker: Optional[ManeuverTokenDestinationChecker]
         """
         super().__init__(loader=loader or ManeuverAuthorizationLoader())
         self._ready_token_checker = ready_token_checker or ReadyTokenChecker()
+        self._origin_checker = origin_checker or ManeuverTokenOriginChecker()
+        self._destination_checker = destination_checker or ManeuverTokenDestinationChecker()
         
     @property
     def ready_token_checker(self) -> ReadyTokenChecker:
@@ -57,7 +67,7 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         return cast(ManeuverAuthorizationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverPermissionRequest) -> ManeuverDecision:
+    def execute(self, candidate: Any) -> ManeuverDecision:
         """
         Checks if a ManeuverPermissionRequest can be granted.
         
@@ -66,7 +76,7 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
                 the request.
             2.  Otherwise, send a maneuver approval.
         Args:
-            request: ManeuverPermissionRequest
+            candidate: Any
         Returns:
            ManeuverDecision
         Raises:
@@ -95,6 +105,7 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         applicant_id = applicant.id
         # Get the applicant information
         token = applicant.token
+        path = applicant.path
         origin= applicant.path.origin
         destination = applicant.path.destination
         
@@ -115,32 +126,16 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
                     ex=readiness.exception,
                 ),
             )
-        # Handle the case that the token is not at correct starting place.
-        if (
-                origin.occupant != token and
-                origin.coord != token.position
-        ):
-            # Send the exception chain in the denial.
-            return ManeuverDecision.denial(
-                exception=ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    ex=TokenPathOriginConsistencyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenPathOriginConsistencyException.MSG,
-                        err_code=TokenPathOriginConsistencyException.ERR_CODE,
-                    ),
-                ),
-            )
-        approved_request = decision.request
-        decision = self.role_permitter.execute(approved_request)
+        # Handle the case that the token<->origin does not satisfy transaction requirements.
+        decision = self._origin_checker.execute(
+            role=path,
+            principal=token,
+            transaction_request=applicant,
+            permission_request=permission_form,
+        )
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
-                request=request,
                 exception=ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -149,13 +144,16 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
                     ex=decision.exception,
                 ),
             )
-        # Handle the case that the applicant reviewe does not grant actor permission.
-        approved_request = decision.request
-        decision = self.applicant_reviewer.execute(approved_request)
+        # Handle the case that the token<->destination does not satisfy transaction requirements.
+        decision = self._destination_checker.execute(
+            role=path,
+            principal=token,
+            transaction_request=applicant,
+            permission_request=permission_form,
+        )
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
-                request=request,
                 exception=ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -164,127 +162,17 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
                     ex=decision.exception,
                 ),
             )
-        # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverPermissionRequest(
-            id=approved_request.id,
-            activity=approved_request.activity,
-            authorization_applicant=approved_request.applicant,
-        )
-        # --- Forward the approval. ---#
-        return ManeuverDecision.grant(approval)
-
-
-# src/authorization/permitter/crud/insertion/push/account/permitter.py
-
-"""
-Module: authorization.permitter.crud.insertion.push.account.permitter
-Author: Banji Lawal
-Created: 2026-04-03
-version: 0.0.2
-"""
-
-from __future__ import annotations
-
-from typing import Any, Optional, cast
-
-from artifcat import ManeuverDecision
-from authorization import PushPermitter
-from bootstrap import ManeuverAuthorizationLoader
-from err import ChessException
-from exchange import ManeuverPermissionRequest, ManeuverRequest
-from sensor import AccountCollisionSensor
-from util import LoggingLevelRouter
-
-
-class ManeuverPermitter(PushPermitter[ManeuverPermissionRequest]):
-    """
-    Role:
-        -   Permission Authorization
-
-    Responsibilities:
-        1.  Issue a decision about an ManeuverPermissionRequest.
-
-    Attributes:
-        loader: PushAuthorizationLoader
-        collision_sensor: AccountCollisionSensor
-
-    Provides:
-        -   def execute(request: ManeuverPermissionRequest) -> ManeuverDecision
-
-    Super Class:
-        PushPermitter
-    """
-    
-    def __init__(
-            self,
-            collision_sensor: Optional[AccountCollisionSensor] | None = None,
-            loader: Optional[ManeuverAuthorizationLoader] | None = None,
-    ):
-        """
-        Args:
-            loader: Optional[PushAuthorizationLoader]
-        """
-        super().__init__(
-            loader=loader or ManeuverAuthorizationLoader(),
-            collision_sensor=collision_sensor or AccountCollisionSensor(),
-        )
-    
-    @property
-    def loader(self) -> ManeuverAuthorizationLoader:
-        return cast(ManeuverAuthorizationLoader, super().loader)
-    
-    @property
-    def collision_sensor(self) -> AccountCollisionSensor:
-        return cast(AccountCollisionSensor, super().collision_sensor)
-    
-    @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ManeuverDecision:
-        """
-        Grant permission for a stack push.
-
-        Action:
-            1.  Send an exception chain in the InsertionDecision if the request cannot be
-                loaded.
-            2.  If the item already exists in the collection, return a do_nothing decision.
-            3.  Otherwise, send an approval decision.
-        Args:
-            candidate: Any
-        Returns:
-           ManeuverDecision
-        Raises:
-            ManeuverPermitterException
-        """
-        method = f"{self.__class__.__name__}.execute"
-        
-
-        
-        # Handle the case that the item violates a uniqueness constraint.
-        report = self.collision_sensor.execute(
-            attractor=item,
-            collection=collection,
-        )
-        if report.collision_exists:
-            # Send the exception chain in the denial.
-            return ManeuverDecision.denial(
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=report.exception,
-                )
-            )
-        # --- Otherwise prepare an approval of the transaction. ---#
+        # --- Prepare an approval of the transaction. ---#
         transaction_request = ManeuverRequest(
             id=applicant_id,
-            item=item,
-            collection=collection,
+            token=token,
+            path=path,
         )
         permission_request = ManeuverPermissionRequest(
             id=form_id,
             authorization_applicant=transaction_request,
+            
         )
-        
         # --- Forward the approval. ---#
         return ManeuverDecision.grant(
             transaction_request=transaction_request,

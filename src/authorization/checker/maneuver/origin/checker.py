@@ -35,7 +35,7 @@ class ManeuverTokenOriginChecker(ManeuverPathChecker):
             ) -> ManeuverDecision
 
     Super Class:
-        RoleChecker
+        ManeuverPathChecker
     """
     
     @LoggingLevelRouter.monitor

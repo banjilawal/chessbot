@@ -12,11 +12,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from artifcat import Decision, InsertionDecision
+from artifcat import InsertionDecision
 from authorization import CrudPermitter
 from bootstrap import InsertionAuthorizationLoader
-from exchange import InsertionPermissionRequest, ValidationService
-from sensor import CollisionSensor
+from exchange import InsertionPermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="InsertionPermissionRequest")
