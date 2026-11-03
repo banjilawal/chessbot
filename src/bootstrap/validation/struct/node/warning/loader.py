@@ -28,13 +28,10 @@ from util import LoggingLevelRouter
 class EncounterWarningNodeLoader(NodeValidationLoader[EncounterWarningNode]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   EncounterWarningNodeValidationRequest
-            -   EncounterWarningNodeCarrier
-            -   EncounterWarningNodeBlueprint
+        1.  Run type and null checks on items requiring EncounterWarning validation.
 
     Attributes:
         toolkit: EncounterWarningNodeLayerToolkit

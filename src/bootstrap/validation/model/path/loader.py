@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class PathValidationLoader(ModelValidationLoader[Path]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   PathValidationRequest
-            -   PathCarrier
-            -   PathBlueprint
+        1.  Run type and null checks on items requiring Path validation.
 
     Attributes:
         toolkit: PathLayerToolkit

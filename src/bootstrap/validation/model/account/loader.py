@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class AccountValidationLoader(ModelValidationLoader[Account]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   AccountValidationRequest
-            -   AccountCarrier
-            -   AccountBlueprint
+        1.  Run type and null checks on items requiring Account validation.
 
     Attributes:
         toolkit: AccountLayerToolkit

@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class EncounterValidationLoader(ModelValidationLoader[Encounter]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   EncounterValidationRequest
-            -   EncounterCarrier
-            -   EncounterBlueprint
+        1.  Run type and null checks on items requiring Encounter validation.
 
     Attributes:
         toolkit: EncounterLayerToolkit

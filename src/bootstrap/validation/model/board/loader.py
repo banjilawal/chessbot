@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class BoardValidationLoader(ModelValidationLoader[Board]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   BoardValidationRequest
-            -   BoardCarrier
-            -   BoardBlueprint
+        1.  Run type and null checks on items requiring Board validation.
 
     Attributes:
         toolkit: BoardLayerToolkit

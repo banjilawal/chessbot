@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class TeamValidationLoader(ModelValidationLoader[Team]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   TeamValidationRequest
-            -   TeamCarrier
-            -   TeamBlueprint
+        1.  Run type and null checks on items requiring Team validation.
 
     Attributes:
         toolkit: TeamLayerToolkit

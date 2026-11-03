@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class GameValidationLoader(ModelValidationLoader[Game]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   GameValidationRequest
-            -   GameCarrier
-            -   GameBlueprint
+        1.  Run type and null checks on items requiring Game validation.
 
     Attributes:
         toolkit: GameLayerToolkit

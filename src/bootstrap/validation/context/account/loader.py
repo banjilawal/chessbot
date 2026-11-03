@@ -29,10 +29,7 @@ class AccountContextValidationLoader(
         -   Boostrap
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   AccountContextValidationRequest
-            -   AccountContextCarrier
-            -   AccountBlueprint
+        1.  Run type and null checks on items requiring AccountContext validation.
 
     Attributes:
         toolkit: AccountLayerToolkit

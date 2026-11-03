@@ -11,9 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AccountValidationResponse, ValidationResult
-from domain import Account, AccountBlueprint, AccountContext
-from err import AccountContextValidationServiceException, AccountContextValidationServiceException
+from artifcat import AccountContextValidationResponse, AccountValidationResponse, ValidationResponse
+from domain import AccountContext, AccountContextBlueprint
+from exchange import (
+    AccountContextValidationRequest, AccountContextValidationResponder, AccountValidationRequest,
+    ContextValidationService
+)
+
 from util import LoggingLevelRouter
 
 
@@ -36,11 +40,11 @@ class AccountContextValidationService(
     Provides:
         -   def extract_context(
                     request: AccountValidationRequest
-            ) -> ValidationResult[Account]
+            ) -> ValidationResponse[Account]
             
         -   def extract_blueprint(
                     request: AccountValidationRequest
-            ) -> ValidationResult[AccountBlueprint]
+            ) -> ValidationResponse[AccountBlueprint]
 
     Super Class:
         ContextValidationService
@@ -55,107 +59,105 @@ class AccountContextValidationService(
             responder: Optional[AccountContextValidationResponder]
         """
         super().__init__(responder=responder or AccountContextValidationResponder())
-    
+
     @property
     def responder(self) -> AccountContextValidationResponder:
         return cast(AccountContextValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor
-    def extract_context(
+    def extract_model(
             self, 
-            request: AccountValidationRequest,
-    ) -> ValidationResult[Account]:
+            request: AccountContextValidationRequest,
+    ) -> ValidationResponse[AccountContext]:
         """
         Extract a Account safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the service
+            1.  Send an exception chain in the ValidationResponse if the service
                 fails.
             2.  Otherwise, extract the Account from the success response then send it 
                 to the client.
         Args:
             request: AccountValidationRequest
-        Result:
-            ValidationResult[Account]
+        Response:
+            ValidationResponse[Account]
         Raises:
             AccountContextValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
-        if result.is_failure:
+        response = self.responder.execute(request)
+        if response.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return ValidationResponse.failure(
                 AccountContextValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountContextValidationServiceException.MSG,
                     err_code=AccountContextValidationServiceException.ERR_CODE,
-                    ex=result.exception,
+                    ex=response.exception,
                 )
             )
-        response = cast(AccountValidationResponse, result)
-        if not response.valid_context:
+        if response.valid_model is None:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return ValidationResponse.failure(
                 AccountContextValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountContextValidationServiceException.MSG,
                     err_code=AccountContextValidationServiceException.ERR_CODE,
-                    ex=EmptyAccountCarrierException(
+                    ex=EmptyAccountContextCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyAccountCarrierException.MSG,
-                        err_code=EmptyAccountCarrierException.ERR_CODE,
+                        msg=EmptyAccountContextCarrierException.MSG,
+                        err_code=EmptyAccountContextCarrierException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        context = cast(Account, response.valid_context)
-        return ValidationResult.success(context)
+        model = cast(AccountContext, response.valid_model)
+        return ValidationResponse.success(model)
     
     @LoggingLevelRouter.monitor
     def extract_blueprint(
             self,
-            request: AccountValidationRequest,
-    ) -> ValidationResult[AccountBlueprint]:
+            request: AccountContextValidationRequest,
+    ) -> ValidationResponse[AccountContextBlueprint]:
         """
-        Extract a AccountBlueprint safe to use.
+        Extract an AccountContextBlueprint safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the service
+            1.  Send an exception chain in the ValidationResponse if the service
                 fails.
             2.  Otherwise, extract the AccountBluprint from the success response
                 then send it to the client.
         Args:
             request: AccountValidationRequest
-        Result:
-            ValidationResult[AccountBlueprint]
+        Response:
+            ValidationResponse[AccountBlueprint]
         Raises:
             AccountContextValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
-        if result.is_failure:
+        response = self.responder.execute(request)
+        if response.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountContextValidationServiceException(
+            return ValidationResponse.failure(
+                exception=AccountContextValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountContextValidationServiceException.MSG,
                     err_code=AccountContextValidationServiceException.ERR_CODE,
-                    ex=result.exception,
+                    ex=response.exception,
                 )
             )
-        response = cast(AccountValidationResponse, result)
-        if not response.valid_account:
+        if response.valid_blueprint is None:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return ValidationResponse.failure(
                 AccountContextValidationServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -170,5 +172,5 @@ class AccountContextValidationService(
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(AccountBlueprint, response.valid_blueprint)
-        return ValidationResult.success(blueprint)
+        blueprint = cast(AccountContextBlueprint, response.valid_blueprint)
+        return ValidationResponse.success(blueprint)

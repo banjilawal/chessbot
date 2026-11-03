@@ -26,13 +26,10 @@ from util import LoggingLevelRouter
 class SquareRegisterLoader(RegisterValidationLoader[SquareRegister]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   SquareRegisterValidationRequest
-            -   SquareRegister
-            -   SquareRegisterBlueprint
+        1.  Run type and null checks on items requiring SquareRegister validation.t
 
     Attributes:
         toolkit: SquareRegisterLayerToolkit

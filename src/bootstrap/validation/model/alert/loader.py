@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class AlertValidationLoader(ModelValidationLoader[Alert]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   AlertValidationRequest
-            -   AlertCarrier
-            -   AlertBlueprint
+        1.  Run type and null checks on items requiring Alert validation.
 
     Attributes:
         toolkit: AlertLayerToolkit

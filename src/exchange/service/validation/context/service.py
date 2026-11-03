@@ -9,19 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from abc import ABC
+from typing import Generic, TypeVar
 
-from artifcat import ValidationResult
-from domain import Context, ContextBlueprint
-from exchange import (
-    ContextValidationRequest, ContextValidationService, ContextValidationService
-)
-from util import LoggingLevelRouter
+from domain import Context
+from exchange import  ContextValidationResponder, ValidationService
 
 T = TypeVar("T", bound="Context")
 
-class ContextValidationService(ContextValidationService[T], ABC, Generic[T]):
+class ContextValidationService(ValidationService[T], ABC, Generic[T]):
     """
     Role
         -   Service
@@ -30,49 +26,27 @@ class ContextValidationService(ContextValidationService[T], ABC, Generic[T]):
         1.  Extract the either:
                 -   The Context
                 _   The Blueprint
-            from a ContextValidationResponse.
+            from a ContextValidationResponsder.
 
     Attributes:
-        responder: ContextValidationService[T]
+        responder: ContextValidationResponder[T]
         
     Provides:
-        -   def extract_context(
-                    self,
+        -   def extract_model(
                     request: ContextValidationRequest[T]
             ) -> ValidationResult[T]
             
         -   def extract_blueprint(
-                    self,
                     request: ContextValidationRequest[T]
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ContextValidationService
+        ValidationService
     """
     
-    def __init__(self, responder: ContextValidationService[T]):
+    def __init__(self, responder: ContextValidationResponder[T]):
         """
         Args:
-            responder: ContextValidationService[T]
+            responder: ContextValidationResponder[T]
         """
         super().__init__(responder=responder)
-    
-    @property
-    def responder(self) -> ContextValidationService[T]:
-        return cast(ContextValidationService[T], super().service)
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def extract_context(
-            self,
-            request: ContextValidationRequest[T]
-    ) -> ValidationResult[T]:
-        pass
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def extract_context(
-            self,
-            request: ContextValidationRequest[T]
-    ) -> ValidationResult[ContextBlueprint[T]]:
-        pass

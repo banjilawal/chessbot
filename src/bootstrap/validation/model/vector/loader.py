@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class VectorValidationLoader(ModelValidationLoader[Vector]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   VectorValidationRequest
-            -   VectorCarrier
-            -   VectorBlueprint
+        1.  Run type and null checks on items requiring Vector validation.
 
     Attributes:
         toolkit: VectorLayerToolkit

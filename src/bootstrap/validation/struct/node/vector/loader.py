@@ -28,13 +28,10 @@ from util import LoggingLevelRouter
 class VectorNodeLoader(NodeValidationLoader[VectorNode]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   VectorNodeValidationRequest
-            -   VectorNodeCarrier
-            -   VectorNodeBlueprint
+        1.  Run type and null checks on items requiring VectorNode validation.
 
     Attributes:
         toolkit: VectorNodeLayerToolkit

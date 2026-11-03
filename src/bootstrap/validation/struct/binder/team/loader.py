@@ -28,13 +28,10 @@ from util import LoggingLevelRouter
 class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   TeamBinderValidationRequest
-            -   TeamBinder
-            -   TeamBinderBlueprint
+        1.  Run type and null checks on items requiring TeamBinder validation.
 
     Attributes:
         toolkit: TeamBinderLayerToolkit

@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class ScalarValidationLoader(ModelValidationLoader[Scalar]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   ScalarValidationRequest
-            -   ScalarCarrier
-            -   ScalarBlueprint
+        1.  Run type and null checks on items requiring Scalar validation.
 
     Attributes:
         toolkit: ScalarLayerToolkit

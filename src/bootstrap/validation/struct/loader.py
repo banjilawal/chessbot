@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Struct")
 class StructValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
         1.  Run type safety checks on a Candidate for:

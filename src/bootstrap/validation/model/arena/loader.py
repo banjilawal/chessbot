@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class ArenaValidationLoader(ModelValidationLoader[Arena]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   ArenaValidationRequest
-            -   ArenaCarrier
-            -   ArenaBlueprint
+        1.  Run type and null checks on items requiring Arena validation.
 
     Attributes:
         toolkit: ArenaLayerToolkit

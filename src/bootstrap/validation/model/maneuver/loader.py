@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   ManeuverValidationRequest
-            -   ManeuverCarrier
-            -   ManeuverBlueprint
+        1.  Run type and null checks on items requiring Maneuver validation.
 
     Attributes:
         toolkit: ManeuverLayerToolkit

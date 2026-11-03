@@ -26,13 +26,10 @@ from util import LoggingLevelRouter
 class SquareValidationLoader(ModelValidationLoader[Square]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   SquareValidationRequest
-            -   SquareCarrier
-            -   SquareBlueprint
+        1.  Run type and null checks on items requiring Square validation.
 
     Attributes:
         toolkit: SquareLayerToolkit

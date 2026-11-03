@@ -9,9 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Any, Optional, cast
+
+from artifcat import ManeuverDecision
 from authorization import Permitter, ReadyTokenChecker
 from authorization.checker.maneuver.destination import ManeuverTokenDestinationChecker
 from authorization.checker.maneuver.origin import ManeuverTokenOriginChecker
+from bootstrap import ManeuverAuthorizationLoader
 from exchange import ManeuverPermissionRequest, ManeuverRequest
 from util import LoggingLevelRouter
 
@@ -27,6 +31,8 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
     Attributes:
         loader: ManeuverAuthorizationLoader
         ready_token_checker: ReadyTokenChecker
+        origin_checker: ManeuverTokenOriginChecker
+        destination_checker: ManeuverTokenDestinationChecker
 
     Provides:
         -   def execute(candidate: Any) -> ManeuverDecision
@@ -57,10 +63,6 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         self._ready_token_checker = ready_token_checker or ReadyTokenChecker()
         self._origin_checker = origin_checker or ManeuverTokenOriginChecker()
         self._destination_checker = destination_checker or ManeuverTokenDestinationChecker()
-        
-    @property
-    def ready_token_checker(self) -> ReadyTokenChecker:
-        return self._ready_token_checker
     
     @property
     def loader(self) -> ManeuverAuthorizationLoader:
@@ -72,8 +74,12 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         Checks if a ManeuverPermissionRequest can be granted.
         
         Action:
-            1.  Send an exception in Decision if any authoriation delegated denies
-                the request.
+            1.  Send an exception in the denial if any of the following occur.
+                    -   The loader cannot bootstrap the process.
+                    -   The token is not actionable.
+                    -   The token is not at the origin to start the maneuver.
+                    -   The token is already at the destination.
+                    -   The destination is occupied by a friend.
             2.  Otherwise, send a maneuver approval.
         Args:
             candidate: Any
@@ -89,11 +95,11 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         if bootstrap.request_is_denied:
             # Send the exception chain in the denial.
             return ManeuverDecision.denial(
-                exception=ChessException(
+                exception=ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )

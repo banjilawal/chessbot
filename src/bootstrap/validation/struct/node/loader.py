@@ -13,8 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import NodeLayerToolkit, StructValidationLoader
-from domain import Node, Node
+from assurance import NodeLayerToolkit
+from bootstrap import StructValidationLoader
+from domain import Node
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
@@ -22,13 +23,10 @@ T = TypeVar("T", bound="Node")
 class NodeValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   NodeValidationRequest[T]
-            -   NodeCarrier[T]
-            -   NodeBlueprint[T]
+        1.  Run type and null checks on items requiring Node validation.]
 
     Attributes:
 

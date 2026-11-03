@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class FootstepValidationLoader(ModelValidationLoader[Footstep]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   FootstepValidationRequest
-            -   FootstepCarrier
-            -   FootstepBlueprint
+        1.  Run type and null checks on items requiring Footstep validation.
 
     Attributes:
         toolkit: FootstepLayerToolkit

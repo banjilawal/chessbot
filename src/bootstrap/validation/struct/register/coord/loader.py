@@ -25,13 +25,10 @@ from util import LoggingLevelRouter
 class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   CoordRegisterValidationRequest
-            -   CoordRegister
-            -   CoordRegisterBlueprint
+        1.  Run type and null checks on items requiring CoordRegister validation.
 
     Attributes:
         toolkit: CoordRegisterLayerToolkit

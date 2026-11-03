@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class TokenValidationLoader(ModelValidationLoader[Token]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   TokenValidationRequest
-            -   TokenCarrier
-            -   TokenBlueprint
+        1.  Run type and null checks on items requiring Token validation.
 
     Attributes:
         toolkit: TokenLayerToolkit

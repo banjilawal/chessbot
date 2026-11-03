@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   PlayerBinderValidationRequest
-            -   PlayerBinder
-            -   PlayerBinderBlueprint
+        1.  Run type and null checks on items requiring PlayerBinder validation.
 
     Attributes:
         toolkit: PlayerBinderLayerToolkit

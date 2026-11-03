@@ -26,13 +26,10 @@ from util import LoggingLevelRouter
 class PlayerValidationLoader(ModelValidationLoader[Player]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   PlayerValidationRequest
-            -   PlayerCarrier
-            -   PlayerBlueprint
+        1.  Run type and null checks on items requiring Player validation.
 
     Attributes:
         toolkit: PlayerLayerToolkit

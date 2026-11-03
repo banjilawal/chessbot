@@ -27,13 +27,10 @@ from util import LoggingLevelRouter
 class RankValidationLoader(ModelValidationLoader[Rank]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   RankValidationRequest
-            -   RankCarrier
-            -   RankBlueprint
+        1.  Run type and null checks on items requiring Rank validation.
 
     Attributes:
         toolkit: RankLayerToolkit

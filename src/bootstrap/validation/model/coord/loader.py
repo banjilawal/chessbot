@@ -26,13 +26,9 @@ from util import LoggingLevelRouter
 class CoordValidationLoader(ModelValidationLoader[Coord]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Process Bootstrapper
 
-    Responsibilities:
-        1.  Run type safety checks on a Candidate for:
-            -   CoordValidationRequest
-            -   CoordCarrier
-            -   CoordBlueprint
+        1.  Run Type and null checks on items Requiring coord Validation.
 
     Attributes:
         toolkit: CoordLayerToolkit
