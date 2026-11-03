@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
 
 from artifcat import SearchDecision
 from authorization import CrudPermitter

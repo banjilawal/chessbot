@@ -13,8 +13,10 @@ from typing import Optional, cast
 
 from artifcat import InsertionDecision
 from authorization import PushPermitter
+from bootstrap import AccountPushAuthorizationLoader
 from err import ChessException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
+from sensor import AccountCollisionSensor
 from util import LoggingLevelRouter
 
 
@@ -29,9 +31,10 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     Attributes:
         loader: PushAuthorizationLoader
+        collision_sensor: AccountCollisionSensor
         
     Provides:
-        -   def execute(request: AccountPushPermissionRequest) -> InsertionDecision
+        -   def execute(request: AccountPushPermissionRequest) -> AccountPushDecision
 
     Super Class:
         PushPermitter
@@ -39,20 +42,25 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     
     def __init__(
-            self, loader: Optional[AccountCrudAuthorizationLoader] | None = None,
+            self,
+            collision_sensor: Optional[AccountCollisionSensor] | None = None,
+            loader: Optional[AccountPushAuthorizationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[PushAuthorizationLoader]
         """
-        super().__init__(loader=loader or AccountCrudAuthorizationLoader())
+        super().__init__(
+            loader=loader or AccountPushAuthorizationLoader(),
+            collision_sensor=collision_sensor or AccountCollisionSensor(),
+        )
     
     @property
-    def loader(self) -> AccountCrudAuthorizationLoader:
-        return cast(AccountCrudAuthorizationLoader, super().loader)
+    def loader(self) -> AccountPushAuthorizationLoader:
+        return cast(AccountPushAuthorizationLoader, super().loader)
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushPermissionRequest) -> InsertionDecision:
+    def execute(self, candidate: Any) -> InsertionDecision:
         """
         Grant permission for a stack push.
         
@@ -75,7 +83,6 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return InsertionDecision.denial(
-                permission_request=request,
                 exception=ChessException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -87,17 +94,27 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         # --- Extract the transaction_request for processing. ---#
         permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
         transaction_request = cast(AccountPushRequest, decision.transaction_request)
+        
         item = transaction_request.item
         collection = transaction_request.collection
         
-        # Do nothing when the item is already in the collection.
-        if item in collection.items:
+        # Handle the case that the item violates a uniqueness constraint.
+        report = self.collision_sensor.execute(
+            attractor=item,
+            collection=collection,
+        )
+        # Handle the case that the item violates a uniqueness constraint.
+        if report.collision_exists:
             # Send the exception chain in the denial.
-            return InsertionDecision.do_nothing(
-                permission_request=permission_request,
+            return InsertionDecision.denial(
+                exception=ChessException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ChessException.MSG,
+                    err_code=ChessException.ERR_CODE,
+                    ex=report.exception,
+                )
             )
-        # Handle the case there is an id collision.
-        
         # --- Otherwise prepare an approval of the transaction. ---#
         transaction_request = AccountPushRequest(
             id=transaction_request.id,

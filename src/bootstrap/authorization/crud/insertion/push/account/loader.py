@@ -13,17 +13,17 @@ from typing import Any, Optional, cast
 
 from artifcat import AccountPushDecision
 from bootstrap import PushAuthorizationLoader
+from collection import AccountStack
 from domain import Account
 from exchange import (
     AccountPushRequest, AccountPushPermissionRequest, AccountValidationRequest,
     AccountValidationService
 )
-from repo import AccountStack
 from transit import AccountCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountPushPermissionLoader(
+class AccountPushAuthorizationLoader(
     PushAuthorizationLoader[AccountPushPermissionRequest]
 ):
     """
