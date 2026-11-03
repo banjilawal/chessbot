@@ -11,7 +11,6 @@ version: 0.0.2
 # =========== SENSOR.DETECTOR PACKAGE ===========#
 
 # Packages
-from .collision import *
 from .token import *
 
 # Modules

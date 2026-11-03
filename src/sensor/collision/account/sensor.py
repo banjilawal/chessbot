@@ -1,7 +1,7 @@
-# src/sensor/detector/collision/account/detector.py
+# src/sensor/collision/account/sensor.py
 
 """
-Module: sensor.detector.collision.account.detector
+Module: sensor.collision.account.sensor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

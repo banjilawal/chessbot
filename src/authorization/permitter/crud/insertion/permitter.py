@@ -14,8 +14,9 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import Decision
 from authorization import CrudPermitter
-from exchange import InsertionPermissionRequest
-from exchange.service import ValidationService
+from bootstrap import InsertionAuthorizationLoader
+from exchange import InsertionPermissionRequest, ValidationService
+from sensor import CollisionSensor
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="InsertionPermissionRequest")
@@ -30,6 +31,7 @@ class InsertionPermitter(CrudPermitter[T], ABC, Generic[T]):
             that decision an Inserter.
 
     Attributes:
+        collision_sensor: CollisionSensor
         loader: CrudAuthorizationLoader[T]
         validation_service: ValidationService
 
@@ -40,17 +42,27 @@ class InsertionPermitter(CrudPermitter[T], ABC, Generic[T]):
         CrudPermitter
     """
     
+    _collision_sensor: CollisionSensor
+    
+    
     def __init__(
             self,
-            loader: InsertionAuthorizationLoader[T],
+            collision_sensor: CollisionSensor,
             validation_service: ValidationService,
+            loader: InsertionAuthorizationLoader[T],
     ):
         """
         Args:
-            loader: InsertionAuthorizationLoader[T],
-            validation_service: ValidationService,
+            collision_sensor: CollisionSensor
+            validation_service: ValidationService
+            loader: InsertionAuthorizationLoader[T]
         """
         super().__init__(loader=loader, validation_service=validation_service)
+        self._collision_sensor = collision_sensor
+        
+    @property
+    def collision_sensor(self) -> CollisionSensor:
+        return self._collision_sensor
         
     @abstractmethod
     @LoggingLevelRouter.monitor

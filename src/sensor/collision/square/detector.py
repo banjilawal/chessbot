@@ -1,7 +1,7 @@
-# src/sensor/detector/collision/square/detector.py
+# src/sensor/collision/square/detector.py
 
 """
-Module: sensor.detector.collision.square.detector
+Module: sensor.collision.square.detector
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
