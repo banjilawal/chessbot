@@ -1,7 +1,7 @@
-# src/sensor/detector/collider/detector.py
+# src/sensor/detector/collision/detector.py
 
 """
-Module: sensor.detector.collider.detector
+Module: sensor.detector.collision.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,14 +11,14 @@ from __future__ import annotations
 
 
 from artifcat.report import CollisionReport
-from sensor import Collider
+from sensor import Collision
 from repo.collection import TokenStackService
 from transit.carrier import TokenCarrier
 from util import LoggingLevelRouter
 
 
 
-class TokenCollider(Collider[TokenCarrier]):
+class TokenCollision(Collision[TokenCarrier]):
     """
      Role:
          - Collision Detection Worker
@@ -53,7 +53,7 @@ class TokenCollider(Collider[TokenCarrier]):
                     *   The target does not pass a validation check.
             2.  Otherwise, send:
                     *   The target.
-                    *   The collider.
+                    *   The collision.
                     *   The exception indicating which unique property is shared.
         Args:
             target: TokenBlueprint
@@ -69,14 +69,14 @@ class TokenCollider(Collider[TokenCarrier]):
             TokenCollisionDetectionException
         """
         method = f"{self.__class__.__name__}.execute"
-        # --- Loop through the collider_candidates to find matches. ---#
+        # --- Loop through the collision_candidates to find matches. ---#
         
         for item in stream.items:
             # Handle the case that a token already has the target's id.
             if item.id == attractor.entity.id:
                 # Return the collision details in the report.
                 return CollisionReport.collision(
-                    collider=item,
+                    collision=item,
                     target_set=attractor,
                     colliding_variable="id",
                     collision_value=item.id,
@@ -91,7 +91,7 @@ class TokenCollider(Collider[TokenCarrier]):
             if item.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
                 return CollisionReport.collision(
-                    collider=item,
+                    collision=item,
                     target_set=attractor,
                     colliding_variable="designation",
                     collision_value=item.name,
@@ -102,11 +102,11 @@ class TokenCollider(Collider[TokenCarrier]):
                         err_code=TokenNameCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that the target shares its home_square_name with a collider_candidates member.
+            # Handle the case that the target shares its home_square_name with a collision_candidates member.
             if item.home_square.name.upper() == attractor.entity.formation.home_square_name.upper():
-                # Return the collider, designation, and the exception.
+                # Return the collision, designation, and the exception.
                 return CollisionReport.collision(
-                    collider=item,
+                    collision=item,
                     target_set=attractor,
                     colliding_variable="home_square",
                     collision_value=item.home_square,

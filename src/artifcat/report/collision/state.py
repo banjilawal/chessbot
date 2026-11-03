@@ -1,7 +1,7 @@
-# src/artifact/report/collision/state.py
+# src/report/collision/state.py
 
 """
-Module: artfifact.report.collision.state
+Module: report.collision.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

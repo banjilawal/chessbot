@@ -1,7 +1,7 @@
-# src/artifact/report/collision/__init__.py
+# src/report/collision/__init__.py
 
 """
-Module: artfifact.report.collision.__init__
+Module: report.collision.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,5 +12,5 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .report import CollisionReport
+from .collision import CollisionReport
 from .state import CollisionState

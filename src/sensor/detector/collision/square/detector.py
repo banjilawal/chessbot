@@ -1,7 +1,7 @@
-# src/sensor/detector/collider/square/detector.py
+# src/sensor/detector/collision/square/detector.py
 
 """
-Module: sensor.detector.collider.square.detector
+Module: sensor.detector.collision.square.detector
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 
 from artifcat.report import CollisionReport
 from artifcat import AnalysisResult
-from sensor import Collider
+from sensor import Collision
 from repo.collection import SquareStackService
 from transit.carrier import SquareCarrier
 from util import LoggingLevelRouter
 
 
-class SquareCollider(Collider[SquareCarrier]):
+class SquareCollision(Collision[SquareCarrier]):
     """
      Role:
          - Collision Detection Worker
@@ -54,7 +54,7 @@ class SquareCollider(Collider[SquareCarrier]):
                     *   The target does not pass a validation check.
             2.  Otherwise, send:
                     *   The target.
-                    *   The collider.
+                    *   The collision.
                     *   The exception indicating which unique property is shared.
         Args:
             attractor: SquareBlueprint
@@ -81,7 +81,7 @@ class SquareCollider(Collider[SquareCarrier]):
                     ex=validation_result.exception
                 )
             )
-        # --- Loop through the collider_candidates to find matches. ---#
+        # --- Loop through the collision_candidates to find matches. ---#
         
         for square in stream.items:
             # Handle the case that a candidate already has the target's id.
@@ -89,7 +89,7 @@ class SquareCollider(Collider[SquareCarrier]):
                 # Return the collision details in the report.
                 return CollisionReport.collision(
                     target_set=attractor,
-                    collider=square,
+                    collision=square,
                     colliding_variable=f"id",
                     collision_value=attractor.id,
                     exception=SquareIdCollisionException(
@@ -104,7 +104,7 @@ class SquareCollider(Collider[SquareCarrier]):
                 # Return the collision details in the report.
                 return CollisionReport.collision(
                     target_set=attractor,
-                    collider=square,
+                    collision=square,
                     colliding_variable=f"name",
                     collision_value=attractor.name,
                     exception=SquareNameCollisionException(
@@ -119,7 +119,7 @@ class SquareCollider(Collider[SquareCarrier]):
                 # Return the collision details in the report.
                 return CollisionReport.collision(
                     target_set=attractor,
-                    collider=square,
+                    collision=square,
                     colliding_variable=f"coord",
                     collision_value=attractor.coord,
                     exception=SquareCoordCollisionException(

@@ -14,8 +14,8 @@ from typing import Generic, TypeVar
 
 from sensor import Sensor
 
-T = TypeVar("T", bound="StateModel")
+T = TypeVar("T", bound="Model")
 
 
-class EnvironmentReporter(Sensor, ABC, Generic[T]):
+class Collider(Sensor, ABC, Generic[T]):
     pass

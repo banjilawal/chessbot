@@ -89,8 +89,8 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         # --- Extract the transaction_request for processing. ---#
         permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
         transaction_request = cast(AccountPushRequest, decision.transaction_request)
-        item = cast(Account, transaction_request.item)
-        collection = cast(AccountStack, transaction_request.collection)
+        item = transaction_request.item
+        collection = transaction_request.collection
         
         # Do nothing when the item is already in the collection.
         if item in collection.items:
@@ -98,6 +98,8 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             return InsertionDecision.do_nothing(
                 permission_request=permission_request,
             )
+        # Handle the case there is an id collision.
+        
         # --- Otherwise prepare an approval of the transaction. ---#
         transaction_request = AccountPushRequest(
             id=transaction_request.id,

@@ -75,6 +75,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the request is denied.
         decision = self.dispatcher.execute(
             candidate=AccountSearchPermissionRequest(
                 authorization_applicant=request,
@@ -82,6 +83,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
             )
         )
         if decision.request_is_denied:
+            # Send an exception chain in the result.
             return SearchResult.failure(
                 AccountSearcherException(
                     cls_mthd=method,
@@ -149,12 +151,15 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         
         # Handle the case that no matches were found.
         if result.is_empty:
-            return result
+            return SearchResult.empty()
         # Otherwise send the
         matches =  cast(List[Account], result.payload)
         return SearchResult.success(matches)
           
-    def _find_by_id(self, id, collection: AccountStack) -> SearchResult[List[Account]]:
+    def _find_by_id(
+            self, id, collection: AccountStack
+    ) -> SearchResult[List[Account]]:
+        """id_context handler"""
         matches: List[Account] = []
         for item in collection.iterator:
             if item.id == id:
@@ -163,7 +168,9 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_firstname(self, firstname: str, collection: AccountStack) -> SearchResult[List[Account]]:
+    def _find_by_firstname(
+            self, firstname: str, collection: AccountStack) -> SearchResult:
+        """firstname_context handler"""
         matches: List[Account] = []
         for account in self._humans(collection):
             if account.firstname.upper() == firstname.upper():
@@ -172,7 +179,8 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_lastname(self, lastname: str, collection: AccountStack) -> SearchResult[List[Account]]:
+    def _find_by_lastname(self, lastname: str, collection: AccountStack) -> SearchResult:
+        """lastname_context handler"""
         matches: List[Account] = []
         for account in self._humans(collection):
             if account.lastname.upper() == lastname.upper():
@@ -181,7 +189,8 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_email(self, email: str, collection: AccountStack) -> SearchResult[List[Account]]:
+    def _find_by_email(self, email: str, collection: AccountStack) -> SearchResult:
+        """email_context handler"""
         matches: List[Account] = []
         for account in self._humans(collection):
             if account.email.upper() == email.upper():
@@ -190,7 +199,8 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_machine_name(self, machine_name: str, collection: AccountStack) -> SearchResult[List[Account]]:
+    def _find_by_machine_name(self, machine_name: str, collection: AccountStack) -> SearchResult:
+        """machine_name_context handler"""
         matches: List[Account] = []
         for account in self._machines(collection):
             if account.name.upper() == machine_name.upper():
@@ -200,6 +210,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         return SearchResult.succes(matches)
     
     def _find_by_account_type(self, account_type: AccountType, collection: AccountStack) -> SearchResult[List[Account]]:
+        """account_type_context handler"""
         matches: List[Account] = []
         if account_type == AccountType.HUMAN_ACCOUNT:
             matches = self._humans(collection)
@@ -208,6 +219,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         return SearchResult.succes(matches)
     
     def _humans(self, collection: AccountStack) -> List[HumanAccount]:
+        """human accounts helper"""
         matches: List[HumanAccount] = []
         for item in collection.iterator:
             if isinstance(item, HumanAccount):
@@ -215,6 +227,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         return matches
     
     def _machines(self, collection: AccountStack) -> List[MachineAccount]:
+        """machine accounts helper"""
         matches: List[MachineAccount] = []
         for item in collection.iterator:
             if isinstance(item, MachineAccount):
