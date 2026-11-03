@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from repo.collection import CoordStackService
+from collection import CoordStackService
 from exchange import StackSearchRequest, Coord, CoordSearchContext
 
 

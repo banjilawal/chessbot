@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC
 
-from repo.collection import Collectable
+from collection import Collectable
 from domain import Searchable, Model
 
 

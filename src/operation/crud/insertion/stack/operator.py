@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import StackPushDispatcher, StackPushRequest
-from repo.collection import StackService
+from collection import StackService
 from operation import InsertionOperation
 from artifcat import InsertionionResult
 from util import LoggingLevelRouter

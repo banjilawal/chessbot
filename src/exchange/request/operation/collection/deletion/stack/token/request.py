@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from authorization import StackPopRequest
-from repo.collection import TokenStackService
+from collection import TokenStackService
 from exchange.model import Token
 
 

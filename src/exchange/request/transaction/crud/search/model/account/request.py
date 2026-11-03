@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import SearchResult
-from repo.collection import AccountStack
+from collection import AccountStack
 from domain import Account, AccountContext
 from exchange import ModelSearchRequest
 

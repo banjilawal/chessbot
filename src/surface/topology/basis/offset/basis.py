@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from repo.collection import VectorSet
+from collection import VectorSet
 from surface.topology import TopologyBasis
 
 T = TypeVar("T", bound="OffsetRank")

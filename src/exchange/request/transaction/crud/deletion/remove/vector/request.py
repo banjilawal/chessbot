@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import SearchResult
-from repo.collection import VectorChain
+from collection import VectorChain
 from domain import VectorNode
 from exchange import RemoveNodeRequest
 

@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from artifcat import InsertionResult
-from repo.collection import Chain
+from collection import Chain
 from domain import Node
 from exchange import InsertionRequest
 

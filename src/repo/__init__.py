@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== REPO PACKAGE ===========#
 
 # Packages
-from .collection import *
 from .service import *
 
 # Modules

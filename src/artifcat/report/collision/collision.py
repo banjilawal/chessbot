@@ -16,7 +16,7 @@ from domain import Model
 
 T = TypeVar("T", bound="Model")
 
-class CollisionReport(Report, Generic[T]):
+class AttributeCollisionReport(Report, Generic[T]):
     _attractor: T
     _state: CollisionState
     _collider: Optional[T]
@@ -30,7 +30,7 @@ class CollisionReport(Report, Generic[T]):
             state: CollisionState,
             collider: Optional[T] | None = None,
             value: Optional[str] | None = None,
-            identifier: Optional[Any] | None = None,
+            attribute: Optional[Any] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
@@ -39,14 +39,14 @@ class CollisionReport(Report, Generic[T]):
             state: CollisionState
             collider: Optional[T]
             value: Optional[str]
-            identifier: Optional[Any]
+            attribute: Optional[Any]
             exception:Optional[Exception]
         """
         self._attractor = attractor
         self._state = state
         self._collider = collider
         self._value = value
-        self._identifier = identifier
+        self._identifier = attribute
         self._exception = exception
         
     @property
@@ -66,7 +66,7 @@ class CollisionReport(Report, Generic[T]):
         return self._value
         
     @property
-    def identifier(self) -> Optional[str]:
+    def attribute(self) -> Optional[str]:
         return self._identifier
         
     @property
@@ -89,26 +89,26 @@ class CollisionReport(Report, Generic[T]):
         return not self.collision_exists
     
     @classmethod
-    def free(cls, attractor: T) -> CollisionReport:
+    def report_no_duplicates(cls, attractor: T) -> AttributeCollisionReport:
         return cls(
             attractor=attractor,
             state=CollisionState.NO_COLLISIONS,
         )
         
     @classmethod
-    def hit(
+    def report_duplicate(
             cls,
             value: Any,
-            identifier: str,
+            attribute: str,
             collider: T,
             attractor: T,
             exception: Exception,
-    ) -> CollisionReport:
+    ) -> AttributeCollisionReport:
         return cls(
             value=value,
             collider=collider,
             attractor=attractor,
-            identifier=identifier,
+            attribute=attribute,
             exception=exception,
             state=CollisionState.COLLISION_DETECTED,
         )

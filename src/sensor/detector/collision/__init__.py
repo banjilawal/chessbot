@@ -15,4 +15,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .detector import Collider
+from .detector import CollisionSensor

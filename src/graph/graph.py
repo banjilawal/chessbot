@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from repo.collection import EdgeStackService, VertexStackService
+from collection import EdgeStackService, VertexStackService
 
 
 class Graph:

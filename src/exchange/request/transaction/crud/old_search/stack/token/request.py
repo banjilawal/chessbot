@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from repo.collection import TokenStackService
+from collection import TokenStackService
 from exchange import StackSearchRequest, Token, TokenSearchContext
 
 

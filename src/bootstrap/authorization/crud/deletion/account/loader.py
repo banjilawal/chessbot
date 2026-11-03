@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import Decision
 from authorization import DeletionAuthorizationLoader
-from repo.collection import AccountStack
+from collection import AccountStack
 from domain import Account
 from err import (
     AccountPushPermissionLoaderException, CrudRequestNullException,

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, TypeVar, cast
 
-from repo.collection import VectorSet, VectorTree
+from collection import VectorSet, VectorTree
 from err import TopologyGeneratorException, VectorSetNullException
 from domain.model import Vector
 from artifcat import ComputationResult, MethodResultType

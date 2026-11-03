@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import SearchResult
-from repo.collection import Stack
+from collection import Stack
 from domain import Context, Model
 from exchange import SearchRequest
 

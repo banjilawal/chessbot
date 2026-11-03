@@ -1,7 +1,7 @@
-# src/sensor/detector/collision/detector.py
+# src/sensor/detector/collision/account/detector.py
 
 """
-Module: sensor.detector.collision.detector
+Module: sensor.detector.collision.account.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,89 +9,155 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, cast
+from typing import List
 
-from artifcat import CollisionReport
+from artifcat import AttributeCollisionReport
+from collection import AccountStack
 from domain import Account, HumanAccount, MachineAccount
-from sensor import Collider
+from sensor import CollisionSensor
 from util import LoggingLevelRouter
 
 
-class AccountCollider(Collider[Account]):
-    
+class AccountCollisionSensor(CollisionSensor[Account]):
+    """
+    Role:
+        -   Sensor
+
+    Responsibilities:
+        1.  Detect if an item violates the AttackStack uniqueness constraint.
+
+    Attributes:
+
+    Provides:
+        -   def execute(
+                    attractor: Account,
+                    collection: AccountStack,
+            ) -> AttributeCollisionReport
+
+    Super Class:
+        CollisionSensor
+    """
 
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: Account, items: List[Account]) -> CollisionReport:
+    def execute(self, attractor: Account, collection: AccountStack) -> AttributeCollisionReport:
+        """
+        Check that the attractor will be unique in the collection.
+
+        Action:
+            1.  Send an exception chain in the collision report if either duplicate;
+                ids, emails, or machine_names are detected.
+            2.  Otherwise, report the attractor is unique.
+        Args:
+            attractor: Account
+            collection: AccountStack
+        Result:
+            AttributeCollisionReport
+        Raises:
+            AccountCollisionSensorException
+        """
         method = f"{self.__class__.__name__}.execute"
         
-        report = CollisionReport(attractor=attractor)
-        # Handle the case that there is an id collision
-        for item in items:
+        # --- Perform the check on the unique id attribute all Accounts have. ---#
+        for item in collection.items:
+            # Handle the case there are duplicate ids.
             if item.id == attractor.id:
-                return CollisionReport(
+                # Send an exception chain in the  report.
+                return AttributeCollisionReport.report_duplicate(
                     attractor=attractor,
                     collider=item,
-                    identifier="id",
+                    attribute="id",
                     value=item.id,
-                    exception=AccountColliderException(
-                        AcountIdCollisionException()
+                    exception=AccountCollisionSensorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AccountCollisionSensorException.MSG,
+                        err_code=AccountCollisionSensorException.ERR_CODE,
+                        ex=AccountIdCollisionException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=AccountIdCollisionException.MSG,
+                            err_code=AccountIdCollisionException.ERR_CODE,
+                        )
                     )
-            )
-        # Handle the case that there is an email collision
-        if isinstance(attractor, HumanAccount):
-            return self._email_collider(attractor, self._humans(items))
-        return self._machine_name_collider(attractor, self._machines(items))
+                )
+        # --- Run collision tests on unique sub class attributes. ---#
         
+        # Human account uniqueness branch.
+        if isinstance(attractor, HumanAccount):
+            return self._human_account_collider(
+                human_attractor=attractor,
+                humans=collection.human_accounts,
+                parent_method=method,
+            )
+        # Otherwise run the default sub-collider.
+        return self._machine_account_collider(
+                machine_attractor=attractor,
+                machines=collection.machine_accounts,
+                parent_method=method,
+            )
+            
     @LoggingLevelRouter.monitor
-    def _email_collider(
+    def _human_account_collider(
             self,
             human_attractor: HumanAccount,
-            items: List[HumanAccount]
-    ) -> CollisionReport:
-        for item in items:
-            if human_attractor.email.upper() == item.email.upper():
-                return CollisionReport(
+            humans: List[HumanAccount],
+            parent_method: str
+    ) -> AttributeCollisionReport:
+        """duplicate_email_detector"""
+        # Set up the target.
+        attribute = "email"
+        target = human_attractor.email.upper()
+        
+        # --- Run the collider. ---#
+        for human in humans:
+            # Handle the case that an email address is shared.
+            if human.email.upper() == target:
+                # Send an exception chain in the report.
+                return AttributeCollisionReport.report_duplicate(
                     attractor=human_attractor,
-                    collider=item,
-                    identifier="email",
-                    value=item.email,
-                    exception=AccountColliderException(
-                        AcountEmailCollisionException()
+                    collider=human,
+                    attribute=attribute,
+                    value=target,
+                    exception=AccountCollisionSensorException(
+                        cls_mthd=parent_method,
+                        cls_name=self.__class__.__name__,
+                        ex=AccountEmailCollisionException()
                     )
                 )
-        return CollisionReport.free(attractor=human_attractor)
+        # Otherwise report the attractor is unique
+        return AttributeCollisionReport.report_no_duplicates(attractor=human_attractor)
     
     @LoggingLevelRouter.monitor
-    def _machine_name_collider(
+    def _machine_account_collider(
             self,
             machine_attractor: MachineAccount,
-            items: List[MachineAccount]
+            machines: List[MachineAccount],
+            parent_method: str
     ):
-        for item in items:
-            if machine_attractor.email.upper() == item.email.upper():
-                return CollisionReport(
+        """duplicate_machine_name_detector"""
+        # Set up the target.
+        attribute = "machine_name"
+        target = machine_attractor.name.upper()
+        
+        # --- Run the collider. ---#
+        for machine in machines:
+            # Handle the case that a machine_name is shared.
+            if machine.name.upper() == target:
+                # Send an exception chain in the report.
+                return AttributeCollisionReport.report_duplicate(
                     attractor=machine_attractor,
-                    collider=item,
-                    identifier="machine_name",
-                    value=item.machine_name,
-                    exception=AccountColliderException(
-                        AcountMachineNameCollisionException()
+                    collider=machine,
+                    attribute=attribute,
+                    value=target,
+                    exception=AccountCollisionSensorException(
+                        cls_mthd=parent_method,
+                        cls_name=self.__class__.__name__,
+                        msg=AccountCollisionSensorException.MSG,
+                        err_code=AccountCollisionSensorException.ERR_CODE,
+                        ex=AccountMachineCollisionException()
                     )
                 )
-        return CollisionReport.free(attractor=machine_attractor)
-    
-    def _humans(self, items: List[Account]) -> List[HumanAccount]:
-        matches: List[HumanAccount] = []
-        for item in items:
-            if isinstance(item, HumanAccount):
-                matches.append(item)
-        return matches
-    
-    def _machines(self, items: List[Account]) -> List[MachineAccount]:
-        matches: List[MachineAccount] = []
-        for item in items:
-            if isinstance(item, MachineAccount):
-                matches.append(item)
-        return matches
+        # Otherwise report the attractor is unique.
+        return AttributeCollisionReport.report_no_duplicates(attractor=machine_attractor)
     
     

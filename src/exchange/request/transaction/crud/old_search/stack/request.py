@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from repo.collection import StackService
+from collection import StackService
 from exchange import Context, SearchRequest, StateModel
 
 T = TypeVar("T", bound="StateModel")

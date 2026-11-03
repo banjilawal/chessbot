@@ -8,7 +8,7 @@ version: 0.0.2
 """
 from typing import Optional, Tuple, Type, cast
 
-from repo.collection import VectorSet
+from collection import VectorSet
 from err import BishopTraversalPatternException
 from err.null.topology.recurrence.group import BishopRecurrenceSeriesNullException
 from domain.model import Bishop

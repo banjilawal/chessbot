@@ -5,12 +5,236 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sensor/detector/collision/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sensor/detector/collision/account/detector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/chain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/chain/check/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/chain/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/station/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/database/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/sets/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/sets/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/sets/register/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/sets/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/stack/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/stack/model/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/tree/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/tree/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/collection/tree/vector/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/account/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/blueprint/model/state/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/blueprint/model/state/team/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/graph/station/component.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/graph/station/component.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/coord/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/edge/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/edge/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/node/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/node/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/square/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/team/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/team/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/schema/offset/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/schema/offset/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/pop/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/pop/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/remove/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/remove/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/remove/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/remove/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/deletion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/add/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/account/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/account/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/push/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/insertion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/arena/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/arena/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/board/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/board/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/coord/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/coord/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/game/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/game/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/player/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/player/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/rank/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/rank/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/snapshot/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/snapshot/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/square/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/square/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/team/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/team/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/old_search/stack/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/model/account/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/model/account/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/model/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/model/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/node/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/node/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/node/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/node/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/crud/search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/chain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/chain/check/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/chain/check/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/check/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/chain/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/chain/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/chain/vector/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/vector/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/arena/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/arena/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/attack/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/attack/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/board/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/game/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/coord/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/coord/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/edge/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/edge/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/game/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/board/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/maneuver/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/maneuver/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/path/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/path/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/player/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/player/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/square/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/square/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/station/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/station/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/station/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/team/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/team/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/database/token/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/token/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/coord/set.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/sets/coord/set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/register/set.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/sets/register/set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/set.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/sets/set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/sets/vector/set.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/sets/vector/set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/arena/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/arena/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/attack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/attack/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/attack/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/attack/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/board/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/board/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/coord/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/coord/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/edge/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/edge/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/game/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/game/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/maneuver/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/maneuver/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/maneuver/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/maneuver/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/model/account/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/model/account/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/model/account/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/model/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/model/collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/node/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/node/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/path/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/path/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/path/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/path/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/path/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/player/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/player/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/result/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/result/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/result/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/snapshot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/snapshot/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/snapshot/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/square/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/square/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/station/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/station/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/station/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/station/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/team/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/team/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/token/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/token/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/stack/token/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/token/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/tree/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/tree/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/tree/coord/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/tree/coord/tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/tree/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/tree/tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/tree/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/collection/tree/vector/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/tree/vector/tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/quota/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/quota/rank/analyzer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sensor/detector/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/detector/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/detector/collision/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/detector/collision/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/detector/collision/account/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/detector/collision/account/detector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sensor/detector/collision/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/detector/collision/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/detector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/detector/collision/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/detector/collision/square/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/detector/collision/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/detector/collision/token/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/offset/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/offset/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/offset/king/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/offset/king/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/offset/knight/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/offset/knight/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/developed/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/developed/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/opening/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/opening/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/developed/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/developed/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/opening/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/opening/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/offset/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/offset/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/traversal/runner/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/traversal/runner/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/traversal/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/traversal/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/rank/rook/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/rank/rook/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/container/register/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/container/register/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/container/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/container/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/offset/king/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/offset/king/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/attack/developed/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/attack/developed/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/attack/opening/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/attack/opening/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/attack/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/attack/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/maneuver/developed/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/maneuver/developed/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/maneuver/opening/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/maneuver/opening/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/maneuver/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/maneuver/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/pawn/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/traversal/bishop/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/attack/signature/traversal/bishop/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/container/register/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/container/register/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/container/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/container/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/offset/king/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/offset/king/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/attack/developed/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/attack/developed/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/attack/opening/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/attack/opening/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/attack/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/attack/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/maneuver/developed/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/maneuver/developed/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/maneuver/opening/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/maneuver/opening/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/maneuver/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/maneuver/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/pawn/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/traversal/bishop/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/traversal/bishop/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/fabrication/query/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/fabrication/query/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validation/query/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validation/query/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,61 +276,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000389841628505" />
-      <entry key="S5" value="1.0220222668986716" />
-      <entry key="S10" value="1.2153842815409637" />
-      <entry key="S30" value="2.660872237138575" />
-      <entry key="S60" value="4.965098555246838" />
-      <entry key="M2" value="10.615863304162751" />
-      <entry key="M5" value="36.59776208260719" />
-      <entry key="M10" value="82.36911898733382" />
-      <entry key="M15" value="122.26762072296458" />
-      <entry key="M30" value="210.77919264732162" />
-      <entry key="H1" value="321.8257907685695" />
-      <entry key="H2" value="496.1764754553158" />
-      <entry key="H4" value="844.7890797510165" />
-      <entry key="D1" value="3240.193153212794" />
-      <entry key="W1" value="26577.171311449732" />
+      <entry key="MS100" value="1.0000000000027955" />
+      <entry key="MS500" value="1.0051440318148381" />
+      <entry key="S2" value="1.5070245079469335" />
+      <entry key="S5" value="2.842898172082104" />
+      <entry key="S10" value="4.348062064956618" />
+      <entry key="S30" value="8.079322964908126" />
+      <entry key="S60" value="11.949059491146707" />
+      <entry key="M2" value="17.860224562318365" />
+      <entry key="M5" value="37.279971644298996" />
+      <entry key="M10" value="73.53795086032683" />
+      <entry key="M15" value="109.21916557510617" />
+      <entry key="M30" value="200.97412213323838" />
+      <entry key="H1" value="311.99927287187035" />
+      <entry key="H2" value="433.7697124860808" />
+      <entry key="H4" value="678.8685181283889" />
+      <entry key="D1" value="3143.47720830388" />
+      <entry key="W1" value="26295.151542957767" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.2723085138025226E-258" />
-      <entry key="S2" value="3.406843348104301E-65" />
-      <entry key="S5" value="1.9212844621932907E-26" />
-      <entry key="S10" value="1.8316004631203617E-13" />
-      <entry key="S30" value="9.892489776504077E-5" />
-      <entry key="S60" value="0.016803027012559563" />
-      <entry key="M2" value="0.23863949439430635" />
-      <entry key="M5" value="1.4035871394092736" />
-      <entry key="M10" value="3.2800906267767576" />
-      <entry key="M15" value="5.160811686403685" />
-      <entry key="M30" value="10.318039466155561" />
-      <entry key="H1" value="18.033922618657964" />
-      <entry key="H2" value="28.4375296878898" />
-      <entry key="H4" value="43.18297634421803" />
-      <entry key="D1" value="150.32474910730647" />
-      <entry key="W1" value="1478.379708160999" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="9.950203929639707E-275" />
+      <entry key="S5" value="2.5068759304791388E-110" />
+      <entry key="S10" value="1.5839504013224778E-55" />
+      <entry key="S30" value="6.033589845714666E-19" />
+      <entry key="S60" value="1.2288709484133034E-9" />
+      <entry key="M2" value="1.0282170469146433E-4" />
+      <entry key="M5" value="0.16200035113486808" />
+      <entry key="M10" value="2.3024581391133356" />
+      <entry key="M15" value="5.824992596901203" />
+      <entry key="M30" value="15.181444351397959" />
+      <entry key="H1" value="24.927747273061012" />
+      <entry key="H2" value="34.341864447128565" />
+      <entry key="H4" value="50.48749349281108" />
+      <entry key="D1" value="173.78278367490392" />
+      <entry key="W1" value="1487.5209050309904" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.162077275050349E-22" />
-      <entry key="MS500" value="4.644877260862307E-5" />
-      <entry key="S2" value="0.08257208623605142" />
-      <entry key="S5" value="0.38555841123606527" />
-      <entry key="S10" value="0.7987685616655342" />
-      <entry key="S30" value="2.445461962486739" />
-      <entry key="S60" value="4.827298610802133" />
-      <entry key="M2" value="10.728287288938496" />
-      <entry key="M5" value="37.872641760280175" />
-      <entry key="M10" value="85.52405485991326" />
-      <entry key="M15" value="127.31092430742673" />
-      <entry key="M30" value="220.99872612485217" />
-      <entry key="H1" value="339.7846769419776" />
-      <entry key="H2" value="524.5595043071863" />
-      <entry key="H4" value="887.931649294048" />
-      <entry key="D1" value="3390.4952428645356" />
-      <entry key="W1" value="28055.523655199122" />
+      <entry key="MS100" value="0.9201876506274297" />
+      <entry key="MS500" value="0.9885496742099242" />
+      <entry key="S2" value="1.4863425290331804" />
+      <entry key="S5" value="2.792153447049644" />
+      <entry key="S10" value="4.286971295468612" />
+      <entry key="S30" value="8.008994264663052" />
+      <entry key="S60" value="11.880329456446292" />
+      <entry key="M2" value="17.80448545379629" />
+      <entry key="M5" value="37.40444923677414" />
+      <entry key="M10" value="75.8003025736857" />
+      <entry key="M15" value="114.99599900118075" />
+      <entry key="M30" value="216.10153911362215" />
+      <entry key="H1" value="336.88321595175034" />
+      <entry key="H2" value="468.07980180441655" />
+      <entry key="H4" value="729.3287452096511" />
+      <entry key="D1" value="3317.238019867079" />
+      <entry key="W1" value="27782.64537631827" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -162,11 +386,11 @@
       <recent name="$PROJECT_DIR$/src/production/manager/search" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/artifcat/report" />
       <recent name="$PROJECT_DIR$/src/operation/crud/search/model" />
       <recent name="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push" />
       <recent name="$PROJECT_DIR$/src/repo" />
-      <recent name="$PROJECT_DIR$/src/exchange/request/permission/crud/search/model" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -981,7 +1205,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="135310000" />
+      <workItem from="1793360739922" duration="143985000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1073,7 +1297,7 @@
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/repo/collection/database/hostage/exception/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/collection/database/hostage/exception/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
@@ -1159,7 +1383,7 @@
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/repo/collection/stack/player/stack.py</url>
+          <url>file://$PROJECT_DIR$/src/collection/stack/player/stack.py</url>
           <line>10</line>
           <option name="timeStamp" value="121" />
         </line-breakpoint>
@@ -2039,7 +2263,7 @@
           <option name="timeStamp" value="411" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/repo/collection/stack/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/collection/stack/__init__.py</url>
           <line>15</line>
           <option name="timeStamp" value="413" />
         </line-breakpoint>

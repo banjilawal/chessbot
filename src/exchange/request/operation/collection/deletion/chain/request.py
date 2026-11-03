@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import CollectionDeletionRequest
-from repo.collection import Chain
+from collection import Chain
 
 T = TypeVar("T", bound="Node")
 

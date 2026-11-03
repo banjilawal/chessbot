@@ -17,7 +17,7 @@ from err import (
 )
 from domain.model import TokenQuery
 from artifcat import MethodResultType, ValidationResult
-from repo.collection import TokenStackService
+from collection import TokenStackService
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import TokenContextValidator, PrimingValidator, ValidationDispatcher
 

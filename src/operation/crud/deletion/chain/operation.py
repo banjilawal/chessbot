@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import RemoveNodeRequest
-from repo.collection import Chain
+from collection import Chain
 from operation import CollectionDeletion
 from artifcat import DeletionResult
 from util import LoggingLevelRouter

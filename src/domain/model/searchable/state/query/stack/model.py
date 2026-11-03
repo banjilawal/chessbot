@@ -14,7 +14,7 @@ from typing import TypeVar
 
 from domain.model import Context
 from domain.model import Query
-from repo.collection import StackService
+from collection import StackService
 
 T = TypeVar("T")
 

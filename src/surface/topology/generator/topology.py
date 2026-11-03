@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from repo.collection import VectorSet
+from collection import VectorSet
 from domain.model import Vector
 from surface.topology.recurrence import Recurrence
 from artifcat import ComputationResult

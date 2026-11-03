@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from repo.collection import VectorSet
+from collection import VectorSet
 from domain.schema import Offset
 from surface.topology import ManeuverOffsetPattern
 

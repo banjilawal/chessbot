@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import CollectionInsertionRequest
-from repo.collection import StackService
+from collection import StackService
 
 
 T = TypeVar("T", bound="StateModel")

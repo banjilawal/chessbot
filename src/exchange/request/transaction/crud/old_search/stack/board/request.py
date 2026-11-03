@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from repo.collection import BoardStackService
+from collection import BoardStackService
 from exchange import StackSearchRequest, Board, BoardSearchContext
 
 

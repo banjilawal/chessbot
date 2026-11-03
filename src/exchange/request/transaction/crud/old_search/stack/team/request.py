@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from repo.collection import TeamStackService
+from collection import TeamStackService
 from exchange import StackSearchRequest, Team, TeamSearchContext
 
 

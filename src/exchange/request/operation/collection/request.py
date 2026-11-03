@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import OperationRequest
-from repo.collection import ExchangeObjectCollection
+from collection import ExchangeObjectCollection
 from operation import CrudWorker
 
 T = TypeVar("T", bound="Result")

@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from repo.collection import Chain
+from collection import Chain
 from exchange import SearchRequest, Node
 
 T = TypeVar("T", bound="Node")

@@ -12,16 +12,16 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
-from artifcat import CollisionReport
+from artifcat import AttributeCollisionReport
 from domain import Model
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
 
-class Collider(ABC, Generic[T]):
+class CollisionSensor(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: T, items: List[T]) -> CollisionReport:
+    def execute(self, attractor: T, items: List[T]) -> AttributeCollisionReport:
         pass

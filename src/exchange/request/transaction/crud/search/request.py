@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import SearchResult
-from repo.collection import DataStruct
+from collection import DataStruct
 from domain import Context
 from exchange import CrudRequest
 

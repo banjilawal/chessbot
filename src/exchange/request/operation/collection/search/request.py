@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import CollectionRequest
-from repo.collection import StackService
+from collection import StackService
 
 from exchange.search.context import Context
 from artifcat import SearchResult

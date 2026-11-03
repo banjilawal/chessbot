@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from authorization import TokenStackPopDispatcher, TokenStackPopRequest
-from repo.collection import TokenStackState
+from collection import TokenStackState
 from err import TokenStackPopException
 from domain.model import Token
 from operation import StackPop

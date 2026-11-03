@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import InsertionResult
-from repo.collection import DataStruct
+from collection import DataStruct
 from exchange import CrudRequest
 
 R = TypeVar("R", bound="InsertionResult")
