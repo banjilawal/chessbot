@@ -54,11 +54,3 @@ class AccountPushDecision(
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
-        
-    @property
-    def transaction_request(self) -> Optional[AccountPushRequest]:
-        return cast(AccountPushRequest, super().transaction_request)
-    
-    @property
-    def permission_request(self) -> Optional[AccountPushPermissionRequest]:
-        return cast(AccountPushPermissionRequest, super().permission_request)

@@ -27,8 +27,7 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         -   Permission Authorization
 
     Responsibilities:
-        1.  Issue a decision about a PushPermissionRequest then forward that decision to
-            a Pusher.
+        1.  Issue a decision about a PushPermissionRequest.
 
 
     Attributes:
@@ -74,7 +73,7 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         Args:
             candidate: Any
         Returns:
-           Decision
+           PushDecision
         Raises:
             PushPermitterException
         """

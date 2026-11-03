@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ReadyChecker(ActorChainable, ABC, Generic[T]):
+class Checker(ABC, Generic[T]):
     """
     Role:
         -   Authorization

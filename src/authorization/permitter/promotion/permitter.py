@@ -37,7 +37,7 @@ class PromotionPermitter(Permitter[PromotionPermissionRequest]):
         -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
 
     Super Class:
-        Authorizer
+        Permitter
     """
     
     def __init__(

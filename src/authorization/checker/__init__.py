@@ -13,5 +13,6 @@ version: 0.0.2
 from .applicant import *
 from .model import *
 from .request import *
+from .token import *
 
 # Modules

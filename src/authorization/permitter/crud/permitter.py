@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from artifcat import CrudDecision
 from authorization import Permitter
@@ -27,12 +27,10 @@ class CrudPermitter(Permitter[T], ABC, Generic[T]):
         -   Permission Authorization
 
     Responsibilities:
-        1.  Issue a decision about a CrudPermissionRequest then forward that decision to
-            a CrudWorker.
+        1.  Issue a decision about a CrudPermissionRequest.
 
     Attributes:
         loader: CrudAuthorizationLoader[T]
-        validation_service: ValidationService[T]
 
     Provides:
         -   def execute(candidate: Any) -> CrudDecision
@@ -41,17 +39,12 @@ class CrudPermitter(Permitter[T], ABC, Generic[T]):
         Permitter
     """
 
-    def __init__(
-            self,
-            loader: CrudAuthorizationLoader[T],
-            validation_service: ValidationService[T],
-    ):
+    def __init__(self, loader: CrudAuthorizationLoader[T]):
         """
         Args:
             loader: CrudAuthorizationLoader[T]
-            validation_service: ValidationService[T]
         """
-        super().__init__(loader=loader, validation_service=validation_service)
+        super().__init__(loader=loader)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

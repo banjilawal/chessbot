@@ -9,44 +9,96 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import Decision
-from authorization import ReadyChecker
 from domain import CombatantToken, KingToken, Token
 from err import DisabledTokenException
-from exchange import PermissionRequest, TokenValidationRequest
+from exchange import PermissionRequest, TokenValidationRequest, TransactionRequest
+from exchange.service.validation.model.token import TokenValidationService
 from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ReadyTokenChecker(ReadyChecker):
+class ReadyTokenChecker:
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Checks that an applicant satisfies one of the Ready requirements.
+        1.  Checks if a Token can be used in an activity.
 
     Attributes:
+        validation_service: TokenValidationService
         
     Provides:
         -   def execute(self, request: ReadyRequest) -> ReadyDecision
 
     Super Class:
-        ModelChecker
     """
     
+    _validation_service: TokenValidationService
+    
+    def __init__(self, validation_service: Optional[TokenValidationService] | None = None):
+        """
+        Args:
+            validation_service: Optional[TokenValidationService]
+        """
+        self._validation_service = validation_service
+    
     @LoggingLevelRouter.monitor
-    def execute(self, request: PermissionRequest) -> Decision:
+    def execute(
+            self,
+            candidate: Token,
+            permission_request: PermissionRequest,
+            transaction_request: TransactionRequest,
+    ) -> Decision:
         method = f"{self.__class__.__name__}.execute"
         
-        candidate = None
+        validation = self._validation_service.extract_model(
+            request=TokenValidationRequest(
+                item=TokenCarrier(model=candidate),
+                id=IdFactory.next_id("ValidationRequest"),
+            )
+        )
+        if validation.is_failure:
+            return Decision.denial(
+                exception=ReadyTokenCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ReadyTokenCheckerException.MSG,
+                    err_code=ReadyTokenCheckerException_CODE,
+                    ex=validation.exception,
+                )
+            )
+        item = cast(Token, validation.payload)
+        token = item
         
-        if isinstance(request.applicant, KingToken):
-            candidate = cast(KingToken, request.applicant)
-        if isinstance(request.applicant, CombatantToken):
-            candidate = cast(CombatantToken, request.applicant)
+        if isinstance(item, KingToken):
+            token = cast(KingToken, item)
+        if isinstance(item, CombatantToken):
+            token = cast(CombatantToken, item)
+        if token.is_not_ready:
+            return Decision.denial(
+                exception=ReadyTokenCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ReadyTokenCheckerException.MSG,
+                    err_code=ReadyTokenCheckerException_CODE,
+                    ex=DisabledTokenException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DisabledTokenException.MSG,
+                        err_code=DisabledTokenException.ERR_CODE,
+                    )
+                )
+            )
+        return Decision.grant(
+            transaction_request=transaction_request,
+            permission_request=permission_request,
+        )
+        
+        
             
         validation = self.validation_service.extract_model(
             request=TokenValidationRequest(

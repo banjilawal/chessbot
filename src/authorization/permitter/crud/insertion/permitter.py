@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from artifcat import Decision
+from artifcat import Decision, InsertionDecision
 from authorization import CrudPermitter
 from bootstrap import InsertionAuthorizationLoader
 from exchange import InsertionPermissionRequest, ValidationService
@@ -27,24 +27,19 @@ class InsertionPermitter(CrudPermitter[T], ABC, Generic[T]):
         -   Permission Authorization
 
     Responsibilities:
-        1.  Issue a decision about an InsertionPermissionRequest then forward
-            that decision an Inserter.
+        1.  Issue a decision about an InsertionPermissionRequest.
 
     Attributes:
-        loader: CrudAuthorizationLoader[T]
+        loader: InsertionAuthorizationLoader[T]
 
     Provides:
-        -   def execute(candidate: Any) -> Decision
+        -   def execute(candidate: Any) -> InsertionDecision
 
     Super Class:
         CrudPermitter
     """
     
-    def __init__(
-            self,
-            collision_sensor: CollisionSensor,
-            loader: InsertionAuthorizationLoader[T],
-    ):
+    def __init__(self, loader: InsertionAuthorizationLoader[T]):
         """
         Args:
             loader: InsertionAuthorizationLoader[T]
@@ -57,14 +52,14 @@ class InsertionPermitter(CrudPermitter[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> Decision:
+    def execute(self, candidate: Any) -> InsertionDecision:
         """
         Grant permission for an activity.
         
         Args:
             candidate: Any
         Returns:
-           Decision
+           InsertionDecision
         Raises:
             InsertionPermitterException
         """

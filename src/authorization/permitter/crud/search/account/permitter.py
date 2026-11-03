@@ -15,7 +15,7 @@ from artifcat import AccountSearchDecision, SearchDecision
 from authorization import SearchPermitter
 from bootstrap import AccountSearchAuthorizationLoader
 from err import ChessException
-from exchange import AccountSearchPermissionRequest
+from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from util import LoggingLevelRouter
 
 
@@ -85,36 +85,28 @@ class AccountSearchPermitter(SearchPermitter[AccountSearchPermissionRequest]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = bootstrap.permission_request
-        transaction_request = bootstrap.transaction_request
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=AccountSearchPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=AccountSearchRequestNullException(),
-                )
-            )
-        # --- Prepare and forward the transaction approval. ---#
+        permission_form = cast(AccountSearchPermissionRequest, bootstrap.permission_request)
+        applicant = cast(AccountSearchRequest, bootstrap.transaction_request)
+        # Get the ids
+        form_id = permission_form.id
+        applicant_id = applicant.id
+        # Get the applicant information
+        context = applicant.context
+        collection = applicant.collection
+        
+        # --- Otherwise prepare an approval of the transaction. ---#
+        transaction_request = AccountSearchRequest(
+            id=applicant_id,
+            context=context,
+            collection=collection,
+        )
+        permission_request = AccountSearchPermissionRequest(
+            id=form_id,
+            authorization_applicant=transaction_request,
+        )
+        # --- Forward the approval. ---#
         return AccountSearchDecision.grant(
             transaction_request=transaction_request,
             permission_request=permission_request,
         )
-
         

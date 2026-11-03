@@ -1,4 +1,4 @@
-# src/authorization/permitter/crud/insertion/push.account//permitter.py
+# src/authorization/permitter/crud/insertion/push/account/permitter.py
 
 """
 Module: authorization.permitter.crud.insertion.push.account.permitter
@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
-from artifcat import InsertionDecision
+from artifcat import AccountPushDecision
 from authorization import PushPermitter
 from bootstrap import AccountPushAuthorizationLoader
 from err import ChessException
@@ -26,8 +26,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         -   Permission Authorization
 
     Responsibilities:
-        1.  Forward a decision about an AccountPushPermissionRequest to an 
-            AccountPushPermitter.
+        1.  Issue a decision about an AccountPushPermissionRequest.
 
     Attributes:
         loader: PushAuthorizationLoader
@@ -40,7 +39,6 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         PushPermitter
     """
 
-    
     def __init__(
             self,
             collision_sensor: Optional[AccountCollisionSensor] | None = None,
@@ -58,9 +56,13 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
     @property
     def loader(self) -> AccountPushAuthorizationLoader:
         return cast(AccountPushAuthorizationLoader, super().loader)
+    
+    @property
+    def collision_sensor(self) -> AccountCollisionSensor:
+        return cast(AccountCollisionSensor, super().collision_sensor)
 
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> InsertionDecision:
+    def execute(self, candidate: Any) -> AccountPushDecision:
         """
         Grant permission for a stack push.
         
@@ -70,43 +72,45 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             2.  If the item already exists in the collection, return a do_nothing decision.
             3.  Otherwise, send an approval decision.
         Args:
-            request: AccountPushPermissionRequest
+            candidate: Any
         Returns:
-           InsertionDecision
+           AccountPushDecision
         Raises:
             AccountPushPermitterException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that loader does not bootstrap the process.
-        decision = self.loader.execute(candidate=request)
-        if decision.request_is_denied:
+        bootstrap = self.loader.execute(candidate=candidate)
+        if bootstrap.request_is_denied:
             # Send the exception chain in the denial.
-            return InsertionDecision.denial(
+            return AccountPushDecision.denial(
                 exception=ChessException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=ChessException.MSG,
                     err_code=ChessException.ERR_CODE,
-                    ex=decision.exception,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Extract the transaction_request for processing. ---#
-        permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
-        transaction_request = cast(AccountPushRequest, decision.transaction_request)
-        
-        item = transaction_request.item
-        collection = transaction_request.collection
+        permission_form = cast(AccountPushPermissionRequest, bootstrap.permission_request)
+        applicant = cast(AccountPushRequest, bootstrap.transaction_request)
+        # Get the ids
+        form_id = permission_form.id
+        applicant_id = applicant.id
+        # Get the applicant information
+        item = applicant.item
+        collection = applicant.collection
         
         # Handle the case that the item violates a uniqueness constraint.
         report = self.collision_sensor.execute(
             attractor=item,
             collection=collection,
         )
-        # Handle the case that the item violates a uniqueness constraint.
         if report.collision_exists:
             # Send the exception chain in the denial.
-            return InsertionDecision.denial(
+            return AccountPushDecision.denial(
                 exception=ChessException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -117,12 +121,17 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             )
         # --- Otherwise prepare an approval of the transaction. ---#
         transaction_request = AccountPushRequest(
-            id=transaction_request.id,
+            id=applicant_id,
             item=item,
             collection=collection,
         )
+        permission_request = AccountPushPermissionRequest(
+            id=form_id,
+            authorization_applicant=transaction_request,
+        )
+        
         # --- Forward the approval. ---#
-        return InsertionDecision.grant(
+        return AccountPushDecision.grant(
             transaction_request=transaction_request,
             permission_request=permission_request,
         )

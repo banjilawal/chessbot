@@ -10,9 +10,9 @@ version: 0.0.2
 # =========== AUTHORIZATION PACKAGE ===========#
 
 # Packages
-from .permitter import *
-from .chain import *
+from .checker import *
 from .interface import *
+from .permitter import *
 from .reviewer import *
 from .role import *
 

@@ -38,7 +38,7 @@ class AttackPermitter(Permitter[AttackPermissionRequest]):
         -   def execute(request: AttackPermissionRequest) -> AttackDecision
 
     Super Class:
-        Authorizer
+        Permitter
     """
     
     def __init__(
