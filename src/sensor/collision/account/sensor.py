@@ -9,7 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List
+from abc import ABC
+from typing import Generic, List, TypeVar
 
 from artifcat import CollisionReport
 from collection import AccountStack
@@ -17,8 +18,11 @@ from domain import Account, HumanAccount, MachineAccount
 from sensor import AttributeSensor
 from util import LoggingLevelRouter
 
+P = TypeVar("P", bound="Account")
+T = TypeVar("T")
 
-class AccountSensor(AttributeSensor[Account]):
+
+class AccountSensor(AttributeSensor[P, T], ABC, Generic[P, T]):
     """
     Role:
         -   Sensor
@@ -37,9 +41,11 @@ class AccountSensor(AttributeSensor[Account]):
     Super Class:
         CollisionSensor
     """
+    
+    
 
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: Account, stream: AccountStack) -> CollisionReport:
+    def execute(self, target: Account, stream: AccountStack) -> CollisionReport:
         """
         Check that the attractor will be unique in the collection.
 
@@ -48,7 +54,7 @@ class AccountSensor(AttributeSensor[Account]):
                 ids, emails, or machine_names are detected.
             2.  Otherwise, report the attractor is unique.
         Args:
-            attractor: Account
+            target: Account
             stream: AccountStack
         Result:
             CollisionReport
@@ -60,10 +66,10 @@ class AccountSensor(AttributeSensor[Account]):
         # --- Perform the check on the unique id attribute all Accounts have. ---#
         for item in stream.items:
             # Handle the case there are duplicate ids.
-            if item.id == attractor.id:
+            if item.id == target.id:
                 # Send an exception chain in the  report.
                 return CollisionReport.collision_event(
-                    attractor=attractor,
+                    attractor=target,
                     collider=item,
                     attribute="id",
                     value=item.id,
@@ -83,15 +89,15 @@ class AccountSensor(AttributeSensor[Account]):
         # --- Run collision tests on unique sub class attributes. ---#
         
         # Human account uniqueness branch.
-        if isinstance(attractor, HumanAccount):
+        if isinstance(target, HumanAccount):
             return self._human_account_collider(
-                human_attractor=attractor,
+                human_attractor=target,
                 humans=stream.human_accounts,
                 parent_method=method,
             )
         # Otherwise run the default sub-collider.
         return self._machine_account_collider(
-                machine_attractor=attractor,
+                machine_attractor=target,
                 machines=stream.machine_accounts,
                 parent_method=method,
             )

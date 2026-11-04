@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== SENSOR.COLLISION.ACCOUNT PACKAGE ===========#
 
 # Packages
-from .firstname import *
+from .email import *
 
 # Modules
 from .sensor import AccountSensor

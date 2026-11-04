@@ -105,7 +105,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         
         # Handle the case that the item violates a uniqueness constraint.
         report = self.collision_sensor.execute(
-            attractor=item,
+            target=item,
             stream=collection,
         )
         if report.collision_occurred:

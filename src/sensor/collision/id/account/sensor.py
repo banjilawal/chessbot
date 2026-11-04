@@ -69,11 +69,11 @@ class AccountIdSensor(IdSensor[Account, int]):
                 cls_name=self.__class__.__name__,
                 msg=AccountIdSensorException.MSG,
                 err_code=AccountIdSensorException.ERR_CODE,
-                ex=DuplicteAccounIdException(
+                ex=DuplicteAccountIdException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DuplicteAccounIdException.MSG,
-                    err_code=DuplicteAccounIdException.ERR_CODE,
+                    msg=DuplicteAccountIdException.MSG,
+                    err_code=DuplicteAccountIdException.ERR_CODE,
                 )
             )
         )
