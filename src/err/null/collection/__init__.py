@@ -17,4 +17,4 @@ from .tuple import *
 from .vector import *
 
 # Modules
-from .exception import CollectionNullException
+from .exception import DataStructNullException

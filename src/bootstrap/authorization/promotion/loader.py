@@ -13,11 +13,14 @@ from typing import Any, Optional, cast
 
 from artifcat import PromotionDecision
 from bootstrap import AuthorizationLoader
-from domain import Rank, PawnToken, Rank, Token
-from err import PromotionPermissionRequestNullException, PromotionRequestNullException
+from domain import PawnToken, Rank
+from err import (
+    PromotionAuthorizationLoaderException, PromotionPermissionRequestNullException,
+    PromotionRequestNullException
+)
 from exchange import (
-    PromotionPermissionRequest, PromotionRequest, RankValidationRequest, RankValidationService,
-    TokenValidationRequest, TokenValidationService
+    PromotionPermissionRequest, PromotionRequest, RankValidationRequest,
+    RankValidationService, TokenValidationRequest, TokenValidationService
 )
 from transit import RankCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -223,7 +226,11 @@ class PromotionAuthorizationLoader(
                     cls_name=self.__class__.__name__,
                     msg=PromotionAuthorizationLoaderException.MSG,
                     err_code=PromotionAuthorizationLoaderException.ERR_CODE,
-                    ex=rank_validation.exception
+                    ex=TypeError(
+                        f"Expected an Elevatable. Got "
+                        f"{type(rank_validation.payload).__name__} is not an "
+                        f"Elevatable implementor."
+                    )
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#

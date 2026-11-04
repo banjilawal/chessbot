@@ -15,7 +15,7 @@ from .board import *
 from .coord import *
 from .edge import *
 from .game import *
-from .hostage import *
+
 from .node import *
 from .player import *
 from .square import *

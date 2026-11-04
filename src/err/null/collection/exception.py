@@ -16,18 +16,18 @@ from err import NullException
 
 
 __all__ = [
-    # ======================# COLLECTION_NULL_ERROR #======================#
-    "CollectionNullException",
+    # ======================# DATA_STRUCT_NULL_ERROR #======================#
+    "DataStructNullException",
 ]
 
-# ======================# COLLECTION_NULL_ERROR #======================#
-class CollectionNullException(NullException):
+# ======================# DATA_STRUCT_NULL_ERROR #======================#
+class DataStructNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Collection is null.
+        1.  Indicating a required DataStruct is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CollectionNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Collection cannot be null."
-    ERR_CODE = "COLLECTION_NULL_ERROR"
+    MSG = "DataStruct cannot be null."
+    ERR_CODE = "DATA_STRUCT_NULL_ERROR"
     
     def __init__(
             self,

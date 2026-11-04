@@ -13,8 +13,11 @@ from typing import Any, Optional, cast
 
 from artifcat import AccountSearchDecision
 from bootstrap import ModelSearchAuthorizationLoader
+from collection import AccountStack
 from domain import Account
-from err import AccountSearchRequestNullException
+from err import (
+    AccountSearchAuthorizationLoaderException, AccountSearchPermissionRequestNullException,
+)
 from exchange import (
     AccountContextValidationService, AccountSearchRequest, AccountSearchPermissionRequest,
     AccountContextValidationRequest,
@@ -105,11 +108,11 @@ class AccountSearchAuthorizationLoader(
         if permission_id_validation.is_failure:
             # Send an exception chain in the denial.
             return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+                exception=AccountSearchAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
+                    msg=AccountSearchAuthorizationLoaderException.MSG,
+                    err_code=AccountSearchAuthorizationLoaderException.ERR_CODE,
                     ex=permission_id_validation.exception,
                 )
             )
@@ -122,11 +125,11 @@ class AccountSearchAuthorizationLoader(
         if applicant_signature.is_failure:
             # Send an exception chain in the denial.
             return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+                exception=AccountSearchAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
+                    msg=AccountSearchAuthorizationLoaderException.MSG,
+                    err_code=AccountSearchAuthorizationLoaderException.ERR_CODE,
                     ex=applicant_signature.exception,
                 )
             )
@@ -139,11 +142,11 @@ class AccountSearchAuthorizationLoader(
         if transaction_id_validation.is_failure:
             # Send an exception chain in the denial.
             return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+                exception=AccountSearchAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
+                    msg=AccountSearchAuthorizationLoaderException.MSG,
+                    err_code=AccountSearchAuthorizationLoaderException.ERR_CODE,
                     ex=transaction_id_validation.exception,
                 )
             )
@@ -158,11 +161,11 @@ class AccountSearchAuthorizationLoader(
         if context_validation.is_failure:
             # Send an exception chain in the denial.
             return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+                exception=AccountSearchAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
+                    msg=AccountSearchAuthorizationLoaderException.MSG,
+                    err_code=AccountSearchAuthorizationLoaderException.ERR_CODE,
                     ex=context_validation.exception,
                 )
             )
@@ -176,11 +179,11 @@ class AccountSearchAuthorizationLoader(
         if collection_validation.is_failure:
             # Send an exception chain in the denial.
             return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+                exception=AccountSearchAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
+                    msg=AccountSearchAuthorizationLoaderException.MSG,
+                    err_code=AccountSearchAuthorizationLoaderException.ERR_CODE,
                     ex=collection_validation.exception
                 )
             )

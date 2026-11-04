@@ -9,15 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ManeuverDecision
 from bootstrap import AuthorizationLoader
 from domain import Path, Token
+from err import (
+    ManeuverAuthorizationLoaderException, ManeuverPermissionRequestNullException,
+    ManeuverRequestNullException
+)
 
 from exchange import (
-    ManeuverPermissionRequest, ManeuverRequest, PathValidationRequest, PathValidationService, TokenValidationRequest,
-    TokenValidationService
+    ManeuverPermissionRequest, ManeuverRequest, PathValidationRequest,
+    PathValidationService, TokenValidationRequest, TokenValidationService
 )
 from transit import PathCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -72,7 +76,7 @@ class ManeuverAuthorizationLoader(
                     -   Either the token or path in the request cannot be validated.
             2.  Otherwise, send an approval.
         Args:
-            target: ManeuverPermissionRequest
+            candidate: Any
         Returns:
            ManeuverDecision
         Raises:

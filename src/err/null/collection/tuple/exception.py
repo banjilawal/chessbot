@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CollectionNullException
+from err import DataStructNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TUPLE_NULL_ERROR #======================#
-class TupleNullException(CollectionNullException):
+class TupleNullException(DataStructNullException):
     """
     Role:
         - Error Tracing
