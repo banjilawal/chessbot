@@ -5,113 +5,115 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/model/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/model/account/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/promotion/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/promotion/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/checker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/checker/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/checker/token/checker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/account/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/encounter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/remove/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/add/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/encounter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/insertion/push/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/encounter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/push/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/path/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/crud/search/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/promotion/double/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/promotion/double/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/promotion/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/promotion/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/promotion/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/promotion/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/promotion/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/promotion/row/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/promotion/row/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/domain/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/attack/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/maneuver/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/maneuver/undo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/maneuver/undo/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/pawn/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/pawn/promotion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/domain/model/token/disabled/pawn/promotion/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/arena/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/binder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/binder/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/binder/arena/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/binder/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/binder/board/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/binder/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/board/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/edge/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/schema/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/hostage/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/node/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/operand/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/operand/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/attack/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/blocked/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/blocked/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/checked/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/checked/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/circular/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/circular/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/combatant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/combatant/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/king/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/path/king/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/player/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/player/human/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/player/human/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/player/machine/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/player/machine/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/identity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/identity/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/operand/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/operand/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/register/square/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/domain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/domain/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/scalar/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/scalar/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/square/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/square/opening/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/square/opening/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/pawn/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/attack/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/undo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/undo/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/promotion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/promotion/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/king/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/token/king/exception.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,61 +155,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000031819691955" />
-      <entry key="S60" value="1.0025364332273667" />
-      <entry key="M2" value="1.0748813411224334" />
-      <entry key="M5" value="1.6346547364376405" />
-      <entry key="M10" value="2.3562694366971266" />
-      <entry key="M15" value="2.816935931236672" />
-      <entry key="M30" value="8.005867183373631" />
-      <entry key="H1" value="64.80143976776907" />
-      <entry key="H2" value="286.91836828875626" />
-      <entry key="H4" value="767.6258607315132" />
-      <entry key="D1" value="4460.982444689766" />
-      <entry key="W1" value="27805.206813944023" />
+      <entry key="MS100" value="9.857412804413193E-11" />
+      <entry key="MS500" value="0.00997131850647619" />
+      <entry key="S2" value="0.31600077461320164" />
+      <entry key="S5" value="0.6307761424956859" />
+      <entry key="S10" value="0.7942141666442301" />
+      <entry key="S30" value="0.926216496174203" />
+      <entry key="S60" value="0.9841561933734706" />
+      <entry key="M2" value="2.131488435328709" />
+      <entry key="M5" value="36.167983983740065" />
+      <entry key="M10" value="131.82348706198735" />
+      <entry key="M15" value="207.3914869555429" />
+      <entry key="M30" value="331.8029652818514" />
+      <entry key="H1" value="460.35656433608824" />
+      <entry key="H2" value="708.3789781842139" />
+      <entry key="H4" value="1199.9912399843092" />
+      <entry key="D1" value="4918.119579707222" />
+      <entry key="W1" value="28273.181600519798" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.4257692488409014E-86" />
-      <entry key="S5" value="1.139365056929093E-34" />
-      <entry key="S10" value="2.0739945960730243E-17" />
-      <entry key="S30" value="6.876468563085954E-6" />
-      <entry key="S60" value="0.0052401049928048685" />
-      <entry key="M2" value="0.14474602683976628" />
-      <entry key="M5" value="1.0603670973750303" />
-      <entry key="M10" value="2.0594995587769036" />
-      <entry key="M15" value="2.571389455754088" />
-      <entry key="M30" value="3.320585476121668" />
-      <entry key="H1" value="4.774239822789562" />
-      <entry key="H2" value="9.257589212266621" />
-      <entry key="H4" value="21.71042251578669" />
-      <entry key="D1" value="181.99893246498348" />
-      <entry key="W1" value="1482.3319171012963" />
+      <entry key="MS100" value="1.0001272541211965" />
+      <entry key="MS500" value="1.1663161301350857" />
+      <entry key="S2" value="1.638606879597695" />
+      <entry key="S5" value="1.8357828149914917" />
+      <entry key="S10" value="1.914211581090242" />
+      <entry key="S30" value="1.9708045976226116" />
+      <entry key="S60" value="2.0079570711831396" />
+      <entry key="M2" value="2.2060738969062834" />
+      <entry key="M5" value="2.8335038001685158" />
+      <entry key="M10" value="3.5540032336589316" />
+      <entry key="M15" value="4.158142290529463" />
+      <entry key="M30" value="5.423659143677502" />
+      <entry key="H1" value="7.273335399271361" />
+      <entry key="H2" value="11.758946771393628" />
+      <entry key="H4" value="23.93231278465498" />
+      <entry key="D1" value="183.47458403028446" />
+      <entry key="W1" value="1483.3835738706484" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8766057213160351" />
-      <entry key="MS500" value="0.974004268543241" />
-      <entry key="S2" value="0.9934367347173356" />
-      <entry key="S5" value="0.9973695065410157" />
-      <entry key="S10" value="0.9986838871940489" />
-      <entry key="S30" value="0.9995709114595599" />
-      <entry key="S60" value="1.0074606966352069" />
-      <entry key="M2" value="1.2181792084246172" />
-      <entry key="M5" value="2.6910419938656003" />
-      <entry key="M10" value="4.4119195684604415" />
-      <entry key="M15" value="5.385119245667887" />
-      <entry key="M30" value="11.324223211198905" />
-      <entry key="H1" value="69.57249814922345" />
-      <entry key="H2" value="296.1681217995259" />
-      <entry key="H4" value="789.3224644824676" />
-      <entry key="D1" value="4642.958667430358" />
-      <entry key="W1" value="29287.511819338728" />
+      <entry key="MS100" value="0.20589775804550806" />
+      <entry key="MS500" value="0.7546842699103399" />
+      <entry key="S2" value="1.5696905879139513" />
+      <entry key="S5" value="2.236622054981495" />
+      <entry key="S10" value="2.5756569557091686" />
+      <entry key="S30" value="2.8481643775578283" />
+      <entry key="S60" value="2.966699702303063" />
+      <entry key="M2" value="4.322982170386377" />
+      <entry key="M5" value="38.99161752572856" />
+      <entry key="M10" value="135.36861575992043" />
+      <entry key="M15" value="211.54158065112026" />
+      <entry key="M30" value="337.2206143421653" />
+      <entry key="H1" value="467.62474862311734" />
+      <entry key="H2" value="720.1297283169271" />
+      <entry key="H4" value="1223.9100230240224" />
+      <entry key="D1" value="5101.571626486641" />
+      <entry key="W1" value="29756.538295815513" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -242,7 +244,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/authorization/checker/crud/search",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/authorization/checker",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -256,18 +258,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/authorization/checker" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/crud/search" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/maneuver/origin/consistency" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/maneuver/destination" />
-      <recent name="$PROJECT_DIR$/src/err/authorization/checker/maneuver" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/authorization/checker/ready" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/maneuver/destination" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter/crud/search/model" />
       <recent name="$PROJECT_DIR$/src/authorization/checker/maneuver" />
       <recent name="$PROJECT_DIR$/src/authorization/checker" />
-      <recent name="$PROJECT_DIR$/src/authorization/chain" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -1082,7 +1084,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="207977000" />
+      <workItem from="1793360739922" duration="209670000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1420,7 +1422,7 @@
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/domain/model/token/disabled/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>

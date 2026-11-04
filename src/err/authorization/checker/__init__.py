@@ -14,6 +14,7 @@ from .crud import *
 from .attack import *
 from .maneuver import *
 from .promotion import *
+from .ready import *
 
 # Modules
 from .exception import RoleCheckerException
