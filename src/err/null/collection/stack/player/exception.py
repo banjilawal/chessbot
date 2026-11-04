@@ -1,7 +1,7 @@
-# src/err/null/stack/player/exception.py
+# src/err/null/collection/stack/player/exception.py
 
 """
-Module: err.null.stack.player.exception
+Module: err.null.collection.stack.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from artifcat import MethodResultType
 from err import StackNullException
 
 __all__ = [

@@ -1,22 +1,19 @@
-# src/err/null/stack/__init__.py
+# src/err/null/collection/stack/__init__.py
 
 """
-Module: err.null.stack.__init__
+Module: err.null.collection.stack.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.STACK PACKAGE ===========#
+# ============ ERR.NULL.COLLECTION.STACK PACKAGE ===========#
 
 # Packages
 from .arena import *
 from .board import *
 from .coord import *
-from .edge import *
 from .game import *
-
-from .node import *
 from .player import *
 from .square import *
 from .team import *

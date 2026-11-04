@@ -1,7 +1,7 @@
-# src/err/null/collection/chain/exception.py
+# src/err/null/collection/chain/vector/exception.py
 
 """
-Module: err.null.collection.chain.exception
+Module: err.null.collection.chain.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChainNullException
 from artifcat import MethodResultType
-
+from err import ChainNullException
 
 __all__ = [
     # ======================# VECTOR_CHAIN_NULL_ERROR #======================#
@@ -38,7 +37,7 @@ class VectorChainNullException(ChainNullException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-            
+        
     Provides:
 
     Super Class:

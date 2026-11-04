@@ -12,9 +12,9 @@ version: 0.0.2
 
 # Packages
 from .chain import *
-from .register import *
-from .tuple import *
-from .vector import *
+from .set import *
+from .stack import *
+from .tree import *
 
 # Modules
 from .exception import DataStructNullException

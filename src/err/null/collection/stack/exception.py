@@ -1,7 +1,7 @@
-# src/err/null/stack/exception.py
+# src/err/null/collection/stack/exception.py
 
 """
-Module: err.null.stack.exception
+Module: err.null.collection.stack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import NullException
+from err import DataStructNullException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# STACK_NULL_ERROR #======================#
-class StackNullException(NullException):
+class StackNullException(DataStructNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class StackNullException(NullException):
     Provides:
 
     Super Class:
-        NullException
+        DataStructNullException
     """
     MSG = "Stack cannot be null."
     ERR_CODE = "STACK_NULL_ERROR"

@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import DataStructNullException
 from artifcat import MethodResultType
+from err import DataStructNullException
 
 
 __all__ = [
@@ -42,7 +42,7 @@ class ChainNullException(DataStructNullException):
     Provides:
 
     Super Class:
-        CollectionNullException
+        DataStructNullException
     """
     MSG = "Chain cannot be null."
     ERR_CODE = "CHAIN_NULL_ERROR"
