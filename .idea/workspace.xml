@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sensor/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/collision/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/account/sensor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sensor/collision/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/id/account/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/collision/id/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/id/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/collision/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/sensor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000000000014535" />
-      <entry key="S2" value="1.0029114340571825" />
-      <entry key="S5" value="1.2162220043165248" />
-      <entry key="S10" value="2.241736043583269" />
-      <entry key="S30" value="6.946138729826869" />
-      <entry key="S60" value="21.224271394500505" />
-      <entry key="M2" value="63.09790603113431" />
-      <entry key="M5" value="146.65839201701277" />
-      <entry key="M10" value="209.88391335245905" />
-      <entry key="M15" value="243.397133007206" />
-      <entry key="M30" value="290.240722104696" />
-      <entry key="H1" value="333.8575067609455" />
-      <entry key="H2" value="486.82682183166764" />
-      <entry key="H4" value="976.6806894684071" />
-      <entry key="D1" value="5136.8324985870695" />
-      <entry key="W1" value="28754.35677970008" />
+      <entry key="MS100" value="1.4356232282124612" />
+      <entry key="MS500" value="2.20487020231434" />
+      <entry key="S2" value="6.861703977672631" />
+      <entry key="S5" value="16.27184146350201" />
+      <entry key="S10" value="26.81173326180007" />
+      <entry key="S30" value="62.219450157144095" />
+      <entry key="S60" value="110.69440976862043" />
+      <entry key="M2" value="171.51674417447387" />
+      <entry key="M5" value="250.83568734314326" />
+      <entry key="M10" value="327.82882947257787" />
+      <entry key="M15" value="390.0759933698492" />
+      <entry key="M30" value="511.50248218827096" />
+      <entry key="H1" value="626.107388649925" />
+      <entry key="H2" value="812.9737848204599" />
+      <entry key="H4" value="1306.6253433843442" />
+      <entry key="D1" value="5480.5479037388795" />
+      <entry key="W1" value="29113.455886562093" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="9.351366126074079E-213" />
-      <entry key="S60" value="1.3971352941366537E-106" />
-      <entry key="M2" value="2.1961604922295327E-53" />
-      <entry key="M5" value="3.146665276868517E-21" />
-      <entry key="M10" value="1.9611470995724642E-10" />
-      <entry key="M15" value="8.237247652265382E-7" />
-      <entry key="M30" value="0.0039061291844819913" />
-      <entry key="H1" value="0.3130141362884425" />
-      <entry key="H2" value="3.284171374367857" />
-      <entry key="H4" value="13.687554032305089" />
-      <entry key="D1" value="164.99240107161705" />
-      <entry key="W1" value="1457.8346596121187" />
+      <entry key="S2" value="8.043826804330765E-99" />
+      <entry key="S5" value="5.801617503917902E-40" />
+      <entry key="S10" value="2.5863175712932482E-20" />
+      <entry key="S30" value="5.356199757097898E-7" />
+      <entry key="S60" value="0.001481544992844699" />
+      <entry key="M2" value="0.08437532943505625" />
+      <entry key="M5" value="1.0501547178243325" />
+      <entry key="M10" value="2.6043908465407855" />
+      <entry key="M15" value="3.5817573560806273" />
+      <entry key="M30" value="4.979362512843002" />
+      <entry key="H1" value="6.115361818055591" />
+      <entry key="H2" value="9.186296487847356" />
+      <entry key="H4" value="19.26471094286628" />
+      <entry key="D1" value="169.5980657867279" />
+      <entry key="W1" value="1461.850703462814" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8950250709279725" />
-      <entry key="MS500" value="0.9780634734615169" />
-      <entry key="S2" value="0.9973640480652105" />
-      <entry key="S5" value="1.2135301501919284" />
-      <entry key="S10" value="2.2388204413650623" />
-      <entry key="S30" value="6.931763709925131" />
-      <entry key="S60" value="21.20090446383963" />
-      <entry key="M2" value="63.073144161078574" />
-      <entry key="M5" value="146.63788206391308" />
-      <entry key="M10" value="209.86355977692037" />
-      <entry key="M15" value="243.37746033609665" />
-      <entry key="M30" value="290.22914665696527" />
-      <entry key="H1" value="334.1602319871272" />
-      <entry key="H2" value="490.1033845252912" />
-      <entry key="H4" value="990.359608203508" />
-      <entry key="D1" value="5301.805521585606" />
-      <entry key="W1" value="30212.16519703625" />
+      <entry key="MS100" value="1.1799193293269563" />
+      <entry key="MS500" value="2.1250208468143756" />
+      <entry key="S2" value="6.808249921168663" />
+      <entry key="S5" value="16.2230462470978" />
+      <entry key="S10" value="26.77158161133236" />
+      <entry key="S30" value="62.18938351066401" />
+      <entry key="S60" value="110.66913010655837" />
+      <entry key="M2" value="171.57073525471273" />
+      <entry key="M5" value="251.8228152262339" />
+      <entry key="M10" value="330.35594091695515" />
+      <entry key="M15" value="393.5838172600546" />
+      <entry key="M30" value="516.4254332950715" />
+      <entry key="H1" value="632.1863827416702" />
+      <entry key="H2" value="822.1377520208777" />
+      <entry key="H4" value="1325.87379431526" />
+      <entry key="D1" value="5650.125422966822" />
+      <entry key="W1" value="30575.280193708433" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -977,7 +981,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="225724000" />
+      <workItem from="1793360739922" duration="227505000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3012,7 +3016,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="python-line">
           <url>file://$PROJECT_DIR$/src/sensor/collision/id/sensor.py</url>
-          <line>54</line>
+          <line>58</line>
           <log-expression expression="  &#10;        ## --- Perform the check on the unique id attribute all Accounts have. ---##&#10;        for item in collection.items:&#10;            ## Handle the case there are duplicate ids.&#10;            if item.id == attractor.id:&#10;                ## Send an exception chain in the  report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=attractor,&#10;                    collider=item,&#10;                    attribute=&quot;id&quot;,&#10;                    value=item.id,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=method,&#10;                        cls_name=self.__class__.__name__,&#10;                        msg=AccountCollisionSensorException.MSG,&#10;                        err_code=AccountCollisionSensorException.ERR_CODE,&#10;                        ex=AccountIdCollisionException(&#10;                            cls_mthd=method,&#10;                            cls_name=self.__class__.__name__,&#10;                            msg=AccountIdCollisionException.MSG,&#10;                            err_code=AccountIdCollisionException.ERR_CODE,&#10;                        )&#10;                    )&#10;                )&#10;        ## --- Run collision tests on unique sub class attributes. ---##&#10;        &#10;        ## Human account uniqueness branch.&#10;        if isinstance(attractor, HumanAccount):&#10;            return self._human_account_collider(&#10;                human_attractor=attractor,&#10;                humans=collection.human_accounts,&#10;                parent_method=method,&#10;            )&#10;        ## Otherwise run the default sub-collider.&#10;        return self._machine_account_collider(&#10;                machine_attractor=attractor,&#10;                machines=collection.machine_accounts,&#10;                parent_method=method,&#10;            )&#10;            &#10;    @LoggingLevelRouter.monitor&#10;    def _human_account_collider(&#10;            self,&#10;            human_attractor: HumanAccount,&#10;            humans: List[HumanAccount],&#10;            parent_method: str&#10;    ) -&gt; CollisionReport:&#10;        &quot;&quot;&quot;duplicate_email_detector&quot;&quot;&quot;&#10;        ## Set up the target.&#10;        attribute = &quot;email&quot;&#10;        target = human_attractor.email.upper()&#10;        &#10;        ## --- Run the collider. ---##&#10;        for human in humans:&#10;            ## Handle the case that an email address is shared.&#10;            if human.email.upper() == target:&#10;                ## Send an exception chain in the report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=human_attractor,&#10;                    collider=human,&#10;                    attribute=attribute,&#10;                    value=target,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=parent_method,&#10;                        cls_name=self.__class__.__name__,&#10;                        ex=AccountEmailCollisionException()&#10;                    )&#10;                )&#10;        ## Otherwise report the attractor is unique&#10;        return CollisionReport.report_no_duplicates(attractor=human_attractor)&#10;    &#10;    @LoggingLevelRouter.monitor&#10;    def _machine_account_collider(&#10;            self,&#10;            machine_attractor: MachineAccount,&#10;            machines: List[MachineAccount],&#10;            parent_method: str&#10;    ):&#10;        &quot;&quot;&quot;duplicate_machine_name_detector&quot;&quot;&quot;&#10;        ## Set up the target.&#10;        attribute = &quot;machine_name&quot;&#10;        target = machine_attractor.name.upper()&#10;        &#10;        ## --- Run the collider. ---##&#10;        for machine in machines:&#10;            ## Handle the case that a machine_name is shared.&#10;            if machine.name.upper() == target:&#10;                ## Send an exception chain in the report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=machine_attractor,&#10;                    collider=machine,&#10;                    attribute=attribute,&#10;                    value=target,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=parent_method,&#10;                        cls_name=self.__class__.__name__,&#10;                        msg=AccountCollisionSensorException.MSG,&#10;                        err_code=AccountCollisionSensorException.ERR_CODE,&#10;                        ex=AccountMachineCollisionException()&#10;                    )&#10;                )&#10;        ## Otherwise report the attractor is unique.&#10;        return CollisionReport.report_no_duplicates(attractor=machine_attractor)" language="Python" />
           <option name="timeStamp" value="679" />
         </line-breakpoint>
