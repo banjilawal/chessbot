@@ -1,7 +1,7 @@
-# src/err/authorization/checker/maneuver/destination/exception.py
+# src/err/authorization/checker/maneuver/destination/blocked/exception.py
 
 """
-Module: err.authorization.checker.maneuver.destination.exception
+Module: err.authorization.checker.maneuver.destination.blocked.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,23 +13,22 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ManeuverPathCheckerException
+from err import ManeuverTokenDestinationCheckerException
 
 __all__ = [
-    # ======================# PREMATURE_ARRIVAL_ERROR #======================#
-    "PrematureArrivalException",
+    # ======================# MANEUVRE_DESTINATION_BLOCKED_ERROR #======================#
+    "BlockedDestinationException",
 ]
 
-# ======================# PREMATURE_ARRIVAL_ERROR #======================#
-class PrematureArrivalException(ManeuverPathCheckerException):
+# ======================# MANEUVRE_DESTINATION_BLOCKED_ERROR #======================#
+class BlockedDestinationException(ManeuverTokenDestinationCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Maneuver failed because the traveler was already at
-            the destination.
-            
+        1.  Indicating that a Maneuver failed because the destination was occupied
+            by a friend.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +43,10 @@ class PrematureArrivalException(ManeuverPathCheckerException):
     Provides:
 
     Super Class:
-        ManeuverPathCheckerException
+        ManeuverTokenDestinationCheckerException
     """
-    MSG = "Maneuver failed: traveler already at destination."
-    ERR_CODE = "PREMATURE_ARRIVAL_ERROR"
+    MSG = "Maneuver failed: Destination occupied by friend."
+    ERR_CODE = "MANEUVRE_DESTINATION_BLOCKED_ERROR"
     
     def __init__(
             self,

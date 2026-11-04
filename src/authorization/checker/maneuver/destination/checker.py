@@ -14,7 +14,7 @@ from typing import cast
 from artifcat import AttackDecision, ManeuverDecision
 from authorization import ManeuverPathChecker
 from domain import Path, Token
-from err import BlockedDestinationException
+from err import BlockedDestinationException, ManeuverTokenDestinationCheckerException, PrematureArrivalException
 from exchange import AttackPermissionRequest, AttackRequest, ManeuverPermissionRequest, ManeuverRequest
 from util import LoggingLevelRouter
 
@@ -81,11 +81,11 @@ class ManeuverTokenDestinationChecker(ManeuverPathChecker):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverTokenDestinationCheckerException.MSG,
                     err_code=ManeuverTokenDestinationCheckerException.ERR_CODE,
-                    ex=PrematureArrivalExceptionException(
+                    ex=PrematureArrivalException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PrematureArrivalExceptionException.MSG,
-                        err_code=PrematureArrivalExceptionException.ERR_CODE,
+                        msg=PrematureArrivalException.MSG,
+                        err_code=PrematureArrivalException.ERR_CODE,
                     ),
                 )
             )
