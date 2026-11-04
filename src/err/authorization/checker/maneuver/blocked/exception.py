@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ManeuverApplicantCheckerException
+from err import ManeuverPathCheckerException
 
 __all__ = [
     # ======================# MANEUVRE_DESTINATION_BLOCKED_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVRE_DESTINATION_BLOCKED_ERROR #======================#
-class BlockedDestinationException(ManeuverApplicantCheckerException):
+class BlockedDestinationException(ManeuverPathCheckerException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class BlockedDestinationException(ManeuverApplicantCheckerException):
     Provides:
 
     Super Class:
-        ManeuverApplicantCheckerException
+        ManeuverPathCheckerException
     """
     MSG = "Maneuver failed: Destination occupied by friend."
     ERR_CODE = "MANEUVRE_DESTINATION_BLOCKED_ERROR"

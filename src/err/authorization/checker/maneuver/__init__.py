@@ -11,9 +11,9 @@ version: 0.0.2
 
 # Packages
 from .blocked import *
-from .destination import *
+from .premature import *
 from .origin import *
-from .path import *
+from .premature import *
 
 # Modules
-from .exception import ManeuverApplicantCheckerException
+from .exception import ManeuverPathCheckerException

@@ -88,7 +88,7 @@ class ReadyTokenChecker:
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=ReadyTokenCheckerException.MSG,
-                    err_code=ReadyTokenCheckerException_CODE,
+                    err_code=ReadyTokenCheckerException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
@@ -110,7 +110,7 @@ class ReadyTokenChecker:
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=ReadyTokenCheckerException.MSG,
-                    err_code=ReadyTokenCheckerException_CODE,
+                    err_code=ReadyTokenCheckerException.ERR_CODE,
                     ex=DisabledTokenException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -124,53 +124,3 @@ class ReadyTokenChecker:
             transaction_request=transaction_request,
             permission_request=permission_request,
         )
-        
-        
-            
-        validation = self.validation_service.extract_model(
-            request=TokenValidationRequest(
-                item=TokenCarrier(model=candidate),
-                id=IdFactory.next_id(class_name="TokenValidationRequest")
-            )
-        )
-        if validation.is_failure:
-            return Decision.denial(
-                request=request,
-                exception=ReadyTokenCheckerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ReadyTokenCheckerException.MSG,
-                    err_code=ReadyTokenCheckerException_CODE,
-                    ex=validation.exception,
-                )
-            )
-        token = cast(Token, validation.payload)
-        applicant = token
-        
-        if isinstance(token, KingToken):
-            applicant = cast(KingToken, token)
-        if isinstance(token, CombatantToken):
-            applicant = cast(CombatantToken, token)
-            
-        if applicant.is_not_ready:
-            return Decision.denial(
-                request=request,
-                exception=ReadyTokenCheckerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ReadyTokenCheckerException.MSG,
-                    err_code=ReadyTokenCheckerException_CODE,
-                    ex=DisabledTokenException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=DisabledTokenException.MSG,
-                        err_code=DisabledTokenException.ERR_CODE,
-                    )
-                )
-            )
-        approval = PermissionRequest(
-            id=request.id,
-            authorization_applicant=applicant,
-            activity=request.activity,
-        )
-        return Decision.grant(approval)

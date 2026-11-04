@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import RoleCheckerException
 
 __all__ = [
-    # ======================# MANEUVER_APPLICANT_CHECKER_FAILURE #======================#
-    "ManeuverApplicantCheckerException",
+    # ======================# MANEUVER_PATH_CHECKER_FAILURE #======================#
+    "ManeuverPathCheckerException",
 ]
 
-# ======================# MANEUVER_APPLICANT_CHECKER_FAILURE #======================#
-class ManeuverApplicantCheckerException(ApplicantCheckerException):
+# ======================# MANEUVER_PATH_CHECKER_FAILURE #======================#
+class ManeuverPathCheckerException(RoleCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverApplicantChecker failed.
+        1.  Indicating that a ManeuverPathChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ManeuverApplicantCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        RoleCheckerException
     """
-    MSG = "ManeuverApplicantChecker failed."
-    ERR_CODE = "MANEUVER_APPLICANT_CHECKER_FAILURE"
+    MSG = "ManeuverPathChecker failed."
+    ERR_CODE = "MANEUVER_PATH_CHECKER_FAILURE"
     
     def __init__(
             self,

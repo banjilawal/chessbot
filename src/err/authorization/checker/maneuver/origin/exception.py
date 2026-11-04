@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ManeuverApplicantCheckerException
+from err import ManeuverPathCheckerException
 
 __all__ = [
     # ======================# MANEUVER_APPLICANT_WRONG_ORIGIN_SQUARE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_APPLICANT_WRONG_ORIGIN_SQUARE #======================#
-class ManeuverCandidateOriginException(ManeuverApplicantCheckerException):
+class ManeuverCandidateOriginException(ManeuverPathCheckerException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class ManeuverCandidateOriginException(ManeuverApplicantCheckerException):
     Provides:
 
     Super Class:
-        ManeuverApplicantCheckerException
+        ManeuverPathCheckerException
     """
     MSG = "Maneuver failed: wrong originating Square."
     ERR_CODE = "MANEUVER_APPLICANT_WRONG_ORIGIN_SQUARE"

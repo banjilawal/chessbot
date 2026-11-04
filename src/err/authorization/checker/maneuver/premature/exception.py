@@ -1,7 +1,7 @@
-# src/err/authorization/role/maneuver/exception.py
+# src/err/authorization/checker/maneuver/destination/exception.py
 
 """
-Module: err.authorization.role.maneuver.exception
+Module: err.authorization.checker.maneuver.destination.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,23 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantRoleException
+from err import ManeuverPathCheckerException
 
 __all__ = [
-    # ======================# MANEUVER_PATH_PERMIITER_FAILURE #======================#
-    "ManeuverPathPermitterException",
+    # ======================# PREMATURE_ARRIVAL_ERROR #======================#
+    "PrematureArrivalException",
 ]
 
-# ======================# MANEUVER_PATH_PERMIITER_FAILURE #======================#
-class ManeuverPathPermitterException(ApplicantRoleException):
+# ======================# PREMATURE_ARRIVAL_ERROR #======================#
+class PrematureArrivalException(ManeuverPathCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPathPermitter failed.
+        1.  Indicating that a Maneuver failed because the traveler was already at
+            the destination.
+            
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +44,10 @@ class ManeuverPathPermitterException(ApplicantRoleException):
     Provides:
 
     Super Class:
-        ApplicantRoleException
+        ManeuverPathCheckerException
     """
-    MSG = "ManeuverPathPermitter failed."
-    ERR_CODE = "MANEUVER_PATH_PERMIITER_FAILURE"
+    MSG = "Maneuver failed: traveler already at destination."
+    ERR_CODE = "PREMATURE_ARRIVAL_ERROR"
     
     def __init__(
             self,
