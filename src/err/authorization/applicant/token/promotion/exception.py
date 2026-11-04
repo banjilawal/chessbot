@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import TokenApproverException
+from err import ReadyTokenCheckerException
 
 __all__ = [
     # ======================# TOKEN_PROMOTION_APPROVER_FAILURE #======================#
-    "TokenPromotionApproverException",
+    "ReadyTokenPromotionCheckerException",
 ]
 
 # ======================# TOKEN_PROMOTION_APPROVER_FAILURE #======================#
-class TokenPromotionApproverException(TokenApproverException):
+class ReadyTokenPromotionCheckerException(ReadyTokenCheckerException):
     """
     Role:
         - Error Tracing

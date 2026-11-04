@@ -13,9 +13,8 @@ from typing import Optional, cast
 
 from artifcat import Decision
 from domain import CombatantToken, KingToken, Token
-from err import DisabledTokenException
-from exchange import PermissionRequest, TokenValidationRequest, TransactionRequest
-from exchange.service.validation.model.token import TokenValidationService
+from err import DisabledTokenException, ReadyTokenCheckerException
+from exchange import PermissionRequest, TokenValidationRequest, TokenValidationService, TransactionRequest
 from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 

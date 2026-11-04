@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ApplicantApproverException
+from err import AuthorizationException
 
 __all__ = [
-    # ======================# TOKEN_APPROVER_FAILUREFAILURE #======================#
-    "TokenApproverException",
+    # ======================# READY_TOKEN_CHECKER_FAILURE #======================#
+    "ReadyTokenCheckerException",
 ]
 
-# ======================# TOKEN_APPROVER_FAILUREFAILURE #======================#
-class TokenApproverException(ApplicantApproverException):
+# ======================# READY_TOKEN_CHECKER_FAILURE #======================#
+class ReadyTokenCheckerException(AuthorizationException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an ApplicantApprover failed.
+        1.  Indicating that a ReadyTokenChecker encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenApproverException(ApplicantApproverException):
     Provides:
 
     Super Class:
-        ApplicantApproverException
+        AuthorizationException
     """
-    MSG = "ApplicantApprover failed."
-    ERR_CODE = "TOKEN_APPROVER_FAILUREFAILURE"
+    MSG = "ReadyTokenChecker failed."
+    ERR_CODE = "READY_TOKEN_CHECKER_FAILURE"
     
     def __init__(
             self,

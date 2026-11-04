@@ -13,15 +13,15 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import TokenApproverException
+from err import ReadyTokenCheckerException
 
 __all__ = [
     # ======================# TOKEN_MANEUVER_APPROVER_FAILURE #======================#
-    "TokenManeuverApproverException",
+    "ReadyTokenManeuverCheckerException",
 ]
 
 # ======================# TOKEN_MANEUVER_APPROVER_FAILURE #======================#
-class TokenManeuverApproverException(TokenApproverException):
+class ReadyTokenManeuverCheckerException(ReadyTokenCheckerException):
     """
     Role:
         - Error Tracing
