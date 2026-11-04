@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.AUTHORIZATION.CHECKER.MANEUVER.ORIGIN PACKAGE ===========#
 
 # Packages
+from .consistency import *
 
 # Modules
-from .exception import ManeuverCandidateOriginException
+from .exception import ManeuverTokenOriginCheckerException

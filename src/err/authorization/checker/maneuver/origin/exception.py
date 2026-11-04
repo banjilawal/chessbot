@@ -16,12 +16,12 @@ from artifcat import MethodResultType
 from err import ManeuverPathCheckerException
 
 __all__ = [
-    # ======================# MANEUVER_APPLICANT_WRONG_ORIGIN_SQUARE #======================#
-    "ManeuverCandidateOriginException",
+    # ======================# MANEUVER_TOKEN_ORIGIN_CHECKER_FAILURE #======================#
+    "ManeuverTokenOriginCheckerException",
 ]
 
-# ======================# MANEUVER_APPLICANT_WRONG_ORIGIN_SQUARE #======================#
-class ManeuverCandidateOriginException(ManeuverPathCheckerException):
+# ======================# MANEUVER_TOKEN_ORIGIN_CHECKER_FAILURE #======================#
+class ManeuverTokenOriginCheckerException(ManeuverPathCheckerException):
     """
     Role:
         - Error Tracing
@@ -46,7 +46,7 @@ class ManeuverCandidateOriginException(ManeuverPathCheckerException):
         ManeuverPathCheckerException
     """
     MSG = "Maneuver failed: wrong originating Square."
-    ERR_CODE = "MANEUVER_APPLICANT_WRONG_ORIGIN_SQUARE"
+    ERR_CODE = "MANEUVER_TOKEN_ORIGIN_CHECKER_FAILURE"
     
     def __init__(
             self,
