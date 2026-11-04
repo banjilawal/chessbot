@@ -83,7 +83,7 @@ class CheckmateEncounterDispatcher(EncounterDispatcher[CheckmateRequest]):
         approval = CheckmateRequest(
             id=approved_request.id,
             activity=approved_request.activity,
-            applicant=approved_request.token,
+            applicant=approved_request.traveler,
         )
         # --- Forward the approval. ---#
         return CheckmateDecision.grant(approval)

@@ -154,7 +154,7 @@ class AttackTokenReviewer(AttackApplicantReviewer[Token]):
         approval = AttackPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
-            authorization_applicant=approved_request.token,
+            authorization_applicant=approved_request.traveler,
         )
         # --- Forward the approval. ---#
         return AttackDecision.grant(approval)

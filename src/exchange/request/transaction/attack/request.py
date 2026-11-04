@@ -9,16 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+
 from typing import Generic, TypeVar
 
 from artifcat import AttackResult
 from domain import Encounter, Square, Token
-from exchange import TransactionRequest
+from exchange import ManeuverRequest
 
+R = TypeVar("R", bound="AttackResult")
 T = TypeVar("T", bound="Encounter")
 
-class AttackRequest(TransactionRequest[AttackResult], ABC, Generic[T]):
+class AttackRequest(ManeuverRequest[R,T], Generic[R, T]):
     """
      Role:
          -  Messaging

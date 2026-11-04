@@ -207,7 +207,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         # --- PROCESS_THE_OCCUPANT_ATTRIBUTE. ---#
         occupant = blueprint.occupant
         if occupant is not None:
-            occupant_validation = self.toolkit.dependency.token.extract_model(
+            occupant_validation = self.toolkit.dependency.traveler.extract_model(
                 request=TokenValidationRequest(
                     item=TokenCarrier(model=occupant),
                     id=IdFactory.next_id(class_name="TokenValidationRequest")

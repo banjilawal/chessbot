@@ -24,31 +24,31 @@ class PromotionRequest(TransactionRequest[PromotionResult]):
          1. Provide details about a promotion job.
 
      Attributes:
-        pawn_token: PawnToken
-        rank_elevation: Elevatable
+        pawn: PawnToken
+        promotion_level: Rank
 
      Provides:
      
      Super Class:
         TransactionRequest
      """
-    _applicant: PawnToken
+    _pawn: PawnToken
     _promotion_level: Rank
     
-    def __init__(self, id: int, token: PawnToken, promotion_level: Rank):
+    def __init__(self, id: int, pawn: PawnToken, promotion_level: Rank):
         """
         Args:
             id: int
-            token: PawnToken
+            pawn: PawnToken
             promotion_level: Rank
         """
         super().__init__(id=id)
-        self._applicant = token
+        self._pawn = pawn
         self._promotion_level = promotion_level
         
     @property
     def token(self) -> PawnToken:
-        return self._applicant
+        return self._pawn
     
     @property
     def promotion_level(self) -> Rank:

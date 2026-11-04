@@ -103,7 +103,7 @@ class Mover(Worker[ManeuverResult, ManeuverRequest]):
                     ex=ManeuverRequestNullException()
                 )
             )
-        token = transaction_request.token
+        token = transaction_request.traveler
         path = transaction_request.path
         
         path.destination.occupant = token

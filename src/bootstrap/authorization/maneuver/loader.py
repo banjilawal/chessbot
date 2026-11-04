@@ -154,7 +154,7 @@ class ManeuverAuthorizationLoader(
         # --- PROCESS_THE_TOKEN_APPLICANT_ATTRIBUTE. ---#
         token_validation = self._token_validation_service.extract_model(
             request=TokenValidationRequest(
-                item=TokenCarrier(model=applicant.token),
+                item=TokenCarrier(model=applicant.traveler),
                 id=IdFactory.next_id("ValidationRequest")
             )
         )
@@ -197,7 +197,7 @@ class ManeuverAuthorizationLoader(
         
         # --- Prepare a transaction approval. ---#
         approved_applicant = ManeuverRequest(
-            token=token,
+            traveler=token,
             path=path,
             id=transaction_id,
         )

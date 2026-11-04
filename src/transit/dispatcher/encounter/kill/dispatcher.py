@@ -77,7 +77,7 @@ class KillEncounterDispatcher(EncounterDispatcher[KillRequest]):
         approval = KillRequest(
             id=approved_request.id,
             activity=approved_request.activity,
-            applicant=approved_request.token,
+            applicant=approved_request.traveler,
         )
         # --- Forward the approval. ---#
         return KillDecision.grant(approval)

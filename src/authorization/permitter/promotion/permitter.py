@@ -185,7 +185,7 @@ class PromotionPermitter(Permitter[PromotionPermissionRequest]):
         # --- Prepare an approval of the transaction. ---#
         transaction_request = PromotionRequest(
             id=applicant_id,
-            token=token,
+            pawn=token,
             promotion_level=rank,
         )
         permission_request = PromotionPermissionRequest(

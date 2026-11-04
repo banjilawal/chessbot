@@ -9,12 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Generic, TypeVar
+
 from artifcat import ManeuverResult
-from domain import Path, Token
+from domain import Maneuver, Path, Token
 from exchange import TransactionRequest
 
+R = TypeVar("R", bound="ManeuverResult")
+T = TypeVar("T", bound="Maneuver")
 
-class ManeuverRequest(TransactionRequest[ManeuverResult]):
+class ManeuverRequest(TransactionRequest[R], Generic[R, T]):
     """
      Role:
          -  Messaging
@@ -31,28 +35,28 @@ class ManeuverRequest(TransactionRequest[ManeuverResult]):
      Super Class:
         TransactionRequest
      """
-    _token: Token
+    _traveler: Token
     _path: Path
     
     def __init__(
             self,
             id: int,
-            token: Token,
+            traveler: Token,
             path: Path,
     ):
         """
         Args:
             id: int
-            token: Token
+            traveler: Token
             path: Path
         """
         super().__init__(id=id)
-        self._token = token
+        self._traveler = traveler
         self._path = path
         
     @property
-    def token(self) -> Token:
-        return self._token
+    def traveler(self) -> Token:
+        return self._traveler
     
     @property
     def path(self) -> Path:

@@ -133,7 +133,7 @@ class ParticipationValidator(ChartValidator[Participation]):
         
         tokens: List[Token] = []
         for token in [blueprint.victim, blueprint.attacker]:
-            token_validation = self.toolkit.dependency.token.extract_model(
+            token_validation = self.toolkit.dependency.traveler.extract_model(
                 request=TokenValidationRequest(
                     item=TokenCarrier(model=token),
                     id=IdFactory.next_id(class_name="TokenValidationRequest"),

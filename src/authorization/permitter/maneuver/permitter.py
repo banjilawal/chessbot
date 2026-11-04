@@ -110,7 +110,7 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         form_id = permission_form.id
         applicant_id = applicant.id
         # Get the applicant information
-        token = applicant.token
+        token = applicant.traveler
         path = applicant.path
         
         # Handle the case that the token is disabled.
@@ -169,7 +169,7 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         # --- Prepare an approval of the transaction. ---#
         transaction_request = ManeuverRequest(
             id=applicant_id,
-            token=token,
+            traveler=token,
             path=path,
         )
         permission_request = ManeuverPermissionRequest(

@@ -160,7 +160,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_VICTIM_ATTRIBUTE. ---#
-        victim_validation = self.toolkit.dependency.token.extract_model(
+        victim_validation = self.toolkit.dependency.traveler.extract_model(
             request=TokenValidationRequest(
                 item=TokenCarrier(model=blueprint.victim),
                 id=IdFactory.next_id(class_name="TokenValidationRequest"),

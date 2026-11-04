@@ -235,7 +235,7 @@ class PromotionAuthorizationLoader(
         # --- Prepare a transaction approval. ---#
         approved_applicant = PromotionRequest(
             id=transaction_id,
-            token=pawn_token,
+            pawn=pawn_token,
             promotion_level=elevatable,
         )
         permission_request = PromotionPermissionRequest(
