@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Optional
 
-from domain import Account, Archetype, Encounterable, Square, SearchableModel, Square, Token
+from domain import Account, Archetype, Maneuver, Path, Square, Token
 
 
-class Encounter(SearchableModel, Encounterable, ABC):
+class Encounter(Maneuver, ABC):
     """
     Role:
         - Model
@@ -27,37 +27,36 @@ class Encounter(SearchableModel, Encounterable, ABC):
     Attributes:
         id: int
         victim: Token
-        location: Square
         attacker_reward: Optional[int]
 
     Provides:
         
     Super Class:
-        SearchableModel
+        Maneuver
     """
     _id: int
     _victim: Token
-    _location: Square
-    _attacker_reward: int
 
     
     def __init__(
             self,
             id: int,
             victim: Token,
-            location: Square,
+            attacker: Token,
+            attacker_path: Path,
             attacker_reward: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
             victim: Token
-            location: Square
+            attacker: Token
+            attacker_path: Path
             attacker_reward: Optional[int]
         """
+        super().__init__(path=attacker_path, traveler=attacker)
         self._id = id
         self._victim = victim
-        self._location = location
         self._attacker_reward = attacker_reward or victim.rank.persona.ransom
         
     @property
@@ -69,8 +68,12 @@ class Encounter(SearchableModel, Encounterable, ABC):
         return self._victim
     
     @property
+    def attacker(self) -> Token:
+        return self.traveler
+    
+    @property
     def location(self) -> Square:
-        return self._location
+        return self.destination
         
     @property
     def attacker_reward(self) -> int:
