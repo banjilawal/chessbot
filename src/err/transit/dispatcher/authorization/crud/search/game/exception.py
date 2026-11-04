@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# GAME_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "GameSearchAuthorizationDispatcherException",
+    # ======================# GAME_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "GameSearchPermissionDispatcherException",
 ]
 
-# ======================# GAME_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class GameSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# GAME_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class GameSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GameSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a GameSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class GameSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherEx
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "GameSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "GAME_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "GameSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "GAME_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

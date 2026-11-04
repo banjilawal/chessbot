@@ -16,3 +16,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
+from .exception import PermissionDispatcherException

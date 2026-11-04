@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationDispatcherException
+from err import PermissionDispatcherException
 
 __all__ = [
-    # ======================# DELETION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "DeletionAuthorizationDispatcherException",
+    # ======================# DELETION_PERMISSION_DISPATCHER_FAILURE #======================#
+    "DeletionPermissionDispatcherException",
 ]
 
-# ======================# DELETION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class DeletionAuthorizationDispatcherException(AuthorizationDispatcherException):
+# ======================# DELETION_PERMISSION_DISPATCHER_FAILURE #======================#
+class DeletionPermissionDispatcherException(PermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a DeletionAuthorizationDispatcher encountered an error.
+        1.  Indicating that a DeletionPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class DeletionAuthorizationDispatcherException(AuthorizationDispatcherException)
     Provides:
 
     Super Class:
-        AuthorizationDispatcherException
+        PermissionDispatcherException
     """
-    MSG = "DeletionAuthorizationDispatcher encountered an error."
-    ERR_CODE = "DELETION_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "DeletionPermissionDispatcher encountered an error."
+    ERR_CODE = "DELETION_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

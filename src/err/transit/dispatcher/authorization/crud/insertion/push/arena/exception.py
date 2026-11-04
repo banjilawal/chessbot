@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizationDispatcherException
+from err import PushPermissionDispatcherException
 
 __all__ = [
-    # ======================# ARENA_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "ArenaPushAuthorizationDispatcherException",
+    # ======================# ARENA_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "ArenaPushPermissionDispatcherException",
 ]
 
-# ======================# ARENA_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class ArenaPushAuthorizationDispatcherException(PushAuthorizationDispatcherException):
+# ======================# ARENA_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class ArenaPushPermissionDispatcherException(PushPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a ArenaPushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ArenaPushAuthorizationDispatcherException(PushAuthorizationDispatcherExcep
     Provides:
 
     Super Class:
-        PushAuthorizationDispatcherException
+        PushPermissionDispatcherException
     """
-    MSG = "ArenaPushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ARENA_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "ArenaPushPermissionDispatcher encountered an error."
+    ERR_CODE = "ARENA_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

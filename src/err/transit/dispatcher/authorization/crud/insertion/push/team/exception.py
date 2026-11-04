@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizationDispatcherException
+from err import PushPermissionDispatcherException
 
 __all__ = [
-    # ======================# TEAM_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "TeamPushAuthorizationDispatcherException",
+    # ======================# TEAM_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "TeamPushPermissionDispatcherException",
 ]
 
-# ======================# TEAM_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class TeamPushAuthorizationDispatcherException(PushAuthorizationDispatcherException):
+# ======================# TEAM_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class TeamPushPermissionDispatcherException(PushPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a TeamPushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TeamPushAuthorizationDispatcherException(PushAuthorizationDispatcherExcept
     Provides:
 
     Super Class:
-        PushAuthorizationDispatcherException
+        PushPermissionDispatcherException
     """
-    MSG = "TeamPushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "TEAM_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "TeamPushPermissionDispatcher encountered an error."
+    ERR_CODE = "TEAM_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

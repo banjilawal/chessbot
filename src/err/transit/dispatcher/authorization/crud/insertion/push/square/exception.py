@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizationDispatcherException
+from err import PushPermissionDispatcherException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "SquarePushAuthorizationDispatcherException",
+    # ======================# SQUARE_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "SquarePushPermissionDispatcherException",
 ]
 
-# ======================# SQUARE_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class SquarePushAuthorizationDispatcherException(PushAuthorizationDispatcherException):
+# ======================# SQUARE_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class SquarePushPermissionDispatcherException(PushPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a SquarePushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquarePushAuthorizationDispatcherException(PushAuthorizationDispatcherExce
     Provides:
 
     Super Class:
-        PushAuthorizationDispatcherException
+        PushPermissionDispatcherException
     """
-    MSG = "SquarePushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "SQUARE_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "SquarePushPermissionDispatcher encountered an error."
+    ERR_CODE = "SQUARE_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

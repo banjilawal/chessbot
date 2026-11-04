@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizationDispatcherException
+from err import PopPermissionDispatcherException
 
 __all__ = [
-    # ======================# SQUARE_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "SquarePopAuthorizationDispatcherException",
+    # ======================# SQUARE_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+    "SquarePopPermissionDispatcherException",
 ]
 
-# ======================# SQUARE_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class SquarePopAuthorizationDispatcherException(PopAuthorizationDispatcherException):
+# ======================# SQUARE_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+class SquarePopPermissionDispatcherException(PopPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePopAuthorizationDispatcher encountered an error.
+        1.  Indicating that a SquarePopPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquarePopAuthorizationDispatcherException(PopAuthorizationDispatcherExcept
     Provides:
 
     Super Class:
-        PopAuthorizationDispatcherException
+        PopPermissionDispatcherException
     """
-    MSG = "SquarePopAuthorizationDispatcher encountered an error."
-    ERR_CODE = "SQUARE_POP_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "SquarePopPermissionDispatcher encountered an error."
+    ERR_CODE = "SQUARE_POP_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

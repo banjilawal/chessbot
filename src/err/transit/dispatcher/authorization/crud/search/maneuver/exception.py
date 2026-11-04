@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# MANEUVER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "ManeuverSearchAuthorizationDispatcherException",
+    # ======================# MANEUVER_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "ManeuverSearchPermissionDispatcherException",
 ]
 
-# ======================# MANEUVER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class ManeuverSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# MANEUVER_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class ManeuverSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a ManeuverSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ManeuverSearchAuthorizationDispatcherException(SearchAuthorizationDispatch
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "ManeuverSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "MANEUVER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "ManeuverSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "MANEUVER_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

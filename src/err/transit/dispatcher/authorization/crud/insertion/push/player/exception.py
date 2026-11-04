@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizationDispatcherException
+from err import PushPermissionDispatcherException
 
 __all__ = [
-    # ======================# PLAYER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "PlayerPushAuthorizationDispatcherException",
+    # ======================# PLAYER_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "PlayerPushPermissionDispatcherException",
 ]
 
-# ======================# PLAYER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class PlayerPushAuthorizationDispatcherException(PushAuthorizationDispatcherException):
+# ======================# PLAYER_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class PlayerPushPermissionDispatcherException(PushPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a PlayerPushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class PlayerPushAuthorizationDispatcherException(PushAuthorizationDispatcherExce
     Provides:
 
     Super Class:
-        PushAuthorizationDispatcherException
+        PushPermissionDispatcherException
     """
-    MSG = "PlayerPushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "PLAYER_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "PlayerPushPermissionDispatcher encountered an error."
+    ERR_CODE = "PLAYER_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

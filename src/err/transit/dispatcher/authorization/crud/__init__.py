@@ -15,4 +15,4 @@ from .insertion import *
 from .search import *
 
 # Modules
-from .exception import AuthorizationDispatcherException
+from .exception import CrudPermissionDispatcherException

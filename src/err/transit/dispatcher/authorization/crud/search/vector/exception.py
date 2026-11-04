@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# SEARCH_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "VectorSearchAuthorizationDispatcherException",
+    # ======================# SEARCH_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE #======================#
+    "VectorSearchPermissionDispatcherException",
 ]
 
-# ======================# SEARCH_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class VectorSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# SEARCH_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE #======================#
+class VectorSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a VectorSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a VectorSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class VectorSearchAuthorizationDispatcherException(SearchAuthorizationDispatcher
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "VectorSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "SEARCH_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "VectorSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "SEARCH_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

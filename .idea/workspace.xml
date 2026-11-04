@@ -5,18 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/model/permitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/model/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/model/account/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/search/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/search/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/maneuver/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/account/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/account/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/maneuver/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/promotion/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/attack/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/pop/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/remove/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/deletion/remove/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/add/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/add/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/insertion/push/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/account/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/encounter/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/push/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/crud/search/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/dispatcher/authorization/promotion/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,59 +83,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000808247" />
-      <entry key="S5" value="1.000097815772286" />
-      <entry key="S10" value="1.0120355365065419" />
-      <entry key="S30" value="1.358896981697901" />
-      <entry key="S60" value="2.0355435138202003" />
-      <entry key="M2" value="3.819379150779327" />
-      <entry key="M5" value="12.92847489554498" />
-      <entry key="M10" value="40.10628379650722" />
-      <entry key="M15" value="75.4258226015521" />
-      <entry key="M30" value="178.49918928333037" />
-      <entry key="H1" value="314.7772357882764" />
-      <entry key="H2" value="499.93997750106143" />
-      <entry key="H4" value="878.5980040191353" />
-      <entry key="D1" value="4303.002867335401" />
-      <entry key="W1" value="27542.87437446559" />
+      <entry key="S2" value="1.0000000000000007" />
+      <entry key="S5" value="1.000000882756018" />
+      <entry key="S10" value="1.0009847750758518" />
+      <entry key="S30" value="1.13479873703346" />
+      <entry key="S60" value="1.638069543606155" />
+      <entry key="M2" value="5.529844892243541" />
+      <entry key="M5" value="31.497651712233804" />
+      <entry key="M10" value="72.20201244529967" />
+      <entry key="M15" value="110.87802074161402" />
+      <entry key="M30" value="218.74330066001315" />
+      <entry key="H1" value="367.8134252301804" />
+      <entry key="H2" value="566.5767121321592" />
+      <entry key="H4" value="952.0901937557114" />
+      <entry key="D1" value="4384.733226181301" />
+      <entry key="W1" value="27627.35053728691" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="8.920082662794251E-180" />
-      <entry key="MS500" value="1.5515236642845E-36" />
-      <entry key="S2" value="1.3379675992905919E-9" />
-      <entry key="S5" value="4.000865951366558E-4" />
-      <entry key="S10" value="0.027932449427085105" />
-      <entry key="S30" value="0.48025887741537826" />
-      <entry key="S60" value="0.9797172855093087" />
-      <entry key="M2" value="1.403075588379513" />
-      <entry key="M5" value="1.8953531012338407" />
-      <entry key="M10" value="2.722507171884927" />
-      <entry key="M15" value="3.5403167666148363" />
-      <entry key="M30" value="5.33460351723784" />
-      <entry key="H1" value="7.890650050331355" />
-      <entry key="H2" value="13.724275288195079" />
-      <entry key="H4" value="29.252435898648592" />
-      <entry key="D1" value="195.28883055551657" />
-      <entry key="W1" value="1499.4916450794567" />
+      <entry key="MS100" value="1.095118104433346E-291" />
+      <entry key="MS500" value="7.032267755235759E-59" />
+      <entry key="S2" value="4.4008438161113094E-15" />
+      <entry key="S5" value="2.721506106673585E-6" />
+      <entry key="S10" value="0.0024478688851360684" />
+      <entry key="S30" value="0.28885500417078214" />
+      <entry key="S60" value="1.0449408624088126" />
+      <entry key="M2" value="2.0424523551206666" />
+      <entry key="M5" value="3.3374696633019476" />
+      <entry key="M10" value="4.560262289949445" />
+      <entry key="M15" value="5.552889485613384" />
+      <entry key="M30" value="7.7314943054345875" />
+      <entry key="H1" value="10.665165860224793" />
+      <entry key="H2" value="16.65338128954745" />
+      <entry key="H4" value="32.1156141474446" />
+      <entry key="D1" value="198.02535737393742" />
+      <entry key="W1" value="1502.1055366757885" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.820766091346745E-11" />
-      <entry key="MS500" value="0.008974205898414338" />
-      <entry key="S2" value="0.30778610382140986" />
-      <entry key="S5" value="0.624514483040533" />
-      <entry key="S10" value="0.8242740888291463" />
-      <entry key="S30" value="1.72767517349533" />
-      <entry key="S60" value="2.9344777499626415" />
-      <entry key="M2" value="5.159925875324894" />
-      <entry key="M5" value="14.765171273162363" />
-      <entry key="M10" value="42.765024560589204" />
-      <entry key="M15" value="78.90070849003652" />
-      <entry key="M30" value="183.77236888925336" />
-      <entry key="H1" value="322.61876853337066" />
-      <entry key="H2" value="513.6272656940681" />
-      <entry key="H4" value="907.8199352076238" />
-      <entry key="D1" value="4498.26577076491" />
-      <entry key="W1" value="29042.33858351391" />
+      <entry key="MS100" value="0.9526379980439373" />
+      <entry key="MS500" value="0.9903428719330246" />
+      <entry key="S2" value="0.9975769252644582" />
+      <entry key="S5" value="0.9990332123873797" />
+      <entry key="S10" value="1.0027127667074895" />
+      <entry key="S30" value="1.4123519463029266" />
+      <entry key="S60" value="2.6613095976229175" />
+      <entry key="M2" value="7.548972069271271" />
+      <entry key="M5" value="34.8087349416942" />
+      <entry key="M10" value="76.72513290398405" />
+      <entry key="M15" value="116.38661507202818" />
+      <entry key="M30" value="226.42450209846996" />
+      <entry key="H1" value="378.43369748363614" />
+      <entry key="H2" value="583.1943925195432" />
+      <entry key="H4" value="984.1757115024508" />
+      <entry key="D1" value="4582.7326959968" />
+      <entry key="W1" value="29129.42864499246" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -147,7 +170,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/permitter/crud/search/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/transit/dispatcher/authorization",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -161,11 +184,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/authorization" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter/crud/search/model" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter" />
       <recent name="$PROJECT_DIR$/src/authorization/checker/maneuver" />
       <recent name="$PROJECT_DIR$/src/authorization/checker/maneuver/origin" />
-      <recent name="$PROJECT_DIR$/src/authorization/checker" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/authorization/permitter/crud/search/model" />
@@ -987,7 +1010,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="193883000" />
+      <workItem from="1793360739922" duration="194717000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2989,6 +3012,11 @@
           <url>file://$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search/model/dispatcher.py</url>
           <line>11</line>
           <option name="timeStamp" value="671" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/transit/dispatcher/authorization/exception.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="672" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizationDispatcherException
+from err import PopPermissionDispatcherException
 
 __all__ = [
-    # ======================# GAME_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "GamePopAuthorizationDispatcherException",
+    # ======================# GAME_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+    "GamePopPermissionDispatcherException",
 ]
 
-# ======================# GAME_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class GamePopAuthorizationDispatcherException(PopAuthorizationDispatcherException):
+# ======================# GAME_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+class GamePopPermissionDispatcherException(PopPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GamePopAuthorizationDispatcher encountered an error.
+        1.  Indicating that a GamePopPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class GamePopAuthorizationDispatcherException(PopAuthorizationDispatcherExceptio
     Provides:
 
     Super Class:
-        PopAuthorizationDispatcherException
+        PopPermissionDispatcherException
     """
-    MSG = "GamePopAuthorizationDispatcher encountered an error."
-    ERR_CODE = "GAME_POP_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "GamePopPermissionDispatcher encountered an error."
+    ERR_CODE = "GAME_POP_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

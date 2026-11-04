@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeAuthorizationDispatcherException
+from err import AddNodePermissionDispatcherException
 
 __all__ = [
-    # ======================# ADD_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "AddVectorNodeAuthorizationDispatcherException",
+    # ======================# ADD_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE #======================#
+    "AddVectorNodePermissionDispatcherException",
 ]
 
-# ======================# ADD_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class AddVectorNodeAuthorizationDispatcherException(AddNodeAuthorizationDispatcherException):
+# ======================# ADD_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE #======================#
+class AddVectorNodePermissionDispatcherException(AddNodePermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeAuthorizationDispatcher encountered an error.
+        1.  Indicating that an AddVectorNodePermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AddVectorNodeAuthorizationDispatcherException(AddNodeAuthorizationDispatch
     Provides:
 
     Super Class:
-        AddNodeAuthorizationDispatcherException
+        AddNodePermissionDispatcherException
     """
-    MSG = "AddVectorNodeAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ADD_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "AddVectorNodePermissionDispatcher encountered an error."
+    ERR_CODE = "ADD_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

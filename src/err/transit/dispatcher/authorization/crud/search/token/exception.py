@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "TokenSearchAuthorizationDispatcherException",
+    # ======================# TOKEN_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "TokenSearchPermissionDispatcherException",
 ]
 
-# ======================# TOKEN_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class TokenSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# TOKEN_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class TokenSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a TokenSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherE
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "TokenSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "TOKEN_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "TokenSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "TOKEN_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

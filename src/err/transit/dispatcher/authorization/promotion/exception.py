@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationDispatcherException
+from err import PermissionDispatcherException
 
 __all__ = [
-    # ======================# PROMOTION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "PromotionAuthorizationDispatcherException",
+    # ======================# PROMOTION_PERMISSION_DISPATCHER_FAILURE #======================#
+    "PromotionPermissionDispatcherException",
 ]
 
-# ======================# PROMOTION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class PromotionAuthorizationDispatcherException(AuthorizationDispatcherException):
+# ======================# PROMOTION_PERMISSION_DISPATCHER_FAILURE #======================#
+class PromotionPermissionDispatcherException(PermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PromotionAuthorizationDispatcher encountered an error.
+        1.  Indicating a PromotionPermissionDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class PromotionAuthorizationDispatcherException(AuthorizationDispatcherException
     Provides:
 
     Super Class:
-        AuthorizationDispatcherException
+        PermissionDispatcherException
     """
-    MSG = "PromotionAuthorizationDispatcher failure."
-    ERR_CODE = "PROMOTION_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "PromotionPermissionDispatcher failure."
+    ERR_CODE = "PROMOTION_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

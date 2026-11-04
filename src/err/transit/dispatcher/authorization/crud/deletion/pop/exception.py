@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionAuthorizationDispatcherException
+from err import DeletionPermissionDispatcherException
 
 __all__ = [
-    # ======================# POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "PopAuthorizationDispatcherException",
+    # ======================# POP_PERMISSION_DISPATCHER_FAILURE #======================#
+    "PopPermissionDispatcherException",
 ]
 
-# ======================# POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class PopAuthorizationDispatcherException(DeletionAuthorizationDispatcherException):
+# ======================# POP_PERMISSION_DISPATCHER_FAILURE #======================#
+class PopPermissionDispatcherException(DeletionPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PopAuthorizationDispatcher encountered an error.
+        1.  Indicating that a PopPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PopAuthorizationDispatcherException(DeletionAuthorizationDispatcherExcepti
     Provides:
 
     Super Class:
-        DeletionAuthorizationDispatcherException
+        DeletionPermissionDispatcherException
     """
-    MSG = "PopAuthorizationDispatcher encountered an error."
-    ERR_CODE = "POP_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "PopPermissionDispatcher encountered an error."
+    ERR_CODE = "POP_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

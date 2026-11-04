@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# ARENA_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "ArenaSearchAuthorizationDispatcherException",
+    # ======================# ARENA_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "ArenaSearchPermissionDispatcherException",
 ]
 
-# ======================# ARENA_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class ArenaSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# ARENA_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class ArenaSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a ArenaSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ArenaSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherE
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "ArenaSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ARENA_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "ArenaSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "ARENA_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

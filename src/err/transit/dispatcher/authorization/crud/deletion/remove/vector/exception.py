@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RemoveNodeAuthorizationDispatcherException
+from err import RemoveNodePermissionDispatcherException
 
 __all__ = [
-    # ======================# REMOVE_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "RemoveVectorNodeAuthorizationDispatcherException",
+    # ======================# REMOVE_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE #======================#
+    "RemoveVectorNodePermissionDispatcherException",
 ]
 
-# ======================# REMOVE_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class RemoveVectorNodeAuthorizationDispatcherException(RemoveNodeAuthorizationDispatcherException):
+# ======================# REMOVE_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE #======================#
+class RemoveVectorNodePermissionDispatcherException(RemoveNodePermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveVectorNodeAuthorizationDispatcher encountered an error.
+        1.  Indicating that an RemoveVectorNodePermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class RemoveVectorNodeAuthorizationDispatcherException(RemoveNodeAuthorizationDi
     Provides:
 
     Super Class:
-        RemoveNodeAuthorizationDispatcherException
+        RemoveNodePermissionDispatcherException
     """
-    MSG = "RemoveVectorNodeAuthorizationDispatcher encountered an error."
-    ERR_CODE = "REMOVE_VECTOR_NODE_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "RemoveVectorNodePermissionDispatcher encountered an error."
+    ERR_CODE = "REMOVE_VECTOR_NODE_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

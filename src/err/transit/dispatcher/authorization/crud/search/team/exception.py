@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# TEAM_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "TeamSearchAuthorizationDispatcherException",
+    # ======================# TEAM_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "TeamSearchPermissionDispatcherException",
 ]
 
-# ======================# TEAM_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class TeamSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# TEAM_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class TeamSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a TeamSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TeamSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherEx
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "TeamSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "TEAM_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "TeamSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "TEAM_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

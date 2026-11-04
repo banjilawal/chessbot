@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# ACCOUNT_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "AccountSearchAuthorizationDispatcherException",
+    # ======================# ACCOUNT_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "AccountSearchPermissionDispatcherException",
 ]
 
-# ======================# ACCOUNT_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class AccountSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# ACCOUNT_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class AccountSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a AccountSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AccountSearchAuthorizationDispatcherException(SearchAuthorizationDispatche
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "AccountSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ACCOUNT_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "AccountSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "ACCOUNT_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

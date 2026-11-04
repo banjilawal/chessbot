@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionAuthorizationDispatcherException
+from err import InsertionPermissionDispatcherException
 
 __all__ = [
-    # ======================# PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "PushAuthorizationDispatcherException",
+    # ======================# PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "PushPermissionDispatcherException",
 ]
 
-# ======================# PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class PushAuthorizationDispatcherException(InsertionAuthorizationDispatcherException):
+# ======================# PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class PushPermissionDispatcherException(InsertionPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a PushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PushAuthorizationDispatcherException(InsertionAuthorizationDispatcherExcep
     Provides:
 
     Super Class:
-        InsertionAuthorizationDispatcherException
+        InsertionPermissionDispatcherException
     """
-    MSG = "PushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "PushPermissionDispatcher encountered an error."
+    ERR_CODE = "PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

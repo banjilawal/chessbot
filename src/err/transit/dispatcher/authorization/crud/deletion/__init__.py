@@ -14,4 +14,4 @@ from .remove import *
 from .pop import *
 
 # Modules
-from .exception import DeletionAuthorizationDispatcherException
+from .exception import DeletionPermissionDispatcherException

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizationDispatcherException
+from err import PushPermissionDispatcherException
 
 __all__ = [
-    # ======================# BOARD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "BoardPushAuthorizationDispatcherException",
+    # ======================# BOARD_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "BoardPushPermissionDispatcherException",
 ]
 
-# ======================# BOARD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class BoardPushAuthorizationDispatcherException(PushAuthorizationDispatcherException):
+# ======================# BOARD_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class BoardPushPermissionDispatcherException(PushPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a BoardPushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardPushAuthorizationDispatcherException(PushAuthorizationDispatcherExcep
     Provides:
 
     Super Class:
-        PushAuthorizationDispatcherException
+        PushPermissionDispatcherException
     """
-    MSG = "BoardPushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "BOARD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "BoardPushPermissionDispatcher encountered an error."
+    ERR_CODE = "BOARD_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

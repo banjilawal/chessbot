@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AuthorizationDispatcherException
+from err import PermissionDispatcherException
 
 __all__ = [
-    # ======================# MANEUVER_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "ManeuverAuthorizationDispatcherException",
+    # ======================# MANEUVER_PERMISSION_DISPATCHER_FAILURE #======================#
+    "ManeuverPermissionDispatcherException",
 ]
 
-# ======================# MANEUVER_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class ManeuverAuthorizationDispatcherException(AuthorizationDispatcherException):
+# ======================# MANEUVER_PERMISSION_DISPATCHER_FAILURE #======================#
+class ManeuverPermissionDispatcherException(PermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ManeuverAuthorizationDispatcher encountered an error.
+        1.  Indicating a ManeuverPermissionDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class ManeuverAuthorizationDispatcherException(AuthorizationDispatcherException)
     Provides:
 
     Super Class:
-        AuthorizationDispatcherException
+        PermissionDispatcherException
     """
-    MSG = "ManeuverAuthorizationDispatcher failure."
-    ERR_CODE = "MANEUVER_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "ManeuverPermissionDispatcher failure."
+    ERR_CODE = "MANEUVER_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

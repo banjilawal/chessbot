@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "SquareSearchAuthorizationDispatcherException",
+    # ======================# SQUARE_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "SquareSearchPermissionDispatcherException",
 ]
 
-# ======================# SQUARE_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class SquareSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# SQUARE_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class SquareSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquareSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a SquareSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquareSearchAuthorizationDispatcherException(SearchAuthorizationDispatcher
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "SquareSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "SQUARE_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "SquareSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "SQUARE_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

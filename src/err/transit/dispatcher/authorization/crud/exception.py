@@ -13,21 +13,22 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationDispatcherException
+from err import PermissionDispatcherException
+
 
 __all__ = [
-    # ======================# CRUD_AUTHORIZATION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "AuthorizationDispatcherException",
+    # ======================# CRUD_PERMISSION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
+    "CrudPermissionDispatcherException",
 ]
 
-# ======================# CRUD_AUTHORIZATION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class AuthorizationDispatcherException(AuthorizationDispatcherException):
+# ======================# CRUD_PERMISSION_AUTHORIZATION_DISPATCHER_FAILURE #======================#
+class CrudPermissionDispatcherException(PermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AuthorizationDispatcher encountered an error.
+        1.  Indicating that a PermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +43,10 @@ class AuthorizationDispatcherException(AuthorizationDispatcherException):
     Provides:
 
     Super Class:
-        AuthorizationDispatcherException
+        PermissionDispatcherException
     """
-    MSG = "AuthorizationDispatcher encountered an error."
-    ERR_CODE = "CRUD_AUTHORIZATION_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "PermissionDispatcher encountered an error."
+    ERR_CODE = "CRUD_PERMISSION_AUTHORIZATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

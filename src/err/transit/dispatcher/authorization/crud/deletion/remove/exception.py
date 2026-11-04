@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionAuthorizationDispatcherException
+from err import DeletionPermissionDispatcherException
 
 __all__ = [
-    # ======================# REMOVE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "RemoveNodeAuthorizationDispatcherException",
+    # ======================# REMOVE_PERMISSION_DISPATCHER_FAILURE #======================#
+    "RemoveNodePermissionDispatcherException",
 ]
 
-# ======================# REMOVE_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class RemoveNodeAuthorizationDispatcherException(DeletionAuthorizationDispatcherException):
+# ======================# REMOVE_PERMISSION_DISPATCHER_FAILURE #======================#
+class RemoveNodePermissionDispatcherException(DeletionPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveNodeAuthorizationDispatcher encountered an error.
+        1.  Indicating that an RemoveNodePermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class RemoveNodeAuthorizationDispatcherException(DeletionAuthorizationDispatcher
     Provides:
 
     Super Class:
-        DeletionAuthorizationDispatcherException
+        DeletionPermissionDispatcherException
     """
-    MSG = "RemoveNodeAuthorizationDispatcher encountered an error."
-    ERR_CODE = "REMOVE_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "RemoveNodePermissionDispatcher encountered an error."
+    ERR_CODE = "REMOVE_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

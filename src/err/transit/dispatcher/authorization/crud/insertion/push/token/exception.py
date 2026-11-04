@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushAuthorizationDispatcherException
+from err import PushPermissionDispatcherException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "TokenPushAuthorizationDispatcherException",
+    # ======================# TOKEN_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "TokenPushPermissionDispatcherException",
 ]
 
-# ======================# TOKEN_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class TokenPushAuthorizationDispatcherException(PushAuthorizationDispatcherException):
+# ======================# TOKEN_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class TokenPushPermissionDispatcherException(PushPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPushAuthorizationDispatcher encountered an error.
+        1.  Indicating that a TokenPushPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenPushAuthorizationDispatcherException(PushAuthorizationDispatcherExcep
     Provides:
 
     Super Class:
-        PushAuthorizationDispatcherException
+        PushPermissionDispatcherException
     """
-    MSG = "TokenPushAuthorizationDispatcher encountered an error."
-    ERR_CODE = "TOKEN_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "TokenPushPermissionDispatcher encountered an error."
+    ERR_CODE = "TOKEN_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionAuthorizationDispatcherException
+from err import InsertionPermissionDispatcherException
 
 __all__ = [
-    # ======================# ADD_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "AddNodeAuthorizationDispatcherException",
+    # ======================# ADD_PERMISSION_DISPATCHER_FAILURE #======================#
+    "AddNodePermissionDispatcherException",
 ]
 
-# ======================# ADD_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class AddNodeAuthorizationDispatcherException(InsertionAuthorizationDispatcherException):
+# ======================# ADD_PERMISSION_DISPATCHER_FAILURE #======================#
+class AddNodePermissionDispatcherException(InsertionPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddNodeAuthorizationDispatcher encountered an error.
+        1.  Indicating that an AddNodePermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AddNodeAuthorizationDispatcherException(InsertionAuthorizationDispatcherEx
     Provides:
 
     Super Class:
-        InsertionAuthorizationDispatcherException
+        InsertionPermissionDispatcherException
     """
-    MSG = "AddNodeAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ADD_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "AddNodePermissionDispatcher encountered an error."
+    ERR_CODE = "ADD_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

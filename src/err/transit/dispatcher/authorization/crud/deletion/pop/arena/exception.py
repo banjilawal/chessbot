@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizationDispatcherException
+from err import PopPermissionDispatcherException
 
 __all__ = [
-    # ======================# ARENA_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "ArenaPopAuthorizationDispatcherException",
+    # ======================# ARENA_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+    "ArenaPopPermissionDispatcherException",
 ]
 
-# ======================# ARENA_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class ArenaPopAuthorizationDispatcherException(PopAuthorizationDispatcherException):
+# ======================# ARENA_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+class ArenaPopPermissionDispatcherException(PopPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPopAuthorizationDispatcher encountered an error.
+        1.  Indicating that a ArenaPopPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ArenaPopAuthorizationDispatcherException(PopAuthorizationDispatcherExcepti
     Provides:
 
     Super Class:
-        PopAuthorizationDispatcherException
+        PopPermissionDispatcherException
     """
-    MSG = "ArenaPopAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ARENA_POP_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "ArenaPopPermissionDispatcher encountered an error."
+    ERR_CODE = "ARENA_POP_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

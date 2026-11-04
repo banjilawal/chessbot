@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# BOARD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "BoardSearchAuthorizationDispatcherException",
+    # ======================# BOARD_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "BoardSearchPermissionDispatcherException",
 ]
 
-# ======================# BOARD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class BoardSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# BOARD_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class BoardSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a BoardSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherE
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "BoardSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "BOARD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "BoardSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "BOARD_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

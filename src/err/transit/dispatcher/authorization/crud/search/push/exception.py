@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "SearchAuthorizationDispatcherException",
+    # ======================# PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "SearchPermissionDispatcherException",
 ]
 
-# ======================# PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class SearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class SearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a SearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class SearchAuthorizationDispatcherException(SearchAuthorizationDispatcherExcept
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "SearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "SearchPermissionDispatcher encountered an error."
+    ERR_CODE = "PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

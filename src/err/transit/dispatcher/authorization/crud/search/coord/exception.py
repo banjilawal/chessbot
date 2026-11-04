@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchAuthorizationDispatcherException
+from err import SearchPermissionDispatcherException
 
 __all__ = [
-    # ======================# COORD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "CoordSearchAuthorizationDispatcherException",
+    # ======================# COORD_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+    "CoordSearchPermissionDispatcherException",
 ]
 
-# ======================# COORD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class CoordSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherException):
+# ======================# COORD_PUSH_PERMISSION_DISPATCHER_FAILURE #======================#
+class CoordSearchPermissionDispatcherException(SearchPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordSearchAuthorizationDispatcher encountered an error.
+        1.  Indicating that a CoordSearchPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class CoordSearchAuthorizationDispatcherException(SearchAuthorizationDispatcherE
     Provides:
 
     Super Class:
-        SearchAuthorizationDispatcherException
+        SearchPermissionDispatcherException
     """
-    MSG = "CoordSearchAuthorizationDispatcher encountered an error."
-    ERR_CODE = "COORD_PUSH_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "CoordSearchPermissionDispatcher encountered an error."
+    ERR_CODE = "COORD_PUSH_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

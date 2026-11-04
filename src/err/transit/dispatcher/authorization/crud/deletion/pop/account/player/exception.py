@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopAuthorizationDispatcherException
+from err import PopPermissionDispatcherException
 
 __all__ = [
-    # ======================# ACCOUNT_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-    "AccountPopAuthorizationDispatcherException",
+    # ======================# ACCOUNT_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+    "AccountPopPermissionDispatcherException",
 ]
 
-# ======================# ACCOUNT_POP_AUTHORIZATION_DISPATCHER_FAILURE #======================#
-class AccountPopAuthorizationDispatcherException(PopAuthorizationDispatcherException):
+# ======================# ACCOUNT_POP_PERMISSION_DISPATCHER_FAILURE #======================#
+class AccountPopPermissionDispatcherException(PopPermissionDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPopAuthorizationDispatcher encountered an error.
+        1.  Indicating that a AccountPopPermissionDispatcher encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AccountPopAuthorizationDispatcherException(PopAuthorizationDispatcherExcep
     Provides:
 
     Super Class:
-        PopAuthorizationDispatcherException
+        PopPermissionDispatcherException
     """
-    MSG = "AccountPopAuthorizationDispatcher encountered an error."
-    ERR_CODE = "ACCOUNT_POP_AUTHORIZATION_DISPATCHER_FAILURE"
+    MSG = "AccountPopPermissionDispatcher encountered an error."
+    ERR_CODE = "ACCOUNT_POP_PERMISSION_DISPATCHER_FAILURE"
     
     def __init__(
             self,
