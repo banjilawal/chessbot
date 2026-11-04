@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushRequestNullException
+from err import PushPermissionRequestNullException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquarePushRequestNullException",
+    "SquarePushPermissionRequestNullException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquarePushRequestNullException(PushRequestNullException):
+class SquarePushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushRequest is null.
+        1.  Indicating that a SquarePushPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquarePushRequestNullException(PushRequestNullException):
     Provides:
 
     Super Class:
-        PushRequestNullException
+        PushPermissionRequestNullException
     """
-    MSG = "SquarePushRequest cannot be null."
+    MSG = "SquarePushPermissionRequest cannot be null."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -10,9 +10,6 @@ version: 0.0.2
 # ============ ERR.DOMAIN.TRANSIT.CARRIER.CONTEXT.TOKEN PACKAGE ===========#
 
 # Packages
-from .combatant import *
-from .disabled import *
-from .king import *
 
 # Modules
 from .exception import TokenContextCarrierException

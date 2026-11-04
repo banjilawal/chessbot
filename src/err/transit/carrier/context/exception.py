@@ -16,18 +16,18 @@ from err import EntityCarrierException
 
 
 __all__ = [
-    # ======================# CONTEXT_CARRIER_ERROR #======================#
+    # ======================# CONTEXT_CONTEXT_CARRIER_ERROR #======================#
     "ContextCarrierException",
 ]
 
-# ======================# CONTEXT_CARRIER_ERROR #======================#
+# ======================# CONTEXT_CONTEXT_CARRIER_ERROR #======================#
 class ContextCarrierException(EntityCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ContextCarrier encountered an error.
+        1.  Indicating a ContextContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class ContextCarrierException(EntityCarrierException):
     Super Class:
         EntityCarrierException
     """
-    MSG = "ContextCarrier error."
-    ERR_CODE = "CONTEXT_CARRIER_ERROR"
+    MSG = "ContextContextCarrier error."
+    ERR_CODE = "CONTEXT_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

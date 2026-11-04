@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_CARRIER_ERROR #======================#
+    # ======================# PLAYER_CONTEXT_CARRIER_ERROR #======================#
     "PlayerContextCarrierException",
 ]
 
-# ======================# PLAYER_CARRIER_ERROR #======================#
+# ======================# PLAYER_CONTEXT_CARRIER_ERROR #======================#
 class PlayerContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerCarrier encountered an error.
+        1.  Indicating a PlayerContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class PlayerContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "PlayerCarrier error."
-    ERR_CODE = "PLAYER_CARRIER_ERROR"
+    MSG = "PlayerContextCarrier error."
+    ERR_CODE = "PLAYER_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

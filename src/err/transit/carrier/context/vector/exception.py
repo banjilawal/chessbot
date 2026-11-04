@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_CARRIER_ERROR #======================#
+    # ======================# VECTOR_CONTEXT_CARRIER_ERROR #======================#
     "VectorContextCarrierException",
 ]
 
-# ======================# VECTOR_CARRIER_ERROR #======================#
+# ======================# VECTOR_CONTEXT_CARRIER_ERROR #======================#
 class VectorContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorCarrier encountered an error.
+        1.  Indicating a VectorContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class VectorContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "VectorCarrier error."
-    ERR_CODE = "VECTOR_CARRIER_ERROR"
+    MSG = "VectorContextCarrier error."
+    ERR_CODE = "VECTOR_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchPermissionRequestNullException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterSearchRequestNullException",
+    "EncounterSearchPermissionRequestNullException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterSearchRequestNullException(SearchRequestNullException):
+class EncounterSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterSearchRequest is null.
+        1.  Indicating that a EncounterSearchPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchPermissionRequestNullException
     """
-    MSG = "EncounterSearchRequest cannot be null."
+    MSG = "EncounterSearchPermissionRequest cannot be null."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudRequestNullException
+from err import CrudPermissionRequestNullException
 
 __all__ = [
     # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-    "DeletionRequestNullException",
+    "DeletionPermissionRequestNullException",
 ]
 
 # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-class DeletionRequestNullException(CrudRequestNullException):
+class DeletionPermissionRequestNullException(CrudPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an DeletionRequest is null.
+        1.  Indicating that an DeletionPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class DeletionRequestNullException(CrudRequestNullException):
     Provides:
 
     Super Class:
-        CrudRequestNullException
+        CrudPermissionRequestNullException
     """
-    MSG = "DeletionRequest cannot be null."
+    MSG = "DeletionPermissionRequest cannot be null."
     ERR_CODE = "DELETION_REQUEST_NULL_ERROR"
     
     def __init__(

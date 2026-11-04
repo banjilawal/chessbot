@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionRequestNullException
+from err import DeletionPermissionRequestNullException
 
 __all__ = [
     # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-    "RemoveNodeRequestNullException",
+    "RemoveNodePermissionRequestNullException",
 ]
 
 # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-class RemoveNodeRequestNullException(DeletionRequestNullException):
+class RemoveNodePermissionRequestNullException(DeletionPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveNodeRequest is null.
+        1.  Indicating that an RemoveNodePermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class RemoveNodeRequestNullException(DeletionRequestNullException):
     Provides:
 
     Super Class:
-        DeletionRequestNullException
+        DeletionPermissionRequestNullException
     """
-    MSG = "RemoveNodeRequest cannot be null."
+    MSG = "RemoveNodePermissionRequest cannot be null."
     ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"
     
     def __init__(

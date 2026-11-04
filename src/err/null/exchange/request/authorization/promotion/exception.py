@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import PermissionRequestNullException
 
 __all__ = [
-    # ======================# PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "PromotionRequestNullException",
+    # ======================# PROMOTION_PERMISSION_REQUEST_NULL_ERROR #======================#
+    "PromotionPermissionRequestNullException",
 ]
 
-# ======================# PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class PromotionRequestNullException(PermissionRequestNullException):
+# ======================# PROMOTION_PERMISSION_REQUEST_NULL_ERROR #======================#
+class PromotionPermissionRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PromotionRequest is null.
+        1.  Indicating that a PromotionPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class PromotionRequestNullException(PermissionRequestNullException):
     Super Class:
         PermissionRequestNullException
     """
-    MSG = "PromotionRequest cannot be null."
-    ERR_CODE = "PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "PromotionPermissionRequest cannot be null."
+    ERR_CODE = "PROMOTION_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_CARRIER_ERROR #======================#
+    # ======================# TEAM_CONTEXT_CARRIER_ERROR #======================#
     "TeamContextCarrierException",
 ]
 
-# ======================# TEAM_CARRIER_ERROR #======================#
+# ======================# TEAM_CONTEXT_CARRIER_ERROR #======================#
 class TeamContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamCarrier encountered an error.
+        1.  Indicating a TeamContextCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class TeamContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "TeamCarrier error."
-    ERR_CODE = "TEAM_CARRIER_ERROR"
+    MSG = "TeamContextCarrier error."
+    ERR_CODE = "TEAM_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

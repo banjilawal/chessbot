@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import PermissionRequestNullException
 
 __all__ = [
-    # ======================# ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "AttackRequestNullException",
+    # ======================# ATTACK_PERMISSION_REQUEST_NULL_ERROR #======================#
+    "AttackPermissionRequestNullException",
 ]
 
-# ======================# ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class AttackRequestNullException(PermissionRequestNullException):
+# ======================# ATTACK_PERMISSION_REQUEST_NULL_ERROR #======================#
+class AttackPermissionRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AttackRequest is null.
+        1.  Indicating that an AttackPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class AttackRequestNullException(PermissionRequestNullException):
     Super Class:
         PermissionRequestNullException
     """
-    MSG = "AttackRequest cannot be null."
-    ERR_CODE = "ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "AttackPermissionRequest cannot be null."
+    ERR_CODE = "ATTACK_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

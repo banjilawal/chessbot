@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopRequestNullException
+from err import PopPermissionRequestNullException
 
 __all__ = [
     # ======================# ENCOUNTER_POP_REQUEST_NULL_ERROR #======================#
-    "EncounterPopRequestNullException",
+    "EncounterPopPermissionRequestNullException",
 ]
 
 # ======================# ENCOUNTER_POP_REQUEST_NULL_ERROR #======================#
-class EncounterPopRequestNullException(PopRequestNullException):
+class EncounterPopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPopRequest is null.
+        1.  Indicating that a EncounterPopPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterPopRequestNullException(PopRequestNullException):
     Provides:
 
     Super Class:
-        PopRequestNullException
+        PopPermissionRequestNullException
     """
-    MSG = "EncounterPopRequest cannot be null."
+    MSG = "EncounterPopPermissionRequest cannot be null."
     ERR_CODE = "ENCOUNTER_POP_REQUEST_NULL_ERROR"
     
     def __init__(

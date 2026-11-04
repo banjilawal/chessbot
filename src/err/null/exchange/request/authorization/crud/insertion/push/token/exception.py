@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushRequestNullException
+from err import PushPermissionRequestNullException
 
 __all__ = [
     # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenPushRequestNullException",
+    "TokenPushPermissionRequestNullException",
 ]
 
 # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenPushRequestNullException(PushRequestNullException):
+class TokenPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPushRequest is null.
+        1.  Indicating that a TokenPushPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenPushRequestNullException(PushRequestNullException):
     Provides:
 
     Super Class:
-        PushRequestNullException
+        PushPermissionRequestNullException
     """
-    MSG = "TokenPushRequest cannot be null."
+    MSG = "TokenPushPermissionRequest cannot be null."
     ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -10,8 +10,6 @@ version: 0.0.2
 # ============ ERR.DOMAIN.TRANSIT.CARRIER.CONTEXT.PLAYER PACKAGE ===========#
 
 # Packages
-from .human import *
-from .machine import *
 
 # Modules
 from .exception import PlayerContextCarrierException

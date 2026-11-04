@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CHECKED_PATH_CARRIER_ERROR #======================#
+    # ======================# CHECKED_PATH_CONTEXT_CARRIER_ERROR #======================#
     "CheckedPathContextCarrierException",
 ]
 
-# ======================# CHECKED_PATH_CARRIER_ERROR #======================#
+# ======================# CHECKED_PATH_CONTEXT_CARRIER_ERROR #======================#
 class CheckedPathContextCarrierException(PathException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CheckedPathCarrier encountered an error.
+        1.  Indicating a CheckedPathContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CheckedPathContextCarrierException(PathException):
     Super Class:
         PathException
     """
-    MSG = "CheckedPathCarrier error."
-    ERR_CODE = "CHECKED_PATH_CARRIER_ERROR"
+    MSG = "CheckedPathContextCarrier error."
+    ERR_CODE = "CHECKED_PATH_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchPermissionRequestNullException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerSearchRequestNullException",
+    "PlayerSearchPermissionRequestNullException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerSearchRequestNullException(SearchRequestNullException):
+class PlayerSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerSearchRequest is null.
+        1.  Indicating that a PlayerSearchPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchPermissionRequestNullException
     """
-    MSG = "PlayerSearchRequest cannot be null."
+    MSG = "PlayerSearchPermissionRequest cannot be null."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

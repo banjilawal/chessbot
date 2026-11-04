@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# BLOCKED_PATH_CARRIER_ERROR #======================#
+    # ======================# BLOCKED_PATH_CONTEXT_CARRIER_ERROR #======================#
     "BlockedPathContextCarrierException",
 ]
 
-# ======================# BLOCKED_PATH_CARRIER_ERROR #======================#
+# ======================# BLOCKED_PATH_CONTEXT_CARRIER_ERROR #======================#
 class BlockedPathContextCarrierException(PathException):
     """
     Role:
@@ -45,7 +45,7 @@ class BlockedPathContextCarrierException(PathException):
         PathException
     """
     MSG = "The path's destination is occupied by a friendly token."
-    ERR_CODE = "BLOCKED_PATH_CARRIER_ERROR"
+    ERR_CODE = "BLOCKED_PATH_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

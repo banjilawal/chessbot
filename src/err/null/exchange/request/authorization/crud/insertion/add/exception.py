@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionRequestNullException
+from err import InsertionPermissionRequestNullException
 
 __all__ = [
     # ======================# ADD_REQUEST_NULL_ERROR #======================#
-    "AddNodeRequestNullException",
+    "AddNodePermissionRequestNullException",
 ]
 
 # ======================# ADD_REQUEST_NULL_ERROR #======================#
-class AddNodeRequestNullException(InsertionRequestNullException):
+class AddNodePermissionRequestNullException(InsertionPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddNodeRequest is null.
+        1.  Indicating that an AddNodePermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class AddNodeRequestNullException(InsertionRequestNullException):
     Provides:
 
     Super Class:
-        InsertionRequestNullException
+        InsertionPermissionRequestNullException
     """
-    MSG = "AddNodeRequest cannot be null."
+    MSG = "AddNodePermissionRequest cannot be null."
     ERR_CODE = "ADD_REQUEST_NULL_ERROR"
     
     def __init__(

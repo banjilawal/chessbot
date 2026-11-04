@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ContextCarrierException
 
 __all__ = [
-    # ======================# ARENA_CARRIER_ERROR #======================#
+    # ======================# ARENA_CONTEXT_CARRIER_ERROR #======================#
     "ArenaContextCarrierException",
 ]
 
-# ======================# ARENA_CARRIER_ERROR #======================#
+# ======================# ARENA_CONTEXT_CARRIER_ERROR #======================#
 class ArenaContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ArenaCarrier encountered an error.
+        1.  Indicating an ArenaContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class ArenaContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "ArenaCarrier error."
-    ERR_CODE = "ARENA_CARRIER_ERROR"
+    MSG = "ArenaContextCarrier error."
+    ERR_CODE = "ARENA_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

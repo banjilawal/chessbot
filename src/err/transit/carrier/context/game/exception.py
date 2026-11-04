@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# GAME_CARRIER_ERROR #======================#
+    # ======================# GAME_CONTEXT_CARRIER_ERROR #======================#
     "GameContextCarrierException",
 ]
 
-# ======================# GAME_CARRIER_ERROR #======================#
+# ======================# GAME_CONTEXT_CARRIER_ERROR #======================#
 class GameContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a GameCarrier encountered an error.
+        1.  Indicating a GameContextCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class GameContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "GameCarrier error."
-    ERR_CODE = "GAME_CARRIER_ERROR"
+    MSG = "GameContextCarrier error."
+    ERR_CODE = "GAME_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

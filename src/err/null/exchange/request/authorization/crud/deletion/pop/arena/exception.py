@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopRequestNullException
+from err import PopPermissionRequestNullException
 
 __all__ = [
     # ======================# ARENA_POP_REQUEST_NULL_ERROR #======================#
-    "ArenaPopRequestNullException",
+    "ArenaPopPermissionRequestNullException",
 ]
 
 # ======================# ARENA_POP_REQUEST_NULL_ERROR #======================#
-class ArenaPopRequestNullException(PopRequestNullException):
+class ArenaPopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPopRequest is null.
+        1.  Indicating that a ArenaPopPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaPopRequestNullException(PopRequestNullException):
     Provides:
 
     Super Class:
-        PopRequestNullException
+        PopPermissionRequestNullException
     """
-    MSG = "ArenaPopRequest cannot be null."
+    MSG = "ArenaPopPermissionRequest cannot be null."
     ERR_CODE = "ARENA_POP_REQUEST_NULL_ERROR"
     
     def __init__(

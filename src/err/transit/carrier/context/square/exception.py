@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_CARRIER_ERROR #======================#
+    # ======================# SQUARE_CONTEXT_CARRIER_ERROR #======================#
     "SquareContextCarrierException",
 ]
 
-# ======================# SQUARE_CARRIER_ERROR #======================#
+# ======================# SQUARE_CONTEXT_CARRIER_ERROR #======================#
 class SquareContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareCarrier encountered an error.
+        1.  Indicating a SquareContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class SquareContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "SquareCarrier error."
-    ERR_CODE = "SQUARE_CARRIER_ERROR"
+    MSG = "SquareContextCarrier error."
+    ERR_CODE = "SQUARE_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

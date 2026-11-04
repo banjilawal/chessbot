@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CIRCULAR_PATH_CARRIER_ERROR #======================#
+    # ======================# CIRCULAR_PATH_CONTEXT_CARRIER_ERROR #======================#
     "CircularPathContextCarrierException",
 ]
 
-# ======================# CIRCULAR_PATH_CARRIER_ERROR #======================#
+# ======================# CIRCULAR_PATH_CONTEXT_CARRIER_ERROR #======================#
 class CircularPathContextCarrierException(PathException):
     """
     Role:
@@ -45,7 +45,7 @@ class CircularPathContextCarrierException(PathException):
         PathException
     """
     MSG = "A Path's origin and destination cannot be the same."
-    ERR_CODE = "CIRCULAR_PATH_CARRIER_ERROR"
+    ERR_CODE = "CIRCULAR_PATH_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

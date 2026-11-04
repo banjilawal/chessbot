@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionRequestNullException
+from err import DeletionPermissionRequestNullException
 
 __all__ = [
     # ======================# POP_REQUEST_NULL_ERROR #======================#
-    "PopRequestNullException",
+    "PopPermissionRequestNullException",
 ]
 
 # ======================# POP_REQUEST_NULL_ERROR #======================#
-class PopRequestNullException(DeletionRequestNullException):
+class PopPermissionRequestNullException(DeletionPermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PopRequest is null.
+        1.  Indicating that a PopPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class PopRequestNullException(DeletionRequestNullException):
     Provides:
 
     Super Class:
-        DeletionRequestNullException
+        DeletionPermissionRequestNullException
     """
-    MSG = "PopRequest cannot be null."
+    MSG = "PopPermissionRequest cannot be null."
     ERR_CODE = "POP_REQUEST_NULL_ERROR"
     
     def __init__(

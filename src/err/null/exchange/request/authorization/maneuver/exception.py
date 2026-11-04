@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import PermissionRequestNullException
 
 __all__ = [
-    # ======================# MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "ManeuverRequestNullException",
+    # ======================# MANEUVER_PERMISSION_REQUEST_NULL_ERROR #======================#
+    "ManeuverPermissionRequestNullException",
 ]
 
-# ======================# MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class ManeuverRequestNullException(PermissionRequestNullException):
+# ======================# MANEUVER_PERMISSION_REQUEST_NULL_ERROR #======================#
+class ManeuverPermissionRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverRequest is null.
+        1.  Indicating that a ManeuverPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class ManeuverRequestNullException(PermissionRequestNullException):
     Super Class:
         PermissionRequestNullException
     """
-    MSG = "ManeuverRequest cannot be null."
-    ERR_CODE = "MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "ManeuverPermissionRequest cannot be null."
+    ERR_CODE = "MANEUVER_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ATTACK_PATH_CARRIER_ERROR #======================#
+    # ======================# ATTACK_PATH_CONTEXT_CARRIER_ERROR #======================#
     "AttackPathContextCarrierException",
 ]
 
-# ======================# ATTACK_PATH_CARRIER_ERROR #======================#
+# ======================# ATTACK_PATH_CONTEXT_CARRIER_ERROR #======================#
 class AttackPathContextCarrierException(PathException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AttackPathCarrier encountered an error.
+        1.  Indicating a AttackPathContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class AttackPathContextCarrierException(PathException):
     Super Class:
         PathException
     """
-    MSG = "AttackPathCarrier error."
-    ERR_CODE = "ATTACK_PATH_CARRIER_ERROR"
+    MSG = "AttackPathContextCarrier error."
+    ERR_CODE = "ATTACK_PATH_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

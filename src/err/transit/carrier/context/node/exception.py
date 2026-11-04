@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_CARRIER_ERROR #======================#
+    # ======================# NODE_CONTEXT_CARRIER_ERROR #======================#
     "NodeContextCarrierException",
 ]
 
-# ======================# NODE_CARRIER_ERROR #======================#
+# ======================# NODE_CONTEXT_CARRIER_ERROR #======================#
 class NodeContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a NodeCarrier encountered an error.
+        1.  Indicating a NodeContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class NodeContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "NodeCarrier error."
-    ERR_CODE = "NODE_CARRIER_ERROR"
+    MSG = "NodeContextCarrier error."
+    ERR_CODE = "NODE_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

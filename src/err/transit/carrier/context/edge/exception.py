@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_CARRIER_ERROR #======================#
+    # ======================# EDGE_CONTEXT_CARRIER_ERROR #======================#
     "EdgeContextCarrierException",
 ]
 
-# ======================# EDGE_CARRIER_ERROR #======================#
+# ======================# EDGE_CONTEXT_CARRIER_ERROR #======================#
 class EdgeContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a EdgeCarrier encountered an error.
+        1.  Indicating a EdgeContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class EdgeContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "EdgeCarrier error."
-    ERR_CODE = "EDGE_CARRIER_ERROR"
+    MSG = "EdgeContextCarrier error."
+    ERR_CODE = "EDGE_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

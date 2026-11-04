@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeRequestNullException
+from err import AddNodePermissionRequestNullException
 
 __all__ = [
     # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeRequestNullException",
+    "AddVectorNodePermissionRequestNullException",
 ]
 
 # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeRequestNullException(AddNodeRequestNullException):
+class AddVectorNodePermissionRequestNullException(AddNodePermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeRequest is null.
+        1.  Indicating that an AddVectorNodePermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AddVectorNodeRequestNullException(AddNodeRequestNullException):
     Provides:
 
     Super Class:
-        AddNodeRequestNullException
+        AddNodePermissionRequestNullException
     """
-    MSG = "AddVectorNodeRequest cannot be null."
+    MSG = "AddVectorNodePermissionRequest cannot be null."
     ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

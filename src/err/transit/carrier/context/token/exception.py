@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_CARRIER_ERROR #======================#
+    # ======================# TOKEN_CONTEXT_CARRIER_ERROR #======================#
     "TokenContextCarrierException",
 ]
 
-# ======================# TOKEN_CARRIER_ERROR #======================#
+# ======================# TOKEN_CONTEXT_CARRIER_ERROR #======================#
 class TokenContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenCarrier encountered an error.
+        1.  Indicating a TokenContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class TokenContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "TokenCarrier encountered anCarrier error."
-    ERR_CODE = "TOKEN_CARRIER_ERROR"
+    MSG = "TokenCarrier encountered anContextCarrier error."
+    ERR_CODE = "TOKEN_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

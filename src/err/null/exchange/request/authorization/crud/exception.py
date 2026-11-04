@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import PermissionRequestNullException
 
 __all__ = [
-    # ======================# CRUD_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "CrudRequestNullException",
+    # ======================# CRUD_PERMISSION_REQUEST_NULL_ERROR #======================#
+    "CrudPermissionRequestNullException",
 ]
 
-# ======================# CRUD_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class CrudRequestNullException(PermissionRequestNullException):
+# ======================# CRUD_PERMISSION_REQUEST_NULL_ERROR #======================#
+class CrudPermissionRequestNullException(PermissionRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudRequest is null.
+        1.  Indicating that a CrudPermissionRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class CrudRequestNullException(PermissionRequestNullException):
     Super Class:
         PermissionRequestNullException
     """
-    MSG = "CrudRequest cannot be null."
-    ERR_CODE = "CRUD_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "CrudPermissionRequest cannot be null."
+    ERR_CODE = "CRUD_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

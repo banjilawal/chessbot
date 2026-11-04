@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# KING_PATH_CARRIER_ERROR #======================#
+    # ======================# KING_PATH_CONTEXT_CARRIER_ERROR #======================#
     "KingPathContextCarrierException",
 ]
 
-# ======================# KING_PATH_CARRIER_ERROR #======================#
+# ======================# KING_PATH_CONTEXT_CARRIER_ERROR #======================#
 class KingPathContextCarrierException(PathException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a KingPathCarrier encountered an error.
+        1.  Indicating a KingPathContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class KingPathContextCarrierException(PathException):
     Super Class:
         PathException
     """
-    MSG = "KingPathCarrier error."
-    ERR_CODE = "KING_PATH_CARRIER_ERROR"
+    MSG = "KingPathContextCarrier error."
+    ERR_CODE = "KING_PATH_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

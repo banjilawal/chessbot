@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_CARRIER_ERROR #======================#
+    # ======================# BOARD_CONTEXT_CARRIER_ERROR #======================#
     "BoardContextCarrierException",
 ]
 
-# ======================# BOARD_CARRIER_ERROR #======================#
+# ======================# BOARD_CONTEXT_CARRIER_ERROR #======================#
 class BoardContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a BoardCarrier encountered an error.
+        1.  Indicating a BoardContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class BoardContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "BoardCarrier error."
-    ERR_CODE = "BOARD_CARRIER_ERROR"
+    MSG = "BoardContextCarrier error."
+    ERR_CODE = "BOARD_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,

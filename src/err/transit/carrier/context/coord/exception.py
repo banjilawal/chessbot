@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_CARRIER_ERROR #======================#
+    # ======================# COORD_CONTEXT_CARRIER_ERROR #======================#
     "CoordContextCarrierException",
 ]
 
-# ======================# COORD_CARRIER_ERROR #======================#
+# ======================# COORD_CONTEXT_CARRIER_ERROR #======================#
 class CoordContextCarrierException(ContextCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordCarrier encountered an error.
+        1.  Indicating a CoordContextCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CoordContextCarrierException(ContextCarrierException):
     Super Class:
         ContextCarrierException
     """
-    MSG = "CoordCarrier error."
-    ERR_CODE = "COORD_CARRIER_ERROR"
+    MSG = "CoordContextCarrier error."
+    ERR_CODE = "COORD_CONTEXT_CARRIER_ERROR"
     
     def __init__(
             self,
