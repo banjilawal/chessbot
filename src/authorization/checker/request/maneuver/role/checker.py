@@ -14,11 +14,11 @@ from typing import Generic, TypeVar
 
 from artifcat import ManeuverDecision
 from authorization import ManeuverChecker
-from domain import Elevatable
+from domain import Rank
 from exchange import ManeuverPermissionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Elevatable")
+T = TypeVar("T", bound="Rank")
 
 class ManeuverRoleChecker(ManeuverChecker[T], ABC, Generic[T]):
     

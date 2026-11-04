@@ -13,14 +13,14 @@ from typing import Optional, cast
 
 from artifcat import PromotionDecision
 from authorization import PromotionRolePermitter
-from domain import Elevatable, Rank
+from domain import Rank, Rank
 from err import PromotionRankPermitterException
 from exchange import PromotionPermissionRequest, RankValidationRequest, RankValidationService
 from transit import RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
+class PromotionRankPermitter(PromotionRolePermitter[Rank]):
     """
     Role:
         -   Authorization
@@ -87,7 +87,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
             )
         # Handle the case that the validation payload is not Elevatable.
         rank = cast(Rank, validation.payload)
-        if not isinstance(rank, Elevatable):
+        if not isinstance(rank, Rank):
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
                 request=request,
@@ -103,7 +103,7 @@ class PromotionRankPermitter(PromotionRolePermitter[Elevatable]):
                 )
             )
         # --- Prepare an approval of the activity. ---#
-        activity = cast(Elevatable, rank)
+        activity = cast(Rank, rank)
         approval = PromotionPermissionRequest(
             id=request.id,
             activity=activity,

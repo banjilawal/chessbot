@@ -13,10 +13,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import Elevatable, OffsetRank, Persona
+from domain import Rank, OffsetRank, Persona
 
 
-class Knight(OffsetRank, Elevatable):
+class Knight(OffsetRank, Rank):
     """
     Role:
         -   Data Holder

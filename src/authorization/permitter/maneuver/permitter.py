@@ -112,8 +112,6 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         # Get the applicant information
         token = applicant.token
         path = applicant.path
-        origin= applicant.path.origin
-        destination = applicant.path.destination
         
         # Handle the case that the token is disabled.
         readiness = self._ready_token_checker.execute(

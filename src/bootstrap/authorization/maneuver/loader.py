@@ -60,7 +60,7 @@ class ManeuverAuthorizationLoader(
         self._token_validation_service = token_validation_service or TokenValidationService()
     
     @LoggingLevelRouter.monitor
-    def execute(self, target: ManeuverPermissionRequest) -> ManeuverDecision:
+    def execute(self, candidate: Any) -> ManeuverDecision:
         """
         Checks if the request is null or the wrong type
 
@@ -82,7 +82,7 @@ class ManeuverAuthorizationLoader(
         
         # Handle the case that priming is not completed.
         priming = self.priming_validator.execute(
-            candidate=target,
+            candidate=candidate,
             target_model=ManeuverPermissionRequest,
             null_exception=ManeuverPermissionRequestNullException(),
         )

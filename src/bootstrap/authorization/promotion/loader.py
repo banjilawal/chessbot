@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import PromotionDecision
 from bootstrap import AuthorizationLoader
-from domain import Elevatable, PawnToken, Rank, Token
+from domain import Rank, PawnToken, Rank, Token
 from err import PromotionRequestNullException
 from exchange import (
     PromotionPermissionRequest, PromotionRequest, RankValidationRequest, RankValidationService,
@@ -31,7 +31,8 @@ class PromotionAuthorizationLoader(
         -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run basic type and validation checks on items entering the permitting process.
+        1.  Run basic type and validation checks on items entering the
+            permitting process.
 
     Attributes:
 
@@ -214,7 +215,7 @@ class PromotionAuthorizationLoader(
                 )
             )
         # Handle the case that the rank is not an Elevatable
-        if not isinstance(rank_validation.payload, Elevatable):
+        if not isinstance(rank_validation.payload, Rank):
             # Send an exception chain in the denial.
             return PromotionDecision.denial(
                 exception=PromotionAuthorizationLoaderException(
@@ -229,13 +230,13 @@ class PromotionAuthorizationLoader(
         pawn_token = cast(PawnToken, token_validation.payload)
         transaction_id = cast(int, applicant_id_validation.payload)
         permission_id = cast(int, form_id_validation.payload)
-        elevatable = cast(Elevatable, cast(object, rank_validation.payload))
+        elevatable = cast(Rank, cast(object, rank_validation.payload))
         
         # --- Prepare a transaction approval. ---#
         approved_applicant = PromotionRequest(
             id=transaction_id,
-            applicant=pawn_token,
-            elevatable=elevatable,
+            token=pawn_token,
+            promotion_level=elevatable,
         )
         permission_request = PromotionPermissionRequest(
             id=permission_id,

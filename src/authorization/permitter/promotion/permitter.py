@@ -1,7 +1,7 @@
-# src/authorization/permitter/promotion/authorizer.py
+# src/authorization/permitter/promotion/permitter.py
 
 """
-Module: authorization.permitter.promotion.authorizer
+Module: authorization.permitter.promotion.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,14 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import PromotionDecision
-from authorization import Permitter
+from authorization import Permitter, ReadyTokenChecker
 from bootstrap import PromotionAuthorizationLoader
-from err import PromotionAuthorizerException
-
-from exchange import PromotionPermissionRequest, TokenValidationService
+from domain import Elevatable
+from err import EmptyDependencyListException
+from exchange import PromotionPermissionRequest, PromotionRequest
 from util import LoggingLevelRouter
 
 
@@ -30,105 +30,170 @@ class PromotionPermitter(Permitter[PromotionPermissionRequest]):
 
     Attributes:
         loader: PromotionAuthorizationLoader
-        validation_service: TokenValidationService
-
+        ready_token_checker: ReadyTokenChecker
+        origin_checker: PromotionTokenOriginChecker
+        destination_checker: PromotionTokenDestinationChecker
 
     Provides:
-        -   def execute(request: PromotionPermissionRequest) -> PromotionDecision
+        -   def execute(candidate: Any) -> PromotionDecision
 
     Super Class:
         Permitter
     """
     
+    _ready_token_checker: ReadyTokenChecker
+    _origin_checker: PromotionTokenOriginChecker
+    _destination_checker: PromotionTokenDestinationChecker
+    
     def __init__(
             self,
             loader: Optional[PromotionAuthorizationLoader] | None = None,
-            validation_service: Optional[TokenValidationService] | None = None,
+            ready_token_checker: Optional[ReadyTokenChecker] | None = None,
+            origin_checker: Optional[PromotionTokenOriginChecker] | None = None,
+            destination_checker: Optional[PromotionTokenDestinationChecker] | None = None,
     ):
         """
         Args:
             loader: Optional[PromotionAuthorizationLoader]
-            validation_service: Optional[TokenValidationService]
+            ready_token_checker: Optional[ReadyTokenChecker]
+            origin_checker: Optional[PromotionTokenOriginChecker]
+            destination_checker: Optional[PromotionTokenDestinationChecker]
         """
-        super().__init__(
-            loader=loader or PromotionAuthorizationLoader(),
-            validation_service=validation_service or TokenValidationService(),
-        )
+        super().__init__(loader=loader or PromotionAuthorizationLoader())
+        self._ready_token_checker = ready_token_checker or ReadyTokenChecker()
+        self._origin_checker = origin_checker or PromotionTokenOriginChecker()
+        self._destination_checker = destination_checker or PromotionTokenDestinationChecker()
     
     @property
     def loader(self) -> PromotionAuthorizationLoader:
         return cast(PromotionAuthorizationLoader, super().loader)
     
-    @property
-    def validation_service(self) -> TokenValidationService:
-        return cast(TokenValidationService, super().validation_service)
-    
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionPermissionRequest) -> PromotionDecision:
+    def execute(self, candidate: Any) -> PromotionDecision:
         """
         Checks if a PromotionPermissionRequest can be granted.
         
         Action:
-            1.  Send an exception in Decision if any authoriation delegated denies
-                the request.
+            1.  Send an exception in the denial if any of the following occur.
+                    -   The loader cannot bootstrap the process.
+                    -   The token is not actionable.
+                    -   The token is not at the origin to start the promotion.
+                    -   The token is already at the destination.
+                    -   The destination is occupied by a friend.
             2.  Otherwise, send a promotion approval.
         Args:
-            request: PromotionPermissionRequest
+            candidate: Any
         Returns:
            PromotionDecision
         Raises:
-            PromotionAuthorizerException
+            PromotionPermitterException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the loader does not grant permission.
-        decision = self.loader.execute(request)
-        if decision.request_is_denied:
+        # Handle the case that loader does not bootstrap the process.
+        bootstrap = self.loader.execute(candidate=candidate)
+        if bootstrap.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
-                exception=PromotionAuthorizerException(
+                exception=PromotionPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionAuthorizerException.MSG,
-                    err_code=PromotionAuthorizerException.ERR_CODE,
-                    ex=decision.exception,
-                ),
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    ex=bootstrap.exception,
+                )
             )
-        # Handle the case that the role_permitter does not grant activity permission.
-        approved_request = decision.request
-        decision = self.role_permitter.execute(approved_request)
-        if decision.request_is_denied:
+        # --- Extract the transaction_request for processing. ---#
+        permission_form = cast(PromotionPermissionRequest, bootstrap.permission_request)
+        applicant = cast(PromotionRequest, bootstrap.transaction_request)
+        # Get the ids
+        form_id = permission_form.id
+        applicant_id = applicant.id
+        # Get the applicant information
+        token = applicant.token
+        rank = applicant.promotion_level
+        
+        # Handle the case that the token is disabled.
+        readiness = self._ready_token_checker.execute(
+            candidate=token,
+            permission_request=permission_form,
+            transaction_request=applicant,
+        )
+        if readiness.request_is_denied:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
-                request=request,
-                exception=PromotionAuthorizerException(
+                exception=PromotionPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionAuthorizerException.MSG,
-                    err_code=PromotionAuthorizerException.ERR_CODE,
-                    ex=decision.exception,
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    ex=readiness.exception,
                 ),
             )
-        # Handle the case that the applicant reviewe does not grant actor permission.
-        approved_request = decision.request
-        decision = self.applicant_reviewer.execute(approved_request)
-        if decision.request_is_denied:
+        # Handle the case that the pawn is not on its promotion row.
+        promotion_row = token.team.enemy_rank_row
+        row = token.footstep.position.row
+        
+        if row is not None and row != promotion_row:
             # Send the exception chain in the denial.
             return PromotionDecision.denial(
-                request=request,
-                exception=PromotionAuthorizerException(
+                exception=PromotionPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionAuthorizerException.MSG,
-                    err_code=PromotionAuthorizerException.ERR_CODE,
-                    ex=decision.exception,
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    ex=PromotionRowException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PromotionRowException.MSG,
+                        err_code=PromotionRowException.ERR_CODE,
+                    ),
                 ),
             )
-        # --- Prepare an approval from the completed chain. ---#
-        approval = PromotionPermissionRequest(
-            id=approved_request.id,
-            activity=approved_request.activity,
-            authorization_applicant=approved_request.token,
+        # Handle the case that the pawn has already been promoted.
+        if token.is_promoted:
+            # Send the exception chain in the denial.
+            return PromotionDecision.denial(
+                exception=PromotionPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    ex=DoublePromotionException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DoublePromotionException.MSG,
+                        err_code=DoublePromotionException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that the rank is not an Elevatable.
+        if not isinstance(rank, Elevatable):
+            # Send the exception chain in the denial.
+            return PromotionDecision.denial(
+                exception=PromotionPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    ex=TypeError(
+                        f"Expected an Elevatable Rank got {type(rank).__name__} "
+                        f"instead."
+                    )
+                )
+            )
+        # --- Prepare an approval of the transaction. ---#
+        transaction_request = PromotionRequest(
+            id=applicant_id,
+            token=token,
+            promotion_level=rank,
+        )
+        permission_request = PromotionPermissionRequest(
+            id=form_id,
+            authorization_applicant=transaction_request,
         )
         # --- Forward the approval. ---#
-        return PromotionDecision.grant(approval)
+        return PromotionDecision.grant(
+            transaction_request=transaction_request,
+            permission_request=permission_request,
+        )

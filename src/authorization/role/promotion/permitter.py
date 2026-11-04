@@ -14,11 +14,11 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import PromotionDecision
 from authorization import RolePermitter
-from domain import Elevatable
+from domain import Rank
 from exchange import PromotionPermissionRequest, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Elevatable")
+T = TypeVar("T", bound="Rank")
 
 class PromotionRolePermitter(RolePermitter[PromotionPermissionRequest], ABC, Generic[T]):
     """
