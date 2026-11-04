@@ -11,8 +11,8 @@ version: 0.0.2
 
 # Packages
 from .applicant import *
-from .authorizer import *
 from .chain import *
+from .permitter import *
 from .reviewer import *
 from .role import *
 

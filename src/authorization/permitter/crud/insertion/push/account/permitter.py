@@ -14,7 +14,6 @@ from typing import Any, Optional, cast
 from artifcat import AccountPushDecision
 from authorization import PushPermitter
 from bootstrap import AccountPushAuthorizationLoader
-from err import ChessException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
 from sensor import AccountCollisionSensor
 from util import LoggingLevelRouter
@@ -85,11 +84,11 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         if bootstrap.request_is_denied:
             # Send the exception chain in the denial.
             return AccountPushDecision.denial(
-                exception=ChessException(
+                exception=AccountPushPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
+                    msg=AccountPushPermitterException.MSG,
+                    err_code=AccountPushPermitterException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -111,11 +110,11 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         if report.collision_exists:
             # Send the exception chain in the denial.
             return AccountPushDecision.denial(
-                exception=ChessException(
+                exception=AccountPushPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
+                    msg=AccountPushPermitterException.MSG,
+                    err_code=AccountPushPermitterException.ERR_CODE,
                     ex=report.exception,
                 )
             )

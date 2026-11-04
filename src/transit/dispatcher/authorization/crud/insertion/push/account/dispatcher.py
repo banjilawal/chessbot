@@ -13,8 +13,8 @@ from typing import Any, Optional, cast
 
 from artifcat import AccountPushDecision
 from authorization import AccountPushPermitter
-from err import AccountPushRequestNullException
-from exchange import AccountPushPermissionRequest
+from err import AccountPushPermissionDispatcherException
+from exchange import AccountPushPermissionRequest, AccountPushRequest
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -86,33 +86,9 @@ class AccountPushPermissionDispatcher(
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return AccountPushDecision.denial(
-                exception=AccountPushPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountPushPermissionDispatcherException.MSG,
-                    err_code=AccountPushPermissionDispatcherException.ERR_CODE,
-                    ex=AccountPushPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return AccountPushDecision.denial(
-                exception=AccountPushPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountPushPermissionDispatcherException.MSG,
-                    err_code=AccountPushPermissionDispatcherException.ERR_CODE,
-                    ex=AccountPushRequestNullException()
-                )
-            )
+        permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
+        transaction_request = cast(AccountPushRequest, decision.transaction_request)
+
         # --- Prepare and forward the transaction approval. ---#
         return AccountPushDecision.grant(
             transaction_request=transaction_request,

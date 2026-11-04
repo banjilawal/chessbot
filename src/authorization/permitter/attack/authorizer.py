@@ -15,7 +15,7 @@ from artifcat import AttackDecision
 from authorization import (
     Permitter, AttackAuthorizationLoader, AttackRankPermitter, AttackTokenReviewer
 )
-from err import AttackAuthorizerException
+from err import AttackPermitterException
 
 from exchange import AttackPermissionRequest
 from util import LoggingLevelRouter
@@ -95,11 +95,11 @@ class AttackPermitter(Permitter[AttackPermissionRequest]):
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
-                exception=AttackAuthorizerException(
+                exception=AttackPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackAuthorizerException.MSG,
-                    err_code=AttackAuthorizerException.ERR_CODE,
+                    msg=AttackPermitterException.MSG,
+                    err_code=AttackPermitterException.ERR_CODE,
                     ex=decision.exception,
                 ),
             )
@@ -110,11 +110,11 @@ class AttackPermitter(Permitter[AttackPermissionRequest]):
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
-                exception=AttackAuthorizerException(
+                exception=AttackPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackAuthorizerException.MSG,
-                    err_code=AttackAuthorizerException.ERR_CODE,
+                    msg=AttackPermitterException.MSG,
+                    err_code=AttackPermitterException.ERR_CODE,
                     ex=decision.exception,
                 ),
             )
@@ -125,11 +125,11 @@ class AttackPermitter(Permitter[AttackPermissionRequest]):
             # Send the exception chain in the denial.
             return AttackDecision.denial(
                 request=request,
-                exception=AttackAuthorizerException(
+                exception=AttackPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackAuthorizerException.MSG,
-                    err_code=AttackAuthorizerException.ERR_CODE,
+                    msg=AttackPermitterException.MSG,
+                    err_code=AttackPermitterException.ERR_CODE,
                     ex=decision.exception,
                 ),
             )

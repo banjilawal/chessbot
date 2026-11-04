@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import AccountSearchDecision, SearchDecision
+from artifcat import AccountSearchDecision
 from authorization import AccountSearchPermitter
+from err import AccountSearchPermissionDispatcherException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from transit import ModelSearchPermissionDispatcher
 from util import LoggingLevelRouter

@@ -15,7 +15,6 @@ from artifcat import PromotionDecision
 from authorization import Permitter, ReadyTokenChecker
 from bootstrap import PromotionAuthorizationLoader
 from domain import Elevatable
-from err import EmptyDependencyListException
 from exchange import PromotionPermissionRequest, PromotionRequest
 from util import LoggingLevelRouter
 
@@ -31,8 +30,6 @@ class PromotionPermitter(Permitter[PromotionPermissionRequest]):
     Attributes:
         loader: PromotionAuthorizationLoader
         ready_token_checker: ReadyTokenChecker
-        origin_checker: PromotionTokenOriginChecker
-        destination_checker: PromotionTokenDestinationChecker
 
     Provides:
         -   def execute(candidate: Any) -> PromotionDecision
@@ -42,27 +39,19 @@ class PromotionPermitter(Permitter[PromotionPermissionRequest]):
     """
     
     _ready_token_checker: ReadyTokenChecker
-    _origin_checker: PromotionTokenOriginChecker
-    _destination_checker: PromotionTokenDestinationChecker
     
     def __init__(
             self,
             loader: Optional[PromotionAuthorizationLoader] | None = None,
             ready_token_checker: Optional[ReadyTokenChecker] | None = None,
-            origin_checker: Optional[PromotionTokenOriginChecker] | None = None,
-            destination_checker: Optional[PromotionTokenDestinationChecker] | None = None,
     ):
         """
         Args:
             loader: Optional[PromotionAuthorizationLoader]
             ready_token_checker: Optional[ReadyTokenChecker]
-            origin_checker: Optional[PromotionTokenOriginChecker]
-            destination_checker: Optional[PromotionTokenDestinationChecker]
         """
         super().__init__(loader=loader or PromotionAuthorizationLoader())
         self._ready_token_checker = ready_token_checker or ReadyTokenChecker()
-        self._origin_checker = origin_checker or PromotionTokenOriginChecker()
-        self._destination_checker = destination_checker or PromotionTokenDestinationChecker()
     
     @property
     def loader(self) -> PromotionAuthorizationLoader:
