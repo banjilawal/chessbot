@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .account import *
+from .id import *
 from .square import *
 from .token import *
 

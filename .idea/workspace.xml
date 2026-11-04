@@ -5,126 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/sensor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/model/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/model/account/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/coord/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/coord/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/coord/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/coord/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/coord/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/coord/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/coord/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/coord/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/id/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/id/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/name/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/name/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/token/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/token/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/attribute/token/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/attribute/token/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/formation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/lingeo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/lingeo/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/lingeo/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/lingeo/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/persona/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/schema/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/context/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/context/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/formation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/id/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/id/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/id/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/id/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/id/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/id/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/id/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/id/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/id/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/id/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/id/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/name/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/name/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/name/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/name/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/name/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/name/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/name/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/name/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/persona/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/registration/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/registration/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/registration/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/registration/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/scalar/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/schema/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/sensor/collider/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensor/collision/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/collision/id/account/sensor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,22 +49,22 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0000001570290082" />
-      <entry key="M15" value="1.0002180200112492" />
-      <entry key="M30" value="1.3724150093612348" />
-      <entry key="H1" value="21.116188603368283" />
-      <entry key="H2" value="186.9307773096494" />
-      <entry key="H4" value="705.6460275279055" />
-      <entry key="D1" value="4873.236820935987" />
-      <entry key="W1" value="28474.412135463448" />
+      <entry key="MS500" value="1.000000000014535" />
+      <entry key="S2" value="1.0029114340571825" />
+      <entry key="S5" value="1.2162220043165248" />
+      <entry key="S10" value="2.241736043583269" />
+      <entry key="S30" value="6.946138729826869" />
+      <entry key="S60" value="21.224271394500505" />
+      <entry key="M2" value="63.09790603113431" />
+      <entry key="M5" value="146.65839201701277" />
+      <entry key="M10" value="209.88391335245905" />
+      <entry key="M15" value="243.397133007206" />
+      <entry key="M30" value="290.240722104696" />
+      <entry key="H1" value="333.8575067609455" />
+      <entry key="H2" value="486.82682183166764" />
+      <entry key="H4" value="976.6806894684071" />
+      <entry key="D1" value="5136.8324985870695" />
+      <entry key="W1" value="28754.35677970008" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -190,37 +72,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="1.7139694986802106E-188" />
-      <entry key="S60" value="1.8914831549652923E-94" />
-      <entry key="M2" value="2.5553246334345698E-47" />
-      <entry key="M5" value="8.39775790826121E-19" />
-      <entry key="M10" value="3.2038086631096157E-9" />
-      <entry key="M15" value="5.3033837978005185E-6" />
-      <entry key="M30" value="0.00991133303777977" />
-      <entry key="H1" value="0.49860506406533944" />
-      <entry key="H2" value="4.1449775067929915" />
-      <entry key="H4" value="15.377085529533685" />
-      <entry key="D1" value="168.22426518028254" />
-      <entry key="W1" value="1461.8802520149873" />
+      <entry key="S30" value="9.351366126074079E-213" />
+      <entry key="S60" value="1.3971352941366537E-106" />
+      <entry key="M2" value="2.1961604922295327E-53" />
+      <entry key="M5" value="3.146665276868517E-21" />
+      <entry key="M10" value="1.9611470995724642E-10" />
+      <entry key="M15" value="8.237247652265382E-7" />
+      <entry key="M30" value="0.0039061291844819913" />
+      <entry key="H1" value="0.3130141362884425" />
+      <entry key="H2" value="3.284171374367857" />
+      <entry key="H4" value="13.687554032305089" />
+      <entry key="D1" value="164.99240107161705" />
+      <entry key="W1" value="1457.8346596121187" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.010380357922628994" />
-      <entry key="MS500" value="0.40109058317624313" />
-      <entry key="S2" value="0.7958122434730499" />
-      <entry key="S5" value="0.912692005751846" />
-      <entry key="S10" value="0.9553491538447323" />
-      <entry key="S30" value="0.9848891984050355" />
-      <entry key="S60" value="0.9924158394569463" />
-      <entry key="M2" value="0.9962007023973364" />
-      <entry key="M5" value="0.9984785452809092" />
-      <entry key="M10" value="0.9992391432806188" />
-      <entry key="M15" value="0.9997158955237287" />
-      <entry key="M30" value="1.3820548915247561" />
-      <entry key="H1" value="21.61418147708887" />
-      <entry key="H2" value="191.07329176797106" />
-      <entry key="H4" value="721.0168132543977" />
-      <entry key="D1" value="5041.441873367184" />
-      <entry key="W1" value="29936.266149700055" />
+      <entry key="MS100" value="0.8950250709279725" />
+      <entry key="MS500" value="0.9780634734615169" />
+      <entry key="S2" value="0.9973640480652105" />
+      <entry key="S5" value="1.2135301501919284" />
+      <entry key="S10" value="2.2388204413650623" />
+      <entry key="S30" value="6.931763709925131" />
+      <entry key="S60" value="21.20090446383963" />
+      <entry key="M2" value="63.073144161078574" />
+      <entry key="M5" value="146.63788206391308" />
+      <entry key="M10" value="209.86355977692037" />
+      <entry key="M15" value="243.37746033609665" />
+      <entry key="M30" value="290.22914665696527" />
+      <entry key="H1" value="334.1602319871272" />
+      <entry key="H2" value="490.1033845252912" />
+      <entry key="H4" value="990.359608203508" />
+      <entry key="D1" value="5301.805521585606" />
+      <entry key="W1" value="30212.16519703625" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -255,7 +137,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/exchange/request",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/sensor/collision/id/account",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -269,11 +151,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sensor/collision/id/account" />
+      <recent name="$PROJECT_DIR$/src/sensor/collision/id" />
       <recent name="$PROJECT_DIR$/src/err/null/exchange/request" />
       <recent name="$PROJECT_DIR$/src/err/null/exchange" />
       <recent name="$PROJECT_DIR$/src/err/null/collection" />
-      <recent name="$PROJECT_DIR$/src/err/null/collection/stack" />
-      <recent name="$PROJECT_DIR$/src/err/bootstrap/authorization/crud/search" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/sensor" />
@@ -1095,7 +977,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="223315000" />
+      <workItem from="1793360739922" duration="225724000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3122,6 +3004,17 @@
           <url>file://$PROJECT_DIR$/src/err/bootstrap/authorization/crud/insertion/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="677" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/sensor/collision/id/sensor.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="678" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="python-line">
+          <url>file://$PROJECT_DIR$/src/sensor/collision/id/sensor.py</url>
+          <line>54</line>
+          <log-expression expression="  &#10;        ## --- Perform the check on the unique id attribute all Accounts have. ---##&#10;        for item in collection.items:&#10;            ## Handle the case there are duplicate ids.&#10;            if item.id == attractor.id:&#10;                ## Send an exception chain in the  report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=attractor,&#10;                    collider=item,&#10;                    attribute=&quot;id&quot;,&#10;                    value=item.id,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=method,&#10;                        cls_name=self.__class__.__name__,&#10;                        msg=AccountCollisionSensorException.MSG,&#10;                        err_code=AccountCollisionSensorException.ERR_CODE,&#10;                        ex=AccountIdCollisionException(&#10;                            cls_mthd=method,&#10;                            cls_name=self.__class__.__name__,&#10;                            msg=AccountIdCollisionException.MSG,&#10;                            err_code=AccountIdCollisionException.ERR_CODE,&#10;                        )&#10;                    )&#10;                )&#10;        ## --- Run collision tests on unique sub class attributes. ---##&#10;        &#10;        ## Human account uniqueness branch.&#10;        if isinstance(attractor, HumanAccount):&#10;            return self._human_account_collider(&#10;                human_attractor=attractor,&#10;                humans=collection.human_accounts,&#10;                parent_method=method,&#10;            )&#10;        ## Otherwise run the default sub-collider.&#10;        return self._machine_account_collider(&#10;                machine_attractor=attractor,&#10;                machines=collection.machine_accounts,&#10;                parent_method=method,&#10;            )&#10;            &#10;    @LoggingLevelRouter.monitor&#10;    def _human_account_collider(&#10;            self,&#10;            human_attractor: HumanAccount,&#10;            humans: List[HumanAccount],&#10;            parent_method: str&#10;    ) -&gt; CollisionReport:&#10;        &quot;&quot;&quot;duplicate_email_detector&quot;&quot;&quot;&#10;        ## Set up the target.&#10;        attribute = &quot;email&quot;&#10;        target = human_attractor.email.upper()&#10;        &#10;        ## --- Run the collider. ---##&#10;        for human in humans:&#10;            ## Handle the case that an email address is shared.&#10;            if human.email.upper() == target:&#10;                ## Send an exception chain in the report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=human_attractor,&#10;                    collider=human,&#10;                    attribute=attribute,&#10;                    value=target,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=parent_method,&#10;                        cls_name=self.__class__.__name__,&#10;                        ex=AccountEmailCollisionException()&#10;                    )&#10;                )&#10;        ## Otherwise report the attractor is unique&#10;        return CollisionReport.report_no_duplicates(attractor=human_attractor)&#10;    &#10;    @LoggingLevelRouter.monitor&#10;    def _machine_account_collider(&#10;            self,&#10;            machine_attractor: MachineAccount,&#10;            machines: List[MachineAccount],&#10;            parent_method: str&#10;    ):&#10;        &quot;&quot;&quot;duplicate_machine_name_detector&quot;&quot;&quot;&#10;        ## Set up the target.&#10;        attribute = &quot;machine_name&quot;&#10;        target = machine_attractor.name.upper()&#10;        &#10;        ## --- Run the collider. ---##&#10;        for machine in machines:&#10;            ## Handle the case that a machine_name is shared.&#10;            if machine.name.upper() == target:&#10;                ## Send an exception chain in the report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=machine_attractor,&#10;                    collider=machine,&#10;                    attribute=attribute,&#10;                    value=target,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=parent_method,&#10;                        cls_name=self.__class__.__name__,&#10;                        msg=AccountCollisionSensorException.MSG,&#10;                        err_code=AccountCollisionSensorException.ERR_CODE,&#10;                        ex=AccountMachineCollisionException()&#10;                    )&#10;                )&#10;        ## Otherwise report the attractor is unique.&#10;        return CollisionReport.report_no_duplicates(attractor=machine_attractor)" language="Python" />
+          <option name="timeStamp" value="679" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

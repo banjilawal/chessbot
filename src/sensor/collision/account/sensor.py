@@ -32,7 +32,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
         -   def execute(
                     attractor: Account,
                     collection: AccountStack,
-            ) -> AttributeCollisionReport
+            ) -> CollisionReport
 
     Super Class:
         CollisionSensor
@@ -51,7 +51,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
             attractor: Account
             collection: AccountStack
         Result:
-            AttributeCollisionReport
+            CollisionReport
         Raises:
             AccountCollisionSensorException
         """

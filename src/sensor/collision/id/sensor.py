@@ -9,17 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, List, TypeVar
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar
 
 from artifcat import CollisionReport
 from collection import Stack
 from domain import Model
+from sensor import CollisionSensor
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
+P = TypeVar("P", bound="int")
 
-class IdCollisionSensor(ABC, Generic[T]):
+class IdCollisionSensor(CollisionSensor[T, P], ABC, Generic[T, P]):
     """
     Role:
         -   Sensor
@@ -30,13 +32,15 @@ class IdCollisionSensor(ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(attractor: id, collection: Stack[M]) -> AttributeCollisionReport
+        -   def execute(attractor: int, collection: Stack[M]) -> CollisionReport
 
     Super Class:
     """
-
+    ATTRIBUTE = "id"
+    
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: int, collection: Stack[T]) -> CollisionReport:
+    def execute(self, attractor: T, collection: Stack[T]) -> CollisionReport:
         """
         Check that the attractor will be unique in the collection.
 
@@ -45,10 +49,10 @@ class IdCollisionSensor(ABC, Generic[T]):
                 ids, emails, or machine_names are detected.
             2.  Otherwise, report the attractor is unique.
         Args:
-            attractor: Id
-            collection: IdStack
+            attractor: int
+            collection: collection: Stack[T]
         Result:
-            AttributeCollisionReport
+            CollisionReport
         Raises:
             IdCollisionSensorException
         """

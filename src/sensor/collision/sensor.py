@@ -19,9 +19,10 @@ from sensor import Sensor
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
+P = TypeVar("P")
 
 
-class CollisionSensor(Sensor, ABC, Generic[T]):
+class CollisionSensor(Sensor, ABC, Generic[T, P]):
     """
     Role:
         -   Sensor
@@ -32,7 +33,7 @@ class CollisionSensor(Sensor, ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(attractor: T, collection: Stack[T]) -> AttributeCollisionReport
+        -   def execute(attractor: T, collection: Stack[T]) -> CollisionReport
 
     Super Class:
         Sensor
@@ -47,7 +48,7 @@ class CollisionSensor(Sensor, ABC, Generic[T]):
             attractor: T
             collection: Stack[T]
         Result:
-            AttributeCollisionReport
+            CollisionReport
         Raises:
             CollisionSensorException
         """
