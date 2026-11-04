@@ -16,4 +16,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .sensor import CollisionSensor
+from .sensor import AttributeSensor

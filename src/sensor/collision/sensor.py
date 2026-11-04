@@ -22,7 +22,7 @@ P = TypeVar("P", bound="Model")
 T = TypeVar("T")
 
 
-class CollisionSensor(Sensor, ABC, Generic[P, T]):
+class AttributeSensor(Sensor, ABC, Generic[P, T]):
     """
     Role:
         -   Sensor
@@ -50,6 +50,6 @@ class CollisionSensor(Sensor, ABC, Generic[P, T]):
         Result:
             CollisionReport
         Raises:
-            CollisionSensorException
+            AttributeSensorException
         """
         pass

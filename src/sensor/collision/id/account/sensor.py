@@ -12,11 +12,11 @@ from __future__ import annotations
 from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account
-from sensor import IdCollisionSensor
+from sensor import IdSensor
 from util import LoggingLevelRouter
 
 
-class AccountIdCollisionSensor(IdCollisionSensor[Account, int]):
+class AccountIdSensor(IdSensor[Account, int]):
     """
     Role:
         -   Sensor
@@ -30,7 +30,7 @@ class AccountIdCollisionSensor(IdCollisionSensor[Account, int]):
         -   def execute(target: int, stream: AccountStack) -> CollisionReport
 
     Super Class:
-        IdCollisionSensor
+        IdSensor
     """
 
     @LoggingLevelRouter.monitor
@@ -48,7 +48,7 @@ class AccountIdCollisionSensor(IdCollisionSensor[Account, int]):
         Result:
             CollisionReport
         Raises:
-            AccountIdCollisionSensorException
+            AccountIdSensorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -64,11 +64,11 @@ class AccountIdCollisionSensor(IdCollisionSensor[Account, int]):
             target=target,
             particle=matches[0],
             identifier=self.ID_IDENTIFIER,
-            exception=AccountIdCollisionSensorException(
+            exception=AccountIdSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
-                msg=AccountIdCollisionSensorException.MSG,
-                err_code=AccountIdCollisionSensorException.ERR_CODE,
+                msg=AccountIdSensorException.MSG,
+                err_code=AccountIdSensorException.ERR_CODE,
                 ex=DuplicteAccounIdException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

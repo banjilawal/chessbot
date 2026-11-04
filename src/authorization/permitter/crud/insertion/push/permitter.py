@@ -16,7 +16,7 @@ from artifcat import PushDecision
 from authorization import InsertionPermitter
 from bootstrap import PushAuthorizationLoader
 from exchange import PushPermissionRequest
-from sensor import CollisionSensor
+from sensor import AttributeSensor
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PushPermissionRequest")
@@ -41,12 +41,12 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         InsertionPermitter
     """
     
-    _collision_sensor: CollisionSensor
+    _collision_sensor: AttributeSensor
     
     def __init__(
             self,
             loader: PushAuthorizationLoader[T],
-            collision_sensor: CollisionSensor,
+            collision_sensor: AttributeSensor,
     ):
         """
         Args:
@@ -57,7 +57,7 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         self._collision_sensor = collision_sensor
     
     @property
-    def collision_sensor(self) -> CollisionSensor:
+    def collision_sensor(self) -> AttributeSensor:
         return self._collision_sensor
     
     @property

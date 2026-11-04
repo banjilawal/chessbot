@@ -15,13 +15,13 @@ from typing import Generic, TypeVar
 from artifcat import CollisionReport
 from collection import Stack
 from domain import Model
-from sensor import CollisionSensor
+from sensor import AttributeSensor
 from util import LoggingLevelRouter
 
 P = TypeVar("P", bound="Model")
 T = TypeVar("T", bound="int")
 
-class IdCollisionSensor(CollisionSensor[P, T], ABC, Generic[P, T]):
+class IdSensor(AttributeSensor[P, T], ABC, Generic[P, T]):
     """
     Role:
         -   Sensor
@@ -54,7 +54,7 @@ class IdCollisionSensor(CollisionSensor[P, T], ABC, Generic[P, T]):
         Result:
             CollisionReport
         Raises:
-            IdCollisionSensorException
+            IdSensorException
         """
         pass
     

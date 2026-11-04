@@ -14,11 +14,11 @@ from typing import List
 from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account, HumanAccount, MachineAccount
-from sensor import CollisionSensor
+from sensor import AttributeSensor
 from util import LoggingLevelRouter
 
 
-class AccountCollisionSensor(CollisionSensor[Account]):
+class AccountSensor(AttributeSensor[Account]):
     """
     Role:
         -   Sensor
@@ -53,7 +53,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
         Result:
             CollisionReport
         Raises:
-            AccountCollisionSensorException
+            AccountSensorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -67,11 +67,11 @@ class AccountCollisionSensor(CollisionSensor[Account]):
                     collider=item,
                     attribute="id",
                     value=item.id,
-                    exception=AccountCollisionSensorException(
+                    exception=AccountSensorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AccountCollisionSensorException.MSG,
-                        err_code=AccountCollisionSensorException.ERR_CODE,
+                        msg=AccountSensorException.MSG,
+                        err_code=AccountSensorException.ERR_CODE,
                         ex=AccountIdCollisionException(
                             cls_mthd=method,
                             cls_name=self.__class__.__name__,
@@ -118,7 +118,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
                     collider=human,
                     attribute=attribute,
                     value=target,
-                    exception=AccountCollisionSensorException(
+                    exception=AccountSensorException(
                         cls_mthd=parent_method,
                         cls_name=self.__class__.__name__,
                         ex=AccountEmailCollisionException()
@@ -149,11 +149,11 @@ class AccountCollisionSensor(CollisionSensor[Account]):
                     collider=machine,
                     attribute=attribute,
                     value=target,
-                    exception=AccountCollisionSensorException(
+                    exception=AccountSensorException(
                         cls_mthd=parent_method,
                         cls_name=self.__class__.__name__,
-                        msg=AccountCollisionSensorException.MSG,
-                        err_code=AccountCollisionSensorException.ERR_CODE,
+                        msg=AccountSensorException.MSG,
+                        err_code=AccountSensorException.ERR_CODE,
                         ex=AccountMachineCollisionException()
                     )
                 )

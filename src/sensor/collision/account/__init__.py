@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== SENSOR.COLLISION.ACCOUNT PACKAGE ===========#
 
 # Packages
+from .firstname import *
 
 # Modules
-from .sensor import AccountCollisionSensor
+from .sensor import AccountSensor

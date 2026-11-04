@@ -16,7 +16,7 @@ from authorization import PushPermitter
 from bootstrap import AccountPushAuthorizationLoader
 from err import AccountPushPermitterException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
-from sensor import AccountCollisionSensor
+from sensor import AccountSensor
 from util import LoggingLevelRouter
 
 
@@ -41,7 +41,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     def __init__(
             self,
-            collision_sensor: Optional[AccountCollisionSensor] | None = None,
+            collision_sensor: Optional[AccountSensor] | None = None,
             loader: Optional[AccountPushAuthorizationLoader] | None = None,
     ):
         """
@@ -50,7 +50,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         """
         super().__init__(
             loader=loader or AccountPushAuthorizationLoader(),
-            collision_sensor=collision_sensor or AccountCollisionSensor(),
+            collision_sensor=collision_sensor or AccountSensor(),
         )
     
     @property
@@ -58,8 +58,8 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         return cast(AccountPushAuthorizationLoader, super().loader)
     
     @property
-    def collision_sensor(self) -> AccountCollisionSensor:
-        return cast(AccountCollisionSensor, super().collision_sensor)
+    def collision_sensor(self) -> AccountSensor:
+        return cast(AccountSensor, super().collision_sensor)
 
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> AccountPushDecision:

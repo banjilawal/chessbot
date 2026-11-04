@@ -13,4 +13,4 @@ version: 0.0.2
 from .account import *
 
 # Modules
-from .sensor import IdCollisionSensor
+from .sensor import IdSensor
