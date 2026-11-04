@@ -9,13 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional, TypeVar, cast
 
 from artifcat import ResultState, TransactionResult
 from domain import Maneuver
 
+T = TypeVar("T", bound="Maneuver")
 
-class ManeuverResult(TransactionResult[Maneuver]):
+class ManeuverResult(TransactionResult[T]):
     """
     Role:
         -   Persistence
@@ -26,11 +27,11 @@ class ManeuverResult(TransactionResult[Maneuver]):
 
     Attributes:
         state: resultState
-        payload: Optional[Maneuver]
+        payload: Optional[T]
         exception: Optional[Exception]
 
     Provides:
-        -   def success(payload: Maneuver) -> ManeuverResult
+        -   def success(payload: T) -> ManeuverResult
 
     Super Class:
         Result
@@ -41,13 +42,13 @@ class ManeuverResult(TransactionResult[Maneuver]):
     def __init__(
             self,
             state: ResultState,
-            payload: Optional[Maneuver] = None,
+            payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: resultState
-            payload: Optional[Maneuver]
+            payload: Optional[T]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -62,7 +63,7 @@ class ManeuverResult(TransactionResult[Maneuver]):
         return self._state
     
     @property
-    def payload(self) -> Optional[Maneuver]:
+    def payload(self) -> Optional[T]:
         return cast(Maneuver, super().payload)
     
     @property
@@ -87,7 +88,7 @@ class ManeuverResult(TransactionResult[Maneuver]):
         )
     
     @classmethod
-    def success(cls, payload: Maneuver) -> ManeuverResult:
+    def success(cls, payload: T) -> ManeuverResult:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,

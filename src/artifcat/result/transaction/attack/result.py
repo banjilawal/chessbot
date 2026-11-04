@@ -10,13 +10,13 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ResultState, TransactionResult
+from artifcat import ManeuverResult, ResultState
 from domain import Encounter
 
 T = TypeVar("T", bound="Encounter")
 
 
-class AttackResult(TransactionResult[T], TransactionResult, Generic[T]):
+class AttackResult(ManeuverResult[T], Generic[T]):
     """
     Role:
         -   Persistence
@@ -95,14 +95,14 @@ class AttackResult(TransactionResult[T], TransactionResult, Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> AttackTransactionResult[T]:
+    def success(cls, payload: T) -> AttackResult[T]:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> AttackTransactionResult[T]:
+    def failure(cls, exception: Exception) -> AttackResult[T]:
         return cls(
             exception=exception,
             state=ResultState.FAILURE,
