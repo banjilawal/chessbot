@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PopPermissionRequestNullException
 
 __all__ = [
-    # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# BOARD_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
     "BoardPopPermissionRequestNullException",
 ]
 
-# ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
+# ======================# BOARD_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
 class BoardPopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class BoardPopPermissionRequestNullException(PopPermissionRequestNullException):
         PopPermissionRequestNullException
     """
     MSG = "BoardPopPermissionRequest cannot be null."
-    ERR_CODE = "BOARD_POP_REQUEST_NULL_ERROR"
+    ERR_CODE = "BOARD_POP_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

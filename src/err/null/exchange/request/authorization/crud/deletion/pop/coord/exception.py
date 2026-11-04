@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PopPermissionRequestNullException
 
 __all__ = [
-    # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# COORD_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
     "CoordPopPermissionRequestNullException",
 ]
 
-# ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
+# ======================# COORD_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
 class CoordPopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class CoordPopPermissionRequestNullException(PopPermissionRequestNullException):
         PopPermissionRequestNullException
     """
     MSG = "CoordPopPermissionRequest cannot be null."
-    ERR_CODE = "COORD_POP_REQUEST_NULL_ERROR"
+    ERR_CODE = "COORD_POP_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

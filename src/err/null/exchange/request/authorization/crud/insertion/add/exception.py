@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 from err import InsertionPermissionRequestNullException
 
 __all__ = [
-    # ======================# ADD_REQUEST_NULL_ERROR #======================#
+    # ======================# ADD_PERMISSION_REQUEST_NULL_ERROR #======================#
     "AddNodePermissionRequestNullException",
 ]
 
-# ======================# ADD_REQUEST_NULL_ERROR #======================#
+# ======================# ADD_PERMISSION_REQUEST_NULL_ERROR #======================#
 class AddNodePermissionRequestNullException(InsertionPermissionRequestNullException):
     """
     Role:
@@ -45,7 +45,7 @@ class AddNodePermissionRequestNullException(InsertionPermissionRequestNullExcept
         InsertionPermissionRequestNullException
     """
     MSG = "AddNodePermissionRequest cannot be null."
-    ERR_CODE = "ADD_REQUEST_NULL_ERROR"
+    ERR_CODE = "ADD_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

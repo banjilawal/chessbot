@@ -16,7 +16,7 @@ from bootstrap import ModelSearchAuthorizationLoader
 from collection import AccountStack
 from domain import Account
 from err import (
-    AccountSearchAuthorizationLoaderException, AccountSearchPermissionRequestNullException,
+    AccountSearchAuthorizationLoaderException, AccountSearchPermissionRequestNullException, AccountStackNullException,
 )
 from exchange import (
     AccountContextValidationService, AccountSearchRequest, AccountSearchPermissionRequest,

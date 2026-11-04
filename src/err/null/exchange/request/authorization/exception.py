@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PermissionRequestNullException
+from err import RequestNullException
 
 __all__ = [
     # ======================# AUTHORIZATION_REQUEST_NULL_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class PermissionRequestNullException(PermissionRequestNullException):
+class PermissionRequestNullException(RequestNullException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class PermissionRequestNullException(PermissionRequestNullException):
     Provides:
 
     Super Class:
-        PermissionRequestNullException
+        RequestNullException
     """
     MSG = "PermissionRequest cannot be null."
     ERR_CODE = "AUTHORIZATION_REQUEST_NULL_ERROR"

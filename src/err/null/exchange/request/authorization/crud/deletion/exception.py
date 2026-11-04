@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import CrudPermissionRequestNullException
 
 __all__ = [
-    # ======================# DELETION_REQUEST_NULL_ERROR #======================#
+    # ======================# DELETION_PERMISSION_REQUEST_NULL_ERROR #======================#
     "DeletionPermissionRequestNullException",
 ]
 
-# ======================# DELETION_REQUEST_NULL_ERROR #======================#
+# ======================# DELETION_PERMISSION_REQUEST_NULL_ERROR #======================#
 class DeletionPermissionRequestNullException(CrudPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class DeletionPermissionRequestNullException(CrudPermissionRequestNullException)
         CrudPermissionRequestNullException
     """
     MSG = "DeletionPermissionRequest cannot be null."
-    ERR_CODE = "DELETION_REQUEST_NULL_ERROR"
+    ERR_CODE = "DELETION_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

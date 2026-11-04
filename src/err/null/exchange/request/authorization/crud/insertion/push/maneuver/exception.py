@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# MANEUVER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "ManeuverPushPermissionRequestNullException",
 ]
 
-# ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# MANEUVER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class ManeuverPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class ManeuverPushPermissionRequestNullException(PushPermissionRequestNullExcept
         PushPermissionRequestNullException
     """
     MSG = "ManeuverPushPermissionRequest cannot be null."
-    ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "MANEUVER_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

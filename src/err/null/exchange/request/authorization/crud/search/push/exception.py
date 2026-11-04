@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "SearchPermissionRequestNullException",
 ]
 
-# ======================# PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class SearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -45,7 +45,7 @@ class SearchPermissionRequestNullException(SearchPermissionRequestNullException)
         SearchPermissionRequestNullException
     """
     MSG = "SearchPermissionRequest cannot be null."
-    ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

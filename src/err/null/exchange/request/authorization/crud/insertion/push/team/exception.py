@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TEAM_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "TeamPushPermissionRequestNullException",
 ]
 
-# ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TEAM_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class TeamPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class TeamPushPermissionRequestNullException(PushPermissionRequestNullException)
         PushPermissionRequestNullException
     """
     MSG = "TeamPushPermissionRequest cannot be null."
-    ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "TEAM_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

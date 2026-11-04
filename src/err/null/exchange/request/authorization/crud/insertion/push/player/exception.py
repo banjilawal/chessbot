@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# PLAYER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "PlayerPushPermissionRequestNullException",
 ]
 
-# ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# PLAYER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class PlayerPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class PlayerPushPermissionRequestNullException(PushPermissionRequestNullExceptio
         PushPermissionRequestNullException
     """
     MSG = "PlayerPushPermissionRequest cannot be null."
-    ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "PLAYER_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

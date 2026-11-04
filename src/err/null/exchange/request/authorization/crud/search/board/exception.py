@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# BOARD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "BoardSearchPermissionRequestNullException",
 ]
 
-# ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# BOARD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class BoardSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class BoardSearchPermissionRequestNullException(SearchPermissionRequestNullExcep
         SearchPermissionRequestNullException
     """
     MSG = "BoardSearchPermissionRequest cannot be null."
-    ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "BOARD_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 from err import DeletionPermissionRequestNullException
 
 __all__ = [
-    # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
+    # ======================# REMOVE_PERMISSION_REQUEST_NULL_ERROR #======================#
     "RemoveNodePermissionRequestNullException",
 ]
 
-# ======================# REMOVE_REQUEST_NULL_ERROR #======================#
+# ======================# REMOVE_PERMISSION_REQUEST_NULL_ERROR #======================#
 class RemoveNodePermissionRequestNullException(DeletionPermissionRequestNullException):
     """
     Role:
@@ -45,7 +45,7 @@ class RemoveNodePermissionRequestNullException(DeletionPermissionRequestNullExce
         DeletionPermissionRequestNullException
     """
     MSG = "RemoveNodePermissionRequest cannot be null."
-    ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"
+    ERR_CODE = "REMOVE_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

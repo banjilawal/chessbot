@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import RemoveNodePermissionRequestNullException
 
 __all__ = [
-    # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    # ======================# REMOVE_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR #======================#
     "RemoveVectorNodePermissionRequestNullException",
 ]
 
-# ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+# ======================# REMOVE_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR #======================#
 class RemoveVectorNodePermissionRequestNullException(RemoveNodePermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class RemoveVectorNodePermissionRequestNullException(RemoveNodePermissionRequest
         RemoveNodePermissionRequestNullException
     """
     MSG = "RemoveVectorNodePermissionRequest cannot be null."
-    ERR_CODE = "REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR"
+    ERR_CODE = "REMOVE_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

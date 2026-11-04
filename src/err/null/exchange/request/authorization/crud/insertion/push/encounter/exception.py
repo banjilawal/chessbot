@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ENCOUNTER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "EncounterPushPermissionRequestNullException",
 ]
 
-# ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ENCOUNTER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class EncounterPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class EncounterPushPermissionRequestNullException(PushPermissionRequestNullExcep
         PushPermissionRequestNullException
     """
     MSG = "EncounterPushPermissionRequest cannot be null."
-    ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "ENCOUNTER_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

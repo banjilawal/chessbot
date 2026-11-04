@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import AddNodePermissionRequestNullException
 
 __all__ = [
-    # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    # ======================# ADD_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR #======================#
     "AddVectorNodePermissionRequestNullException",
 ]
 
-# ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+# ======================# ADD_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR #======================#
 class AddVectorNodePermissionRequestNullException(AddNodePermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class AddVectorNodePermissionRequestNullException(AddNodePermissionRequestNullEx
         AddNodePermissionRequestNullException
     """
     MSG = "AddVectorNodePermissionRequest cannot be null."
-    ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
+    ERR_CODE = "ADD_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

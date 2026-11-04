@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# SQUARE_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "SquareSearchPermissionRequestNullException",
 ]
 
-# ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# SQUARE_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class SquareSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class SquareSearchPermissionRequestNullException(SearchPermissionRequestNullExce
         SearchPermissionRequestNullException
     """
     MSG = "SquareSearchPermissionRequest cannot be null."
-    ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "SQUARE_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

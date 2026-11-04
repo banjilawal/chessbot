@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TOKEN_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "TokenPushPermissionRequestNullException",
 ]
 
-# ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TOKEN_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class TokenPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class TokenPushPermissionRequestNullException(PushPermissionRequestNullException
         PushPermissionRequestNullException
     """
     MSG = "TokenPushPermissionRequest cannot be null."
-    ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "TOKEN_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

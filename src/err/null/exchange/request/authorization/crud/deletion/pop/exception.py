@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 from err import DeletionPermissionRequestNullException
 
 __all__ = [
-    # ======================# POP_REQUEST_NULL_ERROR #======================#
+    # ======================# POP_PERMISSION_REQUEST_NULL_ERROR #======================#
     "PopPermissionRequestNullException",
 ]
 
-# ======================# POP_REQUEST_NULL_ERROR #======================#
+# ======================# POP_PERMISSION_REQUEST_NULL_ERROR #======================#
 class PopPermissionRequestNullException(DeletionPermissionRequestNullException):
     """
     Role:
@@ -45,7 +45,7 @@ class PopPermissionRequestNullException(DeletionPermissionRequestNullException):
         DeletionPermissionRequestNullException
     """
     MSG = "PopPermissionRequest cannot be null."
-    ERR_CODE = "POP_REQUEST_NULL_ERROR"
+    ERR_CODE = "POP_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

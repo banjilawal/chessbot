@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TEAM_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "TeamSearchPermissionRequestNullException",
 ]
 
-# ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TEAM_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class TeamSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class TeamSearchPermissionRequestNullException(SearchPermissionRequestNullExcept
         SearchPermissionRequestNullException
     """
     MSG = "TeamSearchPermissionRequest cannot be null."
-    ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "TEAM_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

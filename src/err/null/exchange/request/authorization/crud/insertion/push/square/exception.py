@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# SQUARE_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "SquarePushPermissionRequestNullException",
 ]
 
-# ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# SQUARE_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class SquarePushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class SquarePushPermissionRequestNullException(PushPermissionRequestNullExceptio
         PushPermissionRequestNullException
     """
     MSG = "SquarePushPermissionRequest cannot be null."
-    ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "SQUARE_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PopPermissionRequestNullException
 
 __all__ = [
-    # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# MANEUVER_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
     "ManeuverPopPermissionRequestNullException",
 ]
 
-# ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
+# ======================# MANEUVER_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
 class ManeuverPopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class ManeuverPopPermissionRequestNullException(PopPermissionRequestNullExceptio
         PopPermissionRequestNullException
     """
     MSG = "ManeuverPopPermissionRequest cannot be null."
-    ERR_CODE = "MANEUVER_POP_REQUEST_NULL_ERROR"
+    ERR_CODE = "MANEUVER_POP_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

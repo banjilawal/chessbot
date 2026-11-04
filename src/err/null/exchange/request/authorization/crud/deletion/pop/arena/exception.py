@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PopPermissionRequestNullException
 
 __all__ = [
-    # ======================# ARENA_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# ARENA_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
     "ArenaPopPermissionRequestNullException",
 ]
 
-# ======================# ARENA_POP_REQUEST_NULL_ERROR #======================#
+# ======================# ARENA_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
 class ArenaPopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class ArenaPopPermissionRequestNullException(PopPermissionRequestNullException):
         PopPermissionRequestNullException
     """
     MSG = "ArenaPopPermissionRequest cannot be null."
-    ERR_CODE = "ARENA_POP_REQUEST_NULL_ERROR"
+    ERR_CODE = "ARENA_POP_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

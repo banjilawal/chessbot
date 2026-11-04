@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ARENA_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "ArenaSearchPermissionRequestNullException",
 ]
 
-# ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ARENA_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class ArenaSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class ArenaSearchPermissionRequestNullException(SearchPermissionRequestNullExcep
         SearchPermissionRequestNullException
     """
     MSG = "ArenaSearchPermissionRequest cannot be null."
-    ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "ARENA_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import CrudPermissionRequestNullException
 
 __all__ = [
-    # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
+    # ======================# INSERTION_PERMISSION_REQUEST_NULL_ERROR #======================#
     "InsertionPermissionRequestNullException",
 ]
 
-# ======================# INSERTION_REQUEST_NULL_ERROR #======================#
+# ======================# INSERTION_PERMISSION_REQUEST_NULL_ERROR #======================#
 class InsertionPermissionRequestNullException(CrudPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class InsertionPermissionRequestNullException(CrudPermissionRequestNullException
         CrudPermissionRequestNullException
     """
     MSG = "InsertionPermissionRequest cannot be null."
-    ERR_CODE = "INSERTION_REQUEST_NULL_ERROR"
+    ERR_CODE = "INSERTION_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

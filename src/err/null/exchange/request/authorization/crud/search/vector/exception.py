@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    # ======================# SEARCH_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR #======================#
     "VectorSearchPermissionRequestNullException",
 ]
 
-# ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+# ======================# SEARCH_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR #======================#
 class VectorSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class VectorSearchPermissionRequestNullException(SearchPermissionRequestNullExce
         SearchPermissionRequestNullException
     """
     MSG = "VectorSearchPermissionRequest cannot be null."
-    ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
+    ERR_CODE = "SEARCH_VECTOR_NODE_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

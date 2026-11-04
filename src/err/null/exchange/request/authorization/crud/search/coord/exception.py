@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# COORD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "CoordSearchPermissionRequestNullException",
 ]
 
-# ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# COORD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class CoordSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class CoordSearchPermissionRequestNullException(SearchPermissionRequestNullExcep
         SearchPermissionRequestNullException
     """
     MSG = "CoordSearchPermissionRequest cannot be null."
-    ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "COORD_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

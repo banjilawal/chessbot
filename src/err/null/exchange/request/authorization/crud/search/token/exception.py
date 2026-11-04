@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TOKEN_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "TokenSearchPermissionRequestNullException",
 ]
 
-# ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TOKEN_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class TokenSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class TokenSearchPermissionRequestNullException(SearchPermissionRequestNullExcep
         SearchPermissionRequestNullException
     """
     MSG = "TokenSearchPermissionRequest cannot be null."
-    ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "TOKEN_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

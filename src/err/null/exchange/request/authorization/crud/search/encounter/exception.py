@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import SearchPermissionRequestNullException
 
 __all__ = [
-    # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ENCOUNTER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "EncounterSearchPermissionRequestNullException",
 ]
 
-# ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ENCOUNTER_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class EncounterSearchPermissionRequestNullException(SearchPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class EncounterSearchPermissionRequestNullException(SearchPermissionRequestNullE
         SearchPermissionRequestNullException
     """
     MSG = "EncounterSearchPermissionRequest cannot be null."
-    ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "ENCOUNTER_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

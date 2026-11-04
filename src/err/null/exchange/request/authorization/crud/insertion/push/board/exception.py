@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# BOARD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "BoardPushPermissionRequestNullException",
 ]
 
-# ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# BOARD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class BoardPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class BoardPushPermissionRequestNullException(PushPermissionRequestNullException
         PushPermissionRequestNullException
     """
     MSG = "BoardPushPermissionRequest cannot be null."
-    ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "BOARD_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

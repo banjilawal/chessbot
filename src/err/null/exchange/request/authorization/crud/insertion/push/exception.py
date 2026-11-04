@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 from err import InsertionPermissionRequestNullException
 
 __all__ = [
-    # ======================# PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "PushPermissionRequestNullException",
 ]
 
-# ======================# PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class PushPermissionRequestNullException(InsertionPermissionRequestNullException):
     """
     Role:
@@ -45,7 +45,7 @@ class PushPermissionRequestNullException(InsertionPermissionRequestNullException
         InsertionPermissionRequestNullException
     """
     MSG = "PushPermissionRequest cannot be null."
-    ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

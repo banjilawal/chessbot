@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PushPermissionRequestNullException
 
 __all__ = [
-    # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# COORD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "CoordPushPermissionRequestNullException",
 ]
 
-# ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# COORD_PUSH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class CoordPushPermissionRequestNullException(PushPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class CoordPushPermissionRequestNullException(PushPermissionRequestNullException
         PushPermissionRequestNullException
     """
     MSG = "CoordPushPermissionRequest cannot be null."
-    ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
+    ERR_CODE = "COORD_PUSH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

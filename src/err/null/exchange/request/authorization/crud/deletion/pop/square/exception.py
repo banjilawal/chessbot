@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import PopPermissionRequestNullException
 
 __all__ = [
-    # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# SQUARE_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
     "SquarePopPermissionRequestNullException",
 ]
 
-# ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
+# ======================# SQUARE_POP_PERMISSION_REQUEST_NULL_ERROR #======================#
 class SquarePopPermissionRequestNullException(PopPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class SquarePopPermissionRequestNullException(PopPermissionRequestNullException)
         PopPermissionRequestNullException
     """
     MSG = "SquarePopPermissionRequest cannot be null."
-    ERR_CODE = "SQUARE_POP_REQUEST_NULL_ERROR"
+    ERR_CODE = "SQUARE_POP_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import CrudPermissionRequestNullException
 
 __all__ = [
-    # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
+    # ======================# SEARCH_PERMISSION_REQUEST_NULL_ERROR #======================#
     "SearchPermissionRequestNullException",
 ]
 
-# ======================# SEARCH_REQUEST_NULL_ERROR #======================#
+# ======================# SEARCH_PERMISSION_REQUEST_NULL_ERROR #======================#
 class SearchPermissionRequestNullException(CrudPermissionRequestNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class SearchPermissionRequestNullException(CrudPermissionRequestNullException):
         CrudPermissionRequestNullException
     """
     MSG = "SearchPermissionRequest cannot be null."
-    ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"
+    ERR_CODE = "SEARCH_PERMISSION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,
