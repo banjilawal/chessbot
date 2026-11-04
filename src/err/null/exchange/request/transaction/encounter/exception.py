@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import RequestNullException
+from err import TransactionRequestNullException
 
 __all__ = [
     # ======================# ATTACK_TRANSACTION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# ATTACK_TRANSACTION_REQUEST_NULL_ERROR #======================#
-class AttackRequestNullException(RequestNullException):
+class AttackRequestNullException(TransactionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class AttackRequestNullException(RequestNullException):
     Provides:
 
     Super Class:
-        RequestNullException
+        TransactionRequestNullException
     """
     MSG = "AttackRequest cannot be null."
     ERR_CODE = "ATTACK_TRANSACTION_REQUEST_NULL_ERROR"

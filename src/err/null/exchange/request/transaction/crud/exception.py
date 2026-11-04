@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import RequestNullException
+from err import TransactionRequestNullException
 
 __all__ = [
     # ======================# CRUD_TRANSACTION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CRUD_TRANSACTION_REQUEST_NULL_ERROR #======================#
-class CrudRequestNullException(RequestNullException):
+class CrudRequestNullException(TransactionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class CrudRequestNullException(RequestNullException):
     Provides:
 
     Super Class:
-        RequestNullException
+        TransactionRequestNullException
     """
     MSG = "CrudRequest cannot be null."
     ERR_CODE = "CRUD_TRANSACTION_REQUEST_NULL_ERROR"

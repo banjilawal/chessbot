@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import RequestNullException
+from err import TransactionRequestNullException
 
 __all__ = [
     # ======================# PROMOTION_TRANSACTION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTION_TRANSACTION_REQUEST_NULL_ERROR #======================#
-class PromotionRequestNullException(RequestNullException):
+class PromotionRequestNullException(TransactionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionRequestNullException(RequestNullException):
     Provides:
 
     Super Class:
-        RequestNullException
+        TransactionRequestNullException
     """
     MSG = "PromotionRequest cannot be null."
     ERR_CODE = "PROMOTION_TRANSACTION_REQUEST_NULL_ERROR"

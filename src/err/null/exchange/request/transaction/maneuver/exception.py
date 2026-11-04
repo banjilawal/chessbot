@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import RequestNullException
+from err import TransactionRequestNullException
 
 __all__ = [
     # ======================# MANEUVER_TRANSACTION_REQUEST_NULL_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_TRANSACTION_REQUEST_NULL_ERROR #======================#
-class ManeuverRequestNullException(RequestNullException):
+class ManeuverRequestNullException(TransactionRequestNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ManeuverRequestNullException(RequestNullException):
     Provides:
 
     Super Class:
-        RequestNullException
+        TransactionRequestNullException
     """
     MSG = "ManeuverRequest cannot be null."
     ERR_CODE = "MANEUVER_TRANSACTION_REQUEST_NULL_ERROR"

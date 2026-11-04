@@ -16,11 +16,11 @@ from err import RequestNullException
 
 __all__ = [
     # ======================# TRANSACTION_REQUEST_NULL_ERROR #======================#
-    "RequestNullException",
+    "TransactionRequestNullException",
 ]
 
 # ======================# TRANSACTION_REQUEST_NULL_ERROR #======================#
-class RequestNullException(RequestNullException):
+class TransactionRequestNullException(RequestNullException):
     """
     Role:
         - Error Tracing
