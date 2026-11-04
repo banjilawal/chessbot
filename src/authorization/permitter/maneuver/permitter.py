@@ -175,7 +175,6 @@ class ManeuverPermitter(Permitter[ManeuverPermissionRequest]):
         permission_request = ManeuverPermissionRequest(
             id=form_id,
             authorization_applicant=transaction_request,
-            
         )
         # --- Forward the approval. ---#
         return ManeuverDecision.grant(

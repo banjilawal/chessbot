@@ -10,10 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Any, Generic, TypeVar, cast
-
-from artifcat import SearchDecision
-from authorization import SearchPermitter
+from typing import Any, Generic, TypeVar
+from artifcat import ModelSearchDecision, SearchDecision
+from authorization import ModelSearchPermitter
 from exchange import ModelSearchPermissionRequest
 from transit import SearchPermissionDispatcher
 from util import LoggingLevelRouter
@@ -49,7 +48,7 @@ class ModelSearchPermissionDispatcher(
         super().__init__(permitter=permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> SearchDecision:
+    def execute(self, candidate: Any) -> ModelSearchDecision:
         """
         Make a decision about a ModelSearchRequest.
 

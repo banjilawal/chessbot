@@ -14,9 +14,8 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import SearchDecision
 from authorization import CrudPermitter
-from bootstrap import CrudAuthorizationLoader
+from bootstrap import SearchAuthorizationLoader
 from exchange import SearchPermissionRequest
-from exchange.service import ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="SearchPermissionRequest")
@@ -40,20 +39,16 @@ class SearchPermitter(CrudPermitter[T], ABC, Generic[T]):
         CrudPermitter
     """
     
-    def __init__(self, loader: CrudAuthorizationLoader[T]):
+    def __init__(self, loader: SearchAuthorizationLoader[T]):
         """
         Args:
-            loader: CrudAuthorizationLoader[T]
+            loader: SearchAuthorizationLoader[T]
         """
         super().__init__(loader=loader)
     
     @property
-    def loader(self) -> CrudAuthorizationLoader[T]:
-        return cast(CrudAuthorizationLoader[T], super().loader)
-    
-    @property
-    def validation_service(self) -> ValidationService[T]:
-        return cast(ValidationService[T], super().validation_service)
+    def loader(self) -> SearchAuthorizationLoader[T]:
+        return cast(SearchAuthorizationLoader[T], super().loader)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

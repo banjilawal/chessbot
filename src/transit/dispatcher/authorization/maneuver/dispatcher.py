@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import ManeuverDecision
 from authorization import ManeuverPermitter
 from err import ManeuverPermissionDispatcherException
-from exchange import ManeuverPermissionRequest
+from exchange import ManeuverPermissionRequest, ManeuverRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -86,33 +86,9 @@ class ManeuverPermissionDispatcher(
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return ManeuverDecision.denial(
-                exception=ManeuverPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverPermissionDispatcherException.MSG,
-                    err_code=ManeuverPermissionDispatcherException.ERR_CODE,
-                    ex=ManeuverPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return ManeuverDecision.denial(
-                exception=ManeuverPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverPermissionDispatcherException.MSG,
-                    err_code=ManeuverPermissionDispatcherException.ERR_CODE,
-                    ex=ManeuverRequestNullException()
-                )
-            )
+        permission_request = cast(ManeuverPermissionRequest, decision.permission_request)
+        transaction_request = cast(ManeuverRequest, decision.transaction_request)
+
         # --- Prepare and forward the transaction approval. ---#
         return ManeuverDecision.grant(
             transaction_request=transaction_request,

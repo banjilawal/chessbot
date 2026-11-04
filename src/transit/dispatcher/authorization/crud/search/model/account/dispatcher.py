@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import SearchDecision
+from artifcat import AccountSearchDecision, SearchDecision
 from authorization import AccountSearchPermitter
-from exchange import AccountSearchPermissionRequest
+from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from transit import ModelSearchPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -51,7 +51,7 @@ class AccountSearchPermissionDispatcher(
         return cast(AccountSearchPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> SearchDecision:
+    def execute(self, candidate: Any) -> AccountSearchDecision:
         """
         Make a decision about an AccountSearchRequest.
         
@@ -75,7 +75,7 @@ class AccountSearchPermissionDispatcher(
         decision = self.permitter.execute(candidate)
         if decision.request_is_denied:
             # Send the exception chain in the denial.
-            return SearchDecision.denial(
+            return AccountSearchDecision.denial(
                 exception=AccountSearchPermissionDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -85,35 +85,11 @@ class AccountSearchPermissionDispatcher(
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return SearchDecision.denial(
-                exception=AccountSearchPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountSearchPermissionDispatcherException.MSG,
-                    err_code=AccountSearchPermissionDispatcherException.ERR_CODE,
-                    ex=AccountSearchPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return SearchDecision.denial(
-                exception=AccountSearchPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountSearchPermissionDispatcherException.MSG,
-                    err_code=AccountSearchPermissionDispatcherException.ERR_CODE,
-                    ex=AccountSearchRequestNullException()
-                )
-            )
+        permission_request = cast(AccountSearchPermissionRequest, decision.permission_request)
+        transaction_request = cast(AccountSearchRequest, decision.transaction_request)
+
         # --- Prepare and forward the transaction approval. ---#
-        return SearchDecision.grant(
+        return AccountSearchDecision.grant(
             transaction_request=transaction_request,
             permission_request=permission_request,
         )

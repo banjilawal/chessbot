@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import PromotionDecision
 from authorization import PromotionPermitter
 from err import PromotionPermissionDispatcherException
-from exchange import PromotionPermissionRequest
+from exchange import PromotionPermissionRequest, PromotionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -86,33 +86,9 @@ class PromotionPermissionDispatcher(
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return PromotionDecision.denial(
-                exception=PromotionPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PromotionPermissionDispatcherException.MSG,
-                    err_code=PromotionPermissionDispatcherException.ERR_CODE,
-                    ex=PromotionPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return PromotionDecision.denial(
-                exception=PromotionPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PromotionPermissionDispatcherException.MSG,
-                    err_code=PromotionPermissionDispatcherException.ERR_CODE,
-                    ex=PromotionRequestNullException()
-                )
-            )
+        permission_request = cast(PromotionPermissionRequest, decision.permission_request)
+        transaction_request = cast(PromotionRequest, decision.transaction_request)
+
         # --- Prepare and forward the transaction approval. ---#
         return PromotionDecision.grant(
             transaction_request=transaction_request,

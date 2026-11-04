@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.PERMITTER.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
-from .account import *
+from .model import *
 
 # Modules
 from .permitter import SearchPermitter

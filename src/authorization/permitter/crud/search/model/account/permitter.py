@@ -1,7 +1,7 @@
-# src/authorization/permitter/crud/search/search.account//permitter.py
+# src/authorization/permitter/crud/search/model/account/permitter.py
 
 """
-Module: authorization.permitter.crud.search.search.account.permitter
+Module: authorization.permitter.crud.search.model.account.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,15 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import AccountSearchDecision, SearchDecision
-from authorization import SearchPermitter
+from artifcat import AccountSearchDecision
+from authorization import ModelSearchPermitter
 from bootstrap import AccountSearchAuthorizationLoader
 from err import ChessException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from util import LoggingLevelRouter
 
 
-class AccountSearchPermitter(SearchPermitter[AccountSearchPermissionRequest]):
+class AccountSearchPermitter(
+    ModelSearchPermitter[AccountSearchPermissionRequest]
+):
     """
     Role:
         -   Permission Authorization
