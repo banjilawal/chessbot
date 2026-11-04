@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
 from artifcat import MethodResultType
+from err import EntityCarrierException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MODEL_CARRIER_ERROR #======================#
-class ModelCarrierException(ChessException):
+class ModelCarrierException(EntityCarrierException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ModelCarrierException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        EntityCarrierException
     """
     MSG = "ModelCarrier error."
     ERR_CODE = "MODEL_CARRIER_ERROR"

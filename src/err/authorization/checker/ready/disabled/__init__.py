@@ -1,13 +1,13 @@
-# src/err/authorization/checker/ready/__init__.py
+# src/err/authorization/checker/ready/disabled/__init__.py
 
 """
-Module: err.authorization.checker.ready.__init__
+Module: err.authorization.checker.ready.disabled.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.CHECKER.READY PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.CHECKER.READY.DISABLED PACKAGE ===========#
 
 # Packages
 

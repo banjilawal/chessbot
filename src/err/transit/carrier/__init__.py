@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.DOMAIN.TRANSIT.CARRIER PACKAGE ===========#
 
 # Packages
+from .context import *
 from .model import *
 from .movement import *
 from .space import *

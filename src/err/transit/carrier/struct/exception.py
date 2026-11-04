@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructCarrierException
 from artifcat import MethodResultType
+from err import EntityCarrierException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# STRUCT_CARRIER_ERROR #======================#
-class StructCarrierException(StructCarrierException):
+class StructCarrierException(EntityCarrierException):
     """
     Role:
         - Error Tracing

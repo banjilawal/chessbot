@@ -1,7 +1,7 @@
-# src/err/domain/model/token/disabled/exception.py
+# src/err/authorization/checker/ready/disabled/exception.py
 
 """
-Module: err.domain.model.token.disabled.exception
+Module: err.authorization.checker.ready.disabled.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
