@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from artifcat.report import AttributeCollisionReport
+from artifcat.report import CollisionReport
 from sensor import Collision
 from collection import TokenStackService
 from transit.carrier import TokenCarrier
@@ -43,7 +43,7 @@ class TokenCollision(Collision[TokenCarrier]):
             self,
             attractor: TokenCarrier,
             stream: TokenStackService,
-    ) -> AttributeCollisionReport:
+    ) -> CollisionReport:
         """
         Report if any schema member has the same id, designation or
         home_square_name as the target.
@@ -75,7 +75,7 @@ class TokenCollision(Collision[TokenCarrier]):
             # Handle the case that a token already has the target's id.
             if item.id == attractor.entity.id:
                 # Return the collision details in the report.
-                return AttributeCollisionReport.collision(
+                return CollisionReport.collision(
                     collision=item,
                     target_set=attractor,
                     colliding_variable="id",
@@ -90,7 +90,7 @@ class TokenCollision(Collision[TokenCarrier]):
             # Handle the case that a token already has the target's id.
             if item.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
-                return AttributeCollisionReport.collision(
+                return CollisionReport.collision(
                     collision=item,
                     target_set=attractor,
                     colliding_variable="designation",
@@ -105,7 +105,7 @@ class TokenCollision(Collision[TokenCarrier]):
             # Handle the case that the target shares its home_square_name with a collision_candidates member.
             if item.home_square.name.upper() == attractor.entity.formation.home_square_name.upper():
                 # Return the collision, designation, and the exception.
-                return AttributeCollisionReport.collision(
+                return CollisionReport.collision(
                     collision=item,
                     target_set=attractor,
                     colliding_variable="home_square",
@@ -118,5 +118,5 @@ class TokenCollision(Collision[TokenCarrier]):
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return AttributeCollisionReport.no_collisions(attractor)
+        return CollisionReport.no_collisions(attractor)
     

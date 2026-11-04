@@ -16,7 +16,8 @@ from bootstrap import ModelSearchAuthorizationLoader
 from collection import AccountStack
 from domain import Account
 from err import (
-    AccountSearchAuthorizationLoaderException, AccountSearchPermissionRequestNullException, AccountStackNullException,
+    AccountSearchAuthorizationLoaderException, AccountSearchPermissionRequestNullException,
+    AccountSearchRequestNullException, AccountStackNullException,
 )
 from exchange import (
     AccountContextValidationService, AccountSearchRequest, AccountSearchPermissionRequest,
@@ -154,7 +155,7 @@ class AccountSearchAuthorizationLoader(
         context_validation = self._validation_service.extract_model(
             request=AccountContextValidationRequest(
                 item=AccountContextCarrier(model=applicant.context),
-                id=IdFactory.next_id("AccountContextValidationRequest")
+                id=IdFactory.next_id("ValidationRequest")
             )
         )
         # Handle the case that the applicant is not Account.

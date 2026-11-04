@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from artifcat import AttributeCollisionReport
+from artifcat import CollisionReport
 from collection import Stack
 from domain import Model
 from sensor import Sensor
@@ -40,7 +40,7 @@ class CollisionSensor(Sensor, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: T, collection: Stack[T]) -> AttributeCollisionReport:
+    def execute(self, attractor: T, collection: Stack[T]) -> CollisionReport:
         """
         Check the attractor satisfies stack uniqueness constraint.
         Args:

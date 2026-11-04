@@ -20,7 +20,7 @@ from .config import *
 from .consistency import *
 from .controller import *
 from .collection import *
-from .collider import *
+from err.sensor.collider import *
 from .detection import *
 from .domain import *
 from .duplicate import *

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from artifcat import AttributeCollisionReport
+from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account, HumanAccount, MachineAccount
 from sensor import CollisionSensor
@@ -39,7 +39,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
     """
 
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: Account, collection: AccountStack) -> AttributeCollisionReport:
+    def execute(self, attractor: Account, collection: AccountStack) -> CollisionReport:
         """
         Check that the attractor will be unique in the collection.
 
@@ -62,7 +62,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
             # Handle the case there are duplicate ids.
             if item.id == attractor.id:
                 # Send an exception chain in the  report.
-                return AttributeCollisionReport.report_duplicate(
+                return CollisionReport.collision_event(
                     attractor=attractor,
                     collider=item,
                     attribute="id",
@@ -102,7 +102,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
             human_attractor: HumanAccount,
             humans: List[HumanAccount],
             parent_method: str
-    ) -> AttributeCollisionReport:
+    ) -> CollisionReport:
         """duplicate_email_detector"""
         # Set up the target.
         attribute = "email"
@@ -113,7 +113,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
             # Handle the case that an email address is shared.
             if human.email.upper() == target:
                 # Send an exception chain in the report.
-                return AttributeCollisionReport.report_duplicate(
+                return CollisionReport.collision_event(
                     attractor=human_attractor,
                     collider=human,
                     attribute=attribute,
@@ -125,7 +125,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
                     )
                 )
         # Otherwise report the attractor is unique
-        return AttributeCollisionReport.report_no_duplicates(attractor=human_attractor)
+        return CollisionReport.no_collision_events(attractor=human_attractor)
     
     @LoggingLevelRouter.monitor
     def _machine_account_collider(
@@ -144,7 +144,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
             # Handle the case that a machine_name is shared.
             if machine.name.upper() == target:
                 # Send an exception chain in the report.
-                return AttributeCollisionReport.report_duplicate(
+                return CollisionReport.collision_event(
                     attractor=machine_attractor,
                     collider=machine,
                     attribute=attribute,
@@ -158,6 +158,6 @@ class AccountCollisionSensor(CollisionSensor[Account]):
                     )
                 )
         # Otherwise report the attractor is unique.
-        return AttributeCollisionReport.report_no_duplicates(attractor=machine_attractor)
+        return CollisionReport.no_collision_events(attractor=machine_attractor)
     
     

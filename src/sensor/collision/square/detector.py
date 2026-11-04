@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from artifcat.report import AttributeCollisionReport
+from artifcat.report import CollisionReport
 from artifcat import AnalysisResult
 from sensor import Collision
 from collection import SquareStackService
@@ -44,7 +44,7 @@ class SquareCollision(Collision[SquareCarrier]):
             self,
             attractor: SquareCarrier,
             stream: SquareStackService,
-    ) -> AttributeCollisionReport:
+    ) -> CollisionReport:
         """
         Report if any schema member has the same id, schema or
         coord as the target.
@@ -87,7 +87,7 @@ class SquareCollision(Collision[SquareCarrier]):
             # Handle the case that a candidate already has the target's id.
             if square.id == attractor.entity.id:
                 # Return the collision details in the report.
-                return AttributeCollisionReport.collision(
+                return CollisionReport.collision(
                     target_set=attractor,
                     collision=square,
                     colliding_variable=f"id",
@@ -102,7 +102,7 @@ class SquareCollision(Collision[SquareCarrier]):
             # Handle the case that a candidate already has the target's name.
             if square.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
-                return AttributeCollisionReport.collision(
+                return CollisionReport.collision(
                     target_set=attractor,
                     collision=square,
                     colliding_variable=f"name",
@@ -117,7 +117,7 @@ class SquareCollision(Collision[SquareCarrier]):
             # Handle the case that a candidate already has the target's coord.
             if square.coord == attractor.entity.coord:
                 # Return the collision details in the report.
-                return AttributeCollisionReport.collision(
+                return CollisionReport.collision(
                     target_set=attractor,
                     collision=square,
                     colliding_variable=f"coord",
@@ -130,5 +130,5 @@ class SquareCollision(Collision[SquareCarrier]):
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return AttributeCollisionReport.no_collisions(attractor)
+        return CollisionReport.no_collisions(attractor)
     

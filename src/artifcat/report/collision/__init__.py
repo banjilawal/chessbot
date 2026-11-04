@@ -12,5 +12,5 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .collision import AttributeCollisionReport
+from .collision import CollisionReport
 from .state import CollisionState
