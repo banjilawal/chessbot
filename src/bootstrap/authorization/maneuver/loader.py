@@ -9,22 +9,28 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from artifcat import ManeuverDecision
 from bootstrap import AuthorizationLoader
+from domain import Path, Token
 
-from exchange import ManeuverPermissionRequest
-from util import LoggingLevelRouter
+from exchange import (
+    ManeuverPermissionRequest, ManeuverRequest, PathValidationRequest, PathValidationService, TokenValidationRequest,
+    TokenValidationService
+)
+from transit import PathCarrier, TokenCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]):
     """
     Role:
-        -   Permission Authorization
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Run basic type and validation checks on items entering the maneuver permitting process.
+        1.  Run basic type and validation checks on items entering the maneuver 
+            permitting process.
 
     Attributes:
         path_validation_service: PathValidationService
@@ -34,14 +40,22 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         AuthorizationLoader
     """
     
+    _path_validation_service: PathValidationService
+    _token_validation_service: TokenValidationService
+    
     def __init__(
             self,
+            path_validation_service: Optional[PathValidationService] | None = None,
+            token_validation_service: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
-        
+            path_validation_service: Optional[PathValidationService]
+            token_validation_service: Optional[TokenValidationService]
         """
         super().__init__()
+        self._path_validation_service = path_validation_service or PathValidationService()
+        self._token_validation_service = token_validation_service or TokenValidationService()
     
     @LoggingLevelRouter.monitor
     def execute(self, target: ManeuverPermissionRequest) -> ManeuverDecision:
@@ -49,9 +63,11 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         Checks if the request is null or the wrong type
 
         Action:
-            1.  Send an exception chain in the Decision denial if either;
-                    -   the request is null.
-                    -   not a ManeuverPermissionRequest.
+            1.  Send an exception chain in the Decision denial if any of the following
+                occurred
+                    -   The candidate is not a ManeuverPermissionRequest
+                    -   The PermissionRequest does not contain a ManeuverRequest.
+                    -   Either the token or path in the request cannot be validated.
             2.  Otherwise, send an approval.
         Args:
             target: ManeuverPermissionRequest
@@ -62,7 +78,7 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that request gets flagged.
+        # Handle the case that priming is not completed.
         priming = self.priming_validator.execute(
             candidate=target,
             target_model=ManeuverPermissionRequest,
@@ -71,7 +87,6 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
         # Send an exception chain in the denial.
         if priming.is_failure:
             return ManeuverDecision.denial(
-                request=target,
                 exception=ManeuverAuthorizationLoaderException(
                    cls_mthd=method,
                    cls_name=self.__class__.__name__,
@@ -80,183 +95,121 @@ class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]
                    ex=priming.exception,
                 )
             )
-        approved_request = cast(ManeuverPermissionRequest, priming.permission_request)
-        # --- Prepare an approval from the completed chain. ---#
-        approval = ManeuverPermissionRequest(
-            id=approved_request.id,
-            activity=approved_request.activity,
-            authorization_applicant=approved_request.applicant,
-        )
-        # --- Forward the approval. ---#
-        return ManeuverDecision.grant(approval)
-
-
-class AccountSearchAuthorizationLoader(
-    ModelSearchAuthorizationLoader[AccountSearchPermissionRequest]
-):
-
-    
-    _validation_service: AccountContextValidationService
-    
-    def __init__(
-            self,
-            validation_service: Optional[AccountContextValidationService] | None = None,
-    ):
-        """
-        Args:
-            validation_service: Optional[AccountContextValidationService]
-        """
-        super().__init__()
-        self._validation_service = validation_service or AccountContextValidationService()
-    
-    @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> AccountSearchDecision:
-        """
-        Checks if the Request is the right type.
-
-        Action:
-            1.  Send an exception chain in the Decision denial if any of the following
-                occur.
-                    -   The candidate is null or the wrong type.
-                    -   The bundled transaction_request is null or the wrong type.
-                    -   There is an error with transaction_request.collection
-                    -   Validating transaction_request.context fails.
-            2.  Otherwise, send an approval.
-        Args:
-            candidate: AccountSearchPermissionRequest
-        Returns:
-           Decision
-        Raises:
-            AccountSearchAuthorizationLoaderException
-        """
-        method = f"{self.__class__.__name__}.execution"
-        
-        # Handle the case that priming is not completed.
-        priming = self.priming_validator.execute(
-            candidate=candidate,
-            target_model=AccountSearchPermissionRequest,
-            null_exception=AccountSearchPermissionRequestNullException()
-        )
-        if priming.is_failure:
-            # Send the exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=AccountSearchAuthorizationLoaderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountSearchAuthorizationLoaderException.ERR_CODE,
-                    ex=priming.exception
-                )
-            )
         # --- Cast the candidate to a permission_form for additional processing. ---#
         permission_form = cast(
-            AccountSearchPermissionRequest,
+            ManeuverPermissionRequest, 
             priming.payload,
         )
-        # Handle the case that the permissio_form does not have an id.
-        permission_id_validation = self.identity_service.validate_id(
+        # Handle the case that the permission_form does not have an id.
+        form_id_validation = self.identity_service.validate_id(
             candidate=permission_form.id
         )
-        if permission_id_validation.is_failure:
+        if form_id_validation.is_failure:
             # Send an exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+            return ManeuverDecision.denial(
+                exception=ManeuverAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
-                    ex=permission_id_validation.exception,
+                    msg=ManeuverAuthorizationLoaderException.MSG,
+                    err_code=ManeuverAuthorizationLoaderException.ERR_CODE,
+                    ex=form_id_validation.exception,
                 )
-            )
+            )        
         # Handle the case that the applicant signature is wrong.
         applicant_signature = self.priming_validator.execute(
             candidate=permission_form.authorization_applicant,
-            target_model=AccountSearchRequest,
-            null_exception=AccountSearchRequestNullException()
+            target_model=ManeuverRequest,
+            null_exception=ManeuverRequestNullException()
         )
         if applicant_signature.is_failure:
             # Send an exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+            return ManeuverDecision.denial(
+                exception=ManeuverAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
+                    msg=ManeuverAuthorizationLoaderException.MSG,
+                    err_code=ManeuverAuthorizationLoaderException.ERR_CODE,
                     ex=applicant_signature.exception,
                 )
             )
         # --- Get the permission_request for type checking the applicant. ---#
-        applicant = cast(AccountSearchRequest, applicant_signature.payload)
+        applicant = cast(ManeuverRequest, applicant_signature.payload)
         
         # --- PROCESS_THE_APPLICANT_ID_ATTRIBUTE. ---#
-        transaction_id_validation = self.identity_service.validate_id(applicant.id)
+        applicant_id_validation = self.identity_service.validate_id(applicant.id)
         # Handle the case that the id is not a number.
-        if transaction_id_validation.is_failure:
+        if applicant_id_validation.is_failure:
             # Send an exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+            return ManeuverDecision.denial(
+                exception=ManeuverAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
-                    ex=transaction_id_validation.exception,
+                    msg=ManeuverAuthorizationLoaderException.MSG,
+                    err_code=ManeuverAuthorizationLoaderException.ERR_CODE,
+                    ex=applicant_id_validation.exception,
                 )
             )
-        # --- PROCESS_THE_ACCOUNT_CANDIDATE_ATTRIBUTE. ---#
-        context_validation = self._validation_service.extract_model(
-            request=AccountContextValidationRequest(
-                item=AccountContextCarrier(model=applicant.context),
-                id=IdFactory.next_id("AccountContextValidationRequest")
+        # --- PROCESS_THE_TOKEN_APPLICANT_ATTRIBUTE. ---#
+        token_validation = self._token_validation_service.extract_model(
+            request=TokenValidationRequest(
+                item=TokenCarrier(model=applicant.token),
+                id=IdFactory.next_id("ValidationRequest")
             )
         )
-        # Handle the case that the applicant is not Account.
-        if context_validation.is_failure:
+        # Handle the case that the applicant is not good Token.
+        if token_validation.is_failure:
             # Send an exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+            return ManeuverDecision.denial(
+                exception=ManeuverAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
-                    ex=context_validation.exception,
+                    msg=ManeuverAuthorizationLoaderException.MSG,
+                    err_code=ManeuverAuthorizationLoaderException.ERR_CODE,
+                    ex=token_validation.exception,
                 )
             )
-        # --- PROCESS_THE_ACCOUNT_COLLECTION_ATTRIBUTE. ---#
-        collection_validation = self.priming_validator.execute(
-            candidate=applicant.collection,
-            target_model=AccountStack,
-            null_exception=AccountStackNullException()
+        # --- PROCESS_THE_PATH_APPLICANT_ATTRIBUTE. ---#
+        path_validation = self._path_validation_service.extract_model(
+            request=PathValidationRequest(
+                item=PathCarrier(model=applicant.path),
+                id=IdFactory.next_id("ValidationRequest")
+            )
         )
-        # Handle the case that the account_model collection is not safe.
-        if collection_validation.is_failure:
+        # Handle the case that the applicant is not safe Path.
+        if path_validation.is_failure:
             # Send an exception chain in the denial.
-            return AccountSearchDecision.denial(
-                exception=AccountModelSearchAuthorizationLoaderException(
+            return ManeuverDecision.denial(
+                exception=ManeuverAuthorizationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountModelSearchAuthorizationLoaderException.MSG,
-                    err_code=AccountModelSearchAuthorizationLoaderException.ERR_CODE,
-                    ex=collection_validation.exception
+                    msg=ManeuverAuthorizationLoaderException.MSG,
+                    err_code=ManeuverAuthorizationLoaderException.ERR_CODE,
+                    ex=path_validation.exception,
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        context = cast(Account, context_validation.payload)
-        collection = cast(AccountStack, collection_validation.payload)
-        transaction_id = cast(int, transaction_id_validation.payload)
-        permission_id = cast(int, permission_id_validation.payload)
+        token = cast(Token, token_validation.payload)
+        path = cast(Path, path_validation.payload)
+        transaction_id = cast(int, applicant_id_validation.payload)
+        permission_id = cast(int, form_id_validation.payload)
         
         # --- Prepare a transaction approval. ---#
-        approved_applicant = AccountSearchRequest(
-            context=context,
-            collection=collection,
+        approved_applicant = ManeuverRequest(
+            token=token,
+            path=path,
             id=transaction_id,
         )
-        permission_request = AccountSearchPermissionRequest(
+        permission_request = ManeuverPermissionRequest(
             id=permission_id,
             authorization_applicant=approved_applicant,
         )
+        
         # --- Forward the approval. ---#
-        return AccountSearchDecision.grant(
+        return ManeuverDecision.grant(
             transaction_request=approved_applicant,
             permission_request=permission_request,
         )
+        
+
+
+

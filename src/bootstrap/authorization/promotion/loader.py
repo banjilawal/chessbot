@@ -28,10 +28,10 @@ class PromotionAuthorizationLoader(
 ):
     """
     Role:
-        -   Permission Authorization
+        -   Process Bootstrapper
 
     Responsibilities:
-        1.  Ensure only not-null PermissionRequest is processed.
+        1.  Run basic type and validation checks on items entering the permitting process.
 
     Attributes:
 
@@ -41,6 +41,7 @@ class PromotionAuthorizationLoader(
     Super Class:
         AuthorizationLoader
     """
+    
     _rank_validation_service: RankValidationService
     _token_validation_service: TokenValidationService
 

@@ -32,7 +32,7 @@ class AccountPushPermissionLoader(
 ):
     """
     Role:
-        -   Permission Authorization
+        -   Process Bootstrapper
 
     Responsibilities:
         1.  Ensure the correct Request type is loaded into a CrudAuthorization module.

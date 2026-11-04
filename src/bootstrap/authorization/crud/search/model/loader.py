@@ -24,7 +24,7 @@ class ModelSearchAuthorizationLoader(
 ):
     """
     Role:
-        -   Permission Authorization
+        -   Process Bootstrapper
 
     Responsibilities:
         1.  Ensure the correct Request type is loaded into a ModelAuthorizer

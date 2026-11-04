@@ -27,8 +27,7 @@ class AuthorizationLoader(Loader[T], ABC, Generic[T]):
         -   Loader, Bootstrap
 
     Responsibilities:
-        1.  Run type and validation checks on the item before handing off
-            to the Permitter for additional processing.
+        1.  Run basic type and validation checks on items entering the permitting process.
 
     Attributes:
         identity_service: IdentityService

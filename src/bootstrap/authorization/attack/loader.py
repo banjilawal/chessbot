@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class AttackAuthorizationLoader(AuthorizationLoader[AttackPermissionRequest]):
     """
     Role:
-        -   Permission Authorization
+        -   Process Bootstrapper
 
     Responsibilities:
         1.  Ensure only not-null PermissionRequest is processed.

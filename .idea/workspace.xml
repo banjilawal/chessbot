@@ -6,44 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/maneuver/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/attack/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/attack/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/account/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push/account/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/insertion/push/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/model/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/model/account/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/model/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/search/model/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/maneuver/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/maneuver/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/context/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/context/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/account/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/account/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/alert/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/alert/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/arena/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/arena/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/board/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/board/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/coord/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/coord/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/encounter/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/encounter/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/footstep/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/footstep/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/game/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/game/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/maneuver/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/maneuver/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/path/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/path/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/player/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/player/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/rank/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/rank/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/scalar/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/scalar/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/square/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/square/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/team/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/team/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/token/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/token/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/model/vector/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/model/vector/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/binder/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/binder/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/binder/player/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/binder/player/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/binder/team/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/binder/team/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/node/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/node/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/node/vector/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/node/vector/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/node/warning/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/node/warning/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/coord/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/coord/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/square/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/square/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/vector/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/struct/register/vector/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/service/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/service/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/service/validation/context/account/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/service/validation/context/account/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/service/validation/context/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/service/validation/context/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/promotion/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/promotion/loader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,61 +60,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000016128893194" />
-      <entry key="MS500" value="1.1197677145976197" />
-      <entry key="S2" value="2.010822386435814" />
-      <entry key="S5" value="2.9045524325770993" />
-      <entry key="S10" value="3.616990726224906" />
-      <entry key="S30" value="5.795585634391009" />
-      <entry key="S60" value="8.468651732807754" />
-      <entry key="M2" value="14.706056783281054" />
-      <entry key="M5" value="36.2931484268848" />
-      <entry key="M10" value="65.22160567910271" />
-      <entry key="M15" value="90.96242505876175" />
-      <entry key="M30" value="169.34285008795575" />
-      <entry key="H1" value="307.10441179435367" />
-      <entry key="H2" value="531.4890936839731" />
-      <entry key="H4" value="988.936506880783" />
-      <entry key="D1" value="4198.791697540985" />
-      <entry key="W1" value="27359.540045326674" />
+      <entry key="MS100" value="1.0000065503344455" />
+      <entry key="MS500" value="1.0918867085243151" />
+      <entry key="S2" value="1.5506220699579467" />
+      <entry key="S5" value="1.8068674806617209" />
+      <entry key="S10" value="2.027991731189174" />
+      <entry key="S30" value="2.616496272791731" />
+      <entry key="S60" value="3.4805842969685403" />
+      <entry key="M2" value="6.024983549959127" />
+      <entry key="M5" value="12.63999226191876" />
+      <entry key="M10" value="19.445020918067993" />
+      <entry key="M15" value="24.012946216965" />
+      <entry key="M30" value="45.57004077785435" />
+      <entry key="H1" value="142.4507419144243" />
+      <entry key="H2" value="382.4554519285789" />
+      <entry key="H4" value="863.1349388143879" />
+      <entry key="D1" value="4205.5731861528675" />
+      <entry key="W1" value="27394.169214113062" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="6.5672200751357E-156" />
-      <entry key="S5" value="8.451876189009665E-63" />
-      <entry key="S10" value="9.203251694866129E-32" />
-      <entry key="S30" value="4.97508563522085E-11" />
-      <entry key="S60" value="8.87862111664506E-6" />
-      <entry key="M2" value="0.004209994492094558" />
-      <entry key="M5" value="0.21148348334178085" />
-      <entry key="M10" value="0.967943370709346" />
-      <entry key="M15" value="1.994507932230133" />
-      <entry key="M30" value="6.27889595104156" />
-      <entry key="H1" value="14.709645194771776" />
-      <entry key="H2" value="27.85339155027044" />
-      <entry key="H4" value="52.733452401236455" />
-      <entry key="D1" value="217.62800600145093" />
-      <entry key="W1" value="1525.6312848337127" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="2.3148165652939737E-308" />
+      <entry key="S30" value="3.1404531673520055E-103" />
+      <entry key="S60" value="7.054096618239844E-52" />
+      <entry key="M2" value="3.7525757508450535E-26" />
+      <entry key="M5" value="1.2743702698238314E-10" />
+      <entry key="M10" value="2.3760716785490137E-5" />
+      <entry key="M15" value="0.0016846466649651588" />
+      <entry key="M30" value="0.18248190903875686" />
+      <entry key="H1" value="2.5076704486605514" />
+      <entry key="H2" value="11.500380686820217" />
+      <entry key="H4" value="33.884670840670644" />
+      <entry key="D1" value="202.16266805675625" />
+      <entry key="W1" value="1509.6496917127947" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9526524338067526" />
-      <entry key="MS500" value="1.1074590574002443" />
-      <entry key="S2" value="2.0028058594919163" />
-      <entry key="S5" value="2.899517492051715" />
-      <entry key="S10" value="3.6138111558881567" />
-      <entry key="S30" value="5.793862461702692" />
-      <entry key="S60" value="8.467359048561846" />
-      <entry key="M2" value="14.708611409989622" />
-      <entry key="M5" value="36.49661244863049" />
-      <entry key="M10" value="66.174017394962" />
-      <entry key="M15" value="92.93680244462861" />
-      <entry key="M30" value="175.5908985691469" />
-      <entry key="H1" value="321.77719127942515" />
-      <entry key="H2" value="559.3065111544701" />
-      <entry key="H4" value="1041.6349743309038" />
-      <entry key="D1" value="4416.39285684679" />
-      <entry key="W1" value="28885.143673882354" />
+      <entry key="MS100" value="0.9265942160785974" />
+      <entry key="MS500" value="1.0756138353895441" />
+      <entry key="S2" value="1.5451022674170425" />
+      <entry key="S5" value="1.8043442727392534" />
+      <entry key="S10" value="2.0261981745335476" />
+      <entry key="S30" value="2.605723795071478" />
+      <entry key="S60" value="3.462952109370104" />
+      <entry key="M2" value="6.001938407053443" />
+      <entry key="M5" value="12.616331465074046" />
+      <entry key="M10" value="19.425079605468653" />
+      <entry key="M15" value="23.99784282497122" />
+      <entry key="M30" value="45.74056995881606" />
+      <entry key="H1" value="144.94551614577387" />
+      <entry key="H2" value="393.93725673455367" />
+      <entry key="H4" value="896.9951270482804" />
+      <entry key="D1" value="4407.710557067729" />
+      <entry key="W1" value="28903.791487397488" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -1014,7 +989,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="173468000" />
+      <workItem from="1793360739922" duration="178066000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2849,7 +2824,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/bootstrap/validation/context/account/loader.py</url>
-          <line>155</line>
+          <line>152</line>
           <option name="timeStamp" value="631" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -2991,6 +2966,11 @@
           <url>file://$PROJECT_DIR$/src/operation/promotion/worker.py</url>
           <line>67</line>
           <option name="timeStamp" value="665" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/bootstrap/validation/struct/node/loader.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="666" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
