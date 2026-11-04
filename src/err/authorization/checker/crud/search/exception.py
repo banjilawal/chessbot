@@ -26,7 +26,7 @@ class SearchCheckerException(CrudCheckerException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SearchChecker failed.
+        1.  Indicating that a SearchChecker failed.
 
     Attributes:
             msg: Optional[str]
