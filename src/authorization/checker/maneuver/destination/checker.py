@@ -9,11 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from artifcat import ManeuverDecision
+from typing import cast
+
+from artifcat import AttackDecision, ManeuverDecision
 from authorization import ManeuverPathChecker
 from domain import Path, Token
 from err import BlockedDestinationException
-from exchange import ManeuverPermissionRequest, ManeuverRequest
+from exchange import AttackPermissionRequest, AttackRequest, ManeuverPermissionRequest, ManeuverRequest
 from util import LoggingLevelRouter
 
 
@@ -87,32 +89,41 @@ class ManeuverTokenDestinationChecker(ManeuverPathChecker):
                     ),
                 )
             )
-        # Handle the case that the destination is occupied by a friend.
+        # --- Extract the destination occupant for additional processing. ---#
         destination_occupant = destination.occupant
-        if (
-            destination_occupant is not None and
-            principal.is_friend(destination_occupant)
-        ):
-            # Send an exception chain in the denial.
-            return ManeuverDecision.denial(
-                exception=ManeuverTokenDestinationCheckerException(
+        
+        # Handle the case that the destination is empty.
+        if destination_occupant is None:
+            # Send an approval.
+            return ManeuverDecision.grant(
+                transaction_request=transaction_request,
+                permission_request=permission_request,
+            )
+        # Handle the case that the destination is occupied by an enemy.
+        if principal.is_enemy(destination_occupant):
+            # Send an attack approval.
+            attack_request =  cast(AttackRequest, transaction_request)
+            attack_permission = cast(AttackPermissionRequest, permission_request)
+            return AttackDecision.grant(
+                transaction_request=attack_request,
+                permission_request=attack_permission,
+            )
+        # Otherwise the destination is occupied by a friend.
+        return ManeuverDecision.denial(
+            exception=ManeuverTokenDestinationCheckerException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+                msg=ManeuverTokenDestinationCheckerException.MSG,
+                err_code=ManeuverTokenDestinationCheckerException.ERR_CODE,
+                ex=BlockedDestinationException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverTokenDestinationCheckerException.MSG,
-                    err_code=ManeuverTokenDestinationCheckerException.ERR_CODE,
-                    ex=BlockedDestinationException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BlockedDestinationException.MSG,
-                        err_code=BlockedDestinationException.ERR_CODE,
-                    ),
+                    msg=BlockedDestinationException.MSG,
+                    err_code=BlockedDestinationException.ERR_CODE,
                 )
             )
-        # Otherwise send an approval.
-        return ManeuverDecision.grant(
-            transaction_request=transaction_request,
-            permission_request=permission_request,
         )
+
         
         
         

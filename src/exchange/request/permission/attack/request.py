@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 
-from exchange import AttackRequest, PermissionRequest
+from exchange import AttackRequest, ManeuverPermissionRequest
 
 T = TypeVar("T", bound="AttackRequest")
 
-class AttackPermissionRequest(PermissionRequest[T], Generic[T]):
+class AttackPermissionRequest(ManeuverPermissionRequest[T], Generic[T]):
     """
      Role:
          -  Messaging

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import Decision, Permission
+from artifcat import ManeuverDecision, Permission
 from exchange import AttackPermissionRequest, AttackRequest
 
 
-class AttackDecision(Decision[AttackPermissionRequest, AttackRequest]):
+class AttackDecision(ManeuverDecision[AttackPermissionRequest, AttackRequest]):
     """
     Role:
         - Permission Reporting
@@ -30,7 +30,7 @@ class AttackDecision(Decision[AttackPermissionRequest, AttackRequest]):
     Provides:
 
     Super Class:
-        Decision
+        ManeuverDecision
     """
     
     def __init__(
@@ -53,11 +53,11 @@ class AttackDecision(Decision[AttackPermissionRequest, AttackRequest]):
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
-    
-    @property
-    def transaction_request(self) -> Optional[AttackRequest]:
-        return cast(AttackRequest, super().transaction_request)
-    
-    @property
-    def permission_request(self) -> Optional[AttackPermissionRequest]:
-        return cast(AttackPermissionRequest, super().permission_request)
+    #
+    # @property
+    # def transaction_request(self) -> Optional[AttackRequest]:
+    #     return cast(AttackRequest, super().transaction_request)
+    #
+    # @property
+    # def permission_request(self) -> Optional[AttackPermissionRequest]:
+    #     return cast(AttackPermissionRequest, super().permission_request)
