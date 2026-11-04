@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import PromotionApplicantCheckerException
+from err import PromotionCheckerException
 
 __all__ = [
     # ======================# PROMOTION_ROW_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTION_ROW_ERROR #======================#
-class PromotionRowException(PromotionApplicantCheckerException):
+class PromotionRowException(PromotionCheckerException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class PromotionRowException(PromotionApplicantCheckerException):
     Provides:
 
     Super Class:
-        PromotionApplicantCheckerException
+        PromotionCheckerException
     """
     MSG = "Wrong promotion row."
     ERR_CODE = "PROMOTION_ROW_ERROR"

@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import PromotionApplicantCheckerException
+from err import PromotionCheckerException
 
 __all__ = [
     # ======================# PROMOTION_PAWN_TOKEN_CHECKER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTION_PAWN_TOKEN_CHECKER_FAILURE #======================#
-class PromotionPawnTokenCheckerException(PromotionApplicantCheckerException):
+class PromotionPawnTokenCheckerException(PromotionCheckerException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionPawnTokenCheckerException(PromotionApplicantCheckerException):
     Provides:
 
     Super Class:
-        PromotionApplicantCheckerException
+        PromotionCheckerException
     """
     MSG = "PPromotionPawnTokenCheckerException failed."
     ERR_CODE = "PROMOTION_PAWN_TOKEN_CHECKER_FAILURE"

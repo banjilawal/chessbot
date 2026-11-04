@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "VectorSearchApplicantCheckerException",
+    # ======================# SEARCH_VECTOR_NODE_CHECKER_FAILURE #======================#
+    "VectorSearchCheckerException",
 ]
 
-# ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class VectorSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# SEARCH_VECTOR_NODE_CHECKER_FAILURE #======================#
+class VectorSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a VectorSearchApplicantChecker failed.
+        1.  Indicating that a VectorSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class VectorSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "VectorSearchApplicantChecker failed."
-    ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "VectorSearchChecker failed."
+    ERR_CODE = "SEARCH_VECTOR_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

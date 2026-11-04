@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaSearchApplicantCheckerException",
+    # ======================# ARENA_SEARCH_CHECKER_FAILURE #======================#
+    "ArenaSearchCheckerException",
 ]
 
-# ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# ARENA_SEARCH_CHECKER_FAILURE #======================#
+class ArenaSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaSearchApplicantChecker failed.
+        1.  Indicating that a ArenaSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ArenaSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "ArenaSearchApplicantChecker failed."
-    ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
+    MSG = "ArenaSearchChecker failed."
+    ERR_CODE = "ARENA_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

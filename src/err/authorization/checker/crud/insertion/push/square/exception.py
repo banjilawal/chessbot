@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquarePushApplicantCheckerException",
+    # ======================# SQUARE_PUSH_CHECKER_FAILURE #======================#
+    "SquarePushCheckerException",
 ]
 
-# ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquarePushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# SQUARE_PUSH_CHECKER_FAILURE #======================#
+class SquarePushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushApplicantChecker failed.
+        1.  Indicating that a SquarePushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquarePushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "SquarePushApplicantChecker failed."
-    ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
+    MSG = "SquarePushChecker failed."
+    ERR_CODE = "SQUARE_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

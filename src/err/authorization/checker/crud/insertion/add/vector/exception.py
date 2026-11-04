@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeApplicantCheckerException
+from err import AddNodeCheckerException
 
 __all__ = [
-    # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeApplicantCheckerException",
+    # ======================# ADD_VECTOR_NODE_CHECKER_FAILURE #======================#
+    "AddVectorNodeCheckerException",
 ]
 
-# ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeApplicantCheckerException(AddNodeApplicantCheckerException):
+# ======================# ADD_VECTOR_NODE_CHECKER_FAILURE #======================#
+class AddVectorNodeCheckerException(AddNodeCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeApplicantChecker failed.
+        1.  Indicating that an AddVectorNodeChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AddVectorNodeApplicantCheckerException(AddNodeApplicantCheckerException):
     Provides:
 
     Super Class:
-        AddNodeApplicantCheckerException
+        AddNodeCheckerException
     """
-    MSG = "AddVectorNodeApplicantChecker failed."
-    ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "AddVectorNodeChecker failed."
+    ERR_CODE = "ADD_VECTOR_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

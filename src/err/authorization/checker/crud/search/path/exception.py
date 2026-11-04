@@ -1,7 +1,7 @@
-# src/err/authorization/checker/crud/exception.py
+# src/err/authorization/checker/crud/search/path/exception.py
 
 """
-Module: err.authorization.checker.crud.exception
+Module: err.authorization.checker.crud.search.path.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "SearchApplicantCheckerException",
+    # ======================# PATH_SEARCH_CHECKER_FAILURE #======================#
+    "PathSearchCheckerException",
 ]
 
-# ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class SearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# PATH_SEARCH_CHECKER_FAILURE #======================#
+class PathSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SearchApplicantChecker failed.
+        1.  Indicating that a PathSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +41,10 @@ class SearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "SearchApplicantChecker failed."
-    ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
+    MSG = "PathSearchChecker failed."
+    ERR_CODE = "PATH_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

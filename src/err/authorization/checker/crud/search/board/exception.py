@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-    "BoardSearchApplicantCheckerException",
+    # ======================# BOARD_SEARCH_CHECKER_FAILURE #======================#
+    "BoardSearchCheckerException",
 ]
 
-# ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-class BoardSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# BOARD_SEARCH_CHECKER_FAILURE #======================#
+class BoardSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardSearchApplicantChecker failed.
+        1.  Indicating that a BoardSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "BoardSearchApplicantChecker failed."
-    ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "BoardSearchChecker failed."
+    ERR_CODE = "BOARD_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

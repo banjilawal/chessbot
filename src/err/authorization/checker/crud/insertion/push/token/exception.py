@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenPushApplicantCheckerException",
+    # ======================# TOKEN_PUSH_CHECKER_FAILURE #======================#
+    "TokenPushCheckerException",
 ]
 
-# ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenPushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# TOKEN_PUSH_CHECKER_FAILURE #======================#
+class TokenPushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPushApplicantChecker failed.
+        1.  Indicating that a TokenPushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenPushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "TokenPushApplicantChecker failed."
-    ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TokenPushChecker failed."
+    ERR_CODE = "TOKEN_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AttackApplicantCheckerException
+from err import AttackCheckerException
 
 __all__ = [
     # ======================# VICTIM_ATTACK_LOCATION_SQUARE_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# VICTIM_ATTACK_LOCATION_SQUARE_ERROR #======================#
-class FriendlyAttackException(AttackApplicantCheckerException):
+class FriendlyAttackException(AttackCheckerException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class FriendlyAttackException(AttackApplicantCheckerException):
     Provides:
 
     Super Class:
-        AttackApplicantCheckerException
+        AttackCheckerException
     """
     MSG = "Attack failed: Victim not at location."
     ERR_CODE = "VICTIM_ATTACK_LOCATION_SQUARE_ERROR"

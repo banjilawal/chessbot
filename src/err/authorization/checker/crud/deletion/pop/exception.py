@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionApplicantCheckerException
+from err import DeletionCheckerException
 
 __all__ = [
-    # ======================# POP_REQUEST_NULL_ERROR #======================#
-    "PopApplicantCheckerException",
+    # ======================# POP_CHECKER_FAILURE #======================#
+    "PopCheckerException",
 ]
 
-# ======================# POP_REQUEST_NULL_ERROR #======================#
-class PopApplicantCheckerException(DeletionApplicantCheckerException):
+# ======================# POP_CHECKER_FAILURE #======================#
+class PopCheckerException(DeletionCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PopApplicantChecker failed.
+        1.  Indicating that a PopChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PopApplicantCheckerException(DeletionApplicantCheckerException):
     Provides:
 
     Super Class:
-        DeletionApplicantCheckerException
+        DeletionCheckerException
     """
-    MSG = "PopApplicantChecker failed."
-    ERR_CODE = "POP_REQUEST_NULL_ERROR"
+    MSG = "PopChecker failed."
+    ERR_CODE = "POP_CHECKER_FAILURE"
     
     def __init__(
             self,

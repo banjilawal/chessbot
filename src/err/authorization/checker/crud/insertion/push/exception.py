@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionApplicantCheckerException
+from err import InsertionCheckerException
 
 __all__ = [
-    # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "PushApplicantCheckerException",
+    # ======================# PUSH_CHECKER_FAILURE #======================#
+    "PushCheckerException",
 ]
 
-# ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class PushApplicantCheckerException(InsertionApplicantCheckerException):
+# ======================# PUSH_CHECKER_FAILURE #======================#
+class PushCheckerException(InsertionCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushApplicantChecker failed.
+        1.  Indicating that a PushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PushApplicantCheckerException(InsertionApplicantCheckerException):
     Provides:
 
     Super Class:
-        InsertionApplicantCheckerException
+        InsertionCheckerException
     """
-    MSG = "PushApplicantChecker failed."
-    ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
+    MSG = "PushChecker failed."
+    ERR_CODE = "PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

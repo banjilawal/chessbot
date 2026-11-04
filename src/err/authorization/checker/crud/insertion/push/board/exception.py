@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-    "BoardPushApplicantCheckerException",
+    # ======================# BOARD_PUSH_CHECKER_FAILURE #======================#
+    "BoardPushCheckerException",
 ]
 
-# ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-class BoardPushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# BOARD_PUSH_CHECKER_FAILURE #======================#
+class BoardPushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPushApplicantChecker failed.
+        1.  Indicating that a BoardPushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardPushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "BoardPushApplicantChecker failed."
-    ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "BoardPushChecker failed."
+    ERR_CODE = "BOARD_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

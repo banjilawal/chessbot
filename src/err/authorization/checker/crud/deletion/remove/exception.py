@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionApplicantCheckerException
+from err import DeletionCheckerException
 
 __all__ = [
-    # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-    "RemoveNodeApplicantCheckerException",
+    # ======================# REMOVE_NODE_CHECKER_FAILURE #======================#
+    "RemoveNodeCheckerException",
 ]
 
-# ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-class RemoveNodeApplicantCheckerException(DeletionApplicantCheckerException):
+# ======================# REMOVE_NODE_CHECKER_FAILURE #======================#
+class RemoveNodeCheckerException(DeletionCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveNodeApplicantChecker failed.
+        1.  Indicating that an RemoveNodeChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class RemoveNodeApplicantCheckerException(DeletionApplicantCheckerException):
     Provides:
 
     Super Class:
-        DeletionApplicantCheckerException
+        DeletionCheckerException
     """
-    MSG = "RemoveNodeApplicantChecker failed."
-    ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"
+    MSG = "RemoveNodeChecker failed."
+    ERR_CODE = "REMOVE_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

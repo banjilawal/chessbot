@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import RoleCheckerException
 
 __all__ = [
-    # ======================# PROMOTION_APPLICANT_CHECKER_FAILURE #======================#
-    "PromotionApplicantCheckerException",
+    # ======================# PROMOTION_CHECKER_FAILURE #======================#
+    "PromotionCheckerException",
 ]
 
-# ======================# PROMOTION_APPLICANT_CHECKER_FAILURE #======================#
-class PromotionApplicantCheckerException(ApplicantCheckerException):
+# ======================# PROMOTION_CHECKER_FAILURE #======================#
+class PromotionCheckerException(RoleCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PromotionApplicantChecker failed.
+        1.  Indicating that a PromotionChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PromotionApplicantCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        RoleCheckerException
     """
-    MSG = "PromotionApplicantChecker failed."
-    ERR_CODE = "PROMOTION_APPLICANT_CHECKER_FAILURE"
+    MSG = "PromotionChecker failed."
+    ERR_CODE = "PROMOTION_CHECKER_FAILURE"
     
     def __init__(
             self,

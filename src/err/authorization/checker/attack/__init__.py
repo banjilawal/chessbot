@@ -13,4 +13,4 @@ version: 0.0.2
 from .maneuver import *
 
 # Modules
-from .exception import AttackApplicantCheckerException
+from .exception import AttackCheckerException

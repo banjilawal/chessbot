@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamSearchApplicantCheckerException",
+    # ======================# TEAM_SEARCH_CHECKER_FAILURE #======================#
+    "TeamSearchCheckerException",
 ]
 
-# ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# TEAM_SEARCH_CHECKER_FAILURE #======================#
+class TeamSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamSearchApplicantChecker failed.
+        1.  Indicating that a TeamSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TeamSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "TeamSearchApplicantChecker failed."
-    ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TeamSearchChecker failed."
+    ERR_CODE = "TEAM_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

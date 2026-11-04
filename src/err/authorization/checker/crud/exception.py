@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import RoleCheckerException
+
 
 __all__ = [
-    # ======================# CRUD_APPLICANT_CHECKER_FAILURE #======================#
-    "CrudApplicantCheckerException",
+    # ======================# CRUD_CHECKER_FAILURE #======================#
+    "CrudCheckerException",
 ]
 
-# ======================# CRUD_APPLICANT_CHECKER_FAILURE #======================#
-class CrudApplicantCheckerException(ApplicantCheckerException):
+# ======================# CRUD_CHECKER_FAILURE #======================#
+class CrudCheckerException(RoleCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudApplicantChecker failed.
+        1.  Indicating that a CrudChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CrudApplicantCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        RoleCheckerException
     """
-    MSG = "CrudApplicantChecker failed."
-    ERR_CODE = "CRUD_APPLICANT_CHECKER_FAILURE"
+    MSG = "CrudChecker failed."
+    ERR_CODE = "CRUD_CHECKER_FAILURE"
     
     def __init__(
             self,

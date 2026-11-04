@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudApplicantCheckerException
+from err import CrudCheckerException
 
 __all__ = [
-    # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-    "InsertionApplicantCheckerException",
+    # ======================# INSERTION_CHECKER_FAILURE #======================#
+    "InsertionCheckerException",
 ]
 
-# ======================# INSERTION_REQUEST_NULL_ERROR #======================#
-class InsertionApplicantCheckerException(CrudApplicantCheckerException):
+# ======================# INSERTION_CHECKER_FAILURE #======================#
+class InsertionCheckerException(CrudCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an InsertionApplicantChecker failed.
+        1.  Indicating that an InsertionChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class InsertionApplicantCheckerException(CrudApplicantCheckerException):
     Provides:
 
     Super Class:
-        CrudApplicantCheckerException
+        CrudCheckerException
     """
-    MSG = "InsertionApplicantChecker failed."
-    ERR_CODE = "INSERTION_REQUEST_NULL_ERROR"
+    MSG = "InsertionChecker failed."
+    ERR_CODE = "INSERTION_CHECKER_FAILURE"
     
     def __init__(
             self,

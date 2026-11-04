@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordPushApplicantCheckerException",
+    # ======================# COORD_PUSH_CHECKER_FAILURE #======================#
+    "CoordPushCheckerException",
 ]
 
-# ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordPushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# COORD_PUSH_CHECKER_FAILURE #======================#
+class CoordPushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPushApplicantChecker failed.
+        1.  Indicating that a CoordPushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class CoordPushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "CoordPushApplicantChecker failed."
-    ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "CoordPushChecker failed."
+    ERR_CODE = "COORD_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

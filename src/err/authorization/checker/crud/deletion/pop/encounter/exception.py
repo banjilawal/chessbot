@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopApplicantCheckerException
+from err import PopCheckerException
 
 __all__ = [
-    # ======================# ENCOUNTER_POP_REQUEST_NULL_ERROR #======================#
-    "EncounterPopApplicantCheckerException",
+    # ======================# ENCOUNTER_POP_CHECKER_FAILURE #======================#
+    "EncounterPopCheckerException",
 ]
 
-# ======================# ENCOUNTER_POP_REQUEST_NULL_ERROR #======================#
-class EncounterPopApplicantCheckerException(PopApplicantCheckerException):
+# ======================# ENCOUNTER_POP_CHECKER_FAILURE #======================#
+class EncounterPopCheckerException(PopCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPopApplicantChecker failed.
+        1.  Indicating that a EncounterPopChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class EncounterPopApplicantCheckerException(PopApplicantCheckerException):
     Provides:
 
     Super Class:
-        PopApplicantCheckerException
+        PopCheckerException
     """
-    MSG = "EncounterPopApplicantChecker failed."
-    ERR_CODE = "ENCOUNTER_POP_REQUEST_NULL_ERROR"
+    MSG = "EncounterPopChecker failed."
+    ERR_CODE = "ENCOUNTER_POP_CHECKER_FAILURE"
     
     def __init__(
             self,

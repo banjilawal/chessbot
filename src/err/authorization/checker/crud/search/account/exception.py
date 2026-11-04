@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-    "AccountSearchApplicantCheckerException",
+    # ======================# ACCOUNT_SEARCH_CHECKER_FAILURE #======================#
+    "AccountSearchCheckerException",
 ]
 
-# ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-class AccountSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# ACCOUNT_SEARCH_CHECKER_FAILURE #======================#
+class AccountSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountSearchApplicantChecker failed.
+        1.  Indicating that a AccountSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AccountSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "AccountSearchApplicantChecker failed."
-    ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
+    MSG = "AccountSearchChecker failed."
+    ERR_CODE = "ACCOUNT_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

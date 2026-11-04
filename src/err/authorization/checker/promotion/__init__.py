@@ -16,4 +16,4 @@ from .rank import *
 from .row import *
 
 # Modules
-from .exception import PromotionApplicantCheckerException
+from .exception import PromotionCheckerException

@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionApplicantCheckerException
+from err import InsertionCheckerException
 
 __all__ = [
-    # ======================# ADD_REQUEST_NULL_ERROR #======================#
-    "AddNodeApplicantCheckerException",
+    # ======================# ADD_NODE_CHECKER_FAILURE #======================#
+    "AddNodeCheckerException",
 ]
 
-# ======================# ADD_REQUEST_NULL_ERROR #======================#
-class AddNodeApplicantCheckerException(InsertionApplicantCheckerException):
+# ======================# ADD_NODE_CHECKER_FAILURE #======================#
+class AddNodeCheckerException(InsertionCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddNodeApplicantChecker failed.
+        1.  Indicating that an AddNodeChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AddNodeApplicantCheckerException(InsertionApplicantCheckerException):
     Provides:
 
     Super Class:
-        InsertionApplicantCheckerException
+        InsertionCheckerException
     """
-    MSG = "AddNodeApplicantChecker failed."
-    ERR_CODE = "ADD_REQUEST_NULL_ERROR"
+    MSG = "AddNodeChecker failed."
+    ERR_CODE = "ADD_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

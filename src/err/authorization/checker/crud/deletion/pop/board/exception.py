@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopApplicantCheckerException
+from err import PopCheckerException
 
 __all__ = [
-    # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-    "BoardPopApplicantCheckerException",
+    # ======================# BOARD_POP_CHECKER_FAILURE #======================#
+    "BoardPopCheckerException",
 ]
 
-# ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-class BoardPopApplicantCheckerException(PopApplicantCheckerException):
+# ======================# BOARD_POP_CHECKER_FAILURE #======================#
+class BoardPopCheckerException(PopCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPopApplicantChecker failed.
+        1.  Indicating that a BoardPopChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardPopApplicantCheckerException(PopApplicantCheckerException):
     Provides:
 
     Super Class:
-        PopApplicantCheckerException
+        PopCheckerException
     """
-    MSG = "BoardPopApplicantChecker failed."
-    ERR_CODE = "BOARD_POP_REQUEST_NULL_ERROR"
+    MSG = "BoardPopChecker failed."
+    ERR_CODE = "BOARD_POP_CHECKER_FAILURE"
     
     def __init__(
             self,

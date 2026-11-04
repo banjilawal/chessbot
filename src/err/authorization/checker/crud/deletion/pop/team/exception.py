@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopApplicantCheckerException
+from err import PopCheckerException
 
 __all__ = [
-    # ======================# TEAM_POP_REQUEST_NULL_ERROR #======================#
-    "TeamPopApplicantCheckerException",
+    # ======================# TEAM_POP_CHECKER_FAILURE #======================#
+    "TeamPopCheckerException",
 ]
 
-# ======================# TEAM_POP_REQUEST_NULL_ERROR #======================#
-class TeamPopApplicantCheckerException(PopApplicantCheckerException):
+# ======================# TEAM_POP_CHECKER_FAILURE #======================#
+class TeamPopCheckerException(PopCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPopApplicantChecker failed.
+        1.  Indicating that a TeamPopChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TeamPopApplicantCheckerException(PopApplicantCheckerException):
     Provides:
 
     Super Class:
-        PopApplicantCheckerException
+        PopCheckerException
     """
-    MSG = "TeamPopApplicantChecker failed."
-    ERR_CODE = "TEAM_POP_REQUEST_NULL_ERROR"
+    MSG = "TeamPopChecker failed."
+    ERR_CODE = "TEAM_POP_CHECKER_FAILURE"
     
     def __init__(
             self,

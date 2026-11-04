@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudApplicantCheckerException
+from err import CrudCheckerException
 
 __all__ = [
-    # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-    "DeletionApplicantCheckerException",
+    # ======================# DELETION_CHECKER_FAILURE #======================#
+    "DeletionCheckerException",
 ]
 
-# ======================# DELETION_REQUEST_NULL_ERROR #======================#
-class DeletionApplicantCheckerException(CrudApplicantCheckerException):
+# ======================# DELETION_CHECKER_FAILURE #======================#
+class DeletionCheckerException(CrudCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an DeletionApplicantChecker failed.
+        1.  Indicating that a DeletionChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class DeletionApplicantCheckerException(CrudApplicantCheckerException):
     Provides:
 
     Super Class:
-        CrudApplicantCheckerException
+        CrudCheckerException
     """
-    MSG = "DeletionApplicantChecker failed."
-    ERR_CODE = "DELETION_REQUEST_NULL_ERROR"
+    MSG = "DeletionChecker failed."
+    ERR_CODE = "DELETION_CHECKER_FAILURE"
     
     def __init__(
             self,

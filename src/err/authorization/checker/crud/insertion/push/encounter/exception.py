@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterPushApplicantCheckerException",
+    # ======================# ENCOUNTER_PUSH_CHECKER_FAILURE #======================#
+    "EncounterPushCheckerException",
 ]
 
-# ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterPushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# ENCOUNTER_PUSH_CHECKER_FAILURE #======================#
+class EncounterPushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPushApplicantChecker failed.
+        1.  Indicating that a EncounterPushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class EncounterPushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "EncounterPushApplicantChecker failed."
-    ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "EncounterPushChecker failed."
+    ERR_CODE = "ENCOUNTER_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

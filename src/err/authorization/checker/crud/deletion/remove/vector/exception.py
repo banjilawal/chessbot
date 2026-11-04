@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RemoveNodeApplicantCheckerException
+from err import RemoveNodeCheckerException
 
 __all__ = [
-    # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "RemoveVectorNodeApplicantCheckerException",
+    # ======================# REMOVE_VECTOR_NODE_CHECKER_FAILURE #======================#
+    "RemoveVectorNodeCheckerException",
 ]
 
-# ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class RemoveVectorNodeApplicantCheckerException(RemoveNodeApplicantCheckerException):
+# ======================# REMOVE_VECTOR_NODE_CHECKER_FAILURE #======================#
+class RemoveVectorNodeCheckerException(RemoveNodeCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveVectorNodeApplicantChecker failed.
+        1.  Indicating that a RemoveVectorNodeChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class RemoveVectorNodeApplicantCheckerException(RemoveNodeApplicantCheckerExcept
     Provides:
 
     Super Class:
-        RemoveNodeApplicantCheckerException
+        RemoveNodeCheckerException
     """
-    MSG = "RemoveVectorNodeApplicantChecker failed."
-    ERR_CODE = "REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "RemoveVectorNodeChecker failed."
+    ERR_CODE = "REMOVE_VECTOR_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

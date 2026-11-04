@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-    "ManeuverSearchApplicantCheckerException",
+    # ======================# MANEUVER_SEARCH_CHECKER_FAILURE #======================#
+    "ManeuverSearchCheckerException",
 ]
 
-# ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-class ManeuverSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# MANEUVER_SEARCH_CHECKER_FAILURE #======================#
+class ManeuverSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverSearchApplicantChecker failed.
+        1.  Indicating that a ManeuverSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ManeuverSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "ManeuverSearchApplicantChecker failed."
-    ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "ManeuverSearchChecker failed."
+    ERR_CODE = "MANEUVER_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

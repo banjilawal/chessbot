@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerSearchApplicantCheckerException",
+    # ======================# PLAYER_SEARCH_CHECKER_FAILURE #======================#
+    "PlayerSearchCheckerException",
 ]
 
-# ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# PLAYER_SEARCH_CHECKER_FAILURE #======================#
+class PlayerSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerSearchApplicantChecker failed.
+        1.  Indicating that a PlayerSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class PlayerSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "PlayerSearchApplicantChecker failed."
-    ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "PlayerSearchChecker failed."
+    ERR_CODE = "PLAYER_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

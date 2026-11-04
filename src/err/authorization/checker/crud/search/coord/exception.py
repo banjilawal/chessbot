@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordSearchApplicantCheckerException",
+    # ======================# COORD_SEARCH_CHECKER_FAILURE #======================#
+    "CoordSearchCheckerException",
 ]
 
-# ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# COORD_SEARCH_CHECKER_FAILURE #======================#
+class CoordSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordSearchApplicantChecker failed.
+        1.  Indicating that a CoordSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class CoordSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "CoordSearchApplicantChecker failed."
-    ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "CoordSearchChecker failed."
+    ERR_CODE = "COORD_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

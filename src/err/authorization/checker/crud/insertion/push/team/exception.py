@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamPushApplicantCheckerException",
+    # ======================# TEAM_PUSH_CHECKER_FAILURE #======================#
+    "TeamPushCheckerException",
 ]
 
-# ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamPushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# TEAM_PUSH_CHECKER_FAILURE #======================#
+class TeamPushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushApplicantChecker failed.
+        1.  Indicating that a TeamPushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TeamPushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "TeamPushApplicantChecker failed."
-    ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TeamPushChecker failed."
+    ERR_CODE = "TEAM_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -15,7 +15,7 @@ from artifcat import PromotionDecision
 from authorization import Permitter, ReadyTokenChecker
 from bootstrap import PromotionAuthorizationLoader
 from domain import Elevatable
-from err import PromotionPermitterException, PromotionRowException
+from err import DoublePromotionException, PromotionPermitterException, PromotionRowException
 from exchange import PromotionPermissionRequest, PromotionRequest
 from util import LoggingLevelRouter
 

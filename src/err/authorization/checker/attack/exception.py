@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import ApplicantCheckerException
+from err import RoleCheckerException
 
 __all__ = [
-    # ======================# ATTACK_APPLICANT_CHECKER_FAILURE #======================#
-    "AttackApplicantCheckerException",
+    # ======================# ATTACK_CHECKER_FAILURE #======================#
+    "AttackCheckerException",
 ]
 
-# ======================# ATTACK_APPLICANT_CHECKER_FAILURE #======================#
-class AttackApplicantCheckerException(ApplicantCheckerException):
+# ======================# ATTACK_CHECKER_FAILURE #======================#
+class AttackCheckerException(RoleCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AttackApplicantChecker failed.
+        1.  Indicating that an AttackChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AttackApplicantCheckerException(ApplicantCheckerException):
     Provides:
 
     Super Class:
-        ApplicantCheckerException
+        RoleCheckerException
     """
-    MSG = "AttackApplicantChecker failed."
-    ERR_CODE = "ATTACK_APPLICANT_CHECKER_FAILURE"
+    MSG = "AttackChecker failed."
+    ERR_CODE = "ATTACK_CHECKER_FAILURE"
     
     def __init__(
             self,

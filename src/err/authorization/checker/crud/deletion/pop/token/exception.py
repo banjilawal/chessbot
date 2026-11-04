@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopApplicantCheckerException
+from err import PopCheckerException
 
 __all__ = [
-    # ======================# TOKEN_POP_REQUEST_NULL_ERROR #======================#
-    "TokenPopApplicantCheckerException",
+    # ======================# TOKEN_POP_CHECKER_FAILURE #======================#
+    "TokenPopCheckerException",
 ]
 
-# ======================# TOKEN_POP_REQUEST_NULL_ERROR #======================#
-class TokenPopApplicantCheckerException(PopApplicantCheckerException):
+# ======================# TOKEN_POP_CHECKER_FAILURE #======================#
+class TokenPopCheckerException(PopCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPopApplicantChecker failed.
+        1.  Indicating that a TokenPopChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenPopApplicantCheckerException(PopApplicantCheckerException):
     Provides:
 
     Super Class:
-        PopApplicantCheckerException
+        PopCheckerException
     """
-    MSG = "TokenPopApplicantChecker failed."
-    ERR_CODE = "TOKEN_POP_REQUEST_NULL_ERROR"
+    MSG = "TokenPopChecker failed."
+    ERR_CODE = "TOKEN_POP_CHECKER_FAILURE"
     
     def __init__(
             self,

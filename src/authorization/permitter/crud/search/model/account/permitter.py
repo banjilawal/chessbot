@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import AccountSearchDecision
 from authorization import ModelSearchPermitter
 from bootstrap import AccountSearchAuthorizationLoader
-from err import ChessException
+from err import AccountSearchPermitterException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from util import LoggingLevelRouter
 
@@ -78,11 +78,11 @@ class AccountSearchPermitter(
         if bootstrap.request_is_denied:
             # Send the exception chain in the denial.
             return AccountSearchDecision.denial(
-                exception=ChessException(
+                exception=AccountSearchPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
+                    msg=AccountSearchPermitterException.MSG,
+                    err_code=AccountSearchPermitterException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopApplicantCheckerException
+from err import PopCheckerException
 
 __all__ = [
-    # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-    "ManeuverPopApplicantCheckerException",
+    # ======================# MANEUVER_POP_CHECKER_FAILURE #======================#
+    "ManeuverPopCheckerException",
 ]
 
-# ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-class ManeuverPopApplicantCheckerException(PopApplicantCheckerException):
+# ======================# MANEUVER_POP_CHECKER_FAILURE #======================#
+class ManeuverPopCheckerException(PopCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPopApplicantChecker failed.
+        1.  Indicating that a ManeuverPopChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ManeuverPopApplicantCheckerException(PopApplicantCheckerException):
     Provides:
 
     Super Class:
-        PopApplicantCheckerException
+        PopCheckerException
     """
-    MSG = "ManeuverPopApplicantChecker failed."
-    ERR_CODE = "MANEUVER_POP_REQUEST_NULL_ERROR"
+    MSG = "ManeuverPopChecker failed."
+    ERR_CODE = "MANEUVER_POP_CHECKER_FAILURE"
     
     def __init__(
             self,

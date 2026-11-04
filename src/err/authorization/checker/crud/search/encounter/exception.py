@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterSearchApplicantCheckerException",
+    # ======================# ENCOUNTER_SEARCH_CHECKER_FAILURE #======================#
+    "EncounterSearchCheckerException",
 ]
 
-# ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# ENCOUNTER_SEARCH_CHECKER_FAILURE #======================#
+class EncounterSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterSearchApplicantChecker failed.
+        1.  Indicating that a EncounterSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class EncounterSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "EncounterSearchApplicantChecker failed."
-    ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "EncounterSearchChecker failed."
+    ERR_CODE = "ENCOUNTER_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

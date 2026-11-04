@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushApplicantCheckerException
+from err import PushCheckerException
 
 __all__ = [
-    # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-    "ManeuverPushApplicantCheckerException",
+    # ======================# MANEUVER_PUSH_CHECKER_FAILURE #======================#
+    "ManeuverPushCheckerException",
 ]
 
-# ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-class ManeuverPushApplicantCheckerException(PushApplicantCheckerException):
+# ======================# MANEUVER_PUSH_CHECKER_FAILURE #======================#
+class ManeuverPushCheckerException(PushCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPushApplicantChecker failed.
+        1.  Indicating that a ManeuverPushChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ManeuverPushApplicantCheckerException(PushApplicantCheckerException):
     Provides:
 
     Super Class:
-        PushApplicantCheckerException
+        PushCheckerException
     """
-    MSG = "ManeuverPushApplicantChecker failed."
-    ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "ManeuverPushChecker failed."
+    ERR_CODE = "MANEUVER_PUSH_CHECKER_FAILURE"
     
     def __init__(
             self,

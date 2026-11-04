@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchApplicantCheckerException
+from err import SearchCheckerException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquareSearchApplicantCheckerException",
+    # ======================# SQUARE_SEARCH_CHECKER_FAILURE #======================#
+    "SquareSearchCheckerException",
 ]
 
-# ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquareSearchApplicantCheckerException(SearchApplicantCheckerException):
+# ======================# SQUARE_SEARCH_CHECKER_FAILURE #======================#
+class SquareSearchCheckerException(SearchCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquareSearchApplicantChecker failed.
+        1.  Indicating that a SquareSearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquareSearchApplicantCheckerException(SearchApplicantCheckerException):
     Provides:
 
     Super Class:
-        SearchApplicantCheckerException
+        SearchCheckerException
     """
-    MSG = "SquareSearchApplicantChecker failed."
-    ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
+    MSG = "SquareSearchChecker failed."
+    ERR_CODE = "SQUARE_SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import PromotionApplicantCheckerException
+from err import PromotionCheckerException
 
 __all__ = [
     # ======================# PROMOTION_TOKEN_RANK_CHECKER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTION_TOKEN_RANK_CHECKER_FAILURE #======================#
-class PromotionTokenRankCheckerException(PromotionApplicantCheckerException):
+class PromotionTokenRankCheckerException(PromotionCheckerException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PromotionTokenRankCheckerException(PromotionApplicantCheckerException):
     Provides:
 
     Super Class:
-        PromotionApplicantCheckerException
+        PromotionCheckerException
     """
     MSG = "PromotionTokenRankChecker failed."
     ERR_CODE = "PROMOTION_TOKEN_RANK_CHECKER_FAILURE"

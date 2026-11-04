@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudApplicantCheckerException
+from err import CrudCheckerException
 
 __all__ = [
-    # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-    "SearchApplicantCheckerException",
+    # ======================# SEARCH_CHECKER_FAILURE #======================#
+    "SearchCheckerException",
 ]
 
-# ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-class SearchApplicantCheckerException(CrudApplicantCheckerException):
+# ======================# SEARCH_CHECKER_FAILURE #======================#
+class SearchCheckerException(CrudCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SearchApplicantChecker failed.
+        1.  Indicating that an SearchChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SearchApplicantCheckerException(CrudApplicantCheckerException):
     Provides:
 
     Super Class:
-        CrudApplicantCheckerException
+        CrudCheckerException
     """
-    MSG = "SearchApplicantChecker failed."
-    ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"
+    MSG = "SearchChecker failed."
+    ERR_CODE = "SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

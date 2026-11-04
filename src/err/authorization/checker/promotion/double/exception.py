@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import PromotionApplicantCheckerException
+from err import PromotionCheckerException
 
 __all__ = [
     # ======================# DOUBLE_PROMOTION_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# DOUBLE_PROMOTION_ERROR #======================#
-class DoublePromotionException(PromotionApplicantCheckerException):
+class DoublePromotionException(PromotionCheckerException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class DoublePromotionException(PromotionApplicantCheckerException):
     Provides:
 
     Super Class:
-        PromotionApplicantCheckerException
+        PromotionCheckerException
     """
     MSG = "PawnDouble already promoted."
     ERR_CODE = "DOUBLE_PROMOTION_ERROR"
