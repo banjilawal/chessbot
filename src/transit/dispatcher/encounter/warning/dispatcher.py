@@ -83,7 +83,7 @@ class EncounterWarningDispatcher(EncounterDispatcher[WarningRequest]):
         approval = WarningRequest(
             id=approved_request.id,
             activity=approved_request.activity,
-            applicant=approved_request.applicant,
+            applicant=approved_request.token,
         )
         # --- Forward the approval. ---#
         return WarningDecision.grant(approval)

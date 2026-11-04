@@ -108,14 +108,14 @@ class PromotionAuthorizationLoader(
                    ex=priming.exception,
                 )
             )
-        # --- Get the permission_request for type checking the applicant. ---#
+        # --- Cast the candidate to a permission_form for additional processing. ---#
         permission_form = cast(PromotionPermissionRequest, priming.payload)
-        
+
         # Handle the case that the permissio_form does not have an id.
-        permission_form_id_validation = self.identity_service.validate_id(
+        form_id_validation = self.identity_service.validate_id(
             candidate=permission_form.id
         )
-        if permission_form_id_validation.is_failure:
+        if form_id_validation.is_failure:
             # Send an exception chain in the denial.
             return PromotionDecision.denial(
                 exception=PromotionAuthorizationLoaderException(
@@ -123,10 +123,9 @@ class PromotionAuthorizationLoader(
                     cls_name=self.__class__.__name__,
                     msg=PromotionAuthorizationLoaderException.MSG,
                     err_code=PromotionAuthorizationLoaderException.ERR_CODE,
-                    ex=permission_form_id_validation.exception,
+                    ex=form_id_validation.exception,
                 )
             )
-        permission_form_id = cast(int, permission_form_id_validation.payload)
         # Handle the case that the applicant signature is wrong.
         applicant_signature = self.priming_validator.execute(
             candidate=permission_form.authorization_applicant,
@@ -144,7 +143,7 @@ class PromotionAuthorizationLoader(
                     ex=applicant_signature.exception,
                 )
             )
-        # --- Get the permission_request for type checking the applicant. ---#
+        # --- Cast the applicant to validate its contents. ---#
         applicant = cast(PromotionRequest, applicant_signature.payload)
         
         # --- PROCESS_THE_APPLICANT_ID_ATTRIBUTE. ---#
@@ -161,11 +160,10 @@ class PromotionAuthorizationLoader(
                     ex=applicant_id_validation.exception,
                 )
             )
-        applicant_id = cast(int, applicant_id_validation.payload)
         # --- PROCESS_THE_PROMOTION_CANDIDATE_ATTRIBUTE. ---#
         token_validation = self._token_validation_service.extract_model(
             request=TokenValidationRequest(
-                item=TokenCarrier(model=applicant.promotion_candidate),
+                item=TokenCarrier(model=applicant.token),
                 id=IdFactory.next_id("TokenValidationRequest")
             )
         )
@@ -181,9 +179,8 @@ class PromotionAuthorizationLoader(
                     ex=token_validation.exception,
                 )
             )
-        token = cast(Token, token_validation.payload)
         # Handle the case that the promotion_candidate token is not a PawnToken
-        if not isinstance(token, PawnToken):
+        if not isinstance(token_validation.payload, PawnToken):
             # Send an exception chain in the denial.
             return PromotionDecision.denial(
                 exception=PromotionAuthorizationLoaderException(
@@ -192,11 +189,11 @@ class PromotionAuthorizationLoader(
                     msg=PromotionAuthorizationLoaderException.MSG,
                     err_code=PromotionAuthorizationLoaderException.ERR_CODE,
                     ex=TypeError(
-                        f"Expected PawnToken got {type(token).__name__} instead."
+                        f"Expected PawnToken got "
+                        f"{type(token_validation.payload).__name__} instead."
                     ),
                 )
             )
-        pawn_token = cast(PawnToken, token)
         # --- PROCESS_THE_PROMOTION_RANK_ATTRIBUTE. ---#
         rank_validation = self._rank_validation_service.extract_model(
             request=RankValidationRequest(
@@ -216,10 +213,8 @@ class PromotionAuthorizationLoader(
                     ex=rank_validation.exception
                 )
             )
-        rank = cast(Rank, rank_validation.payload)
-        elevatable = cast(Elevatable, rank)
         # Handle the case that the rank is not an Elevatable
-        if not isinstance(rank, Elevatable):
+        if not isinstance(rank_validation.payload, Elevatable):
             # Send an exception chain in the denial.
             return PromotionDecision.denial(
                 exception=PromotionAuthorizationLoaderException(
@@ -230,14 +225,20 @@ class PromotionAuthorizationLoader(
                     ex=rank_validation.exception
                 )
             )
-        # --- Prepare an approval from the completed chain. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        pawn_token = cast(PawnToken, token_validation.payload)
+        transaction_id = cast(int, applicant_id_validation.payload)
+        permission_id = cast(int, form_id_validation.payload)
+        elevatable = cast(Elevatable, cast(object, rank_validation.payload))
+        
+        # --- Prepare a transaction approval. ---#
         approved_applicant = PromotionRequest(
-            id=applicant_id,
+            id=transaction_id,
             applicant=pawn_token,
             elevatable=elevatable,
         )
         permission_request = PromotionPermissionRequest(
-            id=permission_form_id,
+            id=permission_id,
             authorization_applicant=approved_applicant,
         )
         # --- Forward the approval. ---#

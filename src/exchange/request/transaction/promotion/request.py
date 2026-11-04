@@ -49,7 +49,7 @@ class PromotionRequest(TransactionRequest[PromotionResult]):
         self._elevatable = elevatable
         
     @property
-    def applicant(self) -> PawnToken:
+    def token(self) -> PawnToken:
         return self._applicant
     
     @property

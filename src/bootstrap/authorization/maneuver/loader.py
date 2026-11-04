@@ -23,7 +23,9 @@ from transit import PathCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ManeuverAuthorizationLoader(AuthorizationLoader[ManeuverPermissionRequest]):
+class ManeuverAuthorizationLoader(
+    AuthorizationLoader[ManeuverPermissionRequest]
+):
     """
     Role:
         -   Process Bootstrapper

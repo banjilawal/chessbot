@@ -104,7 +104,7 @@ class Promoter(Worker[PromotionResult, PromotionRequest]):
                 )
             )
         # --- Extract the transaction participants. ---#
-        pawn_token = transaction_request.applicant
+        pawn_token = transaction_request.token
         rank = transaction_request.elevatable_to_rank
         promotion = Pawn()
         

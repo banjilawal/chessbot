@@ -154,7 +154,7 @@ class PromotionTokenReviewer(PromotionApplicantReviewer[Token]):
         approval = PromotionPermissionRequest(
             id=approved_request.id,
             activity=approved_request.activity,
-            authorization_applicant=approved_request.applicant,
+            authorization_applicant=approved_request.token,
         )
         # --- Forward the approval. ---#
         return PromotionDecision.grant(approval)
