@@ -39,7 +39,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
     """
 
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: Account, collection: AccountStack) -> CollisionReport:
+    def execute(self, attractor: Account, stream: AccountStack) -> CollisionReport:
         """
         Check that the attractor will be unique in the collection.
 
@@ -49,7 +49,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
             2.  Otherwise, report the attractor is unique.
         Args:
             attractor: Account
-            collection: AccountStack
+            stream: AccountStack
         Result:
             CollisionReport
         Raises:
@@ -58,7 +58,7 @@ class AccountCollisionSensor(CollisionSensor[Account]):
         method = f"{self.__class__.__name__}.execute"
         
         # --- Perform the check on the unique id attribute all Accounts have. ---#
-        for item in collection.items:
+        for item in stream.items:
             # Handle the case there are duplicate ids.
             if item.id == attractor.id:
                 # Send an exception chain in the  report.
@@ -86,13 +86,13 @@ class AccountCollisionSensor(CollisionSensor[Account]):
         if isinstance(attractor, HumanAccount):
             return self._human_account_collider(
                 human_attractor=attractor,
-                humans=collection.human_accounts,
+                humans=stream.human_accounts,
                 parent_method=method,
             )
         # Otherwise run the default sub-collider.
         return self._machine_account_collider(
                 machine_attractor=attractor,
-                machines=collection.machine_accounts,
+                machines=stream.machine_accounts,
                 parent_method=method,
             )
             

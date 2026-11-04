@@ -60,7 +60,7 @@ class BishopPattern(TraversalSignature[Bishop]):
         recurrence_tables = cast(BishopRecurrenceRegistries, validation.authorization_applicant)
         
         computation = self.signature_generator.execute(
-            collection=recurrence_tables
+            stream=recurrence_tables
         )
         # Handle the case that the computation does not produce a result.
         if computation.is_failure:

@@ -18,10 +18,10 @@ from domain import Model
 from sensor import CollisionSensor
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
-P = TypeVar("P", bound="int")
+P = TypeVar("P", bound="Model")
+T = TypeVar("T", bound="int")
 
-class IdCollisionSensor(CollisionSensor[T, P], ABC, Generic[T, P]):
+class IdCollisionSensor(CollisionSensor[P, T], ABC, Generic[P, T]):
     """
     Role:
         -   Sensor
@@ -36,11 +36,11 @@ class IdCollisionSensor(CollisionSensor[T, P], ABC, Generic[T, P]):
 
     Super Class:
     """
-    ATTRIBUTE = "id"
+    ID_IDENTIFIER = "id"
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: T, collection: Stack[T]) -> CollisionReport:
+    def execute(self, target: T, stream: Stack[T]) -> CollisionReport:
         """
         Check that the attractor will be unique in the collection.
 
@@ -49,8 +49,8 @@ class IdCollisionSensor(CollisionSensor[T, P], ABC, Generic[T, P]):
                 ids, emails, or machine_names are detected.
             2.  Otherwise, report the attractor is unique.
         Args:
-            attractor: int
-            collection: collection: Stack[T]
+            target: T
+            stream: collection: Stack[T]
         Result:
             CollisionReport
         Raises:

@@ -27,24 +27,24 @@ class AccountIdCollisionSensor(IdCollisionSensor[Account, int]):
     Attributes:
 
     Provides:
-        -   def execute(attractor: int, collection: AccountStack) -> CollisionReport
+        -   def execute(target: int, stream: AccountStack) -> CollisionReport
 
     Super Class:
         IdCollisionSensor
     """
 
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: Account, collection: AccountStack) -> CollisionReport:
+    def execute(self, target: int, stream: AccountStack) -> CollisionReport:
         """
-        Check that the attractor will be unique in the collection.
+        Detect if the target_id exists in the AccountStack
 
         Action:
-            1.  Send an exception chain in the report if the attractor
-                finds a match.
+            1.  Send an exception chain in the report if an Account in the
+                stream hits the target id.
             2.  Otherwise, report the attractor is unique.
         Args:
-            attractor: int
-            collection: AccountStack
+            target: int
+            stream: AccountStack
         Result:
             CollisionReport
         Raises:
@@ -52,19 +52,18 @@ class AccountIdCollisionSensor(IdCollisionSensor[Account, int]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # --- Run the sensor. ---#
-        target_id = attractor.id
-        matches = [item for item in collection.items if item.id == target_id]
+        # --- Run the stream ---#
+        matches = [item for item in stream.items if item.id == target]
         
-        # Handle the case that target_id is unique.
+        # Handle the case that no particle hits the target.
         if len(matches) == 0:
             return CollisionReport.no_collision_events()
-        # Otherwise report there are duplicate ids.
+        # Otherwise report a collision.
         return CollisionReport.collision_event(
-            attractor=attractor,
-            collider=matches[0],
-            attribute=self.ATTRIBUTE,
-            value=target_id,
+            match=matches[0].id,
+            target=target,
+            particle=matches[0],
+            identifier=self.ID_IDENTIFIER,
             exception=AccountIdCollisionSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,

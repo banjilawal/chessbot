@@ -18,11 +18,11 @@ from domain import Model
 from sensor import Sensor
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
-P = TypeVar("P")
+P = TypeVar("P", bound="Model")
+T = TypeVar("T")
 
 
-class CollisionSensor(Sensor, ABC, Generic[T, P]):
+class CollisionSensor(Sensor, ABC, Generic[P, T]):
     """
     Role:
         -   Sensor
@@ -41,12 +41,12 @@ class CollisionSensor(Sensor, ABC, Generic[T, P]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, attractor: T, collection: Stack[T]) -> CollisionReport:
+    def execute(self, target: T, stream: Stack[P]) -> CollisionReport:
         """
         Check the attractor satisfies stack uniqueness constraint.
         Args:
-            attractor: T
-            collection: Stack[T]
+            target: T
+            stream: Stack[T]
         Result:
             CollisionReport
         Raises:
