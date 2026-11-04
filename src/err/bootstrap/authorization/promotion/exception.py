@@ -27,7 +27,7 @@ class PromotionAuthorizationLoaderException(AuthorizationLoaderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PromotionLoader failed.
+        1.  Indicating that a PromotionAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class PromotionAuthorizationLoaderException(AuthorizationLoaderException):
     Super Class:
         AuthorizationLoaderException
     """
-    MSG = "PromotionLoader failed."
+    MSG = "PromotionAuthorizationLoader failed."
     ERR_CODE = "PROMOTION_LOADER_FAILURE"
     
     def __init__(

@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# COORD_PUSH_LOADER_FAILURE #======================#
     "CoordSearchAuthorizationLoaderException",
 ]
 
-# ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# COORD_PUSH_LOADER_FAILURE #======================#
 class CoordSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordSearchLoader failed.
+        1.  Indicating that a CoordSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class CoordSearchAuthorizationLoaderException(SearchAuthorizationLoaderException
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "CoordSearchLoader failed."
-    ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "CoordSearchAuthorizationLoader failed."
+    ERR_CODE = "COORD_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

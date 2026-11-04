@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# BOARD_POP_LOADER_FAILURE #======================#
     "BoardPopAuthorizationLoaderException",
 ]
 
-# ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
+# ======================# BOARD_POP_LOADER_FAILURE #======================#
 class BoardPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPopLoader failed.
+        1.  Indicating that a BoardPopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class BoardPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "BoardPopLoader failed."
-    ERR_CODE = "BOARD_POP_REQUEST_NULL_ERROR"
+    MSG = "BoardPopAuthorizationLoader failed."
+    ERR_CODE = "BOARD_POP_LOADER_FAILURE"
     
     def __init__(
             self,

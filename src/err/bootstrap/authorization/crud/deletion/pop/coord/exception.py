@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# COORD_POP_LOADER_FAILURE #======================#
     "CoordPopAuthorizationLoaderException",
 ]
 
-# ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
+# ======================# COORD_POP_LOADER_FAILURE #======================#
 class CoordPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPopLoader failed.
+        1.  Indicating that a CoordPopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class CoordPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "CoordPopLoader failed."
-    ERR_CODE = "COORD_POP_REQUEST_NULL_ERROR"
+    MSG = "CoordPopAuthorizationLoader failed."
+    ERR_CODE = "COORD_POP_LOADER_FAILURE"
     
     def __init__(
             self,

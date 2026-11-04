@@ -1,7 +1,7 @@
-# src/err/bootstrap/authorization/crud/exception.py
+# src/err/bootstrap/authorization/crud/search/path/exception.py
 
 """
-Module: err.bootstrap.authorization.crud.exception
+Module: err.bootstrap.authorization.crud.search.path.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
 from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "SearchAuthorizationLoaderException",
+    # ======================# PATH_PUSH_LOADER_FAILURE #======================#
+    "PathSearchAuthorizationLoaderException",
 ]
 
-# ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class SearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
+# ======================# PATH_PUSH_LOADER_FAILURE #======================#
+class PathSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SearchLoader failed.
+        1.  Indicating that a PathSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +43,8 @@ class SearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "SearchLoader failed."
-    ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
+    MSG = "PathSearchAuthorizationLoader failed."
+    ERR_CODE = "PATH_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

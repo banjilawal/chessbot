@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ACCOUNT_PUSH_LOADER_FAILURE #======================#
     "AccountSearchAuthorizationLoaderException",
 ]
 
-# ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ACCOUNT_PUSH_LOADER_FAILURE #======================#
 class AccountSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountSearchLoader failed.
+        1.  Indicating that a AccountSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class AccountSearchAuthorizationLoaderException(SearchAuthorizationLoaderExcepti
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "AccountSearchLoader failed."
-    ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
+    MSG = "AccountSearchAuthorizationLoader failed."
+    ERR_CODE = "ACCOUNT_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

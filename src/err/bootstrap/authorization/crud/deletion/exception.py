@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import CrudAuthorizationLoaderException
 
 __all__ = [
-    # ======================# DELETION_REQUEST_NULL_ERROR #======================#
+    # ======================# DELETION_LOADER_FAILURE #======================#
     "DeletionAuthorizationLoaderException",
 ]
 
-# ======================# DELETION_REQUEST_NULL_ERROR #======================#
+# ======================# DELETION_LOADER_FAILURE #======================#
 class DeletionAuthorizationLoaderException(CrudAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an DeletionLoader failed.
+        1.  Indicating that an DeletionAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class DeletionAuthorizationLoaderException(CrudAuthorizationLoaderException):
     Super Class:
         CrudAuthorizationLoaderException
     """
-    MSG = "DeletionLoader failed."
-    ERR_CODE = "DELETION_REQUEST_NULL_ERROR"
+    MSG = "DeletionAuthorizationLoader failed."
+    ERR_CODE = "DELETION_LOADER_FAILURE"
     
     def __init__(
             self,

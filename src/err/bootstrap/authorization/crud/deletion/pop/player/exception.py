@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# PLAYER_POP_LOADER_FAILURE #======================#
     "PlayerPopAuthorizationLoaderException",
 ]
 
-# ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
+# ======================# PLAYER_POP_LOADER_FAILURE #======================#
 class PlayerPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPopLoader failed.
+        1.  Indicating that a PlayerPopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class PlayerPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "PlayerPopLoader failed."
-    ERR_CODE = "PLAYER_POP_REQUEST_NULL_ERROR"
+    MSG = "PlayerPopAuthorizationLoader failed."
+    ERR_CODE = "PLAYER_POP_LOADER_FAILURE"
     
     def __init__(
             self,

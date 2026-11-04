@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RemoveNodeAuthorizationLoaderException
 
 __all__ = [
-    # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    # ======================# REMOVE_VECTOR_NODE_LOADER_FAILURE #======================#
     "RemoveVectorNodeAuthorizationLoaderException",
 ]
 
-# ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+# ======================# REMOVE_VECTOR_NODE_LOADER_FAILURE #======================#
 class RemoveVectorNodeAuthorizationLoaderException(RemoveNodeAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveVectorNodeLoader failed.
+        1.  Indicating that an RemoveVectorNodeAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class RemoveVectorNodeAuthorizationLoaderException(RemoveNodeAuthorizationLoader
     Super Class:
         RemoveNodeAuthorizationLoaderException
     """
-    MSG = "RemoveVectorNodeLoader failed."
-    ERR_CODE = "REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "RemoveVectorNodeAuthorizationLoader failed."
+    ERR_CODE = "REMOVE_VECTOR_NODE_LOADER_FAILURE"
     
     def __init__(
             self,

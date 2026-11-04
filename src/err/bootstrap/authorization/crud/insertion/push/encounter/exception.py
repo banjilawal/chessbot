@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ENCOUNTER_PUSH_LOADER_FAILURE #======================#
     "EncounterPushAuthorizationLoaderException",
 ]
 
-# ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ENCOUNTER_PUSH_LOADER_FAILURE #======================#
 class EncounterPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPushLoader failed.
+        1.  Indicating that a EncounterPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class EncounterPushAuthorizationLoaderException(PushAuthorizationLoaderException
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "EncounterPushLoader failed."
-    ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "EncounterPushAuthorizationLoader failed."
+    ERR_CODE = "ENCOUNTER_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

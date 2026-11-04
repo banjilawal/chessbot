@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# PLAYER_PUSH_LOADER_FAILURE #======================#
     "PlayerPushAuthorizationLoaderException",
 ]
 
-# ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# PLAYER_PUSH_LOADER_FAILURE #======================#
 class PlayerPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPushLoader failed.
+        1.  Indicating that a PlayerPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class PlayerPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "PlayerPushLoader failed."
-    ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "PlayerPushAuthorizationLoader failed."
+    ERR_CODE = "PLAYER_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

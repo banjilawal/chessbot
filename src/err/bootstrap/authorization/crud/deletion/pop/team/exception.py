@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# TEAM_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# TEAM_POP_LOADER_FAILURE #======================#
     "TeamPopAuthorizationLoaderException",
 ]
 
-# ======================# TEAM_POP_REQUEST_NULL_ERROR #======================#
+# ======================# TEAM_POP_LOADER_FAILURE #======================#
 class TeamPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPopLoader failed.
+        1.  Indicating that a TeamPopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class TeamPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "TeamPopLoader failed."
-    ERR_CODE = "TEAM_POP_REQUEST_NULL_ERROR"
+    MSG = "TeamPopAuthorizationLoader failed."
+    ERR_CODE = "TEAM_POP_LOADER_FAILURE"
     
     def __init__(
             self,

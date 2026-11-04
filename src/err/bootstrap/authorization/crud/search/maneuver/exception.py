@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# MANEUVER_PUSH_LOADER_FAILURE #======================#
     "ManeuverSearchAuthorizationLoaderException",
 ]
 
-# ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# MANEUVER_PUSH_LOADER_FAILURE #======================#
 class ManeuverSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverSearchLoader failed.
+        1.  Indicating that a ManeuverSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class ManeuverSearchAuthorizationLoaderException(SearchAuthorizationLoaderExcept
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "ManeuverSearchLoader failed."
-    ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "ManeuverSearchAuthorizationLoader failed."
+    ERR_CODE = "MANEUVER_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

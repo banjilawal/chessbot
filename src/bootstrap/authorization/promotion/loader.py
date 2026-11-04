@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import PromotionDecision
 from bootstrap import AuthorizationLoader
 from domain import Rank, PawnToken, Rank, Token
-from err import PromotionRequestNullException
+from err import PromotionPermissionRequestNullException, PromotionRequestNullException
 from exchange import (
     PromotionPermissionRequest, PromotionRequest, RankValidationRequest, RankValidationService,
     TokenValidationRequest, TokenValidationService
@@ -198,7 +198,7 @@ class PromotionAuthorizationLoader(
         # --- PROCESS_THE_PROMOTION_RANK_ATTRIBUTE. ---#
         rank_validation = self._rank_validation_service.extract_model(
             request=RankValidationRequest(
-                item=RankCarrier(model=applicant.elevatable_to_rank),
+                item=RankCarrier(model=applicant.promotion_level),
                 id=IdFactory.next_id(class_name="RankValidationRequest")
             )
         )

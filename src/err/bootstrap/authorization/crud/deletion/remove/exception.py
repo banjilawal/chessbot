@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import DeletionAuthorizationLoaderException
 
 __all__ = [
-    # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
+    # ======================# REMOVE_LOADER_FAILURE #======================#
     "RemoveNodeAuthorizationLoaderException",
 ]
 
-# ======================# REMOVE_REQUEST_NULL_ERROR #======================#
+# ======================# REMOVE_LOADER_FAILURE #======================#
 class RemoveNodeAuthorizationLoaderException(DeletionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveNodeLoader failed.
+        1.  Indicating that an RemoveNodeAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class RemoveNodeAuthorizationLoaderException(DeletionAuthorizationLoaderExceptio
     Super Class:
         DeletionAuthorizationLoaderException
     """
-    MSG = "RemoveNodeLoader failed."
-    ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"
+    MSG = "RemoveNodeAuthorizationLoader failed."
+    ERR_CODE = "REMOVE_LOADER_FAILURE"
     
     def __init__(
             self,

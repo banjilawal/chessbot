@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ARENA_PUSH_LOADER_FAILURE #======================#
     "ArenaPushAuthorizationLoaderException",
 ]
 
-# ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ARENA_PUSH_LOADER_FAILURE #======================#
 class ArenaPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPushLoader failed.
+        1.  Indicating that a ArenaPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class ArenaPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "ArenaPushLoader failed."
-    ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
+    MSG = "ArenaPushAuthorizationLoader failed."
+    ERR_CODE = "ARENA_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

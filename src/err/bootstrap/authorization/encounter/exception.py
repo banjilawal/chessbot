@@ -27,7 +27,7 @@ class AttackAuthorizationLoaderException(AuthorizationLoaderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AttackLoader failed.
+        1.  Indicating that a AttackAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class AttackAuthorizationLoaderException(AuthorizationLoaderException):
     Super Class:
         AuthorizationLoaderException
     """
-    MSG = "AttackLoader failed."
+    MSG = "AttackAuthorizationLoader failed."
     ERR_CODE = "ATTACK_LOADER_FAILURE"
     
     def __init__(

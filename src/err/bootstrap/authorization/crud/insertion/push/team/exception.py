@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TEAM_PUSH_LOADER_FAILURE #======================#
     "TeamPushAuthorizationLoaderException",
 ]
 
-# ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TEAM_PUSH_LOADER_FAILURE #======================#
 class TeamPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushLoader failed.
+        1.  Indicating that a TeamPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class TeamPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "TeamPushLoader failed."
-    ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TeamPushAuthorizationLoader failed."
+    ERR_CODE = "TEAM_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

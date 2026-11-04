@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import CrudAuthorizationLoaderException
 
 __all__ = [
-    # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
+    # ======================# SEARCH_LOADER_FAILURE #======================#
     "SearchAuthorizationLoaderException",
 ]
 
-# ======================# SEARCH_REQUEST_NULL_ERROR #======================#
+# ======================# SEARCH_LOADER_FAILURE #======================#
 class SearchAuthorizationLoaderException(CrudAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SearchLoader failed.
+        1.  Indicating that an SearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class SearchAuthorizationLoaderException(CrudAuthorizationLoaderException):
     Super Class:
         CrudAuthorizationLoaderException
     """
-    MSG = "SearchLoader failed."
-    ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"
+    MSG = "SearchAuthorizationLoader failed."
+    ERR_CODE = "SEARCH_LOADER_FAILURE"
     
     def __init__(
             self,

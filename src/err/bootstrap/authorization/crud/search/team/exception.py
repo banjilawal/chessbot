@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TEAM_PUSH_LOADER_FAILURE #======================#
     "TeamSearchAuthorizationLoaderException",
 ]
 
-# ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TEAM_PUSH_LOADER_FAILURE #======================#
 class TeamSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamSearchLoader failed.
+        1.  Indicating that a TeamSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class TeamSearchAuthorizationLoaderException(SearchAuthorizationLoaderException)
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "TeamSearchLoader failed."
-    ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TeamSearchAuthorizationLoader failed."
+    ERR_CODE = "TEAM_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

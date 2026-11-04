@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ACCOUNT_PUSH_LOADER_FAILURE #======================#
     "AccountPushAuthorizationLoaderException",
 ]
 
-# ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ACCOUNT_PUSH_LOADER_FAILURE #======================#
 class AccountPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPushLoader failed.
+        1.  Indicating that a AccountPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class AccountPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "AccountPushLoader failed."
-    ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
+    MSG = "AccountPushAuthorizationLoader failed."
+    ERR_CODE = "ACCOUNT_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

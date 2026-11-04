@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# SQUARE_PUSH_LOADER_FAILURE #======================#
     "SquareSearchAuthorizationLoaderException",
 ]
 
-# ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# SQUARE_PUSH_LOADER_FAILURE #======================#
 class SquareSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquareSearchLoader failed.
+        1.  Indicating that a SquareSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class SquareSearchAuthorizationLoaderException(SearchAuthorizationLoaderExceptio
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "SquareSearchLoader failed."
-    ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
+    MSG = "SquareSearchAuthorizationLoader failed."
+    ERR_CODE = "SQUARE_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

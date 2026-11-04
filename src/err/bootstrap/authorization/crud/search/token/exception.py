@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TOKEN_PUSH_LOADER_FAILURE #======================#
     "TokenSearchAuthorizationLoaderException",
 ]
 
-# ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TOKEN_PUSH_LOADER_FAILURE #======================#
 class TokenSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenSearchLoader failed.
+        1.  Indicating that a TokenSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class TokenSearchAuthorizationLoaderException(SearchAuthorizationLoaderException
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "TokenSearchLoader failed."
-    ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TokenSearchAuthorizationLoader failed."
+    ERR_CODE = "TOKEN_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

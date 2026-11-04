@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    # ======================# SEARCH_VECTOR_NODE_LOADER_FAILURE #======================#
     "VectorSearchAuthorizationLoaderException",
 ]
 
-# ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+# ======================# SEARCH_VECTOR_NODE_LOADER_FAILURE #======================#
 class VectorSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a VectorSearchLoader failed.
+        1.  Indicating that a VectorSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class VectorSearchAuthorizationLoaderException(SearchAuthorizationLoaderExceptio
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "VectorSearchLoader failed."
-    ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "VectorSearchAuthorizationLoader failed."
+    ERR_CODE = "SEARCH_VECTOR_NODE_LOADER_FAILURE"
     
     def __init__(
             self,

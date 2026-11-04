@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# COORD_PUSH_LOADER_FAILURE #======================#
     "CoordPushAuthorizationLoaderException",
 ]
 
-# ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# COORD_PUSH_LOADER_FAILURE #======================#
 class CoordPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPushLoader failed.
+        1.  Indicating that a CoordPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class CoordPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "CoordPushLoader failed."
-    ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "CoordPushAuthorizationLoader failed."
+    ERR_CODE = "COORD_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

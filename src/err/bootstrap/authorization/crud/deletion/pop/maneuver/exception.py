@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# MANEUVER_POP_LOADER_FAILURE #======================#
     "ManeuverPopAuthorizationLoaderException",
 ]
 
-# ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
+# ======================# MANEUVER_POP_LOADER_FAILURE #======================#
 class ManeuverPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPopLoader failed.
+        1.  Indicating that a ManeuverPopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class ManeuverPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "ManeuverPopLoader failed."
-    ERR_CODE = "MANEUVER_POP_REQUEST_NULL_ERROR"
+    MSG = "ManeuverPopAuthorizationLoader failed."
+    ERR_CODE = "MANEUVER_POP_LOADER_FAILURE"
     
     def __init__(
             self,

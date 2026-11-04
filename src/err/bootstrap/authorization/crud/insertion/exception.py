@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import CrudAuthorizationLoaderException
 
 __all__ = [
-    # ======================# INSERTION_REQUEST_NULL_ERROR #======================#
+    # ======================# INSERTION_LOADER_FAILURE #======================#
     "InsertionAuthorizationLoaderException",
 ]
 
-# ======================# INSERTION_REQUEST_NULL_ERROR #======================#
+# ======================# INSERTION_LOADER_FAILURE #======================#
 class InsertionAuthorizationLoaderException(CrudAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an InsertionLoader failed.
+        1.  Indicating that an InsertionAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class InsertionAuthorizationLoaderException(CrudAuthorizationLoaderException):
     Super Class:
         CrudAuthorizationLoaderException
     """
-    MSG = "InsertionLoader failed."
-    ERR_CODE = "INSERTION_REQUEST_NULL_ERROR"
+    MSG = "InsertionAuthorizationLoader failed."
+    ERR_CODE = "INSERTION_LOADER_FAILURE"
     
     def __init__(
             self,

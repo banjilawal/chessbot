@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import InsertionAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ADD_REQUEST_NULL_ERROR #======================#
+    # ======================# ADD_LOADER_FAILURE #======================#
     "AddNodeAuthorizationLoaderException",
 ]
 
-# ======================# ADD_REQUEST_NULL_ERROR #======================#
+# ======================# ADD_LOADER_FAILURE #======================#
 class AddNodeAuthorizationLoaderException(InsertionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddNodeLoader failed.
+        1.  Indicating that an AddNodeAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class AddNodeAuthorizationLoaderException(InsertionAuthorizationLoaderException)
     Super Class:
         InsertionAuthorizationLoaderException
     """
-    MSG = "AddNodeLoader failed."
-    ERR_CODE = "ADD_REQUEST_NULL_ERROR"
+    MSG = "AddNodeAuthorizationLoader failed."
+    ERR_CODE = "ADD_LOADER_FAILURE"
     
     def __init__(
             self,

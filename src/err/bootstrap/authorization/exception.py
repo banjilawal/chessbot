@@ -26,7 +26,7 @@ class AuthorizationLoaderException(LoaderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Loader failed.
+        1.  Indicating that a AuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class AuthorizationLoaderException(LoaderException):
     Super Class:
         LoaderException
     """
-    MSG = "Loader failed."
+    MSG = "AuthorizationLoader failed."
     ERR_CODE = "LOADER_FAILURE"
     
     def __init__(

@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# ENCOUNTER_PUSH_LOADER_FAILURE #======================#
     "EncounterSearchAuthorizationLoaderException",
 ]
 
-# ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# ENCOUNTER_PUSH_LOADER_FAILURE #======================#
 class EncounterSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterSearchLoader failed.
+        1.  Indicating that a EncounterSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class EncounterSearchAuthorizationLoaderException(SearchAuthorizationLoaderExcep
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "EncounterSearchLoader failed."
-    ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "EncounterSearchAuthorizationLoader failed."
+    ERR_CODE = "ENCOUNTER_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

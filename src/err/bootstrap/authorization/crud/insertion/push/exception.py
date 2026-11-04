@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import InsertionAuthorizationLoaderException
 
 __all__ = [
-    # ======================# PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# PUSH_LOADER_FAILURE #======================#
     "PushAuthorizationLoaderException",
 ]
 
-# ======================# PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# PUSH_LOADER_FAILURE #======================#
 class PushAuthorizationLoaderException(InsertionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushLoader failed.
+        1.  Indicating that a PushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class PushAuthorizationLoaderException(InsertionAuthorizationLoaderException):
     Super Class:
         InsertionAuthorizationLoaderException
     """
-    MSG = "PushLoader failed."
-    ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
+    MSG = "PushAuthorizationLoader failed."
+    ERR_CODE = "PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

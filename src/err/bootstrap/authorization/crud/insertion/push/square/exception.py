@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# SQUARE_PUSH_LOADER_FAILURE #======================#
     "SquarePushAuthorizationLoaderException",
 ]
 
-# ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# SQUARE_PUSH_LOADER_FAILURE #======================#
 class SquarePushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushLoader failed.
+        1.  Indicating that a SquarePushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class SquarePushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "SquarePushLoader failed."
-    ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
+    MSG = "SquarePushAuthorizationLoader failed."
+    ERR_CODE = "SQUARE_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# BOARD_PUSH_LOADER_FAILURE #======================#
     "BoardPushAuthorizationLoaderException",
 ]
 
-# ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# BOARD_PUSH_LOADER_FAILURE #======================#
 class BoardPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPushLoader failed.
+        1.  Indicating that a BoardPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class BoardPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "BoardPushLoader failed."
-    ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "BoardPushAuthorizationLoader failed."
+    ERR_CODE = "BOARD_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

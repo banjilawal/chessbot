@@ -27,7 +27,7 @@ class ManeuverAuthorizationLoaderException(AuthorizationLoaderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverLoader failed.
+        1.  Indicating that a ManeuverAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class ManeuverAuthorizationLoaderException(AuthorizationLoaderException):
     Super Class:
         AuthorizationLoaderException
     """
-    MSG = "ManeuverLoader failed."
+    MSG = "ManeuverAuthorizationLoader failed."
     ERR_CODE = "MANEUVER_LOADER_FAILURE"
     
     def __init__(

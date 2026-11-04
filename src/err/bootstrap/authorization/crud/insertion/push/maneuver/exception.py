@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# MANEUVER_PUSH_LOADER_FAILURE #======================#
     "ManeuverPushAuthorizationLoaderException",
 ]
 
-# ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# MANEUVER_PUSH_LOADER_FAILURE #======================#
 class ManeuverPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPushLoader failed.
+        1.  Indicating that a ManeuverPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class ManeuverPushAuthorizationLoaderException(PushAuthorizationLoaderException)
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "ManeuverPushLoader failed."
-    ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "ManeuverPushAuthorizationLoader failed."
+    ERR_CODE = "MANEUVER_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

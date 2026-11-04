@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import AddNodeAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    # ======================# ADD_VECTOR_NODE_LOADER_FAILURE #======================#
     "AddVectorNodeAuthorizationLoaderException",
 ]
 
-# ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+# ======================# ADD_VECTOR_NODE_LOADER_FAILURE #======================#
 class AddVectorNodeAuthorizationLoaderException(AddNodeAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeLoader failed.
+        1.  Indicating that an AddVectorNodeAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class AddVectorNodeAuthorizationLoaderException(AddNodeAuthorizationLoaderExcept
     Super Class:
         AddNodeAuthorizationLoaderException
     """
-    MSG = "AddVectorNodeLoader failed."
-    ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "AddVectorNodeAuthorizationLoader failed."
+    ERR_CODE = "ADD_VECTOR_NODE_LOADER_FAILURE"
     
     def __init__(
             self,

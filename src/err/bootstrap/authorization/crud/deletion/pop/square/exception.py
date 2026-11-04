@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# SQUARE_POP_LOADER_FAILURE #======================#
     "SquarePopAuthorizationLoaderException",
 ]
 
-# ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
+# ======================# SQUARE_POP_LOADER_FAILURE #======================#
 class SquarePopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePopLoader failed.
+        1.  Indicating that a SquarePopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class SquarePopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "SquarePopLoader failed."
-    ERR_CODE = "SQUARE_POP_REQUEST_NULL_ERROR"
+    MSG = "SquarePopAuthorizationLoader failed."
+    ERR_CODE = "SQUARE_POP_LOADER_FAILURE"
     
     def __init__(
             self,

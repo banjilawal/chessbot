@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# PLAYER_PUSH_LOADER_FAILURE #======================#
     "PlayerSearchAuthorizationLoaderException",
 ]
 
-# ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# PLAYER_PUSH_LOADER_FAILURE #======================#
 class PlayerSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerSearchLoader failed.
+        1.  Indicating that a PlayerSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class PlayerSearchAuthorizationLoaderException(SearchAuthorizationLoaderExceptio
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "PlayerSearchLoader failed."
-    ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
+    MSG = "PlayerSearchAuthorizationLoader failed."
+    ERR_CODE = "PLAYER_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

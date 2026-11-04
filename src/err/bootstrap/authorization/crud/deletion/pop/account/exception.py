@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PopAuthorizationLoaderException
 
 __all__ = [
-    # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
+    # ======================# ACCOUNT_POP_LOADER_FAILURE #======================#
     "AccountPopAuthorizationLoaderException",
 ]
 
-# ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
+# ======================# ACCOUNT_POP_LOADER_FAILURE #======================#
 class AccountPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPopLoader failed.
+        1.  Indicating that a AccountPopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class AccountPopAuthorizationLoaderException(PopAuthorizationLoaderException):
     Super Class:
         PopAuthorizationLoaderException
     """
-    MSG = "AccountPopLoader failed."
-    ERR_CODE = "ACCOUNT_POP_REQUEST_NULL_ERROR"
+    MSG = "AccountPopAuthorizationLoader failed."
+    ERR_CODE = "ACCOUNT_POP_LOADER_FAILURE"
     
     def __init__(
             self,

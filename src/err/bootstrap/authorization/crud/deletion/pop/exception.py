@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import DeletionAuthorizationLoaderException
 
 __all__ = [
-    # ======================# POP_REQUEST_NULL_ERROR #======================#
+    # ======================# POP_LOADER_FAILURE #======================#
     "PopAuthorizationLoaderException",
 ]
 
-# ======================# POP_REQUEST_NULL_ERROR #======================#
+# ======================# POP_LOADER_FAILURE #======================#
 class PopAuthorizationLoaderException(DeletionAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PopLoader failed.
+        1.  Indicating that a PopAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class PopAuthorizationLoaderException(DeletionAuthorizationLoaderException):
     Super Class:
         DeletionAuthorizationLoaderException
     """
-    MSG = "PopLoader failed."
-    ERR_CODE = "POP_REQUEST_NULL_ERROR"
+    MSG = "PopAuthorizationLoader failed."
+    ERR_CODE = "POP_LOADER_FAILURE"
     
     def __init__(
             self,

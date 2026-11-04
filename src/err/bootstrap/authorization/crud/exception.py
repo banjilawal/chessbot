@@ -27,7 +27,7 @@ class CrudAuthorizationLoaderException(AuthorizationLoaderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudLoader failed.
+        1.  Indicating that a CrudAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class CrudAuthorizationLoaderException(AuthorizationLoaderException):
     Super Class:
         AuthorizationLoaderException
     """
-    MSG = "CrudLoader failed."
+    MSG = "CrudAuthorizationLoader failed."
     ERR_CODE = "CRUD_LOADER_FAILURE"
     
     def __init__(

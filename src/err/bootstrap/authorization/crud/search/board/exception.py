@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchAuthorizationLoaderException
 
 __all__ = [
-    # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# BOARD_PUSH_LOADER_FAILURE #======================#
     "BoardSearchAuthorizationLoaderException",
 ]
 
-# ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# BOARD_PUSH_LOADER_FAILURE #======================#
 class BoardSearchAuthorizationLoaderException(SearchAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardSearchLoader failed.
+        1.  Indicating that a BoardSearchAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class BoardSearchAuthorizationLoaderException(SearchAuthorizationLoaderException
     Super Class:
         SearchAuthorizationLoaderException
     """
-    MSG = "BoardSearchLoader failed."
-    ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
+    MSG = "BoardSearchAuthorizationLoader failed."
+    ERR_CODE = "BOARD_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,

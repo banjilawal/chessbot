@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import PushAuthorizationLoaderException
 
 __all__ = [
-    # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+    # ======================# TOKEN_PUSH_LOADER_FAILURE #======================#
     "TokenPushAuthorizationLoaderException",
 ]
 
-# ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
+# ======================# TOKEN_PUSH_LOADER_FAILURE #======================#
 class TokenPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPushLoader failed.
+        1.  Indicating that a TokenPushAuthorizationLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class TokenPushAuthorizationLoaderException(PushAuthorizationLoaderException):
     Super Class:
         PushAuthorizationLoaderException
     """
-    MSG = "TokenPushLoader failed."
-    ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
+    MSG = "TokenPushAuthorizationLoader failed."
+    ERR_CODE = "TOKEN_PUSH_LOADER_FAILURE"
     
     def __init__(
             self,
