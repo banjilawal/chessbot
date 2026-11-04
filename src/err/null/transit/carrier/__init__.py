@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .container import *
+from .context import *
 from .model import *
 from .movement import *
 from .recurrence import *

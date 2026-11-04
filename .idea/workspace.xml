@@ -5,71 +5,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/footstep/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/footstep/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/blocked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/checked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/checked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/circular/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/circular/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/player/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/player/human/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/player/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/player/machine/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/scalar/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/square/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/square/home/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/authorization/checker/ready/disabled/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/model/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/struct/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/chart/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/chart/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/chart/participate/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/chart/participate/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/struct/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/toggle/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/toggle/cartesian/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/toggle/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/path/blocked/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/toggle/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/toggle/orientation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/struct/toggle/orientation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/context/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/account/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/account/human/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/account/human/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/account/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/account/machine/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/alert/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/alert/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/checkmate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/checkmate/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/kill/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/kill/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/stalemate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/stalemate/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/warning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/encounter/warning/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/footstep/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/footstep/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/path/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/bishop/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/knight/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/pawn/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/queen/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/rank/rook/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/scalar/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/square/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/square/home/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/combatant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/combatant/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/combatant/pawn/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/token/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/context/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,61 +120,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000000000001" />
-      <entry key="MS500" value="1.0010152142921633" />
-      <entry key="S2" value="1.178500497558784" />
-      <entry key="S5" value="1.502137389861862" />
-      <entry key="S10" value="1.7354109769753334" />
-      <entry key="S30" value="2.687953961676288" />
-      <entry key="S60" value="3.9535245241335533" />
-      <entry key="M2" value="5.329452171846705" />
-      <entry key="M5" value="8.867565795094293" />
-      <entry key="M10" value="39.413882019952545" />
-      <entry key="M15" value="94.60558481900118" />
-      <entry key="M30" value="266.8098047119626" />
-      <entry key="H1" value="496.5929300389561" />
-      <entry key="H2" value="818.8201915694983" />
-      <entry key="H4" value="1355.3015894955838" />
-      <entry key="D1" value="5140.2920568304135" />
-      <entry key="W1" value="28517.84374207773" />
+      <entry key="MS100" value="4.98541101478772E-4" />
+      <entry key="MS500" value="0.22617326128418794" />
+      <entry key="S2" value="1.0736936735537659" />
+      <entry key="S5" value="1.8629212965476507" />
+      <entry key="S10" value="2.4195663273516588" />
+      <entry key="S30" value="8.912684961785406" />
+      <entry key="S60" value="21.224352384761076" />
+      <entry key="M2" value="35.03903520124284" />
+      <entry key="M5" value="50.192563536893985" />
+      <entry key="M10" value="75.544529533562" />
+      <entry key="M15" value="120.72960186697351" />
+      <entry key="M30" value="279.9338485687943" />
+      <entry key="H1" value="511.93104560771883" />
+      <entry key="H2" value="841.2193498552476" />
+      <entry key="H4" value="1383.6850649534877" />
+      <entry key="D1" value="5179.518549042868" />
+      <entry key="W1" value="28560.968834902695" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.4548229519526287E-200" />
-      <entry key="MS500" value="1.19679526346901E-40" />
-      <entry key="S2" value="1.127191289239989E-10" />
-      <entry key="S5" value="1.3845286903731694E-4" />
-      <entry key="S10" value="0.016143805864610776" />
-      <entry key="S30" value="0.41052993274114474" />
-      <entry key="S60" value="1.047917542659773" />
-      <entry key="M2" value="1.8940324638631998" />
-      <entry key="M5" value="2.9087012183937726" />
-      <entry key="M10" value="3.5621450148063367" />
-      <entry key="M15" value="4.1252551363475" />
-      <entry key="M30" value="5.743566400467299" />
-      <entry key="H1" value="8.262061739448045" />
-      <entry key="H2" value="13.061357976070232" />
-      <entry key="H4" value="25.04495560938267" />
-      <entry key="D1" value="183.61984121582492" />
-      <entry key="W1" value="1482.8955699430958" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0000000000000002" />
+      <entry key="S30" value="1.000011148115045" />
+      <entry key="S60" value="1.0054607892703264" />
+      <entry key="M2" value="1.1367261459429945" />
+      <entry key="M5" value="2.016447083815029" />
+      <entry key="M10" value="3.105738445296346" />
+      <entry key="M15" value="3.9056682917915193" />
+      <entry key="M30" value="5.820357586040977" />
+      <entry key="H1" value="8.568977968234705" />
+      <entry key="H2" value="13.501517552971203" />
+      <entry key="H4" value="25.50233467445124" />
+      <entry key="D1" value="183.9507276091874" />
+      <entry key="W1" value="1483.1224052187754" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2055416336677245E-15" />
-      <entry key="MS500" value="0.001267359728185602" />
-      <entry key="S2" value="0.30255871062944717" />
-      <entry key="S5" value="0.9359048532225995" />
-      <entry key="S10" value="1.4064982199236273" />
-      <entry key="S30" value="2.933950531530144" />
-      <entry key="S60" value="4.8890804086041815" />
-      <entry key="M2" value="7.150283615501628" />
-      <entry key="M5" value="11.739676033457842" />
-      <entry key="M10" value="42.95362554626107" />
-      <entry key="M15" value="98.71237388540503" />
-      <entry key="M30" value="272.5392075287445" />
-      <entry key="H1" value="504.8443105437752" />
-      <entry key="H2" value="831.8708420307452" />
-      <entry key="H4" value="1380.3322888456037" />
-      <entry key="D1" value="5323.88941739744" />
-      <entry key="W1" value="30000.712454610868" />
+      <entry key="MS100" value="0.009823693063099671" />
+      <entry key="MS500" value="0.6088618203091829" />
+      <entry key="S2" value="1.6651326099928174" />
+      <entry key="S5" value="2.5498942558578945" />
+      <entry key="S10" value="3.2144969018632494" />
+      <entry key="S30" value="9.826369273871657" />
+      <entry key="S60" value="22.180521520922177" />
+      <entry key="M2" value="36.14368827196811" />
+      <entry key="M5" value="52.18467596250649" />
+      <entry key="M10" value="78.63108444027938" />
+      <entry key="M15" value="124.61826310051205" />
+      <entry key="M30" value="285.7402986119133" />
+      <entry key="H1" value="520.4892228346501" />
+      <entry key="H2" value="854.7101097528653" />
+      <entry key="H4" value="1409.1731973647247" />
+      <entry key="D1" value="5363.446835396914" />
+      <entry key="W1" value="30044.064390638378" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -200,7 +209,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/transit/carrier",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/transit/carrier",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -214,11 +223,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null/transit/carrier" />
       <recent name="$PROJECT_DIR$/src/err/transit/carrier" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/crud/search" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/crud/deletion/pop" />
-      <recent name="$PROJECT_DIR$/src/err/authorization/checker/maneuver/origin/consistency" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/ready" />
@@ -1040,7 +1049,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="211670000" />
+      <workItem from="1793360739922" duration="212363000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3057,6 +3066,11 @@
           <url>file://$PROJECT_DIR$/src/err/transit/carrier/struct/register/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="674" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/transit/carrier/context/exception.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="675" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
