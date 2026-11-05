@@ -26,10 +26,7 @@ class CollisionManager(ABC, Generic[T]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Run integrity checks on an object or its blueprint encapsulated inside their
-            EntityCarrier.
-        2.  Makes sure objects or their blueprints are safe before they are used.
-        3.  Pluggable collision module.
+        1.  Detect if an insert breaks a collection's uniqueness constraint.
 
     Attributes:
         detector: CollisionDetector[T]
@@ -57,7 +54,7 @@ class CollisionManager(ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, item: T, collection: Stack[T]) -> CollisionReport:
         """
-        Verify the candidate is an EntityCarrier whose payload is safe.
+        Assure the item will be unique in the collection.
         Args:
             item: T
             collection: Stack[T]

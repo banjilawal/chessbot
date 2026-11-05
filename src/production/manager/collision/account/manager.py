@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Dict, Optional, cast
+from typing import Optional, cast
 
 from artifcat import CollisionReport
 from collection import AccountStack
@@ -53,7 +53,7 @@ class AccountCollisionManager(CollisionManager[Account]):
     @LoggingLevelRouter.monitor
     def execute(self, item: Account, collection: AccountStack) -> CollisionReport:
         """
-        Assure the item will be unique in the collection.
+        Assure the item will be unique in the Account collection.
         
         Action:
             1.  If the item shares an attribute-value supposed to be unique to the
