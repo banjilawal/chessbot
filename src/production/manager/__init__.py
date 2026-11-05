@@ -11,7 +11,8 @@ version: 0.0.2
 
 # Packages
 from .fabrication import *
-from .validation import *
 from .search import *
+from .sensor import *
+from .validation import *
 
 # Modules

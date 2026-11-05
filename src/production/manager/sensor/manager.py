@@ -13,6 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import CollisionReport
+from collection import Stack
 from domain import Context, Model
 from transit import SensorRouter
 from util import LoggingLevelRouter
@@ -32,5 +33,5 @@ class CollisionDetector(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, context: Context[T]) -> CollisionReport:
+    def execute(self, context: Context[T], stream: Stack[T]) -> CollisionReport:
         pass
