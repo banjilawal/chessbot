@@ -1,0 +1,20 @@
+# src/environment/detector/detector.py
+
+"""
+Module: environment.detector.detector
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC
+from typing import Generic, TypeVar
+
+
+T = TypeVar("T")
+
+
+class Detector(ABC, Generic[T]):
+    pass
