@@ -1,4 +1,4 @@
-# src/sensor/logic/square/database/kernel/operation/quota/validator.py
+# src/environment/logic/square/database/kernel/operation/quota/validator.py
 
 """
 Module: sensor.logic.square.database.kernel.operation.quota.analyzer

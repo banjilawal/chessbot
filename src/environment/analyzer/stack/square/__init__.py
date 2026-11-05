@@ -1,4 +1,4 @@
-# src/sensor/logic/square/database/kernel/operation/token/__init__.py
+# src/environment/logic/square/database/kernel/operation/token/__init__.py
 
 """
 Module: sensor.logic.square.database.kernel.operation.token.__init__

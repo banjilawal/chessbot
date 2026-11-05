@@ -5,112 +5,89 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/environment/detector/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/id/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/environment/sensor/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/factory/athorization/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/factory/athorization/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/factory/athorization/factory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/factory/athorization/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/factory/athorization/model/factory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/sensor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/sensor/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/sensor/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/sensor/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/combatant/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/combatant/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/king/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/king/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/departure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/departure/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/departure/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/empty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/departure/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/debug/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/debug/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/disabled.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/debug/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/occupied.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/debug/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/opening.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/entry/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/vulnerability/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/vulnerability/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/vulnerability/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/vulnerability/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/manager/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/manager/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/manager/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/rank/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/quota/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/quota/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/quota/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/quota/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/quota/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/quota/rank/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/readiness/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/readiness/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/readiness/combatant/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/combatant/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/readiness/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/readiness/king/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/king/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/binder/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/binder/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/square/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/square/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/board/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/board/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/player/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/player/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/square/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/team/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/team/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/stack/square/capacity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/square/capacity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/stack/square/capacity/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/square/capacity/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/account/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/account/email/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/account/machine/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/account/machine/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/id/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/id/account/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/id/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/square/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/attribute/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/token/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/token/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/home/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/token/home/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/home/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/token/home/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/readiness/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/readiness/combatant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/readiness/combatant/analyzer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/readiness/detector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/readiness/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/detector/token/readiness/king/analyzer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/sensor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/combatant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/combatant/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/combatant/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/king/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/friend/enemy/king/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/departure/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/disabled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/occupied.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/debug/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/entry/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/vulnerability/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/vulnerability/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/itinerary/vulnerability/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/itinerary/vulnerability/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/promotion/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/manager/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/promotion/manager/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/manager/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/promotion/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/promotion/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/promotion/rank/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/quota/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/quota/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/quota/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/quota/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/quota/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/quota/rank/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/readiness/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/readiness/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/combatant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/readiness/combatant/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/combatant/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/readiness/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/readiness/king/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/readiness/king/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/binder/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/binder/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/team/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/team/board/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/board/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/team/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/team/player/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/team/player/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/token/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/token/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/square/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/token/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/relation/token/team/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/relation/token/team/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/stack/square/capacity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/square/capacity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/analyzer/stack/square/capacity/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/analyzer/stack/square/capacity/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/machine/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/square/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/factory/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/factory/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,61 +129,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000022999889" />
-      <entry key="S60" value="1.0000871086416934" />
-      <entry key="M2" value="1.0185190387950736" />
-      <entry key="M5" value="1.5086784884435849" />
-      <entry key="M10" value="2.579852825810213" />
-      <entry key="M15" value="3.3185362294244025" />
-      <entry key="M30" value="5.764454915134482" />
-      <entry key="H1" value="31.127409438045653" />
-      <entry key="H2" value="141.98718512116596" />
-      <entry key="H4" value="520.8859965588053" />
-      <entry key="D1" value="5270.9248560357955" />
-      <entry key="W1" value="29677.93912329256" />
+      <entry key="MS100" value="1.9647505864037507E-23" />
+      <entry key="MS500" value="2.8751564755395765E-5" />
+      <entry key="S2" value="0.07322601013020914" />
+      <entry key="S5" value="0.3514521047586365" />
+      <entry key="S10" value="0.5928339605308021" />
+      <entry key="S30" value="0.8400613903218377" />
+      <entry key="S60" value="0.9165486295455566" />
+      <entry key="M2" value="0.9573654628957307" />
+      <entry key="M5" value="0.9827229590921064" />
+      <entry key="M10" value="0.9913244078887837" />
+      <entry key="M15" value="0.9946906671683353" />
+      <entry key="M30" value="1.4120803803500683" />
+      <entry key="H1" value="13.913461587258976" />
+      <entry key="H2" value="90.43848939071539" />
+      <entry key="H4" value="368.81315513695347" />
+      <entry key="D1" value="4861.313883811709" />
+      <entry key="W1" value="29410.598499053507" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="8.200840748586204E-159" />
-      <entry key="S60" value="9.234477186445678E-80" />
-      <entry key="M2" value="3.865917392592539E-40" />
-      <entry key="M5" value="4.466923637360874E-16" />
-      <entry key="M10" value="6.342620446322133E-8" />
-      <entry key="M15" value="3.535582362131571E-5" />
-      <entry key="M30" value="0.021029018143553183" />
-      <entry key="H1" value="0.5535377816003779" />
-      <entry key="H2" value="4.076206851264375" />
-      <entry key="H4" value="18.650589103295854" />
-      <entry key="D1" value="188.39046355325917" />
-      <entry key="W1" value="1476.9290315673613" />
+      <entry key="MS100" value="1.00000000002252" />
+      <entry key="MS500" value="1.00742187799121" />
+      <entry key="S2" value="1.2935137510594297" />
+      <entry key="S5" value="1.6124228427442269" />
+      <entry key="S10" value="1.7825744966098926" />
+      <entry key="S30" value="1.9215280594426214" />
+      <entry key="S60" value="1.9599625302284571" />
+      <entry key="M2" value="1.979776775713967" />
+      <entry key="M5" value="1.9918610964327623" />
+      <entry key="M10" value="1.9959222402693437" />
+      <entry key="M15" value="1.997284416509357" />
+      <entry key="M30" value="2.0024194622546267" />
+      <entry key="H1" value="2.122126325145186" />
+      <entry key="H2" value="3.27283131499412" />
+      <entry key="H4" value="11.080716094196822" />
+      <entry key="D1" value="167.4561996366329" />
+      <entry key="W1" value="1451.4445215831884" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9526379980439373" />
-      <entry key="MS500" value="0.9903428719330246" />
-      <entry key="S2" value="0.9975769252644544" />
-      <entry key="S5" value="0.9990300646389034" />
-      <entry key="S10" value="0.9995149146655609" />
-      <entry key="S30" value="0.9998382809602909" />
-      <entry key="S60" value="1.0000048585484993" />
-      <entry key="M2" value="1.018345980826929" />
-      <entry key="M5" value="1.5074200360968608" />
-      <entry key="M10" value="2.578067145311551" />
-      <entry key="M15" value="3.3168827752904213" />
-      <entry key="M30" value="5.784064018898131" />
-      <entry key="H1" value="31.67732929895913" />
-      <entry key="H2" value="146.05396421194783" />
-      <entry key="H4" value="539.5199958839869" />
-      <entry key="D1" value="5459.292169802909" />
-      <entry key="W1" value="31154.84154158627" />
+      <entry key="MS100" value="6.2835008031278475E-6" />
+      <entry key="MS500" value="0.09119781759616089" />
+      <entry key="S2" value="0.6886359950171921" />
+      <entry key="S5" value="1.468218544929247" />
+      <entry key="S10" value="2.052186138043387" />
+      <entry key="S30" value="2.6304987448939037" />
+      <entry key="S60" value="2.807508135533166" />
+      <entry key="M2" value="2.9017299575310385" />
+      <entry key="M5" value="2.9601943470134655" />
+      <entry key="M10" value="2.980013798169796" />
+      <entry key="M15" value="2.9871446826286547" />
+      <entry key="M30" value="3.4120719662831123" />
+      <entry key="H1" value="16.034162416381854" />
+      <entry key="H2" value="93.70878866955752" />
+      <entry key="H4" value="379.88631456148426" />
+      <entry key="D1" value="5028.749909702656" />
+      <entry key="W1" value="30862.016930278416" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -241,7 +218,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/production/manager/sensor/account",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/production/factory",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -255,18 +232,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/production/factory" />
+      <recent name="$PROJECT_DIR$/src/environment/detector" />
       <recent name="$PROJECT_DIR$/src/production/manager/sensor/account" />
       <recent name="$PROJECT_DIR$/src/transit/router/sensor/account" />
       <recent name="$PROJECT_DIR$/src/sensor/attribute/account" />
-      <recent name="$PROJECT_DIR$/src/sensor/collision/account" />
-      <recent name="$PROJECT_DIR$/src/sensor/collision/account/firstname" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/environment/detector" />
       <recent name="$PROJECT_DIR$/src/err/sensor" />
       <recent name="$PROJECT_DIR$/src/err/null/exchange/request" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/ready" />
       <recent name="$PROJECT_DIR$/src/err/authorization/checker/maneuver/destination" />
-      <recent name="$PROJECT_DIR$/src/authorization/permitter/crud/search/model" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -1081,7 +1058,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="259542000" />
+      <workItem from="1793360739922" duration="264623000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3124,6 +3101,11 @@
           <url>file://$PROJECT_DIR$/src/artifcat/report/collision/collision.py</url>
           <line>55</line>
           <option name="timeStamp" value="680" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/environment/detector/detector.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="682" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

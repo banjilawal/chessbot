@@ -1,4 +1,4 @@
-# src/sensor/logic/square.schema/exception/debug.py
+# src/environment/logic/square.schema/exception/debug.py
 
 """
 Module: sensor.logic.square.schema.exception.debug

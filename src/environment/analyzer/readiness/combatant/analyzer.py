@@ -1,7 +1,7 @@
-# src/sensor/analyzer/readiness/combatant/analyzer.py
+# src/environment/analyzer/readiness/combatant/analyzer.py
 
 """
-Module: sensor.analyzer.readiness.combatant.analyzer
+Module: environment.analyzer.readiness.combatant.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from domain.model import CombatantToken
 from artifcat.report import TokenReadinessReport
 from artifcat import AnalysisResult

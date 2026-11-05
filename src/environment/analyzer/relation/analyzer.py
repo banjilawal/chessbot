@@ -1,7 +1,7 @@
-# src/sensor/analyzer/relation/analyst.py
+# src/environment/analyzer/relation/analyst.py
 
 """
-Module: sensor.analyzer.relation.analyst
+Module: environment.analyzer.relation.analyst
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from artifcat.report import RelationReport
 from artifcat import AnalysisResult
 from util import LoggingLevelRouter

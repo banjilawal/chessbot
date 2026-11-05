@@ -1,4 +1,4 @@
-# src/sensor/logic/square/service/visitation/exception/terminate/validator.py
+# src/environment/logic/square/service/visitation/exception/terminate/validator.py
 
 """
 Module: sensor.logic.square.service.visitation.exception.terminate.work

@@ -1,7 +1,7 @@
-# src/sensor/analyzer/quota/rank/analyzer.py
+# src/environment/analyzer/quota/rank/analyzer.py
 
 """
-Module: sensor.analyzer.quota.rank.analyzer
+Module: environment.analyzer.quota.rank.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from bootstrapper.analyzer.quota.bootstrapper import QuotaAnalyzerBootstrapper
 from err import RankQuotaAnalyzerException
 from domain.model import Rank

@@ -1,7 +1,7 @@
-# src/sensor/analyzer/friend/combatant/detector.py
+# src/environment/analyzer/friend/combatant/detector.py
 
 """
-Module: sensor.analyzer.friend.combatant.detector
+Module: environment.analyzer.friend.combatant.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from err import EnemyCombatantAnalyzerException, TokenNullException
 from domain.model import CombatantToken
 from artifcat.report import FriendshipStatus

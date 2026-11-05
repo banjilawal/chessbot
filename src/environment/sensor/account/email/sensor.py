@@ -1,4 +1,4 @@
-# src/environment/sensor/account/email/sensor.py
+# src/environment/environment/account/email/sensor.py
 
 """
 Module: environment.sensor.account.email.sensor

@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== PRODUCTION.FACTORY PACKAGE ===========#
 
 # Packages
+from .athorization import *
 from .validation import *
 
 # Modules

@@ -1,4 +1,4 @@
-# src/environment/sensor/id/sensor.py
+# src/environment/environment/id/sensor.py
 
 """
 Module: environment.sensor.id.sensor

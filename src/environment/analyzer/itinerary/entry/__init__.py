@@ -1,4 +1,4 @@
-# src/sensor/operation/square/entry/__init__.py
+# src/environment/operation/square/entry/__init__.py
 
 """
 Module: sensor.operation.square.entry.__init__

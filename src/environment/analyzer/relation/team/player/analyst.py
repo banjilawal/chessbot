@@ -1,7 +1,7 @@
-# src/sensor/analyzer/relation/team/player/analyst.py
+# src/environment/analyzer/relation/team/player/analyst.py
 
 """
-Module: sensor.analyzer.relation.team.player.analyst
+Module: environment.analyzer.relation.team.player.analyst
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

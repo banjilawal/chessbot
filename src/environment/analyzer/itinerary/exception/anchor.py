@@ -1,4 +1,4 @@
-# src/sensor/logic/square/service/visitation/exception/anchor.py
+# src/environment/logic/square/service/visitation/exception/anchor.py
 
 """
 Module: sensor.logic.square.service.visitation.exception.anchor

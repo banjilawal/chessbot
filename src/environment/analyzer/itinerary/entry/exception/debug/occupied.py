@@ -1,4 +1,4 @@
-# src/sensor/logic/square/service/visitation/entry/exception/debug/full.py
+# src/environment/logic/square/service/visitation/entry/exception/debug/full.py
 
 """
 Module: sensor.logic.square.service.visitation.entry.exception.debug.full

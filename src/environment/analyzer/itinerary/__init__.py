@@ -1,13 +1,13 @@
-# src/sensor/analyzer/itinerary/__init__.py
+# src/environment/analyzer/itinerary/__init__.py
 
 """
-Module: sensor.analyzer.itinerary.__init__
+Module: environment.analyzer.itinerary.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== SENSOR.ANALYZER.ITINERARY PACKAGE ===========#
+# =========== ENVIRONMENT.ANALYZER.ITINERARY PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/sensor/analyzer.py
+# src/environment/analyzer.py
 
 """
-Module: sensor.analyzer.analyzer
+Module: environment.analyzer.analyzer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

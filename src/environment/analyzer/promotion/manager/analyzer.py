@@ -1,7 +1,7 @@
-# src/sensor/analyzer/promotion/manager/analyzer.py
+# src/environment/analyzer/promotion/manager/analyzer.py
 
 """
-Module: sensor.analyzer.promotion.manager.analyzer
+Module: environment.analyzer.promotion.manager.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from sensor.analyzer import Analyzer, TokenReadinessAnalyzer
+from environment.analyzer import Analyzer, TokenReadinessAnalyzer
 from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
 from err.analyzer.promotion import PromotionApprovalManagerException
 from domain.model import PawnToken

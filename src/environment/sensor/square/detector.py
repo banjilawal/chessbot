@@ -1,4 +1,4 @@
-# src/environment/sensor/square/detector.py
+# src/environment/environment/square/detector.py
 
 """
 Module: environment.sensor.square.detector

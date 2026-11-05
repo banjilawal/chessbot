@@ -1,13 +1,13 @@
-# src/sensor/analyzer/freedom/__init__.py
+# src/environment/analyzer/freedom/__init__.py
 
 """
-Module: sensor.analyzer.freedom.__init__
+Module: environment.analyzer.freedom.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== SENSOR.ANALYZER.FREEDOM PACKAGE ===========#
+# =========== ENVIRONMENT.ANALYZER.FREEDOM PACKAGE ===========#
 
 # Packages
 from .combatant import *

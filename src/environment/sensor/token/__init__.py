@@ -1,4 +1,4 @@
-# src/environment/sensor/token/__init__.py
+# src/environment/environment/token/__init__.py
 
 """
 Module: environment.sensor.token.__init__

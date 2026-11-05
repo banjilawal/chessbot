@@ -1,7 +1,7 @@
-# src/sensor/analyzer/friend/king/detector.py
+# src/environment/analyzer/friend/king/detector.py
 
 """
-Module: sensor.analyzer.friend.king.detector
+Module: environment.analyzer.friend.king.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from err import EnemyKingAnalyzerException, TokenNullException
 from domain.model import KingToken
 from artifcat.report import FriendshipStatus

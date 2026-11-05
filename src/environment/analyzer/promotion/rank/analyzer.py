@@ -1,7 +1,7 @@
-# src/sensor/analyzer/promotion/rank/analyzer.py
+# src/environment/analyzer/promotion/rank/analyzer.py
 
 """
-Module: sensor.analyzer.promotion.rank.analyzer
+Module: environment.analyzer.promotion.rank.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAnalyzerException
 from domain.model import King, Pawn, Rank
 from artifcat.report import RankLevelApproval

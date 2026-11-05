@@ -1,4 +1,4 @@
-# src/sensor/logic/square/service/visitation/exception/terminate/empty.py
+# src/environment/logic/square/service/visitation/exception/terminate/empty.py
 
 """
 Module: sensor.logic.square.service.visitation.exception.terminate.empty

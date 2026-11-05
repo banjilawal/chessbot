@@ -1,7 +1,7 @@
-# src/sensor/analyzer/relation/team/board/analyst.py
+# src/environment/analyzer/relation/team/board/analyst.py
 
 """
-Module: sensor.analyzer.relation.team.board.analyst
+Module: environment.analyzer.relation.team.board.analyst
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import cast
 
 from domain.model import Board, Team
 from artifcat.report import RelationReport
-from sensor.analyzer import RelationAnalyzer
+from environment.analyzer import RelationAnalyzer
 from util import LoggingLevelRouter
 from err import BoardTeamRelationAnalysisException
 from artifcat import AnalysisResult, MethodResultType

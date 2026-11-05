@@ -1,13 +1,13 @@
-# src/sensor/analyzer/readiness/king/__init__.py
+# src/environment/analyzer/readiness/king/__init__.py
 
 """
-Module: sensor.analyzer.readiness.king.__init__
+Module: environment.analyzer.readiness.king.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== SENSOR.ANALYZER.READINESS.KING PACKAGE ===========#
+# =========== ENVIRONMENT.ANALYZER.READINESS.KING PACKAGE ===========#
 
 # Packages
 

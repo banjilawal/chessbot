@@ -1,7 +1,7 @@
-# src/sensor/analyzer/itinerary/analyzer.py
+# src/environment/analyzer/itinerary/analyzer.py
 
 """
-Module: sensor.analyzer.itinerary.analyzer
+Module: environment.analyzer.itinerary.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

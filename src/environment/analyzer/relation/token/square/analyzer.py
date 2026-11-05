@@ -1,7 +1,7 @@
-# src/sensor/analyzer/relation/token/square/analyzer.py
+# src/environment/analyzer/relation/token/square/analyzer.py
 
 """
-Module: sensor.analyzer.relation.token.square.analyzer
+Module: environment.analyzer.relation.token.square.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from sensor.analyzer import RelationAnalyzer
+from environment.analyzer import RelationAnalyzer
 from err import SquareTokenRelationAnalyzerException
 from domain.model import Square, Token
 from artifcat.report import RelationReport

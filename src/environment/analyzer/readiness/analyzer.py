@@ -1,7 +1,7 @@
-# src/sensor/analyzer/freedom/analyzer.py
+# src/environment/analyzer/freedom/analyzer.py
 
 """
-Module: sensor.analyzer.freedom.analyzer
+Module: environment.analyzer.freedom.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from sensor.analyzer import Analyzer
+from environment.analyzer import Analyzer
 from bootstrapper import ReadinessAnalyzerBootstrapper
 from err import TokenReadinessAnalyzerException
 from domain.model import Token
