@@ -20,11 +20,10 @@ T = TypeVar("T", bound="Result")
 class Router(ABC, Generic[T]):
     """
     Role
-        - Transaction Worker
-        -   Routing
-
+        -   Task Routing
+        
     Responsibilities:
-        1.  Ensure data-holders are safe before they are used or saved.
+        1.  Route jobs processing endpoints.
 
     Attributes:
         priming_validator: PrimingValidator

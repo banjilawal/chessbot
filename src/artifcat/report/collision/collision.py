@@ -92,7 +92,7 @@ class CollisionReport(Report, Generic[P, A]):
         return self._target
         
     @property
-    def value(self) -> Optional[A]:
+    def match(self) -> Optional[A]:
         return self._match
     
     @property

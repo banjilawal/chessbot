@@ -61,10 +61,10 @@ class GameDisplay:
     self.is_dragging: bool = False
 
   def draw_grid(self):
-    screen_color = GameColor.DARK_GRAY_1.value
+    screen_color = GameColor.DARK_GRAY_1.match
     self.screen.fill(screen_color)
 
-    cell_color = GameColor.LIGHT_SAND.value
+    cell_color = GameColor.LIGHT_SAND.match
     opposite_cell_color = screen_color
 
     current_cell_color = cell_color
@@ -83,7 +83,7 @@ class GameDisplay:
 
         pygame.draw.rect(self.screen, current_cell_color, cell_rect)
         # Draw an outlined rectangle
-        pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
+        pygame.draw.rect(self.screen, GameColor.BLACK.match, cell_rect, 1)
 
   def draw_teams(self):
     dragged_state = None
@@ -131,7 +131,7 @@ class GameDisplay:
     if isinstance(chess_piece.rank_level, Queen):
       pygame.draw.rect(self.screen, QUEEN_COLOR, chess_piece_shape)
 
-    text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)
+    text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.match)
     text_rectangle = text_surface.get_rect(center=chess_piece_shape.center)
     self.screen.blit(text_surface, text_rectangle)
 
@@ -277,7 +277,7 @@ class GameDisplay:
     elif isinstance(chess_piece.rank_level, Queen):
       pygame.draw.rect(self.screen, QUEEN_COLOR, rect)
 
-    text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)
+    text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.match)
     text_rect = text_surface.get_rect(center=rect.center)
     self.screen.blit(text_surface, text_rect)
 

@@ -14,6 +14,7 @@ from typing import Generic, TypeVar
 
 from artifcat import CollisionReport
 from domain import Context, Model
+from transit import SensorRouter
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
