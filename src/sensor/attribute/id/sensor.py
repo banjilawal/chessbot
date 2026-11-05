@@ -1,7 +1,7 @@
-# src/sensor/collision/detector.py
+# src/sensor/attribute/id/sensor.py
 
 """
-Module: sensor.collision.detector
+Module: sensor.attribute.id.sensor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,41 +15,46 @@ from typing import Generic, TypeVar
 from artifcat import CollisionReport
 from collection import Stack
 from domain import Model
-from sensor import Sensor
+from sensor import AttributeSensor
 from util import LoggingLevelRouter
 
 P = TypeVar("P", bound="Model")
-T = TypeVar("T")
+T = TypeVar("T", bound="int")
 
 
-class AttributeSensor(Sensor, ABC, Generic[P, T]):
+class IdSensor(AttributeSensor[P, T], ABC, Generic[P, T]):
     """
     Role:
         -   Sensor
 
     Responsibilities:
-        1.  Detect if an item violates a Stack uniqueness constraint.
+        1.  Detect if an id has already been used in a DataStruct.
 
     Attributes:
 
     Provides:
-        -   def execute(attractor: T, collection: Stack[T]) -> CollisionReport
+        -   def execute(attractor: int, collection: Stack[M]) -> CollisionReport
 
     Super Class:
-        Sensor
+        AttributeSensor
     """
+    
+    ID_IDENTIFIER = "id"
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, target: T, stream: Stack[P]) -> CollisionReport:
+    def execute(self, target: T, stream: Stack[T]) -> CollisionReport:
         """
-        Check the attractor satisfies stack uniqueness constraint.
+        Detect if the id of an item in the stream matches the target.
+
         Args:
             target: T
-            stream: Stack[T]
+            stream: Stack[P]
         Result:
             CollisionReport
         Raises:
-            AttributeSensorException
+            IdSensorException
         """
         pass
+    
+    

@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .analyzer import *
-from .collision import *
+from .attribute import *
 from .detector import *
 
 # Modules

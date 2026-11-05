@@ -1,7 +1,7 @@
-# src/sensor/collision/account/name/sensor.py
+# src/sensor/attribute/account/machine/sensor.py
 
 """
-Module: sensor.collision.account.name.sensor
+Module: sensor.attribute.account.machine.sensor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/sensor/collision/account/email/sensor.py
+# src/sensor/attribute/id/account/sensor.py
 
 """
-Module: sensor.collision.account.email.sensor
+Module: sensor.attribute.id.account.sensor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,53 +11,50 @@ from __future__ import annotations
 
 from artifcat import CollisionReport
 from collection import AccountStack
-from domain import HumanAccount
-from sensor import AccountSensor
+from domain import Account
+from sensor import IdSensor
 from util import LoggingLevelRouter
 
 
-class AccountEmailSensor(AccountSensor[HumanAccount, str]):
+class AccountIdSensor(IdSensor[Account, int]):
     """
     Role:
         -   Sensor
 
     Responsibilities:
-        1.  Detect if an email has already been used.
+        1.  Detect if an AccountId has already been used.
 
     Attributes:
 
     Provides:
-        -   def execute(target: str, stream: AccountStack) -> CollisionReport
+        -   def execute(target: int, stream: AccountStack) -> CollisionReport
 
     Super Class:
-        AccountSensor
+        IdSensor
     """
 
     @LoggingLevelRouter.monitor
-    def execute(self, target: str, stream: AccountStack) -> CollisionReport:
+    def execute(self, target: int, stream: AccountStack) -> CollisionReport:
         """
-        Detect if an Account is using the email-address.
+        Detect if the target_id exists in the AccountStack
 
         Action:
             1.  Send an exception chain in the report if an Account in the
-                stream hits the target email.
-            2.  Otherwise report no collisions occurred..
+                stream hits the target id.
+            2.  Otherwise, report the attractor is unique.
         Args:
-            target: str
+            target: int
             stream: AccountStack
         Result:
             CollisionReport
         Raises:
-            AccountEmailSensorException
+            AccountIdSensorException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # --- Run the stream ---#
-        matches = [
-            item for item in stream.human_accounts if (
-                    item.email.upper() == target.upper()
-            )
-        ]
+        matches = [item for item in stream.items if item.id == target]
+        
         # Handle the case that no particle hits the target.
         if len(matches) == 0:
             return CollisionReport.no_collision_events()
@@ -66,17 +63,17 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
             match=matches[0].id,
             target=target,
             particle=matches[0],
-            identifier="email",
-            exception=AccountEmailSensorException(
+            identifier=self.ID_IDENTIFIER,
+            exception=AccountIdSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
-                msg=AccountEmailSensorException.MSG,
-                err_code=AccountEmailSensorException.ERR_CODE,
-                ex=DuplicteAccountEmailException(
+                msg=AccountIdSensorException.MSG,
+                err_code=AccountIdSensorException.ERR_CODE,
+                ex=DuplicteAccountIdException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DuplicteAccountEmailException.MSG,
-                    err_code=DuplicteAccountEmailException.ERR_CODE,
+                    msg=DuplicteAccountIdException.MSG,
+                    err_code=DuplicteAccountIdException.ERR_CODE,
                 )
             )
         )

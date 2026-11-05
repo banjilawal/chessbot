@@ -1,7 +1,7 @@
-# src/sensor/collision/detector.py
+# src/sensor/attribute/detector.py
 
 """
-Module: sensor.collision.detector
+Module: sensor.attribute.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
