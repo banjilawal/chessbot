@@ -30,13 +30,13 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
         -   def execute(target: str, stream: AccountStack) -> CollisionReport
 
     Super Class:
-        EmailSensor
+        AccountSensor
     """
 
     @LoggingLevelRouter.monitor
     def execute(self, target: str, stream: AccountStack) -> CollisionReport:
         """
-        Detect if the target attribute exists in the AccountStack
+        Detect if an Account is using the email-address.
 
         Action:
             1.  Send an exception chain in the report if an Account in the
@@ -58,7 +58,6 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
                     item.email.upper() == target.upper()
             )
         ]
-        
         # Handle the case that no particle hits the target.
         if len(matches) == 0:
             return CollisionReport.no_collision_events()
