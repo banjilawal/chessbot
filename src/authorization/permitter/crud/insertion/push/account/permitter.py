@@ -108,7 +108,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             target=item,
             stream=collection,
         )
-        if report.collision_occurred:
+        if report.collision_exists:
             # Send the exception chain in the denial.
             return AccountPushDecision.denial(
                 exception=AccountPushPermitterException(

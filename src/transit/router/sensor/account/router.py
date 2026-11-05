@@ -110,7 +110,7 @@ class AccountSensorRouter(SensorRouter[Account]):
         if machine_name is not None:
             key = "machine_name"
             report = self._machine_name_sensor.execute(target=machine_name, stream=stream)
-        if report.collision_occurred:
+        if report.collision_exists:
             match = report.match
             target = report.target
             particle = cast(Account, report.particle)

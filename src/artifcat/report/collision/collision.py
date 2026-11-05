@@ -106,9 +106,20 @@ class CollisionReport(Report, Generic[P, A]):
     @property
     def exception(self) -> Optional[Exception]:
         return self._exception
+    
+    @property
+    def detector_failure_exists(self) -> bool:
+        return (
+                self._match is None and
+                self._target is None and
+                self._particle is None and
+                self._identifier is None and
+                self._exception is not None and
+                self._state == CollisionState.DETECTOR_CRASHED
+        )
         
     @property
-    def collision_occurred(self) -> bool:
+    def collision_exists(self) -> bool:
         return (
                 self._match is not None and
                 self._target is not None and
@@ -119,12 +130,16 @@ class CollisionReport(Report, Generic[P, A]):
         )
         
     @property
-    def no_collision_occurred(self) -> bool:
-        return not self.collision_occurred
+    def no_collision_exists(self) -> bool:
+        return not self.collision_exists
     
     @classmethod
     def no_collision_events(cls) -> CollisionReport:
         return cls(state=CollisionState.NO_COLLISIONS)
+    
+    @classmethod
+    def detector_failure(cls, exception) -> CollisionReport:
+        return cls(exception=exception, state=CollisionState.DETECTOR_CRASHED)
         
     @classmethod
     def collision_event(

@@ -60,8 +60,8 @@ class AccountCollisionDetector(CollisionDetector[Account]):
                attribute_name = key 
         
         report = self.router.execute(context=context, stream=stream)
-        if report.collision_occurred:
-            if report.collision_occurred:
+        if report.collision_exists:
+            if report.collision_exists:
                 match = report.match
                 target = report.target
                 particle = cast(Account, report.particle)
