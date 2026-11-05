@@ -63,7 +63,7 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
             return CollisionReport.no_collision_events()
         # Otherwise report a collision.
         return CollisionReport.collision_event(
-            match=matches[0].id,
+            match=matches[0].email,
             target=target,
             particle=matches[0],
             identifier="email",
@@ -77,6 +77,8 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
                     cls_name=self.__class__.__name__,
                     msg=DuplicteAccountEmailException.MSG,
                     err_code=DuplicteAccountEmailException.ERR_CODE,
+                    var=f"collider_id: {matches[0].id}, "
+                        f"duplicate_email: {target}",
                 )
             )
         )

@@ -74,6 +74,7 @@ class AccountIdSensor(IdSensor[Account, int]):
                     cls_name=self.__class__.__name__,
                     msg=DuplicteAccountIdException.MSG,
                     err_code=DuplicteAccountIdException.ERR_CODE,
+                    var=f"duplicate_account_id: {target}"
                 )
             )
         )

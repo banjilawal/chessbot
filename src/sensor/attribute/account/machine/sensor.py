@@ -77,6 +77,8 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
                     cls_name=self.__class__.__name__,
                     msg=DuplicteAccountNameException.MSG,
                     err_code=DuplicteAccountNameException.ERR_CODE,
+                    var=f"collider_id: {matches[0].id}, "
+                        f"duplicate_machine_name: {target}",
                 )
             )
         )

@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import AccountPushDecision
+from artifcat import AccountPushDecision, CollisionReport
 from authorization import PushPermitter
 from bootstrap import AccountPushAuthorizationLoader
+from collection import AccountStack
+from domain import Account, AccountContext, HumanAccount, MachineAccount
 from err import AccountPushPermitterException
 from exchange import AccountPushPermissionRequest, AccountPushRequest
-from sensor import AccountSensor
+from production import AccountCollisionDetector
 from util import LoggingLevelRouter
 
 
@@ -30,7 +32,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     Attributes:
         loader: PushAuthorizationLoader
-        collision_sensor: AccountCollisionSensor
+        collision_detector: AccountCollisionDetector
         
     Provides:
         -   def execute(request: AccountPushPermissionRequest) -> AccountPushDecision
@@ -41,16 +43,17 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
 
     def __init__(
             self,
-            collision_sensor: Optional[AccountSensor] | None = None,
             loader: Optional[AccountPushAuthorizationLoader] | None = None,
+            collision_detector: Optional[AccountCollisionDetector] | None = None,
     ):
         """
         Args:
             loader: Optional[PushAuthorizationLoader]
+            collision_detector: Optional[AccountCollisionDetector]
         """
         super().__init__(
             loader=loader or AccountPushAuthorizationLoader(),
-            collision_sensor=collision_sensor or AccountSensor(),
+            collision_detector=collision_detector or AccountCollisionDetector(),
         )
     
     @property
@@ -58,8 +61,8 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         return cast(AccountPushAuthorizationLoader, super().loader)
     
     @property
-    def collision_sensor(self) -> AccountSensor:
-        return cast(AccountSensor, super().collision_sensor)
+    def collision_detector(self) -> AccountCollisionDetector:
+        return cast(AccountCollisionDetector, super().collision_detector)
 
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> AccountPushDecision:
@@ -103,11 +106,8 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         item = applicant.item
         collection = applicant.collection
         
-        # Handle the case that the item violates a uniqueness constraint.
-        report = self.collision_sensor.execute(
-            target=item,
-            stream=collection,
-        )
+        # Handle the case that a uniqueness constraint is violated
+        report = self._uniqueness_checker(item, collection)
         if report.collision_exists:
             # Send the exception chain in the denial.
             return AccountPushDecision.denial(
@@ -129,7 +129,6 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
             id=form_id,
             authorization_applicant=transaction_request,
         )
-        
         # --- Forward the approval. ---#
         return AccountPushDecision.grant(
             transaction_request=transaction_request,
@@ -137,5 +136,55 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         )
         
         
+    @LoggingLevelRouter.monitor
+    def _uniqueness_checker(
+            self,
+            item: Account,
+            collection: AccountStack,
+    ) -> CollisionReport:
+        """Runs uniqueness checks sequentially."""
         
+        # --- Run the universal check for an id. ---#
+        report = self.collision_detector.execute(
+            stream=collection,
+            context=AccountContext(id=item.id),
+        )
+        # Return if a duplicate id is found.
+        if report.collision_exists:
+            return report
+        # --- Handoff to a collider_branch for final processing. ---#
+        if isinstance(item, HumanAccount):
+            report = self._email_collider_branch(item, collection)
+        if isinstance(item, MachineAccount):
+            report = self._machine_collider_branch(item, collection)
+        # Send the completed repot
+        return report
+    
+    @LoggingLevelRouter.monitor
+    def _email_collider_branch(
+            self,
+            account: HumanAccount,
+            collection: AccountStack
+    ) -> CollisionReport:
+        """
+        Send a denial if account.email will not be unique.
+        """
+        return self.collision_detector.execute(
+            context=AccountContext(email=account.email),
+            stream=collection,
+        )
+    
+    @LoggingLevelRouter.monitor
+    def _machine_collider_branch(
+            self,
+            account: MachineAccount,
+            collection: AccountStack
+    ) -> CollisionReport:
+        """
+        Send a denial if machine_account.name will not be unique.
+        """
+        return self.collision_detector.execute(
+            context=AccountContext(machine_name=account.name),
+            stream=collection,
+        )
         
