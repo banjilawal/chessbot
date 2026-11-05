@@ -14,14 +14,14 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from domain import Model
-from production import EnvelopeManager, ModelEnvelopeProducer
-from transit import ModelCarrier, ModelEnvelopeRouter
+from production import ColliderManager, ModelColliderProducer
+from transit import ModelCarrier, ModelColliderRouter
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelEnvelopeManager(EnvelopeManager[T], ABC, Generic[T]):
+class ModelColliderManager(ColliderManager[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -33,35 +33,35 @@ class ModelEnvelopeManager(EnvelopeManager[T], ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        router: ModelEnvelopeRouter[T]
-        producer: ModelEnvelopeProducer[T]
+        router: ModelColliderRouter[T]
+        producer: ModelColliderProducer[T]
 
     Provides:
         -   def execute(item: Any) -> ValidationResult[ModelCarrier[T]]
     
     Super
-        EnvelopeManager
+        ColliderManager
     """
     
     def __init__(
             self, 
-            producer: ModelEnvelopeProducer[T],
-            router: ModelEnvelopeRouter[T],
+            producer: ModelColliderProducer[T],
+            router: ModelColliderRouter[T],
     ):
         """
         Args:
-            producer: ModelEnvelopeProducer[T]
-            router: ModelEnvelopeRouter[T]
+            producer: ModelColliderProducer[T]
+            router: ModelColliderRouter[T]
         """
         super().__init__(producer=producer, router=router)
      
     @property
-    def producer(self) -> ModelEnvelopeProducer[T]:
-        return cast(ModelEnvelopeProducer[T], super().producer)
+    def producer(self) -> ModelColliderProducer[T]:
+        return cast(ModelColliderProducer[T], super().producer)
         
     @property
-    def router(self) -> ModelEnvelopeRouter[T]:
-        return cast(ModelEnvelopeRouter[T], super().router)
+    def router(self) -> ModelColliderRouter[T]:
+        return cast(ModelColliderRouter[T], super().router)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

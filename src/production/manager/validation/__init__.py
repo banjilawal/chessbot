@@ -14,4 +14,4 @@ from .context import *
 from .model import *
 
 # Modules
-from .manager import EnvelopeManager
+from .manager import ColliderManager

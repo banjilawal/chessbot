@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== PRODUCTION.MANAGER PACKAGE ===========#
 
 # Packages
+from .collision import *
 from .fabrication import *
 from .search import *
 from .validation import *

@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from production import EnvelopeProducer
-from transit import EntityCarrier, EnvelopeRouter
+from production import ColliderProducer
+from transit import EntityCarrier, ColliderRouter
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
 
-class EnvelopeManager(ABC, Generic[T]):
+class ColliderManager(ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -32,24 +32,24 @@ class EnvelopeManager(ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        producer: EnvelopeProducer[T]
-        router: EnvelopeRouter[T]
+        producer: ColliderProducer[T]
+        router: ColliderRouter[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[EntityCarrier[T]]:
     Super
     """
-    _producer: EnvelopeProducer[T]
-    _router: EnvelopeRouter[T]
+    _producer: ColliderProducer[T]
+    _router: ColliderRouter[T]
     
     def __init__(
             self,
-            producer: EnvelopeProducer[T],
-            router: EnvelopeRouter[T],
+            producer: ColliderProducer[T],
+            router: ColliderRouter[T],
     ):
         """
         Args:
-            producer: EnvelopeProducer[T]
+            producer: ColliderProducer[T]
             router: ValidationRouter[T]
         """
         super().__init__()
@@ -57,11 +57,11 @@ class EnvelopeManager(ABC, Generic[T]):
         self._router = router
      
     @property
-    def producer(self) -> EnvelopeProducer[T]:
+    def producer(self) -> ColliderProducer[T]:
         return self._producer
         
     @property
-    def router(self) -> EnvelopeRouter[T]:
+    def router(self) -> ColliderRouter[T]:
         return self._router
     
     @abstractmethod

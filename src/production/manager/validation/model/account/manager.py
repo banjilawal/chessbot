@@ -14,12 +14,12 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from domain import Account
 from err import AccountValidatorException
-from production import AccountEnvelopeProducer, ModelEnvelopeManager
-from transit import AccountCarrier, AccountEnvelope, AccountEnvelopeRouter
+from production import AccountColliderProducer, ModelColliderManager
+from transit import AccountCarrier, AccountCollider, AccountColliderRouter
 from util import LoggingLevelRouter
 
 
-class AccountEnvelopeManager(ModelEnvelopeManager[Account]):
+class AccountColliderManager(ModelColliderManager[Account]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -29,37 +29,37 @@ class AccountEnvelopeManager(ModelEnvelopeManager[Account]):
 
     Attributes:
         router: Optional[AccountValidationRouter]
-        producer: Optional[AccountEnvelopeProducer]
+        producer: Optional[AccountColliderProducer]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[AccountCarrier]:
 
     Super Class:
-        ModelEnvelopeManager
+        ModelColliderManager
     """
     
     def __init__(
             self,
-            router: Optional[AccountEnvelopeRouter] | None = None,
-            producer: Optional[AccountEnvelopeProducer] | None = None,
+            router: Optional[AccountColliderRouter] | None = None,
+            producer: Optional[AccountColliderProducer] | None = None,
     ):
         """
         Args:
             router: Optional[AccountValidationRouter]
-            producer: Optional[AccountEnvelopeProducer]
+            producer: Optional[AccountColliderProducer]
         """
         super().__init__(
-            router=router or AccountEnvelopeRouter(),
-            producer=producer or AccountEnvelopeProducer(),
+            router=router or AccountColliderRouter(),
+            producer=producer or AccountColliderProducer(),
         )
     
     @property
-    def router(self) -> AccountEnvelopeRouter:
-        return cast(AccountEnvelopeRouter, super().router)
+    def router(self) -> AccountColliderRouter:
+        return cast(AccountColliderRouter, super().router)
     
     @property
-    def producer(self) -> AccountEnvelopeProducer:
-        return cast(AccountEnvelopeProducer, super().producer)
+    def producer(self) -> AccountColliderProducer:
+        return cast(AccountColliderProducer, super().producer)
     
     @LoggingLevelRouter.monitor
     def execute(self, item: Any) -> ValidationResult[AccountCarrier]:
@@ -93,9 +93,9 @@ class AccountEnvelopeManager(ModelEnvelopeManager[Account]):
                     ex=product.exception,
                 )
             )
-        envelope = cast(AccountEnvelope, product.payload)
+        collider = cast(AccountCollider, product.payload)
         
-        validation = self.router.execute(envelope=envelope)
+        validation = self.router.execute(collider=collider)
         if validation.is_failure:
             return ValidationResult.failure(
                 AccountValidatorException(
