@@ -5,20 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/production/manager/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/manager/collision/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/manager/collision/manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/search/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/search/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/model/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/model/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/model/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/model/account/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/validation/model/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/validation/model/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/factory/athorization/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/context/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/factory/athorization/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/model/factory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/router/sensor/account/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/router/sensor/account/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,61 +65,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000000001774" />
-      <entry key="S2" value="1.0006489972565016" />
-      <entry key="S5" value="1.0530758727712553" />
-      <entry key="S10" value="1.2303820148606612" />
-      <entry key="S30" value="1.6130835455912653" />
-      <entry key="S60" value="1.8000174268889924" />
-      <entry key="M2" value="2.290866058896783" />
-      <entry key="M5" value="8.633245518640276" />
-      <entry key="M10" value="24.23102574105786" />
-      <entry key="M15" value="35.9497756085521" />
-      <entry key="M30" value="54.492125170803604" />
-      <entry key="H1" value="76.62547113977145" />
-      <entry key="H2" value="151.71561696127748" />
-      <entry key="H4" value="420.2936754535084" />
-      <entry key="D1" value="4883.133789555859" />
-      <entry key="W1" value="29440.840237012195" />
+      <entry key="MS100" value="1.0000000161936113" />
+      <entry key="MS500" value="1.0276652819510785" />
+      <entry key="S2" value="1.4533383876099486" />
+      <entry key="S5" value="2.0435201620006223" />
+      <entry key="S10" value="2.810981571921963" />
+      <entry key="S30" value="5.076554145992006" />
+      <entry key="S60" value="7.3305889619179565" />
+      <entry key="M2" value="11.35242403796087" />
+      <entry key="M5" value="27.27114409203941" />
+      <entry key="M10" value="57.38400252415325" />
+      <entry key="M15" value="87.19925672261459" />
+      <entry key="M30" value="172.5893553360309" />
+      <entry key="H1" value="304.5668084534843" />
+      <entry key="H2" value="446.1452919211698" />
+      <entry key="H4" value="589.7682061248844" />
+      <entry key="D1" value="3683.995162083437" />
+      <entry key="W1" value="28273.432805001936" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="4.217450603857967E-167" />
-      <entry key="S5" value="4.94186419657816E-67" />
-      <entry key="S10" value="1.1919878160272983E-33" />
-      <entry key="S30" value="2.1942416670361398E-11" />
-      <entry key="S60" value="8.147386729085987E-6" />
-      <entry key="M2" value="0.005212238254233732" />
-      <entry key="M5" value="0.2884748770773127" />
-      <entry key="M10" value="1.1716123523085542" />
-      <entry key="M15" value="1.889056342858329" />
-      <entry key="M30" value="3.0659033065155286" />
-      <entry key="H1" value="4.002262661733857" />
-      <entry key="H2" value="5.51953757192051" />
-      <entry key="H4" value="13.13603546057794" />
-      <entry key="D1" value="168.3817016703783" />
-      <entry key="W1" value="1451.8915404858183" />
+      <entry key="S2" value="9.00845356126231E-163" />
+      <entry key="S5" value="1.5200577838537719E-65" />
+      <entry key="S10" value="3.8987918434520196E-33" />
+      <entry key="S30" value="1.5741478660853548E-11" />
+      <entry key="S60" value="4.037878119178465E-6" />
+      <entry key="M2" value="0.0023679028913488743" />
+      <entry key="M5" value="0.1516721490644137" />
+      <entry key="M10" value="0.7829801607053454" />
+      <entry key="M15" value="1.6337267269245137" />
+      <entry key="M30" value="5.331636441069311" />
+      <entry key="H1" value="13.758436063790217" />
+      <entry key="H2" value="24.70904522731248" />
+      <entry key="H4" value="35.86841842685583" />
+      <entry key="D1" value="160.70270778194248" />
+      <entry key="W1" value="1415.9620652710803" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="9.559885430163746E-14" />
-      <entry key="MS500" value="0.0024893762252416085" />
-      <entry key="S2" value="0.2236740544157549" />
-      <entry key="S5" value="0.5882954148592544" />
-      <entry key="S10" value="0.9390902813323663" />
-      <entry key="S30" value="1.4879110371894102" />
-      <entry key="S60" value="1.731539455130689" />
-      <entry key="M2" value="2.2576159047990187" />
-      <entry key="M5" value="8.899514572805897" />
-      <entry key="M10" value="25.38666132516373" />
-      <entry key="M15" value="37.8260275473195" />
-      <entry key="M30" value="57.54999990479743" />
-      <entry key="H1" value="80.6230048867092" />
-      <entry key="H2" value="157.23104365374834" />
-      <entry key="H4" value="433.42170419496904" />
-      <entry key="D1" value="5051.495395992217" />
-      <entry key="W1" value="30892.70570884413" />
+      <entry key="MS100" value="0.737134608658485" />
+      <entry key="MS500" value="0.9474727800552606" />
+      <entry key="S2" value="1.3149004151187371" />
+      <entry key="S5" value="1.9231081697350476" />
+      <entry key="S10" value="2.659457293430827" />
+      <entry key="S30" value="4.909634415270672" />
+      <entry key="S60" value="7.197913383411893" />
+      <entry key="M2" value="11.211896642041017" />
+      <entry key="M5" value="27.236486534182717" />
+      <entry key="M10" value="57.97916813825212" />
+      <entry key="M15" value="88.65249164962454" />
+      <entry key="M30" value="177.753425972366" />
+      <entry key="H1" value="318.17997141736697" />
+      <entry key="H2" value="470.74810438725103" />
+      <entry key="H4" value="625.5686075810656" />
+      <entry key="D1" value="3844.6695387341188" />
+      <entry key="W1" value="29689.36810685024" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -170,11 +175,11 @@
       <recent name="$PROJECT_DIR$/src/production/manager/sensor/account" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/environment" />
+      <recent name="$PROJECT_DIR$/src/environment/detector/collision" />
       <recent name="$PROJECT_DIR$/src/production/manager/collision" />
       <recent name="$PROJECT_DIR$/src/environment/detector" />
       <recent name="$PROJECT_DIR$/src/err/sensor" />
-      <recent name="$PROJECT_DIR$/src/err/null/exchange/request" />
-      <recent name="$PROJECT_DIR$/src/err/authorization/checker/ready" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -989,7 +994,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="266158000" />
+      <workItem from="1793360739922" duration="293770000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

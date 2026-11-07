@@ -67,7 +67,7 @@ class AccountCollisionDetector(CollisionDetector[Account]):
                 particle = cast(Account, report.particle)
                 identifier = report.identifier or attribute_name
                 
-                return CollisionReport.collision_event(
+                return CollisionReport.entity_conflict(
                     match=match,
                     target=target,
                     particle=particle,
@@ -80,4 +80,4 @@ class AccountCollisionDetector(CollisionDetector[Account]):
                         ex=report.exception,
                     )
                 )
-        return CollisionReport.no_collision_events()
+        return CollisionReport.empty()

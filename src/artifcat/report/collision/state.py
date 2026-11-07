@@ -14,5 +14,7 @@ from enum import Enum, auto
 
 class CollisionState(Enum):
     NO_COLLISIONS = auto(),
-    COLLISION_DETECTED = auto(),
+    DIFFERENT_ITEMS = auto(),
     DETECTOR_CRASHED = auto(),
+    SAME_ITEM = auto()
+    

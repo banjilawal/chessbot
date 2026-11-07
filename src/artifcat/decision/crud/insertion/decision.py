@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Generic, Optional, Self, TypeVar, cast
 
 from artifcat import CrudDecision, Permission
 from exchange import InsertionPermissionRequest, InsertionRequest
@@ -28,9 +28,10 @@ class InsertionDecision(CrudDecision[P, T], ABC, Generic[P, T]):
         1.  Report if an Insertion transaction is permitted.
 
     Attributes:
-
+    
     Provides:
-
+        -   def do_nothing() -> InsertionDecision
+        
     Super Class:
         CrudDecision
     """
@@ -55,3 +56,7 @@ class InsertionDecision(CrudDecision[P, T], ABC, Generic[P, T]):
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
+        
+    @classmethod
+    def do_nothing(cls) -> Self:
+        return cls(permission=Permission.DO_NOTHING)

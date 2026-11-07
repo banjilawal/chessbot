@@ -10,8 +10,6 @@ version: 0.0.2
 # =========== PRODUCTION.FACTORY.AUTHORIZATION PACKAGE ===========#
 
 # Package
-from .context import *
-from .model import *
 
 # Module
-from .factory import AuthorizationFactory
+from .factory import PermissionFactory

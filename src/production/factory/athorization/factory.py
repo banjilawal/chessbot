@@ -13,12 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import Decision
-from production import CollisionManagery
+from bootstrap import AuthorizationLoader
+from exchange import PushPermissionRequest
+from production import CollisionManager
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", bound="PushPermissionRequest")
 
-class AuthorizationFactory(ABC, ABC, Generic[T]):
+class PermissionFactory(ABC, ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -36,14 +38,28 @@ class AuthorizationFactory(ABC, ABC, Generic[T]):
         -   def execute(candidate: Any) -> Decision[Blueprint[T]|T]:
     Super
     """
-    _manager: CollisionManager[T]
     
-    def __init__(self, manager: CollisionManager[T]):
+    _manager: CollisionManager[T]
+    _loader: AuthorizationLoader[T]
+
+
+    
+    def __init__(
+            self,
+            manager: CollisionManager[T],
+            loader: AuthorizationLoader[T],
+    ):
         """
         Args:
             manager: CollisionManager[T]
+            loader: AuthorizationLoader[T]
         """
         self._manager = manager
+        self._loader = loader
+        
+    @property
+    def loader(self) -> AuthorizationLoader:
+        return self._loader
      
     @property
     def manager(self) -> CollisionManager[T]:

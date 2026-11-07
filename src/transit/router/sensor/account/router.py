@@ -99,7 +99,7 @@ class AccountSensorRouter(SensorRouter[Account]):
         machine_name = context.machine_name
         key: str = ""
         
-        report = CollisionReport.no_collision_events()
+        report = CollisionReport.empty()
         
         if id is not None:
             key = "id"
@@ -116,7 +116,7 @@ class AccountSensorRouter(SensorRouter[Account]):
             particle = cast(Account, report.particle)
             identifier = report.identifier or key
             
-            return CollisionReport.collision_event(
+            return CollisionReport.entity_conflict(
                 match=match,
                 target=target,
                 particle=particle,
@@ -129,7 +129,7 @@ class AccountSensorRouter(SensorRouter[Account]):
                     ex=report.exception,
                 )
             )
-        return CollisionReport.no_collision_events()
+        return CollisionReport.empty()
         
         
         

@@ -16,7 +16,7 @@ from artifcat import PushDecision
 from authorization import InsertionPermitter
 from bootstrap import PushAuthorizationLoader
 from exchange import PushPermissionRequest
-from production import CollisionDetector
+from production import CollisionManager
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PushPermissionRequest")
@@ -32,7 +32,7 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
 
     Attributes:
         loader: PushAuthorizationLoader[T]
-        collision_detector: CollisionDetector[T]
+        collision_manager: CollisionManager[T]
 
     Provides:
         -   def execute(candidate: Any) -> PushDecision
@@ -41,24 +41,24 @@ class PushPermitter(InsertionPermitter[T], ABC, Generic[T]):
         InsertionPermitter
     """
     
-    _collision_detector: CollisionDetector[T]
+    _collision_manager: CollisionManager[T]
     
     def __init__(
             self,
             loader: PushAuthorizationLoader[T],
-            collision_detector: CollisionDetector[T],
+            collision_manager: CollisionManager[T],
     ):
         """
         Args:
             loader: PushAuthorizationLoader[T]
-            collision_detector: CollisionDetector[T]
+            collision_manager: CollisionManager[T]
         """
         super().__init__(loader=loader)
-        self._collision_detector = collision_detector
+        self._collision_manager = collision_manager
     
     @property
-    def collision_detector(self) -> CollisionDetector[T]:
-        return self._collision_detector
+    def collision_manager(self) -> CollisionManager[T]:
+        return self._collision_manager
     
     @property
     def loader(self) -> PushAuthorizationLoader[T]:

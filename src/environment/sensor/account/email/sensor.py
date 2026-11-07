@@ -60,9 +60,9 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
         ]
         # Handle the case that no particle hits the target.
         if len(matches) == 0:
-            return CollisionReport.no_collision_events()
+            return CollisionReport.empty()
         # Otherwise report a collision.
-        return CollisionReport.collision_event(
+        return CollisionReport.entity_conflict(
             match=matches[0].email,
             target=target,
             particle=matches[0],

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Dict, List, Optional, cast
 
 from artifcat import CollisionReport
 from collection import AccountStack
@@ -69,60 +69,89 @@ class AccountCollisionManager(CollisionManager[Account]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        table: Dict[int, List[Account]] = {}
+        
         identifier: str = "id"
         context: AccountContext = AccountContext(id=item.id)
+        reports: Dict[str, CollisionReport] = {}
         
-        # --- Assure the global primary key constraint is not violated. ---#
-        report = self.detector.execute(
-            context=context,
-            stream=collection,
-        )
-        # Handle the case that a duplicate is found.
-        if report.collision_exists:
-            # Send the exception in the report.
-            particle = cast(Account, report.particle)
-            return CollisionReport.collision_event(
-                match=report.match,
-                target=report.target,
-                particle=particle,
-                identifier=identifier,
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=report.exception,
-                )
-            )
-        # --- Configure for assuring secondary keys. ---#
-        # Set up for a HumanAccount.
-        if isinstance(item, HumanAccount):
-            identifier = "email"
-            context = AccountContext(email=cast(HumanAccount, item).email)
-        # Set up for MachineAccount
-        if isinstance(item, MachineAccount):
-            identifier = "machine_name"
-            context = AccountContext(machine_name=cast(MachineAccount, item).name)
+        matches = [
+            account for account in collection.list if account.id == item.id
+        ]
+        if len(matches) > 0:
+            table[0] = [item, matches[0]]
+        string_table = self._human(item=item, collection=collection)
+        
+        table_size = len(table)
+        
+        for key in self._human.keys():
+            table[key] = string_table[key]
+        type_count = self._type_count(table)
+        if type == 0:
+            return CollisionReport.empty()
+        if type_count == 1 and table_size == 2:
+            return CollisionReport.
             
-        # --- Run the secondary detector. ---#
-        report = self.detector.execute(context=context, stream=collection)
-        # Handle the case that the secondary key is duplicated.
-        if report.collision_exists:
-            # Send the exception in the report.
-            particle = cast(Account, report.particle)
-            return CollisionReport.collision_event(
-                match=report.match,
-                target=report.target,
-                particle=particle,
-                identifier=identifier,
-                exception=ChessException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
-                    ex=report.exception,
-                )
-            )
-        # --- Forward the work product. ---#
-        return CollisionReport.no_collision_events()
+            
+            
+        
+        
+        
+        # success_report = CollisionReport.empty()
+        # failure_report = CollisionReport.empty()
+        # # --- Assure the global primary key constraint is not violated. ---#
+        # report = self.detector.execute(
+        #     context=context,
+        #     stream=collection,
+        # )
+        # if report.collision_exists:
+        #     table = {
+        #         "account_original": item
+        #     }
+        # return CollisionReport.empty()
     
+    @LoggingLevelRouter.monitor
+    def _human(self, item: Account, collection: AccountStack) -> {}:
+        table = {}
+        if (item, HumanAccount):
+            target = cast(HumanAccount, item).email.upper()
+            matches = [
+                account for account in collection.human_accounts if (
+                        account.email.upper() == target
+                )
+            ]
+            if len(matches) > 0:
+                table[1] = [item, matches[0]]
+        table = self._machine(item=cast(MachineAccount,item), collection=collection)
+        return table
+   
+    @LoggingLevelRouter.monitor
+    def _machine(self, item: MachineAccount, collection: AccountStack) -> Dict[int, List[Account]]:
+        target = item.name.upper()
+        table = {}
+        matches = [
+            account for account in collection.machine_accounts if(
+                account.name.upper() == target
+            )
+        ]
+        if len(matches) > 0:
+            table[1] = [item, matches[0]]
+        return table
+    
+    @LoggingLevelRouter.monitor
+    def _type_count(self, table: Dict[int, List[Account]]) -> int:
+        count = 0
+        for key in table.keys():
+            items = table[key]
+            if [type(items[0]).__name__.upper() == type(items[1]).__name__.upper()]:
+                count = count + 1
+            count = count + 2
+        if count == 2:
+            type_1 = table[0][0]
+            type_2 = table[1][0]
+            if type_1.upper() == type_2.upper():
+                count = 1
+        return count
+
+        
+        

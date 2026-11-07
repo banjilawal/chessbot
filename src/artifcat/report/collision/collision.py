@@ -126,7 +126,7 @@ class CollisionReport(Report, Generic[P, A]):
                 self._particle is not None and
                 self._identifier is not None and
                 self._exception is not None and
-                self._state == CollisionState.COLLISION_DETECTED
+                self._state == CollisionState.DIFFERENT_ITEMS
         )
         
     @property
@@ -134,15 +134,18 @@ class CollisionReport(Report, Generic[P, A]):
         return not self.collision_exists
     
     @classmethod
-    def no_collision_events(cls) -> CollisionReport:
+    def empty(cls) -> CollisionReport:
         return cls(state=CollisionState.NO_COLLISIONS)
     
     @classmethod
     def detector_failure(cls, exception) -> CollisionReport:
         return cls(exception=exception, state=CollisionState.DETECTOR_CRASHED)
+    
+    @classmethod
+    def same_entity(cls, target: A, match: ):
         
     @classmethod
-    def collision_event(
+    def entity_conflict(
             cls,
             match: A,
             target: A,
@@ -156,5 +159,5 @@ class CollisionReport(Report, Generic[P, A]):
             particle=particle,
             identifier=identifier,
             exception=exception,
-            state=CollisionState.COLLISION_DETECTED,
+            state=CollisionState.DIFFERENT_ITEMS,
         )
