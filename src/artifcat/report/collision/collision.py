@@ -14,10 +14,10 @@ from typing import Any, Generic, Optional, TypeVar
 from artifcat import CollisionState, Report
 from domain import Model
 
-P = TypeVar("P", bound="Model")
+T = TypeVar("T", bound="Model")
 A = TypeVar("A")
 
-class CollisionReport(Report, Generic[P, A]):
+class CollisionReport(Report, Generic[T, A]):
     """
     Role:
         -   Report
@@ -29,7 +29,7 @@ class CollisionReport(Report, Generic[P, A]):
         state: CollisionState
         match: Optional[A]
         target: Optional[A]
-        particle: Optional[P]
+        particle: Optional[T]
         identifier: Optional[str]
         exception:Optional[Exception]
         
@@ -42,8 +42,8 @@ class CollisionReport(Report, Generic[P, A]):
         
         -   def collision_event(
                     match: A,
-                    target: A,
-                    particle: P,
+                    target: T,
+                    particle: T,
                     identifier: str,
                     exception: Exception,
             ) -> CollisionReport
@@ -52,35 +52,35 @@ class CollisionReport(Report, Generic[P, A]):
         Report
     """
     _state: CollisionState
-    _match: Optional[A]
-    _target: Optional[A]
-    _particle: Optional[P]
-    _identifier: Optional[str]
+    _target: Optional[T]
+    _particle: Optional[T]
+    _field_name: Optional[str]
+    _field_value: Optional[A]
     _exception: Optional[Exception]
     
     def __init__(
             self,
             state: CollisionState,
-            match: Optional[A] | None = None,
-            target: Optional[A] | None = None,
-            particle: Optional[P] | None = None,
-            identifier: Optional[str] | None = None,
+            target: Optional[T] | None = None,
+            particle: Optional[T] | None = None,
+            field_name: Optional[str] | None = None,
+            field_value: Optional[A] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
             state: CollisionState
-            match: Optional[A]
-            target: Optional[A]
-            particle: Optional[P]
-            identifier: Optional[str]
+            target: Optional[T]
+            particle: Optional[T]
+            field_name: Optional[str]
+            field_value: Optional[A]
             exception:Optional[Exception]
         """
         self._state = state
-        self._match = match
         self._target = target
         self._particle = particle
-        self._identifier = identifier
+        self._field_name = field_name
+        self._field_value = field_value
         self._exception = exception
         
     @property
@@ -88,20 +88,20 @@ class CollisionReport(Report, Generic[P, A]):
         return self._state
         
     @property
-    def target(self) -> Optional[A]:
+    def target(self) -> Optional[T]:
         return self._target
         
     @property
-    def match(self) -> Optional[A]:
-        return self._match
+    def field_value(self) -> Optional[A]:
+        return self._field_value
     
     @property
-    def particle(self) -> Optional[P]:
+    def particle(self) -> Optional[T]:
         return self._particle
         
     @property
-    def identifier(self) -> Optional[str]:
-        return self._identifier
+    def field_name(self) -> Optional[str]:
+        return self._field_name
         
     @property
     def exception(self) -> Optional[Exception]:
@@ -110,10 +110,10 @@ class CollisionReport(Report, Generic[P, A]):
     @property
     def detector_failure_exists(self) -> bool:
         return (
-                self._match is None and
                 self._target is None and
                 self._particle is None and
-                self._identifier is None and
+                self._field_name is None and
+                self._field_value is None and
                 self._exception is not None and
                 self._state == CollisionState.DETECTOR_CRASHED
         )
@@ -121,11 +121,11 @@ class CollisionReport(Report, Generic[P, A]):
     @property
     def collision_exists(self) -> bool:
         return (
-                self._match is not None and
                 self._target is not None and
                 self._particle is not None and
-                self._identifier is not None and
+                self._field_name is not None and
                 self._exception is not None and
+                self._field_value is not None and
                 self._state == CollisionState.DIFFERENT_ITEMS
         )
         
@@ -142,22 +142,23 @@ class CollisionReport(Report, Generic[P, A]):
         return cls(exception=exception, state=CollisionState.DETECTOR_CRASHED)
     
     @classmethod
-    def same_entity(cls, target: A, match: ):
+    def same_entity(cls, target: T, particle: T):
+        pass
         
     @classmethod
     def entity_conflict(
             cls,
             match: A,
-            target: A,
-            particle: P,
+            target: T,
+            particle: T,
             identifier: str,
             exception: Exception,
     ) -> CollisionReport:
         return cls(
-            match=match,
+            field_value=match,
             target=target,
             particle=particle,
-            identifier=identifier,
+            field_name=identifier,
             exception=exception,
             state=CollisionState.DIFFERENT_ITEMS,
         )

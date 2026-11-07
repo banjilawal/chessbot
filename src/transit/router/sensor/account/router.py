@@ -111,10 +111,10 @@ class AccountSensorRouter(SensorRouter[Account]):
             key = "machine_name"
             report = self._machine_name_sensor.execute(target=machine_name, stream=stream)
         if report.collision_exists:
-            match = report.match
+            match = report.field_value
             target = report.target
             particle = cast(Account, report.particle)
-            identifier = report.identifier or key
+            identifier = report.field_name or key
             
             return CollisionReport.entity_conflict(
                 match=match,
