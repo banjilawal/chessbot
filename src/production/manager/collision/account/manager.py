@@ -73,9 +73,14 @@ class AccountCollisionManager(CollisionManager[Account]):
         
         identifier: str = "id"
         context: AccountContext = AccountContext(id=item.id)
-        reports: Dict[str, CollisionReport] = {}
+        collision_table: Dict[int, List[Account]] = {}
         
-        
+        report = self.detector.router.id_sensor.execute(
+            stream=collection,
+            target=item.id,
+        )
+        particle = cast(Account, report.particle)
+        table[0] = List[particle]
         
         matches = [
             account for account in collection.list if account.id == item.id

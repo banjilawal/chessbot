@@ -67,11 +67,11 @@ class AccountCollisionDetector(CollisionDetector[Account]):
                 particle = cast(Account, report.particle)
                 identifier = report.field_name or attribute_name
                 
-                return CollisionReport.entity_conflict(
-                    match=match,
+                return CollisionReport.summary(
+                    field_value=match,
                     target=target,
                     particle=particle,
-                    identifier=identifier,
+                    field_name=identifier,
                     exception=AccountCollisionDetectorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

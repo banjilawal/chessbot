@@ -75,7 +75,7 @@ class TokenCollision(Collision[TokenCarrier]):
             # Handle the case that a token already has the target's id.
             if item.id == attractor.entity.id:
                 # Return the collision details in the report.
-                return CollisionReport.collision(
+                return CollisionReport.summary(
                     collision=item,
                     target_set=attractor,
                     colliding_variable="id",
@@ -90,7 +90,7 @@ class TokenCollision(Collision[TokenCarrier]):
             # Handle the case that a token already has the target's id.
             if item.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
-                return CollisionReport.collision(
+                return CollisionReport.summary(
                     collision=item,
                     target_set=attractor,
                     colliding_variable="designation",
@@ -105,7 +105,7 @@ class TokenCollision(Collision[TokenCarrier]):
             # Handle the case that the target shares its home_square_name with a collision_candidates member.
             if item.home_square.name.upper() == attractor.entity.formation.home_square_name.upper():
                 # Return the collision, designation, and the exception.
-                return CollisionReport.collision(
+                return CollisionReport.summary(
                     collision=item,
                     target_set=attractor,
                     colliding_variable="home_square",

@@ -6,22 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/decision.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/factory/athorization/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/context/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/factory/athorization/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/model/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/factory/athorization/model/factory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transit/router/sensor/account/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/router/sensor/account/router.py" afterDir="false" />
     </list>
@@ -65,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000161936113" />
-      <entry key="MS500" value="1.0276652819510785" />
-      <entry key="S2" value="1.4533383876099486" />
-      <entry key="S5" value="2.0435201620006223" />
-      <entry key="S10" value="2.810981571921963" />
-      <entry key="S30" value="5.076554145992006" />
-      <entry key="S60" value="7.3305889619179565" />
-      <entry key="M2" value="11.35242403796087" />
-      <entry key="M5" value="27.27114409203941" />
-      <entry key="M10" value="57.38400252415325" />
-      <entry key="M15" value="87.19925672261459" />
-      <entry key="M30" value="172.5893553360309" />
-      <entry key="H1" value="304.5668084534843" />
-      <entry key="H2" value="446.1452919211698" />
-      <entry key="H4" value="589.7682061248844" />
-      <entry key="D1" value="3683.995162083437" />
-      <entry key="W1" value="28273.432805001936" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000007262653063" />
+      <entry key="S5" value="1.003503005751708" />
+      <entry key="S10" value="1.0594096297584157" />
+      <entry key="S30" value="1.5433905072884588" />
+      <entry key="S60" value="2.759348179798943" />
+      <entry key="M2" value="6.050891170345748" />
+      <entry key="M5" value="18.108932430534857" />
+      <entry key="M10" value="39.197640687487066" />
+      <entry key="M15" value="58.789673247914145" />
+      <entry key="M30" value="101.30159415594989" />
+      <entry key="H1" value="142.21579723064627" />
+      <entry key="H2" value="173.535556279174" />
+      <entry key="H4" value="227.43042844076692" />
+      <entry key="D1" value="2537.4804657817062" />
+      <entry key="W1" value="26693.502444391237" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="9.00845356126231E-163" />
-      <entry key="S5" value="1.5200577838537719E-65" />
-      <entry key="S10" value="3.8987918434520196E-33" />
-      <entry key="S30" value="1.5741478660853548E-11" />
-      <entry key="S60" value="4.037878119178465E-6" />
-      <entry key="M2" value="0.0023679028913488743" />
-      <entry key="M5" value="0.1516721490644137" />
-      <entry key="M10" value="0.7829801607053454" />
-      <entry key="M15" value="1.6337267269245137" />
-      <entry key="M30" value="5.331636441069311" />
-      <entry key="H1" value="13.758436063790217" />
-      <entry key="H2" value="24.70904522731248" />
-      <entry key="H4" value="35.86841842685583" />
-      <entry key="D1" value="160.70270778194248" />
-      <entry key="W1" value="1415.9620652710803" />
+      <entry key="MS500" value="9.319879761002527E-246" />
+      <entry key="S2" value="5.525258194541374E-62" />
+      <entry key="S5" value="3.140082300544144E-25" />
+      <entry key="S10" value="5.603643725777133E-13" />
+      <entry key="S30" value="8.244357931018069E-5" />
+      <entry key="S60" value="0.009079929833480058" />
+      <entry key="M2" value="0.09559007156552972" />
+      <entry key="M5" value="0.44843850271685687" />
+      <entry key="M10" value="1.062433142296029" />
+      <entry key="M15" value="1.6275680014337344" />
+      <entry key="M30" value="2.730945773076979" />
+      <entry key="H1" value="3.658115782560308" />
+      <entry key="H2" value="4.36809802234237" />
+      <entry key="H4" value="6.918078878295809" />
+      <entry key="D1" value="106.6193789875133" />
+      <entry key="W1" value="1331.3369580847743" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.737134608658485" />
-      <entry key="MS500" value="0.9474727800552606" />
-      <entry key="S2" value="1.3149004151187371" />
-      <entry key="S5" value="1.9231081697350476" />
-      <entry key="S10" value="2.659457293430827" />
-      <entry key="S30" value="4.909634415270672" />
-      <entry key="S60" value="7.197913383411893" />
-      <entry key="M2" value="11.211896642041017" />
-      <entry key="M5" value="27.236486534182717" />
-      <entry key="M10" value="57.97916813825212" />
-      <entry key="M15" value="88.65249164962454" />
-      <entry key="M30" value="177.753425972366" />
-      <entry key="H1" value="318.17997141736697" />
-      <entry key="H2" value="470.74810438725103" />
-      <entry key="H4" value="625.5686075810656" />
-      <entry key="D1" value="3844.6695387341188" />
-      <entry key="W1" value="29689.36810685024" />
+      <entry key="MS100" value="2.67876601359939E-6" />
+      <entry key="MS500" value="0.07683992920341129" />
+      <entry key="S2" value="0.5264982335435487" />
+      <entry key="S5" value="0.7758378762012511" />
+      <entry key="S10" value="0.9262759643232839" />
+      <entry key="S30" value="1.4608999559966398" />
+      <entry key="S60" value="2.6783486200852953" />
+      <entry key="M2" value="6.03278820331549" />
+      <entry key="M5" value="18.428159634618762" />
+      <entry key="M10" value="40.13404143505074" />
+      <entry key="M15" value="60.300429669121606" />
+      <entry key="M30" value="103.94425109497375" />
+      <entry key="H1" value="145.8175931851668" />
+      <entry key="H2" value="177.8710923507704" />
+      <entry key="H4" value="234.32694169488613" />
+      <entry key="D1" value="2644.078879069806" />
+      <entry key="W1" value="28024.813894343366" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -133,39 +122,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.checker.executor": "Run",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.responder.executor": "Run",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "Python.table.executor": "Debug",
-    "Python.validator (1).executor": "Run",
-    "Python.worker.executor": "Coverage",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/production/manager/collision/account",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/production/manager/collision/account&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/production/manager/collision/account" />
@@ -994,7 +983,7 @@
       <workItem from="1792402033304" duration="278739000" />
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
-      <workItem from="1793360739922" duration="293770000" />
+      <workItem from="1793360739922" duration="298940000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3032,11 +3021,6 @@
           <line>58</line>
           <log-expression expression="  &#10;        ## --- Perform the check on the unique id attribute all Accounts have. ---##&#10;        for item in collection.items:&#10;            ## Handle the case there are duplicate ids.&#10;            if item.id == attractor.id:&#10;                ## Send an exception chain in the  report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=attractor,&#10;                    collider=item,&#10;                    attribute=&quot;id&quot;,&#10;                    value=item.id,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=method,&#10;                        cls_name=self.__class__.__name__,&#10;                        msg=AccountCollisionSensorException.MSG,&#10;                        err_code=AccountCollisionSensorException.ERR_CODE,&#10;                        ex=AccountIdCollisionException(&#10;                            cls_mthd=method,&#10;                            cls_name=self.__class__.__name__,&#10;                            msg=AccountIdCollisionException.MSG,&#10;                            err_code=AccountIdCollisionException.ERR_CODE,&#10;                        )&#10;                    )&#10;                )&#10;        ## --- Run collision tests on unique sub class attributes. ---##&#10;        &#10;        ## Human account uniqueness branch.&#10;        if isinstance(attractor, HumanAccount):&#10;            return self._human_account_collider(&#10;                human_attractor=attractor,&#10;                humans=collection.human_accounts,&#10;                parent_method=method,&#10;            )&#10;        ## Otherwise run the default sub-collider.&#10;        return self._machine_account_collider(&#10;                machine_attractor=attractor,&#10;                machines=collection.machine_accounts,&#10;                parent_method=method,&#10;            )&#10;            &#10;    @LoggingLevelRouter.monitor&#10;    def _human_account_collider(&#10;            self,&#10;            human_attractor: HumanAccount,&#10;            humans: List[HumanAccount],&#10;            parent_method: str&#10;    ) -&gt; CollisionReport:&#10;        &quot;&quot;&quot;duplicate_email_detector&quot;&quot;&quot;&#10;        ## Set up the target.&#10;        attribute = &quot;email&quot;&#10;        target = human_attractor.email.upper()&#10;        &#10;        ## --- Run the collider. ---##&#10;        for human in humans:&#10;            ## Handle the case that an email address is shared.&#10;            if human.email.upper() == target:&#10;                ## Send an exception chain in the report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=human_attractor,&#10;                    collider=human,&#10;                    attribute=attribute,&#10;                    value=target,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=parent_method,&#10;                        cls_name=self.__class__.__name__,&#10;                        ex=AccountEmailCollisionException()&#10;                    )&#10;                )&#10;        ## Otherwise report the attractor is unique&#10;        return CollisionReport.report_no_duplicates(attractor=human_attractor)&#10;    &#10;    @LoggingLevelRouter.monitor&#10;    def _machine_account_collider(&#10;            self,&#10;            machine_attractor: MachineAccount,&#10;            machines: List[MachineAccount],&#10;            parent_method: str&#10;    ):&#10;        &quot;&quot;&quot;duplicate_machine_name_detector&quot;&quot;&quot;&#10;        ## Set up the target.&#10;        attribute = &quot;machine_name&quot;&#10;        target = machine_attractor.name.upper()&#10;        &#10;        ## --- Run the collider. ---##&#10;        for machine in machines:&#10;            ## Handle the case that a machine_name is shared.&#10;            if machine.name.upper() == target:&#10;                ## Send an exception chain in the report.&#10;                return CollisionReport.report_duplicate(&#10;                    attractor=machine_attractor,&#10;                    collider=machine,&#10;                    attribute=attribute,&#10;                    value=target,&#10;                    exception=AccountCollisionSensorException(&#10;                        cls_mthd=parent_method,&#10;                        cls_name=self.__class__.__name__,&#10;                        msg=AccountCollisionSensorException.MSG,&#10;                        err_code=AccountCollisionSensorException.ERR_CODE,&#10;                        ex=AccountMachineCollisionException()&#10;                    )&#10;                )&#10;        ## Otherwise report the attractor is unique.&#10;        return CollisionReport.report_no_duplicates(attractor=machine_attractor)" language="Python" />
           <option name="timeStamp" value="679" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/artifcat/report/collision/collision.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="680" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/environment/detector/detector.py</url>

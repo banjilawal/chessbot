@@ -12,7 +12,7 @@ from __future__ import annotations
 from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account
-from sensor import IdSensor
+from environment import IdSensor
 from util import LoggingLevelRouter
 
 
@@ -59,11 +59,11 @@ class AccountIdSensor(IdSensor[Account, int]):
         if len(matches) == 0:
             return CollisionReport.empty()
         # Otherwise report a collision.
-        return CollisionReport.entity_conflict(
-            match=matches[0].id,
-            target=target,
+        return CollisionReport.summary(
+            field_value=matches[0].id,
+            target=item,
             particle=matches[0],
-            identifier=self.ID_IDENTIFIER,
+            field_name=self.ID_IDENTIFIER,
             exception=AccountIdSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,

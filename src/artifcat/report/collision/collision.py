@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Any, Generic, Optional, TypeVar
 
 from artifcat import CollisionState, Report
-from domain import Model
+from domain import Context, Model
+from transit import ModelCarrier
 
 T = TypeVar("T", bound="Model")
-A = TypeVar("A")
 
-class CollisionReport(Report, Generic[T, A]):
+class CollisionReport(Report, Generic[T]):
     """
     Role:
         -   Report
@@ -28,7 +28,7 @@ class CollisionReport(Report, Generic[T, A]):
     Attributes:
         state: CollisionState
         match: Optional[A]
-        target: Optional[A]
+        attractor: Optional[A]
         particle: Optional[T]
         identifier: Optional[str]
         exception:Optional[Exception]
@@ -42,7 +42,7 @@ class CollisionReport(Report, Generic[T, A]):
         
         -   def collision_event(
                     match: A,
-                    target: T,
+                    attractor: T,
                     particle: T,
                     identifier: str,
                     exception: Exception,
@@ -52,35 +52,31 @@ class CollisionReport(Report, Generic[T, A]):
         Report
     """
     _state: CollisionState
-    _target: Optional[T]
+    _attractor: Optional[ModelCarrier[T]]
     _particle: Optional[T]
-    _field_name: Optional[str]
-    _field_value: Optional[A]
+    _context: Optional[Context[T]]
     _exception: Optional[Exception]
     
     def __init__(
             self,
             state: CollisionState,
-            target: Optional[T] | None = None,
+            attractor: Optional[T] | None = None,
             particle: Optional[T] | None = None,
-            field_name: Optional[str] | None = None,
-            field_value: Optional[A] | None = None,
+            context: Optional[Context[T]] | None = None,
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
             state: CollisionState
-            target: Optional[T]
+            attractor: Optional[T]
             particle: Optional[T]
-            field_name: Optional[str]
-            field_value: Optional[A]
+            context: Optional[Context[T]]
             exception:Optional[Exception]
         """
         self._state = state
-        self._target = target
+        self._attractor = attractor
         self._particle = particle
-        self._field_name = field_name
-        self._field_value = field_value
+        self._context = context
         self._exception = exception
         
     @property
@@ -88,20 +84,16 @@ class CollisionReport(Report, Generic[T, A]):
         return self._state
         
     @property
-    def target(self) -> Optional[T]:
-        return self._target
-        
-    @property
-    def field_value(self) -> Optional[A]:
-        return self._field_value
+    def attractor(self) -> Optional[T]:
+        return self._attractor
     
     @property
     def particle(self) -> Optional[T]:
         return self._particle
         
     @property
-    def field_name(self) -> Optional[str]:
-        return self._field_name
+    def context(self) -> Optional[Context[T]]:
+        return self._context
         
     @property
     def exception(self) -> Optional[Exception]:
@@ -110,10 +102,9 @@ class CollisionReport(Report, Generic[T, A]):
     @property
     def detector_failure_exists(self) -> bool:
         return (
-                self._target is None and
+                self._attractor is None and
                 self._particle is None and
-                self._field_name is None and
-                self._field_value is None and
+                self._context is None and
                 self._exception is not None and
                 self._state == CollisionState.DETECTOR_CRASHED
         )
@@ -121,11 +112,9 @@ class CollisionReport(Report, Generic[T, A]):
     @property
     def collision_exists(self) -> bool:
         return (
-                self._target is not None and
                 self._particle is not None and
-                self._field_name is not None and
+                self._context is not None and
                 self._exception is not None and
-                self._field_value is not None and
                 self._state == CollisionState.DIFFERENT_ITEMS
         )
         
@@ -140,25 +129,17 @@ class CollisionReport(Report, Generic[T, A]):
     @classmethod
     def detector_failure(cls, exception) -> CollisionReport:
         return cls(exception=exception, state=CollisionState.DETECTOR_CRASHED)
-    
-    @classmethod
-    def same_entity(cls, target: T, particle: T):
-        pass
         
     @classmethod
-    def entity_conflict(
+    def summarize(
             cls,
-            match: A,
-            target: T,
             particle: T,
-            identifier: str,
+            context: Context[T],
             exception: Exception,
     ) -> CollisionReport:
         return cls(
-            field_value=match,
-            target=target,
             particle=particle,
-            field_name=identifier,
+            context=context,
             exception=exception,
             state=CollisionState.DIFFERENT_ITEMS,
         )

@@ -15,8 +15,8 @@ from artifcat import CollisionReport
 from assurance import AccountContextValidator
 from collection import AccountStack
 from domain import Account, AccountContext
+from environment import AccountEmailSensor, AccountIdSensor, MachineAccountNameSensor
 from err import AccountSensorRouterException
-from sensor import AccountEmailSensor, AccountIdSensor, MachineAccountNameSensor
 from transit import SensorRouter
 from util import LoggingLevelRouter
 
@@ -116,11 +116,11 @@ class AccountSensorRouter(SensorRouter[Account]):
             particle = cast(Account, report.particle)
             identifier = report.field_name or key
             
-            return CollisionReport.entity_conflict(
-                match=match,
+            return CollisionReport.summary(
+                field_value=match,
                 target=target,
                 particle=particle,
-                identifier=identifier,
+                field_name=identifier,
                 exception=AccountSensorRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

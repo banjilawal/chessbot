@@ -62,11 +62,11 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
         if len(matches) == 0:
             return CollisionReport.empty()
         # Otherwise report a collision.
-        return CollisionReport.entity_conflict(
-            match=matches[0].id,
+        return CollisionReport.summary(
+            field_value=matches[0].id,
             target=target,
             particle=matches[0],
-            identifier="name",
+            field_name="name",
             exception=AccountNameSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,

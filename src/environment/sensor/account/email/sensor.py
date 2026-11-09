@@ -62,11 +62,11 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
         if len(matches) == 0:
             return CollisionReport.empty()
         # Otherwise report a collision.
-        return CollisionReport.entity_conflict(
-            match=matches[0].email,
+        return CollisionReport.summary(
+            field_value=matches[0].email,
             target=target,
             particle=matches[0],
-            identifier="email",
+            field_name="email",
             exception=AccountEmailSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,

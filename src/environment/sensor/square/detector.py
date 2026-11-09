@@ -87,7 +87,7 @@ class SquareCollision(Collision[SquareCarrier]):
             # Handle the case that a candidate already has the target's id.
             if square.id == attractor.entity.id:
                 # Return the collision details in the report.
-                return CollisionReport.collision(
+                return CollisionReport.summary(
                     target_set=attractor,
                     collision=square,
                     colliding_variable=f"id",
@@ -102,7 +102,7 @@ class SquareCollision(Collision[SquareCarrier]):
             # Handle the case that a candidate already has the target's name.
             if square.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
-                return CollisionReport.collision(
+                return CollisionReport.summary(
                     target_set=attractor,
                     collision=square,
                     colliding_variable=f"name",
@@ -117,7 +117,7 @@ class SquareCollision(Collision[SquareCarrier]):
             # Handle the case that a candidate already has the target's coord.
             if square.coord == attractor.entity.coord:
                 # Return the collision details in the report.
-                return CollisionReport.collision(
+                return CollisionReport.summary(
                     target_set=attractor,
                     collision=square,
                     colliding_variable=f"coord",
