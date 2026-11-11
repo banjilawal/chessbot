@@ -70,18 +70,29 @@ class AccountCollisionManager(CollisionManager[Account]):
         method = f"{self.__class__.__name__}.execute"
         
         table: Dict[int, List[Account]] = {}
-        
-        identifier: str = "id"
-        context: AccountContext = AccountContext(id=item.id)
-        collision_table: Dict[int, List[Account]] = {}
-        
-        report = self.detector.router.id_sensor.execute(
-            stream=collection,
-            target=item.id,
-        )
-        particle = cast(Account, report.particle)
-        table[0] = List[particle]
-        
+        context = AccountContext(id=item.id)
+
+        report = self.detector.router.execute(context=context, stream=collection)
+        if report.collision_exists:
+            particle = cast(Account, report.particle)
+            table[0] = [item, particle]
+        if isinstance(item, HumanAccount):
+            account = cast(HumanAccount, item)
+            context = AccountContext(email=account.email)
+        if isinstance(item, MachineAccount):
+            account = cast(MachineAccount, item)
+            context = AccountContext(machine_name=account.name)
+        report = self.detector.router.execute(context=context, stream=collection)
+        if report.collision_exists:
+            particle = cast(Account, report.particle)
+            table[1] = [item, particle]
+            
+        type_count = self._type_counter(table)
+        table_size = len(table)
+        if table_size == 0 and type_count == 0:
+            return CollisionReport.empty()
+        if table_size 1
+             # decembeer 12 mcn start 7 pm
         matches = [
             account for account in collection.list if account.id == item.id
         ]
@@ -93,7 +104,7 @@ class AccountCollisionManager(CollisionManager[Account]):
         
         for key in self._human.keys():
             table[key] = string_table[key]
-        type_count = self._type_count(table)
+        type_count = self._type_counter(table)
         if type == 0:
             return CollisionReport.empty()
         if type_count == 1 and table_size == 2:
@@ -146,7 +157,7 @@ class AccountCollisionManager(CollisionManager[Account]):
         return table
     
     @LoggingLevelRouter.monitor
-    def _type_count(self, table: Dict[int, List[Account]]) -> int:
+    def _type_counter(self, table: Dict[int, List[Account]]) -> int:
         count = 0
         for key in table.keys():
             items = table[key]

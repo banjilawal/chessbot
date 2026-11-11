@@ -73,17 +73,12 @@ class BuildResponse(Response[BuildResult], ABC, Generic[T]):
         return (
                 super().is_success and
                 isinstance(self.result, BuildResult) and
-                self.model is not None
+                self.product is not None
         )
 
     @property
     @abstractmethod
-    def model(self) -> Optional[Any]:
-        pass
-    
-    @property
-    @abstractmethod
-    def carrier(self) -> Optional[EntityCarrier]:
+    def product(self) -> Optional[T]:
         pass
         
     @classmethod
