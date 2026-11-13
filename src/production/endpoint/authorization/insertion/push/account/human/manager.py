@@ -9,14 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, cast
+from typing import Optional, cast
 
 from artifcat import CollisionReport
 from collection import AccountStack
-from domain import Account, AccountContext, HumanAccount, MachineAccount
+from domain import Account, AccountContext, HumanAccount
 from environment import AccountCollisionDetector
-from err import HumanAccountColliderException, exception
-from production import CollisionManager
 from util import LoggingLevelRouter
 
 
@@ -73,7 +71,7 @@ class HumanAccountCollider(CollisionManager[Account]):
         if report.collision_exists:
             context = cast(AccountContext, report.context)
             particle = cast(Account, report.particle)
-            return CollisionReport.summarize(
+            return CollisionReport.collision(
                 context=context,
                 particle=particle,
                 exception=HumanAccountColliderException(
@@ -89,7 +87,7 @@ class HumanAccountCollider(CollisionManager[Account]):
         if report.collision_exists:
             context = cast(AccountContext, report.context)
             particle = cast(HumanAccount, report.particle)
-            return CollisionReport.summarize(
+            return CollisionReport.collision(
                 context=context,
                 particle=particle,
                 exception=HumanAccountColliderException(
@@ -114,14 +112,14 @@ class HumanAccountCollider(CollisionManager[Account]):
         if report.collision_exists:
             particle = cast(Account, report.particle)
         if not isinstance(particle, HumanAccount):
-            return CollisionReport.summarize(
+            return CollisionReport.collision(
                 particle=particle, 
                 context=context, 
                 exception=HumanAccountColliderException(),
             )
         person = cast(HumanAccount, particle)
         if person.email.upper() != account.email.upper():
-            return CollisionReport.summarize(
+            return CollisionReport.collision(
                 particle=person,
                 context=context,
                 exception=HumanAccountColliderException(),
@@ -140,7 +138,7 @@ class HumanAccountCollider(CollisionManager[Account]):
         if report.collision_exists:
             particle = cast(HumanAccount, report.particle)
         if particle.id != account.id:
-            return CollisionReport.summarize(
+            return CollisionReport.collision(
                 particle=particle,
                 context=context,
                 exception=HumanAccountColliderException(),

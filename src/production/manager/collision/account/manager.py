@@ -145,7 +145,7 @@ class AccountCollisionManager(CollisionManager[Account]):
         if email_report.collision_exists:
             email_collider = cast(HumanAccount, email_report.particle)
         if not isinstance(id_collider, HumanAccount):
-            return CollisionReport.summarize(
+            return CollisionReport.collision(
                 context=context,
                 particle=id_collider,
                 exception=ChessException(ex=id_report.exception)

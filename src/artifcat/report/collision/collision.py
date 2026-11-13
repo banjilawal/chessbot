@@ -131,7 +131,7 @@ class CollisionReport(Report, Generic[T]):
         return cls(exception=exception, state=CollisionState.DETECTOR_CRASHED)
         
     @classmethod
-    def summarize(
+    def collision(
             cls,
             particle: T,
             context: Context[T],
