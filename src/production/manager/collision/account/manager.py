@@ -129,7 +129,31 @@ class AccountCollisionManager(CollisionManager[Account]):
         # return CollisionReport.empty()
     
     @LoggingLevelRouter.monitor
-    def _human(self, item: Account, collection: AccountStack) -> {}:
+    def _human(
+            self,
+            account: HumanAccount,
+            collection: AccountStack,
+    ) -> CollisionReport:
+        email_collider = account
+        id_collider = account
+        context = AccountContext(id=account.id)
+        id_report = self.detector.execute(context=context, stream=collection)
+        if id_report.collision_exists:
+            id_collider = cast(Account, id_report.particle)
+        context = AccountContext(email=account.email)
+        email_report = self.detector.execute(context=context, stream=collection)
+        if email_report.collision_exists:
+            email_collider = cast(HumanAccount, email_report.particle)
+        if not isinstance(id_collider, HumanAccount):
+            return CollisionReport.summarize(
+                context=context,
+                particle=id_collider,
+                exception=ChessException(ex=id_report.exception)
+            )
+        human_id_collider = cast(HumanAccount, id_collider)
+        
+        if human_id_collider.email.upper() == account.email.upper():
+        
         table = {}
         if (item, HumanAccount):
             target = cast(HumanAccount, item).email.upper()
@@ -159,6 +183,21 @@ class AccountCollisionManager(CollisionManager[Account]):
     @LoggingLevelRouter.monitor
     def _type_counter(self, table: Dict[int, List[Account]]) -> int:
         count = 0
+        for key in table.keys():
+            items = table[key]
+            if [type(items[0]).__name__.upper() == type(items[1]).__name__.upper()]:
+                count = count + 1
+            count = count + 2
+        if count == 2:
+            type_1 = table[0][0]
+            type_2 = table[1][0]
+            if type_1.upper() == type_2.upper():
+                count = 1
+        return count
+    
+    @LoggingLevelRouter.monitor
+    def __human_resolver(self, table: Dict[int, List[Account]]) -> int:
+        target_class = type(HumanAccount).__name__.upper()
         for key in table.keys():
             items = table[key]
             if [type(items[0]).__name__.upper() == type(items[1]).__name__.upper()]:
