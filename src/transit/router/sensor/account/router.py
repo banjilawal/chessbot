@@ -103,7 +103,7 @@ class AccountSensorRouter(SensorRouter[Account]):
         
         if id is not None:
             key = "id"
-            report = self._id_sensor.execute(target=id, stream=stream)
+            report = self._id_sensor.execute(target=id, particle_stream=stream)
         if email is not None:
             key = "email"
             report = self._email_sensor.execute(target=email, stream=stream)

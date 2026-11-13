@@ -14,7 +14,8 @@ from typing import Optional, cast
 from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account, AccountContext
-from production import CollisionDetector
+from environment import CollisionDetector
+
 from transit import AccountSensorRouter
 from util import LoggingLevelRouter
 
@@ -35,7 +36,7 @@ class AccountCollisionDetector(CollisionDetector[Account]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, context: AccountContext, stream: AccountStack) -> CollisionReport:
+    def execute(self, context: AccountContext, particle_stream: AccountStack) -> CollisionReport:
         """
         Detect if the name has been assigned to a MachineAccount.
 
@@ -45,7 +46,7 @@ class AccountCollisionDetector(CollisionDetector[Account]):
             2.  Otherwise, report no collisions occurred.
         Args:
             context: AccountContext
-            stream: AccountStack
+            particle_stream: AccountStack
         Result:
             CollisionReport
         Raises:
@@ -59,7 +60,7 @@ class AccountCollisionDetector(CollisionDetector[Account]):
             if table[key] is not None:
                attribute_name = key 
         
-        report = self.router.execute(context=context, stream=stream)
+        report = self.router.execute(context=context, stream=particle_stream)
         if report.collision_exists:
             if report.collision_exists:
                 match = report.field_value

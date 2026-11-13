@@ -137,11 +137,11 @@ class AccountCollisionManager(CollisionManager[Account]):
         email_collider = account
         id_collider = account
         context = AccountContext(id=account.id)
-        id_report = self.detector.execute(context=context, stream=collection)
+        id_report = self.detector.execute(context=context, particle_stream=collection)
         if id_report.collision_exists:
             id_collider = cast(Account, id_report.particle)
         context = AccountContext(email=account.email)
-        email_report = self.detector.execute(context=context, stream=collection)
+        email_report = self.detector.execute(context=context, particle_stream=collection)
         if email_report.collision_exists:
             email_collider = cast(HumanAccount, email_report.particle)
         if not isinstance(id_collider, HumanAccount):

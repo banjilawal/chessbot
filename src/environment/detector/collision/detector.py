@@ -33,5 +33,5 @@ class CollisionDetector(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, context: Context[T], stream: Stack[T]) -> CollisionReport:
+    def execute(self, context: Context[T], particle_stream: Stack[T]) -> CollisionReport:
         pass

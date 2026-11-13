@@ -206,7 +206,7 @@ class AttackStackService(StackService[AttackEvent]):
         # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.push.execute(
             attack=item,
-            stream=self,
+            particle_stream=self,
             rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
             attack_collision_detector=self._ops_controller.collision_detector
         )

@@ -31,7 +31,7 @@ class HumanAccountCollider(CollisionManager[Account]):
         detector: AccountCollisionDetector
 
     Provides:
-        -   def execute(item: Account, collection: AccountStack) -> CollisionReport
+        -   def execute(target: Account, collection: AccountStack) -> CollisionReport
         
     Super Class
         CollisionManager
@@ -49,17 +49,17 @@ class HumanAccountCollider(CollisionManager[Account]):
         return cast(AccountCollisionDetector, super().detector)
     
     @LoggingLevelRouter.monitor
-    def execute(self, item: HumanAccount, stream: AccountStack) -> CollisionReport:
+    def execute(self, target: HumanAccount, particle_stream: AccountStack) -> CollisionReport:
         """
-        Assure the item will be unique in the Account collection.
+        Assure the target will be unique in the Account collection.
         
         Action:
-            1.  If the item shares an attribute-value supposed to be unique to the
+            1.  If the target shares an attribute-value supposed to be unique to the
                 collection, send an exception chain in the report.
             2.  Otherwise, report that primary keys will be maintained.
         Args:
-            item: Account
-            stream: AccountStack
+            target: Account
+            particle_stream: AccountStack
         Returns:
            CollisionReport
         Raises:
@@ -67,8 +67,10 @@ class HumanAccountCollider(CollisionManager[Account]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        report = self._id_attraction(account=item, stream=stream)
+        # Handle the case that the id attracts a particle/
+        report = self._id_attraction(target=target, particle_stream=particle_stream)
         if report.collision_exists:
+            # Send the exception chain in the report.
             context = cast(AccountContext, report.context)
             particle = cast(Account, report.particle)
             return CollisionReport.collision(
@@ -82,9 +84,10 @@ class HumanAccountCollider(CollisionManager[Account]):
                     ex=report.exception
                 )
             )
-        
-        report = self._email_attraction(account=item, stream=stream)
+        # Handle the case that the email attracts a particle.
+        report = self._email_attraction(account=target, particle_stream=particle_stream)
         if report.collision_exists:
+            # Send the exception chain in the report.
             context = cast(AccountContext, report.context)
             particle = cast(HumanAccount, report.particle)
             return CollisionReport.collision(
@@ -98,17 +101,18 @@ class HumanAccountCollider(CollisionManager[Account]):
                     ex=report.exception
                 )
             )
+        
         return CollisionReport.empty()
     
     @LoggingLevelRouter.monitor
     def _id_attraction(
             self,
-            account: HumanAccount,
-            stream: AccountStack,
+            target: HumanAccount,
+            particle_stream: AccountStack,
     ) -> CollisionReport:
-        particle = account
-        context = AccountContext(id=account.id)
-        report = self.detector.execute(context=context, stream=stream)
+        particle = target
+        context = AccountContext(id=target.id)
+        report = self.detector.execute(context=context, particle_stream=particle_stream)
         if report.collision_exists:
             particle = cast(Account, report.particle)
         if not isinstance(particle, HumanAccount):
@@ -118,7 +122,7 @@ class HumanAccountCollider(CollisionManager[Account]):
                 exception=HumanAccountColliderException(),
             )
         person = cast(HumanAccount, particle)
-        if person.email.upper() != account.email.upper():
+        if person.email.upper() != target.email.upper():
             return CollisionReport.collision(
                 particle=person,
                 context=context,
@@ -130,11 +134,11 @@ class HumanAccountCollider(CollisionManager[Account]):
     def _email_attraction(
             self,
             account: HumanAccount,
-            stream: AccountStack,
+            particle_stream: AccountStack,
     ) -> CollisionReport:
         particle = account
         context = AccountContext(email=account.email)
-        report = self.detector.execute(context=context, stream=stream)
+        report = self.detector.execute(context=context, particle_stream=particle_stream)
         if report.collision_exists:
             particle = cast(HumanAccount, report.particle)
         if particle.id != account.id:
