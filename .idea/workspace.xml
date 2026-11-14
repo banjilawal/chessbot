@@ -5,13 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human/manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/machine/attractor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/attractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/human/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/human/attractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/principal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/principal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/principal/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/principal/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/principal/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/principal/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/role/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/role/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/endpoint/authorization/role/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/role/checker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,61 +67,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000031453" />
-      <entry key="MS500" value="1.0050064372037508" />
-      <entry key="S2" value="1.2660003409432359" />
-      <entry key="S5" value="1.5887808037161553" />
-      <entry key="S10" value="1.7684015234024393" />
-      <entry key="S30" value="2.070305382371733" />
-      <entry key="S60" value="2.785127575191165" />
-      <entry key="M2" value="4.972719479896593" />
-      <entry key="M5" value="12.906518129684137" />
-      <entry key="M10" value="27.0465133511066" />
-      <entry key="M15" value="40.62971285802021" />
-      <entry key="M30" value="71.38249165739984" />
-      <entry key="H1" value="102.36190080127956" />
-      <entry key="H2" value="125.46087043597558" />
-      <entry key="H4" value="143.00956214605313" />
-      <entry key="D1" value="424.7097938946329" />
-      <entry key="W1" value="18427.42955992689" />
+      <entry key="MS100" value="3.9558491861698412E-28" />
+      <entry key="MS500" value="3.4910776862536564E-6" />
+      <entry key="S2" value="0.06335482143975865" />
+      <entry key="S5" value="0.4958862806741521" />
+      <entry key="S10" value="1.0196608170218036" />
+      <entry key="S30" value="1.9543324487438611" />
+      <entry key="S60" value="2.7200701981441573" />
+      <entry key="M2" value="4.022455266207483" />
+      <entry key="M5" value="6.569758234829051" />
+      <entry key="M10" value="10.240631655905888" />
+      <entry key="M15" value="14.466827146918321" />
+      <entry key="M30" value="30.19708952598765" />
+      <entry key="H1" value="81.04911726673743" />
+      <entry key="H2" value="184.27394513654275" />
+      <entry key="H4" value="311.85941632461953" />
+      <entry key="D1" value="750.8036207579925" />
+      <entry key="W1" value="17992.99917747449" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.866651406495962E-124" />
-      <entry key="S2" value="1.4421140922399404E-31" />
-      <entry key="S5" value="5.654344529857355E-13" />
-      <entry key="S10" value="1.0062735379997037E-6" />
-      <entry key="S30" value="0.015740370849897017" />
-      <entry key="S60" value="0.19692776377074808" />
-      <entry key="M2" value="1.0801491341372635" />
-      <entry key="M5" value="5.658164090840241" />
-      <entry key="M10" value="12.852364125077061" />
-      <entry key="M15" value="18.266098562886903" />
-      <entry key="M30" value="27.882088454901957" />
-      <entry key="H1" value="35.69417033361332" />
-      <entry key="H2" value="40.8293379872875" />
-      <entry key="H4" value="44.63332702033233" />
-      <entry key="D1" value="74.91248354507735" />
-      <entry key="W1" value="988.7786605219314" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000541004455075" />
+      <entry key="S2" value="1.0857630485945327" />
+      <entry key="S5" value="1.3743864172588838" />
+      <entry key="S10" value="1.6118712423859156" />
+      <entry key="S30" value="1.8489589295287452" />
+      <entry key="S60" value="1.921389673009604" />
+      <entry key="M2" value="1.959890448441698" />
+      <entry key="M5" value="1.9837588996596023" />
+      <entry key="M10" value="1.9919646917156704" />
+      <entry key="M15" value="1.9969691635693287" />
+      <entry key="M30" value="2.0463921313141826" />
+      <entry key="H1" value="2.226489710669587" />
+      <entry key="H2" value="3.009519917768958" />
+      <entry key="H4" value="7.816077055817791" />
+      <entry key="D1" value="55.174861733774804" />
+      <entry key="W1" value="942.1295303449158" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9201876506279132" />
-      <entry key="MS500" value="0.98847392924217" />
-      <entry key="S2" value="1.2613895497183023" />
-      <entry key="S5" value="1.5867106623550562" />
-      <entry key="S10" value="1.7673039940037119" />
-      <entry key="S30" value="2.0820363654402434" />
-      <entry key="S60" value="2.952659756726183" />
-      <entry key="M2" value="5.9725481983822535" />
-      <entry key="M5" value="18.424915225922593" />
-      <entry key="M10" value="39.740787951616866" />
-      <entry key="M15" value="58.73915090579782" />
-      <entry key="M30" value="99.13428149530877" />
-      <entry key="H1" value="137.96749147222937" />
-      <entry key="H2" value="166.23776661979844" />
-      <entry key="H4" value="187.6134769185281" />
-      <entry key="D1" value="499.6125040788754" />
-      <entry key="W1" value="19416.189172166443" />
+      <entry key="MS100" value="1.444779698484621E-16" />
+      <entry key="MS500" value="6.951070707567664E-4" />
+      <entry key="S2" value="0.27116579286160575" />
+      <entry key="S5" value="1.2558260575785625" />
+      <entry key="S10" value="2.2356874279727412" />
+      <entry key="S30" value="3.6428773908890415" />
+      <entry key="S60" value="4.556878387056346" />
+      <entry key="M2" value="5.938808388380705" />
+      <entry key="M5" value="8.535126168085368" />
+      <entry key="M10" value="12.220569349168745" />
+      <entry key="M15" value="16.453333818433652" />
+      <entry key="M30" value="32.23517075722837" />
+      <entry key="H1" value="83.26923451543422" />
+      <entry key="H2" value="187.27826999211243" />
+      <entry key="H4" value="319.6692744000802" />
+      <entry key="D1" value="805.9710723666595" />
+      <entry key="W1" value="18935.11052705491" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -146,7 +156,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/production/endpoint/authorization/insertion/push/account/human",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/production/endpoint/attractor",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -160,18 +170,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/production/endpoint/attractor" />
+      <recent name="$PROJECT_DIR$/src/production/endpoint/attractor/account" />
       <recent name="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human" />
       <recent name="$PROJECT_DIR$/src/production/manager/collision/account" />
       <recent name="$PROJECT_DIR$/src/production/manager" />
-      <recent name="$PROJECT_DIR$/src/production/factory" />
-      <recent name="$PROJECT_DIR$/src/environment/detector" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/production/endpoint/attractor" />
       <recent name="$PROJECT_DIR$/src/environment" />
       <recent name="$PROJECT_DIR$/src/environment/detector/collision" />
       <recent name="$PROJECT_DIR$/src/production/manager/collision" />
       <recent name="$PROJECT_DIR$/src/environment/detector" />
-      <recent name="$PROJECT_DIR$/src/err/sensor" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -987,7 +997,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="29066000" />
+      <workItem from="1794227184139" duration="38638000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3032,8 +3042,8 @@
           <option name="timeStamp" value="682" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="NONE" type="python-line">
-          <url>file://$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human/manager.py</url>
-          <line>130</line>
+          <url>file://$PROJECT_DIR$/src/production/endpoint/attractor/account/human/attractor.py</url>
+          <line>132</line>
           <option name="timeStamp" value="683" />
         </line-breakpoint>
       </breakpoints>

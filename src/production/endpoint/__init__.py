@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== PRODUCTION.ENDPOINT PACKAGE ===========#
 
 # Packages
+from .attractor import *
 from .validation import *
 
 # Modules

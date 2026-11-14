@@ -10,8 +10,10 @@ version: 0.0.2
 # =========== PRODUCTION.ENDPOINT.AUTHORIZATION PACKAGE ===========#
 
 # Packages
+from .account import *
 from .principal import *
 from .role import *
 
 # Modules
+from .attractor import Attractor
 from .checker import Checker

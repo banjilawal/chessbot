@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from artifcat import CollisionReport
 from collection import AccountStack
-from domain import HumanAccount
-from sensor import AccountSensor
+from domain import AccountContext, HumanAccount
+from environment import AccountSensor
 from util import LoggingLevelRouter
 
 
@@ -58,30 +58,28 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
                     item.email.upper() == target.upper()
             )
         ]
-        # Handle the case that no particle hits the target.
-        if len(matches) == 0:
-            return CollisionReport.empty()
-        # Otherwise report a collision.
-        return CollisionReport.summary(
-            field_value=matches[0].email,
-            target=target,
-            particle=matches[0],
-            field_name="email",
-            exception=AccountEmailSensorException(
-                cls_mthd=method,
-                cls_name=self.__class__.__name__,
-                msg=AccountEmailSensorException.MSG,
-                err_code=AccountEmailSensorException.ERR_CODE,
-                ex=DuplicteAccountEmailException(
+        # Handle the case that a particle hits the sensor.
+        if len(matches) > 0:
+            # Send an exception chain in the report.
+            return CollisionReport.collision(
+                context=AccountContext(email=target),
+                particle=matches[0],
+                exception=AccountEmailSensorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DuplicteAccountEmailException.MSG,
-                    err_code=DuplicteAccountEmailException.ERR_CODE,
-                    var=f"collider_id: {matches[0].id}, "
-                        f"duplicate_email: {target}",
+                    msg=AccountEmailSensorException.MSG,
+                    err_code=AccountEmailSensorException.ERR_CODE,
+                    ex=DuplicteAccountEmailException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DuplicteAccountEmailException.MSG,
+                        err_code=DuplicteAccountEmailException.ERR_CODE,
+                        var=f"collider_id: {matches[0].id}, "
+                            f"duplicate_email: {target}",
+                    )
                 )
             )
-        )
+        return CollisionReport.empty()
 
     
     
