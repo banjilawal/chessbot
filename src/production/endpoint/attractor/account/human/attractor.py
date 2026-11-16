@@ -15,10 +15,11 @@ from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account, AccountContext, HumanAccount
 from environment import AccountCollisionDetector
+from production import AccountAttractor
 from util import LoggingLevelRouter
 
 
-class HumanAccountAttractor(CollisionManager[Account]):
+class HumanAccountAttractor(AccountAttractor[HumanAccount]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -34,7 +35,7 @@ class HumanAccountAttractor(CollisionManager[Account]):
         -   def execute(target: Account, collection: AccountStack) -> CollisionReport
         
     Super Class
-        CollisionManager
+        AccountAttractor
     """
     
     def __init__(self, detector: Optional[AccountCollisionDetector] | None = None):
@@ -86,7 +87,7 @@ class HumanAccountAttractor(CollisionManager[Account]):
                 )
             )
         # Handle the case that the email attracts a particle.
-        report = self._email_attraction(account=target, particle_stream=particle_stream)
+        report = self._email_attraction(target=target, particle_stream=particle_stream)
         if report.collision_exists:
             # Send the exception chain in the report.
             context = cast(AccountContext, report.context)

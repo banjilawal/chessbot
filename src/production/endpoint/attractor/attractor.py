@@ -32,19 +32,20 @@ class Attractor(ABC, Generic[T]):
 
     Attributes:
         detector: CollisionDetector[T]
-
+        
     Provides:
         -   def execute(target: T, particle_stream: Stack[T]) -> CollisionReport
         
     Super Class
     """
+    _detector: CollisionDetector[T]
     
-    def __init__(self, detector: Optional[AccountCollisionDetector] | None = None):
+    def __init__(self, detector: CollisionDetector[T]):
         """
         Args:
-            detector: Optional[AccountCollisionDetector]
+            detector: CollisionDetector[T]
         """
-        super().__init__()
+        self._detector = detector
 
     @property
     def detector(self) -> CollisionDetector[T]:
@@ -60,12 +61,12 @@ class Attractor(ABC, Generic[T]):
                 collection, send an exception chain in the report.
             2.  Otherwise, report that primary keys will be maintained.
         Args:
-            target: Account
-            particle_stream: AccountStack
+            target: T
+            particle_stream: Stack[T]
         Returns:
            CollisionReport
         Raises:
-            HumanAccountAttractorException
+            AttractorException
         """
         pass
     

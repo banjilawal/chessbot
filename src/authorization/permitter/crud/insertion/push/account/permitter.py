@@ -117,7 +117,7 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
         # Handle the case that the item will not be unique.
         report = self.collision_manager.execute(
             item=item,
-            collection=collection,
+            particle_stream=collection,
         )
         if report.collision_exists:
             # Send the exception chain in the denial.

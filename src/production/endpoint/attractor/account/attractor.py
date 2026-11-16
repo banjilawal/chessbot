@@ -13,6 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import CollisionReport
+from collection import AccountStack
 from domain import Account
 from environment import AccountCollisionDetector, CollisionDetector
 from production import Attractor
@@ -62,12 +63,12 @@ class AccountAttractor(Attractor[T], ABC, Generic[T]):
                 collection, send an exception chain in the report.
             2.  Otherwise, report that primary keys will be maintained.
         Args:
-            target: Account
+            target: T
             particle_stream: AccountStack
         Returns:
            CollisionReport
         Raises:
-            HumanAccountAttractorException
+            AccountAttractorException
         """
         pass
     

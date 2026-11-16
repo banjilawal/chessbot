@@ -15,10 +15,11 @@ from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account, AccountContext, MachineAccount
 from environment import AccountCollisionDetector
+from production import AccountAttractor
 from util import LoggingLevelRouter
 
 
-class MachineAccountAttractor(CollisionManager[Account]):
+class MachineAccountAttractor(AccountAttractor[MachineAccount]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -34,7 +35,7 @@ class MachineAccountAttractor(CollisionManager[Account]):
         -   def execute(target: Account, collection: AccountStack) -> CollisionReport
         
     Super Class
-        CollisionManager
+        AccountAttractor
     """
     
     def __init__(self, detector: Optional[AccountCollisionDetector] | None = None):
@@ -85,8 +86,8 @@ class MachineAccountAttractor(CollisionManager[Account]):
                     ex=report.exception
                 )
             )
-        # Handle the case that the email attracts a particle.
-        report = self._email_attraction(account=target, particle_stream=particle_stream)
+        # Handle the case that the name attracts a particle.
+        report = self._name_attraction(target=target, particle_stream=particle_stream)
         if report.collision_exists:
             # Send the exception chain in the report.
             context = cast(AccountContext, report.context)
@@ -115,7 +116,7 @@ class MachineAccountAttractor(CollisionManager[Account]):
         Action:
             1.  Send an exception chain in the report if any of the following occur.
                     -   The colliding particle is only an Account instead of a MachineAccount.
-                    -   The other MachineAccount has a different email address.
+                    -   The other MachineAccount has a different name address.
             2.  Otherwise, report that no collision was detected.
         Args:
             target: Account
@@ -150,14 +151,14 @@ class MachineAccountAttractor(CollisionManager[Account]):
                 )
             )
         # --- Cast the particle for additional processing. ---#
-        person = cast(MachineAccount, particle)
+        bot = cast(MachineAccount, particle)
         
-        # Handle the case that the other account has a different email address.
-        if person.email.upper() != target.email.upper():
+        # Handle the case that the other account has a different name address.
+        if bot.name.upper() != target.name.upper():
             # Send an exception chain in the report.
             return CollisionReport.collision(
                 context=context,
-                particle=person,
+                particle=bot,
                 exception=MachineAccountAttractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -170,7 +171,7 @@ class MachineAccountAttractor(CollisionManager[Account]):
         return CollisionReport.empty()
     
     @LoggingLevelRouter.monitor
-    def _email_attraction(
+    def _name_attraction(
             self, target: MachineAccount, particle_stream: AccountStack,
     ) -> CollisionReport:
         """
@@ -192,7 +193,7 @@ class MachineAccountAttractor(CollisionManager[Account]):
         
         # --- Initialize temp variables and run the detector. ---#
         particle = target
-        context = AccountContext(email=target.email)
+        context = AccountContext(machine_name=target.name)
         report = self.detector.execute(context=context, particle_stream=particle_stream)
         
         # --- Process the collision cases ---#
@@ -217,7 +218,7 @@ class MachineAccountAttractor(CollisionManager[Account]):
             # Send an exception chain in the report.
             return CollisionReport.collision(
                 context=context,
-                particle=person,
+                particle=bot,
                 exception=MachineAccountAttractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
