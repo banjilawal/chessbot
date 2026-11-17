@@ -5,155 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/production/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/update/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/formation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/formation/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/persona/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/schema/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/validation/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/encounter/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/path/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/production/manager/collision/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/manager/collision/account/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,59 +76,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.00000000050255" />
-      <entry key="S5" value="1.000270495899884" />
-      <entry key="S10" value="1.0260978072368196" />
-      <entry key="S30" value="1.9518224895953629" />
-      <entry key="S60" value="4.247585993024769" />
-      <entry key="M2" value="8.522884184764745" />
-      <entry key="M5" value="18.501493481532346" />
-      <entry key="M10" value="28.29633201199276" />
-      <entry key="M15" value="33.594841147903814" />
-      <entry key="M30" value="40.59430574752371" />
-      <entry key="H1" value="45.002056948828375" />
-      <entry key="H2" value="49.24478383789078" />
-      <entry key="H4" value="63.73548527420166" />
-      <entry key="D1" value="296.56255726557765" />
-      <entry key="W1" value="13051.991295526175" />
+      <entry key="S2" value="1.0001636441548372" />
+      <entry key="S5" value="1.2713434535336425" />
+      <entry key="S10" value="4.873441045191479" />
+      <entry key="S30" value="29.488519301136282" />
+      <entry key="S60" value="51.0420217297233" />
+      <entry key="M2" value="69.75274542730958" />
+      <entry key="M5" value="91.32115131258381" />
+      <entry key="M10" value="107.1106137845355" />
+      <entry key="M15" value="115.32608637402443" />
+      <entry key="M30" value="126.18844683449491" />
+      <entry key="H1" value="133.05275162004403" />
+      <entry key="H2" value="138.65984028823786" />
+      <entry key="H4" value="153.7724676968265" />
+      <entry key="D1" value="386.9521638458188" />
+      <entry key="W1" value="13139.385061278337" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.6054769896536385E-122" />
-      <entry key="S2" value="6.555810999177485E-31" />
-      <entry key="S5" value="1.265536482408419E-12" />
-      <entry key="S10" value="1.5878252046487777E-6" />
-      <entry key="S30" value="0.018511066461320273" />
-      <entry key="S60" value="0.1924858472710871" />
-      <entry key="M2" value="0.6404413639463108" />
-      <entry key="M5" value="1.849797865231903" />
-      <entry key="M10" value="3.5589927466946496" />
-      <entry key="M15" value="4.696699987245679" />
-      <entry key="M30" value="6.399371679643774" />
-      <entry key="H1" value="7.562470271933134" />
-      <entry key="H2" value="8.340433708278205" />
-      <entry key="H4" value="9.866177393258592" />
-      <entry key="D1" value="33.26791726622327" />
-      <entry key="W1" value="702.8151865531023" />
+      <entry key="MS500" value="4.08338017573209E-267" />
+      <entry key="S2" value="3.8031258461004964E-67" />
+      <entry key="S5" value="4.052102085770571E-27" />
+      <entry key="S10" value="8.984740659475103E-14" />
+      <entry key="S30" value="7.106663054385027E-5" />
+      <entry key="S60" value="0.011926580543875255" />
+      <entry key="M2" value="0.1594182160739342" />
+      <entry key="M5" value="1.0605904259684549" />
+      <entry key="M10" value="2.6948761890127115" />
+      <entry key="M15" value="3.9018205852213526" />
+      <entry key="M30" value="5.832766260735533" />
+      <entry key="H1" value="7.2199185715700125" />
+      <entry key="H2" value="8.149349511758174" />
+      <entry key="H4" value="9.752502595019697" />
+      <entry key="D1" value="33.20372476606119" />
+      <entry key="W1" value="702.6212939692684" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9265880618903709" />
-      <entry key="MS500" value="0.9848664428955506" />
-      <entry key="S2" value="0.9961949486335667" />
-      <entry key="S5" value="0.9987462603899977" />
-      <entry key="S10" value="1.0253134150372603" />
-      <entry key="S30" value="1.9691826389972773" />
-      <entry key="S60" value="4.435399592044389" />
-      <entry key="M2" value="9.154443200224707" />
-      <entry key="M5" value="20.34037817128907" />
-      <entry key="M10" value="31.84521552452515" />
-      <entry key="M15" value="38.28284696469594" />
-      <entry key="M30" value="46.98791268230795" />
-      <entry key="H1" value="52.561163983079034" />
-      <entry key="H2" value="57.583257517448544" />
-      <entry key="H4" value="73.59984029546654" />
-      <entry key="D1" value="329.82747544322075" />
-      <entry key="W1" value="13754.793251669349" />
+      <entry key="MS100" value="3.836100386113976E-5" />
+      <entry key="MS500" value="0.13085128524682196" />
+      <entry key="S2" value="0.6016056563933649" />
+      <entry key="S5" value="1.0865912833120435" />
+      <entry key="S10" value="4.771428000019396" />
+      <entry key="S30" value="29.44243889940838" />
+      <entry key="S60" value="51.02581530112789" />
+      <entry key="M2" value="69.89419468385046" />
+      <entry key="M5" value="92.36861931870746" />
+      <entry key="M10" value="109.79429652500612" />
+      <entry key="M15" value="119.21830048047663" />
+      <entry key="M30" value="132.0147543464356" />
+      <entry key="H1" value="140.26885389748284" />
+      <entry key="H2" value="146.80697117374223" />
+      <entry key="H4" value="163.52301696343204" />
+      <entry key="D1" value="420.1528699566117" />
+      <entry key="W1" value="13841.993124865057" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -289,7 +163,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/production/manager/collision/account",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/production/manager/collision",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -303,8 +177,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/err/production/manager/collision/account" />
       <recent name="$PROJECT_DIR$/src/err/production/manager/collision" />
+      <recent name="$PROJECT_DIR$/src/err/production/manager/collision/account" />
       <recent name="$PROJECT_DIR$/src/err/production/manager" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter/crud" />
@@ -1130,7 +1004,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="61463000" />
+      <workItem from="1794227184139" duration="61845000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

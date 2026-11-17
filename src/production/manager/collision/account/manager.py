@@ -16,6 +16,7 @@ from collection import AccountStack
 from domain import Account, AccountContext, HumanAccount, MachineAccount
 from environment import AccountCollisionDetector
 from err import AccountCollisionManagerException
+
 from production import CollisionManager, HumanAccountAttractor, MachineAccountAttractor
 from util import LoggingLevelRouter
 
