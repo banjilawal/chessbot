@@ -13,4 +13,4 @@ version: 1.0.0
 from .account import *
 
 # Modules
-from .exception import CollisionEndpointException
+from .exception import AttractorException

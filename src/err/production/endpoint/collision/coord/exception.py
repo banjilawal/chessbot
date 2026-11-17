@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CollisionEndpointException
+from err import AttractorException
 
 __all__ = [
-    # ======================# COORD_COLLISION_ENDPOINT_ERROR #======================#
-    "CoordCollisionEndpointException",
+    # ======================# COORD_ATTRACTOR_ERROR #======================#
+    "CoordAttractorException",
 ]
 
-# ======================# COORD_COLLISION_ENDPOINT_ERROR #======================#
-class CoordCollisionEndpointException(CollisionEndpointException):
+# ======================# COORD_ATTRACTOR_ERROR #======================#
+class CoordAttractorException(AttractorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an CoordCollisionEndpoint encountered an error.
+        1.  Indicating an CoordAttractor encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class CoordCollisionEndpointException(CollisionEndpointException):
     Provides:
     
     Super Class:
-        CollisionEndpointException
+        AttractorException
     """
-    MSG = "CoordCollisionEndpoint error"
-    ERR_CODE = "COORD_COLLISION_ENDPOINT_ERROR"
+    MSG = "CoordAttractor error"
+    ERR_CODE = "COORD_ATTRACTOR_ERROR"
     
     def __init__(
             self,

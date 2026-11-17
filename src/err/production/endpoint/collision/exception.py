@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import ProductionEndpointException
 
 __all__ = [
-    # ======================# COLLISION_ENDPOINT_ERROR #======================#
-    "CollisionEndpointException",
+    # ======================# ATTRACTOR_ERROR #======================#
+    "AttractorException",
 ]
 
-# ======================# COLLISION_ENDPOINT_ERROR #======================#
-class CollisionEndpointException(ProductionEndpointException):
+# ======================# ATTRACTOR_ERROR #======================#
+class AttractorException(ProductionEndpointException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CollisionEndpoint encountered an error.
+        1.  Indicating a Attractor encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class CollisionEndpointException(ProductionEndpointException):
     Super Class:
         ProductionEndpointException
     """
-    MSG = "CollisionEndpoint error"
-    ERR_CODE = "COLLISION_ENDPOINT_ERROR"
+    MSG = "Attractor error"
+    ERR_CODE = "ATTRACTOR_ERROR"
     
     def __init__(
             self,

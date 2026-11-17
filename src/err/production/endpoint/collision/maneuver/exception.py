@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CollisionEndpointException
+from err import AttractorException
 
 __all__ = [
-    # ======================# MANEUVER_COLLISION_ENDPOINT_ERROR #======================#
-    "ManeuverCollisionEndpointException",
+    # ======================# MANEUVER_ATTRACTOR_ERROR #======================#
+    "ManeuverAttractorException",
 ]
 
-# ======================# MANEUVER_COLLISION_ENDPOINT_ERROR #======================#
-class ManeuverCollisionEndpointException(CollisionEndpointException):
+# ======================# MANEUVER_ATTRACTOR_ERROR #======================#
+class ManeuverAttractorException(AttractorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ManeuverCollisionEndpoint encountered an error.
+        1.  Indicating an ManeuverAttractor encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class ManeuverCollisionEndpointException(CollisionEndpointException):
     Provides:
     
     Super Class:
-        CollisionEndpointException
+        AttractorException
     """
-    MSG = "ManeuverCollisionEndpoint error"
-    ERR_CODE = "MANEUVER_COLLISION_ENDPOINT_ERROR"
+    MSG = "ManeuverAttractor error"
+    ERR_CODE = "MANEUVER_ATTRACTOR_ERROR"
     
     def __init__(
             self,

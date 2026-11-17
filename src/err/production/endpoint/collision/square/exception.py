@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CollisionEndpointException
+from err import AttractorException
 
 __all__ = [
-    # ======================# SQUARE_COLLISION_ENDPOINT_ERROR #======================#
-    "SquareCollisionEndpointException",
+    # ======================# SQUARE_ATTRACTOR_ERROR #======================#
+    "SquareAttractorException",
 ]
 
-# ======================# SQUARE_COLLISION_ENDPOINT_ERROR #======================#
-class SquareCollisionEndpointException(CollisionEndpointException):
+# ======================# SQUARE_ATTRACTOR_ERROR #======================#
+class SquareAttractorException(AttractorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an SquareCollisionEndpoint encountered an error.
+        1.  Indicating an SquareAttractor encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class SquareCollisionEndpointException(CollisionEndpointException):
     Provides:
     
     Super Class:
-        CollisionEndpointException
+        AttractorException
     """
-    MSG = "SquareCollisionEndpoint error"
-    ERR_CODE = "SQUARE_COLLISION_ENDPOINT_ERROR"
+    MSG = "SquareAttractor error"
+    ERR_CODE = "SQUARE_ATTRACTOR_ERROR"
     
     def __init__(
             self,

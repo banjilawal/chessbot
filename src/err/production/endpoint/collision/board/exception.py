@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CollisionEndpointException
+from err import AttractorException
 
 __all__ = [
-    # ======================# BOARD_COLLISION_ENDPOINT_ERROR #======================#
-    "BoardCollisionEndpointException",
+    # ======================# BOARD_ATTRACTOR_ERROR #======================#
+    "BoardAttractorException",
 ]
 
-# ======================# BOARD_COLLISION_ENDPOINT_ERROR #======================#
-class BoardCollisionEndpointException(CollisionEndpointException):
+# ======================# BOARD_ATTRACTOR_ERROR #======================#
+class BoardAttractorException(AttractorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an BoardCollisionEndpoint encountered an error.
+        1.  Indicating an BoardAttractor encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardCollisionEndpointException(CollisionEndpointException):
     Provides:
     
     Super Class:
-        CollisionEndpointException
+        AttractorException
     """
-    MSG = "BoardCollisionEndpoint error"
-    ERR_CODE = "BOARD_COLLISION_ENDPOINT_ERROR"
+    MSG = "BoardAttractor error"
+    ERR_CODE = "BOARD_ATTRACTOR_ERROR"
     
     def __init__(
             self,
