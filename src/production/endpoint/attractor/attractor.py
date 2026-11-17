@@ -10,12 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import CollisionReport
 from collection import Stack
 from domain import Model
-from environment import AccountCollisionDetector, CollisionDetector
+from environment import CollisionDetector
 
 from util import LoggingLevelRouter
 

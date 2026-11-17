@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar, cast
 from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account
-from environment import AccountCollisionDetector, CollisionDetector
+from environment import AccountCollisionDetector
 from production import Attractor
 
 from util import LoggingLevelRouter

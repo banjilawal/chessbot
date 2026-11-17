@@ -15,6 +15,7 @@ from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account, AccountContext, HumanAccount
 from environment import AccountCollisionDetector
+from err import HumanAccountAttractorException
 from production import AccountAttractor
 from util import LoggingLevelRouter
 
@@ -218,7 +219,7 @@ class HumanAccountAttractor(AccountAttractor[HumanAccount]):
             # Send an exception chain in the report.
             return CollisionReport.collision(
                 context=context,
-                particle=person,
+                particle=particle,
                 exception=HumanAccountAttractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
