@@ -13,7 +13,7 @@ from typing import cast
 
 from environment.analyzer import Analyzer, TokenReadinessAnalyzer
 from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
-from err.analyzer.promotion import PromotionApprovalManagerException
+from err.environment.analyzer import PromotionApprovalManagerException
 from domain.model import PawnToken
 from artifcat.report import PromotionApprovalManagerReport, TokenReadinessReport
 from artifcat import AnalysisResult, MethodResultType

@@ -17,7 +17,7 @@ __all__ = [
     "BoardBinderAnalyzerAnalyzerException",
 ]
 
-from err.analyzer.relation import RelationAnalyzerException
+from err.environment.analyzer.relation import RelationAnalyzerException
 
 
 # ======================# BOARD_BINDER_RELATION_ANALYZER_FAILURE #======================#

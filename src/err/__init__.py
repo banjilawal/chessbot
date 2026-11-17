@@ -10,7 +10,7 @@ version: 1.0.0
 #=========== ERR PACKAGE ===========#
 
 # Packages
-from .analyzer import *
+from err.environment.analyzer import *
 from .assurance import *
 from .authorization import *
 from .bidirectional import *
@@ -20,8 +20,8 @@ from .config import *
 from .consistency import *
 from .controller import *
 from .collection import *
-from err.sensor.collider import *
-from .detection import *
+from err.environment.sensor import *
+from err.environment.detection import *
 from .domain import *
 from .duplicate import *
 from .exchange import *
