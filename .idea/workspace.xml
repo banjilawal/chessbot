@@ -5,12 +5,155 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/err/production/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/graph/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/graph/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/hostage/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/deletion/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/graph/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/graph/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/hostage/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/insertion/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/account/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/manager/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/graph/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/graph/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/hostage/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/update/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/formation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/formation/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/hostage/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/persona/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/persona/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/schema/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/context/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/graph/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/graph/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/hostage/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/validation/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/insertion/push/account/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/endpoint/attractor/account/attractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/attractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/endpoint/attractor/account/human/attractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/human/attractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/endpoint/attractor/account/machine/attractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/account/machine/attractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/endpoint/attractor/attractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/endpoint/attractor/attractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/report/collision/collision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/detector/collision/account/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,60 +201,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000000000602" />
-      <entry key="S2" value="1.0004950974022413" />
-      <entry key="S5" value="1.0476295259482804" />
-      <entry key="S10" value="1.2182423047461635" />
-      <entry key="S30" value="1.6131342105161008" />
-      <entry key="S60" value="1.9956437296310126" />
-      <entry key="M2" value="3.169403936843332" />
-      <entry key="M5" value="9.737696884127297" />
-      <entry key="M10" value="23.71681886622289" />
-      <entry key="M15" value="34.72140930774609" />
-      <entry key="M30" value="53.35913659470394" />
-      <entry key="H1" value="69.72318678095992" />
-      <entry key="H2" value="84.2524679951121" />
-      <entry key="H4" value="95.58550750126726" />
-      <entry key="D1" value="269.27995043736036" />
-      <entry key="W1" value="13978.892473653676" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.00000000050255" />
+      <entry key="S5" value="1.000270495899884" />
+      <entry key="S10" value="1.0260978072368196" />
+      <entry key="S30" value="1.9518224895953629" />
+      <entry key="S60" value="4.247585993024769" />
+      <entry key="M2" value="8.522884184764745" />
+      <entry key="M5" value="18.501493481532346" />
+      <entry key="M10" value="28.29633201199276" />
+      <entry key="M15" value="33.594841147903814" />
+      <entry key="M30" value="40.59430574752371" />
+      <entry key="H1" value="45.002056948828375" />
+      <entry key="H2" value="49.24478383789078" />
+      <entry key="H4" value="63.73548527420166" />
+      <entry key="D1" value="296.56255726557765" />
+      <entry key="W1" value="13051.991295526175" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.2224150815367109E-108" />
-      <entry key="S5" value="6.837345315840538E-44" />
-      <entry key="S10" value="2.6158919281848276E-22" />
-      <entry key="S30" value="7.488202103675622E-8" />
-      <entry key="S60" value="4.919737092873377E-4" />
-      <entry key="M2" value="0.05918439847184771" />
-      <entry key="M5" value="1.6713890514714624" />
-      <entry key="M10" value="6.449194916083654" />
-      <entry key="M15" value="10.536782415951272" />
-      <entry key="M30" value="17.615651123967474" />
-      <entry key="H1" value="23.137229573575674" />
-      <entry key="H2" value="26.87207966633023" />
-      <entry key="H4" value="29.190616850796932" />
-      <entry key="D1" value="41.001057034214035" />
-      <entry key="W1" value="752.3546744419123" />
+      <entry key="MS500" value="3.6054769896536385E-122" />
+      <entry key="S2" value="6.555810999177485E-31" />
+      <entry key="S5" value="1.265536482408419E-12" />
+      <entry key="S10" value="1.5878252046487777E-6" />
+      <entry key="S30" value="0.018511066461320273" />
+      <entry key="S60" value="0.1924858472710871" />
+      <entry key="M2" value="0.6404413639463108" />
+      <entry key="M5" value="1.849797865231903" />
+      <entry key="M10" value="3.5589927466946496" />
+      <entry key="M15" value="4.696699987245679" />
+      <entry key="M30" value="6.399371679643774" />
+      <entry key="H1" value="7.562470271933134" />
+      <entry key="H2" value="8.340433708278205" />
+      <entry key="H4" value="9.866177393258592" />
+      <entry key="D1" value="33.26791726622327" />
+      <entry key="W1" value="702.8151865531023" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5704837809672258E-11" />
-      <entry key="MS500" value="0.006905683836434947" />
-      <entry key="S2" value="0.28833668880570174" />
-      <entry key="S5" value="0.6291944381893534" />
-      <entry key="S10" value="0.9252601306635164" />
-      <entry key="S30" value="1.4568626761755394" />
-      <entry key="S60" value="1.8990805999820657" />
-      <entry key="M2" value="3.159742776443435" />
-      <entry key="M5" value="11.32015239821218" />
-      <entry key="M10" value="30.048138038507446" />
-      <entry key="M15" value="45.13995968316036" />
-      <entry key="M30" value="70.88193633995215" />
-      <entry key="H1" value="92.80029329237516" />
-      <entry key="H2" value="111.08929537873155" />
-      <entry key="H4" value="124.75670039873484" />
-      <entry key="D1" value="310.2763054105858" />
-      <entry key="W1" value="14731.232832168014" />
+      <entry key="MS100" value="0.9265880618903709" />
+      <entry key="MS500" value="0.9848664428955506" />
+      <entry key="S2" value="0.9961949486335667" />
+      <entry key="S5" value="0.9987462603899977" />
+      <entry key="S10" value="1.0253134150372603" />
+      <entry key="S30" value="1.9691826389972773" />
+      <entry key="S60" value="4.435399592044389" />
+      <entry key="M2" value="9.154443200224707" />
+      <entry key="M5" value="20.34037817128907" />
+      <entry key="M10" value="31.84521552452515" />
+      <entry key="M15" value="38.28284696469594" />
+      <entry key="M30" value="46.98791268230795" />
+      <entry key="H1" value="52.561163983079034" />
+      <entry key="H2" value="57.583257517448544" />
+      <entry key="H4" value="73.59984029546654" />
+      <entry key="D1" value="329.82747544322075" />
+      <entry key="W1" value="13754.793251669349" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -125,46 +268,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/production/endpoint/attractor/account&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.checker.executor": "Run",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.responder.executor": "Run",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "Python.table.executor": "Debug",
+    "Python.validator (1).executor": "Run",
+    "Python.worker.executor": "Coverage",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/production/manager/collision/account",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/production/endpoint/attractor/account" />
-      <recent name="$PROJECT_DIR$/src/production/endpoint/attractor" />
-      <recent name="$PROJECT_DIR$/src/production/endpoint/authorization/insertion/push/account/human" />
-      <recent name="$PROJECT_DIR$/src/production/manager/collision/account" />
-      <recent name="$PROJECT_DIR$/src/production/manager" />
+      <recent name="$PROJECT_DIR$/src/err/production/manager/collision/account" />
+      <recent name="$PROJECT_DIR$/src/err/production/manager/collision" />
+      <recent name="$PROJECT_DIR$/src/err/production/manager" />
+      <recent name="$PROJECT_DIR$/src/err" />
+      <recent name="$PROJECT_DIR$/src/authorization/permitter/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/production/endpoint/attractor" />
@@ -987,7 +1130,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="51520000" />
+      <workItem from="1794227184139" duration="61463000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3035,6 +3178,26 @@
           <url>file://$PROJECT_DIR$/src/production/endpoint/attractor/account/human/attractor.py</url>
           <line>132</line>
           <option name="timeStamp" value="683" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/environment/sensor/account/sensor.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="684" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/authorization/permitter/crud/deletion/pop/account/permitter.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="685" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/production/exception.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="686" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/production/manager/collision/exception.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="687" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -54,25 +54,13 @@ class AccountCollisionDetector(CollisionDetector[Account]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        attribute_name: str = ""
-        table = context.to_dict()
-        for key in table.keys():
-            if table[key] is not None:
-               attribute_name = key 
-        
         report = self.router.execute(context=context, stream=particle_stream)
         if report.collision_exists:
             if report.collision_exists:
-                match = report.field_value
-                target = report.target
                 particle = cast(Account, report.particle)
-                identifier = report.field_name or attribute_name
-                
-                return CollisionReport.summary(
-                    field_value=match,
-                    target=target,
+                return CollisionReport.collision(
                     particle=particle,
-                    field_name=identifier,
+                    context=context,
                     exception=AccountCollisionDetectorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

@@ -27,24 +27,21 @@ class CollisionReport(Report, Generic[T]):
 
     Attributes:
         state: CollisionState
-        match: Optional[A]
-        attractor: Optional[A]
         particle: Optional[T]
-        identifier: Optional[str]
+        context: Optional[Context[T]]
         exception:Optional[Exception]
         
         collision_occurred: bool
         no_collision_occurred: bool
-        
 
     Provides:
-        -   def no_collision_events() -> CollisionReport
+        -   def empty() -> CollisionReport
         
-        -   def collision_event(
-                    match: A,
-                    attractor: T,
+        -   def detector_failure(exception) -> CollisionReport
+        
+        -   def collision(
                     particle: T,
-                    identifier: str,
+                    context: Context[T],
                     exception: Exception,
             ) -> CollisionReport
 
@@ -52,7 +49,6 @@ class CollisionReport(Report, Generic[T]):
         Report
     """
     _state: CollisionState
-    _attractor: Optional[ModelCarrier[T]]
     _particle: Optional[T]
     _context: Optional[Context[T]]
     _exception: Optional[Exception]
@@ -60,7 +56,6 @@ class CollisionReport(Report, Generic[T]):
     def __init__(
             self,
             state: CollisionState,
-            attractor: Optional[T] | None = None,
             particle: Optional[T] | None = None,
             context: Optional[Context[T]] | None = None,
             exception:Optional[Exception] | None = None,
@@ -68,13 +63,11 @@ class CollisionReport(Report, Generic[T]):
         """
         Args:
             state: CollisionState
-            attractor: Optional[T]
             particle: Optional[T]
             context: Optional[Context[T]]
             exception:Optional[Exception]
         """
         self._state = state
-        self._attractor = attractor
         self._particle = particle
         self._context = context
         self._exception = exception
@@ -82,10 +75,6 @@ class CollisionReport(Report, Generic[T]):
     @property
     def state(self) -> CollisionState:
         return self._state
-        
-    @property
-    def attractor(self) -> Optional[T]:
-        return self._attractor
     
     @property
     def particle(self) -> Optional[T]:
@@ -102,7 +91,6 @@ class CollisionReport(Report, Generic[T]):
     @property
     def detector_failure_exists(self) -> bool:
         return (
-                self._attractor is None and
                 self._particle is None and
                 self._context is None and
                 self._exception is not None and

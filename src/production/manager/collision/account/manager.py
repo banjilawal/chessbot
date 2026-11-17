@@ -93,7 +93,9 @@ class AccountCollisionManager(CollisionManager[Account]):
                 target=cast(MachineAccount, item),
                 particle_stream=particle_stream,
             )
+        # Handle the case that a detector component breaks.
         if report.detector_failure_exists:
+            # Send an exception chain in the validation result.
             return CollisionReport.detector_failure(
                 AccountCollisionManagerException(
                     cls_mthd=method,
@@ -103,9 +105,11 @@ class AccountCollisionManager(CollisionManager[Account]):
                     ex=report.exception,
                 )
             )
+        # Handle the case that a collision occurred.
         if report.collision_exists:
             context=cast(AccountContext, report.context)
             particle=cast(Account, report.particle)
+            # Send an exception chain in the report.
             return CollisionReport.collision(
                 particle=particle,
                 context=context,
