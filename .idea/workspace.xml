@@ -5,30 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/manager/collision/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/production/manager/collision/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/manager/collision/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/collision/account/manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/account/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/encounter/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/path/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/collision/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/production/manager/fabrication/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/production/manager/fabrication/factory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,61 +79,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0001636441548372" />
-      <entry key="S5" value="1.2713434535336425" />
-      <entry key="S10" value="4.873441045191479" />
-      <entry key="S30" value="29.488519301136282" />
-      <entry key="S60" value="51.0420217297233" />
-      <entry key="M2" value="69.75274542730958" />
-      <entry key="M5" value="91.32115131258381" />
-      <entry key="M10" value="107.1106137845355" />
-      <entry key="M15" value="115.32608637402443" />
-      <entry key="M30" value="126.18844683449491" />
-      <entry key="H1" value="133.05275162004403" />
-      <entry key="H2" value="138.65984028823786" />
-      <entry key="H4" value="153.7724676968265" />
-      <entry key="D1" value="386.9521638458188" />
-      <entry key="W1" value="13139.385061278337" />
+      <entry key="MS100" value="1.9006676539718768" />
+      <entry key="MS500" value="3.485684903100124" />
+      <entry key="S2" value="8.549602466167496" />
+      <entry key="S5" value="18.43785324276268" />
+      <entry key="S10" value="33.29865004241483" />
+      <entry key="S30" value="67.91704977076952" />
+      <entry key="S60" value="88.09595017698157" />
+      <entry key="M2" value="106.67029539190352" />
+      <entry key="M5" value="143.57203376060608" />
+      <entry key="M10" value="178.62373149124645" />
+      <entry key="M15" value="197.77340846061423" />
+      <entry key="M30" value="223.68347871769313" />
+      <entry key="H1" value="240.28352319163935" />
+      <entry key="H2" value="251.41395179889255" />
+      <entry key="H4" value="269.2909827797053" />
+      <entry key="D1" value="504.5206424351888" />
+      <entry key="W1" value="13251.558691421917" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.08338017573209E-267" />
-      <entry key="S2" value="3.8031258461004964E-67" />
-      <entry key="S5" value="4.052102085770571E-27" />
-      <entry key="S10" value="8.984740659475103E-14" />
-      <entry key="S30" value="7.106663054385027E-5" />
-      <entry key="S60" value="0.011926580543875255" />
-      <entry key="M2" value="0.1594182160739342" />
-      <entry key="M5" value="1.0605904259684549" />
-      <entry key="M10" value="2.6948761890127115" />
-      <entry key="M15" value="3.9018205852213526" />
-      <entry key="M30" value="5.832766260735533" />
-      <entry key="H1" value="7.2199185715700125" />
-      <entry key="H2" value="8.149349511758174" />
-      <entry key="H4" value="9.752502595019697" />
-      <entry key="D1" value="33.20372476606119" />
-      <entry key="W1" value="702.6212939692684" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.3469646808926817E-135" />
+      <entry key="S5" value="2.1077869975733768E-54" />
+      <entry key="S10" value="2.0491734362147945E-27" />
+      <entry key="S30" value="2.0153792464007853E-9" />
+      <entry key="S60" value="6.351283140379712E-5" />
+      <entry key="M2" value="0.011633508440081907" />
+      <entry key="M5" value="0.3722346590008597" />
+      <entry key="M10" value="1.5965163480607139" />
+      <entry key="M15" value="2.752265529519035" />
+      <entry key="M30" value="4.8987591842279254" />
+      <entry key="H1" value="6.616648413459428" />
+      <entry key="H2" value="7.801458880138404" />
+      <entry key="H4" value="9.542068155634858" />
+      <entry key="D1" value="33.08322804113661" />
+      <entry key="W1" value="702.2564659763435" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.836100386113976E-5" />
-      <entry key="MS500" value="0.13085128524682196" />
-      <entry key="S2" value="0.6016056563933649" />
-      <entry key="S5" value="1.0865912833120435" />
-      <entry key="S10" value="4.771428000019396" />
-      <entry key="S30" value="29.44243889940838" />
-      <entry key="S60" value="51.02581530112789" />
-      <entry key="M2" value="69.89419468385046" />
-      <entry key="M5" value="92.36861931870746" />
-      <entry key="M10" value="109.79429652500612" />
-      <entry key="M15" value="119.21830048047663" />
-      <entry key="M30" value="132.0147543464356" />
-      <entry key="H1" value="140.26885389748284" />
-      <entry key="H2" value="146.80697117374223" />
-      <entry key="H4" value="163.52301696343204" />
-      <entry key="D1" value="420.1528699566117" />
-      <entry key="W1" value="13841.993124865057" />
+      <entry key="MS100" value="1.5320631137651075" />
+      <entry key="MS500" value="3.3542841563586947" />
+      <entry key="S2" value="8.484331490841416" />
+      <entry key="S5" value="18.385287574647812" />
+      <entry key="S10" value="33.25211844051028" />
+      <entry key="S30" value="67.88607750994207" />
+      <entry key="S60" value="88.0760504619522" />
+      <entry key="M2" value="106.66923511190987" />
+      <entry key="M5" value="143.93468647798565" />
+      <entry key="M10" value="180.21105098623664" />
+      <entry key="M15" value="200.51716966265488" />
+      <entry key="M30" value="228.57594033250973" />
+      <entry key="H1" value="246.89623537340702" />
+      <entry key="H2" value="259.21306678458694" />
+      <entry key="H4" value="278.8310296210912" />
+      <entry key="D1" value="537.6008444001673" />
+      <entry key="W1" value="13953.801931259866" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -163,7 +168,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/production/manager/collision",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/production",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -177,11 +182,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/production" />
       <recent name="$PROJECT_DIR$/src/err/production/manager/collision" />
       <recent name="$PROJECT_DIR$/src/err/production/manager/collision/account" />
       <recent name="$PROJECT_DIR$/src/err/production/manager" />
       <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/authorization/permitter/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/production/endpoint/attractor" />
@@ -1004,7 +1009,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="61845000" />
+      <workItem from="1794227184139" duration="62269000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.PRODUCTION PACKAGE ===========#
 
 # Packages
+from .endpoint import *
 from .fabrication import *
 from .manager import *
 

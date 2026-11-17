@@ -13,8 +13,8 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import BuildResult
+from bootstrap import BuildLoader
 from exchange import BuildRequest
-from fabrication import BuildLoader
 from production import Factory
 from transit import BuildRouter
 from util import LoggingLevelRouter
