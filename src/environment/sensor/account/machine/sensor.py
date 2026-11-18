@@ -13,6 +13,7 @@ from artifcat import CollisionReport
 from collection import AccountStack
 from domain import MachineAccount
 from environment import AccountSensor
+from err import MachineAccountNameSensorException
 from util import LoggingLevelRouter
 
 
@@ -48,7 +49,7 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
         Result:
             CollisionReport
         Raises:
-            AccountNameSensorException
+            MachineAccountNameSensorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -67,11 +68,11 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
             target=target,
             particle=matches[0],
             field_name="name",
-            exception=AccountNameSensorException(
+            exception=MachineAccountNameSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
-                msg=AccountNameSensorException.MSG,
-                err_code=AccountNameSensorException.ERR_CODE,
+                msg=MachineAccountNameSensorException.MSG,
+                err_code=MachineAccountNameSensorException.ERR_CODE,
                 ex=DuplicteAccountNameException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

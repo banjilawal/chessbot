@@ -5,150 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/environment/sensor/account/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/email/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/email/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/machine/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/arena/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/arena/account/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/account/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/encounter/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/account/email/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/coord/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/coord/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/coord/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/coord/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/coord/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/account/email/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/arena/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/account/machine/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/id/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/arena/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/board/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/name/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/token/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/attribute/token/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/board/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/arena/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/board/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/coord/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/edge/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/formation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/formation/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/game/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/hostage/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/hostage/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/lingeo/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/lingeo/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/node/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/persona/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/persona/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/player/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/rank/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/schema/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/schema/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/context/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/coord/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/edge/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/formation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/formation/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/game/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/hostage/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/hostage/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/id/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/id/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/id/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/id/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/id/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/id/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/name/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/name/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/name/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/name/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/name/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/node/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/persona/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/persona/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/player/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/rank/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/registration/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/registration/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/scalar/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/schema/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/schema/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/collider/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/encounter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/environment/sensor/id/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/environment/sensor/id/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/duplicate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/duplicate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/duplicate/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/duplicate/account/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,61 +83,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="4.4113157972181144E-11" />
-      <entry key="MS500" value="0.008490116113484832" />
-      <entry key="S2" value="0.3035487210987617" />
-      <entry key="S5" value="0.6207137457631028" />
-      <entry key="S10" value="0.7878542806139195" />
-      <entry key="S30" value="0.9490357359994865" />
-      <entry key="S60" value="1.448385770276884" />
-      <entry key="M2" value="3.644289034695615" />
-      <entry key="M5" value="12.079992300425484" />
-      <entry key="M10" value="26.09364428287677" />
-      <entry key="M15" value="38.5247745642994" />
-      <entry key="M30" value="63.273340321307415" />
-      <entry key="H1" value="86.47246712067854" />
-      <entry key="H2" value="128.47910801949507" />
-      <entry key="H4" value="240.9251492371949" />
-      <entry key="D1" value="768.2910583828464" />
-      <entry key="W1" value="13196.232934540643" />
+      <entry key="MS100" value="2.8435878845923303E-4" />
+      <entry key="MS500" value="0.20018802343723532" />
+      <entry key="S2" value="0.9287834561108429" />
+      <entry key="S5" value="1.4363185124368458" />
+      <entry key="S10" value="1.6877425841045595" />
+      <entry key="S30" value="1.888578930049548" />
+      <entry key="S60" value="2.0227985400238593" />
+      <entry key="M2" value="3.2823094268340944" />
+      <entry key="M5" value="10.98831065772706" />
+      <entry key="M10" value="28.64824988705148" />
+      <entry key="M15" value="49.30632959121221" />
+      <entry key="M30" value="103.38087231723163" />
+      <entry key="H1" value="165.98284673091675" />
+      <entry key="H2" value="236.77292427752056" />
+      <entry key="H4" value="362.6850820373769" />
+      <entry key="D1" value="916.1347249679973" />
+      <entry key="W1" value="13320.422339428267" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0002407794688704" />
-      <entry key="MS500" value="1.1889399910395284" />
-      <entry key="S2" value="1.6592968072461831" />
-      <entry key="S5" value="1.8465105772548598" />
-      <entry key="S10" value="1.9200600943714818" />
-      <entry key="S30" value="1.9726100022554185" />
-      <entry key="S60" value="1.986214742070063" />
-      <entry key="M2" value="1.9976767471321653" />
-      <entry key="M5" value="2.35132883287074" />
-      <entry key="M10" value="3.8139954158653184" />
-      <entry key="M15" value="5.29221837026962" />
-      <entry key="M30" value="8.174598112868896" />
-      <entry key="H1" value="10.669264311649215" />
-      <entry key="H2" value="14.113842697286263" />
-      <entry key="H4" value="22.50058229090698" />
-      <entry key="D1" value="66.17622310118162" />
-      <entry key="W1" value="723.3535720852877" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0000000000000187" />
+      <entry key="S60" value="1.0000003272326694" />
+      <entry key="M2" value="1.0014112622302613" />
+      <entry key="M5" value="1.2264816914685928" />
+      <entry key="M10" value="2.374126858965856" />
+      <entry key="M15" value="3.7748934257074507" />
+      <entry key="M30" value="7.615967102637345" />
+      <entry key="H1" value="12.365243839811162" />
+      <entry key="H2" value="17.751724118025077" />
+      <entry key="H4" value="27.09968970073192" />
+      <entry key="D1" value="72.58212830825092" />
+      <entry key="W1" value="728.9607122432603" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.19888412210149453" />
-      <entry key="MS500" value="0.7430841857937607" />
-      <entry key="S2" value="1.5095676134066134" />
-      <entry key="S5" value="2.1860720717815556" />
-      <entry key="S10" value="2.5431327293265964" />
-      <entry key="S30" value="2.8603427635494274" />
-      <entry key="S60" value="3.4025387018999185" />
-      <entry key="M2" value="5.624035928609294" />
-      <entry key="M5" value="14.420430746996033" />
-      <entry key="M10" value="29.897037856756498" />
-      <entry key="M15" value="43.806575841838004" />
-      <entry key="M30" value="71.43947413374745" />
-      <entry key="H1" value="97.13604162182958" />
-      <entry key="H2" value="142.58913796375975" />
-      <entry key="H4" value="263.42269840412644" />
-      <entry key="D1" value="834.4641942006033" />
-      <entry key="W1" value="13919.573655167853" />
+      <entry key="MS100" value="0.014092105524758586" />
+      <entry key="MS500" value="0.52836942197968" />
+      <entry key="S2" value="1.57984909572917" />
+      <entry key="S5" value="2.2476323976059245" />
+      <entry key="S10" value="2.580961274318411" />
+      <entry key="S30" value="2.8496363143281136" />
+      <entry key="S60" value="3.0028445541410913" />
+      <entry key="M2" value="4.27344391036853" />
+      <entry key="M5" value="12.209083442475754" />
+      <entry key="M10" value="31.0153959495401" />
+      <entry key="M15" value="53.07299980047694" />
+      <entry key="M30" value="110.98784855393703" />
+      <entry key="H1" value="178.34062526135872" />
+      <entry key="H2" value="254.5193047772487" />
+      <entry key="H4" value="389.7808029010493" />
+      <entry key="D1" value="988.7135998418095" />
+      <entry key="W1" value="14049.370208323424" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -283,7 +172,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/environment/sensor/account",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/duplicate/id",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -297,18 +186,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/err/environment/sensor/account" />
-      <recent name="$PROJECT_DIR$/src/err/environment/sensor/id" />
-      <recent name="$PROJECT_DIR$/src/err/environment/sensor" />
-      <recent name="$PROJECT_DIR$/src/err/environment" />
-      <recent name="$PROJECT_DIR$/src/err/production/endpoint/collision/account" />
+      <recent name="$PROJECT_DIR$/src/err/duplicate/id" />
+      <recent name="$PROJECT_DIR$/src/err/duplicate" />
+      <recent name="$PROJECT_DIR$/src/err" />
+      <recent name="$PROJECT_DIR$/src/err/duplicate/account" />
+      <recent name="$PROJECT_DIR$/src/err/duplicate/account/email" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/duplicate" />
+      <recent name="$PROJECT_DIR$/src/err/duplicate/account/email" />
       <recent name="$PROJECT_DIR$/src/err/environment" />
       <recent name="$PROJECT_DIR$/src/production/endpoint/attractor" />
       <recent name="$PROJECT_DIR$/src/environment" />
-      <recent name="$PROJECT_DIR$/src/environment/detector/collision" />
-      <recent name="$PROJECT_DIR$/src/production/manager/collision" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -1124,7 +1013,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="82325000" />
+      <workItem from="1794227184139" duration="85315000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

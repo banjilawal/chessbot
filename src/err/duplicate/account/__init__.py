@@ -10,6 +10,8 @@ version: 0.0.2
 # ============ ERR.DUPLICATE.ACCOUNT PACKAGE ===========#
 
 # Packages
+from .email import *
+from .machine import *
 
 # Modules
 from .exception import DuplicateAccountException
