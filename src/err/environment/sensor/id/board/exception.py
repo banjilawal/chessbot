@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/board/exception.py
+# src/err/environment/sensor/id/board/exception.py
 
 """
-Module: err.environment.sensor.collider.board.exception
+Module: err.environment.sensor.id.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -44,7 +44,7 @@ class BoardIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "BoardIdSensor encountered an error"
+    MSG = "BoardIdSensor encountered an error."
     ERR_CODE = "BOARD_ID_SENSOR_FAILURE"
     
     def __init__(

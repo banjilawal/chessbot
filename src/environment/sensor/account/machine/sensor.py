@@ -12,7 +12,7 @@ from __future__ import annotations
 from artifcat import CollisionReport
 from collection import AccountStack
 from domain import MachineAccount
-from sensor import AccountSensor
+from environment import AccountSensor
 from util import LoggingLevelRouter
 
 

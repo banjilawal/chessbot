@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/maneuver/exception.py
+# src/err/environment/sensor/id/maneuver/exception.py
 
 """
-Module: err.environment.sensor.collider.maneuver.exception
+Module: err.environment.sensor.id.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -44,7 +44,7 @@ class ManeuverIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "ManeuverIdSensor encountered an error"
+    MSG = "ManeuverIdSensor encountered an error."
     ERR_CODE = "MANEUVER_ID_SENSOR_FAILURE"
     
     def __init__(

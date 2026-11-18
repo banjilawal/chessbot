@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/team/exception.py
+# src/err/environment/sensor/id/team/exception.py
 
 """
-Module: err.environment.sensor.collider.team.exception
+Module: err.environment.sensor.id.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import IdSensorException
+from artifcat import MethodResultType
+From Err Import IdSensorException
 
 
 __all__ = [
@@ -43,7 +44,7 @@ class TeamIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "TeamIdSensor encountered an error"
+    MSG = "TeamIdSensor encountered an error."
     ERR_CODE = "TEAM_ID_SENSOR_FAILURE"
     
     def __init__(

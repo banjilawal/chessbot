@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/arena/exception.py
+# src/err/environment/sensor/id/arena/exception.py
 
 """
-Module: err.environment.sensor.collider.arena.exception
+Module: err.environment.sensor.id.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -44,7 +44,7 @@ class ArenaIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "ArenaIdSensor encountered an error"
+    MSG = "ArenaIdSensor encountered an error."
     ERR_CODE = "ARENA_ID_SENSOR_FAILURE"
     
     def __init__(

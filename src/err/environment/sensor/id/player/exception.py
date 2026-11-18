@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/player/exception.py
+# src/err/environment/sensor/id/player/exception.py
 
 """
-Module: err.environment.sensor.collider.player.exception
+Module: err.environment.sensor.id.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from artifcat import MethodResultType
 from err import IdSensorException
 
 
@@ -43,7 +44,7 @@ class PlayerIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "PlayerIdSensor encountered an error"
+    MSG = "PlayerIdSensor encountered an error."
     ERR_CODE = "PLAYER_ID_SENSOR_FAILURE"
     
     def __init__(

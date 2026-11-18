@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/token/exception.py
+# src/err/environment/sensor/id/token/exception.py
 
 """
-Module: err.environment.sensor.collider.token.exception
+Module: err.environment.sensor.id.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import IdSensorException
+from artifcat import MethodResultType
+From Err Import IdSensorException
 from artifcat import MethodResultType
 
 
@@ -71,7 +72,6 @@ class TokenIdSensorException(IdSensorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

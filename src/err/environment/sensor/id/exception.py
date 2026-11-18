@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/exception.py
+# src/err/environment/sensor/id/exception.py
 
 """
-Module: err.environment.sensor.collider.exception
+Module: err.environment.sensor.id.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import IdSensorException
+from artifcat import MethodResultType
+from err import AttributeSensorException
 
 __all__ = [
-    # ======================# COLLISION_OCCURRENCE #======================#
+    # ======================# ID_SENSOR_FAILURE #======================#
     "IdSensorException",
 ]
 
-from artifcat import MethodResultType
-
-
-# ======================# COLLISION_OCCURRENCE #======================#
-class IdSensorException(IdSensorException):
+# ======================# ID_SENSOR_FAILURE #======================#
+class IdSensorException(AttributeSensorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an item collided with the attractor.
+        1.  Indicating an IdSensor encountered an error.
         
     Attributes:
         msg: Optional[str]
@@ -43,11 +41,10 @@ class IdSensorException(IdSensorException):
     Provides:
 
     Super Class:
-        IdSensorException
+        AttributeSensorException
     """
-    MSG = "A collision occurred."
-    ERR_CODE = "COLLISION_OCCURRENCE"
-    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
+    MSG = "An IdSensor encountered an error."
+    ERR_CODE = "ID_SENSOR_FAILURE"
     
     def __init__(
             self,
@@ -73,7 +70,6 @@ class IdSensorException(IdSensorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

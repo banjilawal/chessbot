@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/square/exception.py
+# src/err/environment/sensor/id/square/exception.py
 
 """
-Module: err.environment.sensor.collider.square.exception
+Module: err.environment.sensor.id.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import IdSensorException
+from artifcat import MethodResultType
+From Err Import IdSensorException
 from artifcat import MethodResultType
 
 

@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/account/exception.py
+# src/err/environment/sensor/id/account/exception.py
 
 """
-Module: err.environment.sensor.collider.account.exception
+Module: err.environment.sensor.id.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class AccountIdSensorException(IdSensorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AccountIdSensor encountered an error.
+        1.  Indicating an AccountIdSensor encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AccountIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "AccountIdSensor encountered an error"
+    MSG = "AccountIdSensor encountered an error."
     ERR_CODE = "ACCOUNT_ID_SENSOR_FAILURE"
     
     def __init__(

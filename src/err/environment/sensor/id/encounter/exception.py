@@ -1,7 +1,7 @@
-# src/err/environment/sensor/collider/encounter/exception.py
+# src/err/environment/sensor/id/encounter/exception.py
 
 """
-Module: err.environment.sensor.collider.encounter.exception
+Module: err.environment.sensor.id.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -44,7 +44,7 @@ class EncounterIdSensorException(IdSensorException):
     Super Class:
         IdSensorException
     """
-    MSG = "EncounterIdSensor encountered an error"
+    MSG = "EncounterIdSensor encountered an error."
     ERR_CODE = "ENCOUNTER_ID_SENSOR_FAILURE"
     
     def __init__(
