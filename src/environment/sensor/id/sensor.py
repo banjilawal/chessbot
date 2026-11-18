@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 from artifcat import CollisionReport
 from collection import Stack
 from domain import Model
-from sensor import AttributeSensor
+from environment import AttributeSensor
 from util import LoggingLevelRouter
 
 P = TypeVar("P", bound="Model")

@@ -13,6 +13,7 @@ from artifcat import CollisionReport
 from collection import AccountStack
 from domain import Account
 from environment import IdSensor
+from err import AccountIdSensorException, DuplicateAccountIdException
 from util import LoggingLevelRouter
 
 
@@ -69,11 +70,11 @@ class AccountIdSensor(IdSensor[Account, int]):
                 cls_name=self.__class__.__name__,
                 msg=AccountIdSensorException.MSG,
                 err_code=AccountIdSensorException.ERR_CODE,
-                ex=DuplicteAccountIdException(
+                ex=DuplicateAccountIdException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DuplicteAccountIdException.MSG,
-                    err_code=DuplicteAccountIdException.ERR_CODE,
+                    msg=DuplicateAccountIdException.MSG,
+                    err_code=DuplicateAccountIdException.ERR_CODE,
                     var=f"duplicate_account_id: {target}"
                 )
             )

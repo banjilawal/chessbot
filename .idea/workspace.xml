@@ -5,39 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/email/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/email/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/machine/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/arena/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/arena/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/id/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/email/sensor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/account/machine/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/account/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/sensor/id/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/sensor/id/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/duplicate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/duplicate/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/duplicate/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/duplicate/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/duplicate/prisoner/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/duplicate/prisoner/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/duplicate/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/duplicate/vector/exception.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,61 +61,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.8435878845923303E-4" />
-      <entry key="MS500" value="0.20018802343723532" />
-      <entry key="S2" value="0.9287834561108429" />
-      <entry key="S5" value="1.4363185124368458" />
-      <entry key="S10" value="1.6877425841045595" />
-      <entry key="S30" value="1.888578930049548" />
-      <entry key="S60" value="2.0227985400238593" />
-      <entry key="M2" value="3.2823094268340944" />
-      <entry key="M5" value="10.98831065772706" />
-      <entry key="M10" value="28.64824988705148" />
-      <entry key="M15" value="49.30632959121221" />
-      <entry key="M30" value="103.38087231723163" />
-      <entry key="H1" value="165.98284673091675" />
-      <entry key="H2" value="236.77292427752056" />
-      <entry key="H4" value="362.6850820373769" />
-      <entry key="D1" value="916.1347249679973" />
-      <entry key="W1" value="13320.422339428267" />
-    </decayedCancelled>
-    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000000000187" />
-      <entry key="S60" value="1.0000003272326694" />
-      <entry key="M2" value="1.0014112622302613" />
-      <entry key="M5" value="1.2264816914685928" />
-      <entry key="M10" value="2.374126858965856" />
-      <entry key="M15" value="3.7748934257074507" />
-      <entry key="M30" value="7.615967102637345" />
-      <entry key="H1" value="12.365243839811162" />
-      <entry key="H2" value="17.751724118025077" />
-      <entry key="H4" value="27.09968970073192" />
-      <entry key="D1" value="72.58212830825092" />
-      <entry key="W1" value="728.9607122432603" />
+      <entry key="S2" value="1.0000001372814977" />
+      <entry key="S5" value="1.0021506363936878" />
+      <entry key="S10" value="1.080476984703806" />
+      <entry key="S30" value="2.5006345056804324" />
+      <entry key="S60" value="4.948077979204173" />
+      <entry key="M2" value="8.099565823328636" />
+      <entry key="M5" value="11.66931565010737" />
+      <entry key="M10" value="13.483749616066554" />
+      <entry key="M15" value="14.220232322342717" />
+      <entry key="M30" value="15.052207472133418" />
+      <entry key="H1" value="16.359104603338128" />
+      <entry key="H2" value="35.763588159852326" />
+      <entry key="H4" value="132.3552687647568" />
+      <entry key="D1" value="849.2578011188422" />
+      <entry key="W1" value="13017.867393602586" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="6.493950098253855E-132" />
+      <entry key="S5" value="5.0289149189222085E-53" />
+      <entry key="S10" value="1.001264954324111E-26" />
+      <entry key="S30" value="3.420158886950545E-9" />
+      <entry key="S60" value="8.270248050779463E-5" />
+      <entry key="M2" value="0.012860840863624962" />
+      <entry key="M5" value="0.26565902038487005" />
+      <entry key="M10" value="0.7289153318903734" />
+      <entry key="M15" value="1.0204569280560685" />
+      <entry key="M30" value="1.4286548011119686" />
+      <entry key="H1" value="1.7217919821542211" />
+      <entry key="H2" value="2.7341069544215197" />
+      <entry key="H4" value="8.0040932895665" />
+      <entry key="D1" value="58.5747396996361" />
+      <entry key="W1" value="705.4934244455427" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.014092105524758586" />
-      <entry key="MS500" value="0.52836942197968" />
-      <entry key="S2" value="1.57984909572917" />
-      <entry key="S5" value="2.2476323976059245" />
-      <entry key="S10" value="2.580961274318411" />
-      <entry key="S30" value="2.8496363143281136" />
-      <entry key="S60" value="3.0028445541410913" />
-      <entry key="M2" value="4.27344391036853" />
-      <entry key="M5" value="12.209083442475754" />
-      <entry key="M10" value="31.0153959495401" />
-      <entry key="M15" value="53.07299980047694" />
-      <entry key="M30" value="110.98784855393703" />
-      <entry key="H1" value="178.34062526135872" />
-      <entry key="H2" value="254.5193047772487" />
-      <entry key="H4" value="389.7808029010493" />
-      <entry key="D1" value="988.7135998418095" />
-      <entry key="W1" value="14049.370208323424" />
+      <entry key="MS100" value="4.42422500440194E-8" />
+      <entry key="MS500" value="0.03381952014142859" />
+      <entry key="S2" value="0.42883665005471566" />
+      <entry key="S5" value="0.7139847951758133" />
+      <entry key="S10" value="0.9064109532786939" />
+      <entry key="S30" value="2.3110504953000937" />
+      <entry key="S60" value="4.740230324858468" />
+      <entry key="M2" value="7.939009201781017" />
+      <entry key="M5" value="11.834924159647452" />
+      <entry key="M10" value="14.154722676389799" />
+      <entry key="M15" value="15.199876656746294" />
+      <entry key="M30" value="16.459207213817777" />
+      <entry key="H1" value="18.06969870432709" />
+      <entry key="H2" value="38.49171861694862" />
+      <entry key="H4" value="140.35554900975413" />
+      <entry key="D1" value="907.8294908446696" />
+      <entry key="W1" value="13723.348348841417" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -1013,7 +991,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="85315000" />
+      <workItem from="1794227184139" duration="91083000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3091,6 +3069,11 @@
           <url>file://$PROJECT_DIR$/src/err/environment/sensor/account/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="689" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/environment/sensor/id/sensor.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="690" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

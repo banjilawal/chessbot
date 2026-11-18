@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== ERR PACKAGE ===========#
 
 # Packages
-from err.environment.analyzer import *
 from .assurance import *
 from .authorization import *
 from .bidirectional import *
@@ -20,10 +19,9 @@ from .config import *
 from .consistency import *
 from .controller import *
 from .collection import *
-from err.environment.sensor import *
-from err.environment.detection import *
 from .domain import *
 from .duplicate import *
+from .environment import *
 from .exchange import *
 from .execution import *
 from .fabrication import *
@@ -35,7 +33,6 @@ from .microservice import *
 from .movement import *
 from .null import *
 from .operation import *
-from .pipeline import *
 from .production import *
 from .query import *
 from .recurrence import *

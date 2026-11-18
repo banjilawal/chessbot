@@ -13,7 +13,7 @@ from artifcat import CollisionReport
 from collection import AccountStack
 from domain import AccountContext, HumanAccount
 from environment import AccountSensor
-from err import AccountEmailSensorException
+from err import AccountEmailSensorException, DuplicateAccountEmailException
 from util import LoggingLevelRouter
 
 
@@ -54,6 +54,7 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
         method = f"{self.__class__.__name__}.execute"
         
         # --- Run the stream ---#
+        context = AccountContext(email=target)
         matches = [
             item for item in stream.human_accounts if (
                     item.email.upper() == target.upper()
@@ -63,18 +64,18 @@ class AccountEmailSensor(AccountSensor[HumanAccount, str]):
         if len(matches) > 0:
             # Send an exception chain in the report.
             return CollisionReport.collision(
-                context=AccountContext(email=target),
+                context=context,
                 particle=matches[0],
                 exception=AccountEmailSensorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=AccountEmailSensorException.MSG,
                     err_code=AccountEmailSensorException.ERR_CODE,
-                    ex=DuplicteAccountEmailException(
+                    ex=DuplicateAccountEmailException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=DuplicteAccountEmailException.MSG,
-                        err_code=DuplicteAccountEmailException.ERR_CODE,
+                        msg=DuplicateAccountEmailException.MSG,
+                        err_code=DuplicateAccountEmailException.ERR_CODE,
                         var=f"collider_id: {matches[0].id}, "
                             f"duplicate_email: {target}",
                     )

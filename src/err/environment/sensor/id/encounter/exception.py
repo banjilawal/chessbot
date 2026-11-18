@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
-from err import IdSensorException
+from artifcat import MethodResultType
+From Err Import IdSensorException
 
 
 __all__ = [

@@ -19,7 +19,6 @@ from .game import *
 from .id import *
 from .node import *
 from .player import *
-from .prisoner import *
 from .square import *
 from .team import *
 from .token import *

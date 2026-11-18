@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from artifcat import CollisionReport
 from collection import AccountStack
-from domain import MachineAccount
+from domain import AccountContext, MachineAccount
 from environment import AccountSensor
-from err import MachineAccountNameSensorException
+from err import DuplicateMachineNameException, MachineAccountNameSensorException
 from util import LoggingLevelRouter
 
 
@@ -54,6 +54,7 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
         method = f"{self.__class__.__name__}.execute"
         
         # --- Run the stream ---#
+        context = AccountContext(machine_name=target)
         matches = [
             item for item in stream.machine_accounts if (
                     item.name.upper() == target.upper()
@@ -63,21 +64,19 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
         if len(matches) == 0:
             return CollisionReport.empty()
         # Otherwise report a collision.
-        return CollisionReport.summary(
-            field_value=matches[0].id,
-            target=target,
+        return CollisionReport.collision(
             particle=matches[0],
-            field_name="name",
+            context=context,
             exception=MachineAccountNameSensorException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
                 msg=MachineAccountNameSensorException.MSG,
                 err_code=MachineAccountNameSensorException.ERR_CODE,
-                ex=DuplicteAccountNameException(
+                ex=DuplicateMachineNameException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DuplicteAccountNameException.MSG,
-                    err_code=DuplicteAccountNameException.ERR_CODE,
+                    msg=DuplicateMachineNameException.MSG,
+                    err_code=DuplicateMachineNameException.ERR_CODE,
                     var=f"collider_id: {matches[0].id}, "
                         f"duplicate_machine_name: {target}",
                 )
