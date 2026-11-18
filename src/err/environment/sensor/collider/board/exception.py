@@ -1,7 +1,7 @@
-# src/err/sensor/collider/board/exception.py
+# src/err/environment/sensor/collider/board/exception.py
 
 """
-Module: err.sensor.collider.board.exception
+Module: err.environment.sensor.collider.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

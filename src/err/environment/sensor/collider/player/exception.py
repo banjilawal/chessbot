@@ -1,7 +1,7 @@
-# src/err/sensor/collider/player/exception.py
+# src/err/environment/sensor/collider/player/exception.py
 
 """
-Module: err.sensor.collider.player.exception
+Module: err.environment.sensor.collider.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

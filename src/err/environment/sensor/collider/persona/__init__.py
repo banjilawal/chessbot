@@ -1,13 +1,13 @@
-# src/err/sensor/collider/persona/__init__.py
+# src/err/environment/sensor/collider/persona/__init__.py
 
 """
-Module: err.sensor.collider.context.persona.__init__
+Module: err.environment.sensor.collider.context.persona.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.SENSOR.COLLIDER.CONTEXT.PERSONA PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.SENSOR.COLLIDER.CONTEXT.PERSONA PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/err/sensor/collider/edge/__init__.py
+# src/err/environment/sensor/collider/edge/__init__.py
 
 """
-Module: err.sensor.collider.context.edge.__init__
+Module: err.environment.sensor.collider.context.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.SENSOR.COLLIDER.CONTEXT.EDGE PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.SENSOR.COLLIDER.CONTEXT.EDGE PACKAGE ===========#
 
 # Packages
 

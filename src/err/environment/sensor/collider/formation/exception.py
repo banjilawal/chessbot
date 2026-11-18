@@ -1,7 +1,7 @@
-# src/err/sensor/collider/formation/exception.py
+# src/err/environment/sensor/collider/formation/exception.py
 
 """
-Module: err.sensor.collider.formation.exception
+Module: err.environment.sensor.collider.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/detection/collision/context/player/exception.py
+# src/err/environment/detection/collision/context/player/exception.py
 
 """
-Module: err.detection.collision.context.player.exception
+Module: err.environment.detection.collision.context.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,13 +1,13 @@
-# src/err/detection/collision/team/__init__.py
+# src/err/environment/detection/collision/team/__init__.py
 
 """
-Module: err.detection.collision.context.team.__init__
+Module: err.environment.detection.collision.context.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.DETECTION.COLLISION.CONTEXT.TEAM PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.DETECTION.COLLISION.CONTEXT.TEAM PACKAGE ===========#
 
 # Packages
 

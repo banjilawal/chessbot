@@ -1,13 +1,13 @@
-# src/err/analyzer/promotion/rank/king/__init__.py
+# src/err/environment/analyzer/promotion/rank/king/__init__.py
 
 """
-Module: err.analyzer.promotion.rank.king.__init__
+Module: err.environment.analyzer.promotion.rank.king.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ANALYZER.PROMOTION.RANK.KING PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.ANALYZER.PROMOTION.RANK.KING PACKAGE ===========#
 
 # Packages
 

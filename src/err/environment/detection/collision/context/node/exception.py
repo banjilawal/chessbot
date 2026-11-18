@@ -1,7 +1,7 @@
-# src/err/detection/collision/context/node/exception.py
+# src/err/environment/detection/collision/context/node/exception.py
 
 """
-Module: err.detection.collision.context.node.exception
+Module: err.environment.detection.collision.context.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

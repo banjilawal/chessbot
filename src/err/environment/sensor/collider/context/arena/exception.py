@@ -1,7 +1,7 @@
-# src/err/sensor/collider/context/arena/exception.py
+# src/err/environment/sensor/collider/context/arena/exception.py
 
 """
-Module: err.sensor.collider.context.arena.exception
+Module: err.environment.sensor.collider.context.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

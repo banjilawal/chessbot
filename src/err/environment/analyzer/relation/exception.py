@@ -1,7 +1,7 @@
-# src/err/analyzer/relation/exception.py
+# src/err/environment/analyzer/relation/exception.py
 
 """
-Module: err.analyzer.relation.exception
+Module: err.environment.analyzer.relation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

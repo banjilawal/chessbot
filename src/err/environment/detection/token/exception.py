@@ -1,7 +1,7 @@
-# src/err/detection/token/exception.py
+# src/err/environment/detection/token/exception.py
 
 """
-Module: err.detection.token.exception
+Module: err.environment.detection.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

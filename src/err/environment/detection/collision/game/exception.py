@@ -1,7 +1,7 @@
-# src/err/detection/collision/game/exception.py
+# src/err/environment/detection/collision/game/exception.py
 
 """
-Module: err.detection.collision.game.exception
+Module: err.environment.detection.collision.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

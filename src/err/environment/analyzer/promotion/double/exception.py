@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/double/exception.py
+# src/err/environment/analyzer/promotion/double/exception.py
 
 """
-Module: err.analyzer.promotion.double.exception
+Module: err.environment.analyzer.promotion.double.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

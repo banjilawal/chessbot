@@ -1,7 +1,7 @@
-# src/err/detection/collision/id/token/exception.py
+# src/err/environment/detection/collision/id/token/exception.py
 
 """
-Module: err.detection.collision.id.token.exception
+Module: err.environment.detection.collision.id.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

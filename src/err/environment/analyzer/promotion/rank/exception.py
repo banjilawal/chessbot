@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/rank/exception.py
+# src/err/environment/analyzer/promotion/rank/exception.py
 
 """
-Module: err.analyzer.promotion.rank.exception
+Module: err.environment.analyzer.promotion.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

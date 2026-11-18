@@ -1,7 +1,7 @@
-# src/err/detection/collision/schema/exception.py
+# src/err/environment/detection/collision/schema/exception.py
 
 """
-Module: err.detection.collision.schema.exception
+Module: err.environment.detection.collision.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,13 +1,13 @@
-# src/err/detection/collision/__init__.py
+# src/err/environment/detection/collision/__init__.py
 
 """
-Module: err.detection.collision.__init__
+Module: err.environment.detection.collision.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.DETECTION.COLLISION PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.DETECTION.COLLISION PACKAGE ===========#
 
 # Packages
 from .id import *

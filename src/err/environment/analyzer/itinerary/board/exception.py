@@ -1,7 +1,7 @@
-# src/err/analyzer/move/board/exception.py
+# src/err/environment/analyzer/move/board/exception.py
 
 """
-Module: err.analyzer.move.board.exception
+Module: err.environment.analyzer.move.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

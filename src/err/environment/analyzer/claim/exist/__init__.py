@@ -1,13 +1,13 @@
-# src/err/analyzer/claim/exist__init__.py
+# src/err/environment/analyzer/claim/exist__init__.py
 
 """
-Module: err.analyzer.claim.exist__init__
+Module: err.environment.analyzer.claim.exist__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ANALYZER.CLAIM.EXIST PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.ANALYZER.CLAIM.EXIST PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/err/analyzer/relation/token/team/__init__.py
+# src/err/environment/analyzer/relation/token/team/__init__.py
 
 """
-Module: err.analyzer.relation.token.team.__init__
+Module: err.environment.analyzer.relation.token.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ANALYZER.RELATION.TOKEN.TEAM PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.ANALYZER.RELATION.TOKEN.TEAM PACKAGE ===========#
 
 # Packages
 

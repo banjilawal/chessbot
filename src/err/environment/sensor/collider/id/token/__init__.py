@@ -1,13 +1,13 @@
-## src/err/sensor/collider/id/token/__init__.py
+## src/err/environment/sensor/collider/id/token/__init__.py
 
 """
-Module: err.sensor.collider.id.token.__init__
+Module: err.environment.sensor.collider.id.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.SENSOR.COLLIDER.ID.TOKEN PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.SENSOR.COLLIDER.ID.TOKEN PACKAGE ===========#
 
 # Packages
 

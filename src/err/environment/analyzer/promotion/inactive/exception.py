@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/inactive/exception.py
+# src/err/environment/analyzer/promotion/inactive/exception.py
 
 """
-Module: err.analyzer.promotion.inactive.exception
+Module: err.environment.analyzer.promotion.inactive.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

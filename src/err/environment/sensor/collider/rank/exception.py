@@ -1,7 +1,7 @@
-# src/err/sensor/collider/rank/exception.py
+# src/err/environment/sensor/collider/rank/exception.py
 
 """
-Module: err.sensor.collider.rank.exception
+Module: err.environment.sensor.collider.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/analyzer/relation/team/exception.py
+# src/err/environment/analyzer/relation/team/exception.py
 
 """
-Module: err.analyzer.relation.team.exception
+Module: err.environment.analyzer.relation.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

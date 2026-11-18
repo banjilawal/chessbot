@@ -1,7 +1,7 @@
-# src/err/sensor/collider/exception.py
+# src/err/environment/sensor/collider/exception.py
 
 """
-Module: err.sensor.collider.exception
+Module: err.environment.sensor.collider.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperatorException
+from err import AttributeSensorException
 
 __all__ = [
     # ======================# COLLISION_OCCURRENCE #======================#
@@ -22,7 +22,7 @@ from artifcat import MethodResultType
 
 
 # ======================# COLLISION_OCCURRENCE #======================#
-class ColliderException(OperatorException):
+class ColliderException(AttributeSensorException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class ColliderException(OperatorException):
     Provides:
 
     Super Class:
-        OperationException
+        AttributeSensorException
     """
     MSG = "A collision occurred."
     ERR_CODE = "COLLISION_OCCURRENCE"

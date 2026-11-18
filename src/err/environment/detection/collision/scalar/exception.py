@@ -1,7 +1,7 @@
-# src/err/detection/collision/scalar/exception.py
+# src/err/environment/detection/collision/scalar/exception.py
 
 """
-Module: err.detection.collision.scalar.exception
+Module: err.environment.detection.collision.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

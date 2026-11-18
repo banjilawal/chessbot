@@ -1,0 +1,82 @@
+# src/err/environment/sensor/collider/game/exception.py
+
+"""
+Module: err.environment.sensor.collider.game.exception
+Author: Banji Lawal
+Created: 2026-04-04
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, Optional
+
+from err import IdSensorException
+
+
+__all__ = [
+    # ======================# GAME_ID_SENSOR_FAILURE #======================#
+    "GameIdSensorException",
+]
+
+# ======================# GAME_ID_SENSOR_FAILURE #======================#
+class GameIdSensorException(IdSensorException):
+    """
+    Role:
+        - Error Tracing
+
+    Responsibilities:
+        1.  Indicating a GameIdSensor encountered an error.
+
+    Attributes:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
+    Provides:
+
+    Super Class:
+        IdSensorException
+    """
+    MSG = "GameIdSensor encountered an error"
+    ERR_CODE = "GAME_ID_SENSOR_FAILURE"
+    
+    def __init__(
+            self,
+            msg: Optional[str] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
+            err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
+    ):
+        """
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
+            ex: Optional[Exception]
+            cls_name: Optional[Str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
+        )

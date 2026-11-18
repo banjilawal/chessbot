@@ -1,7 +1,7 @@
-# src/err/detection/collision/context/team/exception.py
+# src/err/environment/detection/collision/context/team/exception.py
 
 """
-Module: err.detection.collision.context.team.exception
+Module: err.environment.detection.collision.context.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

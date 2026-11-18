@@ -1,7 +1,7 @@
-# src/err/sensor/collider/context/persona/exception.py
+# src/err/environment/sensor/collider/context/persona/exception.py
 
 """
-Module: err.sensor.collider.context.persona.exception
+Module: err.environment.sensor.collider.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

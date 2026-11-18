@@ -1,7 +1,7 @@
-# src/err/sensor/collider/registration/exception.py
+# src/err/environment/sensor/collider/registration/exception.py
 
 """
-Module: err.sensor.collider.registration.exception
+Module: err.environment.sensor.collider.registration.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

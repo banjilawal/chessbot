@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/manager/exception.py
+# src/err/environment/analyzer/promotion/manager/exception.py
 
 """
-Module: err.analyzer.promotion.manager.exception
+Module: err.environment.analyzer.promotion.manager.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

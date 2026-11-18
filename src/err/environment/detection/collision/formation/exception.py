@@ -1,7 +1,7 @@
-# src/err/detection/collision/formation/exception.py
+# src/err/environment/detection/collision/formation/exception.py
 
 """
-Module: err.detection.collision.formation.exception
+Module: err.environment.detection.collision.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

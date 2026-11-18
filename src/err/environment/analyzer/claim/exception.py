@@ -1,7 +1,7 @@
-# src/err/analyzer/claim/exception.py
+# src/err/environment/analyzer/claim/exception.py
 
 """
-Module: err.analyzer.claim.exception
+Module: err.environment.analyzer.claim.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

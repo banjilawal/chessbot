@@ -1,7 +1,7 @@
-# src/err/analyzer/friend/king/exception.py
+# src/err/environment/analyzer/friend/king/exception.py
 
 """
-Module: err.analyzer.friend.king.exception
+Module: err.environment.analyzer.friend.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

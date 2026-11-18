@@ -1,7 +1,7 @@
-# src/err/sensor/collider/id/token/exception.py
+# src/err/environment/sensor/collider/id/token/exception.py
 
 """
-Module: err.sensor.collider.id.token.exception
+Module: err.environment.sensor.collider.id.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

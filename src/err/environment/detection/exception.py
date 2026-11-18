@@ -1,7 +1,7 @@
-# src/err/detection/exception.py
+# src/err/environment/detection/exception.py
 
 """
-Module: err.detection.exception
+Module: err.environment.detection.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

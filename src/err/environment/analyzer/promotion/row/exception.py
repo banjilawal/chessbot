@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/row/exception.py
+# src/err/environment/analyzer/promotion/row/exception.py
 
 """
-Module: err.analyzer.promotion.row.exception
+Module: err.environment.analyzer.promotion.row.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

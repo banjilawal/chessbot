@@ -1,13 +1,13 @@
-# src/err/sensor/collider/schema/__init__.py
+# src/err/environment/sensor/collider/schema/__init__.py
 
 """
-Module: err.sensor.collider.context.schema.__init__
+Module: err.environment.sensor.collider.context.schema.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.SENSOR.COLLIDER.CONTEXT.SCHEMA PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.SENSOR.COLLIDER.CONTEXT.SCHEMA PACKAGE ===========#
 
 # Packages
 

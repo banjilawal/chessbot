@@ -1,7 +1,7 @@
-# src/err/analyzer/relation/token/exception.py
+# src/err/environment/analyzer/relation/token/exception.py
 
 """
-Module: err.analyzer.relation.token.exception
+Module: err.environment.analyzer.relation.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

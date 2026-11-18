@@ -1,7 +1,7 @@
-# src/err/analyzer/readiness/exception.py
+# src/err/environment/analyzer/readiness/exception.py
 
 """
-Module: err.analyzer.readiness.exception
+Module: err.environment.analyzer.readiness.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

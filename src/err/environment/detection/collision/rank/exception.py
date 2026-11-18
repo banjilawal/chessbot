@@ -1,7 +1,7 @@
-# src/err/detection/collision/rank/exception.py
+# src/err/environment/detection/collision/rank/exception.py
 
 """
-Module: err.detection.collision.rank.exception
+Module: err.environment.detection.collision.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

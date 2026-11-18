@@ -1,7 +1,7 @@
-# src/err/detection/collision/context/formation/exception.py
+# src/err/environment/detection/collision/context/formation/exception.py
 
 """
-Module: err.detection.collision.context.formation.exception
+Module: err.environment.detection.collision.context.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/detection/collision/registration/exception.py
+# src/err/environment/detection/collision/registration/exception.py
 
 """
-Module: err.detection.collision.registration.exception
+Module: err.environment.detection.collision.registration.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

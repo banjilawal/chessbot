@@ -1,13 +1,13 @@
-# src/err/analyzer/move/board/__init__.py
+# src/err/environment/analyzer/move/board/__init__.py
 
 """
-Module: err.analyzer.move.board.__init__
+Module: err.environment.analyzer.move.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ANALYZER.MOVE.BOARD PACKAGE ===========#
+# ============ ERR.ENVIRONMENT.ANALYZER.MOVE.BOARD PACKAGE ===========#
 
 # Packages
 
