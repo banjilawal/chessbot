@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .collision import *
+from .envelope import *
 
 # Modules
 from .exception import ProductionEndpointException

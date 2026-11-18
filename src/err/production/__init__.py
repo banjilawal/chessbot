@@ -13,6 +13,7 @@ version: 1.0.0
 from .endpoint import *
 from .fabrication import *
 from .manager import *
+from .resource import *
 
 # Modules
 from .exception import ProductionException

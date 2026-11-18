@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .consumer import *
-from .producer import *
 from .query import *
 from .search import *
 from .struct import *
