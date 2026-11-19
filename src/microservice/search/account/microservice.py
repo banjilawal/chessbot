@@ -48,7 +48,7 @@ class AccountSearchMicroservice(SearchMicroservice[AccountSearchRequest]):
     
     def __init__(
             self,
-            dispatcher: Optional[AccountSearchDispatcher]
+            dispatcher: Optional[AccountSearchDispatcher] | None = None,
     ):
         """
         Args:

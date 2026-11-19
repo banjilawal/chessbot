@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from collection import AccountStack
+from microservice import AccountInsertionMicroservice, AccountSearchMicroservice
 from repo import Repo
-from transit import AccountPushDispatcher, AccountSearchDispatcher
 
 
 class AccountRepo(Repo[AccountStack]):
@@ -22,19 +22,19 @@ class AccountRepo(Repo[AccountStack]):
     def __init__(
             self,
             data: AccountStack,
-            searcher: Optional[AccountSearchDispatcher] | None = None,
-            inserter: Optional[AccountPushDispatcher] | None = None,
+            searcher: Optional[AccountSearchMicroservice] | None = None,
+            inserter: Optional[AccountInsertionMicroservice] | None = None,
     ):
         """
         Args:
             data: AccountStack,
-            searcher: Optional[AccountSearchDispatcher]
-            inserter: Optional[AccountPushDispatcher]
+            searcher: Optional[AccountSearchMicroservice]
+            inserter: Optional[AccountInsertionMicroservice]
         """
         super().__init__(
             data=data,
-            searcher=searcher or AccountSearchDispatcher(),
-            inserter=inserter or AccountPushDispatcher(),
+            searcher=searcher or AccountSearchMicroservice(),
+            inserter=inserter or AccountInsertionMicroservice(),
         )
         
     @property
@@ -42,10 +42,10 @@ class AccountRepo(Repo[AccountStack]):
         return cast(AccountStack, super().data)
     
     @property
-    def searcher(self) -> AccountSearchDispatcher:
-        return cast(AccountSearchDispatcher, super().searcher)
+    def searcher(self) -> AccountSearchMicroservice:
+        return cast(AccountSearchMicroservice, super().searcher)
     
     @property
-    def inserter(self) -> AccountPushDispatcher:
-        return cast(AccountPushDispatcher, super().inserter)
+    def inserter(self) -> AccountInsertionMicroservice:
+        return cast(AccountInsertionMicroservice, super().inserter)
     

@@ -45,7 +45,7 @@ class AccountInsertionMicroservice(InsertionMicroservice[AccountPushRequest]):
     
     def __init__(
             self,
-            dispatcher: Optional[AccountPushDispatcher]
+            dispatcher: Optional[AccountPushDispatcher] | None = None,
     ):
         """
         Args:
