@@ -13,26 +13,26 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import DataStruct
-from transit import InsertionDispatcher, SearchDispatcher
+from microservice import InsertionMicroservice, SearchMicroservice
 
 T = TypeVar("T", bound="DataStruct")
 
 class Repo(ABC, Generic[T]):
     _data: T
-    _searcher: SearchDispatcher
-    _inserter: InsertionDispatcher
+    _searcher: SearchMicroservice
+    _inserter: InsertionMicroservice
     
     def __init__(
             self,
             data: T,
-            searcher: SearchDispatcher,
-            inserter: InsertionDispatcher,
+            searcher: SearchMicroservice,
+            inserter: InsertionMicroservice,
     ):
         """
         Args:
             data: T
-            searcher: SearchDispatcher
-            inserter: InsertionDispatcher
+            searcher: SearchMicroservice,
+            inserter: InsertionMicroservice
         """
         self._data = data
         self._searcher = searcher
@@ -43,10 +43,10 @@ class Repo(ABC, Generic[T]):
         return self._data
     
     @property
-    def searcher(self) -> SearchDispatcher:
+    def searcher(self) -> SearchMicroservice:
         return self._searcher
     
     @property
-    def inserter(self) -> InsertionDispatcher:
+    def inserter(self) -> InsertionMicroservice:
         return self._inserter
     

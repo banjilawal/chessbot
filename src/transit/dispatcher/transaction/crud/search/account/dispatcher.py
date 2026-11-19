@@ -23,15 +23,17 @@ from util import LoggingLevelRouter
 class AccountSearchDispatcher(SearchDispatcher[AccountSearchRequest, SearchResult]):
     """
     Role
-        -   Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct jobs towards a worker then forward the results to clients.
+        1.  Distribute AccountSearchRequests among workers then send the result to
+            correct client.
 
     Attributes:
         worker: AccountSearcher
 
     Provides:
+        -   def  execute(request: AccountSearchRequest) -> SearchResult[List[Account]]
 
     Super Class:
         SearchDispatcher
@@ -62,14 +64,15 @@ class AccountSearchDispatcher(SearchDispatcher[AccountSearchRequest, SearchResul
         Result:
             SearchResult[List[Account]]
         Raises:
-            AccountSearchDIspatcherException
+            AccountSearchDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        
+        # --- Handoff the request to a worker. ---#
         result = self.worker.execute(request)
         # Handle the case that the request is not fulfilled.
         if result.is_failure:
+            # Send an exception chain in the result.
             return SearchResult.failure(
                 AccountSearchDispatcherException(
                     cls_mthd=method,

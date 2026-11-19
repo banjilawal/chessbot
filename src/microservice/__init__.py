@@ -24,6 +24,7 @@ from .insertion import *
 from .player import *
 from .rank import *
 from .scalar import *
+from .search import *
 from .snapshot import *
 from .square import *
 from .team import *

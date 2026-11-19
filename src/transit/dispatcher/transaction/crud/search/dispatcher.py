@@ -24,15 +24,16 @@ R = TypeVar("R", bound="SearchResult")
 class SearchDispatcher(CrudDispatcher[Q, R], ABC, Generic[Q, R]):
     """
     Role
-        -   Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct jobs towards a worker then forward the results to clients.
+        1.  Distribute requests among workers then send the result to the correct client
 
     Attributes:
         worker: Searcher[Q, R]
 
     Provides:
+        -   def  execute(self, request: Q) -> R
 
     Super Class:
         CrudDispatcher
@@ -46,7 +47,19 @@ class SearchDispatcher(CrudDispatcher[Q, R], ABC, Generic[Q, R]):
         super().__init__(worker=worker)
         
     
+        
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: Q) -> R:
+        """
+        Distribute SearchRequests among workers then forward the results.
+
+        Args:
+            request: Q
+        Returns:
+            R
+        Raises:
+            SearchDispatcherException
+        """
         pass

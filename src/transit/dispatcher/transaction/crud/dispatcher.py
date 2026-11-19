@@ -10,48 +10,57 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
 from artifcat import CrudResult
 from exchange import CrudRequest
 from operation import CrudWorker
-from transit import Dispatcher
+from transit import TransactionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="CrudRequest")
 R = TypeVar("R", bound="CrudResult")
 
-class CrudDispatcher(Dispatcher[T], ABC, Generic[Q, R]):
+class CrudDispatcher(TransactionDispatcher[Q, R], ABC, Generic[Q, R]):
     """
     Role
-        -   Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct jobs towards a worker then forward the results to clients.
+        1.  Distribute requests among workers then send the result to the correct client
 
     Attributes:
         worker: CrudWorker[Q, R]
 
     Provides:
+        -   def  execute(self, request: Q) -> R
 
     Super Class:
-        Dispatcher
+        TransactionDispatcher
     """
-    _worker: CrudWorker[Q, R]
     
     def __init__(self, worker: CrudWorker[Q, R]):
         """
         Args:
             worker: CrudWorker[Q, R]
         """
-        super().__init__()
-        self._worker = worker
+        super().__init__(worker=worker)
         
     @property
     def worker(self) -> CrudWorker[Q, R]:
-        return self._worker
+        return cast(CrudWorker[Q, R], super().worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: Q) -> R:
+        """
+        Distribute CrudRequests among workers then forward the results.
+
+        Args:
+            request: Q
+        Returns:
+            R
+        Raises:
+            CrudDispatcherException
+        """
         pass

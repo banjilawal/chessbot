@@ -70,9 +70,12 @@ class AccountPushDispatcher(PushDispatcher[AccountPushRequest, InsertionResult])
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # --- Handoff the request to a worker. ---#
         result = self.worker.execute(request)
+        
         # Handle the case that the request is not fulfilled.
         if result.is_failure:
+            # Send the exception chain in the result.
             return InsertionResult.failure(
                 AccountPushDispatcherException(
                     cls_mthd=method,
