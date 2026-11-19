@@ -46,4 +46,14 @@ class PushDispatcher(InsertionDispatcher[Q, R], ABC, Generic[Q, R]):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: Q) -> R:
+        """
+        Send PushRequests to a worker.
+        
+        Args:
+            request: Q
+        Result:
+            R
+        Raises:
+            PushDispatcherException
+        """
         pass

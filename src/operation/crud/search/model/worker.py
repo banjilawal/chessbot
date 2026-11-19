@@ -13,8 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import SearchResult
+from exchange import ModelSearchRequest
 from operation import Searcher
-from transit import ModelSearchPermissionDispatcher, SearchPermissionDispatcher
+from transit import ModelSearchPermissionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="ModelSearchRequest")

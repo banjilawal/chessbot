@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from artifcat import SearchResult
 from exchange import SearchRequest
 from operation import CrudWorker
-from transit import SearchPermissionDispatcher, SearchRouter
+from transit import SearchPermissionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="SearchRequest")
@@ -31,7 +31,6 @@ class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
         1.  Executes an SearchRequest
 
     Attributes:
-        router: SearchRouter[Q]
         dispatcher: SearchPermissionDispatcher
 
     Provides:
@@ -43,12 +42,10 @@ class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
     
     def __init__(
             self,
-            router: SearchRouter[Q],
             dispatcher: SearchPermissionDispatcher,
     ):
         """
         Args:
-            router: SearchRouter[Q]
             dispatcher: SearchPermissionDispatcher
         """
         super().__init__(dispatcher=dispatcher)

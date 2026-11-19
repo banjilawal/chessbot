@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import SearchResult
-from domain import Account, AccountType, HumanAccount, MachineAccount
-from err import SearchRouteCoverageException
+from collection import AccountStack
+from domain import Account, AccountType
+from err import AccountSearcherException, SearchRouteCoverageException
 from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from operation import ModelSearcher
-from repo import AccountStack
 from transit import AccountSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
+class AccountSearcher(ModelSearcher[AccountSearchRequest, SearchResult]):
     """
     Role:
         -   Transaction Worker
@@ -96,7 +96,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         # --- Extract the requests for additional processing. ---#
         transaction_request = cast(
             AccountSearchRequest,
-            decision.permission_request,
+            decision.transaction_request
         )
         # --- Extract the transaction participants. ---#
         context = transaction_request.context
@@ -172,7 +172,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
             self, firstname: str, collection: AccountStack) -> SearchResult:
         """firstname_context handler"""
         matches: List[Account] = []
-        for account in self._humans(collection):
+        for account in collection.human_accounts:
             if account.firstname.upper() == firstname.upper():
                 matches.append(account)
         if len(matches) == 0:
@@ -182,7 +182,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
     def _find_by_lastname(self, lastname: str, collection: AccountStack) -> SearchResult:
         """lastname_context handler"""
         matches: List[Account] = []
-        for account in self._humans(collection):
+        for account in collection.human_accounts:
             if account.lastname.upper() == lastname.upper():
                 matches.append(account)
         if len(matches) == 0:
@@ -192,7 +192,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
     def _find_by_email(self, email: str, collection: AccountStack) -> SearchResult:
         """email_context handler"""
         matches: List[Account] = []
-        for account in self._humans(collection):
+        for account in collection.human_accounts:
             if account.email.upper() == email.upper():
                 matches.append(account)
         if len(matches) == 0:
@@ -202,7 +202,7 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
     def _find_by_machine_name(self, machine_name: str, collection: AccountStack) -> SearchResult:
         """machine_name_context handler"""
         matches: List[Account] = []
-        for account in self._machines(collection):
+        for account in collection.machine_accounts:
             if account.name.upper() == machine_name.upper():
                 matches.append(account)
         if len(matches) == 0:
@@ -213,24 +213,11 @@ class AccountSearcher(ModelSearcher[SearchResult, AccountSearchRequest]):
         """account_type_context handler"""
         matches: List[Account] = []
         if account_type == AccountType.HUMAN_ACCOUNT:
-            matches = self._humans(collection)
+            matches = collection.human_accounts
+        else:
+            matches = collection.machine_accounts
         if len(matches) == 0:
             return SearchResult.empty()
         return SearchResult.succes(matches)
-    
-    def _humans(self, collection: AccountStack) -> List[HumanAccount]:
-        """human accounts helper"""
-        matches: List[HumanAccount] = []
-        for item in collection.iterator:
-            if isinstance(item, HumanAccount):
-                matches.append(item)
-        return matches
-    
-    def _machines(self, collection: AccountStack) -> List[MachineAccount]:
-        """machine accounts helper"""
-        matches: List[MachineAccount] = []
-        for item in collection.iterator:
-            if isinstance(item, MachineAccount):
-                matches.append(item)
-        return matches
+
         

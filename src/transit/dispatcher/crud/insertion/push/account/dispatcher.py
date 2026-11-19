@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import InsertionResult
-from err import ChessException
+from err import AccountPushDispatcherException
 from exchange import AccountPushRequest
 from operation import AccountPusher
 from transit import PushDispatcher
@@ -50,15 +50,37 @@ class AccountPushDispatcher(PushDispatcher[AccountPushRequest, InsertionResult])
 
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushRequest) -> InsertionResult:
+        """
+        Search an AccountStack for context matches.
+
+        Action:
+            1.  Send an exception chain in the SearchResult if any of the following
+                occur.
+                    -   The request is denied.
+                    -   An approved request lacks either the AccountSearchRequest or
+                        its PermissionRequest.
+            2.  If the search result is empy send a SearchResult.empty otherwise, send
+                the success result.
+        Args:
+            request: AccountSearchRequest
+        Result:
+            SearchResult[List[Account]]
+        Raises:
+            AccountSearcherException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
         result = self.worker.execute(request)
+        # Handle the case that the request is not fulfilled.
         if result.is_failure:
             return InsertionResult.failure(
-                ChessException(
+                AccountPushDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
+                    msg=AccountPushDispatcherException.MSG,
+                    err_code=AccountPushDispatcherException.ERR_CODE,
                     ex=result.exception
                 )
             )
+        
         return InsertionResult.success()

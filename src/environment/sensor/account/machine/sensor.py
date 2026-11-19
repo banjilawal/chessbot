@@ -61,27 +61,28 @@ class MachineAccountNameSensor(AccountSensor[MachineAccount, str]):
             )
         ]
         # Handle the case that no particle hits the target.
-        if len(matches) == 0:
-            return CollisionReport.empty()
-        # Otherwise report a collision.
-        return CollisionReport.collision(
-            particle=matches[0],
-            context=context,
-            exception=MachineAccountNameSensorException(
-                cls_mthd=method,
-                cls_name=self.__class__.__name__,
-                msg=MachineAccountNameSensorException.MSG,
-                err_code=MachineAccountNameSensorException.ERR_CODE,
-                ex=DuplicateMachineNameException(
+        if len(matches) > 0:
+            # Send an exception chain in the result.
+            return CollisionReport.collision(
+                particle=matches[0],
+                context=context,
+                exception=MachineAccountNameSensorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DuplicateMachineNameException.MSG,
-                    err_code=DuplicateMachineNameException.ERR_CODE,
-                    var=f"collider_id: {matches[0].id}, "
-                        f"duplicate_machine_name: {target}",
+                    msg=MachineAccountNameSensorException.MSG,
+                    err_code=MachineAccountNameSensorException.ERR_CODE,
+                    ex=DuplicateMachineNameException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DuplicateMachineNameException.MSG,
+                        err_code=DuplicateMachineNameException.ERR_CODE,
+                        var=f"collider_id: {matches[0].id}, "
+                            f"duplicate_machine_name: {target}",
+                    )
                 )
             )
-        )
+        # Otherwise report a collision.
+        return CollisionReport.empty()
 
     
     

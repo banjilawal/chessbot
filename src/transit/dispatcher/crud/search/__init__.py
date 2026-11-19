@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
+from .account import *
 
 # Modules
 from .dispatcher import SearchDispatcher

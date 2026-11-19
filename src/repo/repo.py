@@ -13,16 +13,40 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import DataStruct
+from transit import InsertionDispatcher, SearchDispatcher
 
-T = TypeVar("T")
+T = TypeVar("T", bound="DataStruct")
 
 class Repo(ABC, Generic[T]):
-    _data: DataStruct[T]
-    _inserter: Inser
+    _data: T
+    _searcher: SearchDispatcher
+    _inserter: InsertionDispatcher
     
     def __init__(
             self,
-            data: DataStruct[T]
-            
+            data: T,
+            searcher: SearchDispatcher,
+            inserter: InsertionDispatcher,
     ):
+        """
+        Args:
+            data: T
+            searcher: SearchDispatcher
+            inserter: InsertionDispatcher
+        """
+        self._data = data
+        self._searcher = searcher
+        self._inserter = inserter
+        
+    @property
+    def data(self) -> T:
+        return self._data
+    
+    @property
+    def searcher(self) -> SearchDispatcher:
+        return self._searcher
+    
+    @property
+    def inserter(self) -> InsertionDispatcher:
+        return self._inserter
     
