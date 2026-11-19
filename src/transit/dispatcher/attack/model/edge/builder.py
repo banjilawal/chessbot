@@ -77,7 +77,7 @@ class EdgeAttack(ModelAttack[Edge]):
         
         # Handle the case that the blueprint is not certified safe.
         blueprint_validation = self.attack_toolkit.validator.execute(
-            job=blueprint
+            request=blueprint
         )
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.

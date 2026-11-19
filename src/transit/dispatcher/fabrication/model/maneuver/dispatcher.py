@@ -50,7 +50,7 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[ManeuverCarrier]:
+    def execute(self, request: Any) -> BuildResult[ManeuverCarrier]:
         """
         Forward a job to a ManeuverBuilder then deliver the result.
 
@@ -60,7 +60,7 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
             2.  Otherwise, cast the job payload into a ManeuverCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[ManeuverCarrier]
         Raises:
@@ -69,7 +69,7 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

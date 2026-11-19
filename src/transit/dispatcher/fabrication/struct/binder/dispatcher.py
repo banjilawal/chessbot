@@ -50,7 +50,7 @@ class BinderBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[BinderCarrier[T]]:
+    def execute(self, request: Any) -> BuildResult[BinderCarrier[T]]:
         pass
     
         

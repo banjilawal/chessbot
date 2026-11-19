@@ -71,7 +71,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         
         # Handle the case that the builder is not primed.
         priming_result = toolkit.priming_builder.execute(
-            job=candidate,
+            request=candidate,
             target_model=candidate,
             context_null_exception=HomeContext,
             priming_builder=HomeContextNullException()
@@ -131,7 +131,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         # Build for the search-by-home_square target.
         if context.home_square is not None:
             build_result = toolkit.square_builder.execute(
-                job=context.home_square
+                request=context.home_square
             )
             if build_result.is_failure:
                 # Send the exception chain on failure.
@@ -150,7 +150,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         # Build for the search-by-coord target.
         if context.position is not None:
             build_result = toolkit.coord_builder.execute(
-                job=context.position
+                request=context.position
             )
             if build_result.is_failure:
                 # Send the exception chain on failure.
@@ -169,7 +169,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         # Build for the search-by-team target.
         if context.victim is not None:
             build_result = toolkit.team_builder.execute(
-                job=context.position
+                request=context.position
             )
             if build_result.is_failure:
                 # Send the exception chain on failure.
@@ -188,7 +188,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         # Build for the search-by-rank target.
         if context.rank is not None:
             build_result = toolkit.rank_service.builder.execute(
-                job=context.rank
+                request=context.rank
             )
             if build_result.is_failure:
                 # Send the exception chain on failure.
@@ -207,7 +207,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         # Build for the search-by-color target.
         if context.team_color is not None:
             build_result = toolkit.priming_builder.execute(
-                job=context.team_color,
+                request=context.team_color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()
             )
@@ -228,7 +228,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         # Build for the search-by-ransom target.
         if context.ransom is not None:
             build_result = toolkit.number_builder.execute(
-                job=context.ransom,
+                request=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,
             )

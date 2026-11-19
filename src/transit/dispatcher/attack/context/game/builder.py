@@ -109,7 +109,7 @@ class GameContextAttack(Attack[GameContext]):
             
             # Attack the owner GameContext if its flag is enabled.
             if agent is not None:
-                validation = agent_service.execute.search_service(job=agent)
+                validation = agent_service.execute.search_service(request=agent)
                 if validation.is_failure:
                     return AttackResult.failure(validation.exception)
                 # On validation success return a player_GameContext in the AttackResult.

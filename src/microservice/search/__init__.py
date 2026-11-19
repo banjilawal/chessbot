@@ -7,10 +7,9 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== MICROSERVICE.SYSTEM.SEARCH PACKAGE ===========#
+# =========== MICROSERVICE.SEARCH PACKAGE ===========#
 
 # Package
-from .service import *
-from .resource import *
 
 # Modules
+from .microservice import SearchMicroservice

@@ -17,8 +17,10 @@ from .catalog import *
 from .coord import *
 from .edge import *
 from .extractor import *
+from .fabrication import *
 from .game import *
 from .identity import *
+from .insertion import *
 from .player import *
 from .rank import *
 from .scalar import *

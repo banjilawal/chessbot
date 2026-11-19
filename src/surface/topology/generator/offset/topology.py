@@ -100,7 +100,7 @@ class OffsetTopologyGenerator:
             )
         # Handle the case that the basis is not valid.
         basis_validation = self._priming_validator.execute(
-            job=basis_vectors,
+            request=basis_vectors,
             candidate=Type[VectorSet],
             null_exception=VectorSetNullException(),
         )

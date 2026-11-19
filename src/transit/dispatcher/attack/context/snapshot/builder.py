@@ -105,7 +105,7 @@ class SnapshotContextAttack(Attack[SnapshotContext]):
 
             # Attack the timestamp SnapshotContext if its flag is enabled.
             if timestamp is not None:
-                validation = number_validator.execute(job=timestamp)
+                validation = number_validator.execute(request=timestamp)
                 if validation.is_failure:
                     return AttackResult.failure(validation.exception)
                 # On validation success return an timestamp_SnapshotContext in the AttackResult.
@@ -113,7 +113,7 @@ class SnapshotContextAttack(Attack[SnapshotContext]):
             
             # Attack the agent SnapshotContext if its flag is enabled.
             if agent is not None:
-                validation = agent_service.execute.search_service(job=agent)
+                validation = agent_service.execute.search_service(request=agent)
                 if validation.is_failure:
                     return AttackResult.failure(validation.exception)
                 # On validation success return an agent_SnapshotContext in the AttackResult.
@@ -121,7 +121,7 @@ class SnapshotContextAttack(Attack[SnapshotContext]):
             
             # Attack the team SnapshotContext if its flag is enabled.
             if team is not None:
-                validation = team_service.execute.execute(job=team)
+                validation = team_service.execute.execute(request=team)
                 if validation.is_failure:
                     return AttackResult.failure(validation.exception)
                 # On validation success return a team_SnapshotContext in the AttackResult.

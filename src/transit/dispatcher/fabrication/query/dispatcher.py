@@ -45,7 +45,7 @@ class QueryBuildDispatcher(BuildDispatcher[Query]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            job: Any,
+            request: Any,
             blueprint: QueryBuildBlueprint,
     ) -> BuildResult[Query]:
         """
@@ -61,7 +61,7 @@ class QueryBuildDispatcher(BuildDispatcher[Query]):
                     - The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
-            job: Any
+            request: Any
             blueprint: QueryBuildBlueprint
         Returns:
             BuildResult[Query]
@@ -72,7 +72,7 @@ class QueryBuildDispatcher(BuildDispatcher[Query]):
         method = f"{self.__class__.__name__}._validate"
         
         priming_result = blueprint.priming_builder.execute(
-            job=job,
+            request=request,
             target_model=blueprint.query_model_type,
             model_null_exception=blueprint.query_null_exception,
         )
@@ -88,7 +88,7 @@ class QueryBuildDispatcher(BuildDispatcher[Query]):
                 )
             )
         # --- Cast the candidate into Query for additional tests. ---#
-        query = cast(blueprint.query_model_type, job)
+        query = cast(blueprint.query_model_type, request)
         
         # Handle the case that the
         datasource_build_result = cls._datasource_builder(
@@ -149,7 +149,7 @@ class QueryBuildDispatcher(BuildDispatcher[Query]):
         
         # Handle the case that the stack is flagged.
         stack_build_result = blueprint.priming_builder.execute(
-            job=query.stack,
+            request=query.stack,
             target_model=blueprint.stack_model_type,
             model_null_exception=blueprint.stack_null_exception,
         )
@@ -189,7 +189,7 @@ class QueryBuildDispatcher(BuildDispatcher[Query]):
         method = f"{self.__class__.__name__}._stack_query_builder"
         
         catalog_build_result = blueprint.priming_builder.execute(
-            job=query.catalog,
+            request=query.catalog,
             target_model=blueprint.stack_model_type,
             model_null_exception=blueprint.stack_null_exception,
         )

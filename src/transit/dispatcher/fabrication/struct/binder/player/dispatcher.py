@@ -49,7 +49,7 @@ class PlayerBinderBuildDispatcher(BinderBuildDispatcher[PlayerBinder]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[PlayerBinderCarrier]:
+    def execute(self, request: Any) -> BuildResult[PlayerBinderCarrier]:
         """
         Verify the object is a PlayerBinder that is safe to use.
 
@@ -59,7 +59,7 @@ class PlayerBinderBuildDispatcher(BinderBuildDispatcher[PlayerBinder]):
             2.  Otherwise, cast the payload into a PlayerBinder and send in the success result.
                 success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[PlayerBinder]
         Raises:
@@ -68,7 +68,7 @@ class PlayerBinderBuildDispatcher(BinderBuildDispatcher[PlayerBinder]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

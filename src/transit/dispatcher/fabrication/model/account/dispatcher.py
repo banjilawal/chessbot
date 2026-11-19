@@ -9,18 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
-
-from fabrication import AccountBuilder
 from artifcat import BuildResult
 from domain import Account
-from err import AccountBuildDispatcherException
-from transit import ModelBuildDispatcher, AccountCarrier
+from exchange import AccountBuildRequest
+from fabrication import AccountBuilder
+from transit import ModelBuildDispatcher
 from util import LoggingLevelRouter
 
 
-class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
+class AccountBuildDispatcher(ModelBuildDispatcher[AccountBuildRequest, AccountBuilder]):
     """
     Role
         -   Integrity Assurance Manager
@@ -40,7 +39,7 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
 
     def __init__(
             self,
-            builder: AccountBuilder | None = None,
+            builder: Optional[AccountBuilder] | None = None,
     ):
         super().__init__(builder=builder or AccountBuilder())
         
@@ -50,7 +49,7 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[AccountCarrier]:
+    def execute(self, request: AccountBuildRequest) -> BuildResult[Account]:
         """
         Forward a job to a AccountBuilder then deliver the result.
 
@@ -60,7 +59,7 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
             2.  Otherwise, cast the job payload into a AccountCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[AccountCarrier]
         Raises:
@@ -69,7 +68,7 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -82,5 +81,5 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(AccountCarrier, build.payload)
-        return BuildResult.success(carrier)
+        product = cast(Account, build.payload)
+        return BuildResult.success(product)

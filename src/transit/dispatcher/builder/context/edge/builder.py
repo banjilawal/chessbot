@@ -165,7 +165,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Build the board EdgeContext if its flag is enabled.
         if board is not None:
-            validation = board_service.execute.execute(job=board)
+            validation = board_service.execute.execute(request=board)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -179,7 +179,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Build the occupant EdgeContext if its flag is enabled.
         if token is not None:
-            validation = token_service.execute.search_service(job=token)
+            validation = token_service.execute.search_service(request=token)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

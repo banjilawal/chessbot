@@ -142,7 +142,7 @@ class FormationContextAttack(Attack[FormationKey]):
         
         # Attack the color FormationKey if its value is set.
         if color is not None:
-            validation = color_validator.execute(job=color)
+            validation = color_validator.execute(request=color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(
@@ -156,7 +156,7 @@ class FormationContextAttack(Attack[FormationKey]):
         
         # Attack the persona FormationKey if its value is set.
         if persona is not None:
-            validation = persona_service.execute.execute(job=persona)
+            validation = persona_service.execute.execute(request=persona)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(

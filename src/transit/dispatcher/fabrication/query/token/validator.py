@@ -47,7 +47,7 @@ class TokenQueryBuildDispatcher(BuildDispatcher[TokenQuery]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            job: Any,
+            request: Any,
             priming_builder: PrimingBuilder | None = None,
             context_builder: TokenContextBuilder | None = None,
     ) -> BuildResult[TokenQuery]:
@@ -64,7 +64,7 @@ class TokenQueryBuildDispatcher(BuildDispatcher[TokenQuery]):
                     - The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
-            job: Any
+            request: Any
             context_builder: TokenContextBuilder
         Returns:
             BuildResult[int]
@@ -82,7 +82,7 @@ class TokenQueryBuildDispatcher(BuildDispatcher[TokenQuery]):
             context_builder = TokenContextBuilder()
         
         builder_priming_result = priming_builder.execute(
-            candidate=job,
+            candidate=request,
             target_model=TokenQuery,
             null_exception=TokenQueryNullException(),
         )
@@ -100,7 +100,7 @@ class TokenQueryBuildDispatcher(BuildDispatcher[TokenQuery]):
                 )
             )
         # --- Cast the candidate into TokenQuery for additional tests. ---#
-        query = cast(TokenQuery, job)
+        query = cast(TokenQuery, request)
         
         # Handle the case that the context is not safe to use.
         context_build_result = context_builder.execute(query.context)

@@ -126,7 +126,7 @@ class PlayerContextBuilder(Builder[PlayerContextBuilder]):
             
             # Build the team PlayerContextBuilder if its flag is enabled.
             if team is not None:
-                validation = team_service.execute.execute(job=team)
+                validation = team_service.execute.execute(request=team)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a team_PlayerContextBuilder in the BuildResult.
@@ -134,7 +134,7 @@ class PlayerContextBuilder(Builder[PlayerContextBuilder]):
             
             # Build the game PlayerContextBuilder if its flag is enabled.
             if game is not None:
-                validation = game_service.execute.execute(job=game)
+                validation = game_service.execute.execute(request=game)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a game_PlayerContextBuilder in the BuildResult.

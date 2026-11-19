@@ -161,7 +161,7 @@ class SquareContextAttack(Attack[SquareContext]):
         
         # Attack the board SquareContext if its flag is enabled.
         if board is not None:
-            validation = board_service.execute.execute(job=board)
+            validation = board_service.execute.execute(request=board)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(

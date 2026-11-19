@@ -18,10 +18,11 @@ from transit import Dispatcher
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T")
+Q = TypeVar("Q", bound="BuildRequest")
+W = TypeVar("R", bound="Builder")
 
 
-class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[T]):
+class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[Q, W]):
     """
     Role
         -   Integrity Assurance Manager
@@ -30,7 +31,7 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[T]):
         1.  Direct the Build workflow.
 
     Attributes:
-        builder: Builder[T]
+        builder: W
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[T]
@@ -38,26 +39,22 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[T]):
     Super Class:
         Dispatcher
     """
-    _builder: Builder[T]
+    _builder: W
     
-    def __init__(self, builder: Builder[T]):
+    def __init__(self, builder: W):
         """
         Args:
-            builder: Builder[T]
+            builder: W
         """
         self._builder = builder
-        
-    @property
-    def builder(self) -> Builder[T]:
-        return self._builder
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[T]:
+    def execute(self, request: Q) -> BuildResult:
         """
         Verify a candidate is safe to use.
         Args:
-            job: Any
+            request: Q
         Returns:
             BuildResult[T]
         Raises:

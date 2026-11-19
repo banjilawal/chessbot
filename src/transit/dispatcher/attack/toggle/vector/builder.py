@@ -76,7 +76,7 @@ class CartesianToggleAttack(ToggleAttackDispatcher[CartesianToggle]):
         method = f"{self.__class__.__name__}.attack"
         
         # Handle the case that the bootstrap is not successful.
-        blueprint_validation = self.attack_toolkit.root_certifier.execute(job=blueprint)
+        blueprint_validation = self.attack_toolkit.root_certifier.execute(request=blueprint)
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return AttackResult.failure(

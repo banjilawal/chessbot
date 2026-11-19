@@ -22,7 +22,7 @@ class SpaceBuildDispatcher(BuildDispatcher, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[T]:
+    def execute(self, request: Any) -> BuildResult[T]:
         pass
     
     

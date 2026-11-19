@@ -179,7 +179,7 @@ class CoordContextAttack(Attack[CoordContext]):
         for attribute in attributes:
             # Handle the case that the rowis not safe.
             validation_result = number_validator.execute(
-                job=attribute,
+                request=attribute,
                 ceiling=BOARD_DIMENSION - 1,
                 floor=0,
             )

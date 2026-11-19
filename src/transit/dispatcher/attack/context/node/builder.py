@@ -119,7 +119,7 @@ class NodeContextAttack(Attack[NodeContext]):
         # Attack the priority NodeContext if its flag is enabled.
         if priority is not None:
             validation = number_validator.execute(
-                job=priority,
+                request=priority,
                 ceiling=sys.maxsize,
                 floor=-(sys.maxsize - 1),
             )
@@ -136,7 +136,7 @@ class NodeContextAttack(Attack[NodeContext]):
         
         # Attack the square NodeContext if its flag is enabled.
         if square is not None:
-            validation = square_service.execute.execute(job=square)
+            validation = square_service.execute.execute(request=square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(
@@ -150,7 +150,7 @@ class NodeContextAttack(Attack[NodeContext]):
         
         # Attack the predecessor NodeContext if its flag is enabled.
         if predecessor is not None:
-            validation = node_validator.execute(job=predecessor)
+            validation = node_validator.execute(request=predecessor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(

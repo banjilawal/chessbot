@@ -78,7 +78,7 @@ class AxisReservoirAttack(SpaceReservoirAttackDispatcher[AxisReservoir]):
         
         # Handle the case that the blueprint is not certified safe.
         validation = self.attack_toolkit.root_certifier.execute(
-            job=blueprint
+            request=blueprint
         )
         if validation.is_failure:
             # Send the exception chain on failure.

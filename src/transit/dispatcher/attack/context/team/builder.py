@@ -119,7 +119,7 @@ class TeamContextAttack(Attack[TeamContext]):
         
         # Attack the owner TeamContext if its flag is enabled.
         if player is not None:
-            validation = player_service.execute.execute(job=player)
+            validation = player_service.execute.execute(request=player)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(
@@ -147,7 +147,7 @@ class TeamContextAttack(Attack[TeamContext]):
         
         # Attack the color TeamContext if its flag is enabled.
         if color is not None:
-            validation = color_validator.execute(job=color)
+            validation = color_validator.execute(request=color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(

@@ -72,7 +72,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
         method = f"{self.__class__.__name__}.execute"
         
         carrier_validation = self.toolkit.priming_validator.execute(
-            job=candidate,
+            request=candidate,
             target_model=self.toolkit.carrier_model,
             null_exception=self.toolkit.carrier_null_exception,
         )
@@ -111,7 +111,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
         vectors: List[Vector] = []
         for vector in [blueprint.origin, blueprint.destination]:
             vector_validation = self.toolkit.math.vector.validator.execute(
-                job=vector,
+                request=vector,
             )
             if vector_validation.is_failure:
                 # Send the exception chain on failure.

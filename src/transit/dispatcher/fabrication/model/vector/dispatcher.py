@@ -50,7 +50,7 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[VectorCarrier]:
+    def execute(self, request: Any) -> BuildResult[VectorCarrier]:
         """
         Forward a job to a VectorBuilder then deliver the result.
 
@@ -60,7 +60,7 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
             2.  Otherwise, cast the job payload into a VectorCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[VectorCarrier]
         Raises:
@@ -69,7 +69,7 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

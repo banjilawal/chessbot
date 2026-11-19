@@ -50,7 +50,7 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[EncounterCarrier]:
+    def execute(self, request: Any) -> BuildResult[EncounterCarrier]:
         """
         Forward a job to a EncounterBuilder then deliver the result.
 
@@ -60,7 +60,7 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
             2.  Otherwise, cast the job payload into a EncounterCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[EncounterCarrier]
         Raises:
@@ -69,7 +69,7 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

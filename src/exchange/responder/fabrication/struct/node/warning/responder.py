@@ -75,7 +75,7 @@ class EncounterWaningNodeBuildResponder(NodeBuildResponder[EncounterWaningNode])
         """
         method = f"{self.__class__.__name__}.submit"
         
-        result = self.dispatcher.execute(job=request)
+        result = self.dispatcher.execute(request=request)
         # Handle the case that the dispatcher marks the candidate unsafe.
         if result.is_failure:
             # Send the exception chain on failure.

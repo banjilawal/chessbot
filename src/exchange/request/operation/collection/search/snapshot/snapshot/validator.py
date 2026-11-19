@@ -117,7 +117,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             
             # Validation subflow for game SnapshotContexts.
             if context.game is not None:
-                validation = game_service.execute.execute(job=context.game)
+                validation = game_service.execute.execute(request=context.game)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the game_SnapshotContext in the validation Result.
@@ -125,7 +125,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
 
             # Validation subflow for team SnapshotContexts.
             if context.victim is not None:
-                validation = team_service.execute.execute(job=context.victim)
+                validation = team_service.execute.execute(request=context.victim)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the team_SnapshotContext ValidationResult.
@@ -133,7 +133,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             
             # Validation subflow for arena SnapshotContexts.
             if context.arena is not None:
-                validation = arena_service.execute.search_service(job=context.arena)
+                validation = arena_service.execute.search_service(request=context.arena)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the arena_SnapshotContext in the validation Result.
@@ -156,7 +156,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
 
             # Validation subflow for owner SnapshotContexts.
             if context.plyer is not None:
-                validation = player_service.execute.search_service(job=context.exchange_class)
+                validation = player_service.execute.search_service(request=context.exchange_class)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the player_SnapshotContext in the ValidationResult

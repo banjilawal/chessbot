@@ -50,7 +50,7 @@ class PathBuildDispatcher(ModelBuildDispatcher[Path]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[PathCarrier]:
+    def execute(self, request: Any) -> BuildResult[PathCarrier]:
         """
         Forward a job to a PathBuilder then deliver the result.
 
@@ -60,7 +60,7 @@ class PathBuildDispatcher(ModelBuildDispatcher[Path]):
             2.  Otherwise, cast the job payload into a PathCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[PathCarrier]
         Raises:
@@ -69,7 +69,7 @@ class PathBuildDispatcher(ModelBuildDispatcher[Path]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

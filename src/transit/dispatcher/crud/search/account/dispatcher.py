@@ -82,6 +82,6 @@ class AccountSearchDispatcher(SearchDispatcher[AccountSearchRequest, SearchResul
         # Handle the case that nothing was found.
         if result.is_empty:
             return SearchResult.empty()
-        
+        # --- Forward the work product to the caller. ---#
         matches = cast(List[Account], result.payload)
         return SearchResult.success(matches)

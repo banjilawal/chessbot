@@ -54,11 +54,11 @@ class StructBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[StructCarrier[T]]:
+    def execute(self, request: Any) -> BuildResult[StructCarrier[T]]:
         """
         Verify a candidate is an EntityCarrier whose payload is safe.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[T]
         Raises:

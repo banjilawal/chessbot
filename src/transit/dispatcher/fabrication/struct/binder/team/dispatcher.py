@@ -49,7 +49,7 @@ class TeamBinderBuildDispatcher(BinderBuildDispatcher[TeamBinder]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[TeamBinderCarrier]:
+    def execute(self, request: Any) -> BuildResult[TeamBinderCarrier]:
         """
         Verify the object is a TeamBinder that is safe to use.
 
@@ -59,7 +59,7 @@ class TeamBinderBuildDispatcher(BinderBuildDispatcher[TeamBinder]):
             2.  Otherwise, cast the payload into a TeamBinder and send in the success result.
                 success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[TeamBinder]
         Raises:
@@ -68,7 +68,7 @@ class TeamBinderBuildDispatcher(BinderBuildDispatcher[TeamBinder]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

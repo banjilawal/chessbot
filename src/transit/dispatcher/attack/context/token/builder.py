@@ -267,7 +267,7 @@ class TokenContextAttack(Attack[TokenContext]):
         # Attack the ransom TokenContext if its flag is enabled.
         if ransom is not None:
             validation = workers.number_validator.execute(
-                job=ransom,
+                request=ransom,
                 floor=workers.rank_service.persona_service.min_ransom,
                 ceiling=workers.rank_service.persona_service.max_ransom
             )

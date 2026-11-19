@@ -52,7 +52,7 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
         return cast(CartesianToggleRegisterBuilder, super().builder)
     
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult:
+    def execute(self, request: Any) -> BuildResult:
         """
         Verify the candidate is a safe OrientationOperand.
         
@@ -64,7 +64,7 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
                     - The orientationOperand's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult
         Raises:
@@ -75,7 +75,7 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
         
         # Handle the case that the builder is not primed.
         builder_priming_result = self.builder.bundle.priming_builder.execute(
-            job=job,
+            request=request,
             target_model=self.builder.bundle.model,
             context_null_exception=self.builder.bundle.request_null_exception,
         )
@@ -91,7 +91,7 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
                 )
             )
         # --- Cast candidate to a OrientationOperand for additional tests. ---#
-        register = cast(OrientationOperandEntityRegister, job)
+        register = cast(OrientationOperandEntityRegister, request)
         
         root_build = self.builder.execute(register)
         if root_build.is_failure:

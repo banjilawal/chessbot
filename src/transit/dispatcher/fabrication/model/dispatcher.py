@@ -14,14 +14,16 @@ from typing import Any, Generic, TypeVar, cast
 
 
 from artifcat import BuildResult
+from exchange import ModelBuildRequest
 from fabrication import ModelBuilder
 from domain import Model
 from transit import ModelCarrier, BuildDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
+Q = TypeVar("Q", bound="ModelBuildRequest")
+W = TypeVar("W", bound="ModelBuilder")
 
-class ModelBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
+class ModelBuildDispatcher(BuildDispatcher[Q, W], ABC, Generic[Q, W]):
     """
     Role
         -   Integrity Assurance Manager
@@ -30,7 +32,7 @@ class ModelBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
         1.  Direct the ModelBuild workflow.
 
     Attributes:
-        builder: ModelBuilder[T]
+        builder: W
         
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[ModelCarrier]
@@ -39,26 +41,21 @@ class ModelBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
         BuildDispatcher
     """
     
-    def __init__(self, builder: ModelBuilder[T]):
+    def __init__(self, builder: W):
         """
         Args:
             builder: ModelBuilder
         """
         super().__init__(builder=builder)
-
-
-    @property
-    def builder(self) -> ModelBuilder[T]:
-        return cast(ModelBuilder[T], super().builder)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[ModelCarrier[T]]:
+    def execute(self, request: Q) -> BuildResult:
         """
         Verify a candidate is an EntityCarrier whose payload is safe.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[T]
         Raises:

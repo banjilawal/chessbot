@@ -49,7 +49,7 @@ class VectorRegisterBuildDispatcher(RegisterBuildDispatcher[VectorRegister]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[VectorRegisterCarrier]:
+    def execute(self, request: Any) -> BuildResult[VectorRegisterCarrier]:
         """
         Verify the object is a VectorRegister that is safe to use.
 
@@ -59,7 +59,7 @@ class VectorRegisterBuildDispatcher(RegisterBuildDispatcher[VectorRegister]):
             2.  Otherwise, cast the payload into a VectorRegister and send in the success result.
                 success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[VectorRegister]
         Raises:
@@ -68,7 +68,7 @@ class VectorRegisterBuildDispatcher(RegisterBuildDispatcher[VectorRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

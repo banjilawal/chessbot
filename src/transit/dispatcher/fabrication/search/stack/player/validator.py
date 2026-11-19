@@ -110,13 +110,13 @@ class PlayerContextBuilder(ContextBuilder[Player]):
                 return BuildResult.success(context)
             
             if context.victim is not None:
-                build = team_service.execute.execute(job=context.victim)
+                build = team_service.execute.execute(request=context.victim)
                 if build.is_failure:
                     return BuildResult.failure(builder.exception)
                 return BuildResult.success(context)
             
             if context.game is not None:
-                build = game_service.execute.execute(job=context.game)
+                build = game_service.execute.execute(request=context.game)
                 if build.is_failure:
                     return BuildResult.failure(builder.exception)
                 return BuildResult.success(context)

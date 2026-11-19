@@ -124,7 +124,7 @@ class VertexStackService(StackService[Vertex]):
         method = "NodeStackService.push"
         
         # Handle the case that the item is unsafe.
-        validation = self.integrity_service.execute.execute(job=item)
+        validation = self.integrity_service.execute.execute(request=item)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

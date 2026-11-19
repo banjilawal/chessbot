@@ -114,7 +114,7 @@ class HostageContextAttack(Attack[HostageContext]):
         
         # Attack the victor HostageContext if its flag is enabled.
         if victor is not None:
-            validation = token_service.execute.search_service(job=victor)
+            validation = token_service.execute.search_service(request=victor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(
@@ -129,7 +129,7 @@ class HostageContextAttack(Attack[HostageContext]):
         
         # Certification for the search-by-prisoner target.
         if prisoner is not None:
-            validation = token_service.execute.verify_token_is_combatant(job=prisoner)
+            validation = token_service.execute.verify_token_is_combatant(request=prisoner)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(
@@ -143,7 +143,7 @@ class HostageContextAttack(Attack[HostageContext]):
         
         # Certification for the search-by-captured-item target.
         if captured_square is not None:
-            validation = square_service.execute.execute(job=captured_square)
+            validation = square_service.execute.execute(request=captured_square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return AttackResult.failure(

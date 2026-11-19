@@ -52,7 +52,7 @@ class AlertBuildDispatcher(
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[AlertCarrier]:
+    def execute(self, request: Any) -> BuildResult[AlertCarrier]:
         """
         Forward a job to a AlertBuilder then deliver the result.
 
@@ -62,7 +62,7 @@ class AlertBuildDispatcher(
             2.  Otherwise, cast the job payload into a AlertCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[AlertCarrier]
         Raises:
@@ -71,7 +71,7 @@ class AlertBuildDispatcher(
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

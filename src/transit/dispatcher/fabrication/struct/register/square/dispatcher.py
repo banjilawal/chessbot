@@ -50,7 +50,7 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[SquareRegisterCarrier]:
+    def execute(self, request: Any) -> BuildResult[SquareRegisterCarrier]:
         """
         Verify the object is a SquareRegister that is safe to use.
 
@@ -60,7 +60,7 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
             2.  Otherwise, cast the payload into a SquareRegister and send in the success result.
                 success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[SquareRegister]
         Raises:
@@ -69,7 +69,7 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

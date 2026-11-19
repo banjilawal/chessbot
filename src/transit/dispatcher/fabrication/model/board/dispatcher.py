@@ -50,7 +50,7 @@ class BoardBuildDispatcher(ModelBuildDispatcher[Board]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> BuildResult[BoardCarrier]:
+    def execute(self, request: Any) -> BuildResult[BoardCarrier]:
         """
         Forward a job to a BoardBuilder then deliver the result.
 
@@ -60,7 +60,7 @@ class BoardBuildDispatcher(ModelBuildDispatcher[Board]):
             2.  Otherwise, cast the job payload into a BoardCarrier and send in
                 the success result.
         Args:
-            job: Any
+            request: Any
         Returns:
             BuildResult[BoardCarrier]
         Raises:
@@ -69,7 +69,7 @@ class BoardBuildDispatcher(ModelBuildDispatcher[Board]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(job)
+        build = self.builder.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

@@ -82,5 +82,5 @@ class AccountPushDispatcher(PushDispatcher[AccountPushRequest, InsertionResult])
                     ex=result.exception
                 )
             )
-        
+        # --- Forward the work product to the caller. ---#
         return InsertionResult.success()

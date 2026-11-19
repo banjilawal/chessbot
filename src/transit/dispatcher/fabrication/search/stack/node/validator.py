@@ -113,7 +113,7 @@ class NodeContextBuilder(ContextBuilder[Node]):
         # Build for the search-by-priority target.
         if context.priority is not None:
             build = number_builder.execute(
-                job=context.priority,
+                request=context.priority,
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
             )
@@ -130,7 +130,7 @@ class NodeContextBuilder(ContextBuilder[Node]):
         
         # Build for the search-by-predecessor target.
         if context.predecessor is not None:
-            build = node_builder.execute(job=context.predecessor)
+            build = node_builder.execute(request=context.predecessor)
             if build.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

@@ -115,7 +115,7 @@ class GameContextBuilder(ContextBuilder[Game]):
             
             # Verify the id flag if its enabled.
             if context.agent is not None:
-                build = agent_service.execute.search_service(job=context.agent)
+                build = agent_service.execute.search_service(request=context.agent)
                 if build.is_failure:
                     return BuildResult.failure(builder.exception)
                 # On build success return the agent_game_context in a BuildResult.
