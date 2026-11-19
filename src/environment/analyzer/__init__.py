@@ -11,13 +11,7 @@ version: 0.0.2
 # =========== ENVIRONMENT.ANALYZER PACKAGE ===========#
 
 # Packages
-from .friend import *
 from .itinerary import *
-from .promotion import *
-from .quota import *
-from .readiness import *
-from .relation import *
-from .stack import *
 
 # Modules
 from .analyzer import Analyzer
