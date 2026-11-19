@@ -10,7 +10,6 @@ version: 0.0.2
 # ========== EXCHANGE.SERVICE PACKAGE ===========#
 
 # Packages
-from .validation import *
 
 # Modules
 from .service import ResponseService
