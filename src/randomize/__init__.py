@@ -14,6 +14,7 @@ from .domain import *
 from .email import *
 from .firstname import *
 from .lastname import *
+from .machine import *
 from .separator import *
 
 # Modules

@@ -28,10 +28,10 @@ class RandomEmail:
         self._random_separator = random_separator or RandomSeparator()
     
     def execute(self, firstname: str, lastname: str) -> str:
-      domain = "@" + self._random_domain.execute()
-      separator = self._random_separator.execute()
-      
-      number = random.random() * 100
-      if number < 70:
-        return firstname + separator + lastname + domain
-      return lastname + separator + firstname + domain
+        domain = "@" + self._random_domain.execute()
+        separator = self._random_separator.execute()
+        
+        number = random.random() * 100
+        if number < 70:
+            return firstname + separator + lastname + domain
+        return lastname + separator + firstname + domain

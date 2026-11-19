@@ -14,10 +14,10 @@ from typing import List
 
 
 class RandomSeparator:
-  _names: List[str] = []
-  
-  def __init__(self):
-   self._names = [ "", "-", "_", ".", ]
-
-  def execute(self) -> str:
-    return random.choice(self._names)
+    _names: List[str] = []
+    
+    def __init__(self):
+        self._names = ["", "-", "_", ".", ]
+    
+    def execute(self) -> str:
+        return random.choice(self._names)
