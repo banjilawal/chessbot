@@ -9,6 +9,8 @@ version: 0.0.2
 from typing import Optional, cast
 
 from artifcat import BuildResult
+from domain import Account
+from err import ChessException
 from exchange import AccountBuildRequest, BuildRequest
 from microservice import FabricationMicroservice
 from transit import AccountBuildDispatcher, BuildDispatcher
@@ -59,7 +61,38 @@ class AccountBuildMicroservice(FabricationMicroservice[AccountBuildRequest]):
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountBuildRequest) -> BuildResult[Account]:
-        result = self.dispatcher.execute()
-    
+        """
+        Search an AccountStack for context matches.
+
+        Action:
+            1.  Send an exception chain in the SearchResult if any of the following
+                occur.
+                    -   The request is denied.
+                    -   An approved request lacks either the AccountSearchRequest or
+                        its PermissionRequest.
+            2.  If the search result is empy send a SearchResult.empty otherwise, send
+                the success result.
+        Args:
+            request: AccountSearchRequest
+        Result:
+            SearchResult[List[Account]]
+        Raises:
+            AccountSearcherException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        result = self.dispatcher.execute(request)
+        if result.is_failure:
+            BuildResult.failure(
+                ChessException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ChessException.MSG,
+                    err_code=ChessException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        product = cast(Account, result.payload)
+        return BuildResult.success(product)
     
     
