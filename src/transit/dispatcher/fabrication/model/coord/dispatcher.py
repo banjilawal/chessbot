@@ -40,9 +40,9 @@ class CoordBuildDispatcher(ModelBuildDispatcher[Coord]):
 
     def __init__(
             self,
-            builder: CoordBuilder | None = None,
+            worker: CoordBuilder | None = None,
     ):
-        super().__init__(builder=builder or CoordBuilder())
+        super().__init__(worker=worker or CoordBuilder())
         
     @property
     def builder(self) -> CoordBuilder:

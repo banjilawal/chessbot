@@ -1,15 +1,16 @@
-# src/logic/system/search/__init__.py
+# src/microservice/search/__init__.py
 
 """
-Module: logic.system.search.__init__
+Module: microservice.search.__init__
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-04-03
+version: 0.0.2
 """
 
-# =========== MICROSERVICE.SEARCH PACKAGE ===========#
+# ============= MICROSERVICE.SEARCH PACKAGE ===========#
 
-# Package
+# Packages
+from .account import *
 
 # Modules
 from .microservice import SearchMicroservice

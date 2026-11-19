@@ -40,9 +40,9 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
     
     def __init__(
             self,
-            builder: SquareRegisterBuilder | None = SquareRegisterBuilder(),
+            worker: SquareRegisterBuilder | None = SquareRegisterBuilder(),
     ):
-        super().__init__(builder=builder or SquareRegisterBuilder())
+        super().__init__(worker=worker or SquareRegisterBuilder())
         
     @property
     def builder(self) -> SquareRegisterBuilder:

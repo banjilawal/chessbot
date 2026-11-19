@@ -40,9 +40,9 @@ class TeamBuildDispatcher(ModelBuildDispatcher[Team]):
 
     def __init__(
             self,
-            builder: TeamBuilder | None = None,
+            worker: TeamBuilder | None = None,
     ):
-        super().__init__(builder=builder or TeamBuilder())
+        super().__init__(worker=worker or TeamBuilder())
         
     @property
     def builder(self) -> TeamBuilder:

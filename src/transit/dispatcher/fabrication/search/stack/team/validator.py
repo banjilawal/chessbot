@@ -45,7 +45,7 @@ class TeamContextBuilder(StackContextBuilder[TeamSearchContext]):
     
     @property
     def builder(self) -> TeamContextBuilder:
-        return cast(TeamContextBuilder, super().builder)
+        return cast(TeamContextBuilder, super().worker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> BuildResult[TeamSearchContext]:

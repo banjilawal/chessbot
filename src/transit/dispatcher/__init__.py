@@ -10,14 +10,14 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER PACKAGE ===========#
 
 # Packages
-from .attack import *
+from transit.dispatcher.transaction.attack import *
 from .authorization import *
 from .builder import *
-from .crud import *
-from .encounter import *
+from transit.dispatcher.transaction.crud import *
+from transit.dispatcher.transaction.encounter import *
 from .fabrication import *
-from .maneuver import *
-from .promotion import *
+from transit.dispatcher.transaction.maneuver import *
+from transit.dispatcher.transaction.promotion import *
 from .statement import *
 from .validation import *
 

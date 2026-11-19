@@ -40,9 +40,9 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
 
     def __init__(
             self,
-            builder: EncounterBuilder | None = None,
+            worker: EncounterBuilder | None = None,
     ):
-        super().__init__(builder=builder or EncounterBuilder())
+        super().__init__(worker=worker or EncounterBuilder())
         
     @property
     def builder(self) -> EncounterBuilder:

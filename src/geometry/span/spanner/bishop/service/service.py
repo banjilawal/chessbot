@@ -149,25 +149,25 @@ class BishopSpanService(SpanMicroservice):
                     pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
-                        node_builder=graph.vertices.microservice.builder
+                        node_builder=graph.vertices.microservice.worker
                     )
-                    v_build_result = graph.vertices.microservice.builder.execute(
+                    v_build_result = graph.vertices.microservice.worker.execute(
                         square=square_v,
                         square_validator=square_database.microservice.execute,
                     )
-                    u_build_result = graph.vertices.microservice.builder.execute(
+                    u_build_result = graph.vertices.microservice.worker.execute(
                         square=square_u,
                         square_validator=square_database.microservice.execute,
                     )
                     graph.vertices.push(u_build_result.authorization_applicant)
                     graph.vertices.push(v_build_result.authorization_applicant)
                     
-                    e = graph.edges.microservice.builder.execute(
+                    e = graph.edges.microservice.worker.execute(
                         head=u_build_result.authorization_applicant,
                         tail=v_build_result.authorization_applicant,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.microservice.builder.execute(
+                    f = graph.edges.microservice.worker.execute(
                         head=v_build_result.authorization_applicant,
                         tail=u_build_result.authorization_applicant,
                         coord_service=self.coord_service,
@@ -183,7 +183,7 @@ class BishopSpanService(SpanMicroservice):
                         weight=graph.edges.microservice
                     )
                     f = graph.edges.push(
-                        graph.edges.microservice.builder.execute(
+                        graph.edges.microservice.worker.execute(
                         
                         )
                     )
@@ -244,25 +244,25 @@ class BishopSpanService(SpanMicroservice):
                     pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
-                        node_builder=graph.vertices.pair_service.builder
+                        node_builder=graph.vertices.pair_service.worker
                     )
-                    v_build_result = graph.vertices.pair_service.builder.search_service(
+                    v_build_result = graph.vertices.pair_service.worker.search_service(
                         square=square_v,
                         square_validator=square_database.microservice.execute,
                     )
-                    u_build_result = graph.vertices.pair_service.builder.search_service(
+                    u_build_result = graph.vertices.pair_service.worker.search_service(
                         square=square_u,
                         square_validator=square_database.microservice.execute,
                     )
                     graph.vertices.search_service(u_build_result.authorization_applicant)
                     graph.vertices.search_service(v_build_result.authorization_applicant)
                     
-                    e = graph.edges.pair_service.builder.search_service(
+                    e = graph.edges.pair_service.worker.search_service(
                         head=u_build_result.authorization_applicant,
                         tail=v_build_result.authorization_applicant,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.pair_service.builder.search_service(
+                    f = graph.edges.pair_service.worker.search_service(
                         head=v_build_result.authorization_applicant,
                         tail=u_build_result.authorization_applicant,
                         coord_service=self.coord_service,
@@ -278,7 +278,7 @@ class BishopSpanService(SpanMicroservice):
                         weight=graph.edges.pair_service
                     )
                     f = graph.edges.search_service(
-                        graph.edges.pair_service.builder.search_service(
+                        graph.edges.pair_service.worker.search_service(
                         
                         )
                     )

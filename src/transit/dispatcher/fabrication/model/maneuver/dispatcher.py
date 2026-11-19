@@ -40,9 +40,9 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
 
     def __init__(
             self,
-            builder: ManeuverBuilder | None = None,
+            worker: ManeuverBuilder | None = None,
     ):
-        super().__init__(builder=builder or ManeuverBuilder())
+        super().__init__(worker=worker or ManeuverBuilder())
         
     @property
     def builder(self) -> ManeuverBuilder:

@@ -40,7 +40,7 @@ class DomainObjectBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
     
     Super Class:
     """
-    _builder: DomainObjectBuilder[T]
+    _worker: DomainObjectBuilder[T]
     
     def __init__(self, assembler: Builder[T]):
         """

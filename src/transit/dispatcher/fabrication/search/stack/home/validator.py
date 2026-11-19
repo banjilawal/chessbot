@@ -187,7 +187,7 @@ class TokenHomeContextBuilder(StackContextBuilder[TokenHomeContext]):
         
         # Build for the search-by-rank target.
         if context.rank is not None:
-            build_result = toolkit.rank_service.builder.execute(
+            build_result = toolkit.rank_service.worker.execute(
                 request=context.rank
             )
             if build_result.is_failure:

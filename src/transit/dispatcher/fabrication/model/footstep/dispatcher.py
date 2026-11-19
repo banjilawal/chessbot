@@ -39,9 +39,9 @@ class FootstepBuildDispatcher(ModelBuildDispatcher[Footstep]):
     
     def __init__(
             self,
-            builder: FootstepBuilder | None = FootstepBuilder(),
+            worker: FootstepBuilder | None = FootstepBuilder(),
     ):
-        super().__init__(builder=builder or FootstepBuilder())
+        super().__init__(worker=worker or FootstepBuilder())
         
     @property
     def builder(self) -> FootstepBuilder:

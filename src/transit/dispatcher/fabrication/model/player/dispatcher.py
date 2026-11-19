@@ -40,9 +40,9 @@ class PlayerBuildDispatcher(ModelBuildDispatcher[Player]):
 
     def __init__(
             self,
-            builder: PlayerBuilder | None = None,
+            worker: PlayerBuilder | None = None,
     ):
-        super().__init__(builder=builder or PlayerBuilder())
+        super().__init__(worker=worker or PlayerBuilder())
         
     @property
     def builder(self) -> PlayerBuilder:

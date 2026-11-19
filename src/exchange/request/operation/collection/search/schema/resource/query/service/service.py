@@ -55,7 +55,7 @@ class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):
     
     @property
     def builder(self) ->SchemaQueryBuilder:
-        return self._ops_controller.builder
+        return self._ops_controller.worker
     
     @property
     def validator(self) ->SchemaQueryValidator:

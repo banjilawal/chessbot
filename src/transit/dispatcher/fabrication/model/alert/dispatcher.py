@@ -42,9 +42,9 @@ class AlertBuildDispatcher(
 
     def __init__(
             self,
-            builder: AlertBuilder | None = None,
+            worker: AlertBuilder | None = None,
     ):
-        super().__init__(builder=builder or AlertBuilder())
+        super().__init__(worker=worker or AlertBuilder())
         
     @property
     def builder(self) -> AlertBuilder:

@@ -198,7 +198,7 @@ class TokenServiceMenu(Router[TokenService]):
         
         # Select the TokenBuild worker
         if isinstance(command, BuildTokenCommand):
-            return self._service.builder.execute(
+            return self._service.worker.execute(
                 owner=command.parameters["owner"],
                 formation=command.parameters["formation"],
             )

@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
+from exchange import BuildRequest
 from fabrication import Builder
 from artifcat import BuildResult
 from transit import Dispatcher
@@ -19,7 +20,7 @@ from util import LoggingLevelRouter
 
 
 Q = TypeVar("Q", bound="BuildRequest")
-W = TypeVar("R", bound="Builder")
+W = TypeVar("W", bound="Builder")
 
 
 class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[Q, W]):
@@ -39,14 +40,14 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[Q, W]):
     Super Class:
         Dispatcher
     """
-    _builder: W
+    _worker: W
     
-    def __init__(self, builder: W):
+    def __init__(self, worker: W):
         """
         Args:
-            builder: W
+            worker: W
         """
-        self._builder = builder
+        self._worker = worker
 
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -56,7 +57,7 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[Q, W]):
         Args:
             request: Q
         Returns:
-            BuildResult[T]
+            BuildResult
         Raises:
             ModelDispatcherException
         """

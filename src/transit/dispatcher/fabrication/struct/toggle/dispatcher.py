@@ -46,10 +46,10 @@ class ToggleBuildDispatcher(BuildDispatcher, Generic[T]):
     
     def __init__(
             self,
-            builder: ToggleToolkit[T],
-            builder: ToggleBuilder[T],
+            worker: ToggleToolkit[T],
+            worker: ToggleBuilder[T],
     ):
-        super().__init__(toolk=toolkit, builder=builder)
+        super().__init__(toolk=toolkit, worker=worker)
         
     
     @property

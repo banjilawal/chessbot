@@ -40,9 +40,9 @@ class BoardBuildDispatcher(ModelBuildDispatcher[Board]):
 
     def __init__(
             self,
-            builder: BoardBuilder | None = None,
+            worker: BoardBuilder | None = None,
     ):
-        super().__init__(builder=builder or BoardBuilder())
+        super().__init__(worker=worker or BoardBuilder())
         
     @property
     def builder(self) -> BoardBuilder:

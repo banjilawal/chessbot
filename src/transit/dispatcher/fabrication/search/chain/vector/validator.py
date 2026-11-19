@@ -49,7 +49,7 @@ class VectorNodeContextBuilder(
     
     @property
     def builder(self) -> VectorNodeContextBuilder:
-        return cast(VectorNodeContextBuilder, super().builder)
+        return cast(VectorNodeContextBuilder, super().worker)
     
     
     @LoggingLevelRouter.monitor

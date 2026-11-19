@@ -8,14 +8,14 @@ version: 0.0.2
 """
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import SearchResult
 from exchange import SearchRequest
 from transit import SearchDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", bound="SearchRequest")
 
 
 class SearchMicroservice(ABC, Generic[T]):
@@ -27,12 +27,12 @@ class SearchMicroservice(ABC, Generic[T]):
         - Stateless Microservice
         
     About:
-        Avoids casting an entity's searchers and validators by making them abstract
+        Avoids casting an entity's builders and validators by making them abstract
         properties.
 
     Responsibilities:
         1.  Baremetal service request API.
-        2.  Maintain the search-validation security lifecycle.
+        2.  Maintain the build-validation security lifecycle.
 
     Attributes:
         id: int
@@ -46,19 +46,16 @@ class SearchMicroservice(ABC, Generic[T]):
     """
     _dispatcher: SearchDispatcher
     
-    def __init__(
-            self,
-            dispatcher: SearchDispatcher
-    ):
+    def __init__(self, dispatcher: SearchDispatcher):
         """
         Args:
-            dispatcher: SearchDispatcher
+            dispatcher: BuildDispatcher
         """
         self._dispatcher = dispatcher
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchRequest) -> SearchResult:
+    def execute(self, request: T) -> SearchResult:
         pass
     
     

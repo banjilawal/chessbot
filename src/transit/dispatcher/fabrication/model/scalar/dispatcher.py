@@ -40,9 +40,9 @@ class ScalarBuildDispatcher(ModelBuildDispatcher[Scalar]):
 
     def __init__(
             self,
-            builder: ScalarBuilder | None = None,
+            worker: ScalarBuilder | None = None,
     ):
-        super().__init__(builder=builder or ScalarBuilder())
+        super().__init__(worker=worker or ScalarBuilder())
         
     @property
     def builder(self) -> ScalarBuilder:

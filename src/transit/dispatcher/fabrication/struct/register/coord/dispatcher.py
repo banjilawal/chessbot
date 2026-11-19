@@ -40,9 +40,9 @@ class CoordRegisterBuildDispatcher(RegisterBuildDispatcher[CoordRegister]):
     
     def __init__(
             self,
-            builder: CoordRegisterBuilder | None = CoordRegisterBuilder(),
+            worker: CoordRegisterBuilder | None = CoordRegisterBuilder(),
     ):
-        super().__init__(builder=builder or CoordRegisterBuilder())
+        super().__init__(worker=worker or CoordRegisterBuilder())
         
     @property
     def builder(self) -> CoordRegisterBuilder:

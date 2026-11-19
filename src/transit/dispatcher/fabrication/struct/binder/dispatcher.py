@@ -41,8 +41,8 @@ class BinderBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         Builder
     """
     
-    def __init__(self, builder: BinderBuilder[T]):
-        super().__init__(builder=builder)
+    def __init__(self, worker: BinderBuilder[T]):
+        super().__init__(worker=worker)
     
     @property
     def builder(self) -> BinderBuilder:

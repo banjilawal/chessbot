@@ -39,9 +39,9 @@ class TeamBinderBuildDispatcher(BinderBuildDispatcher[TeamBinder]):
     
     def __init__(
             self,
-            builder: TeamBinderBuilder | None = TeamBinderBuilder(),
+            worker: TeamBinderBuilder | None = TeamBinderBuilder(),
     ):
-        super().__init__(builder=builder or TeamBinderBuilder())
+        super().__init__(worker=worker or TeamBinderBuilder())
         
     @property
     def builder(self) -> TeamBinderBuilder:

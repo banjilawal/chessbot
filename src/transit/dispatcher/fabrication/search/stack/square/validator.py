@@ -46,7 +46,7 @@ class SquareContextBuilder(StackContextBuilder[SquareSearchContext]):
     
     @property
     def builder(self) -> SquareContextBuilder:
-        return cast(SquareContextBuilder, super().builder)
+        return cast(SquareContextBuilder, super().worker)
     
     
     @LoggingLevelRouter.monitor

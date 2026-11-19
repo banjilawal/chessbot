@@ -40,9 +40,9 @@ class GameBuildDispatcher(ModelBuildDispatcher[Game]):
 
     def __init__(
             self,
-            builder: GameBuilder | None = None,
+            worker: GameBuilder | None = None,
     ):
-        super().__init__(builder=builder or GameBuilder())
+        super().__init__(worker=worker or GameBuilder())
         
     @property
     def builder(self) -> GameBuilder:

@@ -39,13 +39,13 @@ class AccountBuildDispatcher(ModelBuildDispatcher[AccountBuildRequest, AccountBu
 
     def __init__(
             self,
-            builder: Optional[AccountBuilder] | None = None,
+            worker: Optional[AccountBuilder] | None = None,
     ):
-        super().__init__(builder=builder or AccountBuilder())
+        super().__init__(worker=worker or AccountBuilder())
         
     @property
-    def builder(self) -> AccountBuilder:
-        return cast(AccountBuilder, super().builder)
+    def worker(self) -> AccountBuilder:
+        return cast(AccountBuilder, super().worker)
     
 
     @LoggingLevelRouter.monitor
@@ -68,7 +68,7 @@ class AccountBuildDispatcher(ModelBuildDispatcher[AccountBuildRequest, AccountBu
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.builder.execute(request)
+        build = self.worker.execute(request)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

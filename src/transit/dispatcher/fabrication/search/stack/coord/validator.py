@@ -46,7 +46,7 @@ class CoordContextBuilder(StackContextBuilder[CoordSearchContext]):
     
     @property
     def builder(self) -> CoordContextBuilder:
-        return cast(CoordContextBuilder, super().builder)
+        return cast(CoordContextBuilder, super().worker)
     
     
     @LoggingLevelRouter.monitor

@@ -54,7 +54,7 @@ class SchemaContextService(IntegrityMicroservice[SchemaContext]):
     
     @property
     def builder(self) ->SchemaContextBuilder:
-        return self._ops_controller.builder
+        return self._ops_controller.worker
     
     @property
     def validator(self) ->SchemaContextValidator:

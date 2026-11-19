@@ -56,6 +56,10 @@ class FabricationMicroservice(ABC, Generic[T]):
         """
         self._dispatcher = dispatcher
         
+    @property
+    def dispatcher(self) -> BuildDispatcher:
+        return self._dispatcher
+        
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: BuildRequest[T]) -> BuildResult[T]:

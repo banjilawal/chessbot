@@ -40,9 +40,9 @@ class RankBuildDispatcher(ModelBuildDispatcher[Rank]):
 
     def __init__(
             self,
-            builder: RankBuilder | None = None,
+            worker: RankBuilder | None = None,
     ):
-        super().__init__(builder=builder or RankBuilder())
+        super().__init__(worker=worker or RankBuilder())
         
     @property
     def builder(self) -> RankBuilder:

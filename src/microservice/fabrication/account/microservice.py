@@ -1,7 +1,7 @@
-# src/microservice/fabrication/microservice.py
+# src/microservice/fabrication/account/microservice.py
 
 """
-Module: microservice.fabrication.microservice
+Module: microservice.fabrication.account.microservice
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,10 +10,10 @@ from typing import Optional, cast
 
 from artifcat import BuildResult
 from domain import Account
-from err import ChessException
-from exchange import AccountBuildRequest, BuildRequest
+from err import AccountBuildMicroserviceException
+from exchange import AccountBuildRequest
 from microservice import FabricationMicroservice
-from transit import AccountBuildDispatcher, BuildDispatcher
+from transit import AccountBuildDispatcher
 from util import LoggingLevelRouter
 
 
@@ -34,14 +34,12 @@ class AccountBuildMicroservice(FabricationMicroservice[AccountBuildRequest]):
         2.  Maintain the build-validation security lifecycle.
 
     Attributes:
-        id: int
-        controller: Controller[T]
-        name: Optional[str]
+        dispatcher: Optional[AccountBuildDispatcher]
 
     Provides:
 
     Super Class:
-        Microservice
+        FabricationMicroservice
     """
   
     
@@ -57,38 +55,34 @@ class AccountBuildMicroservice(FabricationMicroservice[AccountBuildRequest]):
         
     @property
     def dispatcher(self) -> AccountBuildDispatcher:
-        return cast(AccountBuildDispatcher, super()._dispatcher)
+        return cast(AccountBuildDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountBuildRequest) -> BuildResult[Account]:
         """
-        Search an AccountStack for context matches.
+        Handles AccountBuildRequests.
 
         Action:
-            1.  Send an exception chain in the SearchResult if any of the following
-                occur.
-                    -   The request is denied.
-                    -   An approved request lacks either the AccountSearchRequest or
-                        its PermissionRequest.
-            2.  If the search result is empy send a SearchResult.empty otherwise, send
-                the success result.
+            1.  Send an exception chain in the BuildRequest if the request is
+                not fulfilled.
+            2.  Otherwise, send the Account in the success result.
         Args:
             request: AccountSearchRequest
         Result:
-            SearchResult[List[Account]]
+            BuildResult[Account]
         Raises:
-            AccountSearcherException
+            AccountBuildMicroserviceException
         """
         method = f"{self.__class__.__name__}.execute"
         
         result = self.dispatcher.execute(request)
         if result.is_failure:
             BuildResult.failure(
-                ChessException(
+                AccountBuildMicroserviceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ChessException.MSG,
-                    err_code=ChessException.ERR_CODE,
+                    msg=AccountBuildMicroserviceException.MSG,
+                    err_code=AccountBuildMicroserviceException.ERR_CODE,
                     ex=result.exception,
                 )
             )

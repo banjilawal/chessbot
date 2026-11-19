@@ -40,9 +40,9 @@ class SquareBuildDispatcher(ModelBuildDispatcher[Square]):
 
     def __init__(
             self,
-            builder: SquareBuilder | None = None,
+            worker: SquareBuilder | None = None,
     ):
-        super().__init__(builder=builder or SquareBuilder())
+        super().__init__(worker=worker or SquareBuilder())
         
     @property
     def builder(self) -> SquareBuilder:

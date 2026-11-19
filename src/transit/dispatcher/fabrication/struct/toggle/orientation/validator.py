@@ -43,9 +43,9 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
     
     def __init__(
             self,
-            builder: CartesianToggleRegisterBuilder | None = CartesianToggleRegisterBuilder(),
+            worker: CartesianToggleRegisterBuilder | None = CartesianToggleRegisterBuilder(),
     ):
-        super().__init__(builder=builder)
+        super().__init__(worker=worker)
         
     @property
     def builder(self) -> CartesianToggleRegisterBuilder:

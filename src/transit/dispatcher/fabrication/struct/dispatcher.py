@@ -39,12 +39,12 @@ class StructBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
         BuildDispatcher
     """
     
-    def __init__(self, builder: StructBuilder[T]):
+    def __init__(self, worker: StructBuilder[T]):
         """
         Args:
-            builder: StructBuilder
+            worker: StructBuilder
         """
-        super().__init__(builder=builder)
+        super().__init__(worker=worker)
 
 
     @property

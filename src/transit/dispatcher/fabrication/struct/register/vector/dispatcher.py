@@ -39,9 +39,9 @@ class VectorRegisterBuildDispatcher(RegisterBuildDispatcher[VectorRegister]):
     
     def __init__(
             self,
-            builder: VectorRegisterBuilder | None = VectorRegisterBuilder(),
+            worker: VectorRegisterBuilder | None = VectorRegisterBuilder(),
     ):
-        super().__init__(builder=builder or VectorRegisterBuilder())
+        super().__init__(worker=worker or VectorRegisterBuilder())
         
     @property
     def builder(self) -> VectorRegisterBuilder:

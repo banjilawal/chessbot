@@ -40,9 +40,9 @@ class ArenaBuildDispatcher(ModelBuildDispatcher[Arena]):
 
     def __init__(
             self,
-            builder: ArenaBuilder | None = None,
+            worker: ArenaBuilder | None = None,
     ):
-        super().__init__(builder=builder or ArenaBuilder())
+        super().__init__(worker=worker or ArenaBuilder())
         
     @property
     def builder(self) -> ArenaBuilder:

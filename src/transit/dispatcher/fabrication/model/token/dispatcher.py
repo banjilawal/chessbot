@@ -40,9 +40,9 @@ class TokenBuildDispatcher(ModelBuildDispatcher[Token]):
 
     def __init__(
             self,
-            builder: TokenBuilder | None = None,
+            worker: TokenBuilder | None = None,
     ):
-        super().__init__(builder=builder or TokenBuilder())
+        super().__init__(worker=worker or TokenBuilder())
         
     @property
     def builder(self) -> TokenBuilder:

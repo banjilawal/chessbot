@@ -8,14 +8,14 @@ version: 0.0.2
 """
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
-from artifcat import BuildResult
-from exchange import BuildRequest
-from transit import BuildDispatcher
+from artifcat import InsertionResult
+from exchange import InsertionRequest
+from transit import InsertionDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", bound="InsertionRequest")
 
 
 class InsertionMicroservice(ABC, Generic[T]):
@@ -44,21 +44,22 @@ class InsertionMicroservice(ABC, Generic[T]):
     Super Class:
         Microservice
     """
-    _dispatcher: BuildDispatcher
+    _dispatcher: InsertionDispatcher
     
-    def __init__(
-            self,
-            dispatcher: BuildDispatcher
-    ):
+    def __init__(self, dispatcher: InsertionDispatcher):
         """
         Args:
-            dispatcher: BuildDispatcher
+            dispatcher: InsertionDispatcher
         """
         self._dispatcher = dispatcher
         
+    @property
+    def dispatcher(self) -> InsertionDispatcher:
+        return self._dispatcher
+        
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: BuildRequest[T]) -> BuildResult[T]:
+    def execute(self, request: T) -> InsertionResult:
         pass
     
     

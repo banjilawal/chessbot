@@ -41,8 +41,8 @@ class ChartBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         Builder
     """
     
-    def __init__(self, builder: ChartBuilder[T]):
-        super().__init__(builder=builder)
+    def __init__(self, worker: ChartBuilder[T]):
+        super().__init__(worker=worker)
     
     @property
     def builder(self) -> ChartBuilder:

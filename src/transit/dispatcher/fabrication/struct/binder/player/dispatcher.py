@@ -39,9 +39,9 @@ class PlayerBinderBuildDispatcher(BinderBuildDispatcher[PlayerBinder]):
     
     def __init__(
             self,
-            builder: PlayerBinderBuilder | None = PlayerBinderBuilder(),
+            worker: PlayerBinderBuilder | None = PlayerBinderBuilder(),
     ):
-        super().__init__(builder=builder or PlayerBinderBuilder())
+        super().__init__(worker=worker or PlayerBinderBuilder())
         
     @property
     def builder(self) -> PlayerBinderBuilder:

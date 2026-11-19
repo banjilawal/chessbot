@@ -40,9 +40,9 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
 
     def __init__(
             self,
-            builder: VectorBuilder | None = None,
+            worker: VectorBuilder | None = None,
     ):
-        super().__init__(builder=builder or VectorBuilder())
+        super().__init__(worker=worker or VectorBuilder())
         
     @property
     def builder(self) -> VectorBuilder:

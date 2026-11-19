@@ -98,7 +98,7 @@ class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
             x=origin.x + AxisDestination.WEST.vector.x,
             y=0,
         )
-        destination_request = self._math_toolkit.vector.builder.execute(
+        destination_request = self._math_toolkit.vector.worker.execute(
             x=origin.x + delta.x,
             y=origin.y + delta.y,
         )

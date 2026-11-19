@@ -41,12 +41,12 @@ class ModelBuildDispatcher(BuildDispatcher[Q, W], ABC, Generic[Q, W]):
         BuildDispatcher
     """
     
-    def __init__(self, builder: W):
+    def __init__(self, worker: W):
         """
         Args:
-            builder: ModelBuilder
+            worker: ModelBuilder
         """
-        super().__init__(builder=builder)
+        super().__init__(worker=worker)
     
     
     @abstractmethod
@@ -57,7 +57,7 @@ class ModelBuildDispatcher(BuildDispatcher[Q, W], ABC, Generic[Q, W]):
         Args:
             request: Any
         Returns:
-            BuildResult[T]
+            BuildResult
         Raises:
             ModelDispatcherException
         """

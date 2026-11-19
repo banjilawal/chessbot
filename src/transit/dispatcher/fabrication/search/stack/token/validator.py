@@ -46,7 +46,7 @@ class TokenContextBuilder(StackContextBuilder[TokenSearchContext]):
     
     @property
     def builder(self) -> TokenContextBuilder:
-        return cast(TokenContextBuilder, super().builder)
+        return cast(TokenContextBuilder, super().worker)
     
     
     @LoggingLevelRouter.monitor

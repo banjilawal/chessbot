@@ -39,9 +39,9 @@ class ParticipationBuildDispatcher(ChartBuildDispatcher[Participation]):
     
     def __init__(
             self,
-            builder: ParticipationBuilder | None = None,
+            worker: ParticipationBuilder | None = None,
     ):
-        super().__init__(builder=builder or ParticipationBuilder())
+        super().__init__(worker=worker or ParticipationBuilder())
         
     @property
     def builder(self) -> ParticipationBuilder:

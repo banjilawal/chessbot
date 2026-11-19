@@ -40,9 +40,9 @@ class PathBuildDispatcher(ModelBuildDispatcher[Path]):
 
     def __init__(
             self,
-            builder: PathBuilder | None = None,
+            worker: PathBuilder | None = None,
     ):
-        super().__init__(builder=builder or PathBuilder())
+        super().__init__(worker=worker or PathBuilder())
         
     @property
     def builder(self) -> PathBuilder:

@@ -99,7 +99,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         current = cast(Vector, validation.payload)
         
         # --- Build a new vector from the current. ---#
-        build = self.math.vector.builder.execute(
+        build = self.math.vector.worker.execute(
             x=current.x + self._x_step,
             y=(2 * current.y * self._slope) + self.slope
         )

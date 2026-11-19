@@ -10,6 +10,7 @@ version: 0.0.2
 # ============= MICROSERVICE.INSERTION PACKAGE ===========#
 
 # Packages
+from .account import *
 
 # Modules
 from .microservice import InsertionMicroservice

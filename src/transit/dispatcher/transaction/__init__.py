@@ -1,0 +1,25 @@
+# src/transit/dispatcher/transaction/__init__.py
+
+"""
+Module: transit.dispatcher.transaction.__init__
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+# =========== TRANSIT.DISPATCHER.TRANSACTION PACKAGE ===========#
+
+# Packages
+from .attack import *
+from .authorization import *
+from .builder import *
+from .crud import *
+from .encounter import *
+from .fabrication import *
+from .maneuver import *
+from .promotion import *
+from .statement import *
+from .validation import *
+
+# Modules
+from .dispatcher import TransactionDispatcher

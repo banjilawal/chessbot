@@ -55,7 +55,7 @@ class TokenQueryService(IntegrityMicroservice[TokenQuery]):
     
     @property
     def builder(self) ->TokenQueryBuilder:
-        return self._ops_controller.builder
+        return self._ops_controller.worker
     
     @property
     def validator(self) ->TokenQueryValidator:
