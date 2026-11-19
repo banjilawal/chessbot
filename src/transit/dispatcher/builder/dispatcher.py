@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import BuildResult
-from domain import BuildRequest
+from exchange import BuildRequest
 from fabrication import Builder
 from transit import Dispatcher
 from util import LoggingLevelRouter

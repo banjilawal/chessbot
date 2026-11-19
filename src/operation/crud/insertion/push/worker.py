@@ -18,11 +18,11 @@ from operation import Inserter
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
-R = TypeVar("R", bound="InsertionResult")
 Q = TypeVar("Q", bound="ModelPushRequest")
+R = TypeVar("R", bound="InsertionResult")
 
 
-class ModelPusher(Inserter[R, Q], ABC, Generic[R, Q]):
+class ModelPusher(Inserter[Q, R], ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker

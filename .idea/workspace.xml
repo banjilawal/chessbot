@@ -5,81 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/production/resource/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repo/repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push/account/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push/dispatcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/account/human/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/account/human/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/account/human/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/account/human/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/account/machine/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/account/machine/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/account/machine/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/account/machine/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/checkmate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/checkmate/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/checkmate/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/checkmate/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/checkmate/combatant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/checkmate/combatant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/checkmate/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/checkmate/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/kill/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/kill/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/kill/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/kill/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/kill/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/kill/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/kill/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/kill/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/participant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/participant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/participant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/participant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/stalemate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/stalemate/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/stalemate/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/stalemate/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/warning/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/warning/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/encounter/warning/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/encounter/warning/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/bishop/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/bishop/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/king/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/knight/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/pawn/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/persona/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/queen/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/queen/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/rook/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/rook/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/square/home/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/square/home/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/square/home/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/square/home/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/combatant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/combatant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/common/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/common/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/common/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/common/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/enemy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/enemy/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/enemy/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/enemy/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/position/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/position/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/consumer/token/position/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/envelope/token/position/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/account/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/account/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/encounter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/encounter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/rank/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/producer/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/resource/producer/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/production/endpoint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/production/endpoint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/model/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/dispatcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,61 +69,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="5.484370998465699E-65" />
-      <entry key="MS500" value="1.4054850191759705E-13" />
-      <entry key="S2" value="6.401144421071636E-4" />
-      <entry key="S5" value="0.07412779999773213" />
-      <entry key="S10" value="0.49318203968559227" />
-      <entry key="S30" value="2.6767818940142516" />
-      <entry key="S60" value="4.52268634325399" />
-      <entry key="M2" value="5.9812898364652884" />
-      <entry key="M5" value="7.112046107761875" />
-      <entry key="M10" value="7.541315220372835" />
-      <entry key="M15" value="7.690837944335868" />
-      <entry key="M30" value="7.8490332544400845" />
-      <entry key="H1" value="9.825611839361652" />
-      <entry key="H2" value="44.95957428966228" />
-      <entry key="H4" value="190.17648584259723" />
-      <entry key="D1" value="1189.03593182937" />
-      <entry key="W1" value="13203.373521044381" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000007168686313" />
+      <entry key="S2" value="1.0332489537733414" />
+      <entry key="S5" value="1.5094359551812466" />
+      <entry key="S10" value="2.93669534990541" />
+      <entry key="S30" value="7.649466009989406" />
+      <entry key="S60" value="11.260846642821607" />
+      <entry key="M2" value="14.503581029124978" />
+      <entry key="M5" value="21.915402543193995" />
+      <entry key="M10" value="37.057317045010045" />
+      <entry key="M15" value="51.80223261293457" />
+      <entry key="M30" value="88.42178288436867" />
+      <entry key="H1" value="140.3847705882329" />
+      <entry key="H2" value="210.91137099191903" />
+      <entry key="H4" value="355.29154297122244" />
+      <entry key="D1" value="1385.3592891379667" />
+      <entry key="W1" value="13351.685929690926" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0003133364007721" />
-      <entry key="MS500" value="1.1991600245009246" />
-      <entry key="S2" value="1.6735949814619997" />
-      <entry key="S5" value="2.029946970076483" />
-      <entry key="S10" value="2.514178735206415" />
-      <entry key="S30" value="3.3027819807373255" />
-      <entry key="S60" value="3.6166613933304776" />
-      <entry key="M2" value="3.798713918183311" />
-      <entry key="M5" value="3.917046130189339" />
-      <entry key="M10" value="3.9581050080031024" />
-      <entry key="M15" value="3.971976233833903" />
-      <entry key="M30" value="3.985999093697677" />
-      <entry key="H1" value="4.0137284324461895" />
-      <entry key="H2" value="4.44024186529948" />
-      <entry key="H4" value="7.0903372233918205" />
-      <entry key="D1" value="53.99123499087321" />
-      <entry key="W1" value="689.8464665593793" />
+      <entry key="MS100" value="3.104886262606267E-215" />
+      <entry key="MS500" value="1.2880226503472683E-43" />
+      <entry key="S2" value="2.6438436219341186E-11" />
+      <entry key="S5" value="8.697518553188083E-5" />
+      <entry key="S10" value="0.013135725494471024" />
+      <entry key="S30" value="0.3742061624052664" />
+      <entry key="S60" value="0.8650818288200383" />
+      <entry key="M2" value="1.3237376910620502" />
+      <entry key="M5" value="1.8457969398494103" />
+      <entry key="M10" value="2.387925922387622" />
+      <entry key="M15" value="2.966201784731318" />
+      <entry key="M30" value="4.813829365914862" />
+      <entry key="H1" value="8.032210910355488" />
+      <entry key="H2" value="12.091154191347526" />
+      <entry key="H4" value="17.11649474629088" />
+      <entry key="D1" value="65.23811401798567" />
+      <entry key="W1" value="697.9720457025495" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.08021484134766171" />
-      <entry key="MS500" value="0.6628688986714086" />
-      <entry key="S2" value="1.377479744476228" />
-      <entry key="S5" value="1.9000033288903242" />
-      <entry key="S10" value="2.805210166180072" />
-      <entry key="S30" value="5.829045314495527" />
-      <entry key="S60" value="8.042892466184693" />
-      <entry key="M2" value="9.725035541717075" />
-      <entry key="M5" value="11.00525930579168" />
-      <entry key="M10" value="11.48717499573761" />
-      <entry key="M15" value="11.654575978544798" />
-      <entry key="M30" value="11.830875220219369" />
-      <entry key="H1" value="13.837203312900012" />
-      <entry key="H2" value="49.39826188671333" />
-      <entry key="H4" value="197.26497966719603" />
-      <entry key="D1" value="1243.0244370428236" />
-      <entry key="W1" value="13893.2079055899" />
+      <entry key="MS100" value="9.95254323480131E-13" />
+      <entry key="MS500" value="0.0039772932269771764" />
+      <entry key="S2" value="0.2623630583329862" />
+      <entry key="S5" value="0.9417253990110603" />
+      <entry key="S10" value="2.4618041139127436" />
+      <entry key="S30" value="7.6628596534577635" />
+      <entry key="S60" value="11.869343524472239" />
+      <entry key="M2" value="15.664607577118938" />
+      <entry key="M5" value="23.667691223401228" />
+      <entry key="M10" value="39.372490013059476" />
+      <entry key="M15" value="54.70259011030378" />
+      <entry key="M30" value="93.1812732022006" />
+      <entry key="H1" value="148.37690848088096" />
+      <entry key="H2" value="222.9764057075787" />
+      <entry key="H4" value="372.39213119556945" />
+      <entry key="D1" value="1450.5920680180059" />
+      <entry key="W1" value="14049.645617823424" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -214,7 +158,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/production/resource",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/crud/insertion/push/account",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -228,11 +172,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push/account" />
+      <recent name="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push" />
+      <recent name="$PROJECT_DIR$/src/transit/dispatcher/crud/insertion" />
+      <recent name="$PROJECT_DIR$/src/transit/dispatcher/crud" />
       <recent name="$PROJECT_DIR$/src/err/production/resource" />
-      <recent name="$PROJECT_DIR$/src/err/production/endpoint" />
-      <recent name="$PROJECT_DIR$/src/err/duplicate/id" />
-      <recent name="$PROJECT_DIR$/src/err/duplicate" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/production/resource" />
@@ -1055,7 +999,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="97980000" />
+      <workItem from="1794227184139" duration="104916000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3133,6 +3077,11 @@
           <url>file://$PROJECT_DIR$/src/environment/sensor/id/sensor.py</url>
           <line>11</line>
           <option name="timeStamp" value="690" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/transit/dispatcher/crud/insertion/push/dispatcher.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="691" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

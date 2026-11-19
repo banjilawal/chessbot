@@ -22,7 +22,7 @@ R = TypeVar("R", bound="InsertionResult")
 Q = TypeVar("Q", bound="InsertionRequest")
 
 
-class Inserter(CrudWorker[R, Q], ABC, Generic[R, Q]):
+class Inserter(CrudWorker[Q, R], ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker

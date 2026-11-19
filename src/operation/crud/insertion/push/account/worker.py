@@ -18,7 +18,7 @@ from transit import AccountPushPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountPusher(ModelPusher[InsertionResult, AccountPushRequest]):
+class AccountPusher(ModelPusher[AccountPushRequest, InsertionResult]):
     """
     Role:
         -   Transaction Worker

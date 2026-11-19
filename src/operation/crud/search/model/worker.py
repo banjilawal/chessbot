@@ -21,7 +21,7 @@ Q = TypeVar("Q", bound="ModelSearchRequest")
 R = TypeVar("R", bound="SearchResult")
 
 
-class ModelSearcher(Searcher[R, Q], ABC, Generic[R, Q]):
+class ModelSearcher(Searcher[Q, R], ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker

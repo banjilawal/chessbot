@@ -18,10 +18,10 @@ from operation import Worker
 from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
-R = TypeVar("R", bound="CrudResult")
 Q = TypeVar("T", bound="CrudRequest")
+R = TypeVar("R", bound="CrudResult")
 
-class CrudWorker(Worker[R, Q], ABC, Generic[R, Q]):
+class CrudWorker(Worker[Q, R], ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker

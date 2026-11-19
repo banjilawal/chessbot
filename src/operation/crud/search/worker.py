@@ -22,7 +22,7 @@ Q = TypeVar("Q", bound="SearchRequest")
 R = TypeVar("R", bound="SearchResult")
 
 
-class Searcher(CrudWorker[R, Q], ABC, Generic[R, Q]):
+class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker

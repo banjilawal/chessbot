@@ -13,3 +13,4 @@ version: 0.0.2
 from .service import *
 
 # Modules
+from .repo import *
