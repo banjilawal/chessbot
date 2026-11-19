@@ -5,83 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/png/black-bishop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/bishop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/png/black-castle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/rook.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/png/black-king.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/king.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/png/black-knight.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/knight.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/png/black-pawn.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/pawn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/png/black-quuen.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/queen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/svg/black-bishop.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/black/bishop.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/svg/black-castle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/black/rook.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/svg/black-king.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/black/king.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/svg/black-knight.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/black/knight.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/svg/black-pawn.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/black/pawn.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/black/svg/black-quuen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/black/queen.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/png/white-bishop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/white/bishop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/png/white-castle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/white/rook.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/png/white-king.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/white/king.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/png/white-knight.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/white/knight.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/png/white-pawn.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/white/pawn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/png/white-queen.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/white/queen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/svg/white-bishop.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/white/bishop.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/svg/white-castle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/white/rook.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/svg/white-king.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/white/king.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/svg/white-knight.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/white/knight.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/icons/white/svg/white-queen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/white/queen.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/assets/svgtopng.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgtopng.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/battle_space/builder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/analyze/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/analyze/board_analysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/analyze/board_analyzer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/analyze/scout_report_analysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/analyze/scout_report_analyzer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/builder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/engine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/engine_pkg_info.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/greedy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/scout/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/scout/master.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/scout/report.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/scout/scout.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/engine/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/runtime/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/runtime/game_loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/png/black/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/runtime/thread_safe_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/runtime/tunr_manager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/variety/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/variety/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/variety/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/variety/exception/invalid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/variety/exception/null.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/variety/variety.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/exception/anchor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/exception/debug.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/exception/anchor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/builder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/exception/transaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/controller.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/debug/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/debug/null.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/transaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/service.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/domain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/domain/randomize.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/email/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/lastname/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/lastname/randomize.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/separator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/randomize/separator/randomize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/randomize/firstname/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/randomize/firstname/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/randomize/firstname/competitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/randomize/firstname/randomize.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,61 +60,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000162924232296" />
-      <entry key="S2" value="1.1065554372124549" />
-      <entry key="S5" value="1.6678929524628507" />
-      <entry key="S10" value="2.610357858878679" />
-      <entry key="S30" value="6.437354677082441" />
-      <entry key="S60" value="10.79959925885824" />
-      <entry key="M2" value="16.21490294246594" />
-      <entry key="M5" value="25.606366142233487" />
-      <entry key="M10" value="48.04085314555589" />
-      <entry key="M15" value="82.00733266493087" />
-      <entry key="M30" value="184.15402376121585" />
-      <entry key="H1" value="339.0244479283425" />
-      <entry key="H2" value="557.7668004765" />
-      <entry key="H4" value="863.1342806259903" />
-      <entry key="D1" value="2452.2324253299785" />
-      <entry key="W1" value="14278.40799094574" />
+      <entry key="MS100" value="6.819379504835323E-5" />
+      <entry key="MS500" value="0.14680774658477755" />
+      <entry key="S2" value="0.6247566552381202" />
+      <entry key="S5" value="1.0615827527388129" />
+      <entry key="S10" value="1.7801757166436367" />
+      <entry key="S30" value="3.2611204405181224" />
+      <entry key="S60" value="3.9888885464532406" />
+      <entry key="M2" value="4.680830391877788" />
+      <entry key="M5" value="11.553955798279386" />
+      <entry key="M10" value="37.696079036012726" />
+      <entry key="M15" value="70.17292883313195" />
+      <entry key="M30" value="173.18132458202516" />
+      <entry key="H1" value="353.28126624127776" />
+      <entry key="H2" value="615.3033744198976" />
+      <entry key="H4" value="966.5782667771664" />
+      <entry key="D1" value="2637.405013844071" />
+      <entry key="W1" value="14477.194726602876" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="5.300839667734913E-136" />
-      <entry key="S5" value="7.757787287340985E-55" />
-      <entry key="S10" value="8.80783020234892E-28" />
-      <entry key="S30" value="9.58568112812517E-10" />
-      <entry key="S60" value="3.096075116680016E-5" />
-      <entry key="M2" value="0.00556423859722066" />
-      <entry key="M5" value="0.12536098729399464" />
-      <entry key="M10" value="0.35445371248702234" />
-      <entry key="M15" value="0.5098961739773749" />
-      <entry key="M30" value="0.9967896182892034" />
-      <entry key="H1" value="3.2939379688360235" />
-      <entry key="H2" value="11.004850977622628" />
-      <entry key="H4" value="29.733204921600002" />
-      <entry key="D1" value="139.24064002217685" />
-      <entry key="W1" value="776.1556489238396" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0000000000003868" />
+      <entry key="S60" value="1.00000136416853" />
+      <entry key="M2" value="1.0026754839353622" />
+      <entry key="M5" value="1.2659095283627055" />
+      <entry key="M10" value="2.262061843089784" />
+      <entry key="M15" value="3.150144453949613" />
+      <entry key="M30" value="4.835892555152316" />
+      <entry key="H1" value="7.367477214828264" />
+      <entry key="H2" value="14.285492566309722" />
+      <entry key="H4" value="32.006033271795786" />
+      <entry key="D1" value="142.5557721950674" />
+      <entry key="W1" value="780.2312628580603" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8766057213160351" />
-      <entry key="MS500" value="0.9740161340205598" />
-      <entry key="S2" value="1.0888958563113769" />
-      <entry key="S5" value="1.636805619973233" />
-      <entry key="S10" value="2.581381677389762" />
-      <entry key="S30" value="6.414836876014427" />
-      <entry key="S60" value="10.780996407757252" />
-      <entry key="M2" value="16.20722297449136" />
-      <entry key="M5" value="25.72322754597374" />
-      <entry key="M10" value="48.388663896183495" />
-      <entry key="M15" value="82.51141605546879" />
-      <entry key="M30" value="185.14524698940428" />
-      <entry key="H1" value="342.30923348205897" />
-      <entry key="H2" value="568.755529120397" />
-      <entry key="H4" value="892.845054364111" />
-      <entry key="D1" value="2591.4579765188646" />
-      <entry key="W1" value="15054.550072242862" />
+      <entry key="MS100" value="7.998006623668815E-5" />
+      <entry key="MS500" value="0.1539854066586965" />
+      <entry key="S2" value="0.8513796294427131" />
+      <entry key="S5" value="1.608333823461243" />
+      <entry key="S10" value="2.514864271923527" />
+      <entry key="S30" value="4.160266134863349" />
+      <entry key="S60" value="4.936416165256082" />
+      <entry key="M2" value="5.656543489737695" />
+      <entry key="M5" value="12.805191184204384" />
+      <entry key="M10" value="39.94238912430563" />
+      <entry key="M15" value="73.30675477446263" />
+      <entry key="M30" value="178.0026138726988" />
+      <entry key="H1" value="360.63532605097504" />
+      <entry key="H2" value="629.572188553403" />
+      <entry key="H4" value="998.5625020493478" />
+      <entry key="D1" value="2779.9456210176395" />
+      <entry key="W1" value="15257.412405171417" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -216,7 +149,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assets/icons/black",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/randomize",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -230,11 +163,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/icons/black" />
-      <recent name="$PROJECT_DIR$/src/assets/icons" />
-      <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction" />
-      <recent name="$PROJECT_DIR$/src/microservice" />
+      <recent name="$PROJECT_DIR$/src/logic/randomize" />
+      <recent name="$PROJECT_DIR$/src/logic/randomize/firstname" />
+      <recent name="$PROJECT_DIR$/src/assets/icon/svg/white" />
+      <recent name="$PROJECT_DIR$/src/assets/icon/svg/black" />
+      <recent name="$PROJECT_DIR$/src/assets/icon/png/white" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/icons/svg" />
@@ -1057,7 +990,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="147068000" />
+      <workItem from="1794227184139" duration="150476000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

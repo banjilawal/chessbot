@@ -10,8 +10,10 @@ version: 0.0.2
 # =========== RANDOMIZE PACKAGE ===========#
 
 # Packages
+from .domain import *
+from .email import *
 from .firstname import *
-from .contractor import *
-from .finalizer import *
+from .lastname import *
+from .separator import *
 
 # Modules
