@@ -1,0 +1,17 @@
+# src/randomize/__init__.py
+
+"""
+Module: randomize.__init__
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+# =========== RANDOMIZE PACKAGE ===========#
+
+# Packages
+from .firstname import *
+from .contractor import *
+from .finalizer import *
+
+# Modules
