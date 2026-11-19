@@ -46,10 +46,7 @@ class FabricationMicroservice(ABC, Generic[T]):
     """
     _dispatcher: BuildDispatcher
     
-    def __init__(
-            self,
-            dispatcher: BuildDispatcher
-    ):
+    def __init__(self, dispatcher: BuildDispatcher):
         """
         Args:
             dispatcher: BuildDispatcher
@@ -62,7 +59,7 @@ class FabricationMicroservice(ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: BuildRequest[T]) -> BuildResult[T]:
+    def execute(self, request: BuildRequest[T]) -> BuildResult:
         pass
     
     

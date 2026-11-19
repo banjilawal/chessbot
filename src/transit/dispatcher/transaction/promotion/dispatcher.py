@@ -9,55 +9,79 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Optional
+from typing import Optional, cast
 
-from artifcat import PromotionResponse, PromotionResult
+from artifcat import PromotionResult
+from domain import PawnToken
+from err import PromotionDispatcherException
 from exchange import PromotionRequest
 from operation import Promoter
-from transit import Dispatcher
+from transit import TransactionDispatcher
 from util import LoggingLevelRouter
 
-class PromotionDispatcher(Dispatcher[PromotionResult]):
+class PromotionDispatcher(TransactionDispatcher[PromotionRequest, PromotionResult]):
     """
     Role
-        -   Permission Promotion Manager
+        -   Performance Management
 
     Responsibilities:
-        1.  Grant
+        1.  Distribute PromotionRequests among workers then send the result to the correct client
 
     Attributes:
-        promoter: Promoter
+        worker: Promoter
 
     Provides:
-        -   def  execute(self, request: PromotionRequest) -> PromotionResponse
+        -   def  execute(self, request: PromotionRequest) -> PromotionResult
 
     Super Class:
-        Dispatcher
+        TransactionDispatcher
     """
     
-    _promoter: Promoter
     
-    def __init__(self, promoter: Optional[Promoter] | None = None):
+    def __init__(self, worker: Optional[Promoter] | None = None):
         """
         Args:
-            promoter: Optional[Promoter]
+            worker: Optional[Promoter]
         """
-        self._promoter = promoter or Promoter()
+        super().__init__(worker=worker or Promoter())
         
     @property
-    def promoter(self) -> Promoter:
-        return self._promoter
+    def worker(self) -> Promoter:
+        return cast(Promoter, super().worker)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionResponse:
+    def execute(self, request: PromotionRequest) -> PromotionResult:
         """
-        Decide if an activity can be performed.
+        Distribute PromotionRequests among workers then forward the results.
+        
+        Action:
+            1.  Send an exception chain in the Result if the request cannot be satisfied.
+            2.  Otherwise, send the success result.
         Args:
-            request: T
+            request: PromotionRequest
         Returns:
-            PromotionResponse
+            PromotionResult
         Raises:
             PromotionDispatcherException
         """
-        pass
+        method = f"{self.__class__.__name__}.execute"
+        
+        # --- Handoff the request to a worker. ---#
+        result = self.worker.execute(request)
+        
+        # Handle the case that the request is not fulfilled.
+        if result.is_failure:
+            # Send an exception chain in the result.
+            return PromotionResult.failure(
+                PromotionDispatcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionDispatcherException.MSG,
+                    err_code=PromotionDispatcherException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        # --- Forward the work product to the client. ---#
+        pawn = cast(PawnToken, result.payload)
+        return PromotionResult.success(pawn)
+        

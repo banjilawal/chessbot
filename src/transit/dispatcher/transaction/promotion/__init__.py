@@ -10,9 +10,6 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.PROMOTION PACKAGE ===========#
 
 # Packages
-from .attack import *
-from .maneuver import *
-from .promotion import *
 
 # Modules
 from .dispatcher import PromotionDispatcher

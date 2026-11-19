@@ -9,53 +9,79 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from typing import Optional, cast
 
+from artifcat import ManeuverResult
+from domain import Maneuver
+from err import ManeuverDispatcherException
 from exchange import ManeuverRequest
-from transit import Dispatcher
+from operation import Mover
+from transit import TransactionDispatcher
 from util import LoggingLevelRouter
 
-class ManeuverDispatcher(Dispatcher[ManeuverRequest]):
+class ManeuverDispatcher(TransactionDispatcher[ManeuverRequest, ManeuverResult]):
     """
     Role
-        -   Permission Maneuver Manager
+        -   Performance Management
 
     Responsibilities:
-        1.  Grant
+        1.  Distribute ManeuverRequests among workers then send the result to the correct client
 
     Attributes:
-        mover: Mover
+        worker: Mover
 
     Provides:
-        -   def  execute(self, request: ManeuverRequest) -> ManeuverResponse
+        -   def  execute(self, request: ManeuverRequest) -> ManeuverResult
 
     Super Class:
-        Dispatcher
+        TransactionDispatcher
     """
     
-    _mover: Mover
     
-    def __init__(self, mover: Mover):
+    def __init__(self, worker: Optional[Mover] | None = None):
         """
         Args:
-            mover: Mover
+            worker: Optional[Mover]
         """
-        self._mover = mover
+        super().__init__(worker=worker or Mover())
         
     @property
-    def mover(self) -> Mover:
-        return self._mover
+    def worker(self) -> Mover:
+        return cast(Mover, super().worker)
     
-    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverResponse:
+    def execute(self, request: ManeuverRequest) -> ManeuverResult:
         """
-        Decide if an activity can be performed.
+        Distribute ManeuverRequests among workers then forward the results.
+        
+        Action:
+            1.  Send an exception chain in the Result if the request cannot be satisfied.
+            2.  Otherwise, send the success result.
         Args:
-            request: T
+            request: ManeuverRequest
         Returns:
-            ManeuverResponse
+            ManeuverResult
         Raises:
             ManeuverDispatcherException
         """
-        pass
+        method = f"{self.__class__.__name__}.execute"
+        
+        # --- Handoff the request to a worker. ---#
+        result = self.worker.execute(request)
+        
+        # Handle the case that the request is not fulfilled.
+        if result.is_failure:
+            # Send an exception chain in the result.
+            return ManeuverResult.failure(
+                ManeuverDispatcherException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ManeuverDispatcherException.MSG,
+                    err_code=ManeuverDispatcherException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        # --- Forward the work product to the client. ---#
+        maneuver = cast(Maneuver, result.payload)
+        return ManeuverResult.success(maneuver)
+        
