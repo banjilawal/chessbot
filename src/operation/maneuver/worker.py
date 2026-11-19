@@ -19,7 +19,7 @@ from transit import ManeuverPermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class Mover(Worker[ManeuverResult, ManeuverRequest]):
+class Mover(Worker[ManeuverRequest, ManeuverResult]):
     """
     Role:
         -   Transaction Worker

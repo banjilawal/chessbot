@@ -10,17 +10,17 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Self, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import TransactionResult
 from exchange import TransactionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
-R = TypeVar("R", bound="TransactionResult")
 Q = TypeVar("Q", bound="TransactionRequest")
+R = TypeVar("R", bound="TransactionResult")
 
-class Worker(ABC, Generic[R, Q]):
+class Worker(ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker

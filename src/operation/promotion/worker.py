@@ -19,7 +19,7 @@ from transit import PromotionPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class Promoter(Worker[PromotionResult, PromotionRequest]):
+class Promoter(Worker[PromotionRequest, PromotionResult]):
     """
     Role:
         -   Transaction Worker
