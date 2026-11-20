@@ -24,16 +24,16 @@ T = TypeVar("T")
 class ValidationDispatcher(Dispatcher[ValidationResult], ABC, Generic[T]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct Jobs towards a Validator then send the results back to clients.
+        1.  Distribute validation jobs among workers the forward their results.
 
     Attributes:
         validator: Validator[T]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[T]
+        -   def execute(job: Any) -> ValidationResult[T]
 
     Super Class:
         Dispatcher

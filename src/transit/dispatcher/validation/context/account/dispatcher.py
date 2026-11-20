@@ -14,36 +14,38 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from assurance import AccountContextValidator
 from domain import AccountContext
-from transit import AccountContextCarrier, ContextValidationDispatcher
+from transit import AccountContextCarrier, ValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class AccountContextValidationDispatcher(
-    ContextValidationDispatcher[AccountContext]
-):
+class AccountContextValidationDispatcher(ValidationDispatcher[AccountContext]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct the AccountValidator then send the results back to clients.
+        1.  Distribute AccountContext validation jobs among workers, then forward their results.
 
     Attributes:
         validator: AccountContextValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[AccountContextCarrier]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ContextValidationDispatcher
+        ValidationDispatcher
     """
-
+    
     def __init__(
             self,
             validator: Optional[AccountContextValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[AccountContextValidator]
+        """
         super().__init__(validator=validator or AccountContextValidator())
-        
+    
     @property
     def validator(self) -> AccountContextValidator:
         return cast(AccountContextValidator, super().validator)
@@ -51,13 +53,13 @@ class AccountContextValidationDispatcher(
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[AccountContextCarrier]:
         """
-        Forward a job to an AccountContextValidator then deliver the result.
+        Send jobs to an AccountContextValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the validator cannot
-                certify the job's content.
-            2.  Otherwise, cast the job payload into an AccountContextCarrier and send in
-                the success result.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
+            2.  Otherwise, cast the job payload into an AccountContextCarrier and
+                send in the success result.
         Args:
             job: Any
         Returns:
@@ -67,8 +69,10 @@ class AccountContextValidationDispatcher(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

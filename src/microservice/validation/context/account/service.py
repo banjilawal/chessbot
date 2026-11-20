@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import AccountContextValidationResponse, AccountValidationResponse, ValidationResponse
 from domain import AccountContext, AccountContextBlueprint
 from exchange import (
-    AccountContextValidationRequest, AccountContextValidationResponder, AccountValidationRequest,
+    AccountContextValidationRequest, AccountContextValidationDispatcher, AccountValidationRequest,
     ContextValidationService
 )
 
@@ -35,7 +35,7 @@ class AccountContextValidationService(
             products from AccountContextValidationService.
 
     Attributes:
-        responder: AccountContextValidationResponder
+        dispatcher: AccountContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -52,17 +52,17 @@ class AccountContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[AccountContextValidationResponder] | None = None,
+            dispatcher: Optional[AccountContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[AccountContextValidationResponder]
+            dispatcher: Optional[AccountContextValidationDispatcher]
         """
-        super().__init__(responder=responder or AccountContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or AccountContextValidationDispatcher())
 
     @property
-    def responder(self) -> AccountContextValidationResponder:
-        return cast(AccountContextValidationResponder, super().responder)
+    def dispatcher(self) -> AccountContextValidationDispatcher:
+        return cast(AccountContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -88,7 +88,7 @@ class AccountContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        response = self.responder.execute(request)
+        carrier = self.dispatcher.execute(request)
         if response.is_failure:
             # Send the exception chain on failure.
             return ValidationResponse.failure(
@@ -100,7 +100,7 @@ class AccountContextValidationService(
                     ex=response.exception,
                 )
             )
-        if response.valid_model is None:
+        if carrier.has_model is None:
             # Send the exception chain on failure.
             return ValidationResponse.failure(
                 AccountContextValidationServiceException(
@@ -117,7 +117,7 @@ class AccountContextValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(AccountContext, response.valid_model)
+        model = cast(AccountContext, carrier.has_model)
         return ValidationResponse.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class AccountContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        response = self.responder.execute(request)
+        carrier = self.dispatcher.execute(request)
         if response.is_failure:
             # Send the exception chain on failure.
             return ValidationResponse.failure(

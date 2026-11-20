@@ -9,39 +9,43 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 
 from assurance import RankValidator
 from artifcat import ValidationResult
 from domain import Rank
 from err import RankValidationDispatcherException
-from transit import ModelValidationDispatcher, RankCarrier
+from transit import ValidationDispatcher, RankCarrier
 from util import LoggingLevelRouter
 
 
-class RankValidationDispatcher(ModelValidationDispatcher[Rank]):
+class RankValidationDispatcher(ValidationDispatcher[Rank]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct the RankValidator then send the results back to clients.
+        1.  Distribute Rank validation jobs among workers, then forward their results.
 
     Attributes:
         validator: RankValidator
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ModelValidationDispatcher
+        ValidationDispatcher
     """
 
     def __init__(
             self,
-            validator: RankValidator | None = None,
+            validator: Optional[RankValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[RankValidator]
+        """
         super().__init__(validator=validator or RankValidator())
         
     @property
@@ -52,11 +56,11 @@ class RankValidationDispatcher(ModelValidationDispatcher[Rank]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[RankCarrier]:
         """
-        Forward a job to a RankValidator then deliver the result.
+        Send jobs to a RankValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the validator cannot
-                certify the job's content.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
             2.  Otherwise, cast the job payload into a RankCarrier and send in
                 the success result.
         Args:
@@ -68,8 +72,10 @@ class RankValidationDispatcher(ModelValidationDispatcher[Rank]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

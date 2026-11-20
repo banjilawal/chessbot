@@ -37,7 +37,7 @@ class ChartValidationService(
             from a ChartValidationResponse.
 
     Attributes:
-        responder: ChartValidationService[T]
+        dispatcher: ChartValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -54,15 +54,15 @@ class ChartValidationService(
         ValidationService
     """
     
-    def __init__(self, responder: ChartValidationService[T]):
+    def __init__(self, dispatcher: ChartValidationService[T]):
         """
         Args:
-            responder: ChartValidationService[T]
+            dispatcher: ChartValidationService[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(dispatcher=dispatcher)
     
     @property
-    def responder(self) -> ChartValidationService[T]:
+    def dispatcher(self) -> ChartValidationService[T]:
         return cast(ChartValidationService[T], super().service)
     
     @abstractmethod

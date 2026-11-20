@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import PlayerValidationResponse, ValidationResult
+from artifcat import PlayerCarrier, ValidationResult
 from domain import Player, PlayerBlueprint
 from err import PlayerValidationServiceException, PlayerValidationServiceException, PlayerCarrierEmptyException
 from exchange import (
-    PlayerValidationService, ModelValidationService, PlayerValidationRequest
+    PlayerValidationService, ValidationService, PlayerValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class PlayerValidationService(
-    ModelValidationService[Player]
+    ValidationService[Player]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class PlayerValidationService(
             products from PlayerValidationService.
 
     Attributes:
-        responder: PlayerValidationResponder
+        dispatcher: PlayerValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class PlayerValidationService(
     
     def __init__(
             self,
-            responder: Optional[PlayerValidationResponder] | None = None,
+            dispatcher: Optional[PlayerValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[PlayerValidationResponder]
+            dispatcher: Optional[PlayerValidationDispatcher]
         """
-        super().__init__(responder=responder or PlayerValidationResponder())
+        super().__init__(dispatcher=dispatcher or PlayerValidationDispatcher())
     
     @property
-    def responder(self) -> PlayerValidationResponder:
-        return cast(PlayerValidationResponder, super().responder)
+    def dispatcher(self) -> PlayerValidationDispatcher:
+        return cast(PlayerValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class PlayerValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class PlayerValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(PlayerValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(PlayerCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerValidationServiceException(
@@ -117,7 +117,7 @@ class PlayerValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Player, response.valid_model)
+        model = cast(Player, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class PlayerValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class PlayerValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(PlayerValidationResponse, result)
+        carrier = cast(PlayerCarrier, result)
         if not response.valid_player:
             # Send the exception chain on failure.
             return ValidationResult.failure(

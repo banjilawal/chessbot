@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/register/vector/dispatcher.py
+# src/transit/dispatcher/validator/struct/register/vectorRegister/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.register.vector.dispatcher
+Module: transit.dispatcher.validator.register.vectorRegister.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,66 +9,72 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
-from err import VectorRegisterValidationDispatcherException
-from domain.struct.register import VectorRegister
 from artifcat import ValidationResult
-from transit import VectorRegisterCarrier
+from assurance import VectorRegisterValidator
+from domain import VectorRegister
+from err import VectorRegisterValidationDispatcherException
+from transit import ValidationDispatcher, VectorRegisterCarrier
 from util import LoggingLevelRouter
-from transit.dispatcher.validator import RegisterValidationDispatcher
 
 
-class VectorRegisterValidationDispatcher(RegisterValidationDispatcher[VectorRegister]):
+class VectorRegisterValidationDispatcher(ValidationDispatcher[VectorRegister]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Performance Management
 
     Responsibilities:
-        1.  Ensure a VectorRegister instance is certified safe, reliable, and consistent before use.
+        1.  Distribute VectorRegister validation jobs among workers, then forward
+            their results.
 
     Attributes:
         validator: VectorRegisterValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult{VectorRegister]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        RegisterValidator
+        ValidationDispatcher
     """
     
     def __init__(
             self,
-            validator: VectorRegisterValidator | None = VectorRegisterValidator(),
+            validator: Optional[VectorRegisterValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[VectorRegisterValidator]
+        """
         super().__init__(validator=validator or VectorRegisterValidator())
-        
+    
     @property
     def validator(self) -> VectorRegisterValidator:
         return cast(VectorRegisterValidator, super().validator)
     
-
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[VectorRegisterCarrier]:
         """
-        Verify the object is a VectorRegister that is safe to use.
+        Send jobs to a VectorRegisterValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the candidate fails a
-                validator test..
-            2.  Otherwise, cast the payload into a VectorRegister and send in the success result.
-                success result.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
+            2.  Otherwise, cast the job payload into a VectorRegisterCarrier and send in
+                the success result.
         Args:
             job: Any
         Returns:
-            ValidationResult[VectorRegister]
+            ValidationResult[VectorRegisterCarrier]
         Raises:
              VectorRegisterValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -81,6 +87,5 @@ class VectorRegisterValidationDispatcher(RegisterValidationDispatcher[VectorRegi
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            cast(VectorRegisterCarrier, validation.authorization_applicant)
-        )
+        carrier = cast(VectorRegisterCarrier, validation.payload)
+        return ValidationResult.success(carrier)

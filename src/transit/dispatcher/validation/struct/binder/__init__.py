@@ -14,4 +14,3 @@ from .player import *
 from .team import *
 
 # Module
-from .dispatcher import BinderValidationDispatcher

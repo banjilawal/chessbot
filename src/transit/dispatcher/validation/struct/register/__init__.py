@@ -15,4 +15,3 @@ from .square import *
 from .vector import *
 
 # Module
-from .dispatcher import RegisterValidationDispatcher

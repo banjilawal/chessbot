@@ -32,7 +32,7 @@ class TeamBinderValidationService(
             products from TeamBinderValidationService.
 
     Attributes:
-        responder: TeamBinderValidationResponder
+        dispatcher: TeamBinderValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -49,17 +49,17 @@ class TeamBinderValidationService(
     
     def __init__(
             self,
-            responder: Optional[TeamBinderValidationResponder] | None = None,
+            dispatcher: Optional[TeamBinderValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[TeamBinderValidationResponder]
+            dispatcher: Optional[TeamBinderValidationDispatcher]
         """
-        super().__init__(responder=responder or TeamBinderValidationResponder())
+        super().__init__(dispatcher=dispatcher or TeamBinderValidationDispatcher())
     
     @property
-    def responder(self) -> TeamBinderValidationResponder:
-        return cast(TeamBinderValidationResponder, super().responder)
+    def dispatcher(self) -> TeamBinderValidationDispatcher:
+        return cast(TeamBinderValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -85,7 +85,7 @@ class TeamBinderValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -97,8 +97,8 @@ class TeamBinderValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TeamBinderValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(TeamBinderValidationResponse, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationServiceException(
@@ -115,7 +115,7 @@ class TeamBinderValidationService(
                 )
             )
         # --- Send the work product. ---#
-        binder = cast(TeamBinder, response.valid_model)
+        binder = cast(TeamBinder, carrier.has_model)
         return ValidationResult.success(binder)
     
     @LoggingLevelRouter.monitor
@@ -141,7 +141,7 @@ class TeamBinderValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -153,7 +153,7 @@ class TeamBinderValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TeamBinderValidationResponse, result)
+        carrier = cast(TeamBinderValidationResponse, result)
         if not response.valid_team:
             # Send the exception chain on failure.
             return ValidationResult.failure(

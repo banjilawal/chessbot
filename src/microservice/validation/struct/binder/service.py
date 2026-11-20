@@ -35,7 +35,7 @@ class BinderValidationService(
             from a BinderValidationResponse.
 
     Attributes:
-        responder: BinderValidationService[T]
+        dispatcher: BinderValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -52,15 +52,15 @@ class BinderValidationService(
         ValidationService
     """
     
-    def __init__(self, responder: BinderValidationService[T]):
+    def __init__(self, dispatcher: BinderValidationService[T]):
         """
         Args:
-            responder: BinderValidationService[T]
+            dispatcher: BinderValidationService[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(dispatcher=dispatcher)
     
     @property
-    def responder(self) -> BinderValidationService[T]:
+    def dispatcher(self) -> BinderValidationService[T]:
         return cast(BinderValidationService[T], super().service)
     
     @abstractmethod

@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import FootstepValidationResponse, ValidationResult
+from artifcat import FootstepCarrier, ValidationResult
 from domain import Footstep, FootstepBlueprint
 from err import (
     FootstepValidationServiceException, FootstepValidationServiceException, 
     FootstepCarrierEmptyException
 )
 from exchange import (
-    FootstepValidationService, ModelValidationService, FootstepValidationRequest
+    FootstepValidationService, ValidationService, FootstepValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class FootstepValidationService(
-    ModelValidationService[Footstep]
+    ValidationService[Footstep]
 ):
     """
     Role
@@ -37,7 +37,7 @@ class FootstepValidationService(
             products from FootstepValidationService.
 
     Attributes:
-        responder: FootstepValidationResponder
+        dispatcher: FootstepValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -54,17 +54,17 @@ class FootstepValidationService(
     
     def __init__(
             self,
-            responder: Optional[FootstepValidationResponder] | None = None,
+            dispatcher: Optional[FootstepValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[FootstepValidationResponder]
+            dispatcher: Optional[FootstepValidationDispatcher]
         """
-        super().__init__(responder=responder or FootstepValidationResponder())
+        super().__init__(dispatcher=dispatcher or FootstepValidationDispatcher())
     
     @property
-    def responder(self) -> FootstepValidationResponder:
-        return cast(FootstepValidationResponder, super().responder)
+    def dispatcher(self) -> FootstepValidationDispatcher:
+        return cast(FootstepValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -90,7 +90,7 @@ class FootstepValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,8 +102,8 @@ class FootstepValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(FootstepValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(FootstepCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 FootstepValidationServiceException(
@@ -120,7 +120,7 @@ class FootstepValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Footstep, response.valid_model)
+        model = cast(Footstep, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -146,7 +146,7 @@ class FootstepValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -158,7 +158,7 @@ class FootstepValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(FootstepValidationResponse, result)
+        carrier = cast(FootstepCarrier, result)
         if not response.valid_footstep:
             # Send the exception chain on failure.
             return ValidationResult.failure(

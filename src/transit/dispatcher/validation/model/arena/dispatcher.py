@@ -9,39 +9,43 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 
 from assurance import ArenaValidator
 from artifcat import ValidationResult
 from domain import Arena
 from err import ArenaValidationDispatcherException
-from transit import ModelValidationDispatcher, ArenaCarrier
+from transit import ValidationDispatcher, ArenaCarrier
 from util import LoggingLevelRouter
 
 
-class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
+class ArenaValidationDispatcher(ValidationDispatcher[Arena]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct the ArenaValidator then send the results back to clients.
+        1.  Distribute Arena validation jobs among workers, then forward their results.
 
     Attributes:
         validator: ArenaValidator
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ModelValidationDispatcher
+        ValidationDispatcher
     """
 
     def __init__(
             self,
-            validator: ArenaValidator | None = None,
+            validator: Optional[ArenaValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[ArenaValidator]
+        """
         super().__init__(validator=validator or ArenaValidator())
         
     @property
@@ -52,11 +56,11 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[ArenaCarrier]:
         """
-        Forward a job to a ArenaValidator then deliver the result.
+        Send jobs to a ArenaValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the validator cannot
-                certify the job's content.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
             2.  Otherwise, cast the job payload into a ArenaCarrier and send in
                 the success result.
         Args:
@@ -68,8 +72,10 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

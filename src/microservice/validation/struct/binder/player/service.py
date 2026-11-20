@@ -34,7 +34,7 @@ class PlayerBinderValidationService(
             products from PlayerBinderValidationService.
 
     Attributes:
-        responder: PlayerBinderValidationResponder
+        dispatcher: PlayerBinderValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class PlayerBinderValidationService(
     
     def __init__(
             self,
-            responder: Optional[PlayerBinderValidationResponder] | None = None,
+            dispatcher: Optional[PlayerBinderValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[PlayerBinderValidationResponder]
+            dispatcher: Optional[PlayerBinderValidationDispatcher]
         """
-        super().__init__(responder=responder or PlayerBinderValidationResponder())
+        super().__init__(dispatcher=dispatcher or PlayerBinderValidationDispatcher())
     
     @property
-    def responder(self) -> PlayerBinderValidationResponder:
-        return cast(PlayerBinderValidationResponder, super().responder)
+    def dispatcher(self) -> PlayerBinderValidationDispatcher:
+        return cast(PlayerBinderValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class PlayerBinderValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class PlayerBinderValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(PlayerBinderValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(PlayerBinderValidationResponse, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerBinderValidationServiceException(
@@ -117,7 +117,7 @@ class PlayerBinderValidationService(
                 )
             )
         # --- Send the work product. ---#
-        binder = cast(PlayerBinder, response.valid_model)
+        binder = cast(PlayerBinder, carrier.has_model)
         return ValidationResult.success(binder)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class PlayerBinderValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class PlayerBinderValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(PlayerBinderValidationResponse, result)
+        carrier = cast(PlayerBinderValidationResponse, result)
         if not response.valid_player:
             # Send the exception chain on failure.
             return ValidationResult.failure(

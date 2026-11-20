@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import PathValidationResponse, ValidationResult
+from artifcat import PathCarrier, ValidationResult
 from domain import Path, PathBlueprint
 from err import PathValidationServiceException, PathValidationServiceException, PathCarrierEmptyException
 from exchange import (
-    PathValidationService, ModelValidationService, PathValidationRequest
+    PathValidationService, ValidationService, PathValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class PathValidationService(
-    ModelValidationService[Path]
+    ValidationService[Path]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class PathValidationService(
             products from PathValidationService.
 
     Attributes:
-        responder: PathValidationResponder
+        dispatcher: PathValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class PathValidationService(
     
     def __init__(
             self,
-            responder: Optional[PathValidationResponder] | None = None,
+            dispatcher: Optional[PathValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[PathValidationResponder]
+            dispatcher: Optional[PathValidationDispatcher]
         """
-        super().__init__(responder=responder or PathValidationResponder())
+        super().__init__(dispatcher=dispatcher or PathValidationDispatcher())
     
     @property
-    def responder(self) -> PathValidationResponder:
-        return cast(PathValidationResponder, super().responder)
+    def dispatcher(self) -> PathValidationDispatcher:
+        return cast(PathValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class PathValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class PathValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(PathValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(PathCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidationServiceException(
@@ -117,7 +117,7 @@ class PathValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Path, response.valid_model)
+        model = cast(Path, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class PathValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class PathValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(PathValidationResponse, result)
+        carrier = cast(PathCarrier, result)
         if not response.valid_path:
             # Send the exception chain on failure.
             return ValidationResult.failure(

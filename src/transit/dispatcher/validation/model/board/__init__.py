@@ -1,15 +1,15 @@
-# src/transit/dispatcher/validator/model/board/__init__.py
+# src/transit/dispatcher/validator/model/vector/__init__.py
 
 """
-Module: transit.dispatcher.validator.model.board.__init__
+Module: transit.dispatcher.validator.model.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.DISPATCHER.VALIDATOR.MODEL.BOARD PACKAGE ===========#
+# =========== TRANSIT.DISPATCHER.VALIDATOR.MODEL.VECTOR PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .dispatcher import BoardValidationDispatcher
+from .dispatcher import VectorValidationDispatcher

@@ -34,7 +34,7 @@ class CoordContextValidationService(
             products from CoordContextValidationService.
 
     Attributes:
-        responder: CoordContextValidationResponder
+        dispatcher: CoordContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class CoordContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[CoordContextValidationResponder] | None = None,
+            dispatcher: Optional[CoordContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[CoordContextValidationResponder]
+            dispatcher: Optional[CoordContextValidationDispatcher]
         """
-        super().__init__(responder=responder or CoordContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or CoordContextValidationDispatcher())
     
     @property
-    def responder(self) -> CoordContextValidationResponder:
-        return cast(CoordContextValidationResponder, super().responder)
+    def dispatcher(self) -> CoordContextValidationDispatcher:
+        return cast(CoordContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class CoordContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class CoordContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(CoordValidationResponse, result)
+        carrier = cast(CoordValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class CoordContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class CoordContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(CoordValidationResponse, result)
+        carrier = cast(CoordValidationResponse, result)
         if not response.valid_coord:
             # Send the exception chain on failure.
             return ValidationResult.failure(

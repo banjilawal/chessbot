@@ -34,7 +34,7 @@ class GameContextValidationService(
             products from GameContextValidationService.
 
     Attributes:
-        responder: GameContextValidationResponder
+        dispatcher: GameContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class GameContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[GameContextValidationResponder] | None = None,
+            dispatcher: Optional[GameContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[GameContextValidationResponder]
+            dispatcher: Optional[GameContextValidationDispatcher]
         """
-        super().__init__(responder=responder or GameContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or GameContextValidationDispatcher())
     
     @property
-    def responder(self) -> GameContextValidationResponder:
-        return cast(GameContextValidationResponder, super().responder)
+    def dispatcher(self) -> GameContextValidationDispatcher:
+        return cast(GameContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class GameContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class GameContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(GameValidationResponse, result)
+        carrier = cast(GameValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class GameContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class GameContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(GameValidationResponse, result)
+        carrier = cast(GameValidationResponse, result)
         if not response.valid_game:
             # Send the exception chain on failure.
             return ValidationResult.failure(

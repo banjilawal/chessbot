@@ -16,32 +16,36 @@ from assurance import AccountValidator
 from artifcat import ValidationResult
 from domain import Account
 from err import AccountValidationDispatcherException
-from transit import ModelValidationDispatcher, AccountCarrier
+from transit import ValidationDispatcher, AccountCarrier
 from util import LoggingLevelRouter
 
 
-class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
+class AccountValidationDispatcher(ValidationDispatcher[Account]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct the AccountValidator then send the results back to clients.
+        1.  Distribute Account validation jobs among workers, then forward their results.
 
     Attributes:
         validator: AccountValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[ValidationCarrier]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ModelValidationDispatcher
+        ValidationDispatcher
     """
 
     def __init__(
             self,
             validator: Optional[AccountValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[AccountValidator]
+        """
         super().__init__(validator=validator or AccountValidator())
         
     @property
@@ -52,12 +56,12 @@ class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[AccountCarrier]:
         """
-        Forward a job to an AccountValidator then deliver the result.
+        Send jobs to a AccountValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the validator cannot
-                certify the job's content.
-            2.  Otherwise, cast the job payload into an AccountCarrier and send in
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
+            2.  Otherwise, cast the job payload into a AccountCarrier and send in
                 the success result.
         Args:
             job: Any
@@ -68,8 +72,10 @@ class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -82,5 +88,5 @@ class AccountValidationDispatcher(ModelValidationDispatcher[Account]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(AccountCarrier, validation.authorization_applicant)
+        carrier = cast(AccountCarrier, validation.payload)
         return ValidationResult.success(carrier)

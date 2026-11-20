@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import RankValidationResponse, ValidationResult
+from artifcat import RankCarrier, ValidationResult
 from domain import Rank, RankBlueprint
 from err import RankValidationServiceException, RankValidationServiceException, RankCarrierEmptyException
 from exchange import (
-    RankValidationService, ModelValidationService, RankValidationRequest
+    RankValidationService, ValidationService, RankValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class RankValidationService(
-    ModelValidationService[Rank]
+    ValidationService[Rank]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class RankValidationService(
             products from RankValidationService.
 
     Attributes:
-        responder: RankValidationResponder
+        dispatcher: RankValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class RankValidationService(
     
     def __init__(
             self,
-            responder: Optional[RankValidationResponder] | None = None,
+            dispatcher: Optional[RankValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[RankValidationResponder]
+            dispatcher: Optional[RankValidationDispatcher]
         """
-        super().__init__(responder=responder or RankValidationResponder())
+        super().__init__(dispatcher=dispatcher or RankValidationDispatcher())
     
     @property
-    def responder(self) -> RankValidationResponder:
-        return cast(RankValidationResponder, super().responder)
+    def dispatcher(self) -> RankValidationDispatcher:
+        return cast(RankValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class RankValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class RankValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(RankValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(RankCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationServiceException(
@@ -117,7 +117,7 @@ class RankValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Rank, response.valid_model)
+        model = cast(Rank, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class RankValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class RankValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(RankValidationResponse, result)
+        carrier = cast(RankCarrier, result)
         if not response.valid_rank:
             # Send the exception chain on failure.
             return ValidationResult.failure(

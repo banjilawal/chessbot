@@ -11,18 +11,16 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ScalarValidationResponse, ValidationResult
+from artifcat import ValidationResult
 from domain import Scalar, ScalarBlueprint
-from err import ScalarValidationServiceException, ScalarValidationServiceException, ScalarCarrierEmptyException
-from exchange import (
-    ScalarValidationService, ModelValidationService, ScalarValidationRequest
-)
+from err import ScalarValidationServiceException
+from exchange import ScalarValidationRequest
+from microservice import ValidationService
+from transit import ScalarCarrier, ScalarValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class ScalarValidationService(
-    ModelValidationService[Scalar]
-):
+class ScalarValidationService(ValidationService[Scalar]):
     """
     Role
         -   Service
@@ -34,7 +32,7 @@ class ScalarValidationService(
             products from ScalarValidationService.
 
     Attributes:
-        responder: ScalarValidationResponder
+        dispatcher: ScalarValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +49,17 @@ class ScalarValidationService(
     
     def __init__(
             self,
-            responder: Optional[ScalarValidationResponder] | None = None,
+            dispatcher: Optional[ScalarValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ScalarValidationResponder]
+            dispatcher: Optional[ScalarValidationDispatcher]
         """
-        super().__init__(responder=responder or ScalarValidationResponder())
+        super().__init__(dispatcher=dispatcher or ScalarValidationDispatcher())
     
     @property
-    def responder(self) -> ScalarValidationResponder:
-        return cast(ScalarValidationResponder, super().responder)
+    def dispatcher(self) -> ScalarValidationDispatcher:
+        return cast(ScalarValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +85,7 @@ class ScalarValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +97,8 @@ class ScalarValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ScalarValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(ScalarCarrier, result.payload)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidationServiceException(
@@ -117,7 +115,7 @@ class ScalarValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Scalar, response.valid_model)
+        model = cast(Scalar, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +141,7 @@ class ScalarValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +153,7 @@ class ScalarValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ScalarValidationResponse, result)
+        carrier = cast(ScalarCarrier, result.payload)
         if not response.valid_scalar:
             # Send the exception chain on failure.
             return ValidationResult.failure(

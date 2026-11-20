@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import SquareValidationResponse, ValidationResult
+from artifcat import SquareCarrier, ValidationResult
 from domain import Square, SquareBlueprint
 from err import SquareValidationServiceException, SquareValidationServiceException, SquareCarrierEmptyException
 from exchange import (
-    SquareValidationService, ModelValidationService, SquareValidationRequest
+    SquareValidationService, ValidationService, SquareValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class SquareValidationService(
-    ModelValidationService[Square]
+    ValidationService[Square]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class SquareValidationService(
             products from SquareValidationService.
 
     Attributes:
-        responder: SquareValidationResponder
+        dispatcher: SquareValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class SquareValidationService(
     
     def __init__(
             self,
-            responder: Optional[SquareValidationResponder] | None = None,
+            dispatcher: Optional[SquareValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[SquareValidationResponder]
+            dispatcher: Optional[SquareValidationDispatcher]
         """
-        super().__init__(responder=responder or SquareValidationResponder())
+        super().__init__(dispatcher=dispatcher or SquareValidationDispatcher())
     
     @property
-    def responder(self) -> SquareValidationResponder:
-        return cast(SquareValidationResponder, super().responder)
+    def dispatcher(self) -> SquareValidationDispatcher:
+        return cast(SquareValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class SquareValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class SquareValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(SquareValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(SquareCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationServiceException(
@@ -117,7 +117,7 @@ class SquareValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Square, response.valid_model)
+        model = cast(Square, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class SquareValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class SquareValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(SquareValidationResponse, result)
+        carrier = cast(SquareCarrier, result)
         if not response.valid_square:
             # Send the exception chain on failure.
             return ValidationResult.failure(

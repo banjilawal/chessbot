@@ -9,38 +9,43 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
+
 
 from assurance import FootstepValidator
 from artifcat import ValidationResult
 from domain import Footstep
 from err import FootstepValidationDispatcherException
-from transit import ModelValidationDispatcher, FootstepCarrier
+from transit import ValidationDispatcher, FootstepCarrier
 from util import LoggingLevelRouter
 
 
-class FootstepValidationDispatcher(ModelValidationDispatcher[Footstep]):
+class FootstepValidationDispatcher(ValidationDispatcher[Footstep]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Performance Management
 
     Responsibilities:
-        1.  Ensure a Footstep instance is certified safe, reliable, and consistent before use.
+        1.  Distribute Footstep validation jobs among workers, then forward their results.
 
     Attributes:
         validator: FootstepValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult{Footstep]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ModelValidator
+        ValidationDispatcher
     """
-    
+
     def __init__(
             self,
-            validator: FootstepValidator | None = FootstepValidator(),
+            validator: Optional[FootstepValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[FootstepValidator]
+        """
         super().__init__(validator=validator or FootstepValidator())
         
     @property
@@ -51,24 +56,26 @@ class FootstepValidationDispatcher(ModelValidationDispatcher[Footstep]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[FootstepCarrier]:
         """
-        Verify the object is a Footstep that is safe to use.
+        Send jobs to a FootstepValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the candidate fails a
-                validator test..
-            2.  Otherwise, cast the payload into a Footstep and send in the success result.
-                success result.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
+            2.  Otherwise, cast the job payload into a FootstepCarrier and send in
+                the success result.
         Args:
             job: Any
         Returns:
-            ValidationResult[Footstep]
+            ValidationResult[FootstepCarrier]
         Raises:
              FootstepValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -81,6 +88,5 @@ class FootstepValidationDispatcher(ModelValidationDispatcher[Footstep]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            cast(FootstepCarrier, validation.payload)
-        )
+        carrier = cast(FootstepCarrier, validation.payload)
+        return ValidationResult.success(carrier)

@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ArenaValidationResponse, ValidationResult
+from artifcat import ArenaCarrier, ValidationResult
 from domain import Arena, ArenaBlueprint
 from err import ArenaValidationServiceException, ArenaValidationServiceException, EmptyArenaCarrierException
 from exchange import (
-    ArenaValidationService, ModelValidationService, ArenaValidationRequest
+    ArenaValidationService, ValidationService, ArenaValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class ArenaValidationService(
-    ModelValidationService[Arena]
+    ValidationService[Arena]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class ArenaValidationService(
             products from ArenaValidationService.
 
     Attributes:
-        responder: ArenaValidationResponder
+        dispatcher: ArenaValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class ArenaValidationService(
     
     def __init__(
             self,
-            responder: Optional[ArenaValidationResponder] | None = None,
+            dispatcher: Optional[ArenaValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ArenaValidationResponder]
+            dispatcher: Optional[ArenaValidationDispatcher]
         """
-        super().__init__(responder=responder or ArenaValidationResponder())
+        super().__init__(dispatcher=dispatcher or ArenaValidationDispatcher())
     
     @property
-    def responder(self) -> ArenaValidationResponder:
-        return cast(ArenaValidationResponder, super().responder)
+    def dispatcher(self) -> ArenaValidationDispatcher:
+        return cast(ArenaValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class ArenaValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class ArenaValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ArenaValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(ArenaCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ArenaValidationServiceException(
@@ -117,7 +117,7 @@ class ArenaValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Arena, response.valid_model)
+        model = cast(Arena, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class ArenaValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class ArenaValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ArenaValidationResponse, result)
+        carrier = cast(ArenaCarrier, result)
         if not response.valid_arena:
             # Send the exception chain on failure.
             return ValidationResult.failure(

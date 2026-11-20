@@ -15,4 +15,4 @@ from .chart import *
 from .register import *
 
 # Modules
-from .dispatcher import StructValidationDispatcher
+from .dispatcher import ValidationDispatcher

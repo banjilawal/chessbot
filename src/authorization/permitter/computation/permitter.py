@@ -16,7 +16,6 @@ from artifcat import ComputationDecision
 from authorization import Permitter
 from bootstrap import ComputationAuthorizationLoader
 from exchange import ComputationPermissionRequest
-from exchange.service import ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="ComputationPermissionRequest")

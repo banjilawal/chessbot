@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import VectorValidationResponse, ValidationResult
+from artifcat import VectorCarrier, ValidationResult
 from domain import Vector, VectorBlueprint
 from err import VectorValidationServiceException, VectorValidationServiceException, VectorCarrierEmptyException
 from exchange import (
-    VectorValidationService, ModelValidationService, VectorValidationRequest
+    VectorValidationService, ValidationService, VectorValidationRequest
 )
+from transit import VectorValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class VectorValidationService(
-    ModelValidationService[Vector]
-):
+class VectorValidationService(ValidationService[Vector]):
     """
     Role
         -   Service
@@ -34,7 +33,7 @@ class VectorValidationService(
             products from VectorValidationService.
 
     Attributes:
-        responder: VectorValidationResponder
+        dispatcher: VectorValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,22 +50,22 @@ class VectorValidationService(
     
     def __init__(
             self,
-            responder: Optional[VectorValidationResponder] | None = None,
+            dispatcher: Optional[VectorValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[VectorValidationResponder]
+            dispatcher: Optional[VectorValidationDispatcher]
         """
-        super().__init__(responder=responder or VectorValidationResponder())
+        super().__init__(dispatcher=dispatcher or VectorValidationDispatcher())
     
     @property
-    def responder(self) -> VectorValidationResponder:
-        return cast(VectorValidationResponder, super().responder)
+    def dispatcher(self) -> VectorValidationDispatcher:
+        return cast(VectorValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
     def extract_model(
-            self, 
+            self,
             request: VectorValidationRequest,
     ) -> ValidationResult[Vector]:
         """
@@ -87,7 +86,7 @@ class VectorValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +98,8 @@ class VectorValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(VectorCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationServiceException(
@@ -117,7 +116,7 @@ class VectorValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Vector, response.valid_model)
+        model = cast(Vector, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +142,7 @@ class VectorValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,8 +154,8 @@ class VectorValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorValidationResponse, result)
-        if not response.valid_vector:
+        carrier = cast(VectorCarrier, result.payload)
+        if not carrier.has_blueprint:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationServiceException(
@@ -173,5 +172,5 @@ class VectorValidationService(
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(VectorBlueprint, response.valid_blueprint)
+        blueprint = cast(VectorBlueprint, carrier.entity)
         return ValidationResult.success(blueprint)

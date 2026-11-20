@@ -35,7 +35,7 @@ class NodeValidationService(
             from a NodeValidationResponse.
 
     Attributes:
-        responder: NodeValidationService[T]
+        dispatcher: NodeValidationService[T]
         
     Provides:
         -   def extract_model(
@@ -52,15 +52,15 @@ class NodeValidationService(
         ValidationService
     """
     
-    def __init__(self, responder: NodeValidationService[T]):
+    def __init__(self, dispatcher: NodeValidationService[T]):
         """
         Args:
-            responder: NodeValidationService[T]
+            dispatcher: NodeValidationService[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(dispatcher=dispatcher)
     
     @property
-    def responder(self) -> NodeValidationService[T]:
+    def dispatcher(self) -> NodeValidationService[T]:
         return cast(NodeValidationService[T], super().service)
     
     @abstractmethod

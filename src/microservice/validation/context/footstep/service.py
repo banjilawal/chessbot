@@ -37,7 +37,7 @@ class FootstepContextValidationService(
             products from FootstepContextValidationService.
 
     Attributes:
-        responder: FootstepContextValidationResponder
+        dispatcher: FootstepContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -54,17 +54,17 @@ class FootstepContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[FootstepContextValidationResponder] | None = None,
+            dispatcher: Optional[FootstepContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[FootstepContextValidationResponder]
+            dispatcher: Optional[FootstepContextValidationDispatcher]
         """
-        super().__init__(responder=responder or FootstepContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or FootstepContextValidationDispatcher())
     
     @property
-    def responder(self) -> FootstepContextValidationResponder:
-        return cast(FootstepContextValidationResponder, super().responder)
+    def dispatcher(self) -> FootstepContextValidationDispatcher:
+        return cast(FootstepContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -90,7 +90,7 @@ class FootstepContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,7 +102,7 @@ class FootstepContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(FootstepValidationResponse, result)
+        carrier = cast(FootstepValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -146,7 +146,7 @@ class FootstepContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -158,7 +158,7 @@ class FootstepContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(FootstepValidationResponse, result)
+        carrier = cast(FootstepValidationResponse, result)
         if not response.valid_footstep:
             # Send the exception chain on failure.
             return ValidationResult.failure(

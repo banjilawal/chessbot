@@ -34,7 +34,7 @@ class RankContextValidationService(
             products from RankContextValidationService.
 
     Attributes:
-        responder: RankContextValidationResponder
+        dispatcher: RankContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class RankContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[RankContextValidationResponder] | None = None,
+            dispatcher: Optional[RankContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[RankContextValidationResponder]
+            dispatcher: Optional[RankContextValidationDispatcher]
         """
-        super().__init__(responder=responder or RankContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or RankContextValidationDispatcher())
     
     @property
-    def responder(self) -> RankContextValidationResponder:
-        return cast(RankContextValidationResponder, super().responder)
+    def dispatcher(self) -> RankContextValidationDispatcher:
+        return cast(RankContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class RankContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class RankContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(RankValidationResponse, result)
+        carrier = cast(RankValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class RankContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class RankContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(RankValidationResponse, result)
+        carrier = cast(RankValidationResponse, result)
         if not response.valid_rank:
             # Send the exception chain on failure.
             return ValidationResult.failure(

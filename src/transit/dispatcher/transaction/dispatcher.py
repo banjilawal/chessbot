@@ -24,7 +24,7 @@ R = TypeVar("R", bound="TransactionResult")
 class TransactionDispatcher(Dispatcher[R], ABC, Generic[Q, R]):
     """
     Role
-        -   Performance Management
+        -   Performance Management,
 
     Responsibilities:
         1.  Distribute requests among workers then send the result to the correct client

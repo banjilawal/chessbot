@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AccountValidationResponse, ValidationResult
+from artifcat import AccountCarrier, ValidationResult
 from domain import Account, AccountBlueprint
-from err import AccountValidationServiceException, AccountValidationServiceException
+from err import AccountCarrierEmptyException, AccountValidationServiceException, AccountValidationServiceException
 from exchange import (
-    AccountValidationService, AccountValidationRequest, ModelValidationService
+    AccountValidationService, AccountValidationRequest, ValidationService
 )
+from transit import AccountValidationDispatcher
 from util import LoggingLevelRouter
 
 
 class AccountValidationService(
-    ModelValidationService[Account]
+    ValidationService[Account]
 ):
     """
     Role
@@ -34,7 +35,7 @@ class AccountValidationService(
             products from AccountValidationService.
 
     Attributes:
-        responder: AccountValidationResponder
+        dispatcher: AccountValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +52,17 @@ class AccountValidationService(
     
     def __init__(
             self,
-            responder: Optional[AccountValidationResponder] | None = None,
+            dispatcher: Optional[AccountValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[AccountValidationResponder]
+            dispatcher: Optional[AccountValidationDispatcher]
         """
-        super().__init__(responder=responder or AccountValidationResponder())
+        super().__init__(dispatcher=dispatcher or AccountValidationDispatcher())
     
     @property
-    def responder(self) -> AccountValidationResponder:
-        return cast(AccountValidationResponder, super().responder)
+    def dispatcher(self) -> AccountValidationDispatcher:
+        return cast(AccountValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +88,7 @@ class AccountValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +100,8 @@ class AccountValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AccountValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(AccountCarrier, result.payload)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AccountValidationServiceException(
@@ -108,16 +109,16 @@ class AccountValidationService(
                     cls_name=self.__class__.__name__,
                     msg=AccountValidationServiceException.MSG,
                     err_code=AccountValidationServiceException.ERR_CODE,
-                    ex=EmptyAccountCarrierException(
+                    ex=AccountCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyAccountCarrierException.MSG,
-                        err_code=EmptyAccountCarrierException.ERR_CODE,
+                        msg=AccountCarrierEmptyException.MSG,
+                        err_code=AccountCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Account, response.valid_model)
+        model = cast(Account, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +144,7 @@ class AccountValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,8 +156,8 @@ class AccountValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AccountValidationResponse, result)
-        if not response.valid_account:
+        carrier = cast(AccountCarrier, result.payload)
+        if not carrier.valid_blueprint:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AccountValidationServiceException(
@@ -164,14 +165,14 @@ class AccountValidationService(
                     cls_name=self.__class__.__name__,
                     msg=AccountValidationServiceException.MSG,
                     err_code=AccountValidationServiceException.ERR_CODE,
-                    ex=EmptyAccountCarrierException(
+                    ex=AccountCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyAccountCarrierException.MSG,
-                        err_code=EmptyAccountCarrierException.ERR_CODE,
+                        msg=AccountCarrierEmptyException.MSG,
+                        err_code=AccountCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(AccountBlueprint, response.valid_blueprint)
+        blueprint = cast(AccountBlueprint, carrier.entity)
         return ValidationResult.success(blueprint)

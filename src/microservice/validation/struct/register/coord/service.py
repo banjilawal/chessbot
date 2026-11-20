@@ -34,7 +34,7 @@ class CoordRegisterValidationService(
             products from CoordRegisterValidationService.
 
     Attributes:
-        responder: CoordRegisterValidationResponder
+        dispatcher: CoordRegisterValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class CoordRegisterValidationService(
     
     def __init__(
             self,
-            responder: Optional[CoordRegisterValidationResponder] | None = None,
+            dispatcher: Optional[CoordRegisterValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[CoordRegisterValidationResponder]
+            dispatcher: Optional[CoordRegisterValidationDispatcher]
         """
-        super().__init__(responder=responder or CoordRegisterValidationResponder())
+        super().__init__(dispatcher=dispatcher or CoordRegisterValidationDispatcher())
     
     @property
-    def responder(self) -> CoordRegisterValidationResponder:
-        return cast(CoordRegisterValidationResponder, super().responder)
+    def dispatcher(self) -> CoordRegisterValidationDispatcher:
+        return cast(CoordRegisterValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class CoordRegisterValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class CoordRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(CoordRegisterValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(CoordRegisterValidationResponse, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordRegisterValidationServiceException(
@@ -117,7 +117,7 @@ class CoordRegisterValidationService(
                 )
             )
         # --- Send the work product. ---#
-        register = cast(CoordRegister, response.valid_model)
+        register = cast(CoordRegister, carrier.has_model)
         return ValidationResult.success(register)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class CoordRegisterValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class CoordRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(CoordRegisterValidationResponse, result)
+        carrier = cast(CoordRegisterValidationResponse, result)
         if not response.valid_coord:
             # Send the exception chain on failure.
             return ValidationResult.failure(

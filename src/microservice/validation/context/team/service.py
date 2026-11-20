@@ -34,7 +34,7 @@ class TeamContextValidationService(
             products from TeamContextValidationService.
 
     Attributes:
-        responder: TeamContextValidationResponder
+        dispatcher: TeamContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class TeamContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[TeamContextValidationResponder] | None = None,
+            dispatcher: Optional[TeamContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[TeamContextValidationResponder]
+            dispatcher: Optional[TeamContextValidationDispatcher]
         """
-        super().__init__(responder=responder or TeamContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or TeamContextValidationDispatcher())
     
     @property
-    def responder(self) -> TeamContextValidationResponder:
-        return cast(TeamContextValidationResponder, super().responder)
+    def dispatcher(self) -> TeamContextValidationDispatcher:
+        return cast(TeamContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class TeamContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class TeamContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TeamValidationResponse, result)
+        carrier = cast(TeamValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class TeamContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class TeamContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TeamValidationResponse, result)
+        carrier = cast(TeamValidationResponse, result)
         if not response.valid_team:
             # Send the exception chain on failure.
             return ValidationResult.failure(

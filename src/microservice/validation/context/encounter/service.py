@@ -34,7 +34,7 @@ class EncounterContextValidationService(
             products from AttackContextValidationService.
 
     Attributes:
-        responder: AttackContextValidationResponder
+        dispatcher: AttackContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class EncounterContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[AttackContextValidationResponder] | None = None,
+            dispatcher: Optional[AttackContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[AttackContextValidationResponder]
+            dispatcher: Optional[AttackContextValidationDispatcher]
         """
-        super().__init__(responder=responder or AttackContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or AttackContextValidationDispatcher())
     
     @property
-    def responder(self) -> AttackContextValidationResponder:
-        return cast(AttackContextValidationResponder, super().responder)
+    def dispatcher(self) -> AttackContextValidationDispatcher:
+        return cast(AttackContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class EncounterContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class EncounterContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AttackValidationResponse, result)
+        carrier = cast(AttackValidationResponse, result)
         if not response.promoted_pawn:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class EncounterContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class EncounterContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AttackValidationResponse, result)
+        carrier = cast(AttackValidationResponse, result)
         if not response.valid_attack:
             # Send the exception chain on failure.
             return ValidationResult.failure(

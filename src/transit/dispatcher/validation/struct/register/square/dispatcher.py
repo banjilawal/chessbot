@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/register/square/dispatcher.py
+# src/transit/dispatcher/validator/struct/register/squareRegister/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.register.square.dispatcher
+Module: transit.dispatcher.validator.register.squareRegister.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,67 +9,72 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
-from assurance import SquareRegisterValidator
-from err import SquareRegisterValidationDispatcherException
-from domain.struct.register import SquareRegister
 from artifcat import ValidationResult
-from transit import SquareRegisterCarrier
+from assurance import SquareRegisterValidator
+from domain import SquareRegister
+from err import SquareRegisterValidationDispatcherException
+from transit import ValidationDispatcher, SquareRegisterCarrier
 from util import LoggingLevelRouter
-from transit.dispatcher.validator import RegisterValidationDispatcher
 
 
-class SquareRegisterValidationDispatcher(RegisterValidationDispatcher[SquareRegister]):
+class SquareRegisterValidationDispatcher(ValidationDispatcher[SquareRegister]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Performance Management
 
     Responsibilities:
-        1.  Ensure a SquareRegister instance is certified safe, reliable, and consistent before use.
+        1.  Distribute SquareRegister validation jobs among workers, then forward
+            their results.
 
     Attributes:
         validator: SquareRegisterValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult{SquareRegister]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        RegisterValidator
+        ValidationDispatcher
     """
     
     def __init__(
             self,
-            validator: SquareRegisterValidator | None = SquareRegisterValidator(),
+            validator: Optional[SquareRegisterValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[SquareRegisterValidator]
+        """
         super().__init__(validator=validator or SquareRegisterValidator())
-        
+    
     @property
     def validator(self) -> SquareRegisterValidator:
         return cast(SquareRegisterValidator, super().validator)
     
-
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[SquareRegisterCarrier]:
         """
-        Verify the object is a SquareRegister that is safe to use.
+        Send jobs to a SquareRegisterValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the candidate fails a
-                validator test..
-            2.  Otherwise, cast the payload into a SquareRegister and send in the success result.
-                success result.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
+            2.  Otherwise, cast the job payload into a SquareRegisterCarrier and send in
+                the success result.
         Args:
             job: Any
         Returns:
-            ValidationResult[SquareRegister]
+            ValidationResult[SquareRegisterCarrier]
         Raises:
              SquareRegisterValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -82,6 +87,5 @@ class SquareRegisterValidationDispatcher(RegisterValidationDispatcher[SquareRegi
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            cast(SquareRegisterCarrier, validation.payload)
-        )
+        carrier = cast(SquareRegisterCarrier, validation.payload)
+        return ValidationResult.success(carrier)

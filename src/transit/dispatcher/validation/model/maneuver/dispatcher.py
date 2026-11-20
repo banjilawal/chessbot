@@ -9,39 +9,43 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 
 from assurance import ManeuverValidator
 from artifcat import ValidationResult
 from domain import Maneuver
 from err import ManeuverValidationDispatcherException
-from transit import ModelValidationDispatcher, ManeuverCarrier
+from transit import ValidationDispatcher, ManeuverCarrier
 from util import LoggingLevelRouter
 
 
-class ManeuverValidationDispatcher(ModelValidationDispatcher[Maneuver]):
+class ManeuverValidationDispatcher(ValidationDispatcher[Maneuver]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct the ManeuverValidator then send the results back to clients.
+        1.  Distribute Maneuver validation jobs among workers, then forward their results.
 
     Attributes:
         validator: ManeuverValidator
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ModelValidationDispatcher
+        ValidationDispatcher
     """
 
     def __init__(
             self,
-            validator: ManeuverValidator | None = None,
+            validator: Optional[ManeuverValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[ManeuverValidator]
+        """
         super().__init__(validator=validator or ManeuverValidator())
         
     @property
@@ -52,11 +56,11 @@ class ManeuverValidationDispatcher(ModelValidationDispatcher[Maneuver]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[ManeuverCarrier]:
         """
-        Forward a job to a ManeuverValidator then deliver the result.
+        Send jobs to a ManeuverValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the validator cannot
-                certify the job's content.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
             2.  Otherwise, cast the job payload into a ManeuverCarrier and send in
                 the success result.
         Args:
@@ -68,8 +72,10 @@ class ManeuverValidationDispatcher(ModelValidationDispatcher[Maneuver]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

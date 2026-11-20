@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ManeuverValidationResponse, ValidationResult
+from artifcat import ManeuverCarrier, ValidationResult
 from domain import Maneuver, ManeuverBlueprint
 from err import ManeuverValidationServiceException, ManeuverValidationServiceException, ManeuverCarrierEmptyException
 from exchange import (
-    ManeuverValidationService, ModelValidationService, ManeuverValidationRequest
+    ManeuverValidationService, ValidationService, ManeuverValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class ManeuverValidationService(
-    ModelValidationService[Maneuver]
+    ValidationService[Maneuver]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class ManeuverValidationService(
             products from ManeuverValidationService.
 
     Attributes:
-        responder: ManeuverValidationResponder
+        dispatcher: ManeuverValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class ManeuverValidationService(
     
     def __init__(
             self,
-            responder: Optional[ManeuverValidationResponder] | None = None,
+            dispatcher: Optional[ManeuverValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ManeuverValidationResponder]
+            dispatcher: Optional[ManeuverValidationDispatcher]
         """
-        super().__init__(responder=responder or ManeuverValidationResponder())
+        super().__init__(dispatcher=dispatcher or ManeuverValidationDispatcher())
     
     @property
-    def responder(self) -> ManeuverValidationResponder:
-        return cast(ManeuverValidationResponder, super().responder)
+    def dispatcher(self) -> ManeuverValidationDispatcher:
+        return cast(ManeuverValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class ManeuverValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class ManeuverValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ManeuverValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(ManeuverCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidationServiceException(
@@ -117,7 +117,7 @@ class ManeuverValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Maneuver, response.valid_model)
+        model = cast(Maneuver, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class ManeuverValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class ManeuverValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ManeuverValidationResponse, result)
+        carrier = cast(ManeuverCarrier, result)
         if not response.valid_maneuver:
             # Send the exception chain on failure.
             return ValidationResult.failure(

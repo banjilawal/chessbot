@@ -28,4 +28,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .service import ModelValidationService
+from .service import ValidationService

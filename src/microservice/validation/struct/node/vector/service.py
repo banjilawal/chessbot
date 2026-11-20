@@ -30,7 +30,7 @@ class VectorNodeValidationService(
             products from VectorNodeValidationService.
 
     Attributes:
-        responder: VectorNodeValidationResponder
+        dispatcher: VectorNodeValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -47,17 +47,17 @@ class VectorNodeValidationService(
     
     def __init__(
             self,
-            responder: Optional[VectorNodeValidationResponder] | None = None,
+            dispatcher: Optional[VectorNodeValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[VectorNodeValidationResponder]
+            dispatcher: Optional[VectorNodeValidationDispatcher]
         """
-        super().__init__(responder=responder or VectorNodeValidationResponder())
+        super().__init__(dispatcher=dispatcher or VectorNodeValidationDispatcher())
     
     @property
-    def responder(self) -> VectorNodeValidationResponder:
-        return cast(VectorNodeValidationResponder, super().responder)
+    def dispatcher(self) -> VectorNodeValidationDispatcher:
+        return cast(VectorNodeValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -83,7 +83,7 @@ class VectorNodeValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -95,7 +95,7 @@ class VectorNodeValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorNodeValidationResponse, result)
+        carrier = cast(VectorNodeValidationResponse, result)
         if not response.valid_node:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -139,7 +139,7 @@ class VectorNodeValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -151,7 +151,7 @@ class VectorNodeValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorNodeValidationResponse, result)
+        carrier = cast(VectorNodeValidationResponse, result)
         if not response.valid_vector:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AttackValidationResponse, ValidationResult
+from artifcat import AttackCarrier, ValidationResult
 from domain import Encounter, AttackBlueprint
 from err import AttackValidationServiceException, AttackValidationServiceException, EncounterCarrierEmptyException
 from exchange import (
-    AttackValidationService, ModelValidationService, AttackValidationRequest
+    AttackValidationService, ValidationService, AttackValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class EncounterValidationService(
-    ModelValidationService[Encounter]
+    ValidationService[Encounter]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class EncounterValidationService(
             products from AttackValidationService.
 
     Attributes:
-        responder: AttackValidationResponder
+        dispatcher: AttackValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class EncounterValidationService(
     
     def __init__(
             self,
-            responder: Optional[AttackValidationResponder] | None = None,
+            dispatcher: Optional[AttackValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[AttackValidationResponder]
+            dispatcher: Optional[AttackValidationDispatcher]
         """
-        super().__init__(responder=responder or AttackValidationResponder())
+        super().__init__(dispatcher=dispatcher or AttackValidationDispatcher())
     
     @property
-    def responder(self) -> AttackValidationResponder:
-        return cast(AttackValidationResponder, super().responder)
+    def dispatcher(self) -> AttackValidationDispatcher:
+        return cast(AttackValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class EncounterValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class EncounterValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AttackValidationResponse, result)
+        carrier = cast(AttackCarrier, result)
         if not response.promoted_pawn:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class EncounterValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class EncounterValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AttackValidationResponse, result)
+        carrier = cast(AttackCarrier, result)
         if not response.valid_attack:
             # Send the exception chain on failure.
             return ValidationResult.failure(

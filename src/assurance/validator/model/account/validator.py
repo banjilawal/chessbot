@@ -12,15 +12,14 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationFactory
+from assurance import ModelValidationFactory, Validator
 from domain import Account
 from err import AccountValidatorException
-from production import AccountEnvelopeManager
 from transit import AccountCarrier
 from util import LoggingLevelRouter
 
 
-class AccountValidator(ModelValidationFactory[Account]):
+class AccountValidator(ModelValidationFactory[Account], Validator):
     """
     Role
         - Integrity, Consistency Maintenance

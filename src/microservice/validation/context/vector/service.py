@@ -34,7 +34,7 @@ class VectorContextValidationService(
             products from VectorContextValidationService.
 
     Attributes:
-        responder: VectorContextValidationResponder
+        dispatcher: VectorContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class VectorContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[VectorContextValidationResponder] | None = None,
+            dispatcher: Optional[VectorContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[VectorContextValidationResponder]
+            dispatcher: Optional[VectorContextValidationDispatcher]
         """
-        super().__init__(responder=responder or VectorContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or VectorContextValidationDispatcher())
     
     @property
-    def responder(self) -> VectorContextValidationResponder:
-        return cast(VectorContextValidationResponder, super().responder)
+    def dispatcher(self) -> VectorContextValidationDispatcher:
+        return cast(VectorContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class VectorContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class VectorContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorValidationResponse, result)
+        carrier = cast(VectorValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class VectorContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class VectorContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorValidationResponse, result)
+        carrier = cast(VectorValidationResponse, result)
         if not response.valid_vector:
             # Send the exception chain on failure.
             return ValidationResult.failure(

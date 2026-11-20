@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import BoardValidationResponse, ValidationResult
+from artifcat import BoardCarrier, ValidationResult
 from domain import Board, BoardBlueprint
 from err import (
     BoardValidationServiceException, BoardValidationServiceException,
     BoardCarrierEmptyException
 )
 from exchange import (
-    BoardValidationService, ModelValidationService, BoardValidationRequest
+    BoardValidationService, ValidationService, BoardValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class BoardValidationService(
-    ModelValidationService[Board]
+    ValidationService[Board]
 ):
     """
     Role
@@ -37,7 +37,7 @@ class BoardValidationService(
             products from BoardValidationService.
 
     Attributes:
-        responder: BoardValidationResponder
+        dispatcher: BoardValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -54,17 +54,17 @@ class BoardValidationService(
     
     def __init__(
             self,
-            responder: Optional[BoardValidationResponder] | None = None,
+            dispatcher: Optional[BoardValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[BoardValidationResponder]
+            dispatcher: Optional[BoardValidationDispatcher]
         """
-        super().__init__(responder=responder or BoardValidationResponder())
+        super().__init__(dispatcher=dispatcher or BoardValidationDispatcher())
     
     @property
-    def responder(self) -> BoardValidationResponder:
-        return cast(BoardValidationResponder, super().responder)
+    def dispatcher(self) -> BoardValidationDispatcher:
+        return cast(BoardValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -90,7 +90,7 @@ class BoardValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,8 +102,8 @@ class BoardValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(BoardValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(BoardCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidationServiceException(
@@ -120,7 +120,7 @@ class BoardValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Board, response.valid_model)
+        model = cast(Board, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -146,7 +146,7 @@ class BoardValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -158,7 +158,7 @@ class BoardValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(BoardValidationResponse, result)
+        carrier = cast(BoardCarrier, result)
         if not response.valid_board:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from domain import Context
-from exchange import  ContextValidationResponder, ValidationService
+from exchange import  ContextValidationDispatcher, ValidationService
 
 T = TypeVar("T", bound="Context")
 
@@ -29,7 +29,7 @@ class ContextValidationService(ValidationService[T], ABC, Generic[T]):
             from a ContextValidationResponsder.
 
     Attributes:
-        responder: ContextValidationResponder[T]
+        dispatcher: ContextValidationDispatcher[T]
         
     Provides:
         -   def extract_model(
@@ -44,9 +44,9 @@ class ContextValidationService(ValidationService[T], ABC, Generic[T]):
         ValidationService
     """
     
-    def __init__(self, responder: ContextValidationResponder[T]):
+    def __init__(self, dispatcher: ContextValidationDispatcher[T]):
         """
         Args:
-            responder: ContextValidationResponder[T]
+            dispatcher: ContextValidationDispatcher[T]
         """
-        super().__init__(responder=responder)
+        super().__init__(dispatcher=dispatcher)

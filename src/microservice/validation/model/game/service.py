@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import GameValidationResponse, ValidationResult
+from artifcat import GameCarrier, ValidationResult
 from domain import Game, GameBlueprint
 from err import GameValidationServiceException, GameValidationServiceException, GameCarrierEmptyException
 from exchange import (
-    GameValidationService, ModelValidationService, GameValidationRequest
+    GameValidationService, ValidationService, GameValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class GameValidationService(
-    ModelValidationService[Game]
+    ValidationService[Game]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class GameValidationService(
             products from GameValidationService.
 
     Attributes:
-        responder: GameValidationResponder
+        dispatcher: GameValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class GameValidationService(
     
     def __init__(
             self,
-            responder: Optional[GameValidationResponder] | None = None,
+            dispatcher: Optional[GameValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[GameValidationResponder]
+            dispatcher: Optional[GameValidationDispatcher]
         """
-        super().__init__(responder=responder or GameValidationResponder())
+        super().__init__(dispatcher=dispatcher or GameValidationDispatcher())
     
     @property
-    def responder(self) -> GameValidationResponder:
-        return cast(GameValidationResponder, super().responder)
+    def dispatcher(self) -> GameValidationDispatcher:
+        return cast(GameValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class GameValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class GameValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(GameValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(GameCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GameValidationServiceException(
@@ -117,7 +117,7 @@ class GameValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Game, response.valid_model)
+        model = cast(Game, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class GameValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class GameValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(GameValidationResponse, result)
+        carrier = cast(GameCarrier, result)
         if not response.valid_game:
             # Send the exception chain on failure.
             return ValidationResult.failure(

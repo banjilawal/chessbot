@@ -34,7 +34,7 @@ class AlertContextValidationService(
             products from AlertContextValidationService.
 
     Attributes:
-        responder: AlertContextValidationResponder
+        dispatcher: AlertContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class AlertContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[AlertContextValidationResponder] | None = None,
+            dispatcher: Optional[AlertContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[AlertContextValidationResponder]
+            dispatcher: Optional[AlertContextValidationDispatcher]
         """
-        super().__init__(responder=responder or AlertContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or AlertContextValidationDispatcher())
     
     @property
-    def responder(self) -> AlertContextValidationResponder:
-        return cast(AlertContextValidationResponder, super().responder)
+    def dispatcher(self) -> AlertContextValidationDispatcher:
+        return cast(AlertContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class AlertContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class AlertContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AlertValidationResponse, result)
+        carrier = cast(AlertValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class AlertContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class AlertContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AlertValidationResponse, result)
+        carrier = cast(AlertValidationResponse, result)
         if not response.valid_alert:
             # Send the exception chain on failure.
             return ValidationResult.failure(

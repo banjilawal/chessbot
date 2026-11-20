@@ -9,39 +9,43 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 
 from assurance import EncounterValidator
 from artifcat import ValidationResult
 from domain import Encounter
 from err import EncounterValidationDispatcherException
-from transit import ModelValidationDispatcher, EncounterCarrier
+from transit import ValidationDispatcher, EncounterCarrier
 from util import LoggingLevelRouter
 
 
-class EncounterValidationDispatcher(ModelValidationDispatcher[Encounter]):
+class EncounterValidationDispatcher(ValidationDispatcher[Encounter]):
     """
     Role
-        -   Assurance Process Flow
+        -   Performance Management
 
     Responsibilities:
-        1.  Direct the EncounterValidator then send the results back to clients.
+        1.  Distribute Encounter validation jobs among workers, then forward their results.
 
     Attributes:
         validator: EncounterValidator
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
+        -   def execute(job: Any) -> ValidationResult[ValidatorCarrier]
 
     Super Class:
-        ModelValidationDispatcher
+        ValidationDispatcher
     """
 
     def __init__(
             self,
-            validator: EncounterValidator | None = None,
+            validator: Optional[EncounterValidator] | None = None,
     ):
+        """
+        Args:
+            validator: Optional[EncounterValidator]
+        """
         super().__init__(validator=validator or EncounterValidator())
         
     @property
@@ -52,11 +56,11 @@ class EncounterValidationDispatcher(ModelValidationDispatcher[Encounter]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[EncounterCarrier]:
         """
-        Forward a job to a EncounterValidator then deliver the result.
+        Send jobs to a EncounterValidator then forward the results.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the validator cannot
-                certify the job's content.
+            1.  Send an exception chain in the ValidationResult if the validator refuses
+                certification.
             2.  Otherwise, cast the job payload into a EncounterCarrier and send in
                 the success result.
         Args:
@@ -68,8 +72,10 @@ class EncounterValidationDispatcher(ModelValidationDispatcher[Encounter]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is not safe.
+        # --- Handoff to the validator ---#
         validation = self.validator.execute(job)
+        
+        # Handle the case that the candidate is not safe.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -82,5 +88,5 @@ class EncounterValidationDispatcher(ModelValidationDispatcher[Encounter]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(EncounterCarrier, validation.authorization_applicant)
+        carrier = cast(EncounterCarrier, validation.payload)
         return ValidationResult.success(carrier)

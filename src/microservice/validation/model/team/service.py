@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import TeamValidationResponse, ValidationResult
+from artifcat import TeamCarrier, ValidationResult
 from domain import Team, TeamBlueprint
 from err import TeamValidationServiceException, TeamValidationServiceException, TeamCarrierEmptyException
 from exchange import (
-    TeamValidationService, ModelValidationService, TeamValidationRequest
+    TeamValidationService, ValidationService, TeamValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class TeamValidationService(
-    ModelValidationService[Team]
+    ValidationService[Team]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class TeamValidationService(
             products from TeamValidationService.
 
     Attributes:
-        responder: TeamValidationResponder
+        dispatcher: TeamValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class TeamValidationService(
     
     def __init__(
             self,
-            responder: Optional[TeamValidationResponder] | None = None,
+            dispatcher: Optional[TeamValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[TeamValidationResponder]
+            dispatcher: Optional[TeamValidationDispatcher]
         """
-        super().__init__(responder=responder or TeamValidationResponder())
+        super().__init__(dispatcher=dispatcher or TeamValidationDispatcher())
     
     @property
-    def responder(self) -> TeamValidationResponder:
-        return cast(TeamValidationResponder, super().responder)
+    def dispatcher(self) -> TeamValidationDispatcher:
+        return cast(TeamValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class TeamValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class TeamValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TeamValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(TeamCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationServiceException(
@@ -117,7 +117,7 @@ class TeamValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Team, response.valid_model)
+        model = cast(Team, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class TeamValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class TeamValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TeamValidationResponse, result)
+        carrier = cast(TeamCarrier, result)
         if not response.valid_team:
             # Send the exception chain on failure.
             return ValidationResult.failure(

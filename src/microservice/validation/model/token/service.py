@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import TokenValidationResponse, ValidationResult
+from artifcat import TokenCarrier, ValidationResult
 from domain import Token, TokenBlueprint
 from err import TokenValidationServiceException, TokenValidationServiceException, TokenCarrierEmptyException
 from exchange import (
-    TokenValidationService, ModelValidationService, TokenValidationRequest
+    TokenValidationService, ValidationService, TokenValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class TokenValidationService(
-    ModelValidationService[Token]
+    ValidationService[Token]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class TokenValidationService(
             products from TokenValidationService.
 
     Attributes:
-        responder: TokenValidationResponder
+        dispatcher: TokenValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class TokenValidationService(
     
     def __init__(
             self,
-            responder: Optional[TokenValidationResponder] | None = None,
+            dispatcher: Optional[TokenValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[TokenValidationResponder]
+            dispatcher: Optional[TokenValidationDispatcher]
         """
-        super().__init__(responder=responder or TokenValidationResponder())
+        super().__init__(dispatcher=dispatcher or TokenValidationDispatcher())
     
     @property
-    def responder(self) -> TokenValidationResponder:
-        return cast(TokenValidationResponder, super().responder)
+    def dispatcher(self) -> TokenValidationDispatcher:
+        return cast(TokenValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class TokenValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class TokenValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TokenValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(TokenCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationServiceException(
@@ -117,7 +117,7 @@ class TokenValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Token, response.valid_model)
+        model = cast(Token, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class TokenValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class TokenValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(TokenValidationResponse, result)
+        carrier = cast(TokenCarrier, result)
         if not response.valid_token:
             # Send the exception chain on failure.
             return ValidationResult.failure(

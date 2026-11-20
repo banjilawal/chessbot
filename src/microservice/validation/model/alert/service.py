@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AlertValidationResponse, ValidationResult
+from artifcat import AlertCarrier, ValidationResult
 from domain import Alert, AlertBlueprint
 from err import AlertValidationServiceException, AlertValidationServiceException, EmptyAlertCarrierException
 from exchange import (
-    AlertValidationService, ModelValidationService, AlertValidationRequest
+    AlertValidationService, ValidationService, AlertValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class AlertValidationService(
-    ModelValidationService[Alert]
+    ValidationService[Alert]
 ):
     """
     Role
@@ -34,7 +34,7 @@ class AlertValidationService(
             products from AlertValidationService.
 
     Attributes:
-        responder: AlertValidationResponder
+        dispatcher: AlertValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class AlertValidationService(
     
     def __init__(
             self,
-            responder: Optional[AlertValidationResponder] | None = None,
+            dispatcher: Optional[AlertValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[AlertValidationResponder]
+            dispatcher: Optional[AlertValidationDispatcher]
         """
-        super().__init__(responder=responder or AlertValidationResponder())
+        super().__init__(dispatcher=dispatcher or AlertValidationDispatcher())
     
     @property
-    def responder(self) -> AlertValidationResponder:
-        return cast(AlertValidationResponder, super().responder)
+    def dispatcher(self) -> AlertValidationDispatcher:
+        return cast(AlertValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class AlertValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class AlertValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AlertValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(AlertCarrier, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AlertValidationServiceException(
@@ -117,7 +117,7 @@ class AlertValidationService(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Alert, response.valid_model)
+        model = cast(Alert, carrier.entity)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class AlertValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class AlertValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(AlertValidationResponse, result)
+        carrier = cast(AlertCarrier, result)
         if not response.valid_alert:
             # Send the exception chain on failure.
             return ValidationResult.failure(

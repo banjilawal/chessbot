@@ -46,6 +46,7 @@ class VectorCarrier(ModelCarrier[Vector]):
             model: Optional[Vector]
             blueprint: Optional[VectorBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     

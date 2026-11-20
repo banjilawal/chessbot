@@ -1,15 +1,15 @@
-# src/transit/dispatcher/validator/model/alert/__init__.py
+# src/transit/dispatcher/validator/model/vector/__init__.py
 
 """
-Module: transit.dispatcher.validator.model.alert.__init__
+Module: transit.dispatcher.validator.model.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.DISPATCHER.VALIDATOR.MODEL.ALERT PACKAGE ===========#
+# =========== TRANSIT.DISPATCHER.VALIDATOR.MODEL.VECTOR PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .dispatcher import AlertValidationDispatcher
+from .dispatcher import VectorValidationDispatcher

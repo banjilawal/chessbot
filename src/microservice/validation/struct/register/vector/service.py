@@ -34,7 +34,7 @@ class VectorRegisterValidationService(
             products from VectorRegisterValidationService.
 
     Attributes:
-        responder: VectorRegisterValidationResponder
+        dispatcher: VectorRegisterValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -51,17 +51,17 @@ class VectorRegisterValidationService(
     
     def __init__(
             self,
-            responder: Optional[VectorRegisterValidationResponder] | None = None,
+            dispatcher: Optional[VectorRegisterValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[VectorRegisterValidationResponder]
+            dispatcher: Optional[VectorRegisterValidationDispatcher]
         """
-        super().__init__(responder=responder or VectorRegisterValidationResponder())
+        super().__init__(dispatcher=dispatcher or VectorRegisterValidationDispatcher())
     
     @property
-    def responder(self) -> VectorRegisterValidationResponder:
-        return cast(VectorRegisterValidationResponder, super().responder)
+    def dispatcher(self) -> VectorRegisterValidationDispatcher:
+        return cast(VectorRegisterValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class VectorRegisterValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +99,8 @@ class VectorRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorRegisterValidationResponse, result)
-        if not response.valid_model:
+        carrier = cast(VectorRegisterValidationResponse, result)
+        if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterValidationServiceException(
@@ -117,7 +117,7 @@ class VectorRegisterValidationService(
                 )
             )
         # --- Send the work product. ---#
-        register = cast(VectorRegister, response.valid_model)
+        register = cast(VectorRegister, carrier.has_model)
         return ValidationResult.success(register)
     
     @LoggingLevelRouter.monitor
@@ -143,7 +143,7 @@ class VectorRegisterValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class VectorRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(VectorRegisterValidationResponse, result)
+        carrier = cast(VectorRegisterValidationResponse, result)
         if not response.valid_vector:
             # Send the exception chain on failure.
             return ValidationResult.failure(

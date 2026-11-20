@@ -34,7 +34,7 @@ class ManeuverContextValidationService(
             products from ManeuverContextValidationService.
 
     Attributes:
-        responder: ManeuverContextValidationResponder
+        dispatcher: ManeuverContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class ManeuverContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[ManeuverContextValidationResponder] | None = None,
+            dispatcher: Optional[ManeuverContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ManeuverContextValidationResponder]
+            dispatcher: Optional[ManeuverContextValidationDispatcher]
         """
-        super().__init__(responder=responder or ManeuverContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or ManeuverContextValidationDispatcher())
     
     @property
-    def responder(self) -> ManeuverContextValidationResponder:
-        return cast(ManeuverContextValidationResponder, super().responder)
+    def dispatcher(self) -> ManeuverContextValidationDispatcher:
+        return cast(ManeuverContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class ManeuverContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class ManeuverContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ManeuverValidationResponse, result)
+        carrier = cast(ManeuverValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class ManeuverContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class ManeuverContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ManeuverValidationResponse, result)
+        carrier = cast(ManeuverValidationResponse, result)
         if not response.valid_maneuver:
             # Send the exception chain on failure.
             return ValidationResult.failure(

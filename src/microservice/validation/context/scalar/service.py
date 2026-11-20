@@ -34,7 +34,7 @@ class ScalarContextValidationService(
             products from ScalarContextValidationService.
 
     Attributes:
-        responder: ScalarContextValidationResponder
+        dispatcher: ScalarContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class ScalarContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[ScalarContextValidationResponder] | None = None,
+            dispatcher: Optional[ScalarContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ScalarContextValidationResponder]
+            dispatcher: Optional[ScalarContextValidationDispatcher]
         """
-        super().__init__(responder=responder or ScalarContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or ScalarContextValidationDispatcher())
     
     @property
-    def responder(self) -> ScalarContextValidationResponder:
-        return cast(ScalarContextValidationResponder, super().responder)
+    def dispatcher(self) -> ScalarContextValidationDispatcher:
+        return cast(ScalarContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class ScalarContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class ScalarContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ScalarValidationResponse, result)
+        carrier = cast(ScalarValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class ScalarContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class ScalarContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ScalarValidationResponse, result)
+        carrier = cast(ScalarValidationResponse, result)
         if not response.valid_scalar:
             # Send the exception chain on failure.
             return ValidationResult.failure(

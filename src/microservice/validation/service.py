@@ -14,7 +14,8 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from domain import Blueprint
-from exchange import ValidationRequest, ValidationResponder
+from exchange import ValidationRequest
+from transit import ValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
@@ -28,7 +29,7 @@ class ValidationService(ABC, Generic[T]):
         1.  Extract the EntityCarrier from a ValidationResponse attribute
 
     Attributes:
-        responder: ValidationService[T]
+        dispatcher: ValidationService[T]
 
     Provides:
         -   def extract_model(
@@ -41,14 +42,18 @@ class ValidationService(ABC, Generic[T]):
 
     Super Class:
     """
-    _responder = ValidationResponder[T]
+    _dispatcher = ValidationDispatcher[T]
     
-    def __init__(self, responder: ValidationResponder[T]):
+    def __init__(self, dispatcher: ValidationDispatcher[T]):
         """
         Args:
-            responder: ValidationResponder[T]
+            dispatcher: ValidationDispatcher[T]
         """
-        self._responder = responder
+        self._dispatcher = dispatcher
+        
+    @property
+    def dispatcher(self) -> ValidationDispatcher[T]:
+        return self._dispatcher
     
     @abstractmethod
     @LoggingLevelRouter.monitor

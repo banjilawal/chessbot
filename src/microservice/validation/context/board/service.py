@@ -37,7 +37,7 @@ class BoardContextValidationService(
             products from BoardContextValidationService.
 
     Attributes:
-        responder: BoardContextValidationResponder
+        dispatcher: BoardContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -54,17 +54,17 @@ class BoardContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[BoardContextValidationResponder] | None = None,
+            dispatcher: Optional[BoardContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[BoardContextValidationResponder]
+            dispatcher: Optional[BoardContextValidationDispatcher]
         """
-        super().__init__(responder=responder or BoardContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or BoardContextValidationDispatcher())
     
     @property
-    def responder(self) -> BoardContextValidationResponder:
-        return cast(BoardContextValidationResponder, super().responder)
+    def dispatcher(self) -> BoardContextValidationDispatcher:
+        return cast(BoardContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -90,7 +90,7 @@ class BoardContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,7 +102,7 @@ class BoardContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(BoardValidationResponse, result)
+        carrier = cast(BoardValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -146,7 +146,7 @@ class BoardContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -158,7 +158,7 @@ class BoardContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(BoardValidationResponse, result)
+        carrier = cast(BoardValidationResponse, result)
         if not response.valid_board:
             # Send the exception chain on failure.
             return ValidationResult.failure(

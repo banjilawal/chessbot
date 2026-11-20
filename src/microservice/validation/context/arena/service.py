@@ -34,7 +34,7 @@ class ArenaContextValidationService(
             products from ArenaContextValidationService.
 
     Attributes:
-        responder: ArenaContextValidationResponder
+        dispatcher: ArenaContextValidationDispatcher
         
     Provides:
         -   def extract_context(
@@ -51,17 +51,17 @@ class ArenaContextValidationService(
     
     def __init__(
             self,
-            responder: Optional[ArenaContextValidationResponder] | None = None,
+            dispatcher: Optional[ArenaContextValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ArenaContextValidationResponder]
+            dispatcher: Optional[ArenaContextValidationDispatcher]
         """
-        super().__init__(responder=responder or ArenaContextValidationResponder())
+        super().__init__(dispatcher=dispatcher or ArenaContextValidationDispatcher())
     
     @property
-    def responder(self) -> ArenaContextValidationResponder:
-        return cast(ArenaContextValidationResponder, super().responder)
+    def dispatcher(self) -> ArenaContextValidationDispatcher:
+        return cast(ArenaContextValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class ArenaContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class ArenaContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ArenaValidationResponse, result)
+        carrier = cast(ArenaValidationResponse, result)
         if not response.valid_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class ArenaContextValidationService(
         method = f"{self.__class__.__name__}.extract_context"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class ArenaContextValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ArenaValidationResponse, result)
+        carrier = cast(ArenaValidationResponse, result)
         if not response.valid_arena:
             # Send the exception chain on failure.
             return ValidationResult.failure(

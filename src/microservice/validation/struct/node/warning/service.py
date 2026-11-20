@@ -30,7 +30,7 @@ class EncounterWarningNodeValidationService(
             products from WarningNodeValidationService.
 
     Attributes:
-        responder: WarningNodeValidationResponder
+        dispatcher: WarningNodeValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -47,17 +47,17 @@ class EncounterWarningNodeValidationService(
     
     def __init__(
             self,
-            responder: Optional[WarningNodeValidationResponder] | None = None,
+            dispatcher: Optional[WarningNodeValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[WarningNodeValidationResponder]
+            dispatcher: Optional[WarningNodeValidationDispatcher]
         """
-        super().__init__(responder=responder or WarningNodeValidationResponder())
+        super().__init__(dispatcher=dispatcher or WarningNodeValidationDispatcher())
     
     @property
-    def responder(self) -> WarningNodeValidationResponder:
-        return cast(WarningNodeValidationResponder, super().responder)
+    def dispatcher(self) -> WarningNodeValidationDispatcher:
+        return cast(WarningNodeValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -83,7 +83,7 @@ class EncounterWarningNodeValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -95,7 +95,7 @@ class EncounterWarningNodeValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(WarningNodeValidationResponse, result)
+        carrier = cast(WarningNodeValidationResponse, result)
         if not response.valid_node:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -139,7 +139,7 @@ class EncounterWarningNodeValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -151,7 +151,7 @@ class EncounterWarningNodeValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(WarningNodeValidationResponse, result)
+        carrier = cast(WarningNodeValidationResponse, result)
         if not response.valid_warning:
             # Send the exception chain on failure.
             return ValidationResult.failure(

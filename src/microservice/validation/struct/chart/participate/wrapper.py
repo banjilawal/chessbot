@@ -32,7 +32,7 @@ class ParticipationValidationService(
             products from ParticipationValidationService.
 
     Attributes:
-        responder: ParticipationValidationResponder
+        dispatcher: ParticipationValidationDispatcher
         
     Provides:
         -   def extract_model(
@@ -49,17 +49,17 @@ class ParticipationValidationService(
     
     def __init__(
             self,
-            responder: Optional[ParticipationValidationResponder] | None = None,
+            dispatcher: Optional[ParticipationValidationDispatcher] | None = None,
     ):
         """
         Args:
-            responder: Optional[ParticipationValidationResponder]
+            dispatcher: Optional[ParticipationValidationDispatcher]
         """
-        super().__init__(responder=responder or ParticipationValidationResponder())
+        super().__init__(dispatcher=dispatcher or ParticipationValidationDispatcher())
     
     @property
-    def responder(self) -> ParticipationValidationResponder:
-        return cast(ParticipationValidationResponder, super().responder)
+    def dispatcher(self) -> ParticipationValidationDispatcher:
+        return cast(ParticipationValidationDispatcher, super().dispatcher)
     
 
     @LoggingLevelRouter.monitor
@@ -85,7 +85,7 @@ class ParticipationValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -97,7 +97,7 @@ class ParticipationValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ParticipationValidationResponse, result)
+        carrier = cast(ParticipationValidationResponse, result)
         if not response.valid_chart:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -141,7 +141,7 @@ class ParticipationValidationService(
         method = f"{self.__class__.__name__}.extract_model"
         
         # Handle the case that a failure response is received.
-        result = self.service.execute(request)
+        result = self.dispatcher.execute(request)
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -153,7 +153,7 @@ class ParticipationValidationService(
                     ex=result.exception,
                 )
             )
-        response = cast(ParticipationValidationResponse, result)
+        carrier = cast(ParticipationValidationResponse, result)
         if not response.valid_token:
             # Send the exception chain on failure.
             return ValidationResult.failure(
