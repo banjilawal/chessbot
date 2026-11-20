@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .request import DistanceComputationRequest
+from .request import DistanceRequest

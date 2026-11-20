@@ -1,0 +1,18 @@
+# src/exchange/request/permission/computation/__init__.py
+
+"""
+Module: exchange.request.permission.computation.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== EXCHANGE.REQUEST.PERMISSION.COMPUTATION PACKAGE ===========#
+
+# Packages
+from .addition  import *
+from .distance import *
+from .addition import *
+
+# Modules
+from .request import ComputationPermissionRequest
