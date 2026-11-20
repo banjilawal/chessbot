@@ -49,10 +49,6 @@ class ValidationService(ABC, Generic[T]):
             responder: ValidationResponder[T]
         """
         self._responder = responder
-        
-    @property
-    def responder(self) -> ValidationResponder[T]:
-        return self._responder
     
     @abstractmethod
     @LoggingLevelRouter.monitor

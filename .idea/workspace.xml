@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/insertion/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/insertion/push/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/insertion/push/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/insertion/push/account/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/insertion/push/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/search/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/search/model/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/search/model/account/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/search/model/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/search/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/worker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/add/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/add/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/distance/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/distance/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/product/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/product/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/transaction/computation/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/maneuver/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/maneuver/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/promotion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/promotion/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/transaction/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/transaction/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/service/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/service/service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/validation/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/validation/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,61 +63,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0000000721131357" />
-      <entry key="M2" value="1.0020657858576194" />
-      <entry key="M5" value="2.213047266911593" />
-      <entry key="M10" value="14.34412785042896" />
-      <entry key="M15" value="34.961138208454805" />
-      <entry key="M30" value="114.06056362611545" />
-      <entry key="H1" value="286.35278207460556" />
-      <entry key="H2" value="576.7039242018717" />
-      <entry key="H4" value="979.3965160295813" />
-      <entry key="D1" value="2764.423279278393" />
-      <entry key="W1" value="14626.705547639285" />
+      <entry key="MS100" value="1.0001317417280888" />
+      <entry key="MS500" value="1.1674729503108647" />
+      <entry key="S2" value="1.6420909735710012" />
+      <entry key="S5" value="2.0011407941495882" />
+      <entry key="S10" value="2.784657516215196" />
+      <entry key="S30" value="6.214344850026025" />
+      <entry key="S60" value="9.832187848013195" />
+      <entry key="M2" value="13.907088398707888" />
+      <entry key="M5" value="23.55887685262978" />
+      <entry key="M10" value="45.293974909087375" />
+      <entry key="M15" value="68.5562151654543" />
+      <entry key="M30" value="141.32441436220873" />
+      <entry key="H1" value="301.415731172905" />
+      <entry key="H2" value="594.6896522158294" />
+      <entry key="H4" value="1019.4395150822548" />
+      <entry key="D1" value="2869.979280705847" />
+      <entry key="W1" value="14747.022922314332" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="7.794202953426996E-269" />
-      <entry key="S5" value="8.936089511573406E-108" />
-      <entry key="S10" value="4.7101223154732815E-54" />
-      <entry key="S30" value="3.391234970085277E-18" />
-      <entry key="S60" value="3.296158723772428E-9" />
-      <entry key="M2" value="1.1011498354179663E-4" />
-      <entry key="M5" value="0.0723083449651587" />
-      <entry key="M10" value="1.0252204324267762" />
-      <entry key="M15" value="2.9955767513478433" />
-      <entry key="M30" value="9.978266057430536" />
-      <entry key="H1" value="19.807501087887808" />
-      <entry key="H2" value="32.05235739582071" />
-      <entry key="H4" value="52.45501616001291" />
-      <entry key="D1" value="167.8740541711347" />
-      <entry key="W1" value="807.245191572711" />
+      <entry key="S2" value="3.7395224570150003E-162" />
+      <entry key="S5" value="4.049877955942675E-65" />
+      <entry key="S10" value="8.991839893700394E-33" />
+      <entry key="S30" value="3.300273709256771E-11" />
+      <entry key="S60" value="8.125094309310564E-6" />
+      <entry key="M2" value="0.0040738116120242135" />
+      <entry key="M5" value="0.1943733709825572" />
+      <entry key="M10" value="0.865821136758134" />
+      <entry key="M15" value="1.7766423493600778" />
+      <entry key="M30" value="6.059202618346922" />
+      <entry key="H1" value="15.183088513073042" />
+      <entry key="H2" value="28.588313972406922" />
+      <entry key="H4" value="50.15855910641821" />
+      <entry key="D1" value="168.44844094450607" />
+      <entry key="W1" value="808.8971292857625" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.9762519571819573E-7" />
-      <entry key="MS500" value="0.04951467568281056" />
-      <entry key="S2" value="0.47171912544768" />
-      <entry key="S5" value="0.7404119063141298" />
-      <entry key="S10" value="0.8604719090790413" />
-      <entry key="S30" value="0.9511424516270051" />
-      <entry key="S60" value="0.9752653989621071" />
-      <entry key="M2" value="0.9897267939787934" />
-      <entry key="M5" value="2.2784946482464203" />
-      <entry key="M10" value="15.353808046266431" />
-      <entry key="M15" value="37.93159824222876" />
-      <entry key="M30" value="124.00276471566848" />
-      <entry key="H1" value="306.12590773200577" />
-      <entry key="H2" value="608.7264414123838" />
-      <entry key="H4" value="1031.8229857009153" />
-      <entry key="D1" value="2932.2806499210787" />
-      <entry key="W1" value="15433.936925259555" />
+      <entry key="MS100" value="0.1118781555318754" />
+      <entry key="MS500" value="0.6746006576210938" />
+      <entry key="S2" value="1.3119569949340988" />
+      <entry key="S5" value="1.8045440457094986" />
+      <entry key="S10" value="2.6261421614995832" />
+      <entry key="S30" value="6.077435673404387" />
+      <entry key="S60" value="9.725608759488741" />
+      <entry key="M2" value="13.835226805288704" />
+      <entry key="M5" value="23.700073409043814" />
+      <entry key="M10" value="46.12054989766293" />
+      <entry key="M15" value="70.2993028753588" />
+      <entry key="M30" value="147.35205496270575" />
+      <entry key="H1" value="316.56777768385876" />
+      <entry key="H2" value="623.249343874946" />
+      <entry key="H4" value="1069.5701118196998" />
+      <entry key="D1" value="3038.410914263791" />
+      <entry key="W1" value="15555.90621178426" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -159,7 +152,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/permitter",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/exchange/request/transaction/computation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -173,18 +166,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/exchange/request/transaction/computation" />
+      <recent name="$PROJECT_DIR$/src/exchange/request/transaction" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter" />
       <recent name="$PROJECT_DIR$/src/operation/computation" />
       <recent name="$PROJECT_DIR$/src/randomize" />
-      <recent name="$PROJECT_DIR$/src/logic/randomize/email" />
-      <recent name="$PROJECT_DIR$/src/logic/randomize" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/microservice" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/assets/icons/svg" />
       <recent name="$PROJECT_DIR$/src/assets/icons/png" />
       <recent name="$PROJECT_DIR$/src/assets/icons/png/black" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction" />
     </key>
   </component>
   <component name="RunManager" selected="Python.worker">
@@ -1000,7 +993,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="155264000" />
+      <workItem from="1794227184139" duration="157384000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2359,7 +2352,7 @@
           <option name="timeStamp" value="507" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exchange/service/validation/struct/chart/participate/wrapper.py</url>
+          <url>file://$PROJECT_DIR$/src/microservice/validation/struct/chart/participate/wrapper.py</url>
           <line>110</line>
           <option name="timeStamp" value="509" />
         </line-breakpoint>
@@ -2389,7 +2382,7 @@
           <option name="timeStamp" value="516" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exchange/service/validation/struct/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/microservice/validation/struct/__init__.py</url>
           <line>13</line>
           <option name="timeStamp" value="517" />
         </line-breakpoint>
@@ -2645,7 +2638,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/exchange/request/transaction/__init__.py</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="575" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -2770,7 +2763,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/exchange/service/__init__.py</url>
-          <line>12</line>
+          <line>11</line>
           <option name="timeStamp" value="613" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
