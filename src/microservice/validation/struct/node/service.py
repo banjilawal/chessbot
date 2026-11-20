@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Node, NodeBlueprint
 from exchange import (
-    NodeValidationRequest, NodeValidationService, StructValidationService,
+    NodeValidationRequest, NodeValidationService, ValidationMicroservice,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
 class NodeValidationService(
-    StructValidationService[T], ABC, Generic[T]
+    ValidationMicroservice[T], ABC, Generic[T]
 ):
     """
     Role

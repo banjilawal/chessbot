@@ -16,4 +16,4 @@ from .node import *
 from .register import *
 
 # Modules
-from .service import StructValidationService
+from .service import ValidationMicroservice

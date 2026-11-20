@@ -15,13 +15,13 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Struct, StructBlueprint
 from exchange import (
-    StructValidationRequest, StructValidationService, ValidationService
+    StructValidationRequest, ValidationMicroservice, ValidationService
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Struct")
 
-class StructValidationService(ValidationService[T], ABC, Generic[T]):
+class ValidationMicroservice(ValidationService[T], ABC, Generic[T]):
     """
     Role
         -   Service
@@ -33,7 +33,7 @@ class StructValidationService(ValidationService[T], ABC, Generic[T]):
             from a StructValidationResponse.
 
     Attributes:
-        dispatcher: StructValidationService[T]
+        dispatcher: ValidationMicroservice[T]
         
     Provides:
         -   def extract_model(
@@ -50,16 +50,16 @@ class StructValidationService(ValidationService[T], ABC, Generic[T]):
         ValidationService
     """
     
-    def __init__(self, dispatcher: StructValidationService[T]):
+    def __init__(self, dispatcher: ValidationMicroservice[T]):
         """
         Args:
-            dispatcher: StructValidationService[T]
+            dispatcher: ValidationMicroservice[T]
         """
         super().__init__(dispatcher=dispatcher)
     
     @property
-    def dispatcher(self) -> StructValidationService[T]:
-        return cast(StructValidationService[T], super().service)
+    def dispatcher(self) -> ValidationMicroservice[T]:
+        return cast(ValidationMicroservice[T], super().service)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import ArchetypeBinder, BinderBlueprint
 from exchange import (
-    BinderValidationRequest, BinderValidationService, StructValidationService,
+    BinderValidationRequest, BinderValidationService, ValidationMicroservice,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="ArchetypeBinder")
 
 class BinderValidationService(
-    StructValidationService[T], ABC, Generic[T]
+    ValidationMicroservice[T], ABC, Generic[T]
 ):
     """
     Role

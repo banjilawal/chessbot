@@ -15,4 +15,4 @@ from .model import *
 from .struct import *
 
 # Modules
-from .service import ValidationService
+from .microservice import ValidationMicroservice

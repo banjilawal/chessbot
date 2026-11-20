@@ -56,7 +56,7 @@ class AccountValidationDispatcher(ValidationDispatcher[Account]):
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> ValidationResult[AccountCarrier]:
         """
-        Send jobs to a AccountValidator then forward the results.
+        Send jobs to an AccountValidator then forward the results.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the validator refuses

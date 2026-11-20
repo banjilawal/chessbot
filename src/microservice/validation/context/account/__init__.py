@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .service import AccountContextValidationService
+from .microservice import AccountContextValidationService

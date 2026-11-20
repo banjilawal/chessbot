@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL.ACCOUNT PACKAGE ===========#
 
 # Packages
-from .router import *
 from .human import *
 from .machine import *
 

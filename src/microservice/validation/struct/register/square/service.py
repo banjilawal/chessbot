@@ -11,37 +11,37 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import SquareRegisterValidationResponse, ValidationResult
+from artifcat import ValidationResult
 from domain import SquareRegister, SquareRegisterBlueprint
-from err import SquareCarrierEmptyException, SquareRegisterValidationServiceException
-from exchange import RegisterValidationService, SquareRegisterValidationRequest
+from err import SquareRegisterCarrierEmptyException, SquareRegisterValidationServiceException
+from exchange import SquareRegisterValidationRequest
+from microservice import ValidationMicroservice
+from transit import SquareRegisterCarrier, SquareRegisterValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class SquareRegisterValidationService(
-    RegisterValidationService[SquareRegister]
-):
+class SquareRegisterValidationService(ValidationMicroservice[SquareRegister]):
     """
     Role
         -   Service
 
     Responsibilities:
         1.  Extract either safe:
-                -   Square
-                _   SquareBlueprint
+                -   SquareRegister
+                _   SquareRegisterBlueprint
             products from SquareRegisterValidationService.
 
     Attributes:
         dispatcher: SquareRegisterValidationDispatcher
-        
+
     Provides:
         -   def extract_model(
                     request: SquareRegisterValidationRequest
-            ) -> ValidationResult[Square]
-            
+            ) -> ValidationResult[SquareRegister]
+
         -   def extract_blueprint(
                     request: SquareRegisterValidationRequest
-            ) -> ValidationResult[SquareBlueprint]
+            ) -> ValidationResult[SquareRegisterBlueprint]
 
     Super Class:
         ValidationService
@@ -61,31 +61,31 @@ class SquareRegisterValidationService(
     def dispatcher(self) -> SquareRegisterValidationDispatcher:
         return cast(SquareRegisterValidationDispatcher, super().dispatcher)
     
-
     @LoggingLevelRouter.monitor
     def extract_model(
-            self, 
-            request: SquareRegisterValidationRequest,
+            self,
+            request: SquareRegisterValidationRequest
     ) -> ValidationResult[SquareRegister]:
         """
-        Extract a Square safe to use.
+        Extract a SquareRegister safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the service
+            1.  Send an exception chain in the ValidationResult if the dispatcher
                 fails.
-            2.  Otherwise, extract the Square from the success response then send it 
-                to the client.
+            2.  Otherwise, extract the SquareRegister from the result then send it to the client.
         Args:
             request: SquareRegisterValidationRequest
         Result:
-            ValidationResult[Square]
+            ValidationResult[SquareRegister]
         Raises:
             SquareRegisterValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
-        # Handle the case that a failure response is received.
+        # --- Handoff the request for assignment to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that safety is not certified.
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -97,7 +97,10 @@ class SquareRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        carrier = cast(SquareRegisterValidationResponse, result)
+        # --- Cast the payload for additional processing. ---#
+        carrier = cast(SquareRegisterCarrier, result.payload)
+        
+        # Handle the case that the carrier has the wrong product.
         if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -106,17 +109,17 @@ class SquareRegisterValidationService(
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidationServiceException.MSG,
                     err_code=SquareRegisterValidationServiceException.ERR_CODE,
-                    ex=SquareCarrierEmptyException(
+                    ex=SquareRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareCarrierEmptyException.MSG,
-                        err_code=SquareCarrierEmptyException.ERR_CODE,
+                        msg=SquareRegisterCarrierEmptyException.MSG,
+                        err_code=SquareRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        register = cast(SquareRegister, carrier.has_model)
-        return ValidationResult.success(register)
+        model = cast(SquareRegister, carrier.entity)
+        return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
     def extract_blueprint(
@@ -124,24 +127,26 @@ class SquareRegisterValidationService(
             request: SquareRegisterValidationRequest,
     ) -> ValidationResult[SquareRegisterBlueprint]:
         """
-        Extract a SquareBlueprint safe to use.
+        Extract an SquareRegisterBlueprint safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the service
+            1.  Send an exception chain in the ValidationResult if the dispatcher
                 fails.
-            2.  Otherwise, extract the SquareBluprint from the success response
-                then send it to the client.
+            2.  Otherwise, extract the SquareRegisterBlueprint from the result then send it
+                to the client.
         Args:
             request: SquareRegisterValidationRequest
         Result:
-            ValidationResult[SquareBlueprint]
+            ValidationResult[SquareRegisterBlueprint]
         Raises:
             SquareRegisterValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
-        # Handle the case that a failure response is received.
+        # --- Handoff the request for assignment to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that safety is not certified.
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -153,8 +158,11 @@ class SquareRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        carrier = cast(SquareRegisterValidationResponse, result)
-        if not response.valid_square:
+        # --- Cast the payload for additional processing. ---#
+        carrier = cast(SquareRegisterCarrier, result.payload)
+        
+        # Handle the case that the carrier has the wrong product.
+        if not carrier.has_blueprint:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareRegisterValidationServiceException(
@@ -162,14 +170,14 @@ class SquareRegisterValidationService(
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidationServiceException.MSG,
                     err_code=SquareRegisterValidationServiceException.ERR_CODE,
-                    ex=SquareCarrierEmptyException(
+                    ex=SquareRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareCarrierEmptyException.MSG,
-                        err_code=SquareCarrierEmptyException.ERR_CODE,
+                        msg=SquareRegisterCarrierEmptyException.MSG,
+                        err_code=SquareRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(SquareRegisterBlueprint, response.valid_blueprint)
+        blueprint = cast(SquareRegisterBlueprint, carrier.entity)
         return ValidationResult.success(blueprint)

@@ -11,39 +11,37 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import VectorRegisterValidationResponse, ValidationResult
-from domain import Vector, VectorBlueprint, VectorRegister, VectorRegisterBlueprint
-from err import VectorRegisterValidationServiceException, VectorRegisterValidationServiceException, VectorCarrierEmptyException
-from exchange import (
-    VectorRegisterValidationService, RegisterValidationService, VectorRegisterValidationRequest
-)
+from artifcat import ValidationResult
+from domain import VectorRegister, VectorRegisterBlueprint
+from err import VectorRegisterValidationServiceException
+from exchange import VectorRegisterValidationRequest
+from microservice import ValidationMicroservice
+from transit import VectorRegisterCarrier, VectorRegisterValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class VectorRegisterValidationService(
-    RegisterValidationService[VectorRegister]
-):
+class VectorRegisterValidationService(ValidationMicroservice[VectorRegister]):
     """
     Role
         -   Service
 
     Responsibilities:
         1.  Extract either safe:
-                -   Vector
-                _   VectorBlueprint
+                -   VectorRegister
+                _   VectorRegisterBlueprint
             products from VectorRegisterValidationService.
 
     Attributes:
         dispatcher: VectorRegisterValidationDispatcher
-        
+
     Provides:
         -   def extract_model(
                     request: VectorRegisterValidationRequest
-            ) -> ValidationResult[Vector]
-            
+            ) -> ValidationResult[VectorRegister]
+
         -   def extract_blueprint(
                     request: VectorRegisterValidationRequest
-            ) -> ValidationResult[VectorBlueprint]
+            ) -> ValidationResult[VectorRegisterBlueprint]
 
     Super Class:
         ValidationService
@@ -63,31 +61,31 @@ class VectorRegisterValidationService(
     def dispatcher(self) -> VectorRegisterValidationDispatcher:
         return cast(VectorRegisterValidationDispatcher, super().dispatcher)
     
-
     @LoggingLevelRouter.monitor
     def extract_model(
-            self, 
-            request: VectorRegisterValidationRequest,
+            self,
+            request: VectorRegisterValidationRequest
     ) -> ValidationResult[VectorRegister]:
         """
-        Extract a Vector safe to use.
+        Extract a VectorRegister safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the service
+            1.  Send an exception chain in the ValidationResult if the dispatcher
                 fails.
-            2.  Otherwise, extract the Vector from the success response then send it 
-                to the client.
+            2.  Otherwise, extract the VectorRegister from the result then send it to the client.
         Args:
             request: VectorRegisterValidationRequest
         Result:
-            ValidationResult[Vector]
+            ValidationResult[VectorRegister]
         Raises:
             VectorRegisterValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
-        # Handle the case that a failure response is received.
+        # --- Handoff the request for assignment to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that safety is not certified.
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,7 +97,10 @@ class VectorRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        carrier = cast(VectorRegisterValidationResponse, result)
+        # --- Cast the payload for additional processing. ---#
+        carrier = cast(VectorRegisterCarrier, result.payload)
+        
+        # Handle the case that the carrier has the wrong product.
         if not carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -108,17 +109,17 @@ class VectorRegisterValidationService(
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterValidationServiceException.MSG,
                     err_code=VectorRegisterValidationServiceException.ERR_CODE,
-                    ex=VectorCarrierEmptyException(
+                    ex=VectorRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorCarrierEmptyException.MSG,
-                        err_code=VectorCarrierEmptyException.ERR_CODE,
+                        msg=VectorRegisterCarrierEmptyException.MSG,
+                        err_code=VectorRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        register = cast(VectorRegister, carrier.has_model)
-        return ValidationResult.success(register)
+        model = cast(VectorRegister, carrier.entity)
+        return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
     def extract_blueprint(
@@ -126,24 +127,26 @@ class VectorRegisterValidationService(
             request: VectorRegisterValidationRequest,
     ) -> ValidationResult[VectorRegisterBlueprint]:
         """
-        Extract a VectorBlueprint safe to use.
+        Extract an VectorRegisterBlueprint safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the service
+            1.  Send an exception chain in the ValidationResult if the dispatcher
                 fails.
-            2.  Otherwise, extract the VectorBluprint from the success response
-                then send it to the client.
+            2.  Otherwise, extract the VectorRegisterBlueprint from the result then send it
+                to the client.
         Args:
             request: VectorRegisterValidationRequest
         Result:
-            ValidationResult[VectorBlueprint]
+            ValidationResult[VectorRegisterBlueprint]
         Raises:
             VectorRegisterValidationServiceException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
-        # Handle the case that a failure response is received.
+        # --- Handoff the request for assignment to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that safety is not certified.
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -155,8 +158,11 @@ class VectorRegisterValidationService(
                     ex=result.exception,
                 )
             )
-        carrier = cast(VectorRegisterValidationResponse, result)
-        if not response.valid_vector:
+        # --- Cast the payload for additional processing. ---#
+        carrier = cast(VectorRegisterCarrier, result.payload)
+        
+        # Handle the case that the carrier has the wrong product.
+        if not carrier.has_blueprint:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterValidationServiceException(
@@ -164,14 +170,14 @@ class VectorRegisterValidationService(
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterValidationServiceException.MSG,
                     err_code=VectorRegisterValidationServiceException.ERR_CODE,
-                    ex=VectorCarrierEmptyException(
+                    ex=VectorRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorCarrierEmptyException.MSG,
-                        err_code=VectorCarrierEmptyException.ERR_CODE,
+                        msg=VectorRegisterCarrierEmptyException.MSG,
+                        err_code=VectorRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(VectorRegisterBlueprint, response.valid_blueprint)
+        blueprint = cast(VectorRegisterBlueprint, carrier.entity)
         return ValidationResult.success(blueprint)

@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Chart, ChartBlueprint
 from exchange import (
-    ChartValidationRequest, ChartValidationService, StructValidationService,
+    ChartValidationRequest, ChartValidationService, ValidationMicroservice,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
 
 class ChartValidationService(
-    StructValidationService[T],
+    ValidationMicroservice[T],
     ABC,
     Generic[T]
 ):
