@@ -18,7 +18,7 @@ from exchange import DistanceComputationPermissionRequest, VectorDistanceRequest
 from util import LoggingLevelRouter
 
 
-class VectorDistancePermitter(ComputationPermitter[DistanceComputationPermissionRequest]):
+class DistanceComputationPermitter(ComputationPermitter[DistanceComputationPermissionRequest]):
     """
     Role:
         -   Permission Authorization

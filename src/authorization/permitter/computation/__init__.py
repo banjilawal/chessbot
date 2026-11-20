@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== AUTHORIZATION.PERMITTER.COMPUTATION PACKAGE ===========#
 
 # Packages
-
+from .addition import *
+from .distance import *
+from .product import *
 
 # Modules
 from .permitter import ComputationPermitter
