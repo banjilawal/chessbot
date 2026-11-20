@@ -28,7 +28,7 @@ class Promoter(Worker[PromotionRequest, PromotionResult]):
         1.  Execute a PromotionRequest.
 
     Attributes:
-        dispatcher: PromotionPermissionDispatcher
+        permitter: PromotionPermissionDispatcher
         
     Provides:
         -   def execute(request: PromotionRequest) -> PromotionResult
@@ -40,31 +40,33 @@ class Promoter(Worker[PromotionRequest, PromotionResult]):
     
     def __init__(
             self,
-            dispatcher: Optional[PromotionPermissionDispatcher] | None = None,
+            permitter: Optional[PromotionPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[PromotionPermissionDispatcher]
+            permitter: Optional[PromotionPermissionDispatcher]
         """
         super().__init__(
-            dispatcher=dispatcher or PromotionPermissionDispatcher()
+            permitter=permitter or PromotionPermissionDispatcher()
         )
         
     @property
-    def dispatcher(self) -> PromotionPermissionDispatcher:
-        return cast(PromotionPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> PromotionPermissionDispatcher:
+        return cast(PromotionPermissionDispatcher, super().permitter)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, request: PromotionRequest) -> PromotionResult:
         method = f"{self.__class__.__name__}.execute"
         
-        decision = self.dispatcher.execute(
+        # --- Get work authorization. ---#
+        decision = self.permitter.execute(
             candidate=PromotionPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="PromotionPermissionRequest")
             )
         )
+        # Handle the case that the request is not authorized.
         if decision.request_is_denied:
             return PromotionResult.failure(
                 PromoterException(

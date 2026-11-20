@@ -24,7 +24,7 @@ class Computation(Worker[ComputationResult], ABC, Generic[T]):
         1.  Execute a task that produces a ComputationResult on success.
 
     Attributes:
-        dispatcher: ComputationDispatcher
+        permitter: ComputationPermitter
 
     Provides:
         - execute(request: ComputationRequest) -> ComputationResult
@@ -33,16 +33,16 @@ class Computation(Worker[ComputationResult], ABC, Generic[T]):
         Operation
     """
     
-    def __init__(self, dispatcher: ComputationDispatcher):
+    def __init__(self, permitter: ComputationPermitter):
         """
         Args:
-            dispatcher: ComputationDispatcher
+            permitter: ComputationPermitter
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     @property
-    def dispatcher(self) -> ComputationDispatcher:
-        return cast(ComputationDispatcher, super().dispatcher)
+    def permitter(self) -> ComputationPermitter:
+        return cast(ComputationPermitter, super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

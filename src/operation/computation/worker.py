@@ -18,7 +18,7 @@ from operation import Worker
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("T", bound="ComputationRequest")
+Q = TypeVar("Q", bound="ComputationRequest")
 R = TypeVar("R", bound="ComputationResult")
 
 class ComputationWorker(Worker[Q, R], ABC, Generic[Q, R]):
@@ -30,7 +30,7 @@ class ComputationWorker(Worker[Q, R], ABC, Generic[Q, R]):
         1.  Executes a ComputationRequest
 
     Attributes:
-        dispatcher: ComputationPermissionDispatcher
+        permitter: ComputationPermissionDispatcher
         
     Provides:
         -   def execute(request: Q) -> R
@@ -39,16 +39,16 @@ class ComputationWorker(Worker[Q, R], ABC, Generic[Q, R]):
         Worker
     """
     
-    def __init__(self, dispatcher: ComputationPermissionDispatcher):
+    def __init__(self, permitter: ComputationPermissionDispatcher):
         """
         Args:
-            dispatcher: ComputationPermissionDispatcher
+            permitter: ComputationPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     @property
-    def dispatcher(self) -> ComputationPermissionDispatcher:
-        return cast(ComputationPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> ComputationPermissionDispatcher:
+        return cast(ComputationPermissionDispatcher, super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

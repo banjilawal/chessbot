@@ -27,7 +27,7 @@ class AccountPusher(ModelPusher[AccountPushRequest, InsertionResult]):
         1.  Executes an AccountPushRequest
 
     Attributes:
-        dispatcher: AccountPushPermissionDispatcher
+        permitter: AccountPushPermissionDispatcher
 
     Provides:
         -   def execute(request: AccountPushRequest) -> InsertionResult
@@ -38,17 +38,17 @@ class AccountPusher(ModelPusher[AccountPushRequest, InsertionResult]):
     
     def __init__(
             self,
-            dispatcher: Optional[AccountPushPermissionDispatcher] | None = None,
+            permitter: Optional[AccountPushPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[AccountPushPermissionDispatcher]
+            permitter: Optional[AccountPushPermissionDispatcher]
         """
-        super().__init__(dispatcher=dispatcher or AccountPushPermissionDispatcher())
+        super().__init__(permitter=permitter or AccountPushPermissionDispatcher())
     
     @property
-    def dispatcher(self) -> AccountPushPermissionDispatcher:
-        return cast(AccountPushPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> AccountPushPermissionDispatcher:
+        return cast(AccountPushPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountPushRequest) -> InsertionResult:
@@ -70,8 +70,8 @@ class AccountPusher(ModelPusher[AccountPushRequest, InsertionResult]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the permission_dispatcher sends a denial.
-        decision = self.dispatcher.execute(
+        # Handle the case that the permission_permitter sends a denial.
+        decision = self.permitter.execute(
             candidate=AccountPushPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountPushPermissionRequest"),

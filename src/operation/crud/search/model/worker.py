@@ -31,7 +31,7 @@ class ModelSearcher(Searcher[Q, R], ABC, Generic[Q, R]):
         1.  Executes a ModelSearchRequest
 
     Attributes:
-        dispatcher: SearchPermissionDispatcher
+        permitter: SearchPermissionDispatcher
 
     Provides:
         -   def execute(request: Q) -> R
@@ -40,17 +40,17 @@ class ModelSearcher(Searcher[Q, R], ABC, Generic[Q, R]):
         Searcher
     """
     
-    def __init__(self, dispatcher: ModelSearchPermissionDispatcher):
+    def __init__(self, permitter: ModelSearchPermissionDispatcher):
         """
         Args:
-            dispatcher: SearchPermissionDispatcher
+            permitter: SearchPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     
     @property
-    def dispatcher(self) -> ModelSearchPermissionDispatcher:
-        return cast(ModelSearchPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> ModelSearchPermissionDispatcher:
+        return cast(ModelSearchPermissionDispatcher, super().permitter)
     
     
     @abstractmethod

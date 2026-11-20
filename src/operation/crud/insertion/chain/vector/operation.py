@@ -27,7 +27,7 @@ class AddVectorNode(AddNode[VectorNode]):
         1.  Add an item to a VectorNodeChain.
         
     Attributes:
-        dispatcher: AddVectorNodeDispatcher
+        permitter: AddVectorNodePermitter
 
     Provides:
         -   def execute(request: AddVectorNodeRequest) -> InsertionionResult
@@ -36,16 +36,16 @@ class AddVectorNode(AddNode[VectorNode]):
         AddChainNode
     """
     
-    def __init__(self, dispatcher: Optional[AddVectorNodeDispatcher] | None = None):
+    def __init__(self, permitter: Optional[AddVectorNodePermitter] | None = None):
         """
         Args:
-            dispatcher: Optional[AddVectorNodeDispatcher]
+            permitter: Optional[AddVectorNodePermitter]
         """
-        super().__init__(dispatcher=dispatcher or AddVectorNodeDispatcher())
+        super().__init__(permitter=permitter or AddVectorNodePermitter())
     
     @property
-    def dispatcher(self) -> AddVectorNodeDispatcher:
-        return cast(AddVectorNodeDispatcher, super().dispatcher)
+    def permitter(self) -> AddVectorNodePermitter:
+        return cast(AddVectorNodePermitter, super().permitter)
     
 
     @LoggingLevelRouter.monitor

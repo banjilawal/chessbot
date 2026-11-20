@@ -5,19 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/addition/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/addition/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/distance/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/distance/dispatcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/distance/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/distance/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/distance/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/attack/kill/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/kill/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/attack/loader/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/loader/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/addition/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/addition/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/addition/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/addition/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/addition/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/distance/euclidean/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/distance/euclidean/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/product/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/product/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/model/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/maneuver/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/maneuver/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/promotion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/promotion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/worker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,60 +81,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.000000000255556" />
-      <entry key="S30" value="1.0010290614319768" />
-      <entry key="S60" value="1.0506367570050443" />
-      <entry key="M2" value="1.4882282785114906" />
-      <entry key="M5" value="9.035302951460745" />
-      <entry key="M10" value="37.01422335833558" />
-      <entry key="M15" value="69.42154426559685" />
-      <entry key="M30" value="158.8459568497295" />
-      <entry key="H1" value="284.4627239641192" />
-      <entry key="H2" value="427.5991386108275" />
-      <entry key="H4" value="603.7337729859432" />
-      <entry key="D1" value="2513.9025285780226" />
-      <entry key="W1" value="14635.13150249372" />
+      <entry key="MS500" value="1.000633661511604" />
+      <entry key="S2" value="1.1602883846527916" />
+      <entry key="S5" value="1.5933799711412595" />
+      <entry key="S10" value="2.298697905255036" />
+      <entry key="S30" value="4.98465132389202" />
+      <entry key="S60" value="9.047850485210539" />
+      <entry key="M2" value="15.56984324590777" />
+      <entry key="M5" value="29.811311295345412" />
+      <entry key="M10" value="51.903615918536865" />
+      <entry key="M15" value="74.9980441903389" />
+      <entry key="M30" value="150.76255483864517" />
+      <entry key="H1" value="287.5185658137315" />
+      <entry key="H2" value="466.00715458640616" />
+      <entry key="H4" value="678.4398439155048" />
+      <entry key="D1" value="2619.3086045902783" />
+      <entry key="W1" value="14751.74315989305" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.7471381886979895E-94" />
-      <entry key="S5" value="5.970756098734652E-38" />
-      <entry key="S10" value="3.908068611968319E-19" />
-      <entry key="S30" value="1.4822665931473444E-6" />
-      <entry key="S60" value="0.0021046550884767554" />
-      <entry key="M2" value="0.08405831564251234" />
-      <entry key="M5" value="1.0502335216455225" />
-      <entry key="M10" value="2.9972429905654314" />
-      <entry key="M15" value="4.524434908362534" />
-      <entry key="M30" value="7.479824544585045" />
-      <entry key="H1" value="10.841208313626963" />
-      <entry key="H2" value="15.519997613861873" />
-      <entry key="H4" value="23.45835838494779" />
-      <entry key="D1" value="129.3502635589123" />
-      <entry key="W1" value="784.7573096938306" />
+      <entry key="S2" value="1.553240915436501E-149" />
+      <entry key="S5" value="4.13082363096653E-60" />
+      <entry key="S10" value="3.1298001875483072E-30" />
+      <entry key="S30" value="3.0622796657992884E-10" />
+      <entry key="S60" value="3.666961816463938E-5" />
+      <entry key="M2" value="0.016183423526396033" />
+      <entry key="M5" value="0.8231859557721547" />
+      <entry key="M10" value="3.4617145864468433" />
+      <entry key="M15" value="5.933041334900154" />
+      <entry key="M30" value="11.378938512716672" />
+      <entry key="H1" value="17.70521514975589" />
+      <entry key="H2" value="24.827962568935543" />
+      <entry key="H4" value="34.37741747836552" />
+      <entry key="D1" value="141.12186104374624" />
+      <entry key="W1" value="797.0475648172761" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8179020585577811" />
-      <entry key="MS500" value="0.9605948639534766" />
-      <entry key="S2" value="0.9899997047180724" />
-      <entry key="S5" value="0.9959878167538044" />
-      <entry key="S10" value="0.9979918923836713" />
-      <entry key="S30" value="1.0003604407946887" />
-      <entry key="S60" value="1.0523598892124126" />
-      <entry key="M2" value="1.5710605211293975" />
-      <entry key="M5" value="10.079074708974531" />
-      <entry key="M10" value="39.99978987593032" />
-      <entry key="M15" value="73.93041095348622" />
-      <entry key="M30" value="166.304760102593" />
-      <entry key="H1" value="295.2834894766649" />
-      <entry key="H2" value="443.1025273700384" />
-      <entry key="H4" value="627.1790056186627" />
-      <entry key="D1" value="2643.239988284408" />
-      <entry key="W1" value="15419.875519576652" />
+      <entry key="MS100" value="3.3342282136081636E-9" />
+      <entry key="MS500" value="0.020172337254360247" />
+      <entry key="S2" value="0.42900652659495825" />
+      <entry key="S5" value="1.0301806433600698" />
+      <entry key="S10" value="1.7792024646943474" />
+      <entry key="S30" value="4.578005795427574" />
+      <entry key="S60" value="8.740822064858907" />
+      <entry key="M2" value="15.370010190905683" />
+      <entry key="M5" value="30.49908263594564" />
+      <entry key="M10" value="55.258335691071174" />
+      <entry key="M15" value="80.83869215460177" />
+      <entry key="M30" value="162.0731506711505" />
+      <entry key="H1" value="305.17545084368925" />
+      <entry key="H2" value="490.8024132771375" />
+      <entry key="H4" value="712.7952625376928" />
+      <entry key="D1" value="2760.4161180069414" />
+      <entry key="W1" value="15548.77721177631" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -993,7 +1010,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="186309000" />
+      <workItem from="1794227184139" duration="189225000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2948,7 +2965,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/operation/promotion/worker.py</url>
-          <line>122</line>
+          <line>124</line>
           <option name="timeStamp" value="662" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -2963,7 +2980,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/operation/promotion/worker.py</url>
-          <line>67</line>
+          <line>69</line>
           <option name="timeStamp" value="665" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

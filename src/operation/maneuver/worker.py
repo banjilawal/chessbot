@@ -28,7 +28,7 @@ class Mover(Worker[ManeuverRequest, ManeuverResult]):
         1.  Execute a ManeuverRequest.
 
     Attributes:
-        dispatcher: ManeuverPermissionDispatcher
+        permitter: ManeuverPermissionDispatcher
         
     Provides:
         -   def execute(request: ManeuverRequest) -> ManeuverResult
@@ -40,26 +40,26 @@ class Mover(Worker[ManeuverRequest, ManeuverResult]):
     
     def __init__(
             self,
-            dispatcher: Optional[ManeuverPermissionDispatcher] | None = None,
+            permitter: Optional[ManeuverPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[ManeuverPermissionDispatcher]
+            permitter: Optional[ManeuverPermissionDispatcher]
         """
         super().__init__(
-            dispatcher=dispatcher or ManeuverPermissionDispatcher()
+            permitter=permitter or ManeuverPermissionDispatcher()
         )
         
     @property
-    def dispatcher(self) -> ManeuverPermissionDispatcher:
-        return cast(ManeuverPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> ManeuverPermissionDispatcher:
+        return cast(ManeuverPermissionDispatcher, super().permitter)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverResult:
         method = f"{self.__class__.__name__}.execute"
         
-        decision = self.dispatcher.execute(
+        decision = self.permitter.execute(
             ManeuverPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="ManeuverPermissionRequest")

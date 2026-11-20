@@ -31,7 +31,7 @@ class ModelPusher(Inserter[Q, R], ABC, Generic[Q, R]):
         1.  Executes a PushRequest
 
     Attributes:
-        dispatcher: PushPermissionDispatcher
+        permitter: PushPermissionDispatcher
 
     Provides:
         -   def execute(request: Q) ->R
@@ -40,17 +40,17 @@ class ModelPusher(Inserter[Q, R], ABC, Generic[Q, R]):
         Inserter
     """
     
-    def __init__(self, dispatcher: PushPermissionDispatcher):
+    def __init__(self, permitter: PushPermissionDispatcher):
         """
         Args:
-            dispatcher: PushPermissionDispatcher
+            permitter: PushPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     
     @property
-    def dispatcher(self) -> PushPermissionDispatcher:
-        return cast(PushPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> PushPermissionDispatcher:
+        return cast(PushPermissionDispatcher, super().permitter)
     
     
     @abstractmethod

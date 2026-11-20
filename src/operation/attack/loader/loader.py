@@ -23,22 +23,22 @@ class AttackLoader(Worker[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            dispatcher: Optional[AttackPermissionDispatcher] | None = None,
+            permitter: Optional[AttackPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[AttackPermissionDispatcher]
+            permitter: Optional[AttackPermissionDispatcher]
         """
-        super().__init__(dispatcher=dispatcher or AttackPermissionDispatcher())
+        super().__init__(permitter=permitter or AttackPermissionDispatcher())
         
     @property
-    def dispatcher(self) -> AttackPermissionDispatcher:
-        return cast(AttackPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> AttackPermissionDispatcher:
+        return cast(AttackPermissionDispatcher, super().permitter)
         
     @property
     def execute(self, request: AttackRequest) -> AttackResult:
         method = f"{self.__class__.__name__}.execute"
-        decision = self.dispatcher.execute(
+        decision = self.permitter.execute(
             AttackPermissionRequest(authorization_applicant=request)
         )
         if decision.request_is_denied:

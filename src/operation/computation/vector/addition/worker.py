@@ -1,7 +1,7 @@
-# src/operation/computation/vector/addition/operator.py
+# src/operation/computation/vector/addition/worker.py
 
 """
-Module: operation.computation.vector.addition.operation
+Module: operation.computation.vector.addition.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,18 +9,20 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
-
-from transit.dispatcher.builder import RegisterBuildispatcher, CartesianToggleRegisterBuilder
-from selector import CartesianToggle
-
-from operation.toolkit import CartesianToggleToolkit
 from artifcat import ComputationResult
-from util import LoggingLevelRouter
+from domain import Vector, VectorBlueprint
+from err import VectorAdditionException
+from exchange import VectorAdditionPermissionRequest, VectorAdditionRequest, VectorBuildRequest
+from fabrication import VectorBuilder
+from operation import ComputationWorker
+from transit import VectorAdditionPermissionDispatcher, VectorCarrier
+
+from util import IdFactory, LoggingLevelRouter
 
 
-class AddVector(Computation[CartesianToggle]):
+class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]):
     """
     Role:
         - Computation
@@ -29,57 +31,38 @@ class AddVector(Computation[CartesianToggle]):
         1.  Compute the contents of a VectorRegister to each other producing either a new Vector or a Coord.
 
     Attributes:
-            dispatcher: Optional[AddVectorDispatcher]
+            permitter: Optional[VectorAdditionPermissionDispatcher]
             
     Provides:
-        -   def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]
+        -   def execute(self, request: VectorAdditionRequest) -> ComputationResult[Vector]
 
     Super Class:
         Computation
     """
-    
-    def __init__(self, dispatcher: Optional[AddVectorDispatcher] | None = None):
-        """
-        Args:
-            dispatcher: Optional[AddVectorDispatcher]
-        """
-        super().__init__(dispatcher=dispatcher or AddVectorDispatcher())
-        
-    @property
-    def dispatcher(self) -> AddVectorDispatcher:
-        return cast(AddVectorDispatcher, super().dispatcher)
-    
-    @LoggingLevelRouter.monitor
-    def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]:
-        pass
-    
-    
-    _register_builder: Optional[RegisterBuildispatcher]
-    _vector_toggle_toolkit: Optional[CartesianToggleToolkit]
+    _builder: VectorBuilder
     
     def __init__(
             self,
-            register_builder: Optional[CartesianToggleRegisterBuilder]
-                              | None = CartesianToggleRegisterBuilder(),
-            vector_toggle_toolkit: Optional[CartesianToggleToolkit] | None = CartesianToggleToolkit(),
+            builder: Optional[VectorBuilder] | None = None,
+            permitter: Optional[VectorAdditionPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            register_builder: Optional[CartesianToggleRegisterBuilder]
-            vector_toggle_toolkit: Optional[CartesianToggleToolkit]
+            builder: Optional[VectorBuilder]
+            permitter: Optional[VectorAdditionPermissionDispatcher]
         """
-        self._register_builder = register_builder
-        self._vector_toggle_toolkit = vector_toggle_toolkit
+        super().__init__(permitter=permitter or VectorAdditionPermissionDispatcher())
+        self._builder = builder
         
+    @property
+    def permitter(self) -> VectorAdditionPermissionDispatcher:
+        return cast(VectorAdditionPermissionDispatcher, super().permitter)
+    
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            u: CartesianToggle,
-            v: CartesianToggle,
-    ) -> ComputationResult[CartesianToggle]:
+    def execute(self, request: VectorAdditionRequest) -> ComputationResult[Vector]:
         """
         Add the contents of a VectorRegister to each other.
-        
+
         Action:
             1.  Send an exception chain in the ComputationResult if any of
                 these conditions occur
@@ -99,61 +82,80 @@ class AddVector(Computation[CartesianToggle]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        register_build_result =
-        for operand in [u, v]:
-            validation = self._vector_toggle_toolkit.v
-        
-        if register_validator is None:
-            register_validator = VectorRegisterValidator()
-            
-        if operand_toolkit is None:
-            operand_toolkit = CartesianToggleToolkit()
-            
-        
-        
-        # Handle the case that the register is not valid for addition.
-        register_validation_result = register_validator.execute(register)
-        if register_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return ComputationResult.failure(
-                VectorAdditionException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=VectorAdditionException.MSG,
-                    err_code=VectorAdditionException.ERR_CODE,
-                    ex=register_validation_result.exception
-                )
+        # --- Get work authorization. ---#
+        decision = self.permitter.execute(
+            candidate=VectorAdditionPermissionRequest(
+                authorization_applicant=request,
+                id=IdFactory.next_id(class_name="PermissionRequest")
+            )
         )
-        build_result = None
-        if register.is_vector_register:
-            blueprint = VectorBlueprint(
-                x=register.a.entity.x + register.b.entity.x,
-                y=register.a.entity.y + register.b.entity.y,
-            )
-            build_result = operand_toolkit.vector_builder.execute(
-                candidate=blueprint,
-            )
-        if register.category == RegisterContentType.COORD_REGISTER:
-            blueprint = CoordBlueprint(
-                row=register.a.entity.row + register.b.entity.row,
-                column=register.a.entity.column + register.b.entity.column,
-            )
-            build_result = operand_toolkit.coord_builder.execute(
-                candidate=blueprint,
-            )
-        # Handle the case that the build did not produce a result.
-        if build_result.is_failure:
-            # Send the exception chain on failure.
+        # Handle the case that the request is not authorized.
+        if decision.request_is_denied:
             return ComputationResult.failure(
                 VectorAdditionException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=VectorAdditionException.MSG,
                     err_code=VectorAdditionException.ERR_CODE,
-                    ex=build_result.exception
+                    ex=decision.exception,
+                )
+            )
+        # --- Extract the requests for additional processing. ---#
+        permission_request = decision.permission_request
+        transaction_request = decision.transaction_request
+        
+        # Handle the case that the permission_request is null.
+        if permission_request is None:
+            # Send the exception chain in the denial.
+            return ComputationResult.failure(
+                exception=VectorAdditionException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorAdditionException.MSG,
+                    err_code=VectorAdditionException.ERR_CODE,
+                    ex=VectorAdditionPermissionRequestNullException(),
+                )
+            )
+        # Handle the case that the transaction_request is null.
+        if transaction_request is None:
+            # Send the exception chain in the denial.
+            return ComputationResult.failure(
+                exception=VectorAdditionException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorAdditionException.MSG,
+                    err_code=VectorAdditionException.ERR_CODE,
+                    ex=VectorAdditionRequestNullException()
+                )
+            )
+        # --- Extract the transaction participants. ---#
+        u = transaction_request.u
+        v = transaction_request.v
+        
+        # --- Perform transaction and state management work. ---#
+        x = u.x + v.x
+        y = u.y + v.y
+        # Safely build the new vector.
+        build = self._builder.execute(
+            request=VectorBuildRequest(
+                id=IdFactory.next_id(class_name="VectorBuildRequest"),
+                item=VectorCarrier(blueprint=VectorBlueprint(x=x, y=y))
+            )
+        )
+        # Handle the case that the build did not produce a result.
+        if build.is_failure:
+            # Send the exception chain in the denial.
+            return ComputationResult.failure(
+                exception=VectorAdditionException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorAdditionException.MSG,
+                    err_code=VectorAdditionException.ERR_CODE,
+                    ex=build.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(build_result.payload)
+        vector = cast(Vector, build.payload)
+        return ComputationResult.success(vector)
 
         

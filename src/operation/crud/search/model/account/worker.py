@@ -30,7 +30,7 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest, SearchResult]):
         1.  Executes an AccountSearchRequest
 
     Attributes:
-        dispatcher: AccountSearchPermissionDispatcher
+        permitter: AccountSearchPermissionDispatcher
 
     Provides:
         -   def execute(request: AccountSearchRequest) -> SearchResult[List[Account]]
@@ -41,17 +41,17 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest, SearchResult]):
     
     def __init__(
             self,
-            dispatcher: Optional[AccountSearchPermissionDispatcher] | None = None,
+            permitter: Optional[AccountSearchPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[AccountSearchPermissionDispatcher]
+            permitter: Optional[AccountSearchPermissionDispatcher]
         """
-        super().__init__(dispatcher=dispatcher or AccountSearchPermissionDispatcher())
+        super().__init__(permitter=permitter or AccountSearchPermissionDispatcher())
     
     @property
-    def dispatcher(self) -> AccountSearchPermissionDispatcher:
-        return cast(AccountSearchPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> AccountSearchPermissionDispatcher:
+        return cast(AccountSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountSearchRequest) -> SearchResult[List[Account]]:
@@ -76,7 +76,7 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest, SearchResult]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is denied.
-        decision = self.dispatcher.execute(
+        decision = self.permitter.execute(
             candidate=AccountSearchPermissionRequest(
                 authorization_applicant=request,
                 id=IdFactory.next_id(class_name="AccountSearchPermissionRequest")

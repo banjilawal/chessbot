@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import DeleteDispatcher
+from authorization import DeletePermitter
 from domain import DeleteRequest
 from operation import CrudWorker
 from artifcat import DeletionResult
@@ -30,7 +30,7 @@ class Deleter(CrudWorker[DeletionResult], ABC, Generic[T]):
         1.  Process an DeleteRequest.
 
     Attributes:
-        dispatcher: DeleteDispatcher
+        permitter: DeletePermitter
 
     Provides:
         -   def execute(request: Q) -> DeletionResult
@@ -39,16 +39,16 @@ class Deleter(CrudWorker[DeletionResult], ABC, Generic[T]):
         CrudOperation
     """
     
-    def __init__(self, dispatcher: DeleteDispatcher):
+    def __init__(self, permitter: DeletePermitter):
         """
         Args:
-            dispatcher: DeleteDispatcher
+            permitter: DeletePermitter
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     @property
-    def dispatcher(self) -> DeleteDispatcher:
-        return cast(DeleteDispatcher, super().dispatcher)
+    def permitter(self) -> DeletePermitter:
+        return cast(DeletePermitter, super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

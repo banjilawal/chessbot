@@ -29,25 +29,25 @@ class Worker(ABC, Generic[Q, R]):
         1.  Executes a TransactionRequest
 
     Attributes:
-        dispatcher: PermissionDispatcher
+        permitter: PermissionDispatcher
         
     Provides:
         -   def execute(request: Q) -> R
 
     Super Class:
     """
-    _dispatcher: PermissionDispatcher
+    _permitter: PermissionDispatcher
     
-    def __init__(self, dispatcher: PermissionDispatcher):
+    def __init__(self, permitter: PermissionDispatcher):
         """
         Args:
-            dispatcher: PermissionDispatcher
+            permitter: PermissionDispatcher
         """
-        self._dispatcher = dispatcher
+        self._permitter = permitter
         
     @property
-    def dispatcher(self) -> PermissionDispatcher:
-        return self._dispatcher
+    def permitter(self) -> PermissionDispatcher:
+        return self._permitter
     
     
     @abstractmethod

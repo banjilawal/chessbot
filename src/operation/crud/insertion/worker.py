@@ -31,7 +31,7 @@ class Inserter(CrudWorker[Q, R], ABC, Generic[Q, R]):
         1.  Executes an InsertionRequest
 
     Attributes:
-        dispatcher: InsertionPermissionDispatcher
+        permitter: InsertionPermissionDispatcher
 
     Provides:
         -   def execute(request: Q) ->R
@@ -40,17 +40,17 @@ class Inserter(CrudWorker[Q, R], ABC, Generic[Q, R]):
         CrudOperation
     """
     
-    def __init__(self, dispatcher: InsertionPermissionDispatcher):
+    def __init__(self, permitter: InsertionPermissionDispatcher):
         """
         Args:
-            dispatcher: InsertionPermissionDispatcher
+            permitter: InsertionPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     
     @property
-    def dispatcher(self) -> InsertionPermissionDispatcher:
-        return cast(InsertionPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> InsertionPermissionDispatcher:
+        return cast(InsertionPermissionDispatcher, super().permitter)
     
     
     @abstractmethod

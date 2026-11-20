@@ -30,7 +30,7 @@ class CrudWorker(Worker[Q, R], ABC, Generic[Q, R]):
         1.  Executes a CrudRequest
 
     Attributes:
-        dispatcher: CrudPermissionDispatcher
+        permitter: CrudPermissionDispatcher
         
     Provides:
         -   def execute(request: Q) -> R
@@ -39,16 +39,16 @@ class CrudWorker(Worker[Q, R], ABC, Generic[Q, R]):
         Worker
     """
     
-    def __init__(self, dispatcher: CrudPermissionDispatcher):
+    def __init__(self, permitter: CrudPermissionDispatcher):
         """
         Args:
-            dispatcher: CrudPermissionDispatcher
+            permitter: CrudPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     @property
-    def dispatcher(self) -> CrudPermissionDispatcher:
-        return cast(CrudPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> CrudPermissionDispatcher:
+        return cast(CrudPermissionDispatcher, super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

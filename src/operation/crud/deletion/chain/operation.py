@@ -30,7 +30,7 @@ class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
         1.  Remove a Node from a Chain.
 
     Attributes:
-        dispatcher: RemoveNodeDispatcher
+        permitter: RemoveNodePermitter
 
     Provides:
         -   def execute(request: AddNodeRequest) -> DeletionResult
@@ -39,16 +39,16 @@ class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
         DeletionOperation
     """
     
-    def __init__(self, dispatcher: RemoveNodeDispatcher):
+    def __init__(self, permitter: RemoveNodePermitter):
         """
         Args:
-            dispatcher: AddChainNodeDispatcher
+            permitter: AddChainNodePermitter
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
         
     @property
-    def dispatcher(self) -> RemoveNodeDispatcher:
-        return cast(RemoveNodeDispatcher, super().dispatcher)
+    def permitter(self) -> RemoveNodePermitter:
+        return cast(RemoveNodePermitter, super().permitter)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

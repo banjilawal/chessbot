@@ -31,7 +31,7 @@ class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
         1.  Executes an SearchRequest
 
     Attributes:
-        dispatcher: SearchPermissionDispatcher
+        permitter: SearchPermissionDispatcher
 
     Provides:
         -   def execute(request: Q) -> R
@@ -42,18 +42,18 @@ class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
     
     def __init__(
             self,
-            dispatcher: SearchPermissionDispatcher,
+            permitter: SearchPermissionDispatcher,
     ):
         """
         Args:
-            dispatcher: SearchPermissionDispatcher
+            permitter: SearchPermissionDispatcher
         """
-        super().__init__(dispatcher=dispatcher)
+        super().__init__(permitter=permitter)
     
     
     @property
-    def dispatcher(self) -> SearchPermissionDispatcher:
-        return cast(SearchPermissionDispatcher, super().dispatcher)
+    def permitter(self) -> SearchPermissionDispatcher:
+        return cast(SearchPermissionDispatcher, super().permitter)
     
     
     @abstractmethod
