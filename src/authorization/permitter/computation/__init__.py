@@ -10,8 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.PERMITTER.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .insertion import *
-from .search import *
+
 
 # Modules
 from .permitter import ComputationPermitter
