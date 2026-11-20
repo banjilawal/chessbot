@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== BOOTSTRAP.AUTHORIZATION.COMPUTATION.PRODUCT PACKAGE ===========#
 
 # Packages
-from .model import *
 
 # Modules
 from .loader import ScalarProductAuthorizationLoader

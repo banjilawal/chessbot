@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== BOOTSTRAP.AUTHORIZATION.COMPUTATION.DISTANCE PACKAGE ===========#
 
 # Packages
-from .push import *
 
 # Modules
-from .loader import DistanceAuthorizationLoader
+from .loader import VectorDistanceAuthorizationLoader
