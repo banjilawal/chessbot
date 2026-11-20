@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ComputationPermissionRequest, DistanceRequest
+from exchange import ComputationPermissionRequest, EuclideanDistanceRequest
 
 
-class DistancePermissionRequest(ComputationPermissionRequest[DistanceRequest]):
+class DistanceComputationPermissionRequest(ComputationPermissionRequest[EuclideanDistanceRequest]):
     """
      Role:
          -  Messaging
@@ -32,7 +32,7 @@ class DistancePermissionRequest(ComputationPermissionRequest[DistanceRequest]):
         DistancePermissionRequest
      """
     
-    def __init__(self, id: int, authorization_applicant: DistanceRequest):
+    def __init__(self, id: int, authorization_applicant: EuclideanDistanceRequest):
         """
         Args:
             id: int
@@ -41,12 +41,12 @@ class DistancePermissionRequest(ComputationPermissionRequest[DistanceRequest]):
         super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     @property
-    def authorization_applicant(self) -> DistanceRequest:
-        return cast(DistanceRequest, super().authorization_applicant)
+    def authorization_applicant(self) -> EuclideanDistanceRequest:
+        return cast(EuclideanDistanceRequest, super().authorization_applicant)
 
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, DistancePermissionRequest):
+        if isinstance(other, DistanceComputationPermissionRequest):
             return self.id == other.id
         return False

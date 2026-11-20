@@ -12,7 +12,7 @@ from __future__ import annotations
 from domain import Vector
 from exchange import ComputationRequest
 
-class DistanceRequest(ComputationRequest):
+class EuclideanDistanceRequest(ComputationRequest):
     """
      Role:
          -  Messaging
@@ -60,6 +60,6 @@ class DistanceRequest(ComputationRequest):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, DistanceRequest):
+        if isinstance(other, EuclideanDistanceRequest):
             return self.id == other.id
         return False

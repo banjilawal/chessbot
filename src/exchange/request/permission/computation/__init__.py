@@ -10,9 +10,9 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.PERMISSION.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .addition  import *
-from .distance import *
 from .addition import *
+from .distance import *
+from .product import *
 
 # Modules
 from .request import ComputationPermissionRequest
