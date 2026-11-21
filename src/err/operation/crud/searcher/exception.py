@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CrudOperatorException
+from err import CrudWorkerException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# SEARCHER_FAILURE #======================#
-class SearcherException(CrudOperatorException):
+class SearcherException(CrudWorkerException):
     """
     Role:
         - Error Tracing

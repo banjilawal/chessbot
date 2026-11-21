@@ -1,7 +1,7 @@
 # src/err/operator/crud/exception.py
 
 """
-Module: err.operator.crud.exception
+Module: err.operation.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperatorException
+from err import WorkerException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# CRUD_OPERATOR_FAILURE #======================#
-    "CrudOperatorException",
+    "CrudWorkerException",
 ]
 
 # ======================# CRUD_OPERATOR_FAILURE #======================#
-class CrudOperatorException(OperatorException):
+class CrudWorkerException(WorkerException):
     """
     Role:
         - Error Tracing

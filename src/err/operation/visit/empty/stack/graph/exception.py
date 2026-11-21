@@ -1,7 +1,7 @@
 # src/err/operator/visit/empty/stack/graph/exception.py
 
 """
-Module: err.operator.visit.empty.stack.graph.exception
+Module: err.operation.visit.empty.stack.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

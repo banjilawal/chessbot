@@ -1,7 +1,7 @@
 # src/err/operator/attack/empty/exception.py
 
 """
-Module: err.operator.attack.empty.exception
+Module: err.operation.attack.empty.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
 # src/err/operator/visit/occupied/exception.py
 
 """
-Module: err.operator.visit.occupied.exception
+Module: err.operation.visit.occupied.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

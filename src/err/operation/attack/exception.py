@@ -1,7 +1,7 @@
 # src/err/operator/attack/exception.py
 
 """
-Module: err.operator.attack.exception
+Module: err.operation.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperatorException
+from err import WorkerException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# ATTACK_FAILURE #======================#
-class AttackException(OperatorException):
+class AttackException(WorkerException):
     """
     Role:
         - Error Tracing

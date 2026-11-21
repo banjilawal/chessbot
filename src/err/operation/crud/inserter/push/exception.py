@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CrudOperatorException
+from err import CrudWorkerException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PUSH_FAILURE #======================#
-class PusherException(CrudOperatorException):
+class PusherException(CrudWorkerException):
     """
     Role:
         - Error Tracing

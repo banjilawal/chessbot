@@ -1,7 +1,7 @@
 # src/err/operator/visit/exception.py
 
 """
-Module: err.operator.visit.exception
+Module: err.operation.visit.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperatorException
+from err import WorkerException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# SQUARE_VISIT_FAILURE #======================#
-class SquareVisitException(OperatorException):
+class SquareVisitException(WorkerException):
     """
     Role:
         - Error Tracing

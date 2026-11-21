@@ -1,7 +1,7 @@
 # src/err/operator/visit/stack/board/exception.py
 
 """
-Module: err.operator.visit.stack.board.exception
+Module: err.operation.visit.stack.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
 # src/err/operator/crud/push/stack/hostage/exception.py
 
 """
-Module: err.operator.crud.push.stack.hostage.exception
+Module: err.operation.crud.push.stack.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

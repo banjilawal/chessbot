@@ -1,13 +1,13 @@
 # src/err/operator/visit/empty/stack/__init__.py
 
 """
-Module: err.operator.visit.empty.stack.__init__
+Module: err.operation.visit.empty.stack.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATOR.VISIT.EMPTY.STACK PACKAGE ===========#
+# ============ err.operation.VISIT.EMPTY.STACK PACKAGE ===========#
 
 # Packages
 from .arena import *

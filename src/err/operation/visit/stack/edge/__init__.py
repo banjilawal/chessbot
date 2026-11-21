@@ -1,13 +1,13 @@
 # src/err/operator/visit/stack/edge/__init__.py
 
 """
-Module: err.operator.visit.stack.edge.__init__
+Module: err.operation.visit.stack.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATOR.VISIT.STACK.EDGE PACKAGE ===========#
+# ============ err.operation.VISIT.STACK.EDGE PACKAGE ===========#
 
 # Packages
 

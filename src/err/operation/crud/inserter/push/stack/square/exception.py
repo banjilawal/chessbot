@@ -1,7 +1,7 @@
 # src/err/operator/crud/push/stack/arena/exception.py
 
 """
-Module: err.operator.crud.push.stack.arena.exception
+Module: err.operation.crud.push.stack.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

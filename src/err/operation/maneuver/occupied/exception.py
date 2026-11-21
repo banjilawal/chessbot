@@ -1,7 +1,7 @@
 # src/err/operator/maneuver/occupied/exception.py
 
 """
-Module: err.operator.maneuver.occupied.exception
+Module: err.operation.maneuver.occupied.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ManeuverException
+from err import MoverException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# MANEUVER_DESTINATION_ALREADY_OCCUPIED #======================#
-    "ManeuverDestinationOccupiedException",
+    "MoverDestinationOccupiedException",
 ]
 
 # ======================# MANEUVER_DESTINATION_ALREADY_OCCUPIED #======================#
-class ManeuverDestinationOccupiedException(ManeuverException):
+class MoverDestinationOccupiedException(MoverException):
     """
     Role:
         - Error Tracing

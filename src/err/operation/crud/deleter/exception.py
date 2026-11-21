@@ -1,7 +1,7 @@
 # src/err/operator/crud/deleter/exception.py
 
 """
-Module: err.operator.crud.deleter.exception
+Module: err.operation.crud.deleter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CrudOperatorException
+from err import CrudWorkerException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# DELETER_FAILURE #======================#
-class DeleterException(CrudOperatorException):
+class DeleterException(CrudWorkerException):
     """
     Role:
         - Error Tracing

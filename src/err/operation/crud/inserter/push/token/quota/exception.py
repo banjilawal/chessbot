@@ -1,7 +1,7 @@
 # src/err/operator/crud/push/token/quota/exception.py
 
 """
-Module: err.operator.crud.push.token.quota.exception
+Module: err.operation.crud.push.token.quota.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
