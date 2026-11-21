@@ -52,7 +52,7 @@ class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]
             permitter: Optional[VectorAdditionPermissionDispatcher]
         """
         super().__init__(permitter=permitter or VectorAdditionPermissionDispatcher())
-        self._builder = builder
+        self._builder = builder or VectorBuilder()
         
     @property
     def permitter(self) -> VectorAdditionPermissionDispatcher:
@@ -71,14 +71,11 @@ class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]
                     - Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
-            scalar: Scalar,
-            register: VectorRegister,
-            toolkit : VectorRegisterToolkit = VectorRegisterToolkit(),
-            register_validator: VectorRegisterValidator = VectorRegisterValidator(),
+            request: VectorAdditionRequest
         Result:
-            ComputationResult[Union[Vector, Coord]]:
+            ComputationResult[Vector]
         Raises:
-           VectorCoordConversionException
+           VectorAdditionException
         """
         method = f"{self.__class__.__name__}.execute"
         

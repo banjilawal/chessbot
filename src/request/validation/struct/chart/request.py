@@ -1,0 +1,57 @@
+# src/request/validation/struct/chart/request.py
+
+"""
+Module: request.validation.struct.chart.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC
+from typing import Generic, TypeVar, cast
+
+from domain import Chart
+from exchange import StructValidationRequest
+from transit import Chart
+
+T = TypeVar("T", bound="Chart")
+
+
+class ChartValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
+    """
+     Role:
+         -  Messaging
+
+     Responsibilities:
+        1.  Transport the collection and other objects a ChartValidator needs to run a job.
+
+     Attributes:
+         id: int
+         item: StructCarrier[T]
+
+     Provides:
+     
+     Super Class:
+        ValidationRequest
+     """
+    
+    def __init__(self, id: int, item: Chart[T]):
+        """
+        Args:
+            id: int
+            item: Chart[T]
+        """
+        super().__init__(id=id, item=item)
+    
+    @property
+    def item(self) -> Chart[T]:
+        return cast(Chart[T], super().item)
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ChartValidationRequest):
+            return self.id == other.id
+        return False

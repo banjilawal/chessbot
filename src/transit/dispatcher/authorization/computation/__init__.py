@@ -12,7 +12,8 @@ version: 0.0.2
 
 # Packages
 from .addition import *
-from .search import *
+from .distance import *
+from .product import *
 
 # Module
 from .dispatcher import ComputationPermissionDispatcher
