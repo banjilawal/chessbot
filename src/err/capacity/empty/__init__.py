@@ -17,6 +17,7 @@ from .graph import *
 from .primitive import *
 from .query import *
 from .request import *
+from .search import *
 from .stack import *
 
 # Modules
