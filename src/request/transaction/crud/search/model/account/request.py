@@ -14,7 +14,7 @@ from typing import cast
 from artifcat import SearchResult
 from collection import AccountStack
 from domain import Account, AccountContext
-from exchange import ModelSearchRequest
+from request import ModelSearchRequest
 
 
 class AccountSearchRequest(ModelSearchRequest[SearchResult, Account]):

@@ -5,34 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/crud/deleter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/crud/deleter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/crud/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/crud/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/crud/inserter/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/crud/inserter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/crud/inserter/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/crud/inserter/push/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/crud/searcher/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/crud/searcher/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/maneuver/disability/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/disability/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/maneuver/disability/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/disability/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/maneuver/occupied/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/occupied/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/maneuver/occupied/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/occupied/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/addition/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/addition/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/addition/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/addition/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/euclidean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/euclidean/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/euclidean/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/euclidean/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/product/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/product/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/product/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/product/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/transform/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/transform/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/math/transform/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/computation/transform/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/visit/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/visit/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/toolkit/vector/register/mismatch/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/toolkit/vector/register/mismatch/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/search/model/account/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/search/model/account/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.00000000356488" />
-      <entry key="S5" value="1.0004188902555562" />
-      <entry key="S10" value="1.021629193190461" />
-      <entry key="S30" value="1.4418895714786182" />
-      <entry key="S60" value="2.4037393110280827" />
-      <entry key="M2" value="7.26849453955264" />
-      <entry key="M5" value="39.164720645884046" />
-      <entry key="M10" value="79.02681826495599" />
-      <entry key="M15" value="101.10737245780247" />
-      <entry key="M30" value="130.42840336336843" />
-      <entry key="H1" value="150.17909147310002" />
-      <entry key="H2" value="170.73096028212962" />
-      <entry key="H4" value="237.18832806193686" />
-      <entry key="D1" value="1941.6036942903847" />
-      <entry key="W1" value="14151.070311973977" />
+      <entry key="MS100" value="1.0009974107450592" />
+      <entry key="MS500" value="1.3752868055566716" />
+      <entry key="S2" value="3.75249053813147" />
+      <entry key="S5" value="5.728869854635041" />
+      <entry key="S10" value="7.056139953838209" />
+      <entry key="S30" value="15.312636802831776" />
+      <entry key="S60" value="30.503602459260517" />
+      <entry key="M2" value="57.21187114272282" />
+      <entry key="M5" value="113.56781234517622" />
+      <entry key="M10" value="173.57373646835282" />
+      <entry key="M15" value="216.0199544447497" />
+      <entry key="M30" value="290.442669745647" />
+      <entry key="H1" value="351.3859162505725" />
+      <entry key="H2" value="399.2758231148602" />
+      <entry key="H4" value="478.80984592604875" />
+      <entry key="D1" value="2181.1701807618583" />
+      <entry key="W1" value="14390.371377678273" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.6396978013288908E-147" />
-      <entry key="MS500" value="4.4374450603557205E-30" />
-      <entry key="S2" value="6.014527469076328E-8" />
-      <entry key="S5" value="0.0018887643725604966" />
-      <entry key="S10" value="0.06105607612333168" />
-      <entry key="S30" value="0.6241411401373181" />
-      <entry key="S60" value="1.117056974234431" />
-      <entry key="M2" value="1.4946338081761972" />
-      <entry key="M5" value="1.7941076202639246" />
-      <entry key="M10" value="2.0546310742056195" />
-      <entry key="M15" value="2.3071435412732866" />
-      <entry key="M30" value="2.837172598437346" />
-      <entry key="H1" value="3.3185050981563142" />
-      <entry key="H2" value="4.002600523330104" />
-      <entry key="H4" value="7.578011639964522" />
-      <entry key="D1" value="102.58445255710578" />
-      <entry key="W1" value="764.1328197494463" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.4493028064919717E-116" />
+      <entry key="S5" value="8.941618002539922E-47" />
+      <entry key="S10" value="1.5653388550491915E-23" />
+      <entry key="S30" value="5.615258420247469E-8" />
+      <entry key="S60" value="5.308019862569498E-4" />
+      <entry key="M2" value="0.061191524674810274" />
+      <entry key="M5" value="1.2574146766630068" />
+      <entry key="M10" value="3.7499893111581972" />
+      <entry key="M15" value="5.547319222428515" />
+      <entry key="M30" value="8.493873014189923" />
+      <entry key="H1" value="10.774343420035853" />
+      <entry key="H2" value="12.55741358222604" />
+      <entry key="H4" value="16.56285257164563" />
+      <entry key="D1" value="111.17020539882799" />
+      <entry key="W1" value="772.6887729408166" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.6155722066724582" />
-      <entry key="MS500" value="0.9075191553171609" />
-      <entry key="S2" value="0.9760317948134902" />
-      <entry key="S5" value="0.9920998059688437" />
-      <entry key="S10" value="1.0673134834905158" />
-      <entry key="S30" value="2.02379697066866" />
-      <entry key="S60" value="3.481606703642457" />
-      <entry key="M2" value="8.732486882139504" />
-      <entry key="M5" value="40.93754825671585" />
-      <entry key="M10" value="81.06679897156694" />
-      <entry key="M15" value="103.40319189921343" />
-      <entry key="M30" value="133.25872680571246" />
-      <entry key="H1" value="153.49357068136993" />
-      <entry key="H2" value="174.73019065520722" />
-      <entry key="H4" value="244.76119567369264" />
-      <entry key="D1" value="2044.176809862173" />
-      <entry key="W1" value="14915.19004761481" />
+      <entry key="MS100" value="0.9468511478623269" />
+      <entry key="MS500" value="1.3482923558660616" />
+      <entry key="S2" value="3.7168680210570795" />
+      <entry key="S5" value="5.704463446820569" />
+      <entry key="S10" value="7.040845017556791" />
+      <entry key="S30" value="15.303111640300253" />
+      <entry key="S60" value="30.495520700693852" />
+      <entry key="M2" value="57.26369056900194" />
+      <entry key="M5" value="114.8066385592304" />
+      <entry key="M10" value="177.30087003030476" />
+      <entry key="M15" value="221.54550916052796" />
+      <entry key="M30" value="298.9202674340302" />
+      <entry key="H1" value="362.1499306626054" />
+      <entry key="H2" value="411.82635638908863" />
+      <entry key="H4" value="495.36586207996345" />
+      <entry key="D1" value="2292.328838348726" />
+      <entry key="W1" value="15163.047039494371" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -1008,7 +982,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="205425000" />
+      <workItem from="1794227184139" duration="207331000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

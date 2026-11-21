@@ -11,7 +11,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import SearchResult
-from exchange import SearchRequest
+from request import SearchRequest
 from transit import SearchDispatcher
 from util import LoggingLevelRouter
 
