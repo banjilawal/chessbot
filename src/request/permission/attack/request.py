@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-
-from exchange import AttackRequest, ManeuverPermissionRequest
+from request import AttackRequest, ManeuverPermissionRequest
 
 T = TypeVar("T", bound="AttackRequest")
 

@@ -14,13 +14,14 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from domain import Blueprint
-from exchange import ValidationRequest
+from microservice import Microservice
+from request import ValidationRequest
 from transit import ValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ValidationMicroservice(ABC, Generic[T]):
+class ValidationMicroservice(Microservice[ValidationResult], ABC, Generic[T]):
     """
     Role
         -   Service
@@ -49,6 +50,7 @@ class ValidationMicroservice(ABC, Generic[T]):
         Args:
             dispatcher: ValidationDispatcher[T]
         """
+        super().__init__()
         self._dispatcher = dispatcher
         
     @property

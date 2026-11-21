@@ -9,9 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
-from domain.model import Vector
-from surface.space.quadrant.southeast.space import Quadrant
+from domain import Vector
+from surface import Quadrant
 
 
 class SoutheastQuadrant(Quadrant):
@@ -27,7 +26,7 @@ class SoutheastQuadrant(Quadrant):
     Provides:
 
     Super Class:
-        QuadrantSpace
+        Quadrant
     """
     
     def __init__(self, origin: Vector, destination: Vector):
@@ -39,11 +38,13 @@ class SoutheastQuadrant(Quadrant):
         super().__init__(origin=origin, destination=destination)
     
     def __eq__(self, other):
-        if not super().__eq__(other):
+        if other is self:
+            return True
+        if other is None:
             return False
-        if not isinstance(other, type(self)):
-            return False
-        return True
+        if isinstance(other, SoutheastQuadrant):
+            return self.origin == other.origin and self.destination == other.destination
+        return False
 
         
     

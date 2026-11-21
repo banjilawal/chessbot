@@ -12,14 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from exchange import ModelSearchRequest, SearchPermissionRequest
+from request import ModelSearchRequest, SearchPermissionRequest
 
 T = TypeVar("T", bound="ModelSearchRequest")
 
 
-class ModelSearchPermissionRequest(
-    SearchPermissionRequest[T], ABC, Generic[T]
-):
+class ModelSearchPermissionRequest(SearchPermissionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging

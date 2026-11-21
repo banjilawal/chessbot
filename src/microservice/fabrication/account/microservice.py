@@ -11,8 +11,8 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Account
 from err import AccountBuildMicroserviceException
-from exchange import AccountBuildRequest
 from microservice import FabricationMicroservice
+from request import AccountBuildRequest
 from transit import AccountBuildDispatcher
 from util import LoggingLevelRouter
 

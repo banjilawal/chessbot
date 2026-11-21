@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import VectorAdditionDecision
 from authorization import VectorAdditionPermitter
-from exchange import VectorAdditionPermissionRequest, VectorAdditionRequest
+from request import VectorAdditionPermissionRequest, VectorAdditionRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -26,7 +26,7 @@ class VectorAdditionPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a VectorAdditionPermitter then send the results
+        1.  Distribute jobs between VectorAdditionPermitters then send the results
             back to clients.
 
     Attributes:

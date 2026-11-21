@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
-from exchange import Request
+from request import Request
 from transit import EntityCarrier
 
 T = TypeVar("T")

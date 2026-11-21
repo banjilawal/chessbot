@@ -41,11 +41,13 @@ class Quadrant(Space):
         super().__init__(origin=origin, destination=destination)
     
     def __eq__(self, other):
-        if not super().__eq__(other):
+        if other is self:
+            return True
+        if other is None:
             return False
-        if not isinstance(other, type(self)):
-            return False
-        return True
+        if isinstance(other, Quadrant):
+            return self.origin == other.origin and self.destination == other.destination
+        return False
         
 
         

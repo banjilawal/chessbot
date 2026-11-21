@@ -12,14 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from exchange import CrudRequest, PermissionRequest
+from request import CrudRequest, PermissionRequest
 
 T = TypeVar("T", bound="CrudRequest")
 
 
-class CrudPermissionRequest(
-    PermissionRequest[T], ABC, Generic[T]
-):
+class CrudPermissionRequest(PermissionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -44,10 +42,6 @@ class CrudPermissionRequest(
             authorization_applicant: T
         """
         super().__init__(id, authorization_applicant=authorization_applicant)
-    
-    @property
-    def authorization_applicant(self) -> T:
-        return cast(T, super().authorization_applicant)
     
     def __eq__(self, other):
         if other is self: return True

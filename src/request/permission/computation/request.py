@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic
 from typing_extensions import TypeVar
 
-from exchange import PermissionRequest, ComputationRequest
+from request import ComputationRequest, PermissionRequest
 
 T = TypeVar("T", bound="ComputationRequest")
 

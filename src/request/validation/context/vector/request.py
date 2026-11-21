@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Vector
+from domain import VectorContext
+from request import ContextValidationRequest
 from transit import VectorContextCarrier
 
 
@@ -22,7 +22,7 @@ class VectorContextValidationRequest(ContextValidationRequest[VectorContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a VectorContextValidator job details.
+         1. Provide details about an VectorContextValidation job.
 
      Attributes:
          id: int

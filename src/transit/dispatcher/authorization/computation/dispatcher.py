@@ -13,7 +13,7 @@ from typing import Any, TypeVar, cast
 
 from artifcat import ComputationDecision
 from authorization import ComputationPermitter
-from exchange import ComputationPermissionRequest
+from request import ComputationPermissionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -25,7 +25,7 @@ class ComputationPermissionDispatcher(PermissionDispatcher[T]):
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a ComputationPermitter then send the results back
+        1.  Distribute jobs between ComputationPermitters then send the results back
             to clients.
 
     Attributes:

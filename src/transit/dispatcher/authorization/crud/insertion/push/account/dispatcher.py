@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import AccountPushDecision
 from authorization import AccountPushPermitter
 from err import AccountPushPermissionDispatcherException
-from exchange import AccountPushPermissionRequest, AccountPushRequest
+from request import AccountPushPermissionRequest, AccountPushRequest
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -27,7 +27,7 @@ class AccountPushPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards an AccountPushPermitter then send the results
+        1.  Direct jobs towards an AccountPushPermitters then send the results
             back to clients.
 
     Attributes:

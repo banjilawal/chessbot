@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import DistanceComputationDecision
 from authorization import DistanceComputationPermitter
-from exchange import DistanceComputationPermissionRequest, VectorDistanceRequest
+from request import DistanceComputationPermissionRequest, DistanceRequest, EuclideanDistanceRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -26,7 +26,7 @@ class DistanceComputationPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a DistanceComputationPermitter then send the results
+        1.  Distribute jobs between DistanceComputationPermitters then send the results
             back to clients.
 
     Attributes:
@@ -71,8 +71,8 @@ class DistanceComputationPermissionDispatcher(
         """
         method = f"{self.__class__.__name__}.execution"
         
-        # Handle the case that the permitter does not grant permission.
         decision = self.permitter.execute(candidate)
+        # Handle the case that the permitter does not grant permission.
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return DistanceComputationDecision.denial(
@@ -86,7 +86,7 @@ class DistanceComputationPermissionDispatcher(
             )
         # --- Extract the requests for distance processing. ---#
         permission_request = cast(DistanceComputationPermissionRequest, decision.permission_request)
-        transaction_request = cast(VectorDistanceRequest, decision.transaction_request)
+        transaction_request = cast(DistanceRequest, decision.transaction_request)
 
         # --- Prepare and forward the transaction approval. ---#
         return DistanceComputationDecision.grant(

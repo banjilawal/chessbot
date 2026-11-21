@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ComputationPermissionRequest, ScalarProductRequest
+from request import ComputationPermissionRequest, ScalarProductRequest
 
 
 class ScalarProductPermissionRequest(ComputationPermissionRequest[ScalarProductRequest]):

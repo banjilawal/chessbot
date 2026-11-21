@@ -13,7 +13,8 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Node
-from exchange import StructValidationRequest
+from request import StructValidationRequest
+from transit import NodeCarrier
 
 T = TypeVar("T", bound="Node")
 
@@ -28,7 +29,7 @@ class NodeValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
 
      Attributes:
          id: int
-         item: StructCarrier[T]
+         item: NodeCarrier[T]
 
      Provides:
      
@@ -36,17 +37,13 @@ class NodeValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
         ValidationRequest
      """
     
-    def __init__(self, id: int, item: Node[T]):
+    def __init__(self, id: int, item: NodeCarrier[T]):
         """
         Args:
             id: int
             item: Node[T]
         """
         super().__init__(id=id, item=item)
-    
-    @property
-    def item(self) -> Node[T]:
-        return cast(Node[T], super().item)
     
     def __eq__(self, other):
         if other is self: return True

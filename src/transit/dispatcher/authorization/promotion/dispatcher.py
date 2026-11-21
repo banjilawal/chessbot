@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import PromotionDecision
 from authorization import PromotionPermitter
 from err import PromotionPermissionDispatcherException
-from exchange import PromotionPermissionRequest, PromotionRequest
+from request import PromotionPermissionRequest, PromotionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -27,7 +27,7 @@ class PromotionPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a PromotionPermitter then send the results
+        1.  Distribute jobs between PromotionPermitters then send the results
             back to clients.
 
     Attributes:
@@ -57,11 +57,7 @@ class PromotionPermissionDispatcher(
         Make a decision about a PromotionRequest.
         
         Action:
-            1.  Send an exception chain in the denial if any of the
-                following occur.
-                    -   The permitter issues a denial.
-                    -   Either the PromotionRequest or its PermissionRequest
-                        are null
+            1.  Send an exception chain in decision if the permitter issues a denial.
             2.  Otherwise, send a grant decision.
         Args:
             candidate: Any

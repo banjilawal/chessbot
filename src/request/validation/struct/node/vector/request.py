@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import cast
 
 from domain import VectorNode
-from exchange import NodeValidationRequest
-from transit import VectorNode
+from request import NodeValidationRequest
+from transit import VectorNodeCarrier
 
 
 class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
@@ -27,7 +27,7 @@ class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
 
      Attributes:
          id: int
-         item: StructCarrier[T]
+         item: VectorNodeCarrier
 
      Provides:
      
@@ -35,17 +35,17 @@ class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
         NodeValidationRequest
      """
     
-    def __init__(self, id: int, item: VectorNode):
+    def __init__(self, id: int, item: VectorNodeCarrier):
         """
         Args:
             id: int
-            item: VectorNode
+            item: VectorNodeCarrier
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> VectorNode:
-        return cast(VectorNode, super().item)
+    def item(self) -> VectorNodeCarrier:
+        return cast(VectorNodeCarrier, super().item)
     
     def __eq__(self, other):
         if other is self: return True

@@ -13,7 +13,7 @@ from typing import Any, TypeVar, cast
 
 from artifcat import CrudDecision
 from authorization import CrudPermitter
-from exchange import CrudPermissionRequest
+from request import CrudPermissionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -25,7 +25,7 @@ class CrudPermissionDispatcher(PermissionDispatcher[T]):
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a CrudPermitter then send the results back
+        1.  Distribute jobs between CrudPermitters then send the results back
             to clients.
 
     Attributes:

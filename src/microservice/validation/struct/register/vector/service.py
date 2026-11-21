@@ -14,8 +14,8 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from domain import VectorRegister, VectorRegisterBlueprint
 from err import VectorRegisterValidationServiceException
-from exchange import VectorRegisterValidationRequest
 from microservice import ValidationMicroservice
+from request import VectorRegisterValidationRequest
 from transit import VectorRegisterCarrier, VectorRegisterValidationDispatcher
 from util import LoggingLevelRouter
 

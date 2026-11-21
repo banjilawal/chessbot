@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .attack import *
+from .computation import *
 from .crud import *
 from .encounter import *
 from .maneuver import *

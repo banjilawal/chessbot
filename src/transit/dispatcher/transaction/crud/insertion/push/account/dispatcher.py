@@ -25,7 +25,7 @@ class AccountPushDispatcher(PushDispatcher[AccountPushRequest, InsertionResult])
         -   Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a worker then forward the results to clients.
+        1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
         worker: AccountPusher

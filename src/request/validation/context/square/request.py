@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Square
+from domain import SquareContext
+from request import ContextValidationRequest
 from transit import SquareContextCarrier
 
 
@@ -22,7 +22,7 @@ class SquareContextValidationRequest(ContextValidationRequest[SquareContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a SquareContextValidator job details.
+         1. Provide details about an SquareContextValidation job.
 
      Attributes:
          id: int

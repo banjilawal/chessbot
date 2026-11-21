@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import ManeuverDecision
 from authorization import ManeuverPermitter
 from err import ManeuverPermissionDispatcherException
-from exchange import ManeuverPermissionRequest, ManeuverRequest
+from request import ManeuverPermissionRequest, ManeuverRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -27,7 +27,7 @@ class ManeuverPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a ManeuverPermitter then send the results
+        1.  Distribute jobs between ManeuverPermitters then send the results
             back to clients.
 
     Attributes:

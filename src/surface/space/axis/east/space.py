@@ -9,10 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
-from domain.model import Vector
-from domain.schema import AxisDestination
-from surface.space.axis.east import Axis
+from domain import AxisDestination, Vector
+from surface import Axis
 
 
 class EastAxis(Axis):
@@ -46,11 +44,12 @@ class EastAxis(Axis):
         )
     
     def __eq__(self, other):
-        if not super().__eq__(other):
+        if other is self:
+            return True
+        if other is None:
             return False
-        if not isinstance(other, type(self)):
-            return False
-        return True
-
+        if isinstance(other, EastAxis):
+            return self.origin == other.origin and self.destination == other.destination
+        return False
         
     

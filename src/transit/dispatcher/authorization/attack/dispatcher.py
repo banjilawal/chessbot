@@ -13,20 +13,19 @@ from typing import Any, Optional, cast
 
 from artifcat import AttackDecision
 from authorization import AttackPermitter
-from exchange import AttackPermissionRequest
+from err import AttackPermissionDispatcherException
+from request import AttackPermissionRequest, AttackRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class AttackPermissionDispatcher(
-    PermissionDispatcher[AttackPermissionRequest]
-):
+class AttackPermissionDispatcher(PermissionDispatcher[AttackPermissionRequest]):
     """
     Role
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a AttackPermitter then send the results
+        1.  Distribute jobs between AttackPermitters then send the results
             back to clients.
 
     Attributes:
@@ -85,33 +84,9 @@ class AttackPermissionDispatcher(
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return AttackDecision.denial(
-                exception=AttackPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AttackPermissionDispatcherException.MSG,
-                    err_code=AttackPermissionDispatcherException.ERR_CODE,
-                    ex=AttackPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return AttackDecision.denial(
-                exception=AttackPermissionDispatcherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AttackPermissionDispatcherException.MSG,
-                    err_code=AttackPermissionDispatcherException.ERR_CODE,
-                    ex=AttackRequestNullException()
-                )
-            )
+        permission_request = cast(AttackPermissionRequest, decision.permission_request)
+        transaction_request = cast(AttackRequest, decision.transaction_request)
+
         # --- Prepare and forward the transaction approval. ---#
         return AttackDecision.grant(
             transaction_request=transaction_request,

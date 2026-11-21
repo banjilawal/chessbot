@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
-from surface.topology.mapper import SpaceMappingFunction
+from surface import SpaceMappingFunction, SpaceReservoir
 
 T = TypeVar("T", bound="SpaceReservoir")
 

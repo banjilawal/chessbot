@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import AddNodePermissionRequest, AddVectorNodeRequest
+from request import AddNodePermissionRequest, AddVectorNodeRequest
 
 
 class AddVectorNodePermissionRequest(

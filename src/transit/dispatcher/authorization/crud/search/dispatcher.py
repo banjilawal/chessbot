@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import SearchDecision
 from authorization import SearchPermitter
-from exchange import SearchPermissionRequest
+from request import SearchPermissionRequest
 from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -28,7 +28,7 @@ class SearchPermissionDispatcher(
         -   Authorization Management
 
     Responsibilities:
-        1.  Direct jobs towards a SearchPermitter then send the results back
+        1.  Distribute jobs between SearchPermitters then send the results back
             to clients.
 
     Attributes:

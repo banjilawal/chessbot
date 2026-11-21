@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from artifcat import SearchResult
 from exchange import ModelSearchRequest
 from operation import Searcher
-from transit import ModelSearchPermissionDispatcher
+from transit import SearchPermissionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="ModelSearchRequest")
@@ -40,7 +40,7 @@ class ModelSearcher(Searcher[Q, R], ABC, Generic[Q, R]):
         Searcher
     """
     
-    def __init__(self, permitter: ModelSearchPermissionDispatcher):
+    def __init__(self, permitter: SearchPermissionDispatcher):
         """
         Args:
             permitter: SearchPermissionDispatcher
@@ -49,8 +49,8 @@ class ModelSearcher(Searcher[Q, R], ABC, Generic[Q, R]):
     
     
     @property
-    def permitter(self) -> ModelSearchPermissionDispatcher:
-        return cast(ModelSearchPermissionDispatcher, super().permitter)
+    def permitter(self) -> SearchPermissionDispatcher:
+        return cast(SearchPermissionDispatcher, super().permitter)
     
     
     @abstractmethod

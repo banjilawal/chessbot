@@ -13,6 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
 from domain.model import Vector
+from surface import Space
 
 T = TypeVar("T", bound="Space")
 

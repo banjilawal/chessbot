@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import InsertionDecision
 from authorization import InsertionPermitter
-from exchange import InsertionPermissionRequest
+from request import InsertionPermissionRequest
 from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -28,7 +28,7 @@ class InsertionPermissionDispatcher(
         -   Authorization Management
 
     Responsibilities:
-        1.  Direct jobs towards an InsertionPermitter then send the results back
+        1.  Direct jobs towards an InsertionPermitters then send the results back
             to clients.
 
     Attributes:

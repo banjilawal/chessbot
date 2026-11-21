@@ -11,14 +11,15 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import BuildResult
-from exchange import BuildRequest
+from microservice import Microservice
+from request import BuildRequest
 from transit import BuildDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
 
-class FabricationMicroservice(ABC, Generic[T]):
+class FabricationMicroservice(Microservice[BuildResult], ABC, Generic[T]):
     """
     Role:
         - API
@@ -51,6 +52,7 @@ class FabricationMicroservice(ABC, Generic[T]):
         Args:
             dispatcher: BuildDispatcher
         """
+        super().__init__()
         self._dispatcher = dispatcher
         
     @property

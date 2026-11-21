@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Arena, ArenaContext
+from domain import ArenaContext
+from request import ContextValidationRequest
 from transit import ArenaContextCarrier
 
 
@@ -22,7 +22,7 @@ class ArenaContextValidationRequest(ContextValidationRequest[ArenaContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a ArenaContextValidator job details.
+         1. Provide details about an ArenaContextValidation job.
 
      Attributes:
          id: int

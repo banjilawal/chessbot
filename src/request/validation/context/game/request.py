@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Game
+from domain import GameContext
+from request import ContextValidationRequest
 from transit import GameContextCarrier
 
 
@@ -22,7 +22,7 @@ class GameContextValidationRequest(ContextValidationRequest[GameContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a GameContextValidator job details.
+         1. Provide details about an GameContextValidation job.
 
      Attributes:
          id: int

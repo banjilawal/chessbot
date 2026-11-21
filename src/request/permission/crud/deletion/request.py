@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from exchange import CrudPermissionRequest, DeletionRequest
+from request import CrudPermissionRequest, DeletionRequest
 
 T = TypeVar("T", bound="DeletionRequest")
 

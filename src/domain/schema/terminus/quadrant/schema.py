@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from enum import Enum
 
-from domain.model import Vector
+import config
+from domain import Vector
 
 
 class QuadrantDestination(Enum):

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import AccountPushRequest, PushPermissionRequest
+from request import AccountPushRequest, PushPermissionRequest
 
 
 class AccountPushPermissionRequest(

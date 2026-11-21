@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Encounter
+from domain import EncounterContext
+from request import ContextValidationRequest
 from transit import EncounterContextCarrier
 
 
@@ -22,7 +22,7 @@ class EncounterContextValidationRequest(ContextValidationRequest[EncounterContex
          -  Messaging
 
      Responsibilities:
-        1. Provide a EncounterContextValidator job details.
+         1. Provide details about an EncounterContextValidation job.
 
      Attributes:
          id: int

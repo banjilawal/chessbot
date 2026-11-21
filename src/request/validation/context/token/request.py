@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Token
+from domain import TokenContext
+from request import ContextValidationRequest
 from transit import TokenContextCarrier
 
 
@@ -22,7 +22,7 @@ class TokenContextValidationRequest(ContextValidationRequest[TokenContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a TokenContextValidator job details.
+         1. Provide details about an TokenContextValidation job.
 
      Attributes:
          id: int

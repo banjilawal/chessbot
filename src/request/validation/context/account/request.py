@@ -1,7 +1,7 @@
-# src/request/validation/context/accountContext/request.py
+# src/request/validation/context/account/request.py
 
 """
-Module: request.validation.context.accountContext.request
+Module: request.validation.context.account.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
 from domain import AccountContext
+from request import ContextValidationRequest
 from transit import AccountContextCarrier
 
 
@@ -22,7 +22,7 @@ class AccountContextValidationRequest(ContextValidationRequest[AccountContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide an AccountContextValidator job details.
+         1. Provide details about an AccountContextValidation job.
 
      Attributes:
          id: int

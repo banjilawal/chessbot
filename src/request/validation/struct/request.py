@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Any, Generic, TypeVar, cast
+from typing import Generic, TypeVar, cast
 
 from domain import Struct
-from exchange import ValidationRequest
+from request import ValidationRequest
 from transit import StructCarrier
 
 T = TypeVar("T", bound="Struct")

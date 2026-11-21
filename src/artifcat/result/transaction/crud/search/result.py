@@ -11,9 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, List, Optional, TypeVar, cast
 
-from domain import DomainDataObject
 from artifcat import CrudResult, SearchState
-from microservice.context import ContextService
 
 T = TypeVar("T")
 
@@ -45,7 +43,7 @@ class SearchResult(CrudResult[T], Generic[T]):
         Result
     """
     _state: SearchState
-    _payload: Optional[T] = []
+    _payload: Optional[List]
     
     
     def __init__(
@@ -141,27 +139,4 @@ class SearchResult(CrudResult[T], Generic[T]):
             exception=None,
             state=SearchState.NOTHING_FOUND,
         )
-
-T = TypeVar("T", bound="CrudResult")
-
-class CrudRequest(TransactionRequest[T], ABC, Generic[T]):
-    pass
-
-T = TypeVar("T", bound="Model|Node")
-class InsertionRequest(CrudRequest[T], ABC, Generic[T]):
-    _item: T
-    _collection: DataStruct[T]
-    
-    
-T = TypeVar("T", bound="Model|Node")
-class SearchRequest(CrudRequest[T], ABC, Generic[T]):
-    _context: Context
-    _collection: DataStruct[T]
-
-
-T = TypeVar("T", bound="Model|Node")
-
-T = TypeVar("T", bound="Model")
-class DeleteRequest(CrudRequest[T], ABC, Generic[T]):
-    _item: T
-    _collection: DataStruct[T]
+        

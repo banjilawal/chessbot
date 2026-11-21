@@ -11,12 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import PermissionRequest, PromotionRequest
+from request import PermissionRequest, PromotionRequest
 
 
-class PromotionPermissionRequest(
-    PermissionRequest[PromotionRequest]
-):
+class PromotionPermissionRequest(PermissionRequest[PromotionRequest]):
     """
      Role:
          -  Messaging

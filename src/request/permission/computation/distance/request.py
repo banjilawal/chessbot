@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ComputationPermissionRequest, EuclideanDistanceRequest
+from request import ComputationPermissionRequest, EuclideanDistanceRequest
 
 
 class DistanceComputationPermissionRequest(ComputationPermissionRequest[EuclideanDistanceRequest]):

@@ -9,12 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 from artifcat import VectorAdditionDecision
 from authorization import ComputationPermitter
 from bootstrap import VectorAdditionAuthorizationLoader
-from exchange import VectorAdditionPermissionRequest, VectorAdditionRequest
+from request import VectorAdditionPermissionRequest, VectorAdditionRequest
 from util import LoggingLevelRouter
 
 
@@ -37,12 +37,12 @@ class VectorAdditionPermitter(ComputationPermitter[VectorAdditionPermissionReque
         ComputationPermitter
     """
     
-    def __init__(self, loader: VectorAdditionAuthorizationLoader):
+    def __init__(self, loader: Optional[VectorAdditionAuthorizationLoader] | None = None):
         """
         Args:
-            loader: VectorAdditionAuthorizationLoader
+            loader: Optional[VectorAdditionAuthorizationLoader]
         """
-        super().__init__(loader=loader)
+        super().__init__(loader=loader or VectorAdditionAuthorizationLoader())
     
     @property
     def loader(self) -> VectorAdditionAuthorizationLoader:

@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import PushDecision
 from authorization import PushPermitter
-from exchange import PushPermissionRequest
+from request import PushPermissionRequest
 from transit import InsertionPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -28,7 +28,7 @@ class PushPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a PushPermitter then send the results back
+        1.  Distribute jobs between PushPermitters then send the results back
             to clients.
 
     Attributes:

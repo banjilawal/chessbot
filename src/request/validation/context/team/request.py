@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Team
+from domain import TeamContext
+from request import ContextValidationRequest
 from transit import TeamContextCarrier
+
 
 class TeamContextValidationRequest(ContextValidationRequest[TeamContext]):
     """
@@ -21,7 +22,7 @@ class TeamContextValidationRequest(ContextValidationRequest[TeamContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a TeamContextValidator job details.
+         1. Provide details about an TeamContextValidation job.
 
      Attributes:
          id: int

@@ -12,9 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from domain.model import Vector
-from artifcat import ComputationResult
-from operation.toolkit import MathToolkit
+from surface import Space
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Space")
@@ -37,7 +35,6 @@ class SpaceMappingFunction(ABC, Generic[T]):
     Super Class:
     """
     
-    _math_toolkit: Optional[MathToolkit]
     
     def __init__(self, math_toolkit: Optional[MathToolkit] | None = MathToolkit(),):
         """

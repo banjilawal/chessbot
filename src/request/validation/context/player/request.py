@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Player
+from domain import PlayerContext
+from request import ContextValidationRequest
 from transit import PlayerContextCarrier
 
 
@@ -22,7 +22,7 @@ class PlayerContextValidationRequest(ContextValidationRequest[PlayerContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a PlayerContextValidator job details.
+         1. Provide details about an PlayerContextValidation job.
 
      Attributes:
          id: int

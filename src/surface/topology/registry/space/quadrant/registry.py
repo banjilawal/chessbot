@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from typing import Dict, List, Type, cast
 
-from domain.model import Vector
-from surface.topology import (
-    Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SpaceReservoir, SouthwestQuadrant
+from domain import Vector
+from surface import (
+    NortheastQuadrant, NorthwestQuadrant, Quadrant,
+    SoutheastQuadrant, SouthwestQuadrant, SpaceReservoir
 )
 
 class QuadrantReservoir(SpaceReservoir[Quadrant]):

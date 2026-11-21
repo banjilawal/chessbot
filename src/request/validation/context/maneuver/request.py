@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Maneuver
+from domain import ManeuverContext
+from request import ContextValidationRequest
 from transit import ManeuverContextCarrier
 
 
@@ -22,7 +22,7 @@ class ManeuverContextValidationRequest(ContextValidationRequest[ManeuverContext]
          -  Messaging
 
      Responsibilities:
-        1. Provide a ManeuverContextValidator job details.
+         1. Provide details about an ManeuverContextValidation job.
 
      Attributes:
          id: int

@@ -12,7 +12,7 @@ from typing import Generic, Optional, TypeVar
 
 from controller import Controller
 
-T = TypeVar("T", bound="StateModel")
+T = TypeVar("T", bound="Result")
 
 
 class Microservice(ABC, Generic[T]):

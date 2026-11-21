@@ -54,6 +54,5 @@ class Space(ABC):
         if other is None:
             return False
         if isinstance(other, Space):
-            space = cast(Space, other)
-            return self._origin = space.origin and self._destination = space.destination
+            return self._origin == other.origin and self._destination == other.destination
         return False

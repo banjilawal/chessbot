@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ScalarProductDecision
 from authorization import ScalarProductPermitter
-from exchange import ScalarProductPermissionRequest, VectorProductRequest
+from request import ScalarProductPermissionRequest, ScalarProductRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
@@ -26,7 +26,7 @@ class ScalarProductPermissionDispatcher(
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a ScalarProductPermitter then send the results
+        1.  Distribute jobs between ScalarProductPermitters then send the results
             back to clients.
 
     Attributes:
@@ -71,8 +71,8 @@ class ScalarProductPermissionDispatcher(
         """
         method = f"{self.__class__.__name__}.execution"
         
-        # Handle the case that the permitter does not grant permission.
         decision = self.permitter.execute(candidate)
+        # Handle the case that the permitter does not grant permission.
         if decision.request_is_denied:
             # Send the exception chain in the denial.
             return ScalarProductDecision.denial(
@@ -86,7 +86,7 @@ class ScalarProductPermissionDispatcher(
             )
         # --- Extract the requests for product processing. ---#
         permission_request = cast(ScalarProductPermissionRequest, decision.permission_request)
-        transaction_request = cast(VectorProductRequest, decision.transaction_request)
+        transaction_request = cast(ScalarProductRequest, decision.transaction_request)
 
         # --- Prepare and forward the transaction approval. ---#
         return ScalarProductDecision.grant(

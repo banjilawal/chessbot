@@ -9,10 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
-from domain.model import Vector
-from domain.schema import QuadrantDestination
-from surface.space.quadrant.northwest.space import Quadrant
+from domain import QuadrantDestination, Vector
+from surface import Quadrant
 
 
 class NorthwestQuadrant(Quadrant):
@@ -46,11 +44,13 @@ class NorthwestQuadrant(Quadrant):
         super().__init__(origin=origin, destination=destination)
     
     def __eq__(self, other):
-        if not super().__eq__(other):
+        if other is self:
+            return True
+        if other is None:
             return False
-        if not isinstance(other, type(self)):
-            return False
-        return True
+        if isinstance(other, NorthwestQuadrant):
+            return self.origin == other.origin and self.destination == other.destination
+        return False
 
         
     

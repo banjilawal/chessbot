@@ -9,8 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from exchange import ContextValidationRequest
-from domain import Coord, CoordContext
+from typing import cast
+
+from domain import CoordContext
+from request import ContextValidationRequest
 from transit import CoordContextCarrier
 
 
@@ -20,7 +22,7 @@ class CoordContextValidationRequest(ContextValidationRequest[CoordContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a CoordContextValidator job details.
+         1. Provide details about an CoordContextValidation job.
 
      Attributes:
          id: int

@@ -14,20 +14,20 @@ from typing import Any, Optional, cast
 from artifcat import AccountSearchDecision
 from authorization import AccountSearchPermitter
 from err import AccountSearchPermissionDispatcherException
-from exchange import AccountSearchPermissionRequest, AccountSearchRequest
-from transit import ModelSearchPermissionDispatcher
+from request import AccountSearchPermissionRequest, AccountSearchRequest
+from transit import SearchPermissionDispatcher
 from util import LoggingLevelRouter
 
 
 class AccountSearchPermissionDispatcher(
-    ModelSearchPermissionDispatcher[AccountSearchPermissionRequest]
+    SearchPermissionDispatcher[AccountSearchPermissionRequest]
 ):
     """
     Role
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards an AccountSearchPermitter then send the results
+        1.  Direct jobs towards an AccountSearchPermitters then send the results
             back to clients.
 
     Attributes:
@@ -37,7 +37,7 @@ class AccountSearchPermissionDispatcher(
         -   def  execute(candidate: Any) -> SearchDecision
 
     Super Class:
-        ModelSearchPermissionDispatcher
+        SearchPermissionDispatcher
     """
     
     def __init__(self, permitter: Optional[AccountSearchPermitter] | None = None):

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import PermissionRequest, ManeuverRequest
+from request import ManeuverRequest, PermissionRequest
 
 
 class ManeuverPermissionRequest(PermissionRequest[ManeuverRequest]):

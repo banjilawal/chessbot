@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar
 
 from artifcat import Decision
 from authorization import Permitter
-from exchange import PermissionRequest
+from request import PermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PermissionRequest")
@@ -25,7 +25,7 @@ class PermissionDispatcher(ABC, Generic[T]):
         -   Authorization Process Flow
 
     Responsibilities:
-        1.  Direct jobs towards a Permitter then send the results back to clients.
+        1.  Distribute jobs between Permitters then send the results to clients.
 
     Attributes:
         permitter: Permitter[T]

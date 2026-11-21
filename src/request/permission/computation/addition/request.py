@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ComputationPermissionRequest, VectorAdditionRequest
+from request import ComputationPermissionRequest, VectorAdditionRequest
 
 
 class VectorAdditionPermissionRequest(ComputationPermissionRequest[VectorAdditionRequest]):

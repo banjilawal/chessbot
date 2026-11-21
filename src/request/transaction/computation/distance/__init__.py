@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== REQUEST.TRANSACTION.COMPUTATION.DISTANCE PACKAGE ===========#
 
 # Packages
+from .euclidean import *
 
 # Modules
-from .request import EuclideanDistanceRequest
+from .request import DistanceRequest

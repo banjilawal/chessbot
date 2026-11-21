@@ -13,19 +13,19 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Context
-from exchange import ContextValidationRequest
+from request import ValidationRequest
 from transit import ContextCarrier
 
 T = TypeVar("T", bound="Context")
 
 
-class ContextValidationRequest(ContextValidationRequest[T], ABC, Generic[T]):
+class ContextValidationRequest(ValidationRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide a ContextValidator job details,
+         1. Provide details about a ContextValidation job.
 
      Attributes:
          id: int

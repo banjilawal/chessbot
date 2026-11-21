@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import ContextValidationRequest
-from domain import Board
+from domain import BoardContext
+from request import ContextValidationRequest
 from transit import BoardContextCarrier
 
 
@@ -22,7 +22,7 @@ class BoardContextValidationRequest(ContextValidationRequest[BoardContext]):
          -  Messaging
 
      Responsibilities:
-        1. Provide a BoardContextValidator job details.
+         1. Provide details about an BoardContextValidation job.
 
      Attributes:
          id: int
@@ -41,7 +41,7 @@ class BoardContextValidationRequest(ContextValidationRequest[BoardContext]):
             item: BoardContextCarrier
         """
         super().__init__(id=id, item=item)
-    
+
     @property
     def item(self) -> BoardContextCarrier:
         return cast(BoardContextCarrier, super().item)
