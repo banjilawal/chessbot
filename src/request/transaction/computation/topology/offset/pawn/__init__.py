@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== REQUEST.TRANSACTION.COMPUTATION.TOPOLOGY.OFFSET.PAWN PACKAGE ===========#
 
 # Packages
+from .developed import *
+from .opening import *
 
 # Modules
-from .request import PawnOffsetTopologyRequest
+from .request import PawnTopologyRequest

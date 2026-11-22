@@ -28,7 +28,7 @@ class TraversalTopologyRequest(TopologyRequest, ABC, Generic[T]):
 
      Attributes:
         id: int
-        origin: Vector
+        origin: VectorNode
         traversals: VectorSet
 
      Provides:
@@ -39,11 +39,11 @@ class TraversalTopologyRequest(TopologyRequest, ABC, Generic[T]):
 
     _traversals: VectorSet
     
-    def __init__(self, id: int, origin: Vector, traversals: VectorSet):
+    def __init__(self, id: int, origin: VectorNode, traversals: VectorSet):
         """
         Args:
             id: int
-            origin: Vector
+            origin: VectorNode
             traversals: VectorSet
         """
         super().__init__(id, origin=origin)

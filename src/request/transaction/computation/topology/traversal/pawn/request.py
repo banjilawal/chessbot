@@ -24,7 +24,7 @@ class PawnTraversalTopologyRequest(TraversalTopologyRequest[Pawn]):
 
      Attributes:
         id: int
-        origin: Vector
+        origin: VectorNode
         traversals: VectorSet
         
      Provides:
@@ -33,11 +33,11 @@ class PawnTraversalTopologyRequest(TraversalTopologyRequest[Pawn]):
         TraversalTopologyRequest
      """
     
-    def __init__(self, id: int, origin: Vector, traversals: VectorSet = Traversal.PAWN.basis):
+    def __init__(self, id: int, origin: VectorNode, traversals: VectorSet = Traversal.PAWN.basis):
         """
         Args:
             id: int
-            origin: Vector
+            origin: VectorNode
             traversals: VectorSet
         """
         super().__init__(id=id, origin=origin, traversals=traversals)

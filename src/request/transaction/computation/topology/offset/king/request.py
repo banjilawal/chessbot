@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from collection import VectorSet
-from domain import King, Offset, Vector
+from domain import King, Offset, VectorNode
 from request import OffsetTopologyRequest
 
 
-class KingOffsetTopologyRequest(OffsetTopologyRequest[King]):
+class KingTopologyRequest(OffsetTopologyRequest[King]):
     """
      Role:
          -  Messaging
@@ -24,7 +24,7 @@ class KingOffsetTopologyRequest(OffsetTopologyRequest[King]):
 
      Attributes:
         id: int
-        origin: Vector
+        origin: VectorNode
         offsets: VectorSet
         
      Provides:
@@ -33,19 +33,18 @@ class KingOffsetTopologyRequest(OffsetTopologyRequest[King]):
         OffsetTopologyRequest
      """
     
-    def __init__(self, id: int, origin: Vector, offsets: VectorSet = Offset.KING.basis):
+    def __init__(self, id: int, origin: VectorNode, offsets: VectorSet = Offset.KING.basis):
         """
         Args:
             id: int
-            origin: Vector
+            origin: VectorNode
             offsets: VectorSet
         """
         super().__init__(id=id, origin=origin, offsets=offsets)
-        
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, KingOffsetTopologyRequest):
+        if isinstance(other, KingTopologyRequest):
             return self.id == other.id
         return False

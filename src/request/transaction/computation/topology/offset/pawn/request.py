@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from collection import VectorSet
-from domain import Pawn, Offset, Vector
+from domain import Pawn, Offset, VectorNode
 from request import OffsetTopologyRequest
 
 
-class PawnOffsetTopologyRequest(OffsetTopologyRequest[Pawn]):
+class PawnTopologyRequest(OffsetTopologyRequest[Pawn]):
     """
      Role:
          -  Messaging
@@ -24,7 +24,7 @@ class PawnOffsetTopologyRequest(OffsetTopologyRequest[Pawn]):
 
      Attributes:
         id: int
-        origin: Vector
+        origin: VectorNode
         offsets: VectorSet
         
      Provides:
@@ -33,11 +33,11 @@ class PawnOffsetTopologyRequest(OffsetTopologyRequest[Pawn]):
         OffsetTopologyRequest
      """
     
-    def __init__(self, id: int, origin: Vector, offsets: VectorSet = Offset.PAWN.basis):
+    def __init__(self, id: int, origin: VectorNode, offsets: VectorSet):
         """
         Args:
             id: int
-            origin: Vector
+            origin: VectorNode
             offsets: VectorSet
         """
         super().__init__(id=id, origin=origin, offsets=offsets)
@@ -46,6 +46,6 @@ class PawnOffsetTopologyRequest(OffsetTopologyRequest[Pawn]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PawnOffsetTopologyRequest):
+        if isinstance(other, PawnTopologyRequest):
             return self.id == other.id
         return False

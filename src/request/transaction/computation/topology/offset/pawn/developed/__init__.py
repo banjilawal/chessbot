@@ -10,5 +10,8 @@ version: 0.0.2
 # =========== REQUEST.TRANSACTION.COMPUTATION.TOPOLOGY.OFFSET.PAWN.DEVELOPED PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .maneuver import *
 
 # Modules
+from .request import DevelopedPawnTopologyRequest

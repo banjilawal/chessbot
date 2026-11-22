@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import VectorSet
-from domain import OffsetRank, Vector
+from domain import OffsetRank, VectorNode
 from request import TopologyRequest
 
 T = TypeVar("T", bound="OffsetRank")
@@ -28,7 +28,7 @@ class OffsetTopologyRequest(TopologyRequest, ABC, Generic[T]):
 
      Attributes:
         id: int
-        origin: Vector
+        origin: VectorNode
         offsets: VectorSet
 
      Provides:
@@ -39,11 +39,11 @@ class OffsetTopologyRequest(TopologyRequest, ABC, Generic[T]):
 
     _offsets: VectorSet
     
-    def __init__(self, id: int, origin: Vector, offsets: VectorSet):
+    def __init__(self, id: int, origin: VectorNode, offsets: VectorSet):
         """
         Args:
             id: int
-            origin: Vector
+            origin: VectorNode
             offsets: VectorSet
         """
         super().__init__(id, origin=origin)

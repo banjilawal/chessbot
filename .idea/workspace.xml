@@ -5,18 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/node/step/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/node/step/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/attack/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/maneuver/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/axis/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/axis/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/quadrant/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/bishop/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/bishop/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/knight/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/knight/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/developed/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/developed/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,61 +70,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000003730272" />
-      <entry key="S2" value="1.0044062358696904" />
-      <entry key="S5" value="1.1246368828950974" />
-      <entry key="S10" value="1.4405359308740726" />
-      <entry key="S30" value="2.1801547817110185" />
-      <entry key="S60" value="2.904428244202907" />
-      <entry key="M2" value="8.31703198830992" />
-      <entry key="M5" value="53.4057365794664" />
-      <entry key="M10" value="130.65793838434107" />
-      <entry key="M15" value="189.82946347753526" />
-      <entry key="M30" value="310.07128347856417" />
-      <entry key="H1" value="434.519618501851" />
-      <entry key="H2" value="561.7015247456229" />
-      <entry key="H4" value="845.8491614875107" />
-      <entry key="D1" value="3419.97332718451" />
-      <entry key="W1" value="16087.637222656977" />
+      <entry key="MS100" value="3.420671270802508E-163" />
+      <entry key="MS500" value="3.2125523111917616E-33" />
+      <entry key="S2" value="8.202698786629352E-9" />
+      <entry key="S5" value="7.781612685804218E-4" />
+      <entry key="S10" value="0.03906685816137043" />
+      <entry key="S30" value="0.7515508401967113" />
+      <entry key="S60" value="2.354658104831519" />
+      <entry key="M2" value="5.055313086835118" />
+      <entry key="M5" value="8.777926352916785" />
+      <entry key="M10" value="11.31603754674559" />
+      <entry key="M15" value="13.490379061620976" />
+      <entry key="M30" value="36.07396429399389" />
+      <entry key="H1" value="143.54833374329746" />
+      <entry key="H2" value="354.93312076745667" />
+      <entry key="H4" value="710.2847963767979" />
+      <entry key="D1" value="3390.9357152618304" />
+      <entry key="W1" value="16136.568134594088" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="5.451479226885186E-290" />
-      <entry key="S5" value="1.9744130170045666E-116" />
-      <entry key="S10" value="1.4654605895107031E-58" />
-      <entry key="S30" value="7.679594238971024E-20" />
-      <entry key="S60" value="5.562743718299736E-10" />
-      <entry key="M2" value="6.320376041636385E-5" />
-      <entry key="M5" value="0.08371579574513861" />
-      <entry key="M10" value="0.9798100156303843" />
-      <entry key="M15" value="2.2462185824619945" />
-      <entry key="M30" value="5.177201757845469" />
-      <entry key="H1" value="7.927751776768049" />
-      <entry key="H2" value="11.761277142876102" />
-      <entry key="H4" value="27.2317424203511" />
-      <entry key="D1" value="177.7251675936046" />
-      <entry key="W1" value="868.4010450569342" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000163086851686" />
+      <entry key="S2" value="1.0635484170807472" />
+      <entry key="S5" value="1.3320793688077885" />
+      <entry key="S10" value="1.576263439557816" />
+      <entry key="S30" value="1.8485576382601512" />
+      <entry key="S60" value="2.2222579633115873" />
+      <entry key="M2" value="3.3150045349299044" />
+      <entry key="M5" value="5.293018625560252" />
+      <entry key="M10" value="6.447681699955585" />
+      <entry key="M15" value="6.918631024549083" />
+      <entry key="M30" value="7.642263732904228" />
+      <entry key="H1" value="9.311083050661866" />
+      <entry key="H2" value="13.140670750981775" />
+      <entry key="H4" value="26.185995513866732" />
+      <entry key="D1" value="174.260251377321" />
+      <entry key="W1" value="868.1751038732591" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9794202975869268" />
-      <entry key="MS500" value="0.995849753451794" />
-      <entry key="S2" value="1.0033200283579036" />
-      <entry key="S5" value="1.1237085021094897" />
-      <entry key="S10" value="1.4394891144103836" />
-      <entry key="S30" value="2.1792825313798754" />
-      <entry key="S60" value="2.9029085467198494" />
-      <entry key="M2" value="8.31392720528695" />
-      <entry key="M5" value="53.47576407421046" />
-      <entry key="M10" value="131.59983972345455" />
-      <entry key="M15" value="192.02415491506966" />
-      <entry key="M30" value="315.1913911877451" />
-      <entry key="H1" value="442.4030624214699" />
-      <entry key="H2" value="573.4318659853193" />
-      <entry key="H4" value="873.0530319043138" />
-      <entry key="D1" value="3597.675529114259" />
-      <entry key="W1" value="16956.02303145444" />
+      <entry key="MS100" value="4.464695850805236E-20" />
+      <entry key="MS500" value="1.3488377157175877E-4" />
+      <entry key="S2" value="0.11227219310417752" />
+      <entry key="S5" value="0.5261755807909004" />
+      <entry key="S10" value="1.0188186681155968" />
+      <entry key="S30" value="2.3220483953546043" />
+      <entry key="S60" value="4.412079085397094" />
+      <entry key="M2" value="8.267250915216955" />
+      <entry key="M5" value="14.017270857137783" />
+      <entry key="M10" value="17.732933101579373" />
+      <entry key="M15" value="20.38694351277462" />
+      <entry key="M30" value="43.701646702385794" />
+      <entry key="H1" value="152.84370125623275" />
+      <entry key="H2" value="368.05622276217986" />
+      <entry key="H4" value="736.4501723782665" />
+      <entry key="D1" value="3565.1741412799875" />
+      <entry key="W1" value="17004.728097485924" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -130,46 +138,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/request/transaction/computation/topology&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.checker.executor": "Run",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.responder.executor": "Run",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "Python.table.executor": "Debug",
+    "Python.validator (1).executor": "Run",
+    "Python.worker.executor": "Coverage",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/request/transaction/computation/topology/offset/pawn/developed",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed" />
+      <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/attack" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology" />
       <recent name="$PROJECT_DIR$/src/operation/computation/topology" />
-      <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology/offset" />
-      <recent name="$PROJECT_DIR$/src/request/transaction/computation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/operation/computation/node" />
@@ -992,7 +1000,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="270782000" />
+      <workItem from="1794227184139" duration="276149000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3135,11 +3143,6 @@
           <url>file://$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="712" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="713" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/operation/computation/node/step/__init__.py</url>

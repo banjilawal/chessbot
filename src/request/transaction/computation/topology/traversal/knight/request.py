@@ -24,7 +24,7 @@ class KnightTraversalTopologyRequest(TraversalTopologyRequest[Knight]):
 
      Attributes:
         id: int
-        origin: Vector
+        origin: VectorNode
         traversals: VectorSet
         
      Provides:
@@ -33,11 +33,11 @@ class KnightTraversalTopologyRequest(TraversalTopologyRequest[Knight]):
         TraversalTopologyRequest
      """
     
-    def __init__(self, id: int, origin: Vector, traversals: VectorSet = Traversal.KNIGHT.basis):
+    def __init__(self, id: int, origin: VectorNode, traversals: VectorSet = Traversal.KNIGHT.basis):
         """
         Args:
             id: int
-            origin: Vector
+            origin: VectorNode
             traversals: VectorSet
         """
         super().__init__(id=id, origin=origin, traversals=traversals)
