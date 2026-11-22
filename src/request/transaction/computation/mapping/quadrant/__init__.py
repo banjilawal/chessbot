@@ -10,7 +10,10 @@ version: 0.0.2
 # =========== REQUEST.TRANSACTION.COMPUTATION.MAPPING.QUADRANT PACKAGE ===========#
 
 # Packages
-from .axis import *
+from .northeast import *
+from .northwest import *
+from .southeast import *
+from .southwest import *
 
 # Modules
 from .request import QuadrantMappingRequest

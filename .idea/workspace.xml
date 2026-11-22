@@ -5,95 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/mapping/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/mapping/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/mapping/axis/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/mapping/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/mapping/quadrant/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/mapping/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/vector/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/north/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/north/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/south/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/south/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/west/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/west/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/computation/vector/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/computation/vector/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/northeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/northeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/northwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/northwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/southeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/southeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/southwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/space/quadrant/southwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/space/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/space/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/space/quadrant/northeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/space/quadrant/northeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/space/quadrant/northwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/space/quadrant/northwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/space/quadrant/southeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/space/quadrant/southeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/space/quadrant/southwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/space/quadrant/southwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/northeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/northeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/northwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/northwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/southeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/southeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/southwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/space/quadrant/southwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/quadrant/northeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/quadrant/northeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/quadrant/northwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/quadrant/northwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/quadrant/southeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/quadrant/southeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/quadrant/southwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/quadrant/southwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/northeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/northeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/northwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/northwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/southeast/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/southeast/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/southwest/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transit/carrier/space/quadrant/southwest/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/computation/distance/euclidean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/distance/euclidean/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/computation/multiplication/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/multiplication/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/addition/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/addition/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/distance/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/distance/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/product/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/vector/product/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/transform/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/vector/transform/operation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/add/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/add/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/add/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/add/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/distance/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/distance/euclidean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/distance/euclidean/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/distance/euclidean/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/distance/euclidean/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/distance/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/distance/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/product/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/multiplication/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/product/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/vector/multiplication/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/insertion/add/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/insertion/add/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/insertion/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/insertion/push/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/insertion/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/search/model/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/search/model/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/search/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/maneuver/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/maneuver/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/promotion/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/space/quadrant/northeast/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/space/quadrant/northeast/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/space/quadrant/northwest/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/space/quadrant/northwest/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/space/quadrant/southwest/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/space/quadrant/southwest/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/axis/east/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/axis/east/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/axis/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/axis/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/axis/north/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/axis/north/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/axis/south/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/axis/south/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/axis/west/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/axis/west/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/quadrant/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/quadrant/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/recurrence/quadrant/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/recurrence/quadrant/recurrence.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/space/quadrant/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/space/quadrant/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northwest/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northwest/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southeast/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southeast/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southwest/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southwest/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,60 +60,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000450983229" />
-      <entry key="S5" value="1.0023857437099595" />
-      <entry key="S10" value="1.1041990012294338" />
-      <entry key="S30" value="3.131600239438378" />
-      <entry key="S60" value="7.707520074612845" />
-      <entry key="M2" value="16.94716265399861" />
-      <entry key="M5" value="36.49690067520658" />
-      <entry key="M10" value="54.8326971254511" />
-      <entry key="M15" value="68.57874914649294" />
-      <entry key="M30" value="111.06731102727872" />
-      <entry key="H1" value="214.4885080603685" />
-      <entry key="H2" value="417.2910071911751" />
-      <entry key="H4" value="735.5784985241095" />
-      <entry key="D1" value="2725.2904924271575" />
-      <entry key="W1" value="15021.843827584826" />
+      <entry key="MS500" value="1.000006415530512" />
+      <entry key="S2" value="1.050327822873414" />
+      <entry key="S5" value="1.3024985819427584" />
+      <entry key="S10" value="1.5504649978819809" />
+      <entry key="S30" value="2.015116194771" />
+      <entry key="S60" value="3.116812848343431" />
+      <entry key="M2" value="10.420043066111342" />
+      <entry key="M5" value="53.940008002591505" />
+      <entry key="M10" value="117.42682881128282" />
+      <entry key="M15" value="174.40672018047556" />
+      <entry key="M30" value="323.2021511798958" />
+      <entry key="H1" value="534.9534530692328" />
+      <entry key="H2" value="823.6761482522951" />
+      <entry key="H4" value="1212.0772697377145" />
+      <entry key="D1" value="3309.0449082209598" />
+      <entry key="W1" value="15635.297934953147" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.833E-321" />
-      <entry key="S2" value="7.329422534026752E-81" />
-      <entry key="S5" value="1.20573259222757E-32" />
-      <entry key="S10" value="1.5201730604254612E-16" />
-      <entry key="S30" value="8.430338448207749E-6" />
-      <entry key="S60" value="0.004103624354711487" />
-      <entry key="M2" value="0.09058178927271934" />
-      <entry key="M5" value="0.5860485468474503" />
-      <entry key="M10" value="1.2365368307342732" />
-      <entry key="M15" value="1.9968174405741455" />
-      <entry key="M30" value="5.9376789040160824" />
-      <entry key="H1" value="17.217517884228972" />
-      <entry key="H2" value="37.325218486269364" />
-      <entry key="H4" value="62.10805605408777" />
-      <entry key="D1" value="174.8250404083405" />
-      <entry key="W1" value="840.6281057703167" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.5969902999040841E-137" />
+      <entry key="S5" value="1.9697184509495953E-55" />
+      <entry key="S10" value="5.301351508781985E-28" />
+      <entry key="S30" value="1.5597620784259522E-9" />
+      <entry key="S60" value="7.907759344108408E-5" />
+      <entry key="M2" value="0.019194091210170156" />
+      <entry key="M5" value="0.5410703077868738" />
+      <entry key="M10" value="1.8871593677758238" />
+      <entry key="M15" value="3.343752422020245" />
+      <entry key="M30" value="7.994554848593662" />
+      <entry key="H1" value="18.452227246644547" />
+      <entry key="H2" value="38.78943323143129" />
+      <entry key="H4" value="66.55200970531646" />
+      <entry key="D1" value="186.67308313847934" />
+      <entry key="W1" value="854.5643486404422" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.78199984172973E-6" />
-      <entry key="MS500" value="0.08962220300098919" />
-      <entry key="S2" value="0.5471468718201132" />
-      <entry key="S5" value="0.7874227879943788" />
-      <entry key="S10" value="0.9739040568001162" />
-      <entry key="S30" value="2.9701718416840963" />
-      <entry key="S60" value="7.523921315109518" />
-      <entry key="M2" value="16.849822309549783" />
-      <entry key="M5" value="36.934671341009924" />
-      <entry key="M10" value="55.96241686091804" />
-      <entry key="M15" value="70.48826931723134" />
-      <entry key="M30" value="116.93824715948708" />
-      <entry key="H1" value="231.64695743410246" />
-      <entry key="H2" value="454.56185681333835" />
-      <entry key="H4" value="797.6413126521848" />
-      <entry key="D1" value="2900.0943751405234" />
-      <entry key="W1" value="15862.457381320482" />
+      <entry key="MS100" value="0.9075191553171609" />
+      <entry key="MS500" value="0.9807852787846078" />
+      <entry key="S2" value="1.0452092403219626" />
+      <entry key="S5" value="1.299889411660141" />
+      <entry key="S10" value="1.5487976890889616" />
+      <entry key="S30" value="2.001630341081636" />
+      <entry key="S60" value="3.0864851525523624" />
+      <entry key="M2" value="10.403417039047428" />
+      <entry key="M5" value="54.438842726572204" />
+      <entry key="M10" value="119.26150503336433" />
+      <entry key="M15" value="177.69341096031098" />
+      <entry key="M30" value="331.1367531890745" />
+      <entry key="H1" value="553.3469062703629" />
+      <entry key="H2" value="862.4098838209622" />
+      <entry key="H4" value="1278.5816744790804" />
+      <entry key="D1" value="3495.6956195366897" />
+      <entry key="W1" value="16489.84752428885" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -228,7 +148,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/request/transaction/computation/mapping/axis",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/request/transaction/computation/mapping/quadrant",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -242,11 +162,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant" />
+      <recent name="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/mapping" />
-      <recent name="$PROJECT_DIR$/src/request/transaction/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/request/transaction/computation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/vector" />
@@ -1069,7 +989,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="247567000" />
+      <workItem from="1794227184139" duration="251566000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3207,6 +3127,11 @@
           <url>file://$PROJECT_DIR$/src/fabrication/builder/model/builder.py</url>
           <line>11</line>
           <option name="timeStamp" value="709" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/computation/mapping/axis/worker.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="711" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
