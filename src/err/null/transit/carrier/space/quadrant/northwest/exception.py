@@ -41,7 +41,7 @@ class NorthwestQuadrantCarrierNullException(QuadrantCarrierNullException):
     Provides:
 
     Super Class:
-        QuadrantSpaceCarrierNullException
+        QuadrantCarrierNullException
     """
     MSG = "NorthwestQuadrantCarrier cannot be null."
     ERR_CODE = "NORTHWEST_QUADRANT_CARRIER_NULL_ERROR"

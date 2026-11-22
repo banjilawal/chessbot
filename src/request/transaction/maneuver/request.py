@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from artifcat import ManeuverResult
-from domain import Maneuver, Path, Token
-from exchange import TransactionRequest
+from domain import Path, Token
+from request import TransactionRequest
 
-R = TypeVar("R", bound="ManeuverResult")
-T = TypeVar("T", bound="Maneuver")
+R = TypeVar("R")
+T = TypeVar("T")
 
-class ManeuverRequest(TransactionRequest[R], Generic[R, T]):
+class ManeuverRequest(TransactionRequest[ManeuverResult], Generic[R, T]):
     """
      Role:
          -  Messaging

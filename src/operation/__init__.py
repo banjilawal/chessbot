@@ -10,14 +10,11 @@ version: 0.0.2
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
-from .crud import *
+from .attack import *
 from .computation import *
-from .insertion import *
-from .microservice import *
+from .crud import *
 from .maneuver import *
 from .promotion import *
-from .suite import *
-from .toolkit import *
 
 # Modules
 from .worker import Worker

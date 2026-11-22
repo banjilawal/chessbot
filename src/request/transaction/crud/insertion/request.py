@@ -14,12 +14,11 @@ from typing import Generic, TypeVar
 
 from artifcat import InsertionResult
 from collection import DataStruct
-from exchange import CrudRequest
+from request import CrudRequest
 
-R = TypeVar("R", bound="InsertionResult")
 T = TypeVar("T")
 
-class InsertionRequest(CrudRequest[R, T], ABC, Generic[R, T]):
+class InsertionRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging

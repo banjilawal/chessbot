@@ -12,6 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
+from artifcat import ComputationResult
+from controller import VectorComputationController
+from domain import Vector
 from surface import Space
 from util import LoggingLevelRouter
 
@@ -34,18 +37,20 @@ class SpaceMappingFunction(ABC, Generic[T]):
 
     Super Class:
     """
+    _compute: VectorComputationController
     
     
-    def __init__(self, math_toolkit: Optional[MathToolkit] | None = MathToolkit(),):
+    def __init__(
+            self, compute: Optional[VectorComputationController] | None = None,):
         """
         Args:
-            math_toolkit: Optional[MathToolkit]
+            compute: Optional[VectorComputationController]
         """
-        self._math_toolkit = math_toolkit
+        self._compute = compute or VectorComputationController()
     
     @property
-    def math(self) -> MathToolkit:
-        return self._math_toolkit
+    def compute(self) -> VectorComputationController:
+        return self._compute
     
     
     @abstractmethod

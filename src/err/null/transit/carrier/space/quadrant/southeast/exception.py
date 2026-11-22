@@ -41,7 +41,7 @@ class SoutheastQuadrantCarrierNullException(QuadrantCarrierNullException):
     Provides:
 
     Super Class:
-        QuadrantSpaceCarrierNullException
+        QuadrantCarrierNullException
     """
     MSG = "SoutheastQuadrantCarrier cannot be null."
     ERR_CODE = "SOUTHEAST_QUADRANT_CARRIER_NULL_ERROR"

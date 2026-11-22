@@ -41,7 +41,7 @@ class SouthwestQuadrantCarrierNullException(QuadrantCarrierNullException):
     Provides:
 
     Super Class:
-        QuadrantSpaceCarrierNullException
+        QuadrantCarrierNullException
     """
     MSG = "SouthwestQuadrantCarrier cannot be null."
     ERR_CODE = "SOUTHWEST_QUADRANT_CARRIER_NULL_ERROR"

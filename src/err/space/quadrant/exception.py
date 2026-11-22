@@ -26,7 +26,7 @@ class QuadrantException(SpaceException):
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating an error occurred in a QuadrantSpace instance.
+        1.  Indicating an error occurred in a Quadrant instance.
 
     Attributes:
         msg: str
@@ -43,7 +43,7 @@ class QuadrantException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "QuadrantSpace error."
+    MSG = "Quadrant error."
     ERR_CODE = "QUADRANT_SPACE_ERROR"
     
     def __init__(

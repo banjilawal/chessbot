@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import QuadrantSpaceCarrierException
+from err import QuadrantCarrierException
 from artifcat import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
     "SoutheastQuadrantCarrierException",
 ]
 # ======================# SOUTHEAST_QUADRANT_CARRIER_ERROR #======================#
-class SoutheastQuadrantCarrierException(QuadrantSpaceCarrierException):
+class SoutheastQuadrantCarrierException(QuadrantCarrierException):
     """
     Role:
         - Failure Tracing
@@ -41,7 +41,7 @@ class SoutheastQuadrantCarrierException(QuadrantSpaceCarrierException):
     Provides:
 
     Super Class:
-        QuadrantSpaceCarrierException
+        QuadrantCarrierException
     """
     MSG = "SoutheastQuadrantCarrier error."
     ERR_CODE = "SOUTHEAST_QUADRANT_CARRIER_ERROR"

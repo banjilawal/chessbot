@@ -1,7 +1,7 @@
-# src/request/transaction/computation/product/request.py
+# src/request/transaction/computation/vector/multiplication/request.py
 
 """
-Module: request.transaction.computation.product.request
+Module: request.transaction.computation.vector.multiplication.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,9 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import Scalar, Vector
-from exchange import ComputationRequest
+from request import VectorComputationRequest
 
-class ScalarProductRequest(ComputationRequest):
+
+class ScalarProductRequest(VectorComputationRequest):
     """
      Role:
          -  Messaging

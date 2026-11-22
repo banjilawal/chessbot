@@ -26,7 +26,7 @@ class QuadrantCarrierNullException(SpaceCarrierNullException):
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating a required QuadrantSpace.
+        1.  Indicating a required Quadrant.
 
     Attributes:
         msg: str
@@ -43,7 +43,7 @@ class QuadrantCarrierNullException(SpaceCarrierNullException):
     Super Class:
         SpaceCarrierNullException
     """
-    MSG = "QuadrantSpaceCarrier cannot be null."
+    MSG = "QuadrantCarrier cannot be null."
     ERR_CODE = "QUADRANT_SPACE_CARRIER_NULL_ERROR"
     
     def __init__(

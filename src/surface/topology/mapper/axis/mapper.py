@@ -11,11 +11,13 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
+from domain import Vector
 from err import AxisMappingFunctionException
-from surface.topology.mapper import SpaceMappingFunction
-from domain.model import Vector
+
 from artifcat import ComputationResult, MethodResultType
-from util import LoggingLevelRouter
+from request import VectorAdditionRequest
+from surface import Axis, SpaceMappingFunction
+from util import IdFactory, LoggingLevelRouter
 
 T = TypeVar("T", bound="Axis")
 
@@ -74,28 +76,15 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
         method = f"{self.__class__.__name__}.next"
         
         # Handle the case that the argument is not safe to use.
-        validation = self.math.vector.validator.execute(vector)
-        if validation.is_failure:
-            # Send an exception chain in the result.
-            return ComputationResult.failure(
-                AxisMappingFunctionException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AxisMappingFunctionException.MSG,
-                    err_code=AxisMappingFunctionException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=validation.exception,
-                ),
+        result = self.compute.addition.execute(
+            request=VectorAdditionRequest(
+                u=vector,
+                v=self.delta,
+                id=IdFactory.next_id(class_name="Request")
             )
-        current = cast(Vector, validation.payload)
-        
-        # --- Get next by adding current and delta. ---#
-        addition = self.math.add_vector.execute(
-            u=current,
-            v=self._delta,
         )
-        # Handle the case that the addition does not produce a result.
-        if addition.is_failure:
+        # Handle the case that the request is not granted.
+        if result.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
                 AxisMappingFunctionException(
@@ -104,8 +93,9 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
                     msg=AxisMappingFunctionException.MSG,
                     err_code=AxisMappingFunctionException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=addition.exception,
+                    ex=result.exception,
                 ),
             )
+        vector = cast(Vector, result.payload)
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Vector, addition.payload))
+        return ComputationResult.success(vector)

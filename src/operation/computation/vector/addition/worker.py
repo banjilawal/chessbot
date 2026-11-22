@@ -21,7 +21,7 @@ from transit import VectorAdditionPermissionDispatcher, VectorCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorAddition(Computer[VectorAdditionRequest]):
+class VectorAddition(VectorComputation[VectorAdditionRequest]):
     """
     Role:
         - Computation

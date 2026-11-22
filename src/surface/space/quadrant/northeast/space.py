@@ -28,7 +28,7 @@ class NortheastQuadrant(Quadrant):
     Provides:
 
     Super Class:
-        QuadrantSpace
+        Quadrant
     """
     
     def __init__(

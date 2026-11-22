@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from artifcat import PromotionResult
 from domain import Elevatable, PawnToken, Rank
-from exchange import TransactionRequest
+from request import TransactionRequest
 
 
 class PromotionRequest(TransactionRequest[PromotionResult]):

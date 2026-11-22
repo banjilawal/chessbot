@@ -12,15 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from artifcat import SearchResult
 from collection import Stack
 from domain import Context, Model
-from exchange import SearchRequest
+from request import SearchRequest
 
-R = TypeVar("R", bound="SearchResult")
 T = TypeVar("T", bound="Model")
 
-class ModelSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
+class ModelSearchRequest(SearchRequest, ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -46,19 +44,9 @@ class ModelSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
         Args:
             id: int
             context: Context[T]
-            collection: DataStruct[T]
+            collection: StackT]
         """
-        super().__init__(id=id)
-        self._context = context
-        self._collection = collection
-        
-    @property
-    def context(self) -> Context[T]:
-        return self._context
-    
-    @property
-    def collection(self) -> Stack[T]:
-        return self._collection
+        super().__init__(id=id, context=context, collection=collection)
         
     def __eq__(self, other):
         if other is self: return True

@@ -9,11 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from surface.topology.mapper import AxisMappingFunction
-from domain.model import Vector
-from domain.schema import AxisDelta
-from surface.topology import EastAxis
-
+from domain import AxisDelta, Vector
+from surface import AxisMappingFunction, EastAxis
 
 
 class EastAxisMapFunction(AxisMappingFunction[EastAxis]):

@@ -14,15 +14,13 @@ from typing import Optional, cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint
 from err import ScalarProductException
-from fabrication import VectorBuilder
-from operation import Computer
 from request import ScalarProductPermissionRequest, ScalarProductRequest, VectorBuildRequest
 from transit import ScalarProductPermissionDispatcher, VectorCarrier
 
 from util import IdFactory, LoggingLevelRouter
 
 
-class ScalarProduct(Computer[ScalarProductRequest]):
+class ScalarProduct(VectorComputation[ScalarProductRequest]):
     """
     Role:
         - Computation

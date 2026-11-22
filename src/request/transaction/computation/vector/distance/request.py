@@ -1,7 +1,7 @@
-# src/request/transaction/computation/add/request.py
+# src/request/transaction/computation/vector/distance/request.py
 
 """
-Module: request.transaction.computation.add.request
+Module: request.transaction.computation.vector.distance.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,15 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import Vector
-from exchange import ComputationRequest
+from request import VectorComputationRequest
 
-class VectorAdditionRequest(ComputationRequest):
+
+class DistanceRequest(VectorComputationRequest):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide add job details.
+         1. Provide distance job details.
 
      Attributes:
         u: Vector
@@ -60,6 +61,6 @@ class VectorAdditionRequest(ComputationRequest):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, VectorAdditionRequest):
+        if isinstance(other, DistanceRequest):
             return self.id == other.id
         return False

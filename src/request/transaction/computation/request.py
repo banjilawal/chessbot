@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import ComputationResult
-from exchange import TransactionRequest
+from request import TransactionRequest
 
-R = TypeVar("R", bound="ComputationResult")
+R = TypeVar("R")
 T = TypeVar("T")
 
-class ComputationRequest(TransactionRequest[R], ABC, Generic[R, T]):
+class ComputationRequest(TransactionRequest[ComputationResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging

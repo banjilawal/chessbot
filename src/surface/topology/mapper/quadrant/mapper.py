@@ -11,14 +11,12 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from err import QuadrantMappingFunctionException
-from surface.topology.mapper import SpaceMappingFunction
-from domain.model import Vector
-from artifcat import ComputationResult, MethodResultType
-
+from artifcat import ComputationResult
+from domain import Vector
+from surface import Quadrant, SpaceMappingFunction
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="QuadrantSpace")
+T = TypeVar("T", bound="Quadrant")
 
 class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
     """
@@ -97,6 +95,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
                 ),
             )
         current = cast(Vector, validation.payload)
+        x = vector
         
         # --- Build a new vector from the current. ---#
         build = self.math.vector.worker.execute(

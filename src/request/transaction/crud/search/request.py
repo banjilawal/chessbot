@@ -14,13 +14,12 @@ from typing import Generic, TypeVar
 
 from artifcat import SearchResult
 from collection import DataStruct
-from domain import Context
-from exchange import CrudRequest
+from domain import Context, Model
+from request import CrudRequest
 
-R = TypeVar("R", bound="SearchResult")
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
-class SearchRequest(CrudRequest[R, T], ABC, Generic[R, T]):
+class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging

@@ -41,7 +41,7 @@ class NortheastQuadrantNullException(QuadrantNullException):
     Provides:
 
     Super Class:
-        QuadrantSpaceNullException
+        QuadrantNullException
     """
     MSG = "NortheastQuadrant cannot be null."
     ERR_CODE = "NORTHEAST_QUADRANT_NULL_ERROR"

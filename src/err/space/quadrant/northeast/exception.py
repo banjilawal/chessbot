@@ -41,7 +41,7 @@ class NortheastQuadrantException(QuadrantException):
     Provides:
 
     Super Class:
-        QuadrantSpaceException
+        QuadrantException
     """
     MSG = "NortheastQuadrant error."
     ERR_CODE = "NORTHEAST_QUADRANT_ERROR"

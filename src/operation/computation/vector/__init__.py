@@ -13,6 +13,5 @@ version: 0.0.2
 from .addition import *
 from .distance import *
 from .product import *
-from .transform import *
 
 # Modules

@@ -41,7 +41,7 @@ class SouthwestQuadrantException(QuadrantException):
     Provides:
 
     Super Class:
-        QuadrantSpaceException
+        QuadrantException
     """
     MSG = "SouthwestQuadrant error."
     ERR_CODE = "SOUTHWEST_QUADRANT_ERROR"

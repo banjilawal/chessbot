@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== OPERATION.COMPUTATION CONTENTS ===========#
 
 # Packages
+from .mapping import *
 from .vector import *
 
 # Modules
-from .operation import Computation
 from .worker import Computer

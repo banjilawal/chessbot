@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import CrudResult
-from exchange import TransactionRequest
+from request import TransactionRequest
 
-R = TypeVar("R", bound="CrudResult")
-T = TypeVar("T")
 
-class CrudRequest(TransactionRequest[R], ABC, Generic[R, T]):
+T = TypeVar("T", bound="CrudResult")
+
+class CrudRequest(TransactionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging

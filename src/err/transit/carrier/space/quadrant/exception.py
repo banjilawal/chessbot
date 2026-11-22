@@ -17,16 +17,16 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# QUADRANT_SPACE_CARRIER_ERROR #======================#
-    "QuadrantSpaceCarrierException",
+    "QuadrantCarrierException",
 ]
 # ======================# QUADRANT_SPACE_CARRIER_ERROR #======================#
-class QuadrantSpaceCarrierException(SpaceCarrierException):
+class QuadrantCarrierException(SpaceCarrierException):
     """
     Role:
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating a QuadrantSpaceCarrier experienced an error.
+        1.  Indicating a QuadrantCarrier experienced an error.
 
     Attributes:
         msg: str
@@ -43,7 +43,7 @@ class QuadrantSpaceCarrierException(SpaceCarrierException):
     Super Class:
         SpaceCarrierException
     """
-    MSG = "QuadrantSpaceCarrier error."
+    MSG = "QuadrantCarrier error."
     ERR_CODE = "QUADRANT_SPACE_CARRIER_ERROR"
     
     def __init__(

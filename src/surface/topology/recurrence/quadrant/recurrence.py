@@ -25,7 +25,7 @@ class QuadrantRecurrence(Recurrence, Generic[T]):
         - Iterator
 
     Responsibilities:
-        1.  Provide a recurrence relation for iterating to the next QuadrantSpace vector
+        1.  Provide a recurrence relation for iterating to the next Quadrant vector
 
     Attributes:
         space: T

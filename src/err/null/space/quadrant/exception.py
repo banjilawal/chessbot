@@ -26,7 +26,7 @@ class QuadrantNullException(SpaceNullException):
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating a required QuadrantSpace is null.
+        1.  Indicating a required Quadrant is null.
 
     Attributes:
         msg: str
@@ -43,7 +43,7 @@ class QuadrantNullException(SpaceNullException):
     Super Class:
         SpaceNullException
     """
-    MSG = "QuadrantSpace cannot be null."
+    MSG = "Quadrant cannot be null."
     ERR_CODE = "QUADRANT_SPACE_NULL_ERROR"
     
     def __init__(

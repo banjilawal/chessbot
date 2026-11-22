@@ -16,4 +16,4 @@ from .southeast import *
 from .southwest import *
 
 # Modules
-from .exception import QuadrantSpaceCarrierException
+from .exception import QuadrantCarrierException

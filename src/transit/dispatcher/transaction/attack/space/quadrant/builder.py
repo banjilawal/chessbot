@@ -18,7 +18,7 @@ from artifcat import AttackResult
 from operation.toolkit import QuadrantAttackToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="QuadrantSpace")
+T = TypeVar("T", bound="Quadrant")
 
 
 class QuadrantAttack(SpaceAttackDispatcher, Generic[T]):

@@ -41,7 +41,7 @@ class SouthwestQuadrantBlueprintNullException(QuadrantBlueprintNullException):
     Provides:
 
     Super Class:
-        QuadrantSpaceBlueprintNullException
+        QuadrantBlueprintNullException
     """
     MSG = "SouthwestQuadrantBlueprint cannot be null."
     ERR_CODE = "SOUTHWEST_QUADRANT_BLUEPRINT_NULL_ERROR"

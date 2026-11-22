@@ -22,7 +22,7 @@ from transit import DistanceComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class DistanceComputer(Computer[DistanceRequest]):
+class DistanceComputer(VectorComputation[DistanceRequest]):
     """
     Role:
         - Computation
