@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .worker import SpaceMappingFunction
+from .worker import SpaceNodeStepFunction

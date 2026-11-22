@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="MappingRequest")
 
 
-class SpaceMappingFunction(ABC, Generic[T]):
+class SpaceNodeStepFunction(ABC, Generic[T]):
     """
     Role:
         - Computation
