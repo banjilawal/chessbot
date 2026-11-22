@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
+from domain import Vector
 from request import ComputationRequest
 
 T = TypeVar("T")
@@ -26,20 +27,27 @@ class MappingRequest(ComputationRequest, ABC, Generic[T]):
 
      Attributes:
          id: int
+         vector: Vector
 
      Provides:
 
      Super Class:
-        TransactionRequest
+        ComputationRequest
      """
+    _vector: Vector
     
-    def __init__(self, id: int):
+    def __init__(self, id: int, vector: Vector):
         """
         Args:
             id: int
         """
         super().__init__(id)
+        self._vector = vector
         
+        
+    @property
+    def vector(self) -> Vector:
+        return self._vector
     
     def __eq__(self, other):
         if other is self: return True

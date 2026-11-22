@@ -33,9 +33,9 @@ class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
      Provides:
 
      Super Class:
-        TransactionRequest
+        MappingRequest
      """
-    _vector: Vector
+
     _delta: Vector
     
     def __init__(self, id: int, vector: Vector, delta: Vector):
@@ -45,18 +45,12 @@ class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
             vector: Vector
             delta: Vector
         """
-        super().__init__(id)
-        self._vector = vector
+        super().__init__(id, vector=vector)
         self._delta = delta
-        
-    @property
-    def vector(self) -> Vector:
-        return self._vector
     
     @property
     def delta(self) -> Vector:
         return self._delta
-        
     
     def __eq__(self, other):
         if other is self: return True

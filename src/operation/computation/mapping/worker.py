@@ -9,14 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
+from artifcat import ComputationResult
 from controller import VectorComputationController
 from fabrication import VectorBuilder
-from surface import Space
+from request import MappingRequest
+from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Space")
+T = TypeVar("T", bound="MappingRequest")
 
 
 class SpaceMappingFunction(ABC, Generic[T]):
@@ -60,3 +62,8 @@ class SpaceMappingFunction(ABC, Generic[T]):
     @property
     def compute(self) -> VectorComputationController:
         return self._compute
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, request: T) -> ComputationResult:
+        pass

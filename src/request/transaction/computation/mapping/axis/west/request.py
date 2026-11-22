@@ -41,7 +41,6 @@ class WestAxisMappingRequest(AxisMappingRequest[WestAxis]):
             delta: Vector
         """
         super().__init__(id=id, vector=vector, delta=delta)
-        
     
     def __eq__(self, other):
         if other is self: return True

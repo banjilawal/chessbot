@@ -9,20 +9,20 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar, cast
+from typing import cast
 
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint
 from operation import SpaceMappingFunction
-from request import VectorBuildRequest
-from surface import Quadrant
+from request import QuadrantMappingRequest, VectorBuildRequest
+
 from transit import VectorCarrier
 
 from util import IdFactory, LoggingLevelRouter
 
-T = TypeVar("T", bound="Quadrant")
 
-class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
+
+class QuadrantMappingFunction(SpaceMappingFunction[QuadrantMappingRequest]):
     """
     Role:
         - Computation
@@ -42,29 +42,16 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
     Super Class:
         SpaceMappingFunction
     """
-    _x_step: int
-    _slope: int
+
     
-    def __init__(self, x_step: int, slope: int,):
+    def __init__(self):
         """
         Args:
-            x_step: int
-            slope: int
         """
         super().__init__()
-        self._x_step = x_step
-        self._slope = slope
-        
-    @property
-    def x_step(self) -> int:
-        return self._x_step
-    
-    @property
-    def slope(self) -> int:
-        return self._slope
     
     @LoggingLevelRouter.monitor
-    def next(self, vector: Vector) -> ComputationResult[Vector]:
+    def execute(self, request: QuadrantMappingRequest) -> ComputationResult[Vector]:
         """
         Get the next Vector using a linear function.
 
@@ -76,7 +63,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
                 an exception chain in the ComputationResult.
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
-            vector: Vector
+            request: QuadrantMappingRequest
         Returns:
             ComputationResult[Vector]
         Raises:
@@ -98,9 +85,12 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
                     ex=validation.exception,
                 ),
             )
-        current = cast(Vector, validation.payload)
-        x = vector.x + self._x_step
-        y = (2 * vector.y * self._slope) + self.slope
+        vector = request.vector
+        slope = request.slope
+        x_step = request.x_step
+
+        x = vector.x + x_step
+        y = (2 * vector.y * slope) + slope
         
         result = self.vector_builder.execute(
             request=VectorBuildRequest(
@@ -121,6 +111,6 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
                     ex=result.exception,
                 ),
             )
-        vector = cast(Vector, result.payload)
+        value = cast(Vector, result.payload)
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(vector)
+        return ComputationResult.success(value)

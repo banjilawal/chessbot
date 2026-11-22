@@ -1,7 +1,7 @@
-# src/topology/mapper/axis/mapper.py
+# src/operation/computation/mapping/axis/worker.py
 
 """
-Module: topology.mapper.axis.mapper
+Module: operation.computation.mapping.axis.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,19 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar, cast
+from typing import cast
 
 from domain import Vector
 from err import AxisMappingFunctionException
 
 from artifcat import ComputationResult, MethodResultType
-from request import VectorAdditionRequest
-from surface import Axis, SpaceMappingFunction
+from operation import SpaceMappingFunction
+from request import AxisMappingRequest, VectorAdditionRequest
 from util import IdFactory, LoggingLevelRouter
 
-T = TypeVar("T", bound="Axis")
 
-class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
+
+class AxisMappingFunction(SpaceMappingFunction[AxisMappingRequest]):
     """
     Role:
         - Computation
@@ -32,30 +32,23 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
                 - V.y = U.x + delta.y
 
     Attributes:
-        delta: Vector
 
     Provides:
-        def next(self, vector: Vector) -> ComputationResult[Vector]
+        def execute(request: AxisMappingRequest) -> ComputationResult[Vector]
 
     Super Class:
         SpaceMappingFunction
     """
-    _delta: Vector
     
-    def __init__(self, delta: Vector,):
+    def __init__(self):
         """
         Args:
-            delta: Vector
         """
         super().__init__()
-        self._delta = delta
-        
-    @property
-    def delta(self) -> Vector:
-        return self._delta
+
     
     @LoggingLevelRouter.monitor
-    def next(self, vector: Vector) -> ComputationResult[Vector]:
+    def execute(self, request: AxisMappingRequest) -> ComputationResult[Vector]:
         """
         Get the next Vector using addition.
 
@@ -67,7 +60,7 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
                 an exception chain in the ComputationResult.
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
-            vector: Vector
+            request: AxisMappingRequest
         Returns:
             ComputationResult[Vector]
         Raises:
@@ -76,10 +69,14 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
         method = f"{self.__class__.__name__}.next"
         
         # Handle the case that the argument is not safe to use.
+        
+        vector = request.vector
+        delta = request.delta
+        
         result = self.compute.addition.execute(
             request=VectorAdditionRequest(
                 u=vector,
-                v=self.delta,
+                v=delta,
                 id=IdFactory.next_id(class_name="Request")
             )
         )
@@ -96,6 +93,6 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
                     ex=result.exception,
                 ),
             )
-        vector = cast(Vector, result.payload)
+        value = cast(Vector, result.payload)
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(vector)
+        return ComputationResult.success(value)
