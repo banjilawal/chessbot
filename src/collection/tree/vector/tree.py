@@ -35,13 +35,13 @@ class VectorTree(Tree[Vector]):
         Tree
     """
     
-    def __init__(self, root: Vector, branches: Optional[List[VectorChain]] | None = None):
+    def __init__(self, root: VectorNode, branches: Optional[List[VectorChain]] | None = None):
         """
         Args:
             root: VectorNode
             branches: Optional[List[VectorChain]]
         """
-        super().__init__(root=root, branches=branches or List[VectorChain])
+        super().__init__(root=root, branches=branches)
         
     @property
     def root(self) -> VectorNode:

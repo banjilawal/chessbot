@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .offset import *
-from .quadrant import *
+from .traversal import *
 
 # Modules
 from .request import TopologyRequest

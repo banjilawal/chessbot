@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Optional, TypeVar, cast
+from typing import List, Optional, TypeVar, cast
 
 from artifcat import ComputationResult
-from collection import VectorSet, VectorTree
-from domain import Vector, VectorBlueprint
+from collection import VectorChain, VectorSet, VectorTree
+from domain import Vector, VectorBlueprint, VectorNode
 from fabrication import VectorBuilder
 from operation import TopologyComputer
 from request import ComputationRequest, OffsetTopologyRequest, VectorBuildRequest
@@ -118,23 +118,41 @@ class OffsetTopologyComputer(TopologyComputer[OffsetTopologyRequest]):
             )
         origin = request.origin
         offsets = request.offsets
-        root = cast(Vector, origin_validation.content)
-        offsets = cast(VectorSet, basis_validation.authorization_applicant)
+        root = origin.content
+        if root is None:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                TopologyGeneratorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TopologyGeneratorException.MSG,
+                    err_code=TopologyGeneratorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=VectorNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorNullException.MSG,
+                        err_code=VectorNullException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ),
+                ),
+            )
         
         solutions = []
-        
+        branches: List[VectorChain] = []
         for offset in offsets.iterator:
-            x = origin.x + offset.x
-            y = origin.y + offset.y
+            chain = VectorChain()
+            x = root.x + offset.x
+            y = root.y + offset.y
             
-            computation = self.vector_builder.execute(
+            build = self.vector_builder.execute(
                 request=VectorBuildRequest(
                     item=VectorCarrier(blueprint=VectorBlueprint(x=x, y=y)),
                     id=IdFactory.next_id(class_name="Request")
                 )
             )
             # Handle the case that a solution is not computed.
-            if computation.is_failure:
+            if build.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
                     TopologyGeneratorException(
@@ -143,11 +161,13 @@ class OffsetTopologyComputer(TopologyComputer[OffsetTopologyRequest]):
                         msg=TopologyGeneratorException.MSG,
                         err_code=TopologyGeneratorException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                        ex=computation.exception,
+                        ex=build.exception,
                     ),
                 )
-            solutions.append(cast(Vector, computation.payload))
-        vector_set = VectorSet(tuple(solutions))
-        tree = VectorTree(root=origin, branches=[vector_set])
+            vector = cast(Vector, build.payload)
+            node = VectorNode(content=vector)
+            chain = VectorChain(head=node)
+            branches.append(chain)
+        tree = VectorTree(root=origin, branches=branches)
         # --- Send the work product. ---#
         return ComputationResult.success(tree)

@@ -10,12 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, List, TypeVar
+from typing import Generic, List, Optional, TypeVar
 
 from collection import Chain
-from domain import Model
+from domain import Node
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="Node")
 
 class Tree(ABC, Generic[T]):
     """
@@ -28,36 +28,36 @@ class Tree(ABC, Generic[T]):
 
     Attributes:
         root: T
-        branches: List[Chain]
+        branches: List[Chain[T]]
 
     Provides:
 
     Super Class:
     """
     _root: T
-    _branches: List[Chain]
+    _branches: List[Chain[T]]
     
-    def __init__(self, root: T, branches: List[Chain]):
+    def __init__(self, root: T, branches: Optional[List[Chain[T]]] | None = None):
         """
         Args:
             root: T
-            branches: List[Chain]
+            branches: Optional[List[Chain[T]]]
         """
         self._root = root
-        self._branches = branches
+        self._branches = branches or []
         
     @property
     def root(self) -> T:
         return self._root
     
     @property
-    def branches(self) -> List[Chain]:
+    def branches(self) -> List[Chain[T]]:
         return self._branches
     
     
     @property
     def is_headless(self) -> bool:
-        return self.root is None
+        return self.root.is_empty
     
     @property
     def is_not_headless(self) -> bool:
