@@ -157,7 +157,7 @@ class ScalarProductAuthorizationLoader(
         # --- PROCESS_THE_VECTTOR_CANDIDATE_ATTRIBUTE. ---#
         vector_validation = self._vector_validation_service.extract_model(
             request=VectorValidationRequest(
-                item=VectorCarrier(model=applicant.vector),
+                item=VectorCarrier(model=applicant.origin),
                 id=IdFactory.next_id("ValidationRequest")
             )
         )

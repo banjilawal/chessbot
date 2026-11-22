@@ -11,9 +11,8 @@ version: 0.0.2
 
 # Packages
 from .king import *
-from .north import *
-from .south import *
-from .west import *
+from .knight import *
+from .pawn import *
 
 # Modules
 from .request import OffsetTopologyRequest

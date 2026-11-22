@@ -44,7 +44,7 @@ class EastAxisEndpointAttack:
             origin: Vector
         """
         self._origin = origin
-        self._destination = AxisDestination.EAST.vector
+        self._destination = AxisDestination.EAST.origin
         
     @property
     def origin(self) -> Vector:

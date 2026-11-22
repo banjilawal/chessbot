@@ -13,10 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import VectorSet
-from domain import Vector
+from domain import OffsetRank, Vector
 from request import TopologyRequest
 
-T = TypeVar("T", bound="Offset")
+T = TypeVar("T", bound="OffsetRank")
 
 class OffsetTopologyRequest(TopologyRequest, ABC, Generic[T]):
     """

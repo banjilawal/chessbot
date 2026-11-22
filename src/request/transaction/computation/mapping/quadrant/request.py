@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import Vector
+from domain import VectorNode
 from request import MappingRequest
 from surface import Quadrant
 
@@ -28,7 +28,7 @@ class QuadrantMappingRequest(MappingRequest, ABC, Generic[T]):
 
      Attributes:
         id: int
-        vector: Vector
+        node: VectorNode
         x_step: int
         slope: int
 
@@ -40,21 +40,17 @@ class QuadrantMappingRequest(MappingRequest, ABC, Generic[T]):
     _x_step: int
     _slope: int
     
-    def __init__(self, id: int, vector: Vector, x_step: int, slope: int):
+    def __init__(self, id: int, node: VectorNode, x_step: int, slope: int):
         """
         Args:
             id: int
-            vector: Vector
+            node: VectorNode
             x_step: int
             slope: int
         """
-        super().__init__(id, vector=vector)
+        super().__init__(id, node=node)
         self._x_step = x_step
         self._slope = slope
-        
-    @property
-    def vector(self) -> Vector:
-        return self._vector
     
     @property
     def x_step(self) -> int:

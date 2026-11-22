@@ -31,7 +31,7 @@ class DevelopedPawnAttackBasis(PawnAttackBasis):
     Super Class:
         PawnAttackBasis
     """
-    def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_ATTACK.entry):
+    def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_ATTACK.basis):
         """
         Args:
             offsets: VectorSet

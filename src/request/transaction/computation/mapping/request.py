@@ -12,10 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import Vector
+from domain import VectorNode
 from request import ComputationRequest
+from surface import Space
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Space")
 
 class MappingRequest(ComputationRequest, ABC, Generic[T]):
     """
@@ -27,27 +28,27 @@ class MappingRequest(ComputationRequest, ABC, Generic[T]):
 
      Attributes:
          id: int
-         vector: Vector
+         node: VectorNode
 
      Provides:
 
      Super Class:
         ComputationRequest
      """
-    _vector: Vector
+    _node: VectorNode
     
-    def __init__(self, id: int, vector: Vector):
+    def __init__(self, id: int, node: VectorNode):
         """
         Args:
             id: int
         """
         super().__init__(id)
-        self._vector = vector
+        self._node = node
         
         
     @property
-    def vector(self) -> Vector:
-        return self._vector
+    def node(self) -> VectorNode:
+        return self._node
     
     def __eq__(self, other):
         if other is self: return True

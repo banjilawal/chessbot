@@ -54,7 +54,7 @@ class SouthwestQuadrantEndpointAttack:
         """
         self._origin = origin
         self._vector_validator = vector_validator
-        self._destination = QuadrantDestination.SOUTHWEST.vector
+        self._destination = QuadrantDestination.SOUTHWEST.origin
         
     @property
     def origin(self) -> Vector:

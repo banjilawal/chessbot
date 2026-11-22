@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import Vector
+from collection import VectorSet
+from domain import TraversalRank, Vector
 from request import TopologyRequest
-from surface import Quadrant
 
-T = TypeVar("T", bound="Quadrant")
+T = TypeVar("T", bound="TraversalRank")
 
-class QuadrantTopologyRequest(TopologyRequest, ABC, Generic[T]):
+class TraversalTopologyRequest(TopologyRequest, ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -28,45 +28,34 @@ class QuadrantTopologyRequest(TopologyRequest, ABC, Generic[T]):
 
      Attributes:
         id: int
-        vector: Vector
-        x_step: int
-        slope: int
+        origin: Vector
+        traversals: VectorSet
 
      Provides:
 
      Super Class:
         TopologyRequest
      """
-    _x_step: int
-    _slope: int
+
+    _traversals: VectorSet
     
-    def __init__(self, id: int, vector: Vector, x_step: int, slope: int):
+    def __init__(self, id: int, origin: Vector, traversals: VectorSet):
         """
         Args:
             id: int
-            vector: Vector
-            x_step: int
-            slope: int
+            origin: Vector
+            traversals: VectorSet
         """
-        super().__init__(id, vector=vector)
-        self._x_step = x_step
-        self._slope = slope
-        
-    @property
-    def vector(self) -> Vector:
-        return self._vector
+        super().__init__(id, origin=origin)
+        self._traversals = traversals
     
     @property
-    def x_step(self) -> int:
-        return self._x_step
-    
-    @property
-    def slope(self) -> int:
-        return self._slope
+    def traversals(self) -> VectorSet:
+        return self._traversals
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, QuadrantTopologyRequest):
+        if isinstance(other, TraversalTopologyRequest):
             return self.id == other.id
         return False

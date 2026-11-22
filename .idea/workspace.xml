@@ -5,55 +5,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/offset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/offset/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northeast/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northeast/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northwest/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northwest/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southeast/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southeast/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southwest/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southwest/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/worker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/bishop/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/knight/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/developed/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/pawn/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/sets/vector/set.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/sets/vector/set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/axis/east/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/east/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/axis/north/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/north/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/axis/south/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/south/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/axis/west/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/west/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northeast/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northwest/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southeast/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southwest/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/axis/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/axis/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/quadrant/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/quadrant/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/product/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/product/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/schema/offset/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/schema/offset/schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/north/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/north/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/south/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/south/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/west/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/west/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northwest/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northwest/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southeast/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southeast/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southwest/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southwest/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/offset/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/offset/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/toggle/vector/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/toggle/vector/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/span/coord/ray/perpendicular/computer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/span/coord/ray/perpendicular/computer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/board/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/board/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/menu/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/menu/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/mapping/quadrant/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/mapping/quadrant/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/offset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/offset/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/offset/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/king/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northeast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northeast/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northwest/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/northwest/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southeast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southeast/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southwest/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/quadrant/southwest/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/offset/king/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/offset/king/basis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/offset/knight/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/offset/knight/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/developed/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/developed/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/opening/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/opening/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/developed/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/developed/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/opening/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/opening/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/basis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/registry/recurrence/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/registry/recurrence/registry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/registry/space/axis/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/registry/space/axis/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/developed/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/developed/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/opening/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/opening/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/developed/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/developed/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/opening/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/opening/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/offset/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/offset/topology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface/topology/mapper/quadrant/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/mapper/quadrant/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/axis/east/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/axis/east/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/axis/south/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/axis/south/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/northeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/northeast/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/northwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/northwest/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/southeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/southeast/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/southwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/attack/endpoint/quadrant/southwest/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,61 +117,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="5.539558280038433E-31" />
-      <entry key="MS500" value="8.88576916985295E-7" />
-      <entry key="S2" value="0.030702501184371365" />
-      <entry key="S5" value="0.2482387082816578" />
-      <entry key="S10" value="0.49823559694363073" />
-      <entry key="S30" value="0.7956936973761904" />
-      <entry key="S60" value="1.0244138143940522" />
-      <entry key="M2" value="2.1347595493270197" />
-      <entry key="M5" value="8.962375846947275" />
-      <entry key="M10" value="21.960377098814877" />
-      <entry key="M15" value="33.725210020263034" />
-      <entry key="M30" value="83.25976514157954" />
-      <entry key="H1" value="246.93791710452118" />
-      <entry key="H2" value="581.017488218188" />
-      <entry key="H4" value="1070.2505233912696" />
-      <entry key="D1" value="3386.302461191658" />
-      <entry key="W1" value="15779.975748186742" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000018094717316" />
+      <entry key="S2" value="1.0366765055712923" />
+      <entry key="S5" value="1.2665355731257193" />
+      <entry key="S10" value="1.5162708331154484" />
+      <entry key="S30" value="1.802218235849884" />
+      <entry key="S60" value="1.8956663641389488" />
+      <entry key="M2" value="1.9463965152825473" />
+      <entry key="M5" value="1.9782035914838159" />
+      <entry key="M10" value="1.989041754168682" />
+      <entry key="M15" value="1.992681200539128" />
+      <entry key="M30" value="2.0021305917852503" />
+      <entry key="H1" value="3.968666064247359" />
+      <entry key="H2" value="53.417023481333324" />
+      <entry key="H4" value="329.5837261218999" />
+      <entry key="D1" value="2890.323258111225" />
+      <entry key="W1" value="15519.466008560692" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000397157811588" />
-      <entry key="S2" value="1.1411694677328539" />
-      <entry key="S5" value="1.4569790714747572" />
-      <entry key="S10" value="1.6760022768044072" />
-      <entry key="S30" value="1.8834741193445035" />
-      <entry key="S60" value="2.1475259272103395" />
-      <entry key="M2" value="3.2694787498415154" />
-      <entry key="M5" value="6.321870944526807" />
-      <entry key="M10" value="9.412471659903819" />
-      <entry key="M15" value="11.485972652091487" />
-      <entry key="M30" value="16.103238893230923" />
-      <entry key="H1" value="24.8610401872595" />
-      <entry key="H2" value="43.72034901863392" />
-      <entry key="H4" value="74.24190464406898" />
-      <entry key="D1" value="206.42645997149637" />
-      <entry key="W1" value="878.3792066394842" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="6.990580384917506E-257" />
+      <entry key="S60" value="1.1823836991097164E-128" />
+      <entry key="M2" value="1.537915230605723E-64" />
+      <entry key="M5" value="4.6963704821445446E-26" />
+      <entry key="M10" value="4.186086082374721E-13" />
+      <entry key="M15" value="1.1679241209594583E-8" />
+      <entry key="M30" value="5.056987273301521E-4" />
+      <entry key="H1" value="0.1473871189306353" />
+      <entry key="H2" value="3.4542159881509784" />
+      <entry key="H4" value="21.376287280977927" />
+      <entry key="D1" value="173.37061248969098" />
+      <entry key="W1" value="861.8117003823415" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6232907466740465E-15" />
-      <entry key="MS500" value="0.0011028436516809649" />
-      <entry key="S2" value="0.2307353651036587" />
-      <entry key="S5" value="0.9525857370297736" />
-      <entry key="S10" value="1.654448958762245" />
-      <entry key="S30" value="2.4570756810321566" />
-      <entry key="S60" value="3.046992260678929" />
-      <entry key="M2" value="5.32156352792204" />
-      <entry key="M5" value="15.223322592087955" />
-      <entry key="M10" value="31.317466199652053" />
-      <entry key="M15" value="45.15721880177009" />
-      <entry key="M30" value="99.3112708671925" />
-      <entry key="H1" value="271.74782494955247" />
-      <entry key="H2" value="624.6864688706505" />
-      <entry key="H4" value="1144.4452056774726" />
-      <entry key="D1" value="3592.705230469374" />
-      <entry key="W1" value="16658.339940146485" />
+      <entry key="MS100" value="7.266240129838756E-11" />
+      <entry key="MS500" value="0.009381299901769656" />
+      <entry key="S2" value="0.3235501262889581" />
+      <entry key="S5" value="0.7992887335163198" />
+      <entry key="S10" value="1.2069442997731492" />
+      <entry key="S30" value="1.671126067489767" />
+      <entry key="S60" value="1.825547221771353" />
+      <entry key="M2" value="1.9100929594680522" />
+      <entry key="M5" value="1.963369712010209" />
+      <entry key="M10" value="1.981571535158504" />
+      <entry key="M15" value="1.9876891354446902" />
+      <entry key="M30" value="2.000130403024473" />
+      <entry key="H1" value="4.114292721366689" />
+      <entry key="H2" value="56.86521674182154" />
+      <entry key="H4" value="350.9437445302887" />
+      <entry key="D1" value="3063.672826449659" />
+      <entry key="W1" value="16381.262789870223" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -167,46 +185,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.checker.executor": "Run",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.responder.executor": "Run",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "Python.table.executor": "Debug",
-    "Python.validator (1).executor": "Run",
-    "Python.worker.executor": "Coverage",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/request/transaction/computation/topology/offset",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/request/transaction/computation/topology&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology" />
+      <recent name="$PROJECT_DIR$/src/operation/computation/topology" />
+      <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/topology/offset" />
       <recent name="$PROJECT_DIR$/src/request/transaction/computation" />
-      <recent name="$PROJECT_DIR$/src/operation/computation/topology/offset" />
-      <recent name="$PROJECT_DIR$/src/operation/computation/topology" />
-      <recent name="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/request/transaction/computation/vector" />
@@ -1029,7 +1047,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="258558000" />
+      <workItem from="1794227184139" duration="265420000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3177,6 +3195,11 @@
           <url>file://$PROJECT_DIR$/src/surface/topology/basis/pawn/attack/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="712" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/request/transaction/computation/topology/offset/knight/request.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="713" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

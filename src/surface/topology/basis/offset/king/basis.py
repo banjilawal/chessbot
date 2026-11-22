@@ -31,7 +31,7 @@ class KingTopologyBasis(OffsetTopologyBasis[King]):
         OffsetTopologyBasis
     """
     
-    def __init__(self, offsets: VectorSet = Offset.KNIGHT.entry):
+    def __init__(self, offsets: VectorSet = Offset.KNIGHT.basis):
         """
         Args:
             offsets: VectorSet

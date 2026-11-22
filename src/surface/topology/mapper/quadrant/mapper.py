@@ -81,7 +81,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         method = f"{self.__class__.__name__}.next"
         
         # Handle the case that the argument is not safe to use.
-        validation = self.math.vector.validator.execute(vector)
+        validation = self.math.origin.validator.execute(vector)
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
@@ -98,7 +98,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         x = vector
         
         # --- Build a new vector from the current. ---#
-        build = self.math.vector.worker.execute(
+        build = self.math.origin.worker.execute(
             x=current.x + self._x_step,
             y=(2 * current.y * self._slope) + self.slope
         )

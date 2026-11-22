@@ -18,14 +18,14 @@ from domain import Vector
 class Offset(Enum):
     def __new__(
             cls,
-            entries: VectorSet,
+            basis: VectorSet,
     ):
         """
         Args:
-            entries: Dict[str: VectorOffset]
+            basis: Dict[str: VectorOffset]
         """
         obj = object.__new__(cls)
-        obj._entry = VectorSet
+        obj._basis = VectorSet
         return obj
     
     KNIGHT = (
@@ -69,7 +69,7 @@ class Offset(Enum):
     )
 
     @property
-    def entry(self) -> VectorSet:
-        return self.entry
+    def basis(self) -> VectorSet:
+        return self.basis
     
 

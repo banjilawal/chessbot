@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import QuadrantStepFunction, Vector
+from domain import QuadrantStepFunction, VectorNode
 from request import QuadrantMappingRequest
 from surface import NortheastQuadrant
 
@@ -24,7 +24,7 @@ class NortheastQuadrantMappingRequest(QuadrantMappingRequest[NortheastQuadrant])
 
      Attributes:
         id: int
-        vector: Vector
+        node: VectorNode
         x_step: int
         slope: int
 
@@ -37,18 +37,18 @@ class NortheastQuadrantMappingRequest(QuadrantMappingRequest[NortheastQuadrant])
     def __init__(
             self,
             id: int,
-            vector: Vector,
+            node: VectorNode,
             x_step: int = QuadrantStepFunction.NORTHEAST.x_step,
             slope: int = QuadrantStepFunction.NORTHEAST.slope,
     ):
         """
         Args:
             id: int
-            vector: Vector
+            node: VectorNode
             x_step: int
             slope: int
         """
-        super().__init__(id, vector=vector, x_step=x_step, slope=slope)
+        super().__init__(id, node=node, x_step=x_step, slope=slope)
     
     def __eq__(self, other):
         if other is self: return True

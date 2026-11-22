@@ -33,7 +33,7 @@ class KnightOffsetTopologyRequest(OffsetTopologyRequest[Knight]):
         OffsetTopologyRequest
      """
     
-    def __init__(self, id: int, origin: Vector, offsets: VectorSet = Offset.KNIGHT.entry):
+    def __init__(self, id: int, origin: Vector, offsets: VectorSet = Offset.KNIGHT.basis):
         """
         Args:
             id: int

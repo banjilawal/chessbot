@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import Vector
+from domain import Rank, Vector
 from request import ComputationRequest
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Rank")
 
 class TopologyRequest(ComputationRequest, ABC, Generic[T]):
     """
@@ -47,7 +47,7 @@ class TopologyRequest(ComputationRequest, ABC, Generic[T]):
         
         
     @property
-    def vector(self) -> Vector:
+    def origin(self) -> Vector:
         return self._origin
     
     def __eq__(self, other):

@@ -72,7 +72,7 @@ class QuadrantMappingFunction(SpaceMappingFunction[QuadrantMappingRequest]):
         method = f"{self.__class__.__name__}.next"
         
         # Handle the case that the argument is not safe to use.
-        validation = self.math.vector.validator.execute(vector)
+        validation = self.math.origin.validator.execute(vector)
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(

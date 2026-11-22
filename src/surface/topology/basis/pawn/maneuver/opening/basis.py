@@ -31,7 +31,7 @@ class OpeningPawnManeuverBasis(PawnManeuverBasis):
         PawnManeuverBasis
     """
     
-    def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_MANEUVER.entry):
+    def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_MANEUVER.basis):
         """
         Args:
             offsets: VectorSet

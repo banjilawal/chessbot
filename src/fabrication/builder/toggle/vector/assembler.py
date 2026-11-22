@@ -51,7 +51,7 @@ class CartesianToggleBuilder(ToggleBuilder[CartesianToggle]):
         method = f"{self.__class__.__name__}.execute"
         
         return BuildResult.success(
-            CartesianToggleBlueprint(coord=blueprint.coord, vector=blueprint.vector)
+            CartesianToggleBlueprint(coord=blueprint.coord, vector=blueprint.origin)
         )
     
         

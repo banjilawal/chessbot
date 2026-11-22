@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .offset import *
+from .traversal import *
 
 # Modules
 from .worker import TopologyComputer

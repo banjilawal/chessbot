@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import Vector
+from domain import Vector, VectorNode
 from request import MappingRequest
 from surface import Axis
 
@@ -28,7 +28,7 @@ class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
 
      Attributes:
         id: int
-        vector: Vector
+        node: VectorNode
         delta: Vector
 
      Provides:
@@ -39,14 +39,14 @@ class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
 
     _delta: Vector
     
-    def __init__(self, id: int, vector: Vector, delta: Vector):
+    def __init__(self, id: int, node: VectorNode, delta: Vector):
         """
         Args:
             id: int
-            vector: Vector
+            node: VectorNode
             delta: Vector
         """
-        super().__init__(id, vector=vector)
+        super().__init__(id, node=node)
         self._delta = delta
     
     @property

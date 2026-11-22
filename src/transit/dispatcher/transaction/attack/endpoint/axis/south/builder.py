@@ -57,12 +57,12 @@ class SouthAxisEndpointAttack:
         self._origin = origin
         self._vector_validator = vector_validator
         self._delta = Vector(
-            x=origin.x + AxisDestination.SOUTH.vector.x,
-            y=origin.y + AxisDestination.SOUTH.vector.y,
+            x=origin.x + AxisDestination.SOUTH.origin.x,
+            y=origin.y + AxisDestination.SOUTH.origin.y,
         )
         self._destination = Vector(
             x=self._origin.x,
-            y=AxisDestination.SOUTH.vector.y
+            y=AxisDestination.SOUTH.origin.y
         )
         
     @property

@@ -33,7 +33,7 @@ class KingOffsetTopologyRequest(OffsetTopologyRequest[King]):
         OffsetTopologyRequest
      """
     
-    def __init__(self, id: int, origin: Vector, offsets: VectorSet = Offset.KING.entry):
+    def __init__(self, id: int, origin: Vector, offsets: VectorSet = Offset.KING.basis):
         """
         Args:
             id: int

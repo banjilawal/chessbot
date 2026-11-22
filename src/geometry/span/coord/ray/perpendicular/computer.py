@@ -101,7 +101,7 @@ class PerpendicularRayComputer:
             # --- Add the coord if it's not in the list, then advance the cursor. ---#
             if conversion_result.authorization_applicant not in members:
                 members.append(conversion_result.authorization_applicant)
-            cursor_update_result = vector_service.add_vectors([cursor, factors.vector])
+            cursor_update_result = vector_service.add_vectors([cursor, factors.origin])
             
             # Handle the case that the cursor is not updated.
             if cursor_update_result.is_failure:

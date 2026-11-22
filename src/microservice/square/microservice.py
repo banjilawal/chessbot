@@ -109,7 +109,7 @@ class SquareService(Microservice[Square]):
         # Backup the square
         pre_update_square = deepcopy(square)
         # --- Forward the request to the processor. ---#
-        visitation_result = self._controller.visitation.entry.search_service(
+        visitation_result = self._controller.visitation.basis.search_service(
             token=visitor,
             square=square,
             token_service=token_service,
