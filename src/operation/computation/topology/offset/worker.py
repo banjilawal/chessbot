@@ -137,11 +137,9 @@ class OffsetTopologyComputer(TopologyComputer[OffsetTopologyRequest]):
                     ),
                 ),
             )
-        
         solutions = []
         branches: List[VectorChain] = []
         for offset in offsets.iterator:
-            chain = VectorChain()
             x = root.x + offset.x
             y = root.y + offset.y
             
