@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from domain import QuadrantStepFunction, Vector
 from request import QuadrantMappingRequest
+from surface import NorthwestQuadrant
 
 
-class NorthwestQuadrantMappingRequest(QuadrantMappingRequest):
+class NorthwestQuadrantMappingRequest(QuadrantMappingRequest[NorthwestQuadrant]):
     """
      Role:
          -  Messaging

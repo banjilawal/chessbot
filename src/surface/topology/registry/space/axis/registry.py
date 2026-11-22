@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from typing import Dict, Optional, Type, cast
 
-from domain.model import Vector
-from surface.topology import Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir, WestAxis
+from domain import Vector
+from surface import Axis, SpaceReservoir
+
 
 class AxisReservoir(SpaceReservoir[Axis]):
     """

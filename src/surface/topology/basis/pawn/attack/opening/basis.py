@@ -1,7 +1,7 @@
-# src/topology/basis/pawn/attack/developed/basis.py
+# src/topology/basis/pawn/attack/opening/basis.py
 
 """
-Module: topology.basis.pawn.attack.developed.basis
+Module: topology.basis.pawn.attack.opening.basis
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,19 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from collection import VectorSet
-from domain.schema import Offset
-from basis import PawnAttackBasis
+from domain import Offset
+from surface import PawnAttackBasis
 
 
-class DevelopedPawnAttackBasis(PawnAttackBasis):
+class OpeningPawnAttackBasis(PawnAttackBasis):
     """
     Role:
         - Data Holder
 
     Responsibilities:
-        1.  Constraints or that are used to generate a RankTree for Developed attacking Pawns.
+        1.  Constraints or that are used to generate a RankTree for Opening attacking Pawns.
 
     Attributes:
         offsets: VectorSet
@@ -31,11 +30,13 @@ class DevelopedPawnAttackBasis(PawnAttackBasis):
     Super Class:
         PawnAttackBasis
     """
-    def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_ATTACK.entries,):
+    
+    def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_ATTACK.entry):
         """
         Args:
             offsets: VectorSet
         """
         super().__init__(offsets=offsets)
+   
     
     

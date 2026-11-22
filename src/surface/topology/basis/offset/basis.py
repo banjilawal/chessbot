@@ -13,7 +13,8 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import VectorSet
-from surface.topology import TopologyBasis
+from domain import OffsetRank
+from surface import TopologyBasis
 
 T = TypeVar("T", bound="OffsetRank")
 

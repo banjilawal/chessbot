@@ -14,8 +14,9 @@ from typing import Generic, TypeVar
 
 from domain import Vector
 from request import MappingRequest
+from surface import Quadrant
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Quadrant")
 
 class QuadrantMappingRequest(MappingRequest, ABC, Generic[T]):
     """

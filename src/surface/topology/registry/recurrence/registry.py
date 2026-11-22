@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
-from surface import Space
+from surface import Space, SpaceMapFunctionStream
 
 T = TypeVar("T", bound="Space")
 

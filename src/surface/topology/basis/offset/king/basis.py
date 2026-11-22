@@ -10,9 +10,8 @@ version: 0.0.2
 from __future__ import annotations
 
 from collection import VectorSet
-from domain.model import King
-
-from domain.schema import Offset
+from domain import King, Offset
+from surface import OffsetTopologyBasis
 
 
 class KingTopologyBasis(OffsetTopologyBasis[King]):
@@ -32,7 +31,7 @@ class KingTopologyBasis(OffsetTopologyBasis[King]):
         OffsetTopologyBasis
     """
     
-    def __init__(self, offsets: VectorSet = Offset.KING.entries):
+    def __init__(self, offsets: VectorSet = Offset.KNIGHT.entry):
         """
         Args:
             offsets: VectorSet

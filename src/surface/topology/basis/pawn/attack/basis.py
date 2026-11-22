@@ -12,17 +12,16 @@ from __future__ import annotations
 from abc import ABC
 
 from collection import VectorSet
-from domain.model import Pawn
-from basis import OffsetTopologyBasis
+from surface import PawnBasis
 
 
-class PawnBasis(ABC, OffsetTopologyBasis[Pawn]):
+class PawnAttackBasis(PawnBasis, ABC):
     """
     Role:
         - Data Holder
 
     Responsibilities:
-        1.  Constraints or that are used to generate a RankTree for King
+        1.  Constraints or that are used to generate a RankTree for Attacking Pawns
 
     Attributes:
         offsets: VectorSet
@@ -30,7 +29,7 @@ class PawnBasis(ABC, OffsetTopologyBasis[Pawn]):
     Provides:
 
     Super Class:
-        OffsetTopologyBasis
+        PawnBasis
     """
     
     def __init__(self, offsets: VectorSet):
@@ -39,4 +38,5 @@ class PawnBasis(ABC, OffsetTopologyBasis[Pawn]):
             offsets: VectorSet
         """
         super().__init__(offsets=offsets)
+    
     

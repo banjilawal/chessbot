@@ -1,7 +1,7 @@
-# src/topology/basis/pawn/maneuver/opening/basis.py
+# src/topology/basis/pawn/maneuver/developed/basis.py
 
 """
-Module: topology.basis.pawn.maneuver.opening.basis
+Module: topology.basis.pawn.maneuver.developed.basis
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,18 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
+
 from collection import VectorSet
-from domain.schema import Offset
-from basis import PawnManeuverBasis
+from domain import Offset
+from surface import PawnManeuverBasis
 
 
-class OpeningPawnManeuverBasis(PawnManeuverBasis):
+class DevelopedPawnManeuverBasis(PawnManeuverBasis):
     """
     Role:
         - Data Holder
 
     Responsibilities:
-        1.  Constraints or that are used to generate a RankTree for Opening maneuvering Pawns.
+        1.  Constraints or that are used to generate a RankTree for Developed maneuvering Pawns.
 
     Attributes:
         offsets: VectorSet
@@ -30,13 +31,11 @@ class OpeningPawnManeuverBasis(PawnManeuverBasis):
     Super Class:
         PawnManeuverBasis
     """
-    
-    def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_MANEUVER.entries ):
+    def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_MANEUVER.entry):
         """
         Args:
             offsets: VectorSet
         """
         super().__init__(offsets=offsets)
-   
     
     

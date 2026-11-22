@@ -10,10 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from enum import Enum
-from typing import Dict
 
 from collection import VectorSet
-from domain.model import Vector
+from domain import Vector
 
 
 class Offset(Enum):
@@ -69,9 +68,8 @@ class Offset(Enum):
         )
     )
 
-    
     @property
-    def entries(self) -> Dict[str: VectorOffset]:
-        return self._entry
+    def entry(self) -> VectorSet:
+        return self.entry
     
 

@@ -14,8 +14,9 @@ from typing import Generic, TypeVar
 
 from domain import Vector
 from request import MappingRequest
+from surface import Axis
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Axis")
 
 class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
     """
