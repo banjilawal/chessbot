@@ -45,7 +45,7 @@ class CoordRegisterBuildDispatcher(RegisterBuildDispatcher[CoordRegister]):
         super().__init__(worker=worker or CoordRegisterBuilder())
         
     @property
-    def builder(self) -> CoordRegisterBuilder:
+    def worker(self) -> CoordRegisterBuilder:
         return cast(CoordRegisterBuilder, super().builder)
     
 

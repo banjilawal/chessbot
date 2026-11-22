@@ -44,7 +44,7 @@ class FootstepBuildDispatcher(ModelBuildDispatcher[Footstep]):
         super().__init__(worker=worker or FootstepBuilder())
         
     @property
-    def builder(self) -> FootstepBuilder:
+    def worker(self) -> FootstepBuilder:
         return cast(FootstepBuilder, super().builder)
     
 

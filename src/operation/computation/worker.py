@@ -10,18 +10,20 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ComputationResult
-from exchange import ComputationRequest
+from fabrication import VectorBuilder
 from operation import Worker
+from request import ComputationRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
+P = TypeVar("P", bound="ComputationPermissionDispatcher")
 Q = TypeVar("Q", bound="ComputationRequest")
-R = TypeVar("R", bound="ComputationResult")
 
-class ComputationWorker(Worker[Q, R], ABC, Generic[Q, R]):
+
+class Computer(Worker[ComputationResult], ABC, Generic[P, Q]):
     """
     Role:
         -   Transaction Worker
@@ -30,21 +32,31 @@ class ComputationWorker(Worker[Q, R], ABC, Generic[Q, R]):
         1.  Executes a ComputationRequest
 
     Attributes:
+        vector_builder: VectorBuilder
         permitter: ComputationPermissionDispatcher
         
     Provides:
-        -   def execute(request: Q) -> R
+        -   def execute(request: Q) -> ComputationResult
 
     Super Class:
         Worker
     """
+    _vector_builder: VectorBuilder
     
-    def __init__(self, permitter: ComputationPermissionDispatcher):
+    def __init__(
+            self, permitter: ComputationPermissionDispatcher,
+            vector_builder: Optional[VectorBuilder] | None = None,
+    ):
         """
         Args:
             permitter: ComputationPermissionDispatcher
         """
         super().__init__(permitter=permitter)
+        self._vector_builder = vector_builder or VectorBuilder()
+        
+    @property
+    def vector_builder(self) -> VectorBuilder:
+        return self._vector_builder
     
     @property
     def permitter(self) -> ComputationPermissionDispatcher:
@@ -52,7 +64,7 @@ class ComputationWorker(Worker[Q, R], ABC, Generic[Q, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    def execute(self, request: Q) -> ComputationResult:
         """
         Args:
             request: Q

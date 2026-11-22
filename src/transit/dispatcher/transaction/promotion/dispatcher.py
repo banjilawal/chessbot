@@ -13,13 +13,12 @@ from typing import Optional, cast
 
 from artifcat import PromotionResult
 from domain import PawnToken
-from err import PromotionDispatcherException
-from exchange import PromotionRequest
 from operation import Promoter
+from request import PromotionRequest
 from transit import TransactionDispatcher
 from util import LoggingLevelRouter
 
-class PromotionDispatcher(TransactionDispatcher[PromotionRequest, PromotionResult]):
+class PromotionDispatcher(TransactionDispatcher[PromotionResult]):
     """
     Role
         -   Performance Management

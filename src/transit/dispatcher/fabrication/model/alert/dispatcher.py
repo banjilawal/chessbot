@@ -47,7 +47,7 @@ class AlertBuildDispatcher(
         super().__init__(worker=worker or AlertBuilder())
         
     @property
-    def builder(self) -> AlertBuilder:
+    def worker(self) -> AlertBuilder:
         return cast(AlertBuilder, super().builder)
     
 

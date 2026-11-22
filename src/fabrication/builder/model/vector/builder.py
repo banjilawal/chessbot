@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import BuildResult
+from bootstrap import VectorBuildLoader
 from domain import Vector, VectorBlueprint
 from err import VectorBuilderException
-from exchange import VectorBuildRequest
-from fabrication import ModelBuilder, VectorBuildLoader
+from fabrication import ModelBuilder
+from request import VectorBuildRequest
 from util import LoggingLevelRouter
 
 
@@ -82,7 +83,7 @@ class VectorBuilder(ModelBuilder[Vector]):
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(VectorBlueprint, bootstrap.authorization_applicant)
+        blueprint = cast(VectorBlueprint, bootstrap.payload)
         
         # --- Send the work product. ---#
         product = Vector(

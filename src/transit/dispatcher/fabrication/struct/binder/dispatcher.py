@@ -45,7 +45,7 @@ class BinderBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         super().__init__(worker=worker)
     
     @property
-    def builder(self) -> BinderBuilder:
+    def worker(self) -> BinderBuilder:
         return cast(BinderBuilder[T], super().builder)
     
     @abstractmethod

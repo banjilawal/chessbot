@@ -48,7 +48,7 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
         super().__init__(worker=worker)
         
     @property
-    def builder(self) -> CartesianToggleRegisterBuilder:
+    def worker(self) -> CartesianToggleRegisterBuilder:
         return cast(CartesianToggleRegisterBuilder, super().builder)
     
     @LoggingLevelRouter.monitor

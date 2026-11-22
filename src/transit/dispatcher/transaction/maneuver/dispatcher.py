@@ -9,17 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ManeuverResult
 from domain import Maneuver
-from err import ManeuverDispatcherException
-from exchange import ManeuverRequest
 from operation import Mover
+from request import ManeuverRequest
 from transit import TransactionDispatcher
 from util import LoggingLevelRouter
 
-class ManeuverDispatcher(TransactionDispatcher[ManeuverRequest, ManeuverResult]):
+Q = TypeVar("Q",  bound="ManeuverRequest")
+
+class ManeuverDispatcher(TransactionDispatcher[ManeuverResult], ABC, Generic[Q]):
     """
     Role
         -   Performance Management

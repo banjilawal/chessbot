@@ -1,0 +1,66 @@
+# src/microservice/computation/addition/microservice.py
+
+"""
+Module: microservice.computation.addition.microservice
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from artifcat import ComputationResult
+from microservice import ComputationMicroservice
+from request import VectorAdditionRequest
+from transit import VectorAdditionDispatcher
+from util import LoggingLevelRouter
+
+
+class VectorAdditionMicroservice(ComputationMicroservice[VectorAdditionRequest]):
+    """
+    Role:
+        - API
+        - Lifecycle Manager
+        - Operations Provider
+        - Stateless Microservice
+        
+    About:
+        Avoids casting an entity's computationers and validators by making them abstract
+        properties.
+
+    Responsibilities:
+        1.  Baremetal service request API.
+        2.  Maintain the computation-validation security lifecycle.
+
+    Attributes:
+        id: int
+        controller: Controller[T]
+        name: Optional[str]
+
+    Provides:
+
+    Super Class:
+        Microservice
+    """
+    
+    def __init__(self, dispatcher: Optional[VectorAdditionDispatcher] | None = None):
+        """
+        Args:
+            dispatcher: Optional[VectorAdditionDispatcher]
+        """
+        super().__init__(dispatcher=dispatcher or VectorAdditionDispatcher())
+
+        
+    @property
+    def dispatcher(self) -> VectorAdditionDispatcher:
+        return cast(VectorAdditionDispatcher, super().dispatcher)
+        
+    @LoggingLevelRouter.monitor
+    def execute(self, request: VectorAdditionRequest) -> ComputationResult:
+        result = self.dispatcher.execute(request)
+        return result
+    
+    
+    

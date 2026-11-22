@@ -45,7 +45,7 @@ class RegisterBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         super().__init__(worker=worker)
     
     @property
-    def builder(self) -> RegisterBuilder:
+    def worker(self) -> RegisterBuilder:
         return cast(RegisterBuilder[T], super().builder)
     
     @abstractmethod

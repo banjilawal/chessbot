@@ -52,12 +52,7 @@ class FabricationMicroservice(Microservice[BuildResult], ABC, Generic[T]):
         Args:
             dispatcher: BuildDispatcher
         """
-        super().__init__()
-        self._dispatcher = dispatcher
-        
-    @property
-    def dispatcher(self) -> BuildDispatcher:
-        return self._dispatcher
+        super().__init__(dispatcher=dispatcher)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

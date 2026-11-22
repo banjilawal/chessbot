@@ -45,7 +45,7 @@ class PathBuildDispatcher(ModelBuildDispatcher[Path]):
         super().__init__(worker=worker or PathBuilder())
         
     @property
-    def builder(self) -> PathBuilder:
+    def worker(self) -> PathBuilder:
         return cast(PathBuilder, super().builder)
     
 

@@ -45,7 +45,7 @@ class SquareBuildDispatcher(ModelBuildDispatcher[Square]):
         super().__init__(worker=worker or SquareBuilder())
         
     @property
-    def builder(self) -> SquareBuilder:
+    def worker(self) -> SquareBuilder:
         return cast(SquareBuilder, super().builder)
     
 

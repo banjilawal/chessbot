@@ -45,7 +45,7 @@ class SquareContextBuilder(StackContextBuilder[SquareSearchContext]):
     
     
     @property
-    def builder(self) -> SquareContextBuilder:
+    def worker(self) -> SquareContextBuilder:
         return cast(SquareContextBuilder, super().worker)
     
     

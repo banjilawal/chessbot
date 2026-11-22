@@ -48,7 +48,7 @@ class StackContextBuilder(ContextBuilder[T], ABC, Generic[T]):
     
     
     @property
-    def builder(self) -> ContextBuilder[T]:
+    def worker(self) -> ContextBuilder[T]:
         return cast(ContextBuilder[T], super().builder)
     
     

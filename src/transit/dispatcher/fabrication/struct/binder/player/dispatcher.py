@@ -44,7 +44,7 @@ class PlayerBinderBuildDispatcher(BinderBuildDispatcher[PlayerBinder]):
         super().__init__(worker=worker or PlayerBinderBuilder())
         
     @property
-    def builder(self) -> PlayerBinderBuilder:
+    def worker(self) -> PlayerBinderBuilder:
         return cast(PlayerBinderBuilder, super().builder)
     
 

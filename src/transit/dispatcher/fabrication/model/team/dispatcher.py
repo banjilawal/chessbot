@@ -45,7 +45,7 @@ class TeamBuildDispatcher(ModelBuildDispatcher[Team]):
         super().__init__(worker=worker or TeamBuilder())
         
     @property
-    def builder(self) -> TeamBuilder:
+    def worker(self) -> TeamBuilder:
         return cast(TeamBuilder, super().builder)
     
 

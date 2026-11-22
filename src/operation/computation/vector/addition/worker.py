@@ -14,15 +14,14 @@ from typing import Optional, cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint
 from err import VectorAdditionException
-from exchange import VectorAdditionPermissionRequest, VectorAdditionRequest, VectorBuildRequest
-from fabrication import VectorBuilder
-from operation import ComputationWorker
+from operation import Computer
+from request import VectorAdditionPermissionRequest, VectorAdditionRequest, VectorBuildRequest
 from transit import VectorAdditionPermissionDispatcher, VectorCarrier
 
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]):
+class VectorAddition(Computer[VectorAdditionRequest]):
     """
     Role:
         - Computation
@@ -37,22 +36,19 @@ class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]
         -   def execute(self, request: VectorAdditionRequest) -> ComputationResult[Vector]
 
     Super Class:
-        Computation
+        Computer
     """
-    _builder: VectorBuilder
+    
     
     def __init__(
             self,
-            builder: Optional[VectorBuilder] | None = None,
             permitter: Optional[VectorAdditionPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            builder: Optional[VectorBuilder]
             permitter: Optional[VectorAdditionPermissionDispatcher]
         """
         super().__init__(permitter=permitter or VectorAdditionPermissionDispatcher())
-        self._builder = builder or VectorBuilder()
         
     @property
     def permitter(self) -> VectorAdditionPermissionDispatcher:
@@ -98,21 +94,9 @@ class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=VectorAdditionException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorAdditionException.MSG,
-                    err_code=VectorAdditionException.ERR_CODE,
-                    ex=VectorAdditionPermissionRequestNullException(),
-                )
-            )
+        permission_request = cast(VectorAdditionPermissionRequest, decision.permission_request)
+        transaction_request = cast(VectorAdditionRequest, decision.transaction_request)
+     
         # Handle the case that the transaction_request is null.
         if transaction_request is None:
             # Send the exception chain in the denial.
@@ -133,7 +117,7 @@ class VectorAddition(ComputationWorker[VectorAdditionRequest, ComputationResult]
         x = u.x + v.x
         y = u.y + v.y
         # Safely build the new vector.
-        build = self._builder.execute(
+        build = self.vector_builder.execute(
             request=VectorBuildRequest(
                 id=IdFactory.next_id(class_name="VectorBuildRequest"),
                 item=VectorCarrier(blueprint=VectorBlueprint(x=x, y=y))

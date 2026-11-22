@@ -13,9 +13,10 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import BuildResult
+from bootstrap import ModelBuildLoader
 from domain import Model
-from exchange import ModelBuildRequest
-from fabrication import Builder, ModelBuildLoader
+from fabrication import Builder
+from request import ModelBuildRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
@@ -38,7 +39,6 @@ class ModelBuilder(Builder[T], ABC, Generic[T]):
     Super Class:
         Builder
     """
-    _loader: ModelBuildLoader[T]
     
     def __init__(self, loader: ModelBuildLoader[T]):
         """
@@ -46,10 +46,6 @@ class ModelBuilder(Builder[T], ABC, Generic[T]):
             loader: ModelBuildLoader[T]
         """
         super().__init__(loader=loader)
-    
-    @property
-    def loader(self) -> ModelBuildLoader[T]:
-        return cast(ModelBuildLoader, super().loader)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

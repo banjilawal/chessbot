@@ -45,7 +45,7 @@ class CoordContextBuilder(StackContextBuilder[CoordSearchContext]):
     
     
     @property
-    def builder(self) -> CoordContextBuilder:
+    def worker(self) -> CoordContextBuilder:
         return cast(CoordContextBuilder, super().worker)
     
     

@@ -9,13 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 
 from fabrication import VectorBuilder
 from artifcat import BuildResult
 from domain import Vector
 from err import VectorBuildDispatcherException
+from request import VectorBuildRequest
 from transit import ModelBuildDispatcher, VectorCarrier
 from util import LoggingLevelRouter
 
@@ -40,17 +41,17 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
 
     def __init__(
             self,
-            worker: VectorBuilder | None = None,
+            worker: Optional[VectorBuilder] | None = None,
     ):
         super().__init__(worker=worker or VectorBuilder())
         
     @property
-    def builder(self) -> VectorBuilder:
-        return cast(VectorBuilder, super().builder)
+    def worker(self) -> VectorBuilder:
+        return cast(VectorBuilder, super().worker)
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: Any) -> BuildResult[VectorCarrier]:
+    def execute(self, request: VectorBuildRequest) -> BuildResult[Vector]:
         """
         Forward a job to a VectorBuilder then deliver the result.
 

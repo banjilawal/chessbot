@@ -13,7 +13,6 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import TransactionResult
-from exchange import TransactionRequest
 from operation import Worker
 from transit import Dispatcher
 from util import LoggingLevelRouter

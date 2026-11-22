@@ -44,7 +44,7 @@ class TeamBinderBuildDispatcher(BinderBuildDispatcher[TeamBinder]):
         super().__init__(worker=worker or TeamBinderBuilder())
         
     @property
-    def builder(self) -> TeamBinderBuilder:
+    def worker(self) -> TeamBinderBuilder:
         return cast(TeamBinderBuilder, super().builder)
     
 

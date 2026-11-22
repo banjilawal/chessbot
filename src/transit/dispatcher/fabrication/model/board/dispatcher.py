@@ -45,7 +45,7 @@ class BoardBuildDispatcher(ModelBuildDispatcher[Board]):
         super().__init__(worker=worker or BoardBuilder())
         
     @property
-    def builder(self) -> BoardBuilder:
+    def worker(self) -> BoardBuilder:
         return cast(BoardBuilder, super().builder)
     
 

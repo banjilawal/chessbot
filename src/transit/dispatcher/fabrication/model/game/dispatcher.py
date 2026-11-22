@@ -45,7 +45,7 @@ class GameBuildDispatcher(ModelBuildDispatcher[Game]):
         super().__init__(worker=worker or GameBuilder())
         
     @property
-    def builder(self) -> GameBuilder:
+    def worker(self) -> GameBuilder:
         return cast(GameBuilder, super().builder)
     
 

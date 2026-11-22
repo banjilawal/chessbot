@@ -45,7 +45,7 @@ class PlayerBuildDispatcher(ModelBuildDispatcher[Player]):
         super().__init__(worker=worker or PlayerBuilder())
         
     @property
-    def builder(self) -> PlayerBuilder:
+    def worker(self) -> PlayerBuilder:
         return cast(PlayerBuilder, super().builder)
     
 

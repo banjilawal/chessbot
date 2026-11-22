@@ -14,4 +14,4 @@ from .vector import *
 
 # Modules
 from .operation import Computation
-from .worker import ComputationWorker
+from .worker import Computer

@@ -45,7 +45,7 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
         super().__init__(worker=worker or EncounterBuilder())
         
     @property
-    def builder(self) -> EncounterBuilder:
+    def worker(self) -> EncounterBuilder:
         return cast(EncounterBuilder, super().builder)
     
 

@@ -45,7 +45,7 @@ class RankBuildDispatcher(ModelBuildDispatcher[Rank]):
         super().__init__(worker=worker or RankBuilder())
         
     @property
-    def builder(self) -> RankBuilder:
+    def worker(self) -> RankBuilder:
         return cast(RankBuilder, super().builder)
     
 

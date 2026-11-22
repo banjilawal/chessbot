@@ -45,7 +45,7 @@ class ScalarBuildDispatcher(ModelBuildDispatcher[Scalar]):
         super().__init__(worker=worker or ScalarBuilder())
         
     @property
-    def builder(self) -> ScalarBuilder:
+    def worker(self) -> ScalarBuilder:
         return cast(ScalarBuilder, super().builder)
     
 

@@ -12,6 +12,8 @@ version: 0.0.2
 
 # Packages
 from .addition import *
+from .distance import *
+from .multiplication import *
 
 # Modules
-from .microservice import ComputationService
+from .microservice import ComputationMicroservice

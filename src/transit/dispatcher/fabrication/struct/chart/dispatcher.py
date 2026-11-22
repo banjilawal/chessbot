@@ -45,7 +45,7 @@ class ChartBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         super().__init__(worker=worker)
     
     @property
-    def builder(self) -> ChartBuilder:
+    def worker(self) -> ChartBuilder:
         return cast(ChartBuilder[T], super().builder)
     
     @abstractmethod

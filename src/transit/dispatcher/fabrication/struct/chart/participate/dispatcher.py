@@ -44,7 +44,7 @@ class ParticipationBuildDispatcher(ChartBuildDispatcher[Participation]):
         super().__init__(worker=worker or ParticipationBuilder())
         
     @property
-    def builder(self) -> ParticipationBuilder:
+    def worker(self) -> ParticipationBuilder:
         return cast(ParticipationBuilder, super().builder)
     
 

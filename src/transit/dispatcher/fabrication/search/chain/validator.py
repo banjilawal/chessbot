@@ -48,7 +48,7 @@ class ChainContextBuilder(ContextBuilder[T], ABC, Generic[T]):
     
     
     @property
-    def builder(self) -> ChainContextBuilder[T]:
+    def worker(self) -> ChainContextBuilder[T]:
         return cast(ChainContextBuilder[T], super().builder)
     
     

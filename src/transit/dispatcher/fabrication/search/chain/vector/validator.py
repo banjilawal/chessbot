@@ -48,7 +48,7 @@ class VectorNodeContextBuilder(
     
     
     @property
-    def builder(self) -> VectorNodeContextBuilder:
+    def worker(self) -> VectorNodeContextBuilder:
         return cast(VectorNodeContextBuilder, super().worker)
     
     

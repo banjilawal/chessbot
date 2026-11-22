@@ -48,7 +48,7 @@ class StructBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
 
 
     @property
-    def builder(self) -> StructBuilder[T]:
+    def worker(self) -> StructBuilder[T]:
         return cast(StructBuilder[T], super().builder)
     
     

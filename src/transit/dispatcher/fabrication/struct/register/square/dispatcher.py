@@ -45,7 +45,7 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
         super().__init__(worker=worker or SquareRegisterBuilder())
         
     @property
-    def builder(self) -> SquareRegisterBuilder:
+    def worker(self) -> SquareRegisterBuilder:
         return cast(SquareRegisterBuilder, super().builder)
     
 

@@ -13,6 +13,7 @@ from typing import Generic, TypeVar
 from artifcat import ComputationResult
 from microservice import Microservice
 from request import ComputationRequest
+from transit import ComputationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T")

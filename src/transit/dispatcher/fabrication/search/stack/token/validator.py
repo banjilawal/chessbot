@@ -45,7 +45,7 @@ class TokenContextBuilder(StackContextBuilder[TokenSearchContext]):
     
     
     @property
-    def builder(self) -> TokenContextBuilder:
+    def worker(self) -> TokenContextBuilder:
         return cast(TokenContextBuilder, super().worker)
     
     

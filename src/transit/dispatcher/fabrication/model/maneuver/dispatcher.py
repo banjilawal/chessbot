@@ -45,7 +45,7 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
         super().__init__(worker=worker or ManeuverBuilder())
         
     @property
-    def builder(self) -> ManeuverBuilder:
+    def worker(self) -> ManeuverBuilder:
         return cast(ManeuverBuilder, super().builder)
     
 

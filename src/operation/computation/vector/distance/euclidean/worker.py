@@ -9,20 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from fabrication import ScalarBuilder
 from math import sqrt
-from typing import Optional, cast
+from typing import cast
 
 from artifcat import ComputationResult
 from domain import Scalar, ScalarBlueprint
-from exchange import DistanceComputationPermissionRequest, EuclideanDistanceRequest, ScalarBuildRequest
-from microservice.coord.operation import EuclideanDistanceException
-from operation import ComputationWorker
-from transit import DistanceComputationPermissionDispatcher, ScalarCarrier
+from operation import DistanceComputer
+from request import DistanceComputationPermissionRequest, EuclideanDistanceRequest, ScalarBuildRequest
+from transit import ScalarCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class EuclideanDistance(ComputationWorker[EuclideanDistanceRequest, ComputationResult]):
+class EuclideanDistance(DistanceComputer[EuclideanDistanceRequest]):
     """
     Role:
         - Computation
@@ -39,24 +37,12 @@ class EuclideanDistance(ComputationWorker[EuclideanDistanceRequest, ComputationR
     Super Class:
         Computation
     """
-    _builder: ScalarBuilder
     
-    def __init__(
-            self,
-            builder: Optional[ScalarBuilder] | None = None,
-            permitter: Optional[DistanceComputationPermissionDispatcher] | None = None,
-    ):
+    def __init__(self):
         """
         Args:
-            builder: Optional[ScalarBuilder]
-            permitter: Optional[DistanceComputationPermissionDispatcher]
         """
-        super().__init__(permitter=permitter or DistanceComputationPermissionDispatcher())
-        self._builder = builder or ScalarBuilder()
-        
-    @property
-    def permitter(self) -> DistanceComputationPermissionDispatcher:
-        return cast(DistanceComputationPermissionDispatcher, super().permitter)
+        super().__init__()
     
     @LoggingLevelRouter.monitor
     def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]:
@@ -103,22 +89,9 @@ class EuclideanDistance(ComputationWorker[EuclideanDistanceRequest, ComputationR
             decision.permission_request,
         )
         transaction_request = cast(
-            EuclideanDistance,
+            EuclideanDistanceRequest,
             decision.transaction_request
         )
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=EuclideanDistanceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=EuclideanDistanceException.MSG,
-                    err_code=EuclideanDistanceException.ERR_CODE,
-                    ex=DistanceComputationPermissionRequestNullException(),
-                )
-            )
         # Handle the case that the transaction_request is null.
         if transaction_request is None:
             # Send the exception chain in the denial.
@@ -138,7 +111,7 @@ class EuclideanDistance(ComputationWorker[EuclideanDistanceRequest, ComputationR
         # --- Perform transaction and state management work. ---#
         magnitude = sqrt((u.y - v.y) ** 2 + (u.x - v.x) ** 2)
         # Safely build the new vector.
-        build = self._builder.execute(
+        build = self.scalar_builder.execute(
             request=ScalarBuildRequest(
                 id=IdFactory.next_id(class_name="ScalarBuildRequest"),
                 item=ScalarCarrier(blueprint=ScalarBlueprint(magnitude=magnitude))

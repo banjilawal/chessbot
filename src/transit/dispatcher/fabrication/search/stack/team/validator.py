@@ -44,7 +44,7 @@ class TeamContextBuilder(StackContextBuilder[TeamSearchContext]):
         super().__init__(builder=builder)
     
     @property
-    def builder(self) -> TeamContextBuilder:
+    def worker(self) -> TeamContextBuilder:
         return cast(TeamContextBuilder, super().worker)
     
     @LoggingLevelRouter.monitor

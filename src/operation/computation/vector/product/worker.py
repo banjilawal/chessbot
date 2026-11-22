@@ -14,15 +14,15 @@ from typing import Optional, cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint
 from err import ScalarProductException
-from exchange import ScalarProductPermissionRequest, ScalarProductRequest, VectorBuildRequest
 from fabrication import VectorBuilder
-from operation import ComputationWorker
+from operation import Computer
+from request import ScalarProductPermissionRequest, ScalarProductRequest, VectorBuildRequest
 from transit import ScalarProductPermissionDispatcher, VectorCarrier
 
 from util import IdFactory, LoggingLevelRouter
 
 
-class ScalarProduct(ComputationWorker[ScalarProductRequest, ComputationResult]):
+class ScalarProduct(Computer[ScalarProductRequest]):
     """
     Role:
         - Computation
@@ -39,20 +39,16 @@ class ScalarProduct(ComputationWorker[ScalarProductRequest, ComputationResult]):
     Super Class:
         Computation
     """
-    _builder: VectorBuilder
     
     def __init__(
             self,
-            builder: Optional[VectorBuilder] | None = None,
             permitter: Optional[ScalarProductPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            builder: Optional[VectorBuilder]
             permitter: Optional[ScalarProductPermissionDispatcher]
         """
         super().__init__(permitter=permitter or ScalarProductPermissionDispatcher())
-        self._builder = builder or VectorBuilder()
         
     @property
     def permitter(self) -> ScalarProductPermissionDispatcher:
@@ -100,19 +96,7 @@ class ScalarProduct(ComputationWorker[ScalarProductRequest, ComputationResult]):
         # --- Extract the requests for productal processing. ---#
         permission_request = cast(ScalarProductPermissionRequest, decision.permission_request)
         transaction_request = cast(ScalarProductRequest, decision.transaction_request)
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=ScalarProductException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ScalarProductException.MSG,
-                    err_code=ScalarProductException.ERR_CODE,
-                    ex=ScalarProductPermissionRequestNullException(),
-                )
-            )
+    
         # Handle the case that the transaction_request is null.
         if transaction_request is None:
             # Send the exception chain in the denial.
@@ -133,7 +117,7 @@ class ScalarProduct(ComputationWorker[ScalarProductRequest, ComputationResult]):
         x = scalar.magnitude * vector.x
         y = scalar.magnitude * vector.y
         # Safely build the new vector.
-        build = self._builder.execute(
+        build = self.vector_builder.execute(
             request=VectorBuildRequest(
                 id=IdFactory.next_id(class_name="VectorBuildRequest"),
                 item=VectorCarrier(blueprint=VectorBlueprint(x=x, y=y))

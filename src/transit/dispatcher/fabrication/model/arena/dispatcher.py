@@ -45,7 +45,7 @@ class ArenaBuildDispatcher(ModelBuildDispatcher[Arena]):
         super().__init__(worker=worker or ArenaBuilder())
         
     @property
-    def builder(self) -> ArenaBuilder:
+    def worker(self) -> ArenaBuilder:
         return cast(ArenaBuilder, super().builder)
     
 

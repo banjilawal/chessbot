@@ -13,7 +13,6 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import CrudResult
-from exchange import CrudRequest
 from operation import CrudWorker
 from transit import TransactionDispatcher
 from util import LoggingLevelRouter

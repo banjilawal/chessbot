@@ -14,6 +14,7 @@ from .arena import *
 from .binder import *
 from .board import *
 from .catalog import *
+from .computation import *
 from .coord import *
 from .edge import *
 from .extractor import *

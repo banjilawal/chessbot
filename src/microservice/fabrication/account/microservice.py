@@ -45,7 +45,7 @@ class AccountBuildMicroservice(FabricationMicroservice[AccountBuildRequest]):
     
     def __init__(
             self,
-            dispatcher: Optional[AccountBuildDispatcher]
+            dispatcher: Optional[AccountBuildDispatcher] | None = None
     ):
         """
         Args:

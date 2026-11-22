@@ -57,7 +57,7 @@ class ToggleBuildDispatcher(BuildDispatcher, Generic[T]):
         return cast(ToggleToolkit[T], self.toolkit)
     
     @property
-    def builder(self) -> ToggleBuilder[T]:
+    def worker(self) -> ToggleBuilder[T]:
         return cast(ToggleBuilder[T], super().builder)
     
        @abstractmethod

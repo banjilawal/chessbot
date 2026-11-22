@@ -12,7 +12,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from exchange import BuildRequest
 from fabrication import Builder
 from artifcat import BuildResult
 from transit import Dispatcher
@@ -48,6 +47,10 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[Q, W]):
             worker: W
         """
         self._worker = worker
+        
+    @property
+    def worker(self) -> W:
+        return self._worker
 
     @abstractmethod
     @LoggingLevelRouter.monitor

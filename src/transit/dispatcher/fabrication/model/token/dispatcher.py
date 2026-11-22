@@ -45,7 +45,7 @@ class TokenBuildDispatcher(ModelBuildDispatcher[Token]):
         super().__init__(worker=worker or TokenBuilder())
         
     @property
-    def builder(self) -> TokenBuilder:
+    def worker(self) -> TokenBuilder:
         return cast(TokenBuilder, super().builder)
     
 

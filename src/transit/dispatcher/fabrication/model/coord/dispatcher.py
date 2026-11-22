@@ -45,7 +45,7 @@ class CoordBuildDispatcher(ModelBuildDispatcher[Coord]):
         super().__init__(worker=worker or CoordBuilder())
         
     @property
-    def builder(self) -> CoordBuilder:
+    def worker(self) -> CoordBuilder:
         return cast(CoordBuilder, super().builder)
     
 

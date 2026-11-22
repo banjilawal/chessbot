@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ComputationResult
-from operation import ComputationWorker
+from operation import Computer
 from transit import TransactionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="ComputationRequest")
-R = TypeVar("R", bound="ComputationResult")
+R = TypeVar("R")
 
-class ComputationDispatcher(TransactionDispatcher[Q, R], ABC, Generic[Q, R]):
+class ComputationDispatcher(TransactionDispatcher[ComputationResult], ABC, Generic[Q, R]):
     """
     Role
         -   Performance Management
@@ -38,7 +38,7 @@ class ComputationDispatcher(TransactionDispatcher[Q, R], ABC, Generic[Q, R]):
         TransactionDispatcher
     """
     
-    def __init__(self, worker: ComputationWorker[Q, R]):
+    def __init__(self, worker: Computer[Q, R]):
         """
         Args:
             worker: ComputationWorker[Q, R]
@@ -46,12 +46,12 @@ class ComputationDispatcher(TransactionDispatcher[Q, R], ABC, Generic[Q, R]):
         super().__init__(worker=worker)
         
     @property
-    def worker(self) -> ComputationWorker[Q, R]:
-        return cast(ComputationWorker[Q, R], super().worker)
+    def worker(self) -> Computer[Q, R]:
+        return cast(Computer[Q, R], super().worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    def execute(self, request: Q) -> ComputationResult:
         """
         Distribute ComputationRequests among workers then forward the results.
 

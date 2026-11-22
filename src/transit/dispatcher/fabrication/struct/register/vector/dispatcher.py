@@ -44,7 +44,7 @@ class VectorRegisterBuildDispatcher(RegisterBuildDispatcher[VectorRegister]):
         super().__init__(worker=worker or VectorRegisterBuilder())
         
     @property
-    def builder(self) -> VectorRegisterBuilder:
+    def worker(self) -> VectorRegisterBuilder:
         return cast(VectorRegisterBuilder, super().builder)
     
 
