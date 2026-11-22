@@ -136,7 +136,7 @@ class CoordRegisterValidator(RegisterValidator[CoordRegister]):
                         ex=coord_validation.exception
                     )
                 )
-            coord = cast(Coord, coord_validation.payload)
+            coord = cast(Coord, coord_validation.content)
             endpoints[key] = coord
             
         # --- Forward the appropriate work product to the caller. ---#

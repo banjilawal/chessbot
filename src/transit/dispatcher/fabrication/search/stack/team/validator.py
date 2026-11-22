@@ -79,6 +79,6 @@ class TeamContextBuilder(StackContextBuilder[TeamSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TeamSearchContext, build.payload)
+        context = cast(TeamSearchContext, build.content)
         return BuildResult.success(context)
 

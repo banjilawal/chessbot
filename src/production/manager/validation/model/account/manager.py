@@ -93,7 +93,7 @@ class AccountColliderManager(ModelColliderManager[Account]):
                     ex=product.exception,
                 )
             )
-        collider = cast(AccountCollider, product.payload)
+        collider = cast(AccountCollider, product.content)
         
         validation = self.router.execute(collider=collider)
         if validation.is_failure:
@@ -106,6 +106,6 @@ class AccountColliderManager(ModelColliderManager[Account]):
                     ex=validation.exception,
                 )
             )
-        carrier = cast(AccountCarrier, validation.payload)
+        carrier = cast(AccountCarrier, validation.content)
         return ValidationResult.success(carrier)
     

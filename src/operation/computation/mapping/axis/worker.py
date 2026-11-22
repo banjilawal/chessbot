@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import Vector
-from err import AxisMappingFunctionException
+from domain import Vector, VectorNode
+from err import AxisMappingFunctionException, VectorNullException
 
 from artifcat import ComputationResult, MethodResultType
 from operation import SpaceMappingFunction
@@ -48,7 +48,7 @@ class AxisMappingFunction(SpaceMappingFunction[AxisMappingRequest]):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AxisMappingRequest) -> ComputationResult[Vector]:
+    def execute(self, request: AxisMappingRequest) -> ComputationResult[VectorNode]:
         """
         Get the next Vector using addition.
 
@@ -70,18 +70,11 @@ class AxisMappingFunction(SpaceMappingFunction[AxisMappingRequest]):
         
         # Handle the case that the argument is not safe to use.
         
-        vector = request.vector
+        previous = request.node
         delta = request.delta
+        u = previous.content
         
-        result = self.compute.addition.execute(
-            request=VectorAdditionRequest(
-                u=vector,
-                v=delta,
-                id=IdFactory.next_id(class_name="Request")
-            )
-        )
-        # Handle the case that the request is not granted.
-        if result.is_failure:
+        if u is None:
             # Send an exception chain in the result.
             return ComputationResult.failure(
                 AxisMappingFunctionException(
@@ -90,9 +83,37 @@ class AxisMappingFunction(SpaceMappingFunction[AxisMappingRequest]):
                     msg=AxisMappingFunctionException.MSG,
                     err_code=AxisMappingFunctionException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=result.exception,
+                    ex=VectorNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorNullException.MSG,
+                        err_code=VectorNullException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ),
                 ),
             )
-        value = cast(Vector, result.payload)
+        computation = self.compute.addition.execute(
+            request=VectorAdditionRequest(
+                u=u,
+                v=delta,
+                id=IdFactory.next_id(class_name="Request")
+            )
+        )
+        # Handle the case that the request is not granted.
+        if computation.is_failure:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                AxisMappingFunctionException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisMappingFunctionException.MSG,
+                    err_code=AxisMappingFunctionException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=computation.exception,
+                ),
+            )
+        v = cast(Vector, computation.payload)
+        node = VectorNode(content=v, previous=previous)
+        previous.next = node
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(value)
+        return ComputationResult.success(node)

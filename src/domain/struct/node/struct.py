@@ -29,7 +29,7 @@ class Node(Struct[T], ABC, Generic[T]):
         2.  Provide type-safe accessors for payload inspection and node chaining.
 
     Attributes:
-        payload: T
+        content: Optional[T]
         next: Optional[Node[T]]
         previous: Optional[Node[T]]
         
@@ -37,29 +37,29 @@ class Node(Struct[T], ABC, Generic[T]):
 
     Super Class:
     """
-    _payload: Optional[T]
+    _content: Optional[T]
     _next: Optional[Node[T]]
     _previous: Optional[Node[T]]
     
     def __init__(
             self,
-            payload: Optional[T],
+            content: Optional[T] | None = None,
             next: Optional[Node[T]] | None = None,
             previous: Optional[Node[T]] | None = None,
     ):
         """
         Args:
-            payload: Optional[T],
+            content: Optional[T],
             next: Optional[Node[T]]
             previous: Optional[Node[T]]
         """
-        self._payload = payload
+        self._content = content
         self._next = next
         self._previous = previous
     
     @property
-    def payload(self) -> Optional[T]:
-        return self._payload
+    def content(self) -> Optional[T]:
+        return self._content
     
     @property
     def next(self) -> Optional[Node[T]]:
@@ -80,7 +80,7 @@ class Node(Struct[T], ABC, Generic[T]):
     @property
     def is_empty(self) -> bool:
         return (
-                self._payload is None and
+                self._content is None and
                 self.does_not_have_orphan_pointers
         )
     
@@ -94,20 +94,15 @@ class Node(Struct[T], ABC, Generic[T]):
     
     @property
     def size(self) -> int:
-        return len([self._payload]) + self.number_of_pointers
+        return len([self._content]) + self.number_of_pointers
     
     @property
     def number_of_pointers(self) -> int:
         return len([self._next, self._previous])
-    
-    @property
-    @abstractmethod
-    def to_dict(self) -> Dict[str, T]:
-        pass
-    
+
     @property
     def has_orphan_pointers(self) -> bool:
-        return self._payload is None and self.has_neighbors
+        return self._content is None and self.has_neighbors
     
     @property
     def does_not_have_orphan_pointers(self) -> bool:
@@ -120,6 +115,7 @@ class Node(Struct[T], ABC, Generic[T]):
     @property
     def does_not_have_neighbors(self) -> bool:
         return not self.has_neighbors
+
 
     
     

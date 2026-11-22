@@ -81,7 +81,7 @@ class CoordContextBuilder(StackContextBuilder[CoordSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(CoordSearchContext, build.payload)
+        context = cast(CoordSearchContext, build.content)
         return BuildResult.success(context)
 
         

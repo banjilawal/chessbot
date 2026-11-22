@@ -147,7 +147,7 @@ class PathValidator(ModelValidator[Path]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        endpoints = cast(SquareRegister, endpoints_validation.payload)
+        endpoints = cast(SquareRegister, endpoints_validation.content)
         
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe Path.

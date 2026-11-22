@@ -82,5 +82,5 @@ class TokenBuildDispatcher(ModelBuildDispatcher[Token]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(TokenCarrier, build.payload)
+        carrier = cast(TokenCarrier, build.content)
         return BuildResult.success(carrier)

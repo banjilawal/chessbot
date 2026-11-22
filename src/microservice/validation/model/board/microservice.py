@@ -96,7 +96,7 @@ class BoardValidationService(ValidationMicroservice[Board]):
                 )
             )
         # --- Cast the payload for additional processing. ---#
-        carrier = cast(BoardCarrier, result.payload)
+        carrier = cast(BoardCarrier, result.content)
         
         # Handle the case that the carrier has the wrong product.
         if not carrier.has_model:
@@ -157,7 +157,7 @@ class BoardValidationService(ValidationMicroservice[Board]):
                 )
             )
         # --- Cast the payload for additional processing. ---#
-        carrier = cast(BoardCarrier, result.payload)
+        carrier = cast(BoardCarrier, result.content)
         
         # Handle the case that the carrier has the wrong product.
         if not carrier.has_blueprint:

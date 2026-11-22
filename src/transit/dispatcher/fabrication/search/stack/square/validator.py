@@ -81,7 +81,7 @@ class SquareContextBuilder(StackContextBuilder[SquareSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(SquareSearchContext, build.payload)
+        context = cast(SquareSearchContext, build.content)
         return BuildResult.success(context)
 
         

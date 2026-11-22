@@ -88,5 +88,5 @@ class EncounterValidationDispatcher(ValidationDispatcher[Encounter]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(EncounterCarrier, validation.payload)
+        carrier = cast(EncounterCarrier, validation.content)
         return ValidationResult.success(carrier)

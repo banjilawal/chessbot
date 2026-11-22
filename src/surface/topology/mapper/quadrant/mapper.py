@@ -94,7 +94,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
                     ex=validation.exception,
                 ),
             )
-        current = cast(Vector, validation.payload)
+        current = cast(Vector, validation.content)
         x = vector
         
         # --- Build a new vector from the current. ---#
@@ -116,4 +116,4 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
                 ),
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Vector, build.payload))
+        return ComputationResult.success(cast(Vector, build.content))

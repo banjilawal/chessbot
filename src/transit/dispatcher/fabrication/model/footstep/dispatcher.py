@@ -82,5 +82,5 @@ class FootstepBuildDispatcher(ModelBuildDispatcher[Footstep]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(
-            cast(FootstepCarrier, build.payload)
+            cast(FootstepCarrier, build.content)
         )

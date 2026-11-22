@@ -82,5 +82,5 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(ManeuverCarrier, build.payload)
+        carrier = cast(ManeuverCarrier, build.content)
         return BuildResult.success(carrier)

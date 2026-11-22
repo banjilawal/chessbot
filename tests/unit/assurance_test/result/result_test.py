@@ -24,14 +24,14 @@ class ResultTest(unittest.TestCase):
     mock_payload = Mock()
     result = Result(payload=mock_payload, exception=None)
 
-    self.assertEqual(result._payload, mock_payload)
+    self.assertEqual(result._content, mock_payload)
     self.assertIsNone(result._exception)
 
   def test_construct_result_with_exception_only_succeeds(self):
     mock_exception = Mock()
     result = Result(payload=None, exception=mock_exception)
 
-    self.assertIsNone(result._payload, None)
+    self.assertIsNone(result._content, None)
     self.assertEqual(result._exception, mock_exception)
 
 

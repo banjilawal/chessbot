@@ -112,5 +112,5 @@ class ArenaBuildLoader(ModelBuildLoader[Arena]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(ArenaBlueprint, blueprint_validation.payload)
+        blueprint = cast(ArenaBlueprint, blueprint_validation.content)
         return BuildResult.success(blueprint)

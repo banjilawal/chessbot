@@ -118,7 +118,7 @@ class OffsetTopologyComputer(TopologyComputer[OffsetTopologyRequest]):
             )
         origin = request.origin
         offsets = request.offsets
-        root = cast(Vector, origin_validation.payload)
+        root = cast(Vector, origin_validation.content)
         offsets = cast(VectorSet, basis_validation.authorization_applicant)
         
         solutions = []

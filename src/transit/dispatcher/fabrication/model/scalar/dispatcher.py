@@ -82,5 +82,5 @@ class ScalarBuildDispatcher(ModelBuildDispatcher[Scalar]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(ScalarCarrier, build.payload)
+        carrier = cast(ScalarCarrier, build.content)
         return BuildResult.success(carrier)

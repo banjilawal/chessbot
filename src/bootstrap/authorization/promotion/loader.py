@@ -184,7 +184,7 @@ class PromotionAuthorizationLoader(
                 )
             )
         # Handle the case that the promotion_candidate token is not a PawnToken
-        if not isinstance(token_validation.payload, PawnToken):
+        if not isinstance(token_validation.content, PawnToken):
             # Send an exception chain in the denial.
             return PromotionDecision.denial(
                 exception=PromotionAuthorizationLoaderException(
@@ -194,7 +194,7 @@ class PromotionAuthorizationLoader(
                     err_code=PromotionAuthorizationLoaderException.ERR_CODE,
                     ex=TypeError(
                         f"Expected PawnToken got "
-                        f"{type(token_validation.payload).__name__} instead."
+                        f"{type(token_validation.content).__name__} instead."
                     ),
                 )
             )
@@ -218,7 +218,7 @@ class PromotionAuthorizationLoader(
                 )
             )
         # Handle the case that the rank is not an Elevatable
-        if not isinstance(rank_validation.payload, Rank):
+        if not isinstance(rank_validation.content, Rank):
             # Send an exception chain in the denial.
             return PromotionDecision.denial(
                 exception=PromotionAuthorizationLoaderException(
@@ -228,16 +228,16 @@ class PromotionAuthorizationLoader(
                     err_code=PromotionAuthorizationLoaderException.ERR_CODE,
                     ex=TypeError(
                         f"Expected an Elevatable. Got "
-                        f"{type(rank_validation.payload).__name__} is not an "
+                        f"{type(rank_validation.content).__name__} is not an "
                         f"Elevatable implementor."
                     )
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        pawn_token = cast(PawnToken, token_validation.payload)
+        pawn_token = cast(PawnToken, token_validation.content)
         transaction_id = cast(int, applicant_id_validation.payload)
         permission_id = cast(int, form_id_validation.payload)
-        elevatable = cast(Rank, cast(object, rank_validation.payload))
+        elevatable = cast(Rank, cast(object, rank_validation.content))
         
         # --- Prepare a transaction approval. ---#
         approved_applicant = PromotionRequest(

@@ -185,7 +185,7 @@ class AccountPushAuthorizationLoader(
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        item = cast(Account, item_validation.payload)
+        item = cast(Account, item_validation.content)
         collection = cast(AccountStack, collection_validation.payload)
         transaction_id = cast(int, transaction_id_validation.payload)
         permission_id = cast(int, permission_id_validation.payload)

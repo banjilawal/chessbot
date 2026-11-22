@@ -164,9 +164,9 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        path = cast(Path, path_validation.payload)
+        path = cast(Path, path_validation.content)
         benefit = cast(int, benefit_validation.payload)
-        traveler = cast(Token, traveler_validation.payload)
+        traveler = cast(Token, traveler_validation.content)
         
         # Handle the case that the origin is not empty.
         if path.origin.is_occupied:

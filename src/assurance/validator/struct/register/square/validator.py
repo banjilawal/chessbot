@@ -136,7 +136,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                         ex=square_validation.exception
                     )
                 )
-            square = cast(Square, square_validation.payload)
+            square = cast(Square, square_validation.content)
             endpoints[key] = square
             
         # --- Forward the appropriate work product to the caller. ---#

@@ -82,5 +82,5 @@ class ArenaBuildDispatcher(ModelBuildDispatcher[Arena]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(ArenaCarrier, build.payload)
+        carrier = cast(ArenaCarrier, build.content)
         return BuildResult.success(carrier)

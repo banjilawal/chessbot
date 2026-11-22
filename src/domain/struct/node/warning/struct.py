@@ -25,7 +25,7 @@ class EncounterWarningNode(Node[EncounterWarning]):
         2.  Provide type-safe accessors for payload inspection and node chaining.
 
     Attributes:
-        payload: Warning
+        content: Warning
         next: Optional[WarningNode]
         previous: Optional[WarningNode]
         
@@ -35,14 +35,14 @@ class EncounterWarningNode(Node[EncounterWarning]):
         Node
     """
     
-    def __init__(self, payload: EncounterWarning):
-        super().__init__(payload=payload)
+    def __init__(self, content: EncounterWarning):
+        super().__init__(content=content)
         super().next = None
         super.previous = None
         
     @property
-    def payload(self) -> EncounterWarning:
-        return cast(EncounterWarning, super().payload)
+    def content(self) -> EncounterWarning:
+        return cast(EncounterWarning, super().content)
     
     @property
     def next(self) -> Optional[EncounterWarningNode]:
@@ -66,7 +66,7 @@ class EncounterWarningNode(Node[EncounterWarning]):
         if other is None:
             return False
         if isinstance(other, EncounterWarningNode):
-            return self.payload == other.payload
+            return self.content == other.content
         return False
     
     

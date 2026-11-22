@@ -112,5 +112,5 @@ class PathBuildLoader(ModelBuildLoader[Path]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(PathBlueprint, blueprint_validation.payload)
+        blueprint = cast(PathBlueprint, blueprint_validation.content)
         return BuildResult.success(blueprint)

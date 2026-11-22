@@ -91,7 +91,7 @@ class AccountSearchMicroservice(SearchMicroservice[AccountSearchRequest]):
             )
         if result.is_empty:
             return SearchResult.empty()
-        matches = cast(List[Account], result.payload)
+        matches = cast(List[Account], result.content)
         return SearchResult.success(matches)
     
     

@@ -96,7 +96,7 @@ class AlertValidationService(ValidationMicroservice[Alert]):
                 )
             )
         # --- Cast the payload for additional processing. ---#
-        carrier = cast(AlertCarrier, result.payload)
+        carrier = cast(AlertCarrier, result.content)
         
         # Handle the case that the carrier has the wrong product.
         if not carrier.has_model:
@@ -157,7 +157,7 @@ class AlertValidationService(ValidationMicroservice[Alert]):
                 )
             )
         # --- Cast the payload for additional processing. ---#
-        carrier = cast(AlertCarrier, result.payload)
+        carrier = cast(AlertCarrier, result.content)
         
         # Handle the case that the carrier has the wrong product.
         if not carrier.has_blueprint:

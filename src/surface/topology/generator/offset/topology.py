@@ -116,7 +116,7 @@ class OffsetTopologyGenerator:
                     ex=basis_validation.exception,
                 ),
             )
-        root = cast(Vector, origin_validation.payload)
+        root = cast(Vector, origin_validation.content)
         offsets = cast(VectorSet, basis_validation.authorization_applicant)
         
         solutions = []
@@ -138,7 +138,7 @@ class OffsetTopologyGenerator:
                         ex=computation.exception,
                     ),
                 )
-            solutions.append(cast(Vector, computation.payload))
+            solutions.append(cast(Vector, computation.content))
         vector_set = VectorSet(tuple(solutions))
         tree = VectorTree(root=origin, branches=[vector_set])
         # --- Send the work product. ---#

@@ -112,5 +112,5 @@ class FootstepBuildLoader(ModelBuildLoader[Footstep]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(FootstepBlueprint, blueprint_validation.payload)
+        blueprint = cast(FootstepBlueprint, blueprint_validation.content)
         return BuildResult.success(blueprint)

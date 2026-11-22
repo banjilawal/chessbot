@@ -112,5 +112,5 @@ class CoordBuildLoader(ModelBuildLoader[Coord]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(CoordBlueprint, blueprint_validation.payload)
+        blueprint = cast(CoordBlueprint, blueprint_validation.content)
         return BuildResult.success(blueprint)

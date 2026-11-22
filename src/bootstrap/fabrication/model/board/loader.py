@@ -112,5 +112,5 @@ class BoardBuildLoader(ModelBuildLoader[Board]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(BoardBlueprint, blueprint_validation.payload)
+        blueprint = cast(BoardBlueprint, blueprint_validation.content)
         return BuildResult.success(blueprint)

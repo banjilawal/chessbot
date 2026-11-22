@@ -82,5 +82,5 @@ class GameBuildDispatcher(ModelBuildDispatcher[Game]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(GameCarrier, build.payload)
+        carrier = cast(GameCarrier, build.content)
         return BuildResult.success(carrier)

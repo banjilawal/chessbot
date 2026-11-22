@@ -85,7 +85,7 @@ class EncounterWarningNodeCarrier(NodeCarrier[EncounterWarningNode]):
         if model.previous is not None:
             previous = model.previous
         return EncounterWarningNodeBlueprint(
-            payload=model.payload
+            payload=model.content
         )
 
 

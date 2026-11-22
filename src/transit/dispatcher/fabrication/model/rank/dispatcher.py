@@ -82,5 +82,5 @@ class RankBuildDispatcher(ModelBuildDispatcher[Rank]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(RankCarrier, build.payload)
+        carrier = cast(RankCarrier, build.content)
         return BuildResult.success(carrier)

@@ -85,7 +85,7 @@ class VectorNodeCarrier(NodeCarrier[VectorNode]):
         if model.previous is not None:
             previous = model.previous
         return VectorNodeBlueprint(
-            payload=model.payload
+            payload=model.content
         )
 
 

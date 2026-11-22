@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Dict, Optional, cast
 
 from domain import Node, Vector
 
@@ -25,7 +25,7 @@ class VectorNode(Node[Vector]):
         2.  Provide type-safe accessors for payload inspection and node chaining.
 
     Attributes:
-        payload: Optional[Vector]
+        content: Optional[Vector]
         next: Optional[VectorNode]
         previous: Optional[VectorNode]
         
@@ -37,22 +37,22 @@ class VectorNode(Node[Vector]):
     
     def __init__(
             self,
-            payload: Optional[Vector] | None = None,
+            content: Optional[Vector] | None = None,
             next: Optional[VectorNode] | None = None,
             previous: Optional[VectorNode] | None = None,
     ):
         """
         Args:
-            payload: Optional[Vector]
+            content: Optional[Vector]
             next: Optional[VectorNode]
             previous: Optional[VectorNode]
         """
-        super().__init__(payload=payload, next=next, previous=previous)
+        super().__init__(content=content, next=next, previous=previous)
 
         
     @property
-    def payload(self) -> Optional[Vector]:
-        return cast(Vector, super().payload)
+    def content(self) -> Optional[Vector]:
+        return cast(Vector, super().content)
     
     @property
     def next(self) -> Optional[VectorNode]:
@@ -69,6 +69,23 @@ class VectorNode(Node[Vector]):
     @previous.setter
     def previous(self, other: VectorNode):
         super().previous = other
+    
+    @property
+    def to_dict(self) -> Dict[str, Vector]:
+        table = {}
+        
+        content = self.content
+        if content is not None:
+            table["content"] = content
+        next = self.next
+        previous = self.previous
+        if next is not None and next.content is not None:
+            table["next_vector"] = next.content
+        if previous is not None and previous.content is not None:
+            table["previous_vector"] = previous.content
+        return table
+        
+        
         
     def __eq__(self, other):
         if other is self:
@@ -76,7 +93,7 @@ class VectorNode(Node[Vector]):
         if other is None:
             return False
         if isinstance(other, VectorNode):
-            return self.payload == other.payload
+            return self.content == other.content
         return False
     
     

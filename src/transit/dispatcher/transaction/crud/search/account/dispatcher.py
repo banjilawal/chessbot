@@ -86,5 +86,5 @@ class AccountSearchDispatcher(SearchDispatcher[AccountSearchRequest, SearchResul
         if result.is_empty:
             return SearchResult.empty()
         # --- Forward the work product to the caller. ---#
-        matches = cast(List[Account], result.payload)
+        matches = cast(List[Account], result.content)
         return SearchResult.success(matches)

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import ComputationResult
-from domain import Vector, VectorBlueprint
+from domain import Vector, VectorBlueprint, VectorNode
 from operation import SpaceMappingFunction
 from request import QuadrantMappingRequest, VectorBuildRequest
 
@@ -51,7 +51,7 @@ class QuadrantMappingFunction(SpaceMappingFunction[QuadrantMappingRequest]):
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: QuadrantMappingRequest) -> ComputationResult[Vector]:
+    def execute(self, request: QuadrantMappingRequest) -> ComputationResult[VectorNode]:
         """
         Get the next Vector using a linear function.
 
@@ -85,21 +85,12 @@ class QuadrantMappingFunction(SpaceMappingFunction[QuadrantMappingRequest]):
                     ex=validation.exception,
                 ),
             )
-        vector = request.vector
+        previous = request.node
         slope = request.slope
         x_step = request.x_step
-
-        x = vector.x + x_step
-        y = (2 * vector.y * slope) + slope
         
-        result = self.vector_builder.execute(
-            request=VectorBuildRequest(
-                item=VectorCarrier(blueprint=VectorBlueprint(x=x, y=y)),
-                id=IdFactory.next_id(class_name="Request")
-            )
-        )
-        # Handle the case that the build is not successful.
-        if result.is_failure:
+        u = previous.content
+        if u is None:
             # Send an exception chain in the result.
             return ComputationResult.failure(
                 QuadrantMappingFunctionException(
@@ -108,9 +99,40 @@ class QuadrantMappingFunction(SpaceMappingFunction[QuadrantMappingRequest]):
                     msg=QuadrantMappingFunctionException.MSG,
                     err_code=QuadrantMappingFunctionException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=result.exception,
+                    ex=VectorNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorNullException.MSG,
+                        err_code=VectorNullException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ),
                 ),
             )
-        value = cast(Vector, result.payload)
+
+        x = u.x + x_step
+        y = (2 * u.y * slope) + slope
+        
+        build = self.vector_builder.execute(
+            request=VectorBuildRequest(
+                item=VectorCarrier(blueprint=VectorBlueprint(x=x, y=y)),
+                id=IdFactory.next_id(class_name="Request")
+            )
+        )
+        # Handle the case that the build is not successful.
+        if build.is_failure:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                QuadrantMappingFunctionException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=QuadrantMappingFunctionException.MSG,
+                    err_code=QuadrantMappingFunctionException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=build.exception,
+                ),
+            )
+        v = cast(Vector, build.payload)
+        node = VectorNode(content=v, previous=previous)
+        previous.next = node
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(value)
+        return ComputationResult.success(node)

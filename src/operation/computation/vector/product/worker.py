@@ -134,7 +134,7 @@ class ScalarProduct(VectorComputation[ScalarProductRequest]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        vector = cast(Vector, build.payload)
+        vector = cast(Vector, build.content)
         return ComputationResult.success(vector)
 
         

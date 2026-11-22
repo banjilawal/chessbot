@@ -88,5 +88,5 @@ class SquareValidationDispatcher(ValidationDispatcher[Square]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(SquareCarrier, validation.payload)
+        carrier = cast(SquareCarrier, validation.content)
         return ValidationResult.success(carrier)
