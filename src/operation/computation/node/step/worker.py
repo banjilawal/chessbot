@@ -1,7 +1,7 @@
-# src/topology/mapper/mapper.py
+# src/operation/computation/node/step/worker.py
 
 """
-Module: topology.mapper.mapper
+Module: operation.computation.node.step.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="MappingRequest")
 
 
-class SpaceNodeStepFunction(ABC, Generic[T]):
+class SpaceNodeStepper(ABC, Generic[T]):
     """
     Role:
         - Computation

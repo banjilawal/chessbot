@@ -1,7 +1,7 @@
-# src/operation/computation/mapping/axis/worker.py
+# src/operation/computation/node/step/axis/worker.py
 
 """
-Module: operation.computation.mapping.axis.worker
+Module: operation.computation.node.step.axis.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import cast
 
 from domain import Vector, VectorNode
-from err import AxisNodeStepFunctionException, VectorNullException
+from err import AxisNodeStepperException, VectorNullException
 
 from artifcat import ComputationResult, MethodResultType
-from operation import SpaceNodeStepFunction
+from operation import SpaceNodeStepper
 from request import AxisMappingRequest, VectorAdditionRequest
 from util import IdFactory, LoggingLevelRouter
 
 
 
-class AxisNodeStepFunction(SpaceNodeStepFunction[AxisMappingRequest]):
+class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
     """
     Role:
         - Computation
@@ -37,7 +37,7 @@ class AxisNodeStepFunction(SpaceNodeStepFunction[AxisMappingRequest]):
         def execute(request: AxisMappingRequest) -> ComputationResult[Vector]
 
     Super Class:
-        SpaceNodeStepFunction
+        SpaceNodeStepper
     """
     
     def __init__(self):
@@ -64,7 +64,7 @@ class AxisNodeStepFunction(SpaceNodeStepFunction[AxisMappingRequest]):
         Returns:
             ComputationResult[Vector]
         Raises:
-             AxisNodeStepFunctionException
+             AxisNodeStepperException
         """
         method = f"{self.__class__.__name__}.next"
         
@@ -77,11 +77,11 @@ class AxisNodeStepFunction(SpaceNodeStepFunction[AxisMappingRequest]):
         if u is None:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisNodeStepFunctionException(
+                AxisNodeStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisNodeStepFunctionException.MSG,
-                    err_code=AxisNodeStepFunctionException.ERR_CODE,
+                    msg=AxisNodeStepperException.MSG,
+                    err_code=AxisNodeStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=VectorNullException(
                         cls_mthd=method,
@@ -103,11 +103,11 @@ class AxisNodeStepFunction(SpaceNodeStepFunction[AxisMappingRequest]):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisNodeStepFunctionException(
+                AxisNodeStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisNodeStepFunctionException.MSG,
-                    err_code=AxisNodeStepFunctionException.ERR_CODE,
+                    msg=AxisNodeStepperException.MSG,
+                    err_code=AxisNodeStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),

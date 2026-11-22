@@ -1,7 +1,7 @@
-# src/operation/computation/mapping/quadrant/worker.py
+# src/operation/computation/node/step/quadrant/worker.py
 
 """
-Module: operation.computation.mapping.quadrant.worker
+Module: operation.computation.node.step.quadrant.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import cast
 
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint, VectorNode
-from operation import SpaceNodeStepFunction
+from operation import SpaceNodeStepper
 from request import QuadrantMappingRequest, VectorBuildRequest
 
 from transit import VectorCarrier
@@ -22,7 +22,7 @@ from util import IdFactory, LoggingLevelRouter
 
 
 
-class QuadrantNodeStepFunction(SpaceNodeStepFunction[QuadrantMappingRequest]):
+class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
     """
     Role:
         - Computation
@@ -40,7 +40,7 @@ class QuadrantNodeStepFunction(SpaceNodeStepFunction[QuadrantMappingRequest]):
         def next(self, vector: Vector) -> ComputationResult[Vector]
 
     Super Class:
-        SpaceNodeStepFunction
+        SpaceNodeStepper
     """
 
     
@@ -67,7 +67,7 @@ class QuadrantNodeStepFunction(SpaceNodeStepFunction[QuadrantMappingRequest]):
         Returns:
             ComputationResult[Vector]
         Raises:
-             QuadrantNodeStepFunctionException
+             QuadrantNodeStepperException
         """
         method = f"{self.__class__.__name__}.next"
         
@@ -76,11 +76,11 @@ class QuadrantNodeStepFunction(SpaceNodeStepFunction[QuadrantMappingRequest]):
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantNodeStepFunctionException(
+                QuadrantNodeStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantNodeStepFunctionException.MSG,
-                    err_code=QuadrantNodeStepFunctionException.ERR_CODE,
+                    msg=QuadrantNodeStepperException.MSG,
+                    err_code=QuadrantNodeStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=validation.exception,
                 ),
@@ -93,11 +93,11 @@ class QuadrantNodeStepFunction(SpaceNodeStepFunction[QuadrantMappingRequest]):
         if u is None:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantNodeStepFunctionException(
+                QuadrantNodeStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantNodeStepFunctionException.MSG,
-                    err_code=QuadrantNodeStepFunctionException.ERR_CODE,
+                    msg=QuadrantNodeStepperException.MSG,
+                    err_code=QuadrantNodeStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=VectorNullException(
                         cls_mthd=method,
@@ -122,11 +122,11 @@ class QuadrantNodeStepFunction(SpaceNodeStepFunction[QuadrantMappingRequest]):
         if build.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantNodeStepFunctionException(
+                QuadrantNodeStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantNodeStepFunctionException.MSG,
-                    err_code=QuadrantNodeStepFunctionException.ERR_CODE,
+                    msg=QuadrantNodeStepperException.MSG,
+                    err_code=QuadrantNodeStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=build.exception,
                 ),
