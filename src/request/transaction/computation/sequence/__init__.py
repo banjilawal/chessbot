@@ -10,10 +10,7 @@ version: 0.0.2
 # =========== REQUEST.TRANSACTION.COMPUTATION.SEQUENCE PACKAGE ===========#
 
 # Packages
-from .mapping import *
-from .sequence import *
-from .topology import *
-from .vector import *
+from .axis import *
 
 # Modules
 from .request import VectorNodeSequenceRequest

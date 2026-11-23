@@ -13,6 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from domain import Vector, VectorNode
+from operation import SpaceNodeStepper
 from request import ComputationRequest
 from surface import Space
 
@@ -29,6 +30,7 @@ class VectorNodeSequenceRequest(ComputationRequest, ABC, Generic[T]):
      Attributes:
          id: int
          origin: VectorNode
+         step_function: SpaceNodeStepper[T]
 
      Provides:
 
@@ -37,17 +39,26 @@ class VectorNodeSequenceRequest(ComputationRequest, ABC, Generic[T]):
      """
     _origin: VectorNode
     _terminus: Vector
+    _step_function: SpaceNodeStepper[T]
     
-    def __init__(self, id: int, origin: VectorNode, terminus: Vector):
+    def __init__(
+            self,
+            id: int,
+            origin: VectorNode,
+            terminus: Vector,
+            step_function: SpaceNodeStepper[T],
+    ):
         """
         Args:
             id: int
             origin: VectorNode
             terminus: Vector
+            step_function: SpaceNodeStepper[T]
         """
         super().__init__(id)
         self._origin = origin
         self._terminus = terminus
+        self._step_function = step_function
         
     @property
     def origin(self) -> VectorNode:
@@ -56,6 +67,10 @@ class VectorNodeSequenceRequest(ComputationRequest, ABC, Generic[T]):
     @property
     def terminus(self) -> Vector:
         return self._terminus
+    
+    @property
+    def step_function(self) -> SpaceNodeStepper:
+        return self._step_function
     
     def __eq__(self, other):
         if other is self: return True
