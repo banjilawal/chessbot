@@ -15,8 +15,8 @@ from artifcat import SearchResult
 from collection import AccountStack
 from domain import Account, AccountType
 from err import AccountSearcherException, SearchRouteCoverageException
-from exchange import AccountSearchPermissionRequest, AccountSearchRequest
 from operation import ModelSearcher
+from request import AccountSearchPermissionRequest, AccountSearchRequest
 from transit import AccountSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
@@ -169,7 +169,8 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest]):
         return SearchResult.succes(matches)
     
     def _find_by_firstname(
-            self, firstname: str, collection: AccountStack) -> SearchResult:
+            self, firstname: str, collection: AccountStack
+    ) -> SearchResult:
         """firstname_context handler"""
         matches: List[Account] = []
         for account in collection.human_accounts:
@@ -179,7 +180,9 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_lastname(self, lastname: str, collection: AccountStack) -> SearchResult:
+    def _find_by_lastname(
+            self, lastname: str, collection: AccountStack
+    ) -> SearchResult:
         """lastname_context handler"""
         matches: List[Account] = []
         for account in collection.human_accounts:
@@ -189,7 +192,9 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_email(self, email: str, collection: AccountStack) -> SearchResult:
+    def _find_by_email(
+            self, email: str, collection: AccountStack
+    ) -> SearchResult:
         """email_context handler"""
         matches: List[Account] = []
         for account in collection.human_accounts:
@@ -199,7 +204,9 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_machine_name(self, machine_name: str, collection: AccountStack) -> SearchResult:
+    def _find_by_machine_name(
+            self, machine_name: str, collection: AccountStack
+    ) -> SearchResult:
         """machine_name_context handler"""
         matches: List[Account] = []
         for account in collection.machine_accounts:
@@ -209,7 +216,9 @@ class AccountSearcher(ModelSearcher[AccountSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_account_type(self, account_type: AccountType, collection: AccountStack) -> SearchResult[List[Account]]:
+    def _find_by_account_type(
+            self, account_type: AccountType, collection: AccountStack
+    ) -> SearchResult[List[Account]]:
         """account_type_context handler"""
         matches: List[Account] = []
         if account_type == AccountType.HUMAN_ACCOUNT:
