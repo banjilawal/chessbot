@@ -9,7 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import cast
+
 from domain import QuadrantDestination, QuadrantStepFunction, Vector, VectorNode
+from operation import SouthwestQuadrantNodeStepper
 from request import QuadrantSequenceRequest
 from surface import SouthwestQuadrant
 
@@ -25,8 +28,8 @@ class SouthwestQuadrantSequenceRequest(QuadrantSequenceRequest[SouthwestQuadrant
      Attributes:
         id: int
         node: VectorNode
-        x_step: int
-        slope: int
+        terminus: Vector
+        step_function: SouthwestQuadrantNodeStepper
 
      Provides:
 
@@ -38,19 +41,21 @@ class SouthwestQuadrantSequenceRequest(QuadrantSequenceRequest[SouthwestQuadrant
             self,
             id: int,
             node: VectorNode,
-            x_step: int = QuadrantStepFunction.SOUTHWEST.x_step,
-            slope: int = QuadrantStepFunction.SOUTHWEST.slope,
             terminus: Vector = QuadrantDestination.SOUTHWEST.vector,
+            step_function: SouthwestQuadrantNodeStepper = SouthwestQuadrantNodeStepper()
     ):
         """
         Args:
             id: int
             node: VectorNode
-            x_step: int
-            slope: int
             terminus: Vector
+            step_function: SouthwestQuadrantNodeStepper
         """
-        super().__init__(id, node=node, x_step=x_step, slope=slope, terminus=terminus)
+        super().__init__(id=id, node=node, terminus=terminus, step_function=step_function)
+    
+    @property
+    def step_function(self) -> SouthwestQuadrantNodeStepper:
+        return cast(SouthwestQuadrantNodeStepper, super().step_function)
     
     def __eq__(self, other):
         if other is self: return True

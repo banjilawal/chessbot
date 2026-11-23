@@ -9,7 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import AxisDelta, AxisDestination, Vector, VectorNode
+from typing import cast
+
+from domain import AxisDestination, Vector, VectorNode
+from operation import NorthAxisNodeStepper
 from request import AxisSequenceRequest
 from surface import NorthAxis
 
@@ -25,8 +28,8 @@ class NorthAxisSequenceRequest(AxisSequenceRequest[NorthAxis]):
      Attributes:
         id: int
         node: VectorNode
-        delta: Vector
         terminus: Vector
+        step_function: NorthAxisNodeStepper
         
      Provides:
 
@@ -38,18 +41,21 @@ class NorthAxisSequenceRequest(AxisSequenceRequest[NorthAxis]):
             self,
             id: int,
             node: VectorNode,
-            delta: Vector = AxisDelta.NORTH.vector,
             terminus: Vector = AxisDestination.NORTH.vector,
+            step_function: NorthAxisNodeStepper = NorthAxisNodeStepper()
     ):
         """
         Args:
             id: int
             node: VectorNode
-            delta: Vector
             terminus: Vector
+            step_function: NorthAxisNodeStepper
         """
-        super().__init__(id=id, node=node, delta=delta, terminus=terminus)
-        
+        super().__init__(id=id, node=node, terminus=terminus, step_function=step_function)
+    
+    @property
+    def step_function(self) -> NorthAxisNodeStepper:
+        return cast(NorthAxisNodeStepper, super().step_function)
     
     def __eq__(self, other):
         if other is self: return True

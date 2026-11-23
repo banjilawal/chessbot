@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .request import AxisMappingRequest
+from .request import AxisProjectionRequest

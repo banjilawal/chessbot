@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from domain import Vector, VectorNode
-from request import MappingRequest
+from request import ProjectionRequest
 from surface import Axis
 
 T = TypeVar("T", bound="Axis")
 
-class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
+class AxisProjectionRequest(ProjectionRequest, ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -56,6 +56,6 @@ class AxisMappingRequest(MappingRequest, ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AxisMappingRequest):
+        if isinstance(other, AxisProjectionRequest):
             return self.id == other.id
         return False

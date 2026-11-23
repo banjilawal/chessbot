@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from domain import VectorNode
-from request import MappingRequest
+from request import ProjectionRequest
 from surface import Quadrant
 
 T = TypeVar("T", bound="Quadrant")
 
-class QuadrantMappingRequest(MappingRequest, ABC, Generic[T]):
+class QuadrantProjectionRequest(ProjectionRequest, ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -63,6 +63,6 @@ class QuadrantMappingRequest(MappingRequest, ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, QuadrantMappingRequest):
+        if isinstance(other, QuadrantProjectionRequest):
             return self.id == other.id
         return False

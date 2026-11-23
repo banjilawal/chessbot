@@ -16,7 +16,7 @@ from controller import VectorComputationController
 from domain import VectorNode
 from domain.model import Vector
 from fabrication import VectorBuilder
-from request import MappingRequest, VectorNodeSequenceRequest
+from request import ProjectionRequest, VectorNodeSequenceRequest
 from surface.topology.recurrence import Recurrence
 from artifcat import ComputationResult
 
@@ -71,11 +71,7 @@ class VectorNodeSequencer:
     
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            recurrence: Recurrence,
-            request: VectorNodeSequenceRequest
-    ) -> ComputationResult[VectorChain]:
+    def execute(self, request: VectorNodeSequenceRequest) -> ComputationResult[VectorChain]:
         """
         Get the next Vector using addition.
 
@@ -87,7 +83,6 @@ class VectorNodeSequencer:
                 an exception chain in the ComputationResult.
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
-            recurrence: Recurrence
             request: VectorNodeSequenceRequest
         Returns:
             ComputationResult[VectorChain]
@@ -119,12 +114,10 @@ class VectorNodeSequencer:
         cursor = request.origin
         terminus = request.terminus
         step_function = request.step_function
-        recur  = cast(Recurrence, validation.authorization_applicant)
-
         
         while cursor.content != terminus:
             step = step_function.execute(
-                request=MappingRequest(
+                request=ProjectionRequest(
                     node=cursor,
                     id=IdFactory.next_id(class_name="Request")
                 )

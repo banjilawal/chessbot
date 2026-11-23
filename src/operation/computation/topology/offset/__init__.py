@@ -1,7 +1,7 @@
-# src/operation/computation/topology/offet/__init__.py
+# src/operation/computation/topology/offset/__init__.py
 
 """
-Module: operation.computation.topology.ofset.__init__
+Module: operation.computation.topology.offset.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

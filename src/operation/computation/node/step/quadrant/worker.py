@@ -14,7 +14,7 @@ from typing import cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint, VectorNode
 from operation import SpaceNodeStepper
-from request import QuadrantMappingRequest, VectorBuildRequest
+from request import ProjectionRequest, QuadrantProjectionRequest, VectorBuildRequest
 
 from transit import VectorCarrier
 
@@ -22,7 +22,7 @@ from util import IdFactory, LoggingLevelRouter
 
 
 
-class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
+class QuadrantNodeStepper(SpaceNodeStepper[QuadrantProjectionRequest]):
     """
     Role:
         - Computation
@@ -65,7 +65,7 @@ class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
         return self._x_step
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: QuadrantMappingRequest) -> ComputationResult[VectorNode]:
+    def execute(self, request: ProjectionRequest) -> ComputationResult[VectorNode]:
         """
         Get the next Vector using a linear function.
 

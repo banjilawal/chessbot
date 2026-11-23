@@ -18,7 +18,7 @@ from surface import Space
 
 T = TypeVar("T", bound="Space")
 
-class MappingRequest(ComputationRequest, ABC, Generic[T]):
+class ProjectionRequest(ComputationRequest):
     """
      Role:
          -  Messaging

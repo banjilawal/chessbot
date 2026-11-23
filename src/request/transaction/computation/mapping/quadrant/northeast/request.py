@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import QuadrantStepFunction, VectorNode
-from request import QuadrantMappingRequest
+from request import QuadrantProjectionRequest
 from surface import NortheastQuadrant
 
 
-class NortheastQuadrantMappingRequest(QuadrantMappingRequest[NortheastQuadrant]):
+class NortheastQuadrantMappingRequest(QuadrantProjectionRequest[NortheastQuadrant]):
     """
      Role:
          -  Messaging

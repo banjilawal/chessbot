@@ -16,7 +16,8 @@ from artifcat import ComputationResult
 from collection import VectorSet, VectorTree
 from domain import Vector, VectorBlueprint
 from fabrication import VectorBuilder
-from operation import TopologyComputer
+from operation import TopologyComputer, VectorNodeSequencer
+from operation.computation import sequencer
 from request import ComputationRequest, TraversalTopologyRequest, VectorBuildRequest
 from transit import ComputationPermissionDispatcher, VectorCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -44,17 +45,25 @@ class TraversalTopologyComputer(TopologyComputer[TraversalTopologyRequest]):
         Worker
     """
     _vector_builder: VectorBuilder
+    _sequencer: VectorNodeSequencer
     
     def __init__(
             self, permitter: ComputationPermissionDispatcher,
             vector_builder: Optional[VectorBuilder] | None = None,
+            sequencer: Optional[VectorNodeSequencer] | None = None,
     ):
         """
         Args:
             permitter: ComputationPermissionDispatcher
+            sequencer: Optional[VectorNodeSequencer]
         """
         super().__init__(permitter=permitter)
         self._vector_builder = vector_builder or VectorBuilder()
+        self._sequencer = sequencer
+        
+    @property
+    def sequencer(self) -> VectorNodeSequencer:
+        return self._sequencer
         
     @property
     def vector_builder(self) -> VectorBuilder:

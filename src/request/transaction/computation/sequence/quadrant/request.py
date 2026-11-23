@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 from domain import Vector, VectorNode
 from operation import QuadrantNodeStepper
@@ -30,51 +30,35 @@ class QuadrantSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
      Attributes:
         id: int
         node: VectorNode
-        x_step: int
-        slope: int
+        terminus: Vector
+        step_function: QuadrantNodeStepper
 
      Provides:
 
      Super Class:
         VectorNodeSequenceRequest
      """
-    _x_step: int
-    _slope: int
     
     def __init__(
             self,
             id: int,
             node: VectorNode,
-            x_step: int,
-            slope: int,
             terminus: Vector,
-            step_function: Optional[QuadrantNodeStepper] | None = None,
+            step_function: QuadrantNodeStepper,
     ):
         """
         Args:
             id: int
             node: VectorNode
-            x_step: int
-            slope: int
             terminus: Vector
-            step_function: Optional[QuadrantNodeStepper]
+            step_function: QuadrantNodeStepper
         """
         super().__init__(
             id,
             node=node,
             terminus=terminus,
-            step_function=step_function or QuadrantNodeStepper(),
+            step_function=step_function,
         )
-        self._x_step = x_step
-        self._slope = slope
-    
-    @property
-    def x_step(self) -> int:
-        return self._x_step
-    
-    @property
-    def slope(self) -> int:
-        return self._slope
     
     def __eq__(self, other):
         if other is self: return True

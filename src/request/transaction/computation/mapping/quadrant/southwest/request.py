@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import QuadrantStepFunction, VectorNode
-from request import QuadrantMappingRequest
+from request import QuadrantProjectionRequest
 from surface import SouthwestQuadrant
 
 
-class SouthwestQuadrantMappingRequest(QuadrantMappingRequest[SouthwestQuadrant]):
+class SouthwestQuadrantMappingRequest(QuadrantProjectionRequest[SouthwestQuadrant]):
     """
      Role:
          -  Messaging

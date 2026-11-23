@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .request import MappingRequest
+from .request import ProjectionRequest

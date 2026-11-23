@@ -16,4 +16,4 @@ from .southeast import *
 from .southwest import *
 
 # Modules
-from .request import QuadrantMappingRequest
+from .request import QuadrantProjectionRequest

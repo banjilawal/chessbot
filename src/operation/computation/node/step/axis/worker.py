@@ -16,12 +16,12 @@ from err import AxisNodeStepperException, VectorNullException
 
 from artifcat import ComputationResult, MethodResultType
 from operation import SpaceNodeStepper
-from request import AxisMappingRequest, VectorAdditionRequest
+from request import AxisProjectionRequest, ProjectionRequest, VectorAdditionRequest
 from util import IdFactory, LoggingLevelRouter
 
 
 
-class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
+class AxisNodeStepper(SpaceNodeStepper):
     """
     Role:
         - Computation
@@ -56,7 +56,7 @@ class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AxisMappingRequest) -> ComputationResult[VectorNode]:
+    def execute(self, request: ProjectionRequest) -> ComputationResult[VectorNode]:
         """
         Get the next Vector using addition.
 
@@ -79,7 +79,6 @@ class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
         # Handle the case that the argument is not safe to use.
         
         previous = request.node
-        delta = request.delta
         u = previous.content
         
         if u is None:

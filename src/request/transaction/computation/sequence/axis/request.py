@@ -30,7 +30,8 @@ class AxisSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
      Attributes:
         id: int
         node: VectorNode
-        delta: Vector
+        terminus: Vector
+        step_function: AxisNodeStepper
 
      Provides:
 
@@ -44,28 +45,22 @@ class AxisSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
             self,
             id: int,
             node: VectorNode,
-            delta: Vector,
             terminus: Vector,
-            step_function: Optional[AxisNodeStepper] | None = None,
+            step_function: AxisNodeStepper,
     ):
         """
         Args:
             id: int
             node: VectorNode
-            delta: Vector
-            step_function: Optional[AxisNodeStepper]
+            terminus: Vector
+            step_function: AxisNodeStepper
         """
         super().__init__(
             id,
             node=node,
             terminus=terminus,
-            step_function=step_function or AxisNodeStepper()
+            step_function=step_function
         )
-        self._delta = delta
-    
-    @property
-    def delta(self) -> Vector:
-        return self._delta
     
     @property
     def step_function(self) -> AxisNodeStepper:

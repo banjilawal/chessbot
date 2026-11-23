@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import AxisDelta, Vector, VectorNode
-from request import AxisMappingRequest
+from request import AxisProjectionRequest
 from surface import EastAxis
 
 
-class EastAxisMappingRequest(AxisMappingRequest[EastAxis]):
+class EastAxisMappingRequest(AxisProjectionRequest[EastAxis]):
     """
      Role:
          -  Messaging
