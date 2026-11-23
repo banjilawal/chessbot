@@ -9,14 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
-from artifcat import SearchResult
 from collection import VectorChain
 from domain import VectorNode
-from exchange import AddNodeRequest
+from request import AddNodeRequest
 
-class AddVectorNodeRequest(AddNodeRequest[SearchResult, VectorNode]):
+
+class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
     """
      Role:
          -  Messaging
@@ -35,14 +35,21 @@ class AddVectorNodeRequest(AddNodeRequest[SearchResult, VectorNode]):
         AddNodeRequest
      """
     
-    def __init__(self, id: int, item: VectorNode, collection: VectorChain):
+    def __init__(
+            self,
+            id: int,
+            item: VectorNode,
+            collection: VectorChain,
+            offset: Optional[int] | None = None,
+    ):
         """
         Args:
             id: int
             item: VectorNode
             collection: VectorChain
+            offset: Optional[int]
         """
-        super().__init__(id, item=item, collection=collection)
+        super().__init__(id=id, item=item, collection=collection, offset=offset)
         
     @property
     def item(self) -> VectorNode:

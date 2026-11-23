@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import InsertionResult
-from exchange import ModelPushRequest
 from operation import Inserter
+from request import ModelPushRequest
 from transit import PushPermissionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="ModelPushRequest")
-R = TypeVar("R", bound="InsertionResult")
+R = TypeVar("R")
 
 
 class ModelPusher(Inserter[Q, R], ABC, Generic[Q, R]):
@@ -55,12 +55,12 @@ class ModelPusher(Inserter[Q, R], ABC, Generic[Q, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    def execute(self, request: Q) -> InsertionResult:
         """
         Args:
             request: Q
         Result:
-            R
+            InsertionResult
         Raises:
             ModelPusherException
         """

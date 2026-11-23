@@ -13,7 +13,6 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import TransactionResult
-from exchange import TransactionRequest
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 

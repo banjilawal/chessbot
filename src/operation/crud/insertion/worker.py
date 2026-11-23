@@ -13,13 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import InsertionResult
-from exchange import InsertionRequest
 from operation import CrudWorker
+from request import InsertionRequest
 from transit import InsertionPermissionDispatcher
 from util import LoggingLevelRouter
 
-R = TypeVar("R", bound="InsertionResult")
 Q = TypeVar("Q", bound="InsertionRequest")
+R = TypeVar("R")
+
 
 
 class Inserter(CrudWorker[Q, R], ABC, Generic[Q, R]):

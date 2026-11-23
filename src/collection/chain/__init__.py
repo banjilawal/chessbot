@@ -11,7 +11,8 @@ version: 0.0.2
 
 # Packages
 from .check import *
+from .iterator import *
 from .vector import *
 
 # Modules
-from .collection import Chain
+from .chain import Chain

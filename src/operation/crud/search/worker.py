@@ -13,16 +13,16 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import SearchResult
-from exchange import SearchRequest
 from operation import CrudWorker
+from request import SearchRequest
 from transit import SearchPermissionDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="SearchRequest")
-R = TypeVar("R", bound="SearchResult")
+R = TypeVar("R")
 
 
-class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
+class Searcher(CrudWorker[SearchResult], ABC, Generic[Q, R]):
     """
     Role:
         -   Transaction Worker
@@ -58,7 +58,7 @@ class Searcher(CrudWorker[Q, R], ABC, Generic[Q, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    def execute(self, request: Q) -> SearchResult:
         """
         Args:
             request: Q

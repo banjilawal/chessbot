@@ -18,7 +18,7 @@ from domain import SearchableModel
 T = TypeVar("T", bound="SearchableModel")
 
 
-class Node(Struct[T], ABC, Generic[T]):
+class Node(Struct[T], Generic[T]):
     """
     Role:
         - Structural Wrapper
@@ -37,6 +37,7 @@ class Node(Struct[T], ABC, Generic[T]):
 
     Super Class:
     """
+    
     _content: Optional[T]
     _next: Optional[Node[T]]
     _previous: Optional[Node[T]]
@@ -115,8 +116,7 @@ class Node(Struct[T], ABC, Generic[T]):
     @property
     def does_not_have_neighbors(self) -> bool:
         return not self.has_neighbors
-
-
     
-    
-        
+    @property
+    def to_dict(self) -> Dict[str, T]:
+        return {}

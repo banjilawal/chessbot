@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, List, Optional, TypeVar, cast
 
 from assurance import NumberValidator
-from collection import DataStruct
+from collection import ChainIterator, DataStruct
 from domain import Node
 from artifcat import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
@@ -38,8 +38,8 @@ class Chain(DataStruct[T], ABC, Generic[T]):
     ):
         super().__init__()
         self._number_validator = number_validator or NumberValidator()
-        self._head = head
-        self._tail = tail
+        self._head = head or Node()
+        self._tail = tail or Node()
         
         self._head.previous = None
         self._tail.next = None
@@ -63,7 +63,7 @@ class Chain(DataStruct[T], ABC, Generic[T]):
     
     @size.setter
     def size(self, other: int):
-        self._size = self._size + other
+        self._size = other
     
     @property
     def is_empty(self) -> bool:
@@ -244,26 +244,3 @@ class Chain(DataStruct[T], ABC, Generic[T]):
         if offset < 0:
             return ValidationResult.success(self.size - (1 + offset))
         
-class ChainIterator:
-    _cursor: Node
-    _linked_list: Chain
-    
-    def __init__(self, linked_list: Chain):
-        self._linked_list = linked_list
-        self._cursor = self._linked_list.head
-    
-    @property
-    def has_next(self,) -> bool:
-        return self._cursor.next is not None
-    
-    def next(self) -> Node:
-        if self.has_next:
-            next_node = self._cursor.next
-            self._cursor = next_node
-            return self._cursor.next
-        else:
-            return self._cursor
-            
-            
-            
-    

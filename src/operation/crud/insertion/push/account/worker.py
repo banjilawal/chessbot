@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import InsertionResult
-from exchange import AccountPushPermissionRequest, AccountPushRequest
 from operation import ModelPusher
+from request import AccountPushPermissionRequest, AccountPushRequest
 from transit import AccountPushPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountPusher(ModelPusher[AccountPushRequest, InsertionResult]):
+class AccountPusher(ModelPusher[AccountPushRequest]):
     """
     Role:
         -   Transaction Worker
@@ -89,8 +89,8 @@ class AccountPusher(ModelPusher[AccountPushRequest, InsertionResult]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = decision.permission_request
-        transaction_request = decision.transaction_request
+        permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
+        transaction_request = cast(AccountPushRequest, decision.transaction_request)
         
         # Handle the case that the permission_request is null.
         if permission_request is None:

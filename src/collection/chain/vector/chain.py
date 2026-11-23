@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from collection import Chain
+from collection.chain.iterator import ChainIterator
 from domain import VectorNode
 from err import SearchResultEmptyException, VectorChainException
 from artifcat import DeletionResult, InsertionResult, SearchResult
@@ -22,10 +23,10 @@ class VectorChain(Chain[VectorNode]):
     
     def __init__(
             self,
-            head: Optional[VectorNode] = VectorNode(),
-            tail: Optional[VectorNode] = VectorNode(),
+            head: Optional[VectorNode] | None = None,
+            tail: Optional[VectorNode] | None = None,
     ):
-        super().__init__(head=head, tail=tail)
+        super().__init__(head=head or VectorNode(), tail=tail or VectorNode())
         
     @property
     def head(self) -> VectorNode:
@@ -226,31 +227,4 @@ class VectorChain(Chain[VectorNode]):
         cursor.next = self.tail
         self.size = self.size - counter
         return DeletionResult.success(self)
-        
-    
-    def add_node(self, node: Node[T], index: Optional[int] | None = None):
-        antecedent: Node[T] = Node[T]()
-        precedent: Node[T] = Node[T]()
-        cursor: Node[T] = self._head
-        counter: int = 0
-        
-        if index is None or index == -1:
-            index = 0
-            
-        while counter < index:
-            
-        
-        
-        
-
-            precedent = self._head
-            antecedent = self._head.next
-        else:
-            
-            
-            self._head.next.previous = node
-            self._head.next = node
-        self._size = self._size + 1
-        
-    def
     

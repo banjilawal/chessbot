@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== OPERATION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
+from .add import *
 from .push import *
-from .stack import *
 
 # Modules
 from .worker import Inserter

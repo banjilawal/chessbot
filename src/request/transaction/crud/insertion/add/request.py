@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, Optional, TypeVar, cast
 
 
 from collection import Chain
@@ -31,22 +31,36 @@ class AddNodeRequest(InsertionRequest, ABC, Generic[T]):
          id: int
          item: T
          collection: Chain[T]
+         offset: int
 
      Provides:
 
      Super Class:
         InsertionRequest
      """
+    _offset: int
     
-    def __init__(self, id: int, item: T, collection: Chain[T]):
+    def __init__(
+            self,
+            id: int,
+            item: T,
+            collection: Chain[T],
+            offset: Optional[int] | None = None,
+    ):
         """
         Args:
             id: int
             item: T
             collection: Chain[T]
+            offset: Optional[int]
         """
         super().__init__(id, item=item, collection=collection)
+        self._offset = offset or 0
         
+        
+    @property
+    def offset(self) -> int:
+        return self._offset
         
     def __eq__(self, other):
         if other is self: return True

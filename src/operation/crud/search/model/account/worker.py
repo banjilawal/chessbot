@@ -21,7 +21,7 @@ from transit import AccountSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class AccountSearcher(ModelSearcher[AccountSearchRequest, SearchResult]):
+class AccountSearcher(ModelSearcher[AccountSearchRequest]):
     """
     Role:
         -   Transaction Worker
