@@ -1,7 +1,7 @@
-# src/request/transaction/computation/mapping/axis/north/request.py
+# src/request/transaction/computation/sequence/axis/north/request.py
 
 """
-Module: request.transaction.computation.mapping.axis.north.request
+Module: request.transaction.computation.sequence.axis.north.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,12 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import AxisDelta, Vector, VectorNode
-from request import AxisMappingRequest
+from domain import AxisDelta, AxisDestination, Vector, VectorNode
+from request import AxisVectorNodeSequenceRequest
 from surface import NorthAxis
 
 
-class NorthAxisMappingRequest(AxisMappingRequest[NorthAxis]):
+class NorthAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[NorthAxis]):
     """
      Role:
          -  Messaging
@@ -30,22 +30,29 @@ class NorthAxisMappingRequest(AxisMappingRequest[NorthAxis]):
      Provides:
 
      Super Class:
-        AxisMappingRequest
+        AxisVectorNodeSequenceRequest
      """
     
-    def __init__(self, id: int, node: VectorNode, delta: Vector = AxisDelta.NORTH.vector):
+    def __init__(
+            self,
+            id: int,
+            node: VectorNode,
+            delta: Vector = AxisDelta.NORTH.vector,
+            terminus: Vector = AxisDestination.NORTH.vector,
+    ):
         """
         Args:
             id: int
             node: VectorNode
             delta: Vector
+            terminus: Vector
         """
-        super().__init__(id=id, node=node, delta=delta)
+        super().__init__(id=id, node=node, delta=delta, terminus=terminus)
         
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, NorthAxisMappingRequest):
+        if isinstance(other, NorthAxisVectorNodeSequenceRequest):
             return self.id == other.id
         return False

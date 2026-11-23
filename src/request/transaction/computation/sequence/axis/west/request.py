@@ -1,7 +1,7 @@
-# src/request/transaction/computation/mapping/axis/west/request.py
+# src/request/transaction/computation/sequence/axis/west/request.py
 
 """
-Module: request.transaction.computation.mapping.axis.west.request
+Module: request.transaction.computation.sequence.axis.west.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,12 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import AxisDelta, Vector, VectorNode
-from request import AxisMappingRequest
+from domain import AxisDelta, AxisDestination, Vector, VectorNode
+from request import AxisVectorNodeSequenceRequest
 from surface import WestAxis
 
 
-class WestAxisMappingRequest(AxisMappingRequest[WestAxis]):
+class WestAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[WestAxis]):
     """
      Role:
          -  Messaging
@@ -30,21 +30,28 @@ class WestAxisMappingRequest(AxisMappingRequest[WestAxis]):
      Provides:
 
      Super Class:
-        AxisMappingRequest
+        AxisVectorNodeSequenceRequest
      """
     
-    def __init__(self, id: int, node: VectorNode, delta: Vector = AxisDelta.WEST.vector):
+    def __init__(
+            self,
+            id: int,
+            node: VectorNode,
+            delta: Vector = AxisDelta.WEST.vector,
+            terminus: Vector = AxisDestination.WEST.vector,
+    ):
         """
         Args:
             id: int
             node: VectorNode
             delta: Vector
+            terminus: Vector
         """
-        super().__init__(id=id, node=node, delta=delta)
+        super().__init__(id=id, node=node, delta=delta, terminus=terminus)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, WestAxisMappingRequest):
+        if isinstance(other, WestAxisVectorNodeSequenceRequest):
             return self.id == other.id
         return False
