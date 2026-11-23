@@ -9,8 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from collection import VectorSet
-from domain import Bishop, Traversal, Vector
+from domain import Bishop, VectorNode
 from request import TraversalTopologyRequest
 
 
@@ -25,7 +24,6 @@ class BishopTraversalTopologyRequest(TraversalTopologyRequest[Bishop]):
      Attributes:
         id: int
         origin: VectorNode
-        traversals: VectorSet
         
      Provides:
 
@@ -33,14 +31,13 @@ class BishopTraversalTopologyRequest(TraversalTopologyRequest[Bishop]):
         TraversalTopologyRequest
      """
     
-    def __init__(self, id: int, origin: VectorNode, traversals: VectorSet = Traversal.BISHOP.basis):
+    def __init__(self, id: int, origin: VectorNode):
         """
         Args:
             id: int
             origin: VectorNode
-            traversals: VectorSet
         """
-        super().__init__(id=id, origin=origin, traversals=traversals)
+        super().__init__(id=id, origin=origin)
         
     
     def __eq__(self, other):

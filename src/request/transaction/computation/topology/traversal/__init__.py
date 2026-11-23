@@ -11,8 +11,8 @@ version: 0.0.2
 
 # Packages
 from .bishop import *
-from .knight import *
-from .pawn import *
+from .queen import *
+from .rook import *
 
 # Modules
 from .request import TraversalTopologyRequest

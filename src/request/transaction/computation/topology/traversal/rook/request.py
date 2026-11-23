@@ -1,7 +1,7 @@
-# src/request/transaction/computation/topology/traversal/knight/request.py
+# src/request/transaction/computation/topology/traversal/rook/request.py
 
 """
-Module: request.transaction.computation.topology.traversal.knight.request
+Module: request.transaction.computation.topology.traversal.rook.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,12 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from collection import VectorSet
-from domain import Knight, Traversal, Vector
+from domain import Rook, VectorNode
 from request import TraversalTopologyRequest
 
 
-class KnightTraversalTopologyRequest(TraversalTopologyRequest[Knight]):
+class RookTraversalTopologyRequest(TraversalTopologyRequest[Rook]):
     """
      Role:
          -  Messaging
@@ -25,7 +24,6 @@ class KnightTraversalTopologyRequest(TraversalTopologyRequest[Knight]):
      Attributes:
         id: int
         origin: VectorNode
-        traversals: VectorSet
         
      Provides:
 
@@ -33,19 +31,18 @@ class KnightTraversalTopologyRequest(TraversalTopologyRequest[Knight]):
         TraversalTopologyRequest
      """
     
-    def __init__(self, id: int, origin: VectorNode, traversals: VectorSet = Traversal.KNIGHT.basis):
+    def __init__(self, id: int, origin: VectorNode):
         """
         Args:
             id: int
             origin: VectorNode
-            traversals: VectorSet
         """
-        super().__init__(id=id, origin=origin, traversals=traversals)
+        super().__init__(id=id, origin=origin)
         
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, KnightTraversalTopologyRequest):
+        if isinstance(other, RookTraversalTopologyRequest):
             return self.id == other.id
         return False
