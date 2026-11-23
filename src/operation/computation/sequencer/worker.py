@@ -11,14 +11,16 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from collection import VectorSet
+from collection import VectorChain, VectorSet
 from controller import VectorComputationController
+from domain import VectorNode
 from domain.model import Vector
 from fabrication import VectorBuilder
+from request import MappingRequest, VectorNodeSequenceRequest
 from surface.topology.recurrence import Recurrence
 from artifcat import ComputationResult
 
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class VectorNodeSequencer:
@@ -69,7 +71,11 @@ class VectorNodeSequencer:
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, recurrence: Recurrence) -> ComputationResult[VectorSet]:
+    def execute(
+            self,
+            recurrence: Recurrence,
+            request: VectorNodeSequenceRequest
+    ) -> ComputationResult[VectorChain]:
         """
         Get the next Vector using addition.
 
@@ -82,8 +88,9 @@ class VectorNodeSequencer:
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
             recurrence: Recurrence
+            request: VectorNodeSequenceRequest
         Returns:
-            ComputationResult[VectorSet]
+            ComputationResult[VectorChain]
         Raises:
              AxisMappingException
         """
@@ -108,17 +115,20 @@ class VectorNodeSequencer:
                 ),
             )
         # --- Cast the validation product and setup for the iteration. ---#
+        origin = request.origin
+        cursor = request.origin
+        terminus = request.terminus
+        step_function = request.step_function
         recur  = cast(Recurrence, validation.authorization_applicant)
-        sequence: List[Vector] = []
-        cursor = recur.space.origin
+
         
-        while cursor != recur.space.destination:
-            sequence.append(cursor)
-            
-            # Request that the update for the cursor.
-            step = recur.space_mapping_function.next(cursor)
-            
-            # Handle the case that the request is not satisfied.
+        while cursor.content != terminus:
+            step = step_function.execute(
+                request=MappingRequest(
+                    node=cursor,
+                    id=IdFactory.next_id(class_name="Request")
+                )
+            )
             if step.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
@@ -131,10 +141,11 @@ class VectorNodeSequencer:
                         ex=step.exception,
                     ),
                 )
-            cursor = cast(Vector, step.payload)
+            cursor = cast(VectorNode, step.payload)
+        chain = VectorChain(head=origin, tail=cursor)
+            
+
             
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(
-            VectorSet(items=tuple(sequence))
-        )
+        return ComputationResult.success(chain)
         

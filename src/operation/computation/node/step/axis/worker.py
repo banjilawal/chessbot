@@ -32,6 +32,7 @@ class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
                 - V.y = U.x + delta.y
 
     Attributes:
+        delta: Vector
 
     Provides:
         def execute(request: AxisMappingRequest) -> ComputationResult[Vector]
@@ -39,12 +40,19 @@ class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
     Super Class:
         SpaceNodeStepper
     """
+    _delta: Vector
     
-    def __init__(self):
+    def __init__(self, delta: Vector):
         """
         Args:
+            delta: Vector
         """
         super().__init__()
+        self._delta = delta
+        
+    @property
+    def delta(self) -> Vector:
+        return self.delta
 
     
     @LoggingLevelRouter.monitor
@@ -95,7 +103,7 @@ class AxisNodeStepper(SpaceNodeStepper[AxisMappingRequest]):
         computation = self.compute.addition.execute(
             request=VectorAdditionRequest(
                 u=u,
-                v=delta,
+                v=self.delta,
                 id=IdFactory.next_id(class_name="Request")
             )
         )

@@ -33,8 +33,8 @@ class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
                 - V.y = (2 * slope * U.y) + slope
 
     Attributes:
-        x_step: int
         slope: int
+        x_step: int
 
     Provides:
         def next(self, vector: Vector) -> ComputationResult[Vector]
@@ -42,14 +42,28 @@ class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
     Super Class:
         SpaceNodeStepper
     """
+    _slope: int
+    _x_step: int
 
     
-    def __init__(self):
+    def __init__(self, slope:int, x_step: int,):
         """
         Args:
+            slope: int
+            x_step: int
         """
         super().__init__()
+        self._slope = slope
+        self._x_step = x_step
+        
+    @property
+    def slope(self) -> int:
+        return self._slope
     
+    @property
+    def x_step(self) -> int:
+        return self._x_step
+
     @LoggingLevelRouter.monitor
     def execute(self, request: QuadrantMappingRequest) -> ComputationResult[VectorNode]:
         """
@@ -86,8 +100,6 @@ class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
                 ),
             )
         previous = request.node
-        slope = request.slope
-        x_step = request.x_step
         
         u = previous.content
         if u is None:
@@ -108,9 +120,8 @@ class QuadrantNodeStepper(SpaceNodeStepper[QuadrantMappingRequest]):
                     ),
                 ),
             )
-
-        x = u.x + x_step
-        y = (2 * u.y * slope) + slope
+        x = u.x + self.x_step
+        y = (2 * u.y * self.slope) + self.slope
         
         build = self.vector_builder.execute(
             request=VectorBuildRequest(
