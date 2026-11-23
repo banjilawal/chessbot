@@ -22,7 +22,7 @@ Q = TypeVar("Q", bound="ModelPushRequest")
 R = TypeVar("R")
 
 
-class ModelPusher(Inserter[Q, R], ABC, Generic[Q, R]):
+class ModelPusher(Inserter, ABC, Generic[Q]):
     """
     Role:
         -   Transaction Worker

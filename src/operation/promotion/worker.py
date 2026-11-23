@@ -13,8 +13,8 @@ from typing import Optional, cast
 
 from artifcat import PromotionResult
 from domain import Bishop, King, Knight, Pawn, PromotionState, Queen, Rook
-from exchange import PromotionPermissionRequest, PromotionRequest
 from operation import Worker
+from request import PromotionRequest
 from transit import PromotionPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 

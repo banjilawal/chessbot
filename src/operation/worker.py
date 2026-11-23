@@ -16,10 +16,10 @@ from artifcat import TransactionResult
 from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="TransactionRequest")
-R = TypeVar("R", bound="TransactionResult")
+# Q = TypeVar("Q", bound="TransactionRequest")
+T = TypeVar("R", bound="TransactionResult")
 
-class Worker(ABC, Generic[Q, R]):
+class Worker(ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -49,9 +49,9 @@ class Worker(ABC, Generic[Q, R]):
         return self._permitter
     
     
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def execute(self, request: Q) -> R:
         """
         Args:
             request: Q

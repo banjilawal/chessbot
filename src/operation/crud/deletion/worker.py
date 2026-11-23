@@ -1,7 +1,7 @@
-# src/operation/crud/delete/operator.py
+# src/operation/crud/deletion/operator.py
 
 """
-Module: operation.crud.delete.operation
+Module: operation.crud.deletion.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,12 +13,12 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import DeletePermitter
-from domain import DeleteRequest
 from operation import CrudWorker
 from artifcat import DeletionResult
+from request import DeletionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="DeleteRequest")
+T = TypeVar("T", bound="DeletionRequest")
 
 
 class Deleter(CrudWorker[DeletionResult], ABC, Generic[T]):

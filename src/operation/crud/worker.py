@@ -13,15 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import CrudResult
-from exchange import CrudRequest
 from operation import Worker
 from transit import CrudPermissionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("T", bound="CrudRequest")
-R = TypeVar("R", bound="CrudResult")
+Q = TypeVar("Q",)
+T = TypeVar("T", bound="CrudResult")
 
-class CrudWorker(Worker[Q, R], ABC, Generic[Q, R]):
+class CrudWorker(Worker[T], ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -49,10 +48,10 @@ class CrudWorker(Worker[Q, R], ABC, Generic[Q, R]):
     @property
     def permitter(self) -> CrudPermissionDispatcher:
         return cast(CrudPermissionDispatcher, super().permitter)
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    #
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def execute(self, request: Q) -> R:
         """
         Args:
             request: Q

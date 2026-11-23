@@ -5,31 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/collection/chain/chain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/collection/chain/iterator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/crud/insertion/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/crud/insertion/add/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/crud/insertion/add/vector/worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/crud/insertion/add/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/chain/collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/iterator/iterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/chain/vector/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/vector/chain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/struct/node/struct.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/struct/node/struct.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/account/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/remover/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/remover/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/remover/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/remover/vector/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/deletion/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/push/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operator.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insertion/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/model/account/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/crud/search/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/promotion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/promotion/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/insertion/add/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/insertion/add/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/insertion/add/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/insertion/add/vector/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,61 +71,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
+      <entry key="MS100" value="3.0711013337532575E-212" />
+      <entry key="MS500" value="4.982632188835093E-43" />
+      <entry key="S2" value="2.657154836204549E-11" />
+      <entry key="S5" value="6.044051806672823E-5" />
+      <entry key="S10" value="0.008932564922673109" />
+      <entry key="S30" value="0.30817942484827515" />
+      <entry key="S60" value="0.8857714772059099" />
+      <entry key="M2" value="2.225778402186579" />
+      <entry key="M5" value="11.071439131470893" />
+      <entry key="M10" value="47.2149152370207" />
+      <entry key="M15" value="88.25147188285919" />
+      <entry key="M30" value="186.99221947068244" />
+      <entry key="H1" value="337.4508580076257" />
+      <entry key="H2" value="574.7486810298652" />
+      <entry key="H4" value="932.8485347865632" />
+      <entry key="D1" value="3840.748639998" />
+      <entry key="W1" value="17295.796370231426" />
+    </decayedCancelled>
+    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
       <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000645676732" />
-      <entry key="S10" value="1.0002763317137866" />
-      <entry key="S30" value="1.1695013278055868" />
-      <entry key="S60" value="2.4792882369834333" />
-      <entry key="M2" value="7.339524512541323" />
-      <entry key="M5" value="22.535639687369297" />
-      <entry key="M10" value="40.07556872286215" />
-      <entry key="M15" value="53.99490706641845" />
-      <entry key="M30" value="99.47761692615215" />
-      <entry key="H1" value="213.50422059829185" />
-      <entry key="H2" value="423.6959690737638" />
-      <entry key="H4" value="757.1780054656075" />
-      <entry key="D1" value="3634.2747937481086" />
-      <entry key="W1" value="17064.498954973667" />
-    </decayedCancelled>
-    <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.2387455716088607E-286" />
-      <entry key="S2" value="4.2424264732767675E-72" />
-      <entry key="S5" value="2.87728623028531E-29" />
-      <entry key="S10" value="6.038667191396207E-15" />
-      <entry key="S30" value="2.7815008934497436E-5" />
-      <entry key="S60" value="0.009190651310919357" />
-      <entry key="M2" value="0.21865761642242587" />
-      <entry key="M5" value="2.0382843974351617" />
-      <entry key="M10" value="5.257060621809383" />
-      <entry key="M15" value="7.948997034073273" />
-      <entry key="M30" value="13.724836324278423" />
-      <entry key="H1" value="20.410441231738357" />
-      <entry key="H2" value="31.003934184846166" />
-      <entry key="H4" value="49.594897334587955" />
-      <entry key="D1" value="193.8086751110424" />
-      <entry key="W1" value="913.9794361770794" />
+      <entry key="S5" value="1.0000001882039182" />
+      <entry key="S10" value="1.0004338247552467" />
+      <entry key="S30" value="1.0757015508679906" />
+      <entry key="S60" value="1.275139148192334" />
+      <entry key="M2" value="1.5245374254296773" />
+      <entry key="M5" value="1.7822656566470183" />
+      <entry key="M10" value="2.2424170003189197" />
+      <entry key="M15" value="3.256649733817329" />
+      <entry key="M30" value="7.591094430274457" />
+      <entry key="H1" value="15.054764271362625" />
+      <entry key="H2" value="26.80513177900421" />
+      <entry key="H4" value="46.36500014525454" />
+      <entry key="D1" value="192.2452541675496" />
+      <entry key="W1" value="913.5601171678127" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0641049700549345E-5" />
-      <entry key="MS500" value="0.10125043420400572" />
-      <entry key="S2" value="0.5640910687282558" />
-      <entry key="S5" value="0.7953160092426911" />
-      <entry key="S10" value="0.8920790551736294" />
-      <entry key="S30" value="1.1278903385203296" />
-      <entry key="S60" value="2.4344155428911565" />
-      <entry key="M2" value="7.44310184405327" />
-      <entry key="M5" value="24.410086327283885" />
-      <entry key="M10" value="45.185607072662215" />
-      <entry key="M15" value="61.814643753397675" />
-      <entry key="M30" value="113.10522269640491" />
-      <entry key="H1" value="233.84554752726945" />
-      <entry key="H2" value="454.6469900386399" />
-      <entry key="H4" value="806.7289673316417" />
-      <entry key="D1" value="3828.0557357623434" />
-      <entry key="W1" value="17978.46175758003" />
+      <entry key="MS100" value="8.67361737988405E-19" />
+      <entry key="MS500" value="2.4414062499999976E-4" />
+      <entry key="S2" value="0.12500000002651632" />
+      <entry key="S5" value="0.43533579168873404" />
+      <entry key="S10" value="0.6690298110903515" />
+      <entry key="S30" value="1.2488204470756739" />
+      <entry key="S60" value="2.0814711084791773" />
+      <entry key="M2" value="3.6975501351400473" />
+      <entry key="M5" value="12.813682719158393" />
+      <entry key="M10" value="49.4154584352305" />
+      <entry key="M15" value="91.46009652531069" />
+      <entry key="M30" value="194.52653148818575" />
+      <entry key="H1" value="352.4516394122577" />
+      <entry key="H2" value="601.5062373105097" />
+      <entry key="H4" value="979.1715155588794" />
+      <entry key="D1" value="4032.9662041109864" />
+      <entry key="W1" value="18209.339830808905" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -1006,7 +1002,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="323523000" />
+      <workItem from="1794227184139" duration="326464000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

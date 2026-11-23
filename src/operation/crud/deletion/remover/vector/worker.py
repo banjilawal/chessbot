@@ -1,7 +1,7 @@
-# src/operation/crud/delete/chain/vector/operator.py
+# src/operation/crud/deletion/chain/vector/operator.py
 
 """
-Module: operation.crud.delete.chain.vector.operation
+Module: operation.crud.deletion.chain.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from authorization import RemoveVectorNodeRequest
-from domain.struct.node import VectorNode
-from operation import RemoveNode
+from domain import VectorNode
+from operation import VectorNodeRemover
 from artifcat import DeletionResult
+from request import RemoveVectorNodeRequest
 from util import LoggingLevelRouter
 
 
-class RemoveVectorNode(RemoveNode[VectorNode]):
+class VectorNodeRemover(VectorNodeRemover[RemoveVectorNodeRequest]):
     """
     Role:
         -   Transaction Worker
@@ -33,7 +33,7 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         -   def execute(request: RemoveVectorNodeRequest) -> DeletionResult
 
     Super Class:
-        RemoveNode
+        VectorNodeRemover
     """
     
     def __init__(self, permitter: Optional[RemoveVectorNodePermitter] | None = None):

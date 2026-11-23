@@ -1,7 +1,7 @@
-# src/operation/crud/delete/chain/operator.py
+# src/operation/crud/deletion/chain/operator.py
 
 """
-Module: operation.crud.delete.chain.operation
+Module: operation.crud.deletion.chain.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,18 +10,17 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar
 
-from authorization import RemoveNodeRequest
-from collection import Chain
-from operation import CollectionDeletion
 from artifcat import DeletionResult
+from domain import Node
+from operation import Deleter
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
 
-class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
+class NodeRemover(Deleter, ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -52,5 +51,5 @@ class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: RemoveNodeRequest[T]) -> DeletionResult[T]:
+    def execute(self, request: T) -> DeletionResult:
         pass

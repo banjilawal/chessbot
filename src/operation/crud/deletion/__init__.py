@@ -1,17 +1,16 @@
-# src/operation/crud/delete/__init__.py
+# src/operation/crud/deletion/__init__.py
 
 """
-Module: operation.crud.delete.__init__
+Module: operation.crud.deletion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== OPERATION.CRUD.DELETE PACKAGE ===========#
+# =========== OPERATION.CRUD.DELETION PACKAGE ===========#
 
 # Packages
-from .chain import *
-from .stack import *
+from .remover import *
 
 # Modules
-from .worker import CollectionDeletion
+from .worker import Deleter

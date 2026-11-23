@@ -38,9 +38,10 @@ class CoordContext(Context[Coord]):
     
     def __init__(
             self,
+            id: Optional[int] | None = None,
             row: Optional[int] | None = None,
             column: Optional[int] | None = None,
-            max_size: int = 2
+            capacity: int = 2
     ):
         """
         Args:
@@ -48,7 +49,7 @@ class CoordContext(Context[Coord]):
             column: Optional[int]
             max_size: Optional[int]
         """
-        super().__init__(max_size=max_size)
+        super().__init__(id=id, capacity=capacity)
         self._row = row
         self._column = column
         
@@ -62,6 +63,7 @@ class CoordContext(Context[Coord]):
 
     def to_dict(self) -> Dict[str, Any]:
         return {
+            "id": self.id,
             "row": self._row,
             "column": self._column,
         }
