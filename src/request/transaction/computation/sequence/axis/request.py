@@ -19,7 +19,7 @@ from surface import Axis
 
 T = TypeVar("T", bound="Axis")
 
-class AxisVectorNodeSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
+class AxisSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -53,6 +53,7 @@ class AxisVectorNodeSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
             id: int
             node: VectorNode
             delta: Vector
+            step_function: Optional[AxisNodeStepper]
         """
         super().__init__(
             id,
@@ -73,6 +74,6 @@ class AxisVectorNodeSequenceRequest(VectorNodeSequenceRequest, ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AxisVectorNodeSequenceRequest):
+        if isinstance(other, AxisSequenceRequest):
             return self.id == other.id
         return False

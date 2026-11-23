@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import AxisDelta, AxisDestination, Vector, VectorNode
-from request import AxisVectorNodeSequenceRequest
+from request import AxisSequenceRequest
 from surface import SouthAxis
 
 
-class SouthAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[SouthAxis]):
+class SouthAxisSequenceRequest(AxisSequenceRequest[SouthAxis]):
     """
      Role:
          -  Messaging
@@ -26,6 +26,7 @@ class SouthAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[SouthAxis
         id: int
         node: VectorNode
         delta: Vector
+        terminus: Vector
         
      Provides:
 
@@ -53,6 +54,6 @@ class SouthAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[SouthAxis
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, SouthAxisVectorNodeSequenceRequest):
+        if isinstance(other, SouthAxisSequenceRequest):
             return self.id == other.id
         return False

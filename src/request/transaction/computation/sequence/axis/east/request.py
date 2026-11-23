@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import AxisDelta, AxisDestination, Vector, VectorNode
-from request import AxisVectorNodeSequenceRequest
+from request import AxisSequenceRequest
 from surface import EastAxis
 
 
-class EastAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[EastAxis]):
+class EastAxisSequenceRequest(AxisSequenceRequest[EastAxis]):
     """
      Role:
          -  Messaging
@@ -50,10 +50,9 @@ class EastAxisVectorNodeSequenceRequest(AxisVectorNodeSequenceRequest[EastAxis])
         """
         super().__init__(id=id, node=node, delta=delta, terminus=terminus)
         
-    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, EastAxisVectorNodeSequenceRequest):
+        if isinstance(other, EastAxisSequenceRequest):
             return self.id == other.id
         return False
