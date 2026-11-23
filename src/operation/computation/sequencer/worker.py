@@ -100,11 +100,11 @@ class VectorNodeSequencer:
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                VectorSequenceGeneratorException(
+                VectorNodeSequencerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorSequenceGeneratorException.MSG,
-                    err_code=VectorSequenceGeneratorException.ERR_CODE,
+                    msg=VectorNodeSequencerException.MSG,
+                    err_code=VectorNodeSequencerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=validation.exception,
                 ),
@@ -125,11 +125,11 @@ class VectorNodeSequencer:
             if step.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    VectorSequenceGeneratorException(
+                    VectorNodeSequencerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorSequenceGeneratorException.MSG,
-                        err_code=VectorSequenceGeneratorException.ERR_CODE,
+                        msg=VectorNodeSequencerException.MSG,
+                        err_code=VectorNodeSequencerException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=step.exception,
                     ),

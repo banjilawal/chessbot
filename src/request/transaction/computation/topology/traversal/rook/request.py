@@ -9,8 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import List
+
 from domain import Rook, VectorNode
-from request import TraversalTopologyRequest
+from request import (
+    EastAxisSequenceRequest, NorthAxisSequenceRequest, SouthAxisSequenceRequest, TraversalTopologyRequest,
+    WestAxisSequenceRequest
+)
+from util import IdFactory
 
 
 class RookTraversalTopologyRequest(TraversalTopologyRequest[Rook]):
@@ -38,6 +44,43 @@ class RookTraversalTopologyRequest(TraversalTopologyRequest[Rook]):
             origin: VectorNode
         """
         super().__init__(id=id, origin=origin)
+    
+    @property
+    def east_request(self) -> EastAxisSequenceRequest:
+        return EastAxisSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
+    
+    @property
+    def north_request(self) -> NorthAxisSequenceRequest:
+        return NorthAxisSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
+    
+    @property
+    def south_request(self) -> SouthAxisSequenceRequest:
+        return SouthAxisSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
+    
+    @property
+    def west_request(self) -> WestAxisSequenceRequest:
+        return WestAxisSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
+    
+    @property
+    def sequence_requests(self) -> List:
+        return [
+            self.east_request,
+            self.north_request,
+            self.south_request,
+            self.west_request,
+        ]
         
     
     def __eq__(self, other):

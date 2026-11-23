@@ -5,42 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/bishop/worker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/queen/worker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/rook/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/node/step/axis/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/axis/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/node/step/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/node/step/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/computation/sequencer/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/sequencer/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/offset/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/traversal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/traversal/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/east/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/north/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/north/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/south/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/south/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/west/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/axis/west/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northeast/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northwest/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/northwest/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southeast/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southeast/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southwest/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/quadrant/southwest/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/mapping/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/mapping/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/east/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/east/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/north/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/north/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/south/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/south/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/west/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/axis/west/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/northeast/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/northeast/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/northwest/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/northwest/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/southeast/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/southeast/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/southwest/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/sequence/quadrant/southwest/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/computation/topology/traversal/bishop/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/computation/topology/traversal/bishop/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/bishop/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/bishop/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/rook/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/traversal/rook/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,61 +59,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000029670772097" />
-      <entry key="S5" value="1.0071456928660762" />
-      <entry key="S10" value="1.1333543320059964" />
-      <entry key="S30" value="2.501583022498901" />
-      <entry key="S60" value="4.732852753559126" />
-      <entry key="M2" value="9.347110365724614" />
-      <entry key="M5" value="23.178883830351477" />
-      <entry key="M10" value="42.25329927367852" />
-      <entry key="M15" value="57.210534505282205" />
-      <entry key="M30" value="99.01249690013013" />
-      <entry key="H1" value="182.11799145275916" />
-      <entry key="H2" value="311.7673635830891" />
-      <entry key="H4" value="559.1173701116409" />
-      <entry key="D1" value="3366.4881196477713" />
-      <entry key="W1" value="16630.232380434634" />
+      <entry key="MS100" value="1.0000000030469227" />
+      <entry key="MS500" value="1.0198048932642778" />
+      <entry key="S2" value="1.3852424980877065" />
+      <entry key="S5" value="1.8733900702763615" />
+      <entry key="S10" value="2.555245575399466" />
+      <entry key="S30" value="4.109276740535073" />
+      <entry key="S60" value="4.90762266298057" />
+      <entry key="M2" value="5.496447669192243" />
+      <entry key="M5" value="6.25735754344402" />
+      <entry key="M10" value="6.858254626905383" />
+      <entry key="M15" value="7.387547694014345" />
+      <entry key="M30" value="15.428992716642771" />
+      <entry key="H1" value="64.46530856824504" />
+      <entry key="H2" value="193.9791629279805" />
+      <entry key="H4" value="452.80289473978956" />
+      <entry key="D1" value="3255.6633742083077" />
+      <entry key="W1" value="16588.511489810408" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.168830097703978E-13" />
-      <entry key="MS500" value="0.002591816512550469" />
-      <entry key="S2" value="0.24944819983797153" />
-      <entry key="S5" value="0.7755423717143392" />
-      <entry key="S10" value="1.2160541580199233" />
-      <entry key="S30" value="1.6852257030247004" />
-      <entry key="S60" value="1.877074080673904" />
-      <entry key="M2" value="2.5920566766481836" />
-      <entry key="M5" value="6.264637085471835" />
-      <entry key="M10" value="10.87075663087161" />
-      <entry key="M15" value="14.123250945305085" />
-      <entry key="M30" value="21.556816851082683" />
-      <entry key="H1" value="31.706249925692227" />
-      <entry key="H2" value="42.94504537023647" />
-      <entry key="H4" value="56.34869505999781" />
-      <entry key="D1" value="190.82220442356862" />
-      <entry key="W1" value="902.8064414636693" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="2.3658904083691697E-245" />
+      <entry key="S2" value="6.974268384003987E-62" />
+      <entry key="S5" value="3.446668081854978E-25" />
+      <entry key="S10" value="5.870833060013696E-13" />
+      <entry key="S30" value="8.373362833179002E-5" />
+      <entry key="S60" value="0.009150608085356405" />
+      <entry key="M2" value="0.09565881080881368" />
+      <entry key="M5" value="0.39110196836792754" />
+      <entry key="M10" value="0.6258071700039414" />
+      <entry key="M15" value="0.7475889367926035" />
+      <entry key="M30" value="1.5872092523159023" />
+      <entry key="H1" value="6.767564912783126" />
+      <entry key="H2" value="19.39700251724549" />
+      <entry key="H4" value="37.899908525188785" />
+      <entry key="D1" value="178.83443017649736" />
+      <entry key="W1" value="894.7627777850657" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.2870638831264125E-7" />
-      <entry key="MS500" value="0.04697689952507224" />
-      <entry key="S2" value="0.5123408895644366" />
-      <entry key="S5" value="1.142893948446422" />
-      <entry key="S10" value="1.8586262687089274" />
-      <entry key="S30" value="3.9092819640859107" />
-      <entry key="S60" value="6.393249196639616" />
-      <entry key="M2" value="11.73012879004683" />
-      <entry key="M5" value="29.217425437864872" />
-      <entry key="M10" value="52.91638620583114" />
-      <entry key="M15" value="71.15113280264445" />
-      <entry key="M30" value="120.43171396081887" />
-      <entry key="H1" value="213.72101034088115" />
-      <entry key="H2" value="354.6381155194174" />
-      <entry key="H4" value="615.4145036799832" />
-      <entry key="D1" value="3557.2831520598315" />
-      <entry key="W1" value="17533.022482883913" />
+      <entry key="MS100" value="0.8293195458144417" />
+      <entry key="MS500" value="0.9632620635449859" />
+      <entry key="S2" value="1.011132340110652" />
+      <entry key="S5" value="1.2628405629287678" />
+      <entry key="S10" value="1.911825737856744" />
+      <entry key="S30" value="3.690315683788122" />
+      <entry key="S60" value="4.661047100587527" />
+      <entry key="M2" value="5.4455254019656545" />
+      <entry key="M5" value="6.578334971946358" />
+      <entry key="M10" value="7.4446897869576425" />
+      <entry key="M15" value="8.107312842464877" />
+      <entry key="M30" value="16.996746316645233" />
+      <entry key="H1" value="71.2058963774049" />
+      <entry key="H2" value="213.33997703380945" />
+      <entry key="H4" value="490.66674049731193" />
+      <entry key="D1" value="3434.4720756127613" />
+      <entry key="W1" value="17483.258033537415" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -176,7 +149,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/computation/topology/traversal/bishop",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/computation/topology/traversal",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -190,11 +163,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/computation/topology/traversal" />
       <recent name="$PROJECT_DIR$/src/operation/computation/topology/traversal/bishop" />
       <recent name="$PROJECT_DIR$/src/operation/computation/node/step/quadrant" />
       <recent name="$PROJECT_DIR$/src/operation/computation/node/step/quadrant/northeast" />
       <recent name="$PROJECT_DIR$/src/operation/computation/node/step/axis" />
-      <recent name="$PROJECT_DIR$/src/operation/computation/node/step/axis/east" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/operation/computation/node" />
@@ -1017,7 +990,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="310156000" />
+      <workItem from="1794227184139" duration="313055000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3178,7 +3151,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/operation/computation/sequencer/worker.py</url>
-          <line>132</line>
+          <line>127</line>
           <option name="timeStamp" value="717" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

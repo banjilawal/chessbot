@@ -14,8 +14,10 @@ from typing import List
 from domain import Bishop, VectorNode
 from request import (
     NortheastQuadrantSequenceRequest, NorthwestQuadrantSequenceRequest,
-    SoutheastQuadrantSequenceRequest, SouthwestQuadrantSequenceRequest, TraversalTopologyRequest
+    QuadrantSequenceRequest, SoutheastQuadrantSequenceRequest, SouthwestQuadrantSequenceRequest,
+    TraversalTopologyRequest
 )
+from util import IdFactory
 
 
 class BishopTraversalTopologyRequest(TraversalTopologyRequest[Bishop]):
@@ -46,23 +48,40 @@ class BishopTraversalTopologyRequest(TraversalTopologyRequest[Bishop]):
         
     @property
     def northeast_request(self) -> NortheastQuadrantSequenceRequest:
-        return NortheastQuadrantSequenceRequest(id=self.id, node=self.origin)
+        return NortheastQuadrantSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
     
     @property
     def northwest_request(self) -> NorthwestQuadrantSequenceRequest:
-        return NorthwestQuadrantSequenceRequest(id=self.id, node=self.origin)
+        return NorthwestQuadrantSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
     
     @property
     def southeast_request(self) -> SoutheastQuadrantSequenceRequest:
-        return SoutheastQuadrantSequenceRequest(id=self.id, node=self.origin)
+        return SoutheastQuadrantSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
     
     @property
     def southwest_request(self) -> SouthwestQuadrantSequenceRequest:
-        return SouthwestQuadrantSequenceRequest(id=self.id, node=self.origin)
+        return SouthwestQuadrantSequenceRequest(
+            node=self.origin,
+            id=IdFactory.next_id(class_name="Request"),
+        )
     
     @property
-    def sequence_requests(self) -> list:
-        return [self.northeast_request, self.northwest_request, self.southeast_request, self.southwest_request]
+    def sequence_requests(self) -> List:
+        return [
+            self.northeast_request,
+            self.northwest_request,
+            self.southeast_request,
+            self.southwest_request
+        ]
         
     
     def __eq__(self, other):

@@ -9,23 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import List, Optional, TypeVar, cast
+from typing import List, cast
 
 from artifcat import ComputationResult
-from collection import VectorChain, VectorSet, VectorTree
-from domain import Vector, VectorBlueprint
-from fabrication import VectorBuilder
-from operation import TopologyComputer, TraversalTopologyComputer
-from request import BishopTraversalTopologyRequest, ComputationRequest, TraversalTopologyRequest, VectorBuildRequest
-from transit import ComputationPermissionDispatcher, VectorCarrier
-from util import IdFactory, LoggingLevelRouter
-
-P = TypeVar("P", bound="ComputationPermissionDispatcher")
-Q = TypeVar("Q", bound="ComputationRequest")
+from collection import VectorChain, VectorTree
+from operation import TraversalTopologyComputer
+from request import BishopTraversalTopologyRequest
+from transit import ComputationPermissionDispatcher
+from util import LoggingLevelRouter
 
 
-class BishopTopologyComputer(TraversalTopologyComputer[TraversalTopologyRequest]):
+class BishopTopologyComputer(TraversalTopologyComputer[BishopTraversalTopologyRequest]):
     """
     Role:
         -   Transaction Worker
@@ -43,7 +37,6 @@ class BishopTopologyComputer(TraversalTopologyComputer[TraversalTopologyRequest]
     Super Class:
         Worker
     """
-    _vector_builder: VectorBuilder
     
     def __init__(
             self, permitter: ComputationPermissionDispatcher,
@@ -54,17 +47,12 @@ class BishopTopologyComputer(TraversalTopologyComputer[TraversalTopologyRequest]
             permitter: ComputationPermissionDispatcher
         """
         super().__init__(permitter=permitter)
-        self._vector_builder = vector_builder or VectorBuilder()
-        
-    @property
-    def vector_builder(self) -> VectorBuilder:
-        return self._vector_builder
     
     @property
     def permitter(self) -> ComputationPermissionDispatcher:
         return cast(ComputationPermissionDispatcher, super().permitter)
     
-    @abstractmethod
+
     @LoggingLevelRouter.monitor
     def execute(self, request: BishopTraversalTopologyRequest) -> ComputationResult[VectorTree]:
         """
@@ -89,11 +77,11 @@ class BishopTopologyComputer(TraversalTopologyComputer[TraversalTopologyRequest]
         if origin_validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                TopologyGeneratorException(
+                BishopTopologyComputerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TopologyGeneratorException.MSG,
-                    err_code=TopologyGeneratorException.ERR_CODE,
+                    msg=BishopTopologyComputerException.MSG,
+                    err_code=BishopTopologyComputerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=origin_validation.exception,
                 ),
@@ -107,11 +95,11 @@ class BishopTopologyComputer(TraversalTopologyComputer[TraversalTopologyRequest]
         if basis_validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                TopologyGeneratorException(
+                BishopTopologyComputerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TopologyGeneratorException.MSG,
-                    err_code=TopologyGeneratorException.ERR_CODE,
+                    msg=BishopTopologyComputerException.MSG,
+                    err_code=BishopTopologyComputerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=basis_validation.exception,
                 ),
@@ -124,11 +112,11 @@ class BishopTopologyComputer(TraversalTopologyComputer[TraversalTopologyRequest]
             if work.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    TopologyGeneratorException(
+                    BishopTopologyComputerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TopologyGeneratorException.MSG,
-                        err_code=TopologyGeneratorException.ERR_CODE,
+                        msg=BishopTopologyComputerException.MSG,
+                        err_code=BishopTopologyComputerException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=work.exception,
                     ),
