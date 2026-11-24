@@ -82,5 +82,5 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(EncounterCarrier, build.content)
+        carrier = cast(EncounterCarrier, build.payload)
         return BuildResult.success(carrier)

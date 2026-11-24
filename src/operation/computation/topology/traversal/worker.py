@@ -17,7 +17,6 @@ from collection import VectorSet, VectorTree
 from domain import Vector, VectorBlueprint
 from fabrication import VectorBuilder
 from operation import TopologyComputer, VectorNodeSequencer
-from operation.computation import sequencer
 from request import ComputationRequest, TraversalTopologyRequest, VectorBuildRequest
 from transit import ComputationPermissionDispatcher, VectorCarrier
 from util import IdFactory, LoggingLevelRouter

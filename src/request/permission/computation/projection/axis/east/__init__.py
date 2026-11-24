@@ -1,13 +1,13 @@
-# src/request/permission/computation/projection/axis/eastAxis/__init__.py
+# src/request/permission/computation/projection/axis/east/__init__.py
 
 """
-Module: request.permission.computation.projection.axis.eastAxis.__init__
+Module: request.permission.computation.projection.axis.east.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== REQUEST.PERMISSION.COMPUTATION.PROJECTION.AXIS.EASTAXIS PACKAGE ===========#
+# =========== REQUEST.PERMISSION.COMPUTATION.PROJECTION.AXIS.EAST PACKAGE ===========#
 
 # Packages
 

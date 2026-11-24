@@ -1,13 +1,13 @@
-# src/request/permission/computation/projection/axis/northAxis/__init__.py
+# src/request/permission/computation/projection/axis/north/__init__.py
 
 """
-Module: request.permission.computation.projection.axis.northAxis.__init__
+Module: request.permission.computation.projection.axis.north.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== REQUEST.PERMISSION.COMPUTATION.PROJECTION.AXIS.NORTHAXIS PACKAGE ===========#
+# =========== REQUEST.PERMISSION.COMPUTATION.PROJECTION.AXIS.NORTH PACKAGE ===========#
 
 # Packages
 

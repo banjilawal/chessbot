@@ -74,7 +74,7 @@ class AccountPusher(ModelPusher[AccountPushRequest]):
         decision = self.permitter.execute(
             candidate=AccountPushPermissionRequest(
                 authorization_applicant=request,
-                id=IdFactory.next_id(class_name="AccountPushPermissionRequest"),
+                id=IdFactory.next_id(class_name="Request"),
             )
         )
         if decision.request_is_denied:
@@ -89,33 +89,8 @@ class AccountPusher(ModelPusher[AccountPushRequest]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = cast(AccountPushPermissionRequest, decision.permission_request)
         transaction_request = cast(AccountPushRequest, decision.transaction_request)
-        
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return InsertionResult.failure(
-                exception=AcountPusherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AcountPusherException.MSG,
-                    err_code=AcountPusherException.ERR_CODE,
-                    ex=AccountPushPermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return InsertionResult.failure(
-                exception=AcountPusherException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AcountPusherException.MSG,
-                    err_code=AcountPusherException.ERR_CODE,
-                    ex=AccountPushRequestNullException()
-                )
-            )
+
         # --- Extract the transaction participants. ---#
         item = transaction_request.item
         collection = transaction_request.collection

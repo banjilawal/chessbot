@@ -14,9 +14,9 @@ from typing import List, cast
 from artifcat import ComputationResult
 from collection import VectorChain, VectorTree
 from operation import TraversalTopologyComputer
-from request import RookTopologyRequest
+from request import RookTopologyPermissionRequest, RookTopologyRequest
 from transit import ComputationPermissionDispatcher
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class RookTopologyComputer(TraversalTopologyComputer[RookTopologyRequest]):
@@ -28,19 +28,17 @@ class RookTopologyComputer(TraversalTopologyComputer[RookTopologyRequest]):
         1.  Executes a ComputationRequest
 
     Attributes:
-        vector_builder: VectorBuilder
         permitter: ComputationPermissionDispatcher
         
     Provides:
-        -   def execute(request: Q) -> ComputationResult
+        -   def execute(request: RookTopologyRequest) -> ComputationResult[VectorTree]
 
     Super Class:
-        Worker
+        TraversalTopologyComputer
     """
     
     def __init__(
             self, permitter: ComputationPermissionDispatcher,
-            vector_builder: Optional[VectorBuilder] | None = None,
     ):
         """
         Args:
@@ -72,41 +70,32 @@ class RookTopologyComputer(TraversalTopologyComputer[RookTopologyRequest]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the origin is not safe to use.
-        origin_validation = self._math_toolkit.origin.validator.execute(candidate=origin)
-        if origin_validation.is_failure:
-            # Send an exception chain in the result.
-            return ComputationResult.failure(
-                RookTopologyComputerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=RookTopologyComputerException.MSG,
-                    err_code=RookTopologyComputerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=origin_validation.exception,
-                ),
+        # --- Get work authorization. ---#
+        decision = self.permitter.execute(
+            candidate=RookTopologyPermissionRequest(
+                authorization_applicant=request,
+                id=IdFactory.next_id(class_name="Request")
             )
-        # Handle the case that the basis is not valid.
-        basis_validation = self._priming_validator.execute(
-            request=basis_vectors,
-            candidate=Type[VectorSet],
-            null_exception=VectorSetNullException(),
         )
-        if basis_validation.is_failure:
-            # Send an exception chain in the result.
+        # Handle the case that the request is not authorized.
+        if decision.request_is_denied:
             return ComputationResult.failure(
                 RookTopologyComputerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=RookTopologyComputerException.MSG,
                     err_code=RookTopologyComputerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=basis_validation.exception,
-                ),
+                    ex=decision.exception,
+                )
             )
-        origin = request.origin
+        # --- Extract the requests for additional processing. ---#
+        transaction_request = cast(RookTopologyRequest, decision.transaction_request)
+        
+        # --- Extract the transaction participants. ---#
+        origin = transaction_request.origin
         branches: List[VectorChain] = []
         
+        # --- Perform transaction and state management work. ---#
         for job in request.sequence_requests:
             work = self.sequencer.execute(request=job)
             if work.is_failure:
@@ -121,6 +110,7 @@ class RookTopologyComputer(TraversalTopologyComputer[RookTopologyRequest]):
                         ex=work.exception,
                     ),
                 )
+            # --- Iteration completed. ---#
             chain = cast(VectorChain, work.payload)
             branches.append(chain)
         tree = VectorTree(root=origin, branches=branches)

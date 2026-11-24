@@ -17,7 +17,7 @@ from request import AxisProjectionRequest, ProjectionPermissionRequest
 T = TypeVar("T", bound="AxisProjectionRequest")
 
 class AxisProjectionPermissionRequest(
-    ProjectionPermissionRequest[T], ABC, Generic[T]
+    ProjectionPermissionRequest[T], Generic[T]
 ):
     """
      Role:

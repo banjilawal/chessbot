@@ -1,7 +1,7 @@
-# src/request/permission/computation/projection/axis/eastAxis/request.py
+# src/request/permission/computation/projection/axis/east/request.py
 
 """
-Module: request.permission.computation.projection.axis.eastAxis.request
+Module: request.permission.computation.projection.axis.east.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

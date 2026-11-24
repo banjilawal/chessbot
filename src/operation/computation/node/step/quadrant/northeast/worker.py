@@ -12,9 +12,11 @@ from __future__ import annotations
 from typing import cast
 
 from domain import QuadrantStepFunction
+from operation import QuadrantNodeStepper
+from request import NortheastQuadrantProjectionRequest
 
 
-class NortheastQuadrantNodeStepper(QuadrantNodeStepper):
+class NortheastQuadrantNodeStepper(QuadrantNodeStepper[NortheastQuadrantProjectionRequest]):
     """
     Role:
         - Computation

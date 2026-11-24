@@ -84,26 +84,8 @@ class EuclideanDistance(DistanceComputer[EuclideanDistanceRequest]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = cast(
-            DistanceComputationPermissionRequest,
-            decision.permission_request,
-        )
-        transaction_request = cast(
-            EuclideanDistanceRequest,
-            decision.transaction_request
-        )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=EuclideanDistanceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=EuclideanDistanceException.MSG,
-                    err_code=EuclideanDistanceException.ERR_CODE,
-                    ex=EuclideanDistanceRequestNullException()
-                )
-            )
+        transaction_request = cast(EuclideanDistanceRequest, decision.transaction_request)
+
         # --- Extract the transaction participants. ---#
         u = transaction_request.u
         v = transaction_request.v

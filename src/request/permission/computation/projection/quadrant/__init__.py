@@ -10,9 +10,10 @@ version: 0.0.2
 # =========== REQUEST.PERMISSION.COMPUTATION.PROJECTION.QUADRANT PACKAGE ===========#
 
 # Packages
-from .bishop import *
-from .queen import *
-from .rook import *
+from .northeast import *
+from .northwest import *
+from .southeast import *
+from .southwest import *
 
 # Modules
 from .request import QuadrantProjectionPermissionRequest

@@ -81,7 +81,7 @@ class TokenContextBuilder(StackContextBuilder[TokenSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TokenSearchContext, build.content)
+        context = cast(TokenSearchContext, build.payload)
         return BuildResult.success(context)
 
         

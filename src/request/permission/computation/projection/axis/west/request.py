@@ -1,7 +1,7 @@
-# src/request/permission/computation/projection/axis/westAxis/request.py
+# src/request/permission/computation/projection/axis/west/request.py
 
 """
-Module: request.permission.computation.projection.axis.westAxis.request
+Module: request.permission.computation.projection.axis.west.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

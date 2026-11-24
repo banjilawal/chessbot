@@ -82,5 +82,5 @@ class CoordBuildDispatcher(ModelBuildDispatcher[Coord]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(CoordCarrier, build.content)
+        carrier = cast(CoordCarrier, build.payload)
         return BuildResult.success(carrier)

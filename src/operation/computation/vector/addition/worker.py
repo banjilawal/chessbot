@@ -79,7 +79,7 @@ class VectorAddition(VectorComputer[VectorAdditionRequest]):
         decision = self.permitter.execute(
             candidate=VectorAdditionPermissionRequest(
                 authorization_applicant=request,
-                id=IdFactory.next_id(class_name="PermissionRequest")
+                id=IdFactory.next_id(class_name="Request")
             )
         )
         # Handle the case that the request is not authorized.
@@ -94,21 +94,8 @@ class VectorAddition(VectorComputer[VectorAdditionRequest]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = cast(VectorAdditionPermissionRequest, decision.permission_request)
         transaction_request = cast(VectorAdditionRequest, decision.transaction_request)
      
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=VectorAdditionException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorAdditionException.MSG,
-                    err_code=VectorAdditionException.ERR_CODE,
-                    ex=VectorAdditionRequestNullException()
-                )
-            )
         # --- Extract the transaction participants. ---#
         u = transaction_request.u
         v = transaction_request.v

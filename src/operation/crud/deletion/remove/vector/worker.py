@@ -101,18 +101,11 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
                 )
             )
 
-        
         # --- Extract the requests for additional processing. ---#
-        transaction_request = cast(
-            VectorNodeSearchRequest,
-            decision.transaction_request
-        )
+        transaction_request = cast(VectorNodeSearchRequest, decision.transaction_request)
         # --- Extract the transaction participants. ---#
-        # context = transaction_request.context
-        # collection = transaction_request.collection
-        context = request.context
-        collection = request.collection
-        
+        context = transaction_request.context
+        collection = transaction_request.collection
 
         # --- Perform transaction and state management work. ---#
         search = self.searcher.execute(
@@ -143,6 +136,7 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
         
         node.previous = None
         node.next = None
+        # --- Forward the work product to the caller. ---#
         return DeletionResult.success(node)
 
 

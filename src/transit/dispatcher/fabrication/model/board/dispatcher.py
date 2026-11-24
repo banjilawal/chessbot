@@ -82,5 +82,5 @@ class BoardBuildDispatcher(ModelBuildDispatcher[Board]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(BoardCarrier, build.content)
+        carrier = cast(BoardCarrier, build.payload)
         return BuildResult.success(carrier)

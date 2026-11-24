@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from request import ProjectionPermissionRequest, QuadrantProjectionRequest
+from request import QuadrantProjectionRequest, ProjectionPermissionRequest
 
 T = TypeVar("T", bound="QuadrantProjectionRequest")
 
 class QuadrantProjectionPermissionRequest(
-    ProjectionPermissionRequest[T], ABC, Generic[T]
+    ProjectionPermissionRequest[T], Generic[T]
 ):
     """
      Role:

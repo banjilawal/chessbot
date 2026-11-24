@@ -93,21 +93,8 @@ class ScalarProduct(VectorComputer[ScalarProductRequest]):
                 )
             )
         # --- Extract the requests for productal processing. ---#
-        permission_request = cast(ScalarProductPermissionRequest, decision.permission_request)
         transaction_request = cast(ScalarProductRequest, decision.transaction_request)
     
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=ScalarProductException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ScalarProductException.MSG,
-                    err_code=ScalarProductException.ERR_CODE,
-                    ex=ScalarProductRequestNullException()
-                )
-            )
         # --- Extract the transaction participants. ---#
         scalar = transaction_request.scalar
         vector = transaction_request.vector
@@ -135,7 +122,7 @@ class ScalarProduct(VectorComputer[ScalarProductRequest]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        vector = cast(Vector, build.content)
+        vector = cast(Vector, build.payload)
         return ComputationResult.success(vector)
 
         

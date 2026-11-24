@@ -14,7 +14,10 @@ from typing import Generic, TypeVar, cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint, VectorNode
 from operation import SpaceNodeStepper
-from request import ProjectionRequest, QuadrantProjectionRequest, VectorBuildRequest
+from request import (
+    ProjectionRequest, QuadrantProjectionPermissionRequest, QuadrantProjectionRequest,
+    VectorBuildRequest
+)
 
 from transit import VectorCarrier
 
@@ -83,25 +86,33 @@ class QuadrantNodeStepper(SpaceNodeStepper[T], Generic[T]):
         Raises:
              QuadrantNodeStepperException
         """
-        method = f"{self.__class__.__name__}.next"
+        method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the argument is not safe to use.
-        validation = self.math.origin.validator.execute(vector)
-        if validation.is_failure:
-            # Send an exception chain in the result.
+        # --- Get work authorization. ---#
+        decision = self.permitter.execute(
+            candidate=QuadrantProjectionPermissionRequest(
+                authorization_applicant=request,
+                id=IdFactory.next_id(class_name="Request")
+            )
+        )
+        # Handle the case that the request is not authorized.
+        if decision.request_is_denied:
             return ComputationResult.failure(
                 QuadrantNodeStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=QuadrantNodeStepperException.MSG,
                     err_code=QuadrantNodeStepperException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=validation.exception,
-                ),
+                    ex=decision.exception,
+                )
             )
-        previous = request.node
-        
+        # --- Extract the requests for additional processing. ---#
+        transaction_request = cast(QuadrantProjectionRequest, decision.transaction_request)
+
+        # --- Extract the transaction participants. ---#
+        previous = transaction_request.node
         u = previous.content
+        
         if u is None:
             # Send an exception chain in the result.
             return ComputationResult.failure(
@@ -120,6 +131,7 @@ class QuadrantNodeStepper(SpaceNodeStepper[T], Generic[T]):
                     ),
                 ),
             )
+        # --- Perform transaction and state management work. ---#
         x = u.x + self.x_step
         y = (2 * u.y * self.slope) + self.slope
         

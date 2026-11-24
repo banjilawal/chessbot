@@ -90,38 +90,14 @@ class VectorNodeAdder(NodeAdder[AddVectorNodeRequest]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = cast(AddVectorNodePermissionRequest, decision.permission_request)
         transaction_request = cast(AddVectorNodeRequest, decision.transaction_request)
         
-        # Handle the case that the permission_request is null.
-        if permission_request is None:
-            # Send the exception chain in the denial.
-            return InsertionResult.failure(
-                exception=AcountAdderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AcountAdderException.MSG,
-                    err_code=AcountAdderException.ERR_CODE,
-                    ex=AddVectorNodePermissionRequestNullException(),
-                )
-            )
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return InsertionResult.failure(
-                exception=AcountAdderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AcountAdderException.MSG,
-                    err_code=AcountAdderException.ERR_CODE,
-                    ex=AddVectorNodeRequestNullException()
-                )
-            )
         # --- Extract the transaction participants. ---#
         node = transaction_request.item
         offset = transaction_request.offset
         collection = transaction_request.collection
         
+        # --- Perform transaction and state management work. ---#
         counter = 0
         size = collectzion.size
         cursor = collection.iterator
@@ -133,6 +109,5 @@ class VectorNodeAdder(NodeAdder[AddVectorNodeRequest]):
         cursor.next = node
         collection.size = size + 1
         
-        # --- Perform transaction and state management work. ---#
         # --- Forward the work product to the client. ---#
         return InsertionResult.success()

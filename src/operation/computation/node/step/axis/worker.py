@@ -16,7 +16,7 @@ from err import AxisNodeStepperException, VectorNullException
 
 from artifcat import ComputationResult, MethodResultType
 from operation import SpaceNodeStepper
-from request import AxisProjectionRequest, ProjectionRequest, VectorAdditionRequest
+from request import AxisProjectionPermissionRequest, AxisProjectionRequest, VectorAdditionRequest
 from util import IdFactory, LoggingLevelRouter
 
 T = TypeVar("T", bound="AxisProjectionRequest")
@@ -54,7 +54,6 @@ class AxisNodeStepper(SpaceNodeStepper[T], Generic[T]):
     def delta(self) -> Vector:
         return self.delta
 
-    
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> ComputationResult[VectorNode]:
         """
@@ -74,11 +73,31 @@ class AxisNodeStepper(SpaceNodeStepper[T], Generic[T]):
         Raises:
              AxisNodeStepperException
         """
-        method = f"{self.__class__.__name__}.next"
+        method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the argument is not safe to use.
+        # --- Get work authorization. ---#
+        decision = self.permitter.execute(
+            candidate=AxisProjectionPermissionRequest(
+                authorization_applicant=request,
+                id=IdFactory.next_id(class_name="Request")
+            )
+        )
+        # Handle the case that the request is not authorized.
+        if decision.request_is_denied:
+            return ComputationResult.failure(
+                AxisNodeStepperException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisNodeStepperException.MSG,
+                    err_code=AxisNodeStepperException.ERR_CODE,
+                    ex=decision.exception,
+                )
+            )
+        # --- Extract the requests for additional processing. ---#
+        transaction_request = cast(AxisProjectionRequest, decision.transaction_request)
         
-        previous = request.node
+        # --- Extract the transaction participants. ---#
+        previous = transaction_request.node
         u = previous.content
         
         if u is None:
@@ -99,6 +118,7 @@ class AxisNodeStepper(SpaceNodeStepper[T], Generic[T]):
                     ),
                 ),
             )
+        # --- Perform transaction and state management work. ---#
         computation = self.compute.addition.execute(
             request=VectorAdditionRequest(
                 u=u,

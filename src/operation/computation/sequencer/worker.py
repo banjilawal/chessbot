@@ -111,20 +111,8 @@ class VectorNodeSequencer(Computer[VectorNodeSequenceRequest]):
                 )
             )
         # --- Extract the requests for additional processing. ---#
-        permission_request = cast(VectorNodeSequencePermissionRequest, decision.permission_request)
         transaction_request = cast(VectorNodeSequenceRequest, decision.transaction_request)
-        # Handle the case that the transaction_request is null.
-        if transaction_request is None:
-            # Send the exception chain in the denial.
-            return ComputationResult.failure(
-                exception=VectorNodeSequencerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorNodeSequencerException.MSG,
-                    err_code=VectorNodeSequencerException.ERR_CODE,
-                    ex=VectorNodeSequenceRequestNullException()
-                )
-            )
+
         # --- Extract the transaction participants. ---#
         origin = transaction_request.origin
         cursor = transaction_request.origin
@@ -132,6 +120,7 @@ class VectorNodeSequencer(Computer[VectorNodeSequenceRequest]):
         step_function = transaction_request.step_function
         
         # --- Cast the validation product and setup for the iteration. ---#
+        counter = 0
         while cursor.content != terminus:
             step = step_function.execute(
                 request=ProjectionRequest(
@@ -152,7 +141,14 @@ class VectorNodeSequencer(Computer[VectorNodeSequenceRequest]):
                     ),
                 )
             cursor = cast(VectorNode, step.payload)
-        chain = VectorChain(head=origin, tail=cursor)
+            counter = counter + 1
+        # --- Perform transaction and state management work. ---#
+        chain = VectorChain()
+        origin.previous = chain.head
+        cursor.next = chain.tail
+        chain.head.next = origin
+        chain.tail.previous = cursor
+        chain.size = counter
         
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(chain)

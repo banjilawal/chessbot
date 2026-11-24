@@ -82,5 +82,5 @@ class SquareBuildDispatcher(ModelBuildDispatcher[Square]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(SquareCarrier, build.content)
+        carrier = cast(SquareCarrier, build.payload)
         return BuildResult.success(carrier)

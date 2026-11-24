@@ -83,5 +83,5 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(VectorCarrier, build.content)
+        carrier = cast(VectorCarrier, build.payload)
         return BuildResult.success(carrier)

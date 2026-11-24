@@ -84,7 +84,7 @@ class VectorNodeContextBuilder(
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(VectorNodeContext, build.content)
+        context = cast(VectorNodeContext, build.payload)
         return BuildResult.success(context)
 
         

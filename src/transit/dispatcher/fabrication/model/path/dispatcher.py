@@ -82,5 +82,5 @@ class PathBuildDispatcher(ModelBuildDispatcher[Path]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(PathCarrier, build.content)
+        carrier = cast(PathCarrier, build.payload)
         return BuildResult.success(carrier)

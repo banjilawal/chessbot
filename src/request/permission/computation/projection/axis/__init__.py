@@ -13,6 +13,7 @@ version: 0.0.2
 from .east import *
 from .north import *
 from .south import *
+from .west import *
 
 # Modules
 from .request import AxisProjectionPermissionRequest

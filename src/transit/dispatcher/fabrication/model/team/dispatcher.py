@@ -82,5 +82,5 @@ class TeamBuildDispatcher(ModelBuildDispatcher[Team]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = cast(TeamCarrier, build.content)
+        carrier = cast(TeamCarrier, build.payload)
         return BuildResult.success(carrier)
