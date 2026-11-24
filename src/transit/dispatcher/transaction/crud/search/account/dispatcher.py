@@ -14,13 +14,13 @@ from typing import List, Optional, cast
 from artifcat import SearchResult
 from domain import Account
 from err import AccountSearchDispatcherException
-from exchange import AccountSearchRequest
 from operation import AccountSearcher
+from request import AccountSearchRequest
 from transit import SearchDispatcher
 from util import LoggingLevelRouter
 
 
-class AccountSearchDispatcher(SearchDispatcher[AccountSearchRequest, SearchResult]):
+class AccountSearchDispatcher(SearchDispatcher[AccountSearchRequest]):
     """
     Role
         -   Performance Management

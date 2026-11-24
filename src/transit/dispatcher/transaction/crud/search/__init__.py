@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .account import *
+from .vector import *
 
 # Modules
 from .dispatcher import SearchDispatcher

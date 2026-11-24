@@ -10,8 +10,10 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.CRUD PACKAGE ===========#
 
 # Packages
+from .deletion import *
 from .insertion import *
 from .search import *
+from .trim import *
 
 # Modules
 from .dispatcher import CrudDispatcher

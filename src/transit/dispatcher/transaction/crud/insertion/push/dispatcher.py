@@ -14,13 +14,13 @@ from typing import Generic, TypeVar
 
 from artifcat import InsertionResult
 from operation import ModelPusher
+from request import ModelPushRequest
 from transit import InsertionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="PushRequest")
-R = TypeVar("R", bound="InsertionResult")
+Q = TypeVar("Q", bound="ModelPushRequest")
 
-class PushDispatcher(InsertionDispatcher[Q, R], ABC, Generic[Q, R]):
+class PushDispatcher(InsertionDispatcher[Q], ABC, Generic[Q]):
     """
     Role
         -   Process Flow
@@ -29,7 +29,7 @@ class PushDispatcher(InsertionDispatcher[Q, R], ABC, Generic[Q, R]):
         1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
-        worker: ModelPusher[Q, R]
+        worker: ModelPusher[Q]
         
     Provides:
 
@@ -37,7 +37,7 @@ class PushDispatcher(InsertionDispatcher[Q, R], ABC, Generic[Q, R]):
         InsertionDispatcher
     """
     
-    def __init__(self, worker: ModelPusher[Q, R]):
+    def __init__(self, worker: ModelPusher[Q]):
         """
         Args:
         """
@@ -45,7 +45,7 @@ class PushDispatcher(InsertionDispatcher[Q, R], ABC, Generic[Q, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    def execute(self, request: Q) -> InsertionResult:
         """
         Send PushRequests to a worker.
         

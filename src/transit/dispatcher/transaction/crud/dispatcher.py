@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 Q = TypeVar("Q", bound="CrudRequest")
 R = TypeVar("R", bound="CrudResult")
 
-class CrudDispatcher(TransactionDispatcher[Q, R], ABC, Generic[Q, R]):
+class CrudDispatcher(TransactionDispatcher[R], ABC, Generic[R]):
     """
     Role
         -   Performance Management
@@ -46,8 +46,8 @@ class CrudDispatcher(TransactionDispatcher[Q, R], ABC, Generic[Q, R]):
         super().__init__(worker=worker)
         
     @property
-    def worker(self) -> CrudWorker[Q, R]:
-        return cast(CrudWorker[Q, R], super().worker)
+    def worker(self) -> CrudWorker[Q]:
+        return cast(CrudWorker[Q], super().worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

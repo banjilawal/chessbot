@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import InsertionResult
 from err import AccountPushDispatcherException
-from exchange import AccountPushRequest
 from operation import AccountPusher
+from request import AccountPushRequest
 from transit import PushDispatcher
 from util import LoggingLevelRouter
 
 
-class AccountPushDispatcher(PushDispatcher[AccountPushRequest, InsertionResult]):
+class AccountPushDispatcher(PushDispatcher[AccountPushRequest]):
     """
     Role
         -   Process Flow

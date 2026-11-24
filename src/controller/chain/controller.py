@@ -19,8 +19,8 @@ T = TypeVar("T", bound="Chain")
 
 class ChainController(Controller[T], ABC, Generic[T]):
     _chain: T
-    _adder:
-    _remover:
-    _trimmer:
-    _searcher:
+    _adder: T
+    _remover: T
+    _trimmer: T
+    _searcher: T
     

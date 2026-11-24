@@ -13,15 +13,15 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import InsertionResult
-from exchange import InsertionRequest
 from operation import Inserter
+from request import InsertionRequest
 from transit import CrudDispatcher
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="InsertionRequest")
-R = TypeVar("R", bound="InsertionResult")
 
-class InsertionDispatcher(CrudDispatcher[Q, R], ABC, Generic[Q, R]):
+
+class InsertionDispatcher(CrudDispatcher[Q], ABC, Generic[Q]):
     """
     Role
         -   Process Flow
@@ -30,7 +30,7 @@ class InsertionDispatcher(CrudDispatcher[Q, R], ABC, Generic[Q, R]):
         1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
-        worker: Inserter[Q, R]
+        worker: Inserter[Q]
         
     Provides:
 
@@ -39,14 +39,14 @@ class InsertionDispatcher(CrudDispatcher[Q, R], ABC, Generic[Q, R]):
     """
     
     
-    def __init__(self, worker: Inserter[Q, R]):
+    def __init__(self, worker: Inserter[Q]):
         """
         Args:
-            worker: Inserter[Q, R]
+            worker: Inserter[Q]
         """
         super().__init__(worker=worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
+    def execute(self, request: Q) -> InsertionResult:
         pass
