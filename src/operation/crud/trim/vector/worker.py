@@ -13,12 +13,13 @@ from typing import List, Optional, cast
 
 from artifcat import TrimResult
 from domain import VectorNode
-from operation import Trimmer, VectorNodeSearcher
+from operation import ChainTrimmer, VectorNodeSearcher
 from request import RemoveVectorNodeRequest, VectorNodeSearchRequest
+from transit import VectorNodeSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorChainTrimmer(Trimmer[RemoveVectorNodeRequest]):
+class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
     """
     Role:
         -   Transaction Worker
@@ -27,7 +28,7 @@ class VectorChainTrimmer(Trimmer[RemoveVectorNodeRequest]):
         1.  Executes an VectorNodeSearchRequest
 
     Attributes:
-        permitter: VectorSearchPermissionDispatcher
+        permitter: VectorNodeSearchPermissionDispatcher
 
     Provides:
         -   def execute(request: VectorNodeSearchRequest) -> SearchResult[List[Vector]]
@@ -40,16 +41,16 @@ class VectorChainTrimmer(Trimmer[RemoveVectorNodeRequest]):
     def __init__(
             self,
             searcher: Optional[VectorNodeSearcher] | None = None,
-            permitter: Optional[VectorSearchPermissionDispatcher] | None = None,
+            permitter: Optional[VectorNodeSearchPermissionDispatcher] | None = None,
     ):
         """
         Args:
             searcher: Optional[VectorNodeSearcher]
-            permitter: Optional[VectorSearchPermissionDispatcher]
+            permitter: Optional[VectorNodeSearchPermissionDispatcher]
         """
         super().__init__(
             searcher=searcher or VectorNodeSearcher(),
-            permitter=permitter or VectorSearchPermissionDispatcher(),
+            permitter=permitter or VectorNodeSearchPermissionDispatcher(),
         )
         
     @property
@@ -57,8 +58,8 @@ class VectorChainTrimmer(Trimmer[RemoveVectorNodeRequest]):
         return cast(VectorNodeSearcher, super().searcher)
     
     @property
-    def permitter(self) -> VectorSearchPermissionDispatcher:
-        return cast(VectorSearchPermissionDispatcher, super().permitter)
+    def permitter(self) -> VectorNodeSearchPermissionDispatcher:
+        return cast(VectorNodeSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: RemoveVectorNodeRequest) -> TrimResult[VectorNode]:
@@ -84,9 +85,9 @@ class VectorChainTrimmer(Trimmer[RemoveVectorNodeRequest]):
         
         # Handle the case that the request is denied.
         decision = self.permitter.execute(
-            candidate=VectorSearchPermissionRequest(
+            candidate=VectorNodeSearchPermissionRequest(
                 authorization_applicant=request,
-                id=IdFactory.next_id(class_name="VectorSearchPermissionRequest")
+                id=IdFactory.next_id(class_name="VectorNodeSearchPermissionRequest")
             )
         )
         if decision.request_is_denied:
@@ -129,16 +130,17 @@ class VectorChainTrimmer(Trimmer[RemoveVectorNodeRequest]):
             return TrimResult.nothing_to_trim()
         matches = cast(List[VectorNode], search.payload)
         node = matches[0]
-        previous = node.previous
-        after = node.next
-        previous.next = after
-        after.previous = previous
+        node.next = collection.tail
+        collection.tail.previous = node
         
-        node.previous = None
-        node.next = None
+        counter = 0
+        cursor = collection.iterator
+        while cursor.has_next:
+            counter = counter + 1
+            cursor = cursor.next
+        collection.size = counter
         # --- Forward the work product to the caller. ---#
-        return TrimResult.success(node)
-
+        return TrimResult.success(collection)
 
 
         

@@ -13,6 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import DeletionResult
+from authorization import RemoveNodePermitter
 from operation import Deleter, NodeSearcher
 from request import RemoveNodeRequest
 from util import LoggingLevelRouter

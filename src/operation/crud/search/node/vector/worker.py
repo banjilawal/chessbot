@@ -16,7 +16,7 @@ from collection import VectorChain
 from domain import Vector, VectorNode
 from err import VectorSearcherException, SearchRouteCoverageException
 from operation import ModelSearcher
-from transit import VectorSearchPermissionDispatcher
+from transit import VectorNodeSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -29,7 +29,7 @@ class VectorNodeSearcher(NodeSearcher[VectorNodeSearchRequest]):
         1.  Executes an VectorNodeSearchRequest
 
     Attributes:
-        permitter: VectorSearchPermissionDispatcher
+        permitter: VectorNodeSearchPermissionDispatcher
 
     Provides:
         -   def execute(request: VectorNodeSearchRequest) -> SearchResult[List[Vector]]
@@ -40,17 +40,17 @@ class VectorNodeSearcher(NodeSearcher[VectorNodeSearchRequest]):
     
     def __init__(
             self,
-            permitter: Optional[VectorSearchPermissionDispatcher] | None = None,
+            permitter: Optional[VectorNodeSearchPermissionDispatcher] | None = None,
     ):
         """
         Args:
-            permitter: Optional[VectorSearchPermissionDispatcher]
+            permitter: Optional[VectorNodeSearchPermissionDispatcher]
         """
-        super().__init__(permitter=permitter or VectorSearchPermissionDispatcher())
+        super().__init__(permitter=permitter or VectorNodeSearchPermissionDispatcher())
     
     @property
-    def permitter(self) -> VectorSearchPermissionDispatcher:
-        return cast(VectorSearchPermissionDispatcher, super().permitter)
+    def permitter(self) -> VectorNodeSearchPermissionDispatcher:
+        return cast(VectorNodeSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: VectorNodeSearchRequest) -> SearchResult[List[VectorNode]]:
@@ -76,9 +76,9 @@ class VectorNodeSearcher(NodeSearcher[VectorNodeSearchRequest]):
         
         # Handle the case that the request is denied.
         decision = self.permitter.execute(
-            candidate=VectorSearchPermissionRequest(
+            candidate=VectorNodeSearchPermissionRequest(
                 authorization_applicant=request,
-                id=IdFactory.next_id(class_name="VectorSearchPermissionRequest")
+                id=IdFactory.next_id(class_name="VectorNodeSearchPermissionRequest")
             )
         )
         if decision.request_is_denied:

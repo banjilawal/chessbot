@@ -27,7 +27,7 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
         1.  Executes an VectorNodeSearchRequest
 
     Attributes:
-        permitter: VectorSearchPermissionDispatcher
+        permitter: VectorNodeSearchPermissionDispatcher
 
     Provides:
         -   def execute(request: VectorNodeSearchRequest) -> SearchResult[List[Vector]]
@@ -40,16 +40,16 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
     def __init__(
             self,
             searcher: Optional[VectorNodeSearcher] | None = None,
-            permitter: Optional[VectorSearchPermissionDispatcher] | None = None,
+            permitter: Optional[VectorNodeSearchPermissionDispatcher] | None = None,
     ):
         """
         Args:
             searcher: Optional[VectorNodeSearcher]
-            permitter: Optional[VectorSearchPermissionDispatcher]
+            permitter: Optional[VectorNodeSearchPermissionDispatcher]
         """
         super().__init__(
             searcher=searcher or VectorNodeSearcher(),
-            permitter=permitter or VectorSearchPermissionDispatcher(),
+            permitter=permitter or VectorNodeSearchPermissionDispatcher(),
         )
         
     @property
@@ -57,8 +57,8 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
         return cast(VectorNodeSearcher, super().searcher)
     
     @property
-    def permitter(self) -> VectorSearchPermissionDispatcher:
-        return cast(VectorSearchPermissionDispatcher, super().permitter)
+    def permitter(self) -> VectorNodeSearchPermissionDispatcher:
+        return cast(VectorNodeSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: RemoveVectorNodeRequest) -> DeletionResult[VectorNode]:
@@ -84,9 +84,9 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
         
         # Handle the case that the request is denied.
         decision = self.permitter.execute(
-            candidate=VectorSearchPermissionRequest(
+            candidate=VectorNodeSearchPermissionRequest(
                 authorization_applicant=request,
-                id=IdFactory.next_id(class_name="VectorSearchPermissionRequest")
+                id=IdFactory.next_id(class_name="VectorNodeSearchPermissionRequest")
             )
         )
         if decision.request_is_denied:
@@ -138,6 +138,7 @@ class VectorNodeRemover(NodeRemover[RemoveVectorNodeRequest]):
         node.next = None
         # --- Forward the work product to the caller. ---#
         return DeletionResult.success(node)
+
 
 
 

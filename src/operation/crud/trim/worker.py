@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import TrimPermitter
-from operation import CrudWorker
+from operation import CrudWorker, NodeSearcher
 from artifcat import TrimResult
 from request import TrimRequest
 from util import LoggingLevelRouter
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="TrimRequest")
 
 
-class Trimmer(CrudWorker[TrimResult], ABC, Generic[T]):
+class ChainTrimmer(CrudWorker[TrimResult], ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -38,16 +38,23 @@ class Trimmer(CrudWorker[TrimResult], ABC, Generic[T]):
     Super Class:
         CrudOperation
     """
+    _searcher: NodeSearcher
     
-    def __init__(self, permitter: TrimPermitter):
+    def __init__(self, searcher: NodeSearcher, permitter: TrimChainPermitter,):
         """
         Args:
-            permitter: TrimPermitter
+            searcher: NodeSearcher
+            permitter: TrimChainPermitter
         """
         super().__init__(permitter=permitter)
+        self._searcher = searcher
     
     @property
-    def permitter(self) -> TrimPermitter:
+    def searcher(self) -> NodeSearcher:
+        return self._searcher
+    
+    @property
+    def permitter(self) -> TrimChainPermitter:
         return cast(TrimPermitter, super().permitter)
     
     @abstractmethod
