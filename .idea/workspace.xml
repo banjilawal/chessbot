@@ -5,33 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/deletion/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/deletion/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/deletion/remove/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/deletion/remove/vector/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/add/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/add/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/add/vector/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/vector/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/vector/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/microservice/insertion/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/microservice/insertion/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/microservice/insertion/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/microservice/insertion/node/vector/microservice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/microservice/search/model/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/chain/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/chain/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/push/account/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/push/account/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/push/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion/push/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/account/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/account/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/insertion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/insertion/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/insertion/model/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/insertion/account/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/insertion/model/account/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/model/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/account/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/model/account/microservice.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,61 +62,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
+      <entry key="MS100" value="0.0021372924480942334" />
+      <entry key="MS500" value="0.301549850773138" />
+      <entry key="S2" value="1.1243363978121803" />
+      <entry key="S5" value="1.9151499880394502" />
+      <entry key="S10" value="2.771069357392945" />
+      <entry key="S30" value="5.72625112867353" />
+      <entry key="S60" value="8.30541330093647" />
+      <entry key="M2" value="11.310716701450184" />
+      <entry key="M5" value="23.336039446469904" />
+      <entry key="M10" value="41.54325230896932" />
+      <entry key="M15" value="56.23269826006167" />
+      <entry key="M30" value="103.16114990660337" />
+      <entry key="H1" value="222.55447074605732" />
+      <entry key="H2" value="442.38623345429505" />
+      <entry key="H4" value="806.1712729509235" />
+      <entry key="D1" value="4119.0101461769045" />
+      <entry key="W1" value="18551.461973463873" />
+    </decayedCancelled>
+    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
       <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000003208886625" />
-      <entry key="S10" value="1.0009039851279309" />
-      <entry key="S30" value="1.2810268535236813" />
-      <entry key="S60" value="2.2889108589444658" />
-      <entry key="M2" value="4.02416868411139" />
-      <entry key="M5" value="7.75223921246621" />
-      <entry key="M10" value="13.972709879222746" />
-      <entry key="M15" value="25.14741824966781" />
-      <entry key="M30" value="88.85542213526024" />
-      <entry key="H1" value="235.30149350475594" />
-      <entry key="H2" value="448.21884088237545" />
-      <entry key="H4" value="791.2790577142302" />
-      <entry key="D1" value="4078.24643114887" />
-      <entry key="W1" value="18460.33897465537" />
-    </decayedCancelled>
-    <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.5717509301307775E-73" />
-      <entry key="S2" value="7.12126629777107E-19" />
-      <entry key="S5" value="5.508367288436866E-8" />
-      <entry key="S10" value="2.3469911138384965E-4" />
-      <entry key="S30" value="0.061683735074367696" />
-      <entry key="S60" value="0.24866700997325558" />
-      <entry key="M2" value="0.5342321490580035" />
-      <entry key="M5" value="1.4845887361718029" />
-      <entry key="M10" value="3.116872232841644" />
-      <entry key="M15" value="4.4430306473673955" />
-      <entry key="M30" value="8.029106789754366" />
-      <entry key="H1" value="14.584577387507963" />
-      <entry key="H2" value="24.29330078763214" />
-      <entry key="H4" value="40.63369166556724" />
-      <entry key="D1" value="197.98629272654793" />
-      <entry key="W1" value="956.165543938431" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0000000000096951" />
+      <entry key="M5" value="1.0000750128177427" />
+      <entry key="M10" value="1.0221556073139315" />
+      <entry key="M15" value="1.1642564434341591" />
+      <entry key="M30" value="2.5437920042067708" />
+      <entry key="H1" value="7.395207286682316" />
+      <entry key="H2" value="17.086698256230285" />
+      <entry key="H4" value="34.06560511673975" />
+      <entry key="D1" value="192.30081604018275" />
+      <entry key="W1" value="952.4849071048675" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.256893770109167E-7" />
-      <entry key="MS500" value="0.05041510995138288" />
-      <entry key="S2" value="0.4738492304741916" />
-      <entry key="S5" value="0.7417477363218035" />
-      <entry key="S10" value="0.8621631462066516" />
-      <entry key="S30" value="1.2665085566597463" />
-      <entry key="S60" value="2.449046695074251" />
-      <entry key="M2" value="4.47313247496302" />
-      <entry key="M5" value="9.171514696707174" />
-      <entry key="M10" value="17.037873680946497" />
-      <entry key="M15" value="29.54343073310772" />
-      <entry key="M30" value="96.83843581751472" />
-      <entry key="H1" value="249.84055655626517" />
-      <entry key="H2" value="472.47308057620864" />
-      <entry key="H4" value="831.879211237464" />
-      <entry key="D1" value="4276.203285856448" />
-      <entry key="W1" value="19416.486522076113" />
+      <entry key="MS100" value="0.03928167007875804" />
+      <entry key="MS500" value="0.544409845775701" />
+      <entry key="S2" value="1.4880578953237744" />
+      <entry key="S5" value="2.4831410033458083" />
+      <entry key="S10" value="3.4886095518181897" />
+      <entry key="S30" value="6.603767227815876" />
+      <entry key="S60" value="9.238598850328637" />
+      <entry key="M2" value="12.275474005493287" />
+      <entry key="M5" value="24.320541609627842" />
+      <entry key="M10" value="42.55560576017736" />
+      <entry key="M15" value="57.38718110318574" />
+      <entry key="M30" value="105.68921716719653" />
+      <entry key="H1" value="229.92455036391632" />
+      <entry key="H2" value="459.4437855393747" />
+      <entry key="H4" value="840.2077251970142" />
+      <entry key="D1" value="4311.28217240026" />
+      <entry key="W1" value="19503.92892179754" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -167,7 +152,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/transaction/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/microservice/insertion",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -181,18 +166,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/microservice/insertion" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/search" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/insertion" />
       <recent name="$PROJECT_DIR$/src/controller/chain" />
-      <recent name="$PROJECT_DIR$/src/artifcat/result/transaction/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/microservice/search/model" />
+      <recent name="$PROJECT_DIR$/src/microservice/insertion/model" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim" />
       <recent name="$PROJECT_DIR$/src/operation/crud/trim" />
       <recent name="$PROJECT_DIR$/src/randomize/account" />
-      <recent name="$PROJECT_DIR$/src/request/permission/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/remove" />
     </key>
   </component>
   <component name="RunManager" selected="Python.request">
@@ -1008,7 +993,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="383837000" />
+      <workItem from="1794227184139" duration="386646000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3256,6 +3241,11 @@
           <url>file://$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/remove/dispatcher.py</url>
           <line>11</line>
           <option name="timeStamp" value="739" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/transit/dispatcher/transaction/dispatcher.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="740" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

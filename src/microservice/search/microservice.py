@@ -11,6 +11,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import SearchResult
+from microservice import Microservice
 from request import SearchRequest
 from transit import SearchDispatcher
 from util import LoggingLevelRouter
@@ -18,7 +19,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="SearchRequest")
 
 
-class SearchMicroservice(ABC, Generic[T]):
+class SearchMicroservice(Microservice[T], ABC, Generic[T]):
     """
     Role:
         - API
@@ -52,6 +53,7 @@ class SearchMicroservice(ABC, Generic[T]):
             dispatcher: BuildDispatcher
         """
         self._dispatcher = dispatcher
+        
         
     @abstractmethod
     @LoggingLevelRouter.monitor

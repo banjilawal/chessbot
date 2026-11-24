@@ -10,7 +10,8 @@ version: 0.0.2
 # ============= MICROSERVICE.SEARCH PACKAGE ===========#
 
 # Packages
-from .account import *
+from .model import *
+from .node import *
 
 # Modules
 from .microservice import SearchMicroservice
