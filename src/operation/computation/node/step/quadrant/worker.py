@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Generic, TypeVar, cast
 
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint, VectorNode
@@ -20,9 +20,9 @@ from transit import VectorCarrier
 
 from util import IdFactory, LoggingLevelRouter
 
+T = TypeVar("T", bound="QuadrantProjectionRequest")
 
-
-class QuadrantNodeStepper(SpaceNodeStepper[QuadrantProjectionRequest]):
+class QuadrantNodeStepper(SpaceNodeStepper[T], Generic[T]):
     """
     Role:
         - Computation
@@ -65,7 +65,7 @@ class QuadrantNodeStepper(SpaceNodeStepper[QuadrantProjectionRequest]):
         return self._x_step
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: ProjectionRequest) -> ComputationResult[VectorNode]:
+    def execute(self, request: T) -> ComputationResult[VectorNode]:
         """
         Get the next Vector using a linear function.
 

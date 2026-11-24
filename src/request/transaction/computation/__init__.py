@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== REQUEST.TRANSACTION.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .mapping import *
+from .projection import *
 from .sequence import *
 from .topology import *
 from .vector import *

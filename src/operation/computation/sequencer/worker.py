@@ -9,21 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from typing import Optional, cast
 
-from collection import VectorChain, VectorSet
+from artifcat import ComputationResult
+from collection import VectorChain
 from controller import VectorComputationController
 from domain import VectorNode
-from domain.model import Vector
 from fabrication import VectorBuilder
-from request import ProjectionRequest, VectorNodeSequenceRequest
-from surface.topology.recurrence import Recurrence
-from artifcat import ComputationResult
+from operation import Computer
+from request import ProjectionRequest, VectorNodeSequencePermissionRequest, VectorNodeSequenceRequest
+from transit import ComputationPermissionDispatcher
 
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorNodeSequencer:
+class VectorNodeSequencer(Computer[VectorNodeSequenceRequest]):
     """
     Role:
         - Computation
@@ -50,6 +50,7 @@ class VectorNodeSequencer:
     
     def __init__(
             self,
+            permitter: ComputationPermissionDispatcher,
             vector_builder: Optional[VectorBuilder] | None = None,
             compute: Optional[VectorComputationController] | None = None,
     ):
@@ -58,6 +59,7 @@ class VectorNodeSequencer:
             vector_builder: Optional[VectorBuilder]
             compute: Optional[VectorComputationController]
         """
+        super().__init__(permitter=permitter)
         self._vector_builder = vector_builder or VectorBuilder()
         self._compute = compute or VectorComputationController()
     
@@ -68,7 +70,6 @@ class VectorNodeSequencer:
     @property
     def compute(self) -> VectorComputationController:
         return self._compute
-    
     
     @LoggingLevelRouter.monitor
     def execute(self, request: VectorNodeSequenceRequest) -> ComputationResult[VectorChain]:
@@ -91,30 +92,46 @@ class VectorNodeSequencer:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the sequence gets flagged,
-        validation = self._math.priming_validator.execute(
-            request=recurrence,
-            target_model=Recurrence,
-            null_exception=RecurrenceNullException(),
+        # --- Get work authorization. ---#
+        decision = self.permitter.execute(
+            candidate=VectorNodeSequencePermissionRequest(
+                authorization_applicant=request,
+                id=IdFactory.next_id(class_name="Request")
+            )
         )
-        if validation.is_failure:
-            # Send an exception chain in the result.
+        # Handle the case that the request is not authorized.
+        if decision.request_is_denied:
             return ComputationResult.failure(
                 VectorNodeSequencerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=VectorNodeSequencerException.MSG,
                     err_code=VectorNodeSequencerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=validation.exception,
-                ),
+                    ex=decision.exception,
+                )
             )
-        # --- Cast the validation product and setup for the iteration. ---#
-        origin = request.origin
-        cursor = request.origin
-        terminus = request.terminus
-        step_function = request.step_function
+        # --- Extract the requests for additional processing. ---#
+        permission_request = cast(VectorNodeSequencePermissionRequest, decision.permission_request)
+        transaction_request = cast(VectorNodeSequenceRequest, decision.transaction_request)
+        # Handle the case that the transaction_request is null.
+        if transaction_request is None:
+            # Send the exception chain in the denial.
+            return ComputationResult.failure(
+                exception=VectorNodeSequencerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorNodeSequencerException.MSG,
+                    err_code=VectorNodeSequencerException.ERR_CODE,
+                    ex=VectorNodeSequenceRequestNullException()
+                )
+            )
+        # --- Extract the transaction participants. ---#
+        origin = transaction_request.origin
+        cursor = transaction_request.origin
+        terminus = transaction_request.terminus
+        step_function = transaction_request.step_function
         
+        # --- Cast the validation product and setup for the iteration. ---#
         while cursor.content != terminus:
             step = step_function.execute(
                 request=ProjectionRequest(
@@ -136,9 +153,6 @@ class VectorNodeSequencer:
                 )
             cursor = cast(VectorNode, step.payload)
         chain = VectorChain(head=origin, tail=cursor)
-            
-
-            
+        
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(chain)
-        

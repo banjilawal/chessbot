@@ -14,6 +14,7 @@ from typing import Optional, cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint
 from err import ScalarProductException
+from operation import VectorComputer
 from request import ScalarProductPermissionRequest, ScalarProductRequest, VectorBuildRequest
 from transit import ScalarProductPermissionDispatcher, VectorCarrier
 

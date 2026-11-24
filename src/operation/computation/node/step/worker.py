@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional
+from typing import Generic, Optional, TypeVar
 
 from artifcat import ComputationResult
 from controller import VectorComputationController
@@ -19,8 +19,9 @@ from operation import Computer
 from request import ProjectionRequest
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="ProjectionRequest")
 
-class SpaceNodeStepper(ABC):
+class SpaceNodeStepper(Computer[T], ABC, Generic[T]):
     """
     Role:
         - Computation
@@ -66,5 +67,5 @@ class SpaceNodeStepper(ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ProjectionRequest) -> ComputationResult:
+    def execute(self, request: T) -> ComputationResult:
         pass

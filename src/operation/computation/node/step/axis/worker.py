@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Generic, TypeVar, cast
 
 from domain import Vector, VectorNode
 from err import AxisNodeStepperException, VectorNullException
@@ -19,9 +19,9 @@ from operation import SpaceNodeStepper
 from request import AxisProjectionRequest, ProjectionRequest, VectorAdditionRequest
 from util import IdFactory, LoggingLevelRouter
 
+T = TypeVar("T", bound="AxisProjectionRequest")
 
-
-class AxisNodeStepper(SpaceNodeStepper):
+class AxisNodeStepper(SpaceNodeStepper[T], Generic[T]):
     """
     Role:
         - Computation
@@ -38,7 +38,7 @@ class AxisNodeStepper(SpaceNodeStepper):
         def execute(request: AxisMappingRequest) -> ComputationResult[Vector]
 
     Super Class:
-        SpaceNodeStepper
+        AxisNodeStepper
     """
     _delta: Vector
     
@@ -56,7 +56,7 @@ class AxisNodeStepper(SpaceNodeStepper):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ProjectionRequest) -> ComputationResult[VectorNode]:
+    def execute(self, request: T) -> ComputationResult[VectorNode]:
         """
         Get the next Vector using addition.
 

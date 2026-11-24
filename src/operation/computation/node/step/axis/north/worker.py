@@ -9,10 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from domain import AxisDelta, Vector
 from operation import AxisNodeStepper
+from request import NorthAxisProjectionRequest
 
 
-class NorthAxisNodeStepper(AxisNodeStepper):
+class NorthAxisNodeStepper(AxisNodeStepper[NorthAxisProjectionRequest]):
     """
     Role:
         - Computation
@@ -29,7 +31,7 @@ class NorthAxisNodeStepper(AxisNodeStepper):
         def execute(request: AxisMappingRequest) -> ComputationResult[Vector]
 
     Super Class:
-        SpaceNodeStepper
+        AxisNodeStepper
     """
     
     def __init__(self, delta: Vector = AxisDelta.NORTH.vector):

@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== REQUEST.PERMISSION.COMPUTATION PACKAGE ===========#
 
 # Packages
+from .projection import *
+from .sequence import *
 from .topology import *
 from .vector import *
 
