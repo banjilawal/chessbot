@@ -13,9 +13,8 @@ from __future__ import annotations
 from typing import Any, Dict, Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
-from domain import Searchable
 
-T = TypeVar("T", bound="Searchable")
+T = TypeVar("T")
 
 
 class Context(ABC, Generic[T]):
@@ -38,34 +37,18 @@ class Context(ABC, Generic[T]):
     """
     
     _capacity: int
-    _id: Optional[int]
-    _name: Optional[str]
 
     def __init__(
             self,
-            id: Optional[int] | None = None,
-            name: Optional[str] | None = None,
             capacity: Optional[int] | None = None,
     ):
         """
         Args:
-            id: Optional[int]
-            name: Optional[str]
             capacity: Optional[int]
         """
         super().__init__()
-        self._id = id
-        self._name = name
         self._capacity = capacity or 1
 
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-
-    @property
-    def name(self) -> Optional[str]:
-        return self._name
-    
     @property
     def capacity(self) -> int:
         return self._capacity

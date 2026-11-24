@@ -46,7 +46,7 @@ class AxisProjectionRequest(ProjectionRequest, ABC, Generic[T]):
             node: VectorNode
             delta: Vector
         """
-        super().__init__(id, node=node)
+        super().__init__(id=id, node=node)
         self._delta = delta
     
     @property

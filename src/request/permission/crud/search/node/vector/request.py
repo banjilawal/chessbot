@@ -40,7 +40,7 @@ class VectorNodeSearchPermissionRequest(
             id: int
             authorization_applicant: VectorNodeSearchRequest
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     @property
     def authorization_applicant(self) -> VectorNodeSearchRequest:

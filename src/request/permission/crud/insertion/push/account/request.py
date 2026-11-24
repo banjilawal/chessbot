@@ -40,7 +40,7 @@ class AccountPushPermissionRequest(
             id: int
             authorization_applicant: AccountPushRequest
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
         
     @property
     def authorization_applicant(self) -> AccountPushRequest:

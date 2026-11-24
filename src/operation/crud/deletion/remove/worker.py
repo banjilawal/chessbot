@@ -1,7 +1,7 @@
-# src/operation/crud/deletion/chain/operator.py
+# src/operation/crud/deletion/remove/operator.py
 
 """
-Module: operation.crud.deletion.chain.operation
+Module: operation.crud.deletion.remove.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import DeletionResult
-from domain import Node
-from operation import Deleter
+from operation import Deleter, NodeSearcher
+from request import RemoveNodeRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Node")
+T = TypeVar("T", bound="RemoveNodeRequest")
 
 
-class NodeRemover(Deleter, ABC, Generic[T]):
+class NodeRemover(Deleter[T], ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -29,21 +29,29 @@ class NodeRemover(Deleter, ABC, Generic[T]):
         1.  Remove a Node from a Chain.
 
     Attributes:
+        searcher: NodeSearcher
         permitter: RemoveNodePermitter
 
     Provides:
         -   def execute(request: AddNodeRequest) -> DeletionResult
 
     Super Class:
-        DeletionOperation
+        Deleter
     """
+    _searcher: NodeSearcher
     
-    def __init__(self, permitter: RemoveNodePermitter):
+    def __init__(self, searcher: NodeSearcher, permitter: RemoveNodePermitter,):
         """
         Args:
+            searcher: NodeSearcher
             permitter: AddChainNodePermitter
         """
         super().__init__(permitter=permitter)
+        self._searcher = searcher
+    
+    @property
+    def searcher(self) -> NodeSearcher:
+        return self._searcher
         
     @property
     def permitter(self) -> RemoveNodePermitter:

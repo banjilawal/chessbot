@@ -40,7 +40,7 @@ class AddVectorNodePermissionRequest(
             id: int
             authorization_applicant: AddVectorNodeRequest
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     @property
     def authorization_applicant(self) -> AddVectorNodeRequest:

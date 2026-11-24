@@ -11,13 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from artifcat import SearchResult
 from collection import AccountStack
 from domain import Account, AccountContext
 from request import ModelSearchRequest
 
 
-class AccountSearchRequest(ModelSearchRequest[SearchResult, Account]):
+class AccountSearchRequest(ModelSearchRequest[Account]):
     """
      Role:
          -  Messaging
@@ -43,7 +42,7 @@ class AccountSearchRequest(ModelSearchRequest[SearchResult, Account]):
             context: AccountContext
             collection: AccountStack
         """
-        super().__init__(id, context=context, collection=collection)
+        super().__init__(id=id, context=context, collection=collection)
         
     @property
     def context(self) -> AccountContext:

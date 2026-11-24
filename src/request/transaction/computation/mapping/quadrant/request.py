@@ -48,7 +48,7 @@ class QuadrantProjectionRequest(ProjectionRequest, ABC, Generic[T]):
             x_step: int
             slope: int
         """
-        super().__init__(id, node=node)
+        super().__init__(id=id, node=node)
         self._x_step = x_step
         self._slope = slope
     

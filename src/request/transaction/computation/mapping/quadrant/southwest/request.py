@@ -48,7 +48,7 @@ class SouthwestQuadrantMappingRequest(QuadrantProjectionRequest[SouthwestQuadran
             x_step: int
             slope: int
         """
-        super().__init__(id, node=node, x_step=x_step, slope=slope)
+        super().__init__(id=id, node=node, x_step=x_step, slope=slope)
     
     def __eq__(self, other):
         if other is self: return True

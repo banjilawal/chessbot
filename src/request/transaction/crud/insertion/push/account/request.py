@@ -11,13 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from artifcat import InsertionResult
 from collection import AccountStack
 from domain import Account
-from exchange import ModelPushRequest
+from request import ModelPushRequest
 
 
-class AccountPushRequest(ModelPushRequest[InsertionResult, Account]):
+class AccountPushRequest(ModelPushRequest[Account]):
     """
      Role:
          -  Messaging
@@ -43,7 +42,7 @@ class AccountPushRequest(ModelPushRequest[InsertionResult, Account]):
             item: Account
             collection: AccountStack
         """
-        super().__init__(id, item=item, collection=collection)
+        super().__init__(id=id, item=item, collection=collection)
         
     @property
     def item(self) -> Account:

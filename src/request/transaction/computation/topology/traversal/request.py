@@ -42,7 +42,7 @@ class TraversalTopologyRequest(TopologyRequest, ABC, Generic[T]):
             id: int
             origin: VectorNode
         """
-        super().__init__(id, origin=origin)
+        super().__init__(id=id, origin=origin)
     
     def __eq__(self, other):
         if other is self: return True

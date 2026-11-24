@@ -14,12 +14,12 @@ from typing import Generic, TypeVar
 
 from artifcat import DeletionResult
 from collection import DataStruct
-from exchange import CrudRequest
+from domain import Context
+from request import CrudRequest
 
-R = TypeVar("R", bound="DeletionResult")
 T = TypeVar("T")
 
-class DeletionRequest(CrudRequest[R, T], ABC, Generic[R, T]):
+class DeletionRequest(CrudRequest[DeletionResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -29,7 +29,7 @@ class DeletionRequest(CrudRequest[R, T], ABC, Generic[R, T]):
 
      Attributes:
          id: int
-         item: T
+         context: Context[T]
          collection: DataStruct[T]
 
      Provides:
@@ -37,23 +37,23 @@ class DeletionRequest(CrudRequest[R, T], ABC, Generic[R, T]):
      Super Class:
         CrudRequest
      """
-    _item: T
+    _context: Context[T]
     _collection: DataStruct[T]
     
-    def __init__(self, id: int, item: T, collection: DataStruct[T]):
+    def __init__(self, id: int, context: Context[T], collection: DataStruct[T]):
         """
         Args:
             id: int
-            item: T
+            context: Context[T]
             collection: DataStruct[T]
         """
         super().__init__(id)
-        self._item = item
+        self._context = context
         self._collection = collection
         
     @property
-    def item(self) -> T:
-        return self._item
+    def context(self) -> Context[T]:
+        return self._context
     
     @property
     def collection(self) -> DataStruct[T]:

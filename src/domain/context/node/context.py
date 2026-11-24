@@ -12,13 +12,12 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 from abc import ABC
 
+from domain import Context, Node
 
-from domain import Struct, StructContext
-
-T = TypeVar("T", bound="Struct")
+T = TypeVar("T", bound="Node")
 
 
-class NodeContext(StructContext[T], ABC, Generic[T]):
+class NodeContext(Context[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Account, AccountType, Context
+from domain import Account, AccountType, ModelContext
 
 
-class AccountContext(Context[Account]):
+class AccountContext(ModelContext[Account]):
     """
     Role:
         - Option Selector

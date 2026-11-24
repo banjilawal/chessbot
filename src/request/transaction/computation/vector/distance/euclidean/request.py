@@ -41,7 +41,7 @@ class EuclideanDistanceRequest(DistanceRequest):
             u: Vector
             v: Vector
         """
-        super().__init__(id, u=u, v=v)
+        super().__init__(id=id, u=u, v=v)
     
     def __eq__(self, other):
         if other is self: return True

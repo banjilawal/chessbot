@@ -43,4 +43,4 @@ class PopPermissionRequest(
             id: int
             authorization_applicant: T
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)

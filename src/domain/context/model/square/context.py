@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Board, Coord, Formation, SquareState, Context, Square, SquareType, Token
+from domain import Board, Coord, Formation, ModelContext, SquareState, Square, SquareType, Token
 
 
-class SquareContext(Context[Square]):
+class SquareContext(ModelContext[Square]):
     """
     Role:
         - Option Selector

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Context, Path, Square
+from domain import ModelContext, Path, Square
 
 
-class PathContext(Context[Path]):
+class PathContext(ModelContext[Path]):
     """
     Role:
         - Option Selector

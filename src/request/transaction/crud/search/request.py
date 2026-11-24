@@ -14,10 +14,10 @@ from typing import Generic, TypeVar
 
 from artifcat import SearchResult
 from collection import DataStruct
-from domain import Context, Model
+from domain import Context
 from request import CrudRequest
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T")
 
 class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
     """

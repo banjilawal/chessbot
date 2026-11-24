@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import cast
 
 from collection import VectorChain
-from domain import VectorContext, VectorNode
-from exchange import NodeSearchRequest
+from domain import VectorNode, VectorNodeContext
+from request import NodeSearchRequest
 
 
 class VectorNodeSearchRequest(NodeSearchRequest[VectorNode]):
@@ -26,27 +26,27 @@ class VectorNodeSearchRequest(NodeSearchRequest[VectorNode]):
 
      Attributes:
          id: int
-         context: VectorContext
+         context: VectorNodeContext
          collection: VectorChain
 
      Provides:
 
      Super Class:
-        SearchRequest
+        NodeSearchRequest
      """
     
-    def __init__(self, id: int, context: VectorContext, collection: VectorChain):
+    def __init__(self, id: int, context: VectorNodeContext, collection: VectorChain):
         """
         Args:
             id: int
-            context: VectorContext
+            context: VectorNodeContext
             collection: VectorChain
         """
-        super().__init__(id, context=context, collection=collection)
+        super().__init__(id=id, context=context, collection=collection)
         
     @property
-    def context(self) -> VectorContext:
-        return cast(VectorContext, super().context)
+    def context(self) -> VectorNodeContext:
+        return cast(VectorNodeContext, super().context)
     
     @property
     def collection(self) -> VectorChain:

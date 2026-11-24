@@ -37,4 +37,4 @@ class RemoveVectorNodePermissionRequest(
             id: int
             authorization_applicant: RemoveVectorNodeRequest
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)

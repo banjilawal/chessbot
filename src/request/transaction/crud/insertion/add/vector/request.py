@@ -28,6 +28,7 @@ class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
          id: int
          item: VectorNode
          collection: VectorChain
+         offset: int
 
      Provides:
 

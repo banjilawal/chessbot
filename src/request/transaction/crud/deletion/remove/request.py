@@ -12,25 +12,23 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from artifcat import DeletionResult
 from collection import Chain
-from domain import Node
-from exchange import DeletionRequest
+from domain import Node, NodeContext
+from request import DeletionRequest
 
-R = TypeVar("R", bound="DeletionResult")
 T = TypeVar("T", bound="Node")
 
-class RemoveNodeRequest(DeletionRequest[R, T], ABC, Generic[R, T]):
+class RemoveNodeRequest(DeletionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-         1. Provide job details to a NodeRemoveer
+         1. Provide job details to a NodeRemover
 
      Attributes:
          id: int
-         item: T
+         context: NodeContext[T]
          collection: Chain[T]
 
      Provides:
@@ -39,22 +37,14 @@ class RemoveNodeRequest(DeletionRequest[R, T], ABC, Generic[R, T]):
         DeletionRequest
      """
     
-    def __init__(self, id: int, item: T, collection: Chain[T]):
+    def __init__(self, id: int, context: NodeContext[T], collection: Chain[T]):
         """
         Args:
             id: int
-            item: T
+            context: NodeContext[T]
             collection: Chain[T]
         """
-        super().__init__(id, item=item, collection=collection)
-        
-    @property
-    def item(self) -> T:
-        return cast(T, super().item)
-    
-    @property
-    def collection(self) -> Chain[T]:
-        return cast(Chain[T], super().collection)
+        super().__init__(id=id, context=context, collection=collection)
         
     def __eq__(self, other):
         if other is self: return True

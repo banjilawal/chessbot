@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Encounter, KingToken, Maneuver, Context, Token
+from domain import Encounter, KingToken, Maneuver, ModelContext, Token
 
 
-class AttackContext(Context[Encounter]):
+class AttackContext(ModelContext[Encounter]):
     """
      Role:
         1.  Metadata

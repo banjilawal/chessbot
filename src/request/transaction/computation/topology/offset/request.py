@@ -46,7 +46,7 @@ class OffsetTopologyRequest(TopologyRequest, ABC, Generic[T]):
             origin: VectorNode
             offsets: VectorSet
         """
-        super().__init__(id, origin=origin)
+        super().__init__(id=id, origin=origin)
         self._offsets = offsets
     
     @property

@@ -12,15 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from artifcat import DeletionResult
 from collection import Stack
-from domain import Model
-from exchange import DeletionRequest
+from domain import Model, ModelContext
+from request import DeletionRequest
 
-R = TypeVar("R", bound="DeletionResult")
 T = TypeVar("T", bound="Model")
 
-class PopRequest(DeletionRequest[R, T], ABC, Generic[R, T]):
+class PopRequest(DeletionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -30,7 +28,7 @@ class PopRequest(DeletionRequest[R, T], ABC, Generic[R, T]):
 
      Attributes:
          id: int
-         item: T
+         context: ModelContext[T]
          collection: Stack[T]
 
      Provides:
@@ -39,22 +37,14 @@ class PopRequest(DeletionRequest[R, T], ABC, Generic[R, T]):
         DeletionRequest
      """
     
-    def __init__(self, id: int, item: T, collection: Stack[T]):
+    def __init__(self, id: int, context: ModelContext[T], collection: Stack[T]):
         """
         Args:
             id: int
-            item: T
+            context: ModelContext[T]
             collection: Stack[T]
         """
-        super().__init__(id, item=item, collection=collection)
-        
-    @property
-    def item(self) -> T:
-        return cast(T, super().item)
-    
-    @property
-    def collection(self) -> Stack[T]:
-        return cast(Stack[T], super().collection)
+        super().__init__(id=id, context=context, collection=collection)
         
     def __eq__(self, other):
         if other is self: return True

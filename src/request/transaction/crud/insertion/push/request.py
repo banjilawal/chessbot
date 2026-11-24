@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar
 
 from collection import Stack
 from domain import Model
@@ -18,7 +18,7 @@ from request import InsertionRequest
 
 T = TypeVar("T", bound="Model")
 
-class ModelPushRequest(InsertionRequest, ABC, Generic[T]):
+class ModelPushRequest(InsertionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -44,7 +44,7 @@ class ModelPushRequest(InsertionRequest, ABC, Generic[T]):
             item: T
             collection: Stack[T]
         """
-        super().__init__(id, item=item, collection=collection)
+        super().__init__(id=id, item=item, collection=collection)
 
         
     def __eq__(self, other):

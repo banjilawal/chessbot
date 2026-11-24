@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from artifcat import SearchResult
 from collection import VectorChain
-from domain import VectorNode
-from exchange import RemoveNodeRequest
+from domain import VectorNode, VectorNodeContext
+from request import RemoveNodeRequest
 
-class RemoveVectorNodeRequest(RemoveNodeRequest[SearchResult, VectorNode]):
+
+class RemoveVectorNodeRequest(RemoveNodeRequest[VectorNode]):
     """
      Role:
          -  Messaging
@@ -26,7 +26,7 @@ class RemoveVectorNodeRequest(RemoveNodeRequest[SearchResult, VectorNode]):
 
      Attributes:
          id: int
-         item: VectorNode
+         context: VectorNodeContext
          collection: VectorChain
 
      Provides:
@@ -35,18 +35,18 @@ class RemoveVectorNodeRequest(RemoveNodeRequest[SearchResult, VectorNode]):
         RemoveNodeRequest
      """
     
-    def __init__(self, id: int, item: VectorNode, collection: VectorChain):
+    def __init__(self, id: int, context: VectorNodeContext, collection: VectorChain):
         """
         Args:
             id: int
-            item: VectorNode
+            context: VectorNodeContext
             collection: VectorChain
         """
-        super().__init__(id, item=item, collection=collection)
+        super().__init__(id=id, context=context, collection=collection)
         
     @property
-    def item(self) -> VectorNode:
-        return cast(VectorNode, super().item)
+    def context(self) -> VectorNodeContext:
+        return cast(VectorNodeContext, super().context)
     
     @property
     def collection(self) -> VectorChain:

@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from collection import Stack
-from domain import Context, Model
+from domain import Model, ModelContext
 from request import SearchRequest
 
 T = TypeVar("T", bound="Model")
 
-class ModelSearchRequest(SearchRequest, ABC, Generic[T]):
+class ModelSearchRequest(SearchRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -28,7 +28,7 @@ class ModelSearchRequest(SearchRequest, ABC, Generic[T]):
 
      Attributes:
         id: int
-        context: Context[T]
+        context: ModelContext[T]
         collection: Stack[T]
 
      Provides:
@@ -36,15 +36,15 @@ class ModelSearchRequest(SearchRequest, ABC, Generic[T]):
      Super Class:
         SearchRequest
      """
-    _context: Context[T]
+    _context: ModelContext[T]
     _collection: Stack[T]
     
-    def __init__(self, id: int, context: Context[T], collection: Stack[T]):
+    def __init__(self, id: int, context: ModelContext[T], collection: Stack[T]):
         """
         Args:
             id: int
-            context: Context[T]
-            collection: StackT]
+            context: ModelContext[T]
+            collection: Stack[T]
         """
         super().__init__(id=id, context=context, collection=collection)
         

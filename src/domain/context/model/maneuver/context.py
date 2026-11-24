@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Encounter, Maneuver, Context, Path, Token
+from domain import Encounter, Maneuver, ModelContext, Path, Token
 
 
-class ManeuverContext(Context[Maneuver]):
+class ManeuverContext(ModelContext[Maneuver]):
     """
     Role:
         - Option Selector

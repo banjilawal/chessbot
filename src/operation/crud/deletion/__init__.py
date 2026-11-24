@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== OPERATION.CRUD.DELETION PACKAGE ===========#
 
 # Packages
-from .remover import *
+from .remove import *
 
 # Modules
 from .worker import Deleter

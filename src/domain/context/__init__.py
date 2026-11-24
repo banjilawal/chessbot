@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .graph import *
 from .model import *
-from .struct import *
+from .node import *
 
 # Modules
 from .context import Context

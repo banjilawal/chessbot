@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Generic, Optional, TypeVar
 
 
 from collection import Chain
@@ -19,7 +19,7 @@ from request import InsertionRequest
 
 T = TypeVar("T", bound="Node")
 
-class AddNodeRequest(InsertionRequest, ABC, Generic[T]):
+class AddNodeRequest(InsertionRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -54,9 +54,8 @@ class AddNodeRequest(InsertionRequest, ABC, Generic[T]):
             collection: Chain[T]
             offset: Optional[int]
         """
-        super().__init__(id, item=item, collection=collection)
+        super().__init__(id=id, item=item, collection=collection)
         self._offset = offset or 0
-        
         
     @property
     def offset(self) -> int:

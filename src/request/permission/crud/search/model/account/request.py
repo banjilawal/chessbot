@@ -38,7 +38,7 @@ class AccountSearchPermissionRequest(SearchPermissionRequest[AccountSearchReques
             id: int
             authorization_applicant: AccountSearchRequest
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     @property
     def authorization_applicant(self) -> AccountSearchRequest:

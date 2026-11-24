@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Coord, Context
+from domain import Coord, ModelContext
 
 
-class CoordContext(Context[Coord]):
+class CoordContext(ModelContext[Coord]):
     """
     Role:
         - Option Selector

@@ -41,7 +41,7 @@ class CrudPermissionRequest(PermissionRequest[T], ABC, Generic[T]):
             id: int
             authorization_applicant: T
         """
-        super().__init__(id, authorization_applicant=authorization_applicant)
+        super().__init__(id=id, authorization_applicant=authorization_applicant)
     
     def __eq__(self, other):
         if other is self: return True

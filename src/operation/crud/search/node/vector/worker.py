@@ -1,7 +1,7 @@
-# src/operation/crud/search/vector/worker.py
+# src/operation/crud/search/node/vector/worker.py
 
 """
-Module: operation.crud.search.vector.worker
+Module: operation.crud.search.node.vector.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,26 +13,26 @@ from typing import List, Optional, cast
 
 from artifcat import SearchResult
 from collection import VectorChain
-from domain import Context, Vector, VectorNode
+from domain import Vector, VectorNode
 from err import VectorSearcherException, SearchRouteCoverageException
 from operation import ModelSearcher
 from transit import VectorSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorSearcher(ModelSearcher[VectorSearchRequest]):
+class VectorNodeSearcher(NodeSearcher[VectorNodeSearchRequest]):
     """
     Role:
         -   Transaction Worker
 
     Responsibilities:
-        1.  Executes an VectorSearchRequest
+        1.  Executes an VectorNodeSearchRequest
 
     Attributes:
         permitter: VectorSearchPermissionDispatcher
 
     Provides:
-        -   def execute(request: VectorSearchRequest) -> SearchResult[List[Vector]]
+        -   def execute(request: VectorNodeSearchRequest) -> SearchResult[List[Vector]]
 
     Super Class:
         ModelSearcher
@@ -53,7 +53,7 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
         return cast(VectorSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorSearchRequest) -> SearchResult[List[Vector]]:
+    def execute(self, request: VectorNodeSearchRequest) -> SearchResult[List[VectorNode]]:
         """
         Search an VectorChain for context matches.
         
@@ -61,12 +61,12 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
             1.  Send an exception chain in the SearchResult if any of the following
                 occur.
                     -   The request is denied.
-                    -   An approved request lacks either the VectorSearchRequest or
+                    -   An approved request lacks either the VectorNodeSearchRequest or
                         its PermissionRequest.
             2.  If the search result is empy send a SearchResult.empty otherwise, send
                 the success result.
         Args:
-            request: VectorSearchRequest
+            request: VectorNodeSearchRequest
         Result:
             SearchResult[List[Vector]]
         Raises:
@@ -94,7 +94,7 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
             )
         # --- Extract the requests for additional processing. ---#
         transaction_request = cast(
-            VectorSearchRequest,
+            VectorNodeSearchRequest,
             decision.transaction_request
         )
         # --- Extract the transaction participants. ---#
@@ -105,6 +105,8 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
 
         x = context.x
         y = context.y
+        vector = context.vector
+        offset = context.offset
         # Initialize the result.
         result = SearchResult.failure(
             SearchRouteCoverageException(
@@ -113,25 +115,19 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
             )
         )
         # --- Perform transaction and state management work. ---#
-        
-        # Entry point int finding by vector id.
-        if context.size == 2:
-            result = self._find_by_vector(x=x, y=y, collection=collection)
+
         # Entry point into finding by x.
-        if x is not None and y is None:
+        if x is not None:
             result = self._find_by_x(x=x, collection=collection)
         # Entry point into finding by y.
-        if x is None and y is not None:
+        if x is not None:
             result = self._find_by_y(y=y, collection=collection)
-        # Entry point into finding by email.
-        if x is not None and :
-            result = self._find_by_email(email=email, collection=collection)
-        # Entry point into finding by machine_name.
-        if machine_name is not None:
-            result = self._find_by_machine_name(machine_name=machine_name, collection=collection)
-        # Entry point into finding by vector_type.
-        if vector_type is not None:
-           result = self._find_by_vector_type(vector_type=vector_type, collection=collection)
+        # Entry point int finding by offset.
+        if offset is not None:
+            result = self._find_by_offset(offset=offset, collection=collection)
+        # Entry point int finding by offset.
+        if vector is not None:
+            result = self._find_by_vector(vector=vector, collection=collection)
         # Handle the case that attribute is not covered.
         if result.is_failure:
             return SearchResult.failure(
@@ -151,21 +147,12 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
         # Otherwise send the
         matches =  cast(List[Vector], result.payload)
         return SearchResult.success(matches)
-          
-    def _find_by_id(
-            self, id, collection: VectorChain
-    ) -> SearchResult[List[Vector]]:
-        """id_context handler"""
-        matches: List[Vector] = []
-        for item in collection.iterator:
-            if item.id == id:
-                matches.append(item)
-        if len(matches) == 0:
-            return SearchResult.empty()
-        return SearchResult.succes(matches)
-    
+        
     def _find_by_y(
-            self, y: int, collection: VectorChain) -> SearchResult:
+            self,
+            y: int,
+            collection: VectorChain,
+    ) -> SearchResult:
         """y_context handler"""
         matches: List[VectorNode] = []
         cursor = collection.iterator
@@ -178,7 +165,11 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_x(self, x: int, collection: VectorChain) -> SearchResult:
+    def _find_by_x(
+            self,
+            x: int,
+            collection: VectorChain,
+    ) -> SearchResult:
         """x_context handler"""
         matches: List[VectorNode] = []
         cursor = collection.iterator
@@ -191,17 +182,38 @@ class VectorSearcher(ModelSearcher[VectorSearchRequest]):
             return SearchResult.empty()
         return SearchResult.succes(matches)
     
-    def _find_by_vector(self, x: int, y: int, collection: VectorChain) -> SearchResult:
+    def _find_by_vector(
+            self,
+            vector: Vector,
+            collection: VectorChain,
+    ) -> SearchResult:
         """vector_context handler"""
         matches: List[VectorNode] = []
         cursor = collection.iterator
         while cursor.has_next:
             node = cast(Vector, cursor)
-            vector = node.content
-            if vector is not None and vector.x == x and vector.y == y:
+            content = node.content
+            if content is not None and content == vector:
                 matches.append(node)
         if len(matches) == 0:
             return SearchResult.empty()
+        return SearchResult.succes(matches)
+    
+    def _find_by_offset(
+            self,
+            offset: int,
+            collection: VectorChain,
+    ) -> SearchResult:
+        """offset_context handler"""
+        counter = 0
+        matches: List[VectorNode] = []
+        cursor = collection.iterator
+        while cursor.has_next or counter < offset:
+            counter = counter + 1
+            cursor = cursor.next
+        if cursor is None or cursor.is_empty:
+            return SearchResult.empty()
+        macthes.append(cursor)
         return SearchResult.succes(matches)
 
 

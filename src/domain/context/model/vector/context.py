@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Vector, Context
+from domain import ModelContext, Vector
 
 
-class VectorContext(Context[Vector]):
+class VectorContext(ModelContext[Vector]):
     """
     Role:
         - Option Selector

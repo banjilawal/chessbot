@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Arena, Board, BoardState, Context, Team
+from domain import Arena, Board, BoardState, ModelContext, Team
 
 
-class BoardContext(Context[Board]):
+class BoardContext(ModelContext[Board]):
     """
     Role:
         - Option Selector

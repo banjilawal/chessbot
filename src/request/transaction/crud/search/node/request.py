@@ -12,15 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from artifcat import SearchResult
 from collection import Chain
-from domain import Context, Node
-from exchange import SearchRequest
+from domain import Node, NodeContext
+from request import SearchRequest
 
-R = TypeVar("R", bound="SearchResult")
 T = TypeVar("T", bound="Node")
 
-class NodeSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
+class NodeSearchRequest(SearchRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -30,7 +28,7 @@ class NodeSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
 
      Attributes:
         id: int
-        context: Context
+        context: Context[T]
         collection: Chain[T]
 
      Provides:
@@ -39,7 +37,7 @@ class NodeSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
         SearchRequest
      """
     
-    def __init__(self, id: int, context: Context, collection: Chain[T]):
+    def __init__(self, id: int, context: NodeContext[T], collection: Chain[T]):
         """
         Args:
             id: int
@@ -49,14 +47,7 @@ class NodeSearchRequest(SearchRequest[R, T], ABC, Generic[R, T]):
         super().__init__(id=id)
         self._context = context
         self._collection = collection
-        
-    @property
-    def context(self) -> Context:
-        return self._context
-    
-    @property
-    def collection(self) -> Chain[T]:
-        return self._collection
+
         
     def __eq__(self, other):
         if other is self: return True
