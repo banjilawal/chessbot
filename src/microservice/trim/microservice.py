@@ -15,7 +15,6 @@ from typing import Generic, TypeVar
 from artifcat import TrimResult
 from microservice import Microservice
 from request import ChainTrimRequest
-
 from transit import ChainTrimDispatcher
 from util import LoggingLevelRouter
 

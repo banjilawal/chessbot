@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/pop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/pop/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/pop/account/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/pop/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/remove/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/remove/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/remove/vector/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/transaction/crud/trim/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/trim/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/trim/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/trim/vector/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/trim/vector/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/trim/vector/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/trim/vector/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/trim/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/trim/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/vector/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim/vector/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/chain/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/chain/vector/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/chain/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/chain/controller.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,61 +53,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="3.927188001954903E-7" />
-      <entry key="MS500" value="0.05233790546927666" />
-      <entry key="S2" value="0.47830407904593875" />
-      <entry key="S5" value="0.7445374352979236" />
-      <entry key="S10" value="0.8827863438600696" />
-      <entry key="S30" value="6.592453782710504" />
-      <entry key="S60" value="28.056050033562098" />
-      <entry key="M2" value="62.8328379732075" />
-      <entry key="M5" value="105.39024756058072" />
-      <entry key="M10" value="130.8580201749561" />
-      <entry key="M15" value="148.0122692267672" />
-      <entry key="M30" value="200.8045582360153" />
-      <entry key="H1" value="318.8121755930803" />
-      <entry key="H2" value="547.8565841151504" />
-      <entry key="H4" value="934.6896862666358" />
-      <entry key="D1" value="4283.882283055731" />
-      <entry key="W1" value="18775.62290887166" />
+      <entry key="MS100" value="1.7459925494506392E-7" />
+      <entry key="MS500" value="0.061070703181924646" />
+      <entry key="S2" value="0.8200354991316682" />
+      <entry key="S5" value="1.610789378112418" />
+      <entry key="S10" value="2.936754226208038" />
+      <entry key="S30" value="8.381959108358316" />
+      <entry key="S60" value="15.651290206801194" />
+      <entry key="M2" value="27.008946798054346" />
+      <entry key="M5" value="45.89115760200125" />
+      <entry key="M10" value="66.96576657151357" />
+      <entry key="M15" value="93.7698136605137" />
+      <entry key="M30" value="185.02541023061434" />
+      <entry key="H1" value="347.9282782452936" />
+      <entry key="H2" value="616.4716359569283" />
+      <entry key="H4" value="1040.78174362236" />
+      <entry key="D1" value="4442.231088647077" />
+      <entry key="W1" value="18985.78381128614" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.00508336662282" />
-      <entry key="MS500" value="1.347720492927497" />
-      <entry key="S2" value="1.767905134851049" />
-      <entry key="S5" value="1.8997524308629525" />
-      <entry key="S10" value="1.948552808684341" />
-      <entry key="S30" value="1.9825481406176826" />
-      <entry key="S60" value="1.9912427697542567" />
-      <entry key="M2" value="2.000914445213941" />
-      <entry key="M5" value="2.4370222900820906" />
-      <entry key="M10" value="4.218410997535354" />
-      <entry key="M15" value="5.969403970290128" />
-      <entry key="M30" value="9.804604376421633" />
-      <entry key="H1" value="15.520557552333784" />
-      <entry key="H2" value="25.6394962488552" />
-      <entry key="H4" value="43.31871726668717" />
-      <entry key="D1" value="202.65803892542198" />
-      <entry key="W1" value="965.1535523777001" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000131917912491" />
+      <entry key="S2" value="1.0602807905019327" />
+      <entry key="S5" value="1.3397664184583329" />
+      <entry key="S10" value="1.7680962560668272" />
+      <entry key="S30" value="3.794439765568898" />
+      <entry key="S60" value="6.526983908002214" />
+      <entry key="M2" value="10.368672634867336" />
+      <entry key="M5" value="15.705902383461634" />
+      <entry key="M10" value="18.854296964140115" />
+      <entry key="M15" value="20.46284952451005" />
+      <entry key="M30" value="24.042280054275412" />
+      <entry key="H1" value="30.232966024987885" />
+      <entry key="H2" value="41.1150404548795" />
+      <entry key="H4" value="59.714875206772035" />
+      <entry key="D1" value="220.48217057175964" />
+      <entry key="W1" value="984.9264138147969" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.125873431058378" />
-      <entry key="MS500" value="0.7692453678383044" />
-      <entry key="S2" value="1.8378526538833644" />
-      <entry key="S5" value="2.431869168411375" />
-      <entry key="S10" value="2.714692965621624" />
-      <entry key="S30" value="8.529132268993436" />
-      <entry key="S60" value="30.014302489862903" />
-      <entry key="M2" value="64.80720494459241" />
-      <entry key="M5" value="107.80602461570945" />
-      <entry key="M10" value="135.05389771608625" />
-      <entry key="M15" value="153.95927189929387" />
-      <entry key="M30" value="210.58851158386918" />
-      <entry key="H1" value="334.3104389287401" />
-      <entry key="H2" value="573.4703999670363" />
-      <entry key="H4" value="977.9812482508012" />
-      <entry key="D1" value="4486.511893661423" />
-      <entry key="W1" value="19740.75849506469" />
+      <entry key="MS100" value="2.0257563636277672E-7" />
+      <entry key="MS500" value="0.0721677209913408" />
+      <entry key="S2" value="1.124292906900319" />
+      <entry key="S5" value="2.3810275406061003" />
+      <entry key="S10" value="4.211621673576525" />
+      <entry key="S30" value="11.717733457629473" />
+      <entry key="S60" value="21.752995055728217" />
+      <entry key="M2" value="37.022803493955045" />
+      <entry key="M5" value="61.36446423291869" />
+      <entry key="M10" value="85.67188681940499" />
+      <entry key="M15" value="114.12128554346485" />
+      <entry key="M30" value="208.99823562192302" />
+      <entry key="H1" value="378.114195101566" />
+      <entry key="H2" value="657.5493524373454" />
+      <entry key="H4" value="1100.463849006393" />
+      <entry key="D1" value="4662.683930776607" />
+      <entry key="W1" value="19970.692084593673" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -159,7 +143,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/request/transaction/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/controller/chain/vector",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -173,11 +157,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/controller/chain/vector" />
       <recent name="$PROJECT_DIR$/src/request/transaction/crud" />
       <recent name="$PROJECT_DIR$/src/microservice" />
       <recent name="$PROJECT_DIR$/src/microservice/search" />
       <recent name="$PROJECT_DIR$/src/microservice/insertion" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/microservice/trim" />
@@ -1000,7 +984,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="390501000" />
+      <workItem from="1794227184139" duration="393682000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3263,6 +3247,16 @@
           <url>file://$PROJECT_DIR$/src/microservice/trim/microservice.py</url>
           <line>11</line>
           <option name="timeStamp" value="742" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/request/transaction/crud/trim/chain/vector/request.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="743" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/result.py</url>
+          <line>130</line>
+          <option name="timeStamp" value="744" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -10,8 +10,7 @@ version: 0.0.2
 # ============= MICROSERVICE.TRIM PACKAGE ===========#
 
 # Packages
-from .model import *
-from .node import *
+from .vector import *
 
 # Modules
 from .microservice import ChainTrimMicroservice
