@@ -12,8 +12,10 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import CrudResult, TrimState
+from collection import DataStruct
+from domain import Context
 
-T = TypeVar("T")
+T = TypeVar("T", bound="DataStruct")
 
 
 class TrimResult(CrudResult[T], Generic[T]):
@@ -89,11 +91,11 @@ class TrimResult(CrudResult[T], Generic[T]):
         )
     
     @property
-    def is_nothing_to_delete(self) -> bool:
+    def is_nothing_to_trim(self) -> bool:
         return (
                 self.payload is None and
                 self.exception is None and
-                self._state ==  TrimState.NOTHING_TO_DELETE
+                self._state ==  TrimState.NOTHING_TO_TRIM
         )
     
     @property
@@ -129,10 +131,10 @@ class TrimResult(CrudResult[T], Generic[T]):
         )
     
     @classmethod
-    def nothing_to_delete(cls) -> TrimResult:
+    def nothing_to_trim(cls) -> TrimResult:
         return cls(
             payload=None,
             exception=None,
-            state=TrimState.NOTHING_TO_DELETE,
+            state=TrimState.NOTHING_TO_TRIM,
         )
 

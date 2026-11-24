@@ -241,7 +241,7 @@ class ResultStackService(StackService[Result]):
                 return DeletionResult.success(payload=result)
         
         # If none of the items had that id return an empty DeletionResult.
-        return DeletionResult.nothing_to_delete()
+        return DeletionResult.nothing_to_trim()
     
     @LoggingLevelRouter.monitor
     def search(self, context: ResultContext) -> SearchResult[List[Result]]:

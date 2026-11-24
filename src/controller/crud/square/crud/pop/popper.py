@@ -146,7 +146,7 @@ class SquareStackPopper:
         
         # Nothing was deleted
         if target is None:
-            return DeletionResult.nothing_to_delete()
+            return DeletionResult.nothing_to_trim()
         
         # --- Send the work product. ---#
         return DeletionResult.success(target)

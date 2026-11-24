@@ -242,7 +242,7 @@ class EdgeStackService(StackService[Edge]):
         if target is not None:
             return DeletionResult.success(payload=target)
         # Default case: no edges were removed.
-        return DeletionResult.nothing_to_delete()
+        return DeletionResult.nothing_to_trim()
     
     @LoggingLevelRouter.monitor
     def search(self, context: EdgeContext) -> SearchResult[List[Edge]]:

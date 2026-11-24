@@ -12,4 +12,4 @@ class TrimState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),
-    NOTHING_TO_DELETE = auto(),
+    NOTHING_TO_TRIM = auto(),

@@ -241,7 +241,7 @@ class TeamStackService(StackService[Team]):
                 return DeletionResult.success(payload=team)
         
         # If none of the items had that id return an empty DeletionResult.
-        return DeletionResult.nothing_to_delete()
+        return DeletionResult.nothing_to_trim()
     
     @LoggingLevelRouter.monitor
     def search(self, context: TeamContext) -> SearchResult[List[Team]]:

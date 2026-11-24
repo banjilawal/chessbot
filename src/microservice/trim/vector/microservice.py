@@ -15,6 +15,7 @@ from artifcat import TrimResult
 from collection import VectorChain
 from err import VectorChainChainTrimMicroserviceException
 from microservice import ChainTrimMicroservice
+from request import VectorChainTrimRequest
 from transit import VectorChainTrimDispatcher
 from util import LoggingLevelRouter
 
