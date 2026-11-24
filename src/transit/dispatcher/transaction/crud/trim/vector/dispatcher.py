@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import TrimResult
+from artifcat import ChainTrimResult
 from collection import VectorChain
 from err import VectorChainTrimmerDispatcherException
 from operation import VectorChainTrimmer
 from request import VectorChainTrimRequest
-from transit import RemoveNodeDispatcher
+from transit import ChainTrimDispatcher
 
 from util import LoggingLevelRouter
 
 
-class VectorChainTrimDispatcher(RemoveNodeDispatcher[VectorChainTrimRequest]):
+class VectorChainTrimDispatcher(ChainTrimDispatcher[VectorChainTrimRequest]):
     """
     Role
         -   Process Flow
@@ -35,7 +35,7 @@ class VectorChainTrimDispatcher(RemoveNodeDispatcher[VectorChainTrimRequest]):
     Provides:
 
     Super Class:
-        RemoveNodeDispatcher
+        ChainTrimDispatcher
     """
     
     def __init__(self, worker: Optional[VectorChainTrimmer] | None = None):
@@ -51,7 +51,7 @@ class VectorChainTrimDispatcher(RemoveNodeDispatcher[VectorChainTrimRequest]):
         
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorChainTrimRequest) -> TrimResult:
+    def execute(self, request: VectorChainTrimRequest) -> ChainTrimResult:
         """
         Search an VectorStack for context matches.
 
@@ -78,7 +78,7 @@ class VectorChainTrimDispatcher(RemoveNodeDispatcher[VectorChainTrimRequest]):
         # Handle the case that the request is not fulfilled.
         if result.is_failure:
             # Send the exception chain in the result.
-            return TrimResult.failure(
+            return ChainTrimResult.failure(
                 VectorChainTrimmerDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -89,4 +89,4 @@ class VectorChainTrimDispatcher(RemoveNodeDispatcher[VectorChainTrimRequest]):
             )
         # --- Forward the work product to the caller. ---#
         chain = cast(VectorChain, result.payload)
-        return TrimResult.success(chain)
+        return ChainTrimResult.success(chain)

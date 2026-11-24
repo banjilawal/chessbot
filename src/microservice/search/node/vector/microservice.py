@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import SearchResult
-from domain import Vector
+from domain import VectorNode
 from err import VectorNodeSearchMicroserviceException
 from microservice import SearchMicroservice
 from request import VectorNodeSearchRequest
@@ -61,7 +61,7 @@ class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
         return cast(VectorNodeSearchDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorNodeSearchRequest) -> SearchResult[List[Vector]]:
+    def execute(self, request: VectorNodeSearchRequest) -> SearchResult[List[VectorNode]]:
         """
         Handles VectorNodeSearchRequests.
 
@@ -72,7 +72,7 @@ class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
         Args:
             request: VectorNodeSearchRequest
         Result:
-            SearchResult[Vector]
+            SearchResult[VectorNode]
         Raises:
             VectorNodeSearchMicroserviceException
         """
@@ -91,7 +91,7 @@ class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
             )
         if result.is_empty:
             return SearchResult.empty()
-        matches = cast(List[Vector], result.payload)
+        matches = cast(List[VectorNode], result.payload)
         return SearchResult.success(matches)
     
     

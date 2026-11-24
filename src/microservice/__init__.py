@@ -16,6 +16,7 @@ from .board import *
 from .catalog import *
 from .computation import *
 from .coord import *
+from .deletion import *
 from .edge import *
 from .extractor import *
 from .fabrication import *
@@ -30,6 +31,7 @@ from .snapshot import *
 from .square import *
 from .team import *
 from .token import *
+from .trim import *
 from .validation import *
 from .vector import *
 

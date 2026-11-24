@@ -14,8 +14,8 @@ from typing import List, Optional, cast
 from artifcat import SearchResult
 from domain import Account
 from err import AccountSearchMicroserviceException
-from exchange import AccountSearchRequest
 from microservice import SearchMicroservice
+from request import AccountSearchRequest
 from transit import AccountSearchDispatcher
 from util import LoggingLevelRouter
 

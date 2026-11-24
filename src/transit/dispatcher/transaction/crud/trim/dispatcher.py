@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from artifcat import TrimResult
-from operation import ChainTrimmer, Inserter
+from artifcat import ChainTrimResult
+from operation import ChainTrimmer
 from request import ChainTrimRequest
 from transit import CrudDispatcher
 from util import LoggingLevelRouter
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 Q = TypeVar("Q", bound="ChainTrimRequest")
 
 
-class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[Q]):
+class ChainTrimDispatcher(CrudDispatcher[ChainTrimResult], ABC, Generic[Q]):
     """
     Role
         -   Process Flow
@@ -48,5 +48,5 @@ class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[Q]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> TrimResult:
+    def execute(self, request: Q) -> ChainTrimResult:
         pass
