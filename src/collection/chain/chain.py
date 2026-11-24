@@ -39,13 +39,12 @@ class Chain(DataStruct[T], ABC, Generic[T]):
         self._head = head or Node()
         self._tail = tail or Node()
         
-        
         self._head.previous = None
         self._tail.next = None
         
         self._head.next = self._tail
         self._tail.previous = self._head
-        self._size = 0
+        self._size = self._head.length + self._tail.length
         self._iterator = ChainIterator(self)
         
     @property

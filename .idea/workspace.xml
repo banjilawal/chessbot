@@ -5,37 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/deletion/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/deletion/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/deletion/remove/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/deletion/remove/vector/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/randomize/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/deletion/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/deletion/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/deletion/remove/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/deletion/remove/vector/dispatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/result.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/crud/trim/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/crud/trim/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/crud/trim/vector/worker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/crud/trim/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/remove/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/remove/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/remove/vector/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/remove/vector/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/domain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/domain/randomize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/domain/randomize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/email/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/email/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/email/randomize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/email/randomize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/firstname/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/firstname/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/firstname/randomize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/firstname/randomize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/lastname/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/lastname/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/lastname/randomize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/lastname/randomize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/machine/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/machine/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/machine/randomize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/machine/randomize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/separator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/separator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/randomize/separator/randomize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/randomize/account/separator/randomize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collection/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,61 +60,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.085381611708075E-25" />
-      <entry key="MS500" value="1.0165213204132244E-5" />
-      <entry key="S2" value="0.05646497276237955" />
-      <entry key="S5" value="0.316762738460977" />
-      <entry key="S10" value="0.5703811155617151" />
-      <entry key="S30" value="1.3123102099435044" />
-      <entry key="S60" value="2.3010255958537926" />
-      <entry key="M2" value="3.348139185581787" />
-      <entry key="M5" value="5.51606593847053" />
-      <entry key="M10" value="9.7299399640705" />
-      <entry key="M15" value="13.095875288578949" />
-      <entry key="M30" value="20.814404160553163" />
-      <entry key="H1" value="47.40467091243208" />
-      <entry key="H2" value="140.64770969080774" />
-      <entry key="H4" value="427.6217356458976" />
-      <entry key="D1" value="3686.176619928097" />
-      <entry key="W1" value="17959.879356857466" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0003358365172805" />
+      <entry key="S2" value="1.1455845230556867" />
+      <entry key="S5" value="1.6092126562527638" />
+      <entry key="S10" value="2.0741574850783753" />
+      <entry key="S30" value="2.9694206433110715" />
+      <entry key="S60" value="4.0599914228777125" />
+      <entry key="M2" value="5.858302417541859" />
+      <entry key="M5" value="26.29344942383938" />
+      <entry key="M10" value="88.32626708104058" />
+      <entry key="M15" value="141.4261723669049" />
+      <entry key="M30" value="235.81235790348276" />
+      <entry key="H1" value="322.3683928400008" />
+      <entry key="H2" value="440.6257615538952" />
+      <entry key="H4" value="724.9480326902685" />
+      <entry key="D1" value="3968.6069361770583" />
+      <entry key="W1" value="18276.243304595973" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.000000017598162" />
-      <entry key="MS500" value="1.0281250603060472" />
-      <entry key="S2" value="1.409518348929914" />
-      <entry key="S5" value="1.699695927621971" />
-      <entry key="S10" value="1.8364782887929434" />
-      <entry key="S30" value="1.9422184064735628" />
-      <entry key="S60" value="1.9709190450819365" />
-      <entry key="M2" value="2.001654862023318" />
-      <entry key="M5" value="2.295331812789014" />
-      <entry key="M10" value="3.12073775139101" />
-      <entry key="M15" value="3.880780712424478" />
-      <entry key="M30" value="5.358082277013147" />
-      <entry key="H1" value="7.294914087760088" />
-      <entry key="H2" value="12.060776646724332" />
-      <entry key="H4" value="26.09402624767192" />
-      <entry key="D1" value="182.13031079788723" />
-      <entry key="W1" value="935.8987008794456" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="7.097551876719672E-132" />
+      <entry key="S5" value="5.376499156265154E-53" />
+      <entry key="S10" value="1.1865659619989175E-26" />
+      <entry key="S30" value="4.654542704126268E-9" />
+      <entry key="S60" value="1.1786177213344075E-4" />
+      <entry key="M2" value="0.01890300090046559" />
+      <entry key="M5" value="0.4704018234945404" />
+      <entry key="M10" value="1.8758652127848963" />
+      <entry key="M15" value="3.387181703908366" />
+      <entry key="M30" value="7.073977433660502" />
+      <entry key="H1" value="11.55986401159133" />
+      <entry key="H2" value="17.877513650897754" />
+      <entry key="H4" value="32.13608852160505" />
+      <entry key="D1" value="187.92225127492154" />
+      <entry key="W1" value="943.1234976632519" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.015953314464174903" />
-      <entry key="MS500" value="0.43741082582424234" />
-      <entry key="S2" value="0.9796416408898292" />
-      <entry key="S5" value="1.6226093404540396" />
-      <entry key="S10" value="2.140552630467282" />
-      <entry key="S30" value="3.143596277261211" />
-      <entry key="S60" value="4.21304104107758" />
-      <entry key="M2" value="5.3178319218298755" />
-      <entry key="M5" value="7.782313174069661" />
-      <entry key="M10" value="12.813821068463781" />
-      <entry key="M15" value="16.940070790366" />
-      <entry key="M30" value="26.144101224923787" />
-      <entry key="H1" value="54.679943494667924" />
-      <entry key="H2" value="152.6912298179039" />
-      <entry key="H4" value="453.6948386026841" />
-      <entry key="D1" value="3868.2796398854202" />
-      <entry key="W1" value="18895.76049040881" />
+      <entry key="MS100" value="0.001847768841260929" />
+      <entry key="MS500" value="0.2840292069658483" />
+      <entry key="S2" value="0.8084953760532919" />
+      <entry key="S5" value="1.382746231952499" />
+      <entry key="S10" value="1.9260144325922295" />
+      <entry key="S30" value="2.8920165050260533" />
+      <entry key="S60" value="4.001837990893007" />
+      <entry key="M2" value="5.836718300424418" />
+      <entry key="M5" value="26.733145661927157" />
+      <entry key="M10" value="90.16254020946641" />
+      <entry key="M15" value="144.7675461260754" />
+      <entry key="M30" value="242.8389954825654" />
+      <entry key="H1" value="333.89021553447355" />
+      <entry key="H2" value="458.474239863395" />
+      <entry key="H4" value="757.057300995878" />
+      <entry key="D1" value="4156.501009498558" />
+      <entry key="W1" value="19219.349067441897" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -171,7 +150,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/permitter/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/result/transaction/crud",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -185,18 +164,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/artifcat/result/transaction/crud" />
+      <recent name="$PROJECT_DIR$/src/operation/crud" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter/crud" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter/crud/search" />
-      <recent name="$PROJECT_DIR$/src/artifcat/decision/crud/search" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/authorization/crud/search" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/crud/trim" />
       <recent name="$PROJECT_DIR$/src/randomize/account" />
       <recent name="$PROJECT_DIR$/src/request/permission/computation/vector" />
       <recent name="$PROJECT_DIR$/src/bootstrap/authorization/crud/deletion/remove" />
       <recent name="$PROJECT_DIR$/src/operation/crud/search/node" />
-      <recent name="$PROJECT_DIR$/src/domain/context" />
     </key>
   </component>
   <component name="RunManager" selected="Python.request">
@@ -1012,7 +991,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="373974000" />
+      <workItem from="1794227184139" duration="377529000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3225,6 +3204,16 @@
           <url>file://$PROJECT_DIR$/src/artifcat/decision/crud/deletion/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="732" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/crud/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="733" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/crud/trim/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="734" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
