@@ -14,12 +14,12 @@ from typing import List, cast
 from artifcat import ComputationResult
 from collection import VectorChain, VectorTree
 from operation import TraversalTopologyComputer
-from request import QueenTraversalTopologyRequest
+from request import QueenTopologyRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class QueenTopologyComputer(TraversalTopologyComputer[QueenTraversalTopologyRequest]):
+class QueenTopologyComputer(TraversalTopologyComputer[QueenTopologyRequest]):
     """
     Role:
         -   Transaction Worker
@@ -54,7 +54,7 @@ class QueenTopologyComputer(TraversalTopologyComputer[QueenTraversalTopologyRequ
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: QueenTraversalTopologyRequest) -> ComputationResult[VectorTree]:
+    def execute(self, request: QueenTopologyRequest) -> ComputationResult[VectorTree]:
         """
         Generate the set of vectors in a Queen's traversal basis.
 

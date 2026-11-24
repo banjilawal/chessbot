@@ -20,7 +20,7 @@ from request import (
 from util import IdFactory
 
 
-class QueenTraversalTopologyRequest(TraversalTopologyRequest[Queen]):
+class QueenTopologyRequest(TraversalTopologyRequest[Queen]):
     """
      Role:
          -  Messaging
@@ -119,6 +119,6 @@ class QueenTraversalTopologyRequest(TraversalTopologyRequest[Queen]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, QueenTraversalTopologyRequest):
+        if isinstance(other, QueenTopologyRequest):
             return self.id == other.id
         return False

@@ -14,12 +14,12 @@ from typing import List, cast
 from artifcat import ComputationResult
 from collection import VectorChain, VectorTree
 from operation import TraversalTopologyComputer
-from request import RookTraversalTopologyRequest
+from request import RookTopologyRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class RookTopologyComputer(TraversalTopologyComputer[RookTraversalTopologyRequest]):
+class RookTopologyComputer(TraversalTopologyComputer[RookTopologyRequest]):
     """
     Role:
         -   Transaction Worker
@@ -54,7 +54,7 @@ class RookTopologyComputer(TraversalTopologyComputer[RookTraversalTopologyReques
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: RookTraversalTopologyRequest) -> ComputationResult[VectorTree]:
+    def execute(self, request: RookTopologyRequest) -> ComputationResult[VectorTree]:
         """
         Generate the set of vectors in a Rook's traversal basis.
 

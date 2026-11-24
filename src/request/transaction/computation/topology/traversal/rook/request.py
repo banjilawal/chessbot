@@ -19,7 +19,7 @@ from request import (
 from util import IdFactory
 
 
-class RookTraversalTopologyRequest(TraversalTopologyRequest[Rook]):
+class RookTopologyRequest(TraversalTopologyRequest[Rook]):
     """
      Role:
          -  Messaging
@@ -86,6 +86,6 @@ class RookTraversalTopologyRequest(TraversalTopologyRequest[Rook]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RookTraversalTopologyRequest):
+        if isinstance(other, RookTopologyRequest):
             return self.id == other.id
         return False

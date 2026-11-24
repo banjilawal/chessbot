@@ -20,7 +20,7 @@ from request import (
 from util import IdFactory
 
 
-class BishopTraversalTopologyRequest(TraversalTopologyRequest[Bishop]):
+class BishopTopologyRequest(TraversalTopologyRequest[Bishop]):
     """
      Role:
          -  Messaging
@@ -87,6 +87,6 @@ class BishopTraversalTopologyRequest(TraversalTopologyRequest[Bishop]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, BishopTraversalTopologyRequest):
+        if isinstance(other, BishopTopologyRequest):
             return self.id == other.id
         return False

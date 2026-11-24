@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== REQUEST.PERMISSION.COMPUTATION PACKAGE ===========#
 
 # Packages
+from .topology import *
 from .vector import *
 
 # Modules

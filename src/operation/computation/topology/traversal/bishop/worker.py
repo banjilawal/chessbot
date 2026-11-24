@@ -14,12 +14,12 @@ from typing import List, cast
 from artifcat import ComputationResult
 from collection import VectorChain, VectorTree
 from operation import TraversalTopologyComputer
-from request import BishopTraversalTopologyRequest
+from request import BishopTopologyRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
 
-class BishopTopologyComputer(TraversalTopologyComputer[BishopTraversalTopologyRequest]):
+class BishopTopologyComputer(TraversalTopologyComputer[BishopTopologyRequest]):
     """
     Role:
         -   Transaction Worker
@@ -54,7 +54,7 @@ class BishopTopologyComputer(TraversalTopologyComputer[BishopTraversalTopologyRe
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: BishopTraversalTopologyRequest) -> ComputationResult[VectorTree]:
+    def execute(self, request: BishopTopologyRequest) -> ComputationResult[VectorTree]:
         """
         Generate the set of vectors in a Bishop's traversal basis.
 
