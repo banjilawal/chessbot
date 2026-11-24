@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from artifcat import ChainTrimResult
+from artifcat import TrimResult
 from domain import VectorNode
 from operation import ChainTrimmer, VectorNodeSearcher
 from request import RemoveVectorNodeRequest, VectorNodeSearchRequest
@@ -62,7 +62,7 @@ class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
         return cast(VectorNodeSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: RemoveVectorNodeRequest) -> ChainTrimResult[VectorNode]:
+    def execute(self, request: RemoveVectorNodeRequest) -> TrimResult[VectorNode]:
         """
         Search an VectorChain for context matches.
         
@@ -117,7 +117,7 @@ class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
             )
         )
         if search.is_failure:
-            return ChainTrimResult.failure(
+            return TrimResult.failure(
                 VectorChainTrimmerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -127,7 +127,7 @@ class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
                 )
             )
         if search.is_empty:
-            return ChainTrimResult.nothing_to_trim()
+            return TrimResult.nothing_to_trim()
         matches = cast(List[VectorNode], search.payload)
         node = matches[0]
         node.next = collection.tail
@@ -140,7 +140,7 @@ class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
             cursor = cursor.next
         collection.size = counter
         # --- Forward the work product to the caller. ---#
-        return ChainTrimResult.success(collection)
+        return TrimResult.success(collection)
 
 
         

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ChainTrimResult
+from artifcat import TrimResult
 from collection import VectorChain
 from err import VectorChainTrimmerDispatcherException
 from operation import VectorChainTrimmer
@@ -51,7 +51,7 @@ class VectorChainTrimDispatcher(ChainTrimDispatcher[VectorChainTrimRequest]):
         
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorChainTrimRequest) -> ChainTrimResult:
+    def execute(self, request: VectorChainTrimRequest) -> TrimResult:
         """
         Search an VectorStack for context matches.
 
@@ -78,7 +78,7 @@ class VectorChainTrimDispatcher(ChainTrimDispatcher[VectorChainTrimRequest]):
         # Handle the case that the request is not fulfilled.
         if result.is_failure:
             # Send the exception chain in the result.
-            return ChainTrimResult.failure(
+            return TrimResult.failure(
                 VectorChainTrimmerDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -89,4 +89,4 @@ class VectorChainTrimDispatcher(ChainTrimDispatcher[VectorChainTrimRequest]):
             )
         # --- Forward the work product to the caller. ---#
         chain = cast(VectorChain, result.payload)
-        return ChainTrimResult.success(chain)
+        return TrimResult.success(chain)

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ChainTrimResult
+from artifcat import TrimResult
 from collection import VectorChain
 from err import VectorChainChainTrimMicroserviceException
 from microservice import ChainTrimMicroservice
@@ -61,7 +61,7 @@ class VectorChainTrimMicroservice(ChainTrimMicroservice[VectorChainTrimRequest])
         return cast(VectorChainTrimDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorChainTrimRequest) -> ChainTrimResult[VectorChain]:
+    def execute(self, request: VectorChainTrimRequest) -> TrimResult[VectorChain]:
         """
         Handles VectorChainTrimRequests.
 
@@ -80,7 +80,7 @@ class VectorChainTrimMicroservice(ChainTrimMicroservice[VectorChainTrimRequest])
         
         result = self.dispatcher.execute(request)
         if result.is_failure:
-            ChainTrimResult.failure(
+            TrimResult.failure(
                 VectorChainChainTrimMicroserviceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -90,6 +90,6 @@ class VectorChainTrimMicroservice(ChainTrimMicroservice[VectorChainTrimRequest])
                 )
             )
         chain = cast(VectorChain, result.payload)
-        return ChainTrimResult.success(chain)
+        return TrimResult.success(chain)
     
     

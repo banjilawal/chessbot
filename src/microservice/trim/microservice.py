@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from artifcat import ChainTrimResult
+from artifcat import TrimResult
 from microservice import Microservice
 from request import ChainTrimRequest
 
@@ -58,7 +58,7 @@ class ChainTrimMicroservice(Microservice[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> ChainTrimResult:
+    def execute(self, request: T) -> TrimResult:
         pass
     
     

@@ -14,14 +14,14 @@ from typing import Generic, TypeVar, cast
 
 from authorization import TrimPermitter
 from operation import CrudWorker, NodeSearcher
-from artifcat import ChainTrimResult
+from artifcat import TrimResult
 from request import TrimRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="TrimRequest")
 
 
-class ChainTrimmer(CrudWorker[ChainTrimResult], ABC, Generic[T]):
+class ChainTrimmer(CrudWorker[TrimResult], ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -59,7 +59,7 @@ class ChainTrimmer(CrudWorker[ChainTrimResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> ChainTrimResult:
+    def execute(self, request: Q) -> TrimResult:
         """
         Args:
             request: Q

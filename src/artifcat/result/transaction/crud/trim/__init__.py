@@ -10,5 +10,5 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .result import ChainTrimResult
+from .result import TrimResult
 from .state import TrimState

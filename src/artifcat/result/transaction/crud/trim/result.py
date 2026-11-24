@@ -16,7 +16,7 @@ from artifcat import CrudResult, TrimState
 T = TypeVar("T")
 
 
-class ChainTrimResult(CrudResult[T], Generic[T]):
+class TrimResult(CrudResult[T], Generic[T]):
     """
     Role:
         -   Persistence
@@ -105,7 +105,7 @@ class ChainTrimResult(CrudResult[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> ChainTrimResult:
+    def success(cls, payload: T) -> TrimResult:
         return cls(
             payload=payload,
             exception=None,
@@ -113,7 +113,7 @@ class ChainTrimResult(CrudResult[T], Generic[T]):
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> ChainTrimResult:
+    def failure(cls, exception: Exception) -> TrimResult:
         return cls(
             payload=None,
             exception=exception,
@@ -121,7 +121,7 @@ class ChainTrimResult(CrudResult[T], Generic[T]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> ChainTrimResult:
+    def timed_out(cls, exception: Exception) -> TrimResult:
         return cls(
             payload=None,
             exception=exception,
@@ -129,7 +129,7 @@ class ChainTrimResult(CrudResult[T], Generic[T]):
         )
     
     @classmethod
-    def nothing_to_delete(cls) -> ChainTrimResult:
+    def nothing_to_delete(cls) -> TrimResult:
         return cls(
             payload=None,
             exception=None,
