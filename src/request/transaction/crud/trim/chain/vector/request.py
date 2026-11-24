@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import cast
 
 from collection import VectorChain
-from domain import VectorNode, VectorNodeContext
+from domain import VectorNodeContext
 from request import ChainTrimRequest
 
 
-class ChainVectorTrimRequest(ChainTrimRequest[VectorNode]):
+class VectorChainTrimRequest(ChainTrimRequest[VectorChain]):
     """
      Role:
          -  Messaging
@@ -25,9 +25,9 @@ class ChainVectorTrimRequest(ChainTrimRequest[VectorNode]):
          1. Provide job details to a VectorNodeChainer
 
      Attributes:
-         id: int
-         context: VectorNodeContext
-         collection: VectorChain
+        id: int
+        collection: VectorChain
+        context: VectorNodeContext
 
      Provides:
 
@@ -35,26 +35,26 @@ class ChainVectorTrimRequest(ChainTrimRequest[VectorNode]):
         ChainNodeRequest
      """
     
-    def __init__(self, id: int, context: VectorNodeContext, collection: VectorChain):
+    def __init__(self, id: int, collection: VectorChain, context: VectorNodeContext):
         """
         Args:
             id: int
-            context: VectorNodeContext
             collection: VectorChain
+            context: VectorNodeContext
         """
-        super().__init__(id=id, context=context, collection=collection)
-        
-    @property
-    def context(self) -> VectorNodeContext:
-        return cast(VectorNodeContext, super().context)
+        super().__init__(id=id, collection=collection, context=context)
     
     @property
     def collection(self) -> VectorChain:
         return cast(VectorChain, super().collection)
         
+    @property
+    def context(self) -> VectorNodeContext:
+        return cast(VectorNodeContext, super().context)
+        
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ChainVectorTrimRequest):
+        if isinstance(other, VectorChainTrimRequest):
             return self.id == other.id
         return False

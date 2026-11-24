@@ -17,7 +17,7 @@ from collection import DataStruct
 from domain import Context
 from request import CrudRequest
 
-T = TypeVar("T")
+T = TypeVar("T", bound="DataStruct")
 
 class TrimRequest(CrudRequest[TrimResult], ABC, Generic[T]):
     """
@@ -28,36 +28,36 @@ class TrimRequest(CrudRequest[TrimResult], ABC, Generic[T]):
          1. Provide trim job details.
 
      Attributes:
-         id: int
-         context: Context[T]
-         collection: DataStruct[T]
+        id: int
+        collection: T
+        context: Context[T]
 
      Provides:
 
      Super Class:
         CrudRequest
      """
-    _context: Context[T]
-    _collection: DataStruct[T]
+    _collection: T
+    _context: Context
     
-    def __init__(self, id: int, context: Context[T], collection: DataStruct[T]):
+    def __init__(self, id: int, collection: T, context: Context[T]):
         """
         Args:
             id: int
-            context: Context[T]
-            collection: DataStruct[T]
+            collection: T
+            context: Context
         """
         super().__init__(id)
         self._context = context
         self._collection = collection
-        
-    @property
-    def context(self) -> Context[T]:
-        return self._context
     
     @property
-    def collection(self) -> DataStruct[T]:
+    def collection(self) -> T:
         return self._collection
+        
+    @property
+    def context(self) -> Context:
+        return self._context
         
     def __eq__(self, other):
         if other is self: return True

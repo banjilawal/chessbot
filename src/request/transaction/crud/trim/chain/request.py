@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar
 
 from collection import Chain
-from domain import Node, NodeContext
+from domain import NodeContext
 from request import TrimRequest
 
-T = TypeVar("T", bound="Node")
+T = TypeVar("T", bound="Chain")
 
 class ChainTrimRequest(TrimRequest[T], ABC, Generic[T]):
     """
@@ -27,9 +27,10 @@ class ChainTrimRequest(TrimRequest[T], ABC, Generic[T]):
          1. Provide job details to a NodeChainr
 
      Attributes:
-         id: int
-         context: NodeContext[T]
-         collection: Chain[T]
+        id: int
+        collection: T
+        context: NodeContext[T]
+
 
      Provides:
 
@@ -37,14 +38,14 @@ class ChainTrimRequest(TrimRequest[T], ABC, Generic[T]):
         TrimRequest
      """
     
-    def __init__(self, id: int, context: NodeContext[T], collection: Chain[T]):
+    def __init__(self, id: int, collection: T, context: NodeContext):
         """
         Args:
             id: int
-            context: NodeContext[T]
             collection: Chain[T]
+            context: NodeContext[T]
         """
-        super().__init__(id=id, context=context, collection=collection)
+        super().__init__(id=id, collection=collection, context=context)
         
     def __eq__(self, other):
         if other is self: return True
