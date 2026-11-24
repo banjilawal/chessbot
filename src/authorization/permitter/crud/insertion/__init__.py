@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.PERMITTER.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
+from .add import *
 from .push import *
 
 # Modules

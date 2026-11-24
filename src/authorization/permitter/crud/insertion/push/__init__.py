@@ -1,7 +1,7 @@
-# src/authorization/permitter/crud/insertion/psuh/__init__.py
+# src/authorization/permitter/crud/insertion/push/__init__.py
 
 """
-Module: authorization.permitter.crud.insertion.psuh.__init__
+Module: authorization.permitter.crud.insertion.push.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

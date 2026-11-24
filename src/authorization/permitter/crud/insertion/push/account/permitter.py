@@ -15,8 +15,8 @@ from artifcat import AccountPushDecision
 from authorization import PushPermitter
 from bootstrap import AccountPushAuthorizationLoader
 from err import AccountPushPermitterException
-from exchange import AccountPushPermissionRequest, AccountPushRequest
 from production import AccountCollisionManager
+from request import AccountPushPermissionRequest, AccountPushRequest
 from util import LoggingLevelRouter
 
 
@@ -95,14 +95,8 @@ class AccountPushPermitter(PushPermitter[AccountPushPermissionRequest]):
                 )
             )
         # --- Extract the transaction_request for processing. ---#
-        permission_form = cast(
-            AccountPushPermissionRequest,
-            bootstrap.permission_request,
-        )
-        applicant = cast(
-            AccountPushRequest,
-            bootstrap.transaction_request,
-        )
+        permission_form = cast(AccountPushPermissionRequest, bootstrap.permission_request)
+        applicant = cast(AccountPushRequest, bootstrap.transaction_request)
         # Get the ids
         form_id = permission_form.id
         applicant_id = applicant.id

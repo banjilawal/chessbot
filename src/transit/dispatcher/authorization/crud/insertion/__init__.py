@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.AUTHORIZATION.CRUD.INSERTION PACKAGE ===========#
 
 # Packages
+from .add import *
 from .push import *
 
 # Modules
