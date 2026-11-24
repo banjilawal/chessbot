@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import TrimResult
-from operation import Inserter
+from operation import ChainTrimmer, Inserter
 from request import ChainTrimRequest
 from transit import CrudDispatcher
 from util import LoggingLevelRouter
@@ -39,10 +39,10 @@ class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[Q]):
     """
     
     
-    def __init__(self, worker: Inserter[Q]):
+    def __init__(self, worker: ChainTrimmer[Q]):
         """
         Args:
-            worker: Inserter[Q]
+            worker: ChainTrimmer[Q]
         """
         super().__init__(worker=worker)
     

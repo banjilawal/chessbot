@@ -9,18 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from abc import ABC
+from typing import Generic, TypeVar
 
 from artifcat import CrudResult
-from operation import CrudWorker
 from transit import TransactionDispatcher
-from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="CrudRequest")
-R = TypeVar("R", bound="CrudResult")
+T = TypeVar("T", bound="CrudResult")
 
-class CrudDispatcher(TransactionDispatcher[R], ABC, Generic[R]):
+class CrudDispatcher(TransactionDispatcher[T], ABC, Generic[T]):
     """
     Role
         -   Performance Management
@@ -38,28 +35,28 @@ class CrudDispatcher(TransactionDispatcher[R], ABC, Generic[R]):
         TransactionDispatcher
     """
     
-    def __init__(self, worker: CrudWorker[Q, R]):
-        """
-        Args:
-            worker: CrudWorker[Q, R]
-        """
-        super().__init__(worker=worker)
-        
-    @property
-    def worker(self) -> CrudWorker[Q]:
-        return cast(CrudWorker[Q], super().worker)
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
-        """
-        Distribute CrudRequests among workers then forward the results.
-
-        Args:
-            request: Q
-        Returns:
-            R
-        Raises:
-            CrudDispatcherException
-        """
-        pass
+    # def __init__(self, worker: CrudWorker[Q]):
+    #     """
+    #     Args:
+    #         worker: CrudWorker[Q]
+    #     """
+    #     super().__init__(worker=worker)
+    #
+    # @property
+    # def worker(self) -> CrudWorker[Q]:
+    #     return cast(CrudWorker[Q], super().worker)
+    #
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def execute(self, request: Q) -> R:
+    #     """
+    #     Distribute CrudRequests among workers then forward the results.
+    #
+    #     Args:
+    #         request: Q
+    #     Returns:
+    #         R
+    #     Raises:
+    #         CrudDispatcherException
+    #     """
+    #     pass

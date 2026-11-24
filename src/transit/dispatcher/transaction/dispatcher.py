@@ -13,14 +13,11 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import TransactionResult
-from operation import Worker
 from transit import Dispatcher
-from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="TransactionRequest")
-R = TypeVar("R", bound="TransactionResult")
+T = TypeVar("T", bound="TransactionResult")
 
-class TransactionDispatcher(Dispatcher[R], ABC, Generic[Q, R]):
+class TransactionDispatcher(Dispatcher[T], ABC, Generic[T]):
     """
     Role
         -   Performance Management,
@@ -37,29 +34,29 @@ class TransactionDispatcher(Dispatcher[R], ABC, Generic[Q, R]):
     Super Class:
         Dispatcher
     """
-    _worker: Worker
-    
-    def __init__(self, worker: Worker):
-        """
-        Args:
-            worker: Worker
-        """
-        self._worker = worker
-        
-    @property
-    def worker(self) -> Worker:
-        return self._worker
-    
-    @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> R:
-        """
-        Distribute TransactionRequests among workers then forward the results.
-        
-        Args:
-            request: Q
-        Returns:
-            R
-        Raises:
-            TransactionDispatcherException
-        """
-        pass
+    # _worker: Worker
+    #
+    # def __init__(self, worker: Worker):
+    #     """
+    #     Args:
+    #         worker: Worker
+    #     """
+    #     self._worker = worker
+    #
+    # @property
+    # def worker(self) -> Worker:
+    #     return self._worker
+    #
+    # @LoggingLevelRouter.monitor
+    # def execute(self, request: Q) -> R:
+    #     """
+    #     Distribute TransactionRequests among workers then forward the results.
+    #
+    #     Args:
+    #         request: Q
+    #     Returns:
+    #         R
+    #     Raises:
+    #         TransactionDispatcherException
+    #     """
+    #     pass
