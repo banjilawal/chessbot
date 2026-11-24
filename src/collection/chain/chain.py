@@ -34,12 +34,11 @@ class Chain(DataStruct[T], ABC, Generic[T]):
             self,
             head: Optional[T] | None = None,
             tail: Optional[T] | None = None,
-            number_validator: Optional[NumberValidator] | None = None
     ):
         super().__init__()
-        self._number_validator = number_validator or NumberValidator()
         self._head = head or Node()
         self._tail = tail or Node()
+        
         
         self._head.previous = None
         self._tail.next = None

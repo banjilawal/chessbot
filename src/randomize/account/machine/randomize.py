@@ -1,7 +1,7 @@
-# src/randomize/machine/randomize.py
+# src/randomize/account/machine/randomize/account.py
 
 """
-Module: randomize.machine.randomize
+Module: randomize.account.machine.randomize
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

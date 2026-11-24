@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.PERMITTER.CRUD PACKAGE ===========#
 
 # Packages
+from .deletion import *
 from .insertion import *
 from .search import *
 

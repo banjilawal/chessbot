@@ -1,7 +1,7 @@
-# src/randomize/email/randomize.py
+# src/randomize/account/email/randomize/account.py
 
 """
-Module: randomize.email.randomize
+Module: randomize.account.email.randomize
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

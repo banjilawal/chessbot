@@ -1,7 +1,7 @@
-# src/randomize/separator/randomize.py
+# src/randomize/account/separator/randomize/account.py
 
 """
-Module: randomize.separator.randomize
+Module: randomize.account.separator.randomize
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

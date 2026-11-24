@@ -22,7 +22,7 @@ from request import RemoveVectorNodePermissionRequest, RemoveVectorNodeRequest
 from util import IdFactory, LoggingLevelRouter
 
 
-class RemoveVectorNodePermissionLoader(
+class RemoveVectorNodeAuthorizationLoader(
     RemoveNodeAuthorizationLoader[RemoveVectorNodePermissionRequest]
 ):
     """

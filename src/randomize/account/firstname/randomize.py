@@ -1,7 +1,7 @@
-# src/randomize/firstname/randomize.py
+# src/randomize/account/firstname/randomize/account.py
 
 """
-Module: randomize.firstname.randomize
+Module: randomize.account.firstname.randomize
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

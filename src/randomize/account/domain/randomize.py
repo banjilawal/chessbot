@@ -1,7 +1,7 @@
-# src/randomize/domain/randomize.py
+# src/randomize/account/domain/randomize/account.py
 
 """
-Module: randomize.domain.randomize
+Module: randomize.account.domain.randomize
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -95,7 +95,7 @@ class Node(Struct[T], Generic[T]):
     
     @property
     def size(self) -> int:
-        return len([self._content]) + self.number_of_pointers
+        return len([self._content]) + self.length
     
     @property
     def number_of_pointers(self) -> int:
@@ -120,3 +120,21 @@ class Node(Struct[T], Generic[T]):
     @property
     def to_dict(self) -> Dict[str, T]:
         return {}
+    
+    @property
+    def length(self) -> int:
+        rear_nodes = 0
+        vanguard_nodes = 0
+        
+        head_cursor = self.next
+        while head_cursor is not None:
+            vanguard_nodes = vanguard_nodes + 1
+            head_cursor = head_cursor.next
+            
+        tail_cursor = self.previous
+        while tail_cursor is not None:
+            rear_nodes = rear_nodes + 1
+            tail_cursor = tail_cursor.previous
+        total_nodes = rear_nodes + vanguard_nodes
+        
+        
