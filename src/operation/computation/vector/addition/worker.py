@@ -14,14 +14,14 @@ from typing import Optional, cast
 from artifcat import ComputationResult
 from domain import Vector, VectorBlueprint
 from err import VectorAdditionException
-from operation import Computer
+from operation import VectorComputer
 from request import VectorAdditionPermissionRequest, VectorAdditionRequest, VectorBuildRequest
 from transit import VectorAdditionPermissionDispatcher, VectorCarrier
 
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorAddition(VectorComputation[VectorAdditionRequest]):
+class VectorAddition(VectorComputer[VectorAdditionRequest]):
     """
     Role:
         - Computation
@@ -36,7 +36,7 @@ class VectorAddition(VectorComputation[VectorAdditionRequest]):
         -   def execute(self, request: VectorAdditionRequest) -> ComputationResult[Vector]
 
     Super Class:
-        Computer
+        VectorComputer
     """
     
     
@@ -136,7 +136,7 @@ class VectorAddition(VectorComputation[VectorAdditionRequest]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        vector = cast(Vector, build.content)
+        vector = cast(Vector, build.payload)
         return ComputationResult.success(vector)
 
         

@@ -226,13 +226,13 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                     )
                 )
             # Otherwise update the occupant temp variable.
-            occupant = cast(Token, occupant_validation.authorization_applicant)
+            occupant = cast(Token, occupant_validation.payload)
         
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.authorization_applicant)
-        coord = cast(Coord, coord_validation.authorization_applicant)
-        name = cast(str, name_validation.authorization_applicant)
-        state = cast(SquareState, state_validation.authorization_applicant)
+        id = cast(int, id_validation.payload)
+        coord = cast(Coord, coord_validation.payload)
+        name = cast(str, name_validation.payload)
+        state = cast(SquareState, state_validation.payload)
         
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootSquareEnvelope(

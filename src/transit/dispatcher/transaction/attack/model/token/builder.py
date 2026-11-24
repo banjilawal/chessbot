@@ -94,7 +94,7 @@ class TokenAttack(ModelAttack[Token]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            candidate=cast(TokenBlueprint, validation.authorization_applicant)
+            candidate=cast(TokenBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:

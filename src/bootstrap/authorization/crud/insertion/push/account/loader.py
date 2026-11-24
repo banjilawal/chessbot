@@ -15,10 +15,9 @@ from artifcat import AccountPushDecision
 from bootstrap import PushAuthorizationLoader
 from collection import AccountStack
 from domain import Account
-from exchange import (
-    AccountPushRequest, AccountPushPermissionRequest, AccountValidationRequest,
-    AccountValidationService
-)
+from err import AccountStackNullException
+from microservice import AccountValidationService
+from request import AccountPushPermissionRequest, AccountPushRequest, AccountValidationRequest
 from transit import AccountCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -151,7 +150,7 @@ class AccountPushAuthorizationLoader(
         item_validation = self._validation_service.extract_model(
             request=AccountValidationRequest(
                 item=AccountCarrier(model=applicant.item),
-                id=IdFactory.next_id("AccountValidationRequest")
+                id=IdFactory.next_id("Request")
             )
         )
         # Handle the case that the applicant is not Account.
@@ -185,7 +184,7 @@ class AccountPushAuthorizationLoader(
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        item = cast(Account, item_validation.content)
+        item = cast(Account, item_validation.payload)
         collection = cast(AccountStack, collection_validation.payload)
         transaction_id = cast(int, transaction_id_validation.payload)
         permission_id = cast(int, permission_id_validation.payload)

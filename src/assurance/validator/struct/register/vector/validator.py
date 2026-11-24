@@ -136,7 +136,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
                         ex=vector_validation.exception
                     )
                 )
-            vector = cast(Vector, vector_validation.content)
+            vector = cast(Vector, vector_validation.payload)
             endpoints[key] = vector
             
         # --- Forward the appropriate work product to the caller. ---#

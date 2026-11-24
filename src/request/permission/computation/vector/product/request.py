@@ -1,7 +1,7 @@
-# src/request/permission/computation/product/request.py
+# src/request/permission/computation/vector/product/request.py
 
 """
-Module: request.permission.computation.product.request
+Module: request.permission.computation.vector.product.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,10 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from request import ComputationPermissionRequest, ScalarProductRequest
+from request import ScalarProductRequest, VectorComputationPermissionRequest
 
 
-class ScalarProductPermissionRequest(ComputationPermissionRequest[ScalarProductRequest]):
+class ScalarProductPermissionRequest(
+    VectorComputationPermissionRequest[ScalarProductRequest]
+):
     """
      Role:
          -  Messaging
@@ -29,7 +31,7 @@ class ScalarProductPermissionRequest(ComputationPermissionRequest[ScalarProductR
      Provides:
 
      Super Class:
-        ScalarProductPermissionRequest
+        VectorComputationPermissionRequest
      """
     
     def __init__(self, id: int, authorization_applicant: ScalarProductRequest):

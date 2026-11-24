@@ -1,7 +1,7 @@
-# src/request/permission/computation/addition/request.py
+# src/request/permission/computation/vector/addition/request.py
 
 """
-Module: request.permission.computation.addition.request
+Module: request.permission.computation.vector.addition.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,10 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from request import ComputationPermissionRequest, VectorAdditionRequest
+from request import VectorAdditionRequest, VectorComputationPermissionRequest
 
 
-class VectorAdditionPermissionRequest(ComputationPermissionRequest[VectorAdditionRequest]):
+class VectorAdditionPermissionRequest(
+    VectorComputationPermissionRequest[VectorAdditionRequest]
+):
     """
      Role:
          -  Messaging
@@ -29,7 +31,7 @@ class VectorAdditionPermissionRequest(ComputationPermissionRequest[VectorAdditio
      Provides:
 
      Super Class:
-        ComputationPermissionRequest
+        VectorComputationPermissionRequest
      """
     
     def __init__(self, id: int, authorization_applicant: VectorAdditionRequest):

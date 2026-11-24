@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from artifcat.decision.crud.deletion import RemoveNodeDecision
-from exchange import RemoveVectorNodeRequest
+from artifcat import RemoveNodeDecision
+from request import RemoveVectorNodePermissionRequest, RemoveVectorNodeRequest
 
 
 class RemoveVectorNodeDecision(

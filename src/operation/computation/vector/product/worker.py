@@ -20,7 +20,7 @@ from transit import ScalarProductPermissionDispatcher, VectorCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ScalarProduct(VectorComputation[ScalarProductRequest]):
+class ScalarProduct(VectorComputer[ScalarProductRequest]):
     """
     Role:
         - Computation

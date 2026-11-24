@@ -109,7 +109,7 @@ class SouthAxisEndpointAttack:
             )
         # Create the endpoint register.
         vector_register = VectorRegister(
-            u=cast(Vector, validation.authorization_applicant),
+            u=cast(Vector, validation.payload),
             v=self._destination,
         )
         # --- Forward the work product to the caller. ---#

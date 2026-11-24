@@ -112,5 +112,5 @@ class TeamBuildLoader(ModelBuildLoader[Team]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(TeamBlueprint, blueprint_validation.content)
+        blueprint = cast(TeamBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

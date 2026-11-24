@@ -209,11 +209,11 @@ class KingTokenEnvelopeConsumer(
                         ex=potential_destination_validation.exception,
                     )
                 )
-            potential_destination = cast(Square, potential_destination_validation.authorization_applicant)
+            potential_destination = cast(Square, potential_destination_validation.payload)
         # --- Extract validation payloads. ---#
-        alert = cast(Alert, alert_validation.authorization_applicant)
-        readiness = cast(KingReadiness, readiness_validation.authorization_applicant)
-        threat_level = cast(ThreatLevel, threat_level_validation.authorization_applicant)
+        alert = cast(Alert, alert_validation.payload)
+        readiness = cast(KingReadiness, readiness_validation.payload)
+        threat_level = cast(ThreatLevel, threat_level_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe KingToken.

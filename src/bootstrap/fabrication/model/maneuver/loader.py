@@ -112,5 +112,5 @@ class ManeuverBuildLoader(ModelBuildLoader[Maneuver]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(ManeuverBlueprint, blueprint_validation.content)
+        blueprint = cast(ManeuverBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

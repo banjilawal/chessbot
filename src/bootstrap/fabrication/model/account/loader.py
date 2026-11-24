@@ -112,5 +112,5 @@ class AccountBuildLoader(ModelBuildLoader[Account]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(AccountBlueprint, blueprint_validation.content)
+        blueprint = cast(AccountBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

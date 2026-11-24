@@ -17,7 +17,7 @@ from transit import PermissionDispatcher
 from util import LoggingLevelRouter
 
 # Q = TypeVar("Q", bound="TransactionRequest")
-T = TypeVar("R", bound="TransactionResult")
+T = TypeVar("T", bound="TransactionResult")
 
 class Worker(ABC, Generic[T]):
     """

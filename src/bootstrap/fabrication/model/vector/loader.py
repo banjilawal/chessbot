@@ -112,5 +112,5 @@ class VectorBuildLoader(ModelBuildLoader[Vector]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(VectorBlueprint, blueprint_validation.content)
+        blueprint = cast(VectorBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

@@ -124,7 +124,7 @@ class ScalarValidator(ModelValidator[Scalar]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        magnitude = cast(int, magnitude_validation.authorization_applicant)
+        magnitude = cast(int, magnitude_validation.payload)
         
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         

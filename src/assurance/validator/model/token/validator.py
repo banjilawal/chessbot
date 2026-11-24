@@ -101,6 +101,6 @@ class TokenValidator(ModelValidationFactory[Token]):
                     ex=validation.exception,
                 )
             )
-        carrier = cast(TokenCarrier, validation.authorization_applicant)
+        carrier = cast(TokenCarrier, validation.payload)
         return ValidationResult.success(carrier)
     

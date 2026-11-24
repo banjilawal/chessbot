@@ -150,7 +150,7 @@ class ParticipationValidator(ChartValidator[Participation]):
                         ex=token_validation.exception,
                     )
                 )
-            tokens.append(cast(Token, token_validation.authorization_applicant))
+            tokens.append(cast(Token, token_validation.payload))
         victim = tokens[0]
         attacker = tokens[1]
         

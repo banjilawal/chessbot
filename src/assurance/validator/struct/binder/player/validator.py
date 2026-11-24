@@ -141,7 +141,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
                         ex=player_validation.exception
                     )
                 )
-            player = cast(Player, player_validation.content)
+            player = cast(Player, player_validation.payload)
             entry[key] = player
         
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#

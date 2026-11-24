@@ -141,7 +141,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
                         ex=team_validation.exception
                     )
                 )
-            team = cast(Team, team_validation.content)
+            team = cast(Team, team_validation.payload)
             entry[key] = team
         
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#

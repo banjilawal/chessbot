@@ -151,7 +151,7 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
         board = safe.board
         coord = safe.coord
         occupant = safe.occupant
-        formation = cast(Formation, formation_validation.authorization_applicant)
+        formation = cast(Formation, formation_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case

@@ -112,5 +112,5 @@ class TokenBuildLoader(ModelBuildLoader[Token]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(TokenBlueprint, blueprint_validation.content)
+        blueprint = cast(TokenBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

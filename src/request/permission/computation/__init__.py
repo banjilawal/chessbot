@@ -10,9 +10,7 @@ version: 0.0.2
 # =========== REQUEST.PERMISSION.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .addition import *
-from .distance import *
-from .product import *
+from .vector import *
 
 # Modules
 from .request import ComputationPermissionRequest

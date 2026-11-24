@@ -15,3 +15,4 @@ from .distance import *
 from .product import *
 
 # Modules
+from .worker import VectorComputer

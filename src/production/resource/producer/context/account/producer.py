@@ -130,7 +130,7 @@ class AccountEnvelopeProducer(ContextEnvelopeProducer[AccountContext]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.authorization_applicant)
+        id = cast(int, id_validation.payload)
         
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = AccountEnvelope(

@@ -150,7 +150,7 @@ class CoordValidator(ModelValidator[Coord]):
                 )
             components.append(cast(int, validation.payload))
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        board = cast(Board, board_validation.content)
+        board = cast(Board, board_validation.payload)
         row = components[0]
         column = components[1]
         

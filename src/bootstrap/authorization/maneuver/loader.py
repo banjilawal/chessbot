@@ -194,8 +194,8 @@ class ManeuverAuthorizationLoader(
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        token = cast(Token, token_validation.content)
-        path = cast(Path, path_validation.content)
+        token = cast(Token, token_validation.payload)
+        path = cast(Path, path_validation.payload)
         transaction_id = cast(int, applicant_id_validation.payload)
         permission_id = cast(int, form_id_validation.payload)
         

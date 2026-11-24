@@ -136,7 +136,7 @@ class AlertValidator(ModelValidator[Alert]):
                         ex=threat_validation.exception,
                     )
                 )
-            threat = cast(EncounterWarning, threat_validation.content)
+            threat = cast(EncounterWarning, threat_validation.payload)
         # --- PROCESS_THE_CHECKMATE_ATTRIBUTE. ---#
         checkmate = blueprint.checkmate
         if checkmate is not None:
@@ -158,7 +158,7 @@ class AlertValidator(ModelValidator[Alert]):
                         ex=checkmate_validation.exception,
                     )
                 )
-            checkmate = cast(CheckmateEncounter, checkmate_validation.content)
+            checkmate = cast(CheckmateEncounter, checkmate_validation.payload)
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Alert.

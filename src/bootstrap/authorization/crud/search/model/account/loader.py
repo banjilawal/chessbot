@@ -14,14 +14,15 @@ from typing import Any, Optional, cast
 from artifcat import AccountSearchDecision
 from bootstrap import ModelSearchAuthorizationLoader
 from collection import AccountStack
-from domain import Account
+from domain import Account, AccountContext
 from err import (
     AccountSearchAuthorizationLoaderException, AccountSearchPermissionRequestNullException,
     AccountSearchRequestNullException, AccountStackNullException,
 )
-from exchange import (
-    AccountContextValidationService, AccountSearchRequest, AccountSearchPermissionRequest,
-    AccountContextValidationRequest,
+from microservice import AccountContextValidationService
+from request import (
+    AccountContextValidationRequest, AccountSearchPermissionRequest,
+    AccountSearchRequest
 )
 from transit import AccountContextCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -155,7 +156,7 @@ class AccountSearchAuthorizationLoader(
         context_validation = self._validation_service.extract_model(
             request=AccountContextValidationRequest(
                 item=AccountContextCarrier(model=applicant.context),
-                id=IdFactory.next_id("ValidationRequest")
+                id=IdFactory.next_id("Request")
             )
         )
         # Handle the case that the applicant is not Account.
@@ -189,7 +190,7 @@ class AccountSearchAuthorizationLoader(
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        context = cast(Account, context_validation.content)
+        context = cast(AccountContext, context_validation.payload)
         collection = cast(AccountStack, collection_validation.payload)
         transaction_id = cast(int, transaction_id_validation.payload)
         permission_id = cast(int, permission_id_validation.payload)

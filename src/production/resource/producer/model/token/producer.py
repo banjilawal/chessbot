@@ -242,9 +242,9 @@ class TokenEnvelopeProducer(EnvelopeProducer[Token]):
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
-        team = cast(Team, team_validation.content)
+        team = cast(Team, team_validation.payload)
         home_square = cast(HomeSquare, home_detection.authorization_applicant)
-        footstep = cast(Footstep, footstep_validation.content)
+        footstep = cast(Footstep, footstep_validation.payload)
         formation = cast(Formation, formation_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
         

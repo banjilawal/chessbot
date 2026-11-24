@@ -9,20 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ComputationResult
-from domain import Vector
-from err import DistanceComputerException
+from domain import Scalar
 from fabrication import ScalarBuilder
-from operation import Computer
+from operation import VectorComputer
 from request import DistanceRequest
 from transit import DistanceComputationPermissionDispatcher
 
 from util import LoggingLevelRouter
 
+Q = TypeVar("Q", bound="DistanceRequest")
 
-class DistanceComputer(VectorComputation[DistanceRequest]):
+class DistanceComputer(VectorComputer[Q], ABC, Generic[Q]):
     """
     Role:
         - Computation
@@ -37,7 +38,7 @@ class DistanceComputer(VectorComputation[DistanceRequest]):
         -   def execute(self, request: DistanceComputerRequest) -> ComputationResult[Vector]
 
     Super Class:
-        Computation
+        VectorComputer
     """
     _scalar_builder: ScalarBuilder
     
@@ -63,7 +64,7 @@ class DistanceComputer(VectorComputation[DistanceRequest]):
         return cast(DistanceComputationPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> ComputationResult[Vector]:
+    def execute(self, request: Q) -> ComputationResult[Scalar]:
         pass
 
         

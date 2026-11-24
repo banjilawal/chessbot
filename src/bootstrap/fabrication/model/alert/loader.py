@@ -112,5 +112,5 @@ class AlertBuildLoader(ModelBuildLoader[Alert]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(AlertBlueprint, blueprint_validation.content)
+        blueprint = cast(AlertBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

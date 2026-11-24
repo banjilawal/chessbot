@@ -165,7 +165,7 @@ class EncounterWarningEnvelopeConsumer(
                         ex=danger_zone_validation.exception,
                     )
                 )
-            danger_zone = cast(Square, danger_zone_validation.authorization_applicant)
+            danger_zone = cast(Square, danger_zone_validation.payload)
             
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = safe.id

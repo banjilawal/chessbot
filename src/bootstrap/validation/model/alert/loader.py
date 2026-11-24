@@ -119,7 +119,7 @@ class AlertValidationLoader(ModelValidationLoader[Alert]):
                 )
             )
         # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(AlertCarrier, carrier_validation.authorization_applicant)
+        carrier = cast(AlertCarrier, carrier_validation.payload)
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.

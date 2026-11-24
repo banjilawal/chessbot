@@ -82,5 +82,5 @@ class DistanceDispatcher(ComputationDispatcher[DistanceRequest]):
                 )
             )
         # --- Forward the work distance to the caller. ---#
-        value = cast(Vector, result.content)
+        value = cast(Vector, result.payload)
         return ComputationResult.success(value)

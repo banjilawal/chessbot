@@ -127,7 +127,7 @@ class FootstepValidator(ModelValidator[Footstep]):
                     )
                 )
             # Otherwise, the add value to the safe_coords.
-            safe_coords[key] = cast(Coord, coord_validation.content)
+            safe_coords[key] = cast(Coord, coord_validation.payload)
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         position = safe_coords["position"]
         previous_position = safe_coords["previous_position"]

@@ -101,7 +101,7 @@ class HomeSquareExtractor:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(cast(HomeSquare, validation.authorization_applicant))
+        return ValidationResult.success(cast(HomeSquare, validation.payload))
         
     @LoggingLevelRouter.monitor
     def _detect_home_square(self, board: Board, formation: Formation) -> ValidationResult:
@@ -192,5 +192,5 @@ class HomeSquareExtractor:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        home_square = cast(HomeSquare, validation.authorization_applicant)
+        home_square = cast(HomeSquare, validation.payload)
         return ValidationResult.success(home_square)

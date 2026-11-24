@@ -128,7 +128,7 @@ class RankValidator(ModelValidator[Rank]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        persona = cast(Persona, persona_validation.authorization_applicant)
+        persona = cast(Persona, persona_validation.payload)
 
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         

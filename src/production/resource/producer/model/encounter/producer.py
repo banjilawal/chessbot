@@ -216,11 +216,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.authorization_applicant)
-        victim = cast(Token, victim_validation.authorization_applicant)
-        location = cast(Square, location_validation.authorization_applicant)
+        id = cast(int, id_validation.payload)
+        victim = cast(Token, victim_validation.payload)
+        location = cast(Square, location_validation.payload)
         attacker_reward = cast(int, attacker_reward.authorization_applicant)
-        attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.authorization_applicant)
+        attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         attacker = attacker_maneuver.traveler
         
         # Handle the case that the victim and attacker are the same.

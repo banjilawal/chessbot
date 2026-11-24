@@ -112,5 +112,5 @@ class SquareBuildLoader(ModelBuildLoader[Square]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(SquareBlueprint, blueprint_validation.content)
+        blueprint = cast(SquareBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

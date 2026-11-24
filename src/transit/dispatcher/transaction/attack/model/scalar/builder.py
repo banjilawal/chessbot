@@ -95,7 +95,7 @@ class ScalarAttack(ModelAttack[Scalar]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 ScalarBlueprint,
-                blueprint_validation.authorization_applicant
+                blueprint_validation.payload
             )
         )
         # Handle the case that assembler cannot satisfy the product request.

@@ -127,8 +127,8 @@ class TraversalTopologyComputer(TopologyComputer[TraversalTopologyRequest]):
             )
         origin = request.origin
         traversals = request.traversals
-        root = cast(Vector, origin_validation.content)
-        traversals = cast(VectorSet, basis_validation.authorization_applicant)
+        root = cast(Vector, origin_validation.payload)
+        traversals = cast(VectorSet, basis_validation.payload)
         
         solutions = []
         

@@ -95,7 +95,7 @@ class CoordAttack(ModelAttack[Coord]):
         assembly = self.attack_toolkit.assembler.execute(
             candidate=cast(
                 CoordBlueprint,
-                blueprint_validation.authorization_applicant
+                blueprint_validation.payload
             )
         )
         # Handle the case that assembler cannot satisfy the product request.

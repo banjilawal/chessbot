@@ -10,11 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
 
-from artifcat import Decision
-from authorization import CrudAuthorizationLoader
-from exchange import DeletionPermissionRequest, ValidationService
+from artifcat import Decision, DeletionDecision
+from bootstrap import CrudAuthorizationLoader
+from microservice import ValidationMicroservice
+from request import DeletionPermissionRequest
 
 from util import LoggingLevelRouter
 
@@ -31,7 +32,7 @@ class DeletionAuthorizationLoader(
         1.  Ensure the correct Request type is loaded into a CrudAuthorization module.
         
     Attributes:
-        validation_service: ValidationService
+        validation_service: ValidationMicroservice
 
     Provides:
         -   def execute(candidate: Any) -> Decision
@@ -40,20 +41,16 @@ class DeletionAuthorizationLoader(
         CrudAuthorizationLoader
     """
     
-    def __init__(self, validation_service: ValidationService):
+    def __init__(self, validation_service: ValidationMicroservice):
         """
         Args:
-            validation_service: ValidationService
+            validation_service: ValidationMicroservice
         """
         super().__init__(validation_service=validation_service)
     
-    @property
-    def validation_service(self) -> ValidationService:
-        return cast(ValidationService, super().validation_service)
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> Decision:
+    def execute(self, candidate: Any) -> DeletionDecision:
         """
         Checks if the Request is the right type.
         

@@ -112,5 +112,5 @@ class ScalarBuildLoader(ModelBuildLoader[Scalar]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(ScalarBlueprint, blueprint_validation.authorization_applicant)
+        blueprint = cast(ScalarBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

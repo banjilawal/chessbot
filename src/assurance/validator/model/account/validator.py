@@ -77,6 +77,6 @@ class AccountValidator(ModelValidationFactory[Account], Validator):
                     ex=validation.exception,
                 )
             )
-        carrier = cast(AccountCarrier, validation.content)
+        carrier = cast(AccountCarrier, validation.payload)
         return ValidationResult.success(carrier)
     

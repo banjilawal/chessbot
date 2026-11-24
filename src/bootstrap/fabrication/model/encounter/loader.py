@@ -112,5 +112,5 @@ class EncounterBuildLoader(ModelBuildLoader[Encounter]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(EncounterBlueprint, blueprint_validation.content)
+        blueprint = cast(EncounterBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

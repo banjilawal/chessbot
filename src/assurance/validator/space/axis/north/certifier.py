@@ -87,7 +87,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(NorthAxisCarrier, carrier_validation.authorization_applicant)
+        carrier = cast(NorthAxisCarrier, carrier_validation.payload)
         if carrier.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -124,7 +124,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
                         ex=vector_validation.exception,
                     )
                 )
-            vectors.append(cast(Vector, vector_validation.authorization_applicant))
+            vectors.append(cast(Vector, vector_validation.payload))
         # --- Extract and cast payloads of the validation results. ---#
         origin = vectors[0]
 

@@ -112,5 +112,5 @@ class RankBuildLoader(ModelBuildLoader[Rank]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(RankBlueprint, blueprint_validation.content)
+        blueprint = cast(RankBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

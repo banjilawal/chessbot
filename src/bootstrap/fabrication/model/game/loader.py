@@ -112,5 +112,5 @@ class GameBuildLoader(ModelBuildLoader[Game]):
                 )
             )
         # --- Forward the work product. ---#
-        blueprint = cast(GameBlueprint, blueprint_validation.content)
+        blueprint = cast(GameBlueprint, blueprint_validation.payload)
         return BuildResult.success(blueprint)

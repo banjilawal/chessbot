@@ -23,7 +23,7 @@ P = TypeVar("P", bound="ComputationPermissionDispatcher")
 Q = TypeVar("Q", bound="ComputationRequest")
 
 
-class Computer(Worker[ComputationResult], ABC, Generic[P, Q]):
+class Computer(Worker[ComputationResult], ABC, Generic[Q]):
     """
     Role:
         -   Transaction Worker

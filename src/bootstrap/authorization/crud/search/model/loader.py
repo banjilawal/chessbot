@@ -14,10 +14,10 @@ from typing import Any, Generic, TypeVar
 
 from artifcat import SearchDecision
 from bootstrap import SearchAuthorizationLoader
-from exchange import SearchPermissionRequest
+from request import ModelSearchPermissionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="SearchPermissionRequest")
+T = TypeVar("T", bound="ModelSearchPermissionRequest")
 
 class ModelSearchAuthorizationLoader(
     SearchAuthorizationLoader[T], ABC, Generic[T]

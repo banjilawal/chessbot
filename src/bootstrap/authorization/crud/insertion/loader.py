@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar
 
 from artifcat import InsertionDecision
 from bootstrap import CrudAuthorizationLoader
-from exchange import InsertionPermissionRequest
+from request import InsertionPermissionRequest
 
 from util import LoggingLevelRouter
 

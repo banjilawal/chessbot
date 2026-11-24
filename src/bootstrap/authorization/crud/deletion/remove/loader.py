@@ -1,0 +1,69 @@
+# src/bootstrap/authorization/deletion/loader.py
+
+"""
+Module: bootstrap.authorization.deletion.loader
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar, cast
+
+from artifcat import Decision, RemoveNodeDecision
+from bootstrap import DeletionAuthorizationLoader
+from microservice import ValidationMicroservice
+from request import RemoveNodePermissionRequest
+
+from util import LoggingLevelRouter
+
+T = TypeVar("T", bound="RemoveNodePermissionRequest")
+
+class RemoveNodeAuthorizationLoader(
+    DeletionAuthorizationLoader[T], ABC, Generic[T]
+):
+    """
+    Role:
+        -   Process Bootstrapper
+
+    Responsibilities:
+        1.  Ensure the correct Request type is loaded into a CrudAuthorization module.
+        
+    Attributes:
+        validation_service: ValidationMicroservice
+
+    Provides:
+        -   def execute(candidate: Any) -> RemoveNodeDecision
+
+    Super Class:
+        DeletionAuthorizationLoader
+    """
+    
+    def __init__(self, validation_service: ValidationMicroservice):
+        """
+        Args:
+            validation_service: ValidationMicroservice
+        """
+        super().__init__(validation_service=validation_service)
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, candidate: Any) -> RemoveNodeDecision:
+        """
+        Checks if the Request is the right type.
+        
+        Action:
+            1.  Send an exception chain in the Decision denial if either;
+                    -   the request is null.
+                    -   the wrong type.
+            2.  Otherwise, send an approval.
+        Args:
+            candidate: Any
+        Returns:
+           Decision
+        Raises:
+            DeletionAuthorizationLoaderException
+        """
+        pass

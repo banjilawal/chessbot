@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar
 
 from artifcat import SearchDecision
 from bootstrap import CrudAuthorizationLoader
-from exchange import SearchPermissionRequest
+from request import SearchPermissionRequest
 
 from util import LoggingLevelRouter
 

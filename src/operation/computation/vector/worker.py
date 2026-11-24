@@ -15,15 +15,14 @@ from typing import Generic, Optional, TypeVar, cast
 from artifcat import ComputationResult
 from fabrication import VectorBuilder
 from operation import Computer
-from request import ComputationRequest
 from transit import ComputationPermissionDispatcher
 from util import LoggingLevelRouter
 
 P = TypeVar("P", bound="ComputationPermissionDispatcher")
-Q = TypeVar("Q", bound="ComputationRequest")
+Q = TypeVar("Q", bound="VectorComputerRequest")
 
 
-class VectorComputation(Computer, ABC, Generic[P, Q]):
+class VectorComputer(Computer[Q], ABC, Generic[Q]):
     """
     Role:
         -   Transaction Worker
@@ -39,7 +38,7 @@ class VectorComputation(Computer, ABC, Generic[P, Q]):
         -   def execute(request: Q) -> ComputationResult
 
     Super Class:
-        Worker
+        Computer
     """
     _vector_builder: VectorBuilder
     
@@ -69,7 +68,7 @@ class VectorComputation(Computer, ABC, Generic[P, Q]):
         Args:
             request: Q
         Result:
-            R
+            ComputationResult
         Raises:
             ComputationWorkerException
         """

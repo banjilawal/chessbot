@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from request import AccountSearchRequest, SearchPermissionRequest
+from request import AccountSearchRequest, ModelSearchPermissionRequest
 
 
-class AccountSearchPermissionRequest(SearchPermissionRequest[AccountSearchRequest]):
+class AccountSearchPermissionRequest(ModelSearchPermissionRequest[AccountSearchRequest]):
     """
      Role:
          -  Messaging

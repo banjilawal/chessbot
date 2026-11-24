@@ -35,7 +35,7 @@ class EuclideanDistance(DistanceComputer[EuclideanDistanceRequest]):
         -   def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Vector]
 
     Super Class:
-        Computation
+        DistanceComputer
     """
     
     def __init__(self):
@@ -109,7 +109,7 @@ class EuclideanDistance(DistanceComputer[EuclideanDistanceRequest]):
         v = transaction_request.v
         
         # --- Perform transaction and state management work. ---#
-        magnitude = sqrt((u.y - v.y) ** 2 + (u.x - v.x) ** 2)
+        magnitude = cast(int, sqrt((u.y - v.y) ** 2 + (u.x - v.x) ** 2))
         # Safely build the new vector.
         build = self.scalar_builder.execute(
             request=ScalarBuildRequest(

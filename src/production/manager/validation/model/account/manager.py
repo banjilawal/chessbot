@@ -106,6 +106,6 @@ class AccountColliderManager(ModelColliderManager[Account]):
                     ex=validation.exception,
                 )
             )
-        carrier = cast(AccountCarrier, validation.content)
+        carrier = cast(AccountCarrier, validation.payload)
         return ValidationResult.success(carrier)
     

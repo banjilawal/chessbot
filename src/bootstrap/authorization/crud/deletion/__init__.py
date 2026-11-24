@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== BOOTSTRAP.AUTHORIZATION.CRUD.DELETION PACKAGE ===========#
 
 # Packages
-from .account import *
+from remove import *
 
 # Modules
 from .loader import DeletionAuthorizationLoader

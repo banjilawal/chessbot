@@ -90,7 +90,7 @@ class WestAxisAttack(AxisAttack[WestAxis]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.attack_toolkit.assembler.execute(
-            blueprint=cast(WestAxisBlueprint, validation.authorization_applicant)
+            blueprint=cast(WestAxisBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
         if assembly.is_failure:
