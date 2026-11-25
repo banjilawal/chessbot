@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from collection import VectorSet
 from domain import Offset, VectorNode
-from request import DevelopedPawnTopologyRequest
+from request import DevelopedTopologyRequest
 
 
-class DevelopedManeuverTopologyRequest(DevelopedPawnTopologyRequest):
+class DevelopedManeuverTopologyRequest(DevelopedTopologyRequest):
     """
      Role:
          -  Messaging

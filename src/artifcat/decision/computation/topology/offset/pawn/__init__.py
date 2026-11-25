@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .developed import *
-from .opening import *
 
 # Modules
-from .request import PawnTopologyPermissionRequest
+from .decision import PawnTopologyDecision

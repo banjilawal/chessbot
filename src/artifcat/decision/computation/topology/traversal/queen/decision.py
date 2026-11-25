@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/topology/traversal/queen/request.py
+# src/artifact/decision/computation/topology/traversal/queen/decision.py
 
 """
-Module: artifact.decision.computation.topology.traversal.queen.request
+Module: artifact.decision.computation.topology.traversal.queen.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

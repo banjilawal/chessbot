@@ -13,11 +13,11 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from request import (
-    DevelopedPawnTopologyRequest, OffsetTopologyPermissionRequest, PawnTopologyPermissionRequest,
+    DevelopedTopologyRequest, OffsetTopologyPermissionRequest, PawnTopologyPermissionRequest,
     PawnTopologyRequest
 )
 
-T = TypeVar("T", bound="DevelopedPawnTopologyRequest")
+T = TypeVar("T", bound="DevelopedTopologyRequest")
 
 class DevelopedTopologyPermissionRequest(PawnTopologyPermissionRequest[T], ABC, Generic[T]):
     """

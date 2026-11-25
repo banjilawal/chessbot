@@ -14,7 +14,7 @@ from domain import Offset, VectorNode
 from request import PawnTopologyRequest
 
 
-class DevelopedPawnTopologyRequest(PawnTopologyRequest):
+class DevelopedTopologyRequest(PawnTopologyRequest):
     """
      Role:
          -  Messaging
@@ -46,6 +46,6 @@ class DevelopedPawnTopologyRequest(PawnTopologyRequest):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, DevelopedPawnTopologyRequest):
+        if isinstance(other, DevelopedTopologyRequest):
             return self.id == other.id
         return False

@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/topology/traversal/rook/request.py
+# src/artifact/decision/computation/topology/traversal/rook/decision.py
 
 """
-Module: artifact.decision.computation.topology.traversal.rook.request
+Module: artifact.decision.computation.topology.traversal.rook.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

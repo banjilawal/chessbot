@@ -14,4 +14,4 @@ from .attack import *
 from .maneuver import *
 
 # Modules
-from .request import DevelopedPawnTopologyRequest
+from .request import DevelopedTopologyRequest

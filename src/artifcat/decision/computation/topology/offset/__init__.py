@@ -15,4 +15,4 @@ from .knight import *
 from .pawn import *
 
 # Modules
-from .request import OffsetTopologyPermissionRequest
+from .decision import OffsetTopologyDecision

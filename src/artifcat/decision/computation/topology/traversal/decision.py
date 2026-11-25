@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/topology/traversal/request.py
+# src/artifact/decision/computation/topology/traversal/decision.py
 
 """
-Module: artifact.decision.computation.topology.traversal.request
+Module: artifact.decision.computation.topology.traversal.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
