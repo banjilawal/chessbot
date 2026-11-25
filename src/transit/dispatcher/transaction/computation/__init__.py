@@ -10,9 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .addition import *
-from .distance import *
-from .multiplication import *
+from .vector import *
 
 # Modules
 from .dispatcher import ComputationDispatcher

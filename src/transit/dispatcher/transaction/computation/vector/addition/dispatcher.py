@@ -1,7 +1,7 @@
-# src/transit/dispatcher/computation/dispatcher.py
+# src/transit/dispatcher/computation/vector/dispatcher.py
 
 """
-Module: transit.dispatcher.computation.dispatcher
+Module: transit.dispatcher.computation.vector.dispatcher
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,13 +13,14 @@ from typing import Optional, cast
 
 from artifcat import ComputationResult
 from domain import Vector
-from request import DistanceRequest
-from transit import ComputationDispatcher
+from operation import VectorAddition
+from request import VectorAdditionRequest
+from transit import VectorComputationDispatcher
 from util import LoggingLevelRouter
 
 
 
-class DistanceDispatcher(ComputationDispatcher[DistanceRequest]):
+class VectorAdditionDispatcher(VectorComputationDispatcher[VectorAdditionRequest]):
     """
     Role
         -   Performance Management
@@ -28,42 +29,41 @@ class DistanceDispatcher(ComputationDispatcher[DistanceRequest]):
         1.  Distribute requests among workers then send the result to the correct client
 
     Attributes:
-        worker: Distance
-
+        worker: VectorAdder
     Provides:
-        -   def  execute(self, request: Q) -> R
+        -   def  execute(self, request: VectorAdditionRequest) -> ComputationResult
 
     Super Class:
         ComputationDispatcher
     """
     
-    def __init__(self, worker: Optional[DistanceComputer] | None = None):
+    def __init__(self, worker: Optional[VectorAddition] | None = None):
         """
         Args:
-            worker: Optional[Distance]
+            worker: Optional[VectorAdder]
         """
-        super().__init__(worker=worker or Distance())
+        super().__init__(worker=worker or VectorAddition())
         
     @property
-    def worker(self) -> Distance:
-        return cast(Distance, super().worker)
+    def worker(self) -> VectorAddition:
+        return cast(VectorAddition, super().worker)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: DistanceRequest) -> ComputationResult:
+    def execute(self, request: VectorAdditionRequest) -> ComputationResult:
         """
-        Send DistanceComputationRequest to a worker.
+        Send VectorAdditionComputationRequest to a worker.
 
         Action:
             1.  Send an exception chain in the ComputationResult if the worker fails.
             2.  If the computation result is empy send a ComputationResult.empty otherwise, send
                 the success result.
         Args:
-            request: DistanceComputationRequest
+            request: VectorAdditionComputationRequest
         Result:
-            ComputationResult[List[Distance]]
+            ComputationResult[List[VectorAddition]]
         Raises:
-            DistanceComputationDispatcherException
+            VectorAdditionDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -73,14 +73,14 @@ class DistanceDispatcher(ComputationDispatcher[DistanceRequest]):
         if result.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                DistanceComputationDispatcherException(
+                VectorAdditionDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DistanceComputationDispatcherException.MSG,
-                    err_code=DistanceComputationDispatcherException.ERR_CODE,
+                    msg=VectorAdditionDispatcherException.MSG,
+                    err_code=VectorAdditionDispatcherException.ERR_CODE,
                     ex=result.exception
                 )
             )
-        # --- Forward the work distance to the caller. ---#
+        # --- Forward the work addition to the caller. ---#
         value = cast(Vector, result.payload)
         return ComputationResult.success(value)
