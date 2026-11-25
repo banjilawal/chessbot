@@ -10,9 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar
 
-from exchange import DeletionPermissionRequest, PopRequest
+from request import DeletionPermissionRequest, PopRequest
 
 T = TypeVar("T", bound="PopRequest")
 

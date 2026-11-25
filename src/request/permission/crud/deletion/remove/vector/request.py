@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from exchange import RemoveNodePermissionRequest, RemoveVectorNodeRequest
+from request import RemoveNodePermissionRequest, RemoveVectorNodeRequest
 
 
 class RemoveVectorNodePermissionRequest(

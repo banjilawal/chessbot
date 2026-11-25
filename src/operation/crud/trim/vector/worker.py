@@ -19,7 +19,7 @@ from transit import VectorNodeSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorChainTrimmer(ChainTrimmer[VectorChaimTrimRequest]):
+class VectorChainTrimmer(ChainTrimmer[VectorChainTrimRequest]):
     """
     Role:
         -   Transaction Worker
@@ -62,7 +62,7 @@ class VectorChainTrimmer(ChainTrimmer[VectorChaimTrimRequest]):
         return cast(VectorNodeSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorChaimTrimRequest) -> TrimResult:
+    def execute(self, request: VectorChainTrimRequest) -> TrimResult:
         """
         Search an VectorChain for context matches.
         
