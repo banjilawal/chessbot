@@ -30,7 +30,7 @@ class SequenceComputationDecision(
     Provides:
 
     Super Class:
-        Decision
+        ComputationDecision
     """
     
     def __init__(
