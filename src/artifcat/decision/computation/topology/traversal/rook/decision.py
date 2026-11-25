@@ -26,7 +26,9 @@ class RookTopologyDecision(
         1.  Report if a TopologyComputation transaction is permitted.
 
     Attributes:
-
+        transaction_request: RookTopologyRequest
+        permission_request: RookTopologyPermissionRequest
+        
     Provides:
 
     Super Class:
