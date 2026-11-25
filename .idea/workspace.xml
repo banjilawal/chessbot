@@ -5,14 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/request/permission/crud/trim/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/permission/crud/trim/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/permission/crud/trim/chain/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/permission/crud/trim/chain/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/permission/crud/trim/chain/vector/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/request/permission/crud/trim/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/decision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/multiplication/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/trim/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/trim/chain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/trim/chain/decision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/trim/chain/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/trim/chain/vector/decision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/trim/decision.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/trim/vector/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/trim/vector/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/addition/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/addition/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/addition/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/addition/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/distance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/distance/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/distance/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/product/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/product/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/multiplication/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/pop/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/pop/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/vector/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/deletion/remove/vector/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/add/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/add/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/add/vector/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/add/vector/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/crud/insertion/decision.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,60 +76,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0000000000000022" />
-      <entry key="M5" value="1.0000222545659878" />
-      <entry key="M10" value="1.0607249439707505" />
-      <entry key="M15" value="1.9784576177038058" />
-      <entry key="M30" value="20.197903807830706" />
-      <entry key="H1" value="101.77031206339674" />
-      <entry key="H2" value="252.116708042611" />
-      <entry key="H4" value="444.46157761611005" />
-      <entry key="D1" value="3197.6741928985557" />
-      <entry key="W1" value="18286.513489921934" />
+      <entry key="MS500" value="1.000000009125697" />
+      <entry key="S2" value="1.018287215038547" />
+      <entry key="S5" value="1.4042485815129553" />
+      <entry key="S10" value="2.411000153986386" />
+      <entry key="S30" value="7.1612006846104475" />
+      <entry key="S60" value="12.153563548370142" />
+      <entry key="M2" value="17.3202199629067" />
+      <entry key="M5" value="34.1345185413221" />
+      <entry key="M10" value="62.601641563071894" />
+      <entry key="M15" value="81.70466718057592" />
+      <entry key="M30" value="119.67079438433898" />
+      <entry key="H1" value="202.82202978509721" />
+      <entry key="H2" value="355.33023445702406" />
+      <entry key="H4" value="556.1604512151234" />
+      <entry key="D1" value="3307.0776559184615" />
+      <entry key="W1" value="18403.495939090022" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="9.295713262593584E-221" />
-      <entry key="S30" value="6.867326364378715E-74" />
-      <entry key="S60" value="3.6827977317658916E-37" />
-      <entry key="M2" value="8.568737807394612E-19" />
-      <entry key="M5" value="9.084232392656579E-8" />
-      <entry key="M10" value="4.8743800971161793E-4" />
-      <entry key="M15" value="0.0097779657222278" />
-      <entry key="M30" value="0.23970859297477218" />
-      <entry key="H1" value="1.4256397679786537" />
-      <entry key="H2" value="4.010948281309998" />
-      <entry key="H4" value="9.1767555476609" />
-      <entry key="D1" value="140.61130930494593" />
-      <entry key="W1" value="928.087920095868" />
+      <entry key="MS100" value="4.570498007332728E-162" />
+      <entry key="MS500" value="5.395015599728459E-33" />
+      <entry key="S2" value="8.570342461396793E-9" />
+      <entry key="S5" value="5.931974432199812E-4" />
+      <entry key="S10" value="0.024355644997001845" />
+      <entry key="S30" value="0.28986775273034476" />
+      <entry key="S60" value="0.5385234923089411" />
+      <entry key="M2" value="0.7458884476299708" />
+      <entry key="M5" value="1.1358365888016186" />
+      <entry key="M10" value="1.7618729556530293" />
+      <entry key="M15" value="2.212335396302573" />
+      <entry key="M30" value="3.0398582869560005" />
+      <entry key="H1" value="4.4622235041992235" />
+      <entry key="H2" value="7.156881715956161" />
+      <entry key="H4" value="12.381668219055008" />
+      <entry key="D1" value="142.92943899423062" />
+      <entry key="W1" value="930.5168611961484" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9460576467255959" />
-      <entry key="MS500" value="0.9889709163809315" />
-      <entry key="S2" value="0.9972312513520695" />
-      <entry key="S5" value="0.9988915792636801" />
-      <entry key="S10" value="0.9994456359721023" />
-      <entry key="S30" value="0.999815177833572" />
-      <entry key="S60" value="0.9999075846464872" />
-      <entry key="M2" value="0.9999537912556218" />
-      <entry key="M5" value="1.0000038523879515" />
-      <entry key="M10" value="1.0611817296329225" />
-      <entry key="M15" value="1.9879439890495956" />
-      <entry key="M30" value="20.433871253421454" />
-      <entry key="H1" value="103.18417794657738" />
-      <entry key="H2" value="256.1114340101888" />
-      <entry key="H4" value="453.6232130431009" />
-      <entry key="D1" value="3338.2645651893904" />
-      <entry key="W1" value="19214.583950276447" />
+      <entry key="MS100" value="6.743495761743039E-7" />
+      <entry key="MS500" value="0.05831456457117824" />
+      <entry key="S2" value="0.5062704987410103" />
+      <entry key="S5" value="1.1296630893081412" />
+      <entry key="S10" value="2.2479514198863484" />
+      <entry key="S30" value="7.299347054559151" />
+      <entry key="S60" value="12.572691345765529" />
+      <entry key="M2" value="17.987711979228003" />
+      <entry key="M5" value="35.230925888398446" />
+      <entry key="M10" value="64.34047704753397" />
+      <entry key="M15" value="83.90029466513914" />
+      <entry key="M30" value="122.69934935122241" />
+      <entry key="H1" value="207.2705139233473" />
+      <entry key="H2" value="362.4705215324296" />
+      <entry key="H4" value="568.5267539087112" />
+      <entry key="D1" value="3449.9861873837885" />
+      <entry key="W1" value="19333.995338985307" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -148,7 +165,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/request/permission/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/decision/computation/vector",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -162,18 +179,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/vector" />
+      <recent name="$PROJECT_DIR$/src/artifcat/decision/crud" />
       <recent name="$PROJECT_DIR$/src/request/permission/crud" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/computation/vector/distance/euclidean" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/microservice/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/controller/chain/vector" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/vector" />
       <recent name="$PROJECT_DIR$/src/request/permission/crud/trim" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/computation/vector" />
       <recent name="$PROJECT_DIR$/src/microservice/computation/vector" />
       <recent name="$PROJECT_DIR$/src/microservice/trim" />
-      <recent name="$PROJECT_DIR$/src/microservice/search/model" />
     </key>
   </component>
   <component name="RunManager" selected="Python.request">
@@ -989,7 +1006,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="414957000" />
+      <workItem from="1794227184139" duration="416485000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3059,12 +3076,12 @@
           <option name="timeStamp" value="694" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/artifcat/decision/computation/product/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/artifcat/decision/computation/vector/multiplication/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="696" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/artifcat/decision/computation/addition/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/artifcat/decision/computation/vector/addition/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="697" />
         </line-breakpoint>
@@ -3282,6 +3299,11 @@
           <url>file://$PROJECT_DIR$/src/request/permission/crud/trim/chain/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="748" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/artifcat/decision/crud/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="749" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

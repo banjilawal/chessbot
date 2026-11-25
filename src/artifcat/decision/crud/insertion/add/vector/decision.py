@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AddNodeDecision, Permission
-from exchange import AddVectorNodePermissionRequest, AddVectorNodeRequest
+from request import AddVectorNodePermissionRequest, AddVectorNodeRequest
 
 
 class AddVectorNodeDecision(

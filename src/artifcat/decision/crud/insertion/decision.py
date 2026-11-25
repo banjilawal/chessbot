@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, Self, TypeVar, cast
 
 from artifcat import CrudDecision, Permission
-from exchange import InsertionPermissionRequest, InsertionRequest
+from request import InsertionPermissionRequest, InsertionRequest
 
 P = TypeVar("P", bound="InsertionPermissionRequest")
 T = TypeVar("T", bound="InsertionRequest")

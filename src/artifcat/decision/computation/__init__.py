@@ -10,9 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .addition import *
-from .distance import *
-from .product import *
+from .vector import *
 
 # Modules
 from .decision import ComputationDecision

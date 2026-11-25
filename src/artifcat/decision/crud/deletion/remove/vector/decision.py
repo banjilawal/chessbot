@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from artifcat import RemoveNodeDecision
+from artifcat import Permission, RemoveNodeDecision
 from request import RemoveVectorNodePermissionRequest, RemoveVectorNodeRequest
 
 

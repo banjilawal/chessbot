@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import CrudDecision, Permission
-from exchange import DeletionPermissionRequest, DeletionRequest
+from request import DeletionPermissionRequest, DeletionRequest
 
 P = TypeVar("P", bound="DeletionPermissionRequest")
 T = TypeVar("T", bound="DeletionRequest")

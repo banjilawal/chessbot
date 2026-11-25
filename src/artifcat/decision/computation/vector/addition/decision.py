@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/add/decision.py
+# src/artifact/decision/computation/vector/add/decision.py
 
 """
-Module: artfifact.decision.computation.add.decision
+Module: artfifact.decision.computation.vector.add.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ComputationDecision, Permission
-from exchange import VectorAdditionPermissionRequest, VectorAdditionRequest
+from artifcat import VectorComputationDecision, Permission
+from request import VectorAdditionPermissionRequest, VectorAdditionRequest
 
 P = TypeVar("P", bound="VectorAdditionPermissionRequest")
 T = TypeVar("T", bound="VectorAdditionRequest")
 
 
-class VectorAdditionDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
+class VectorAdditionDecision(VectorComputationDecision[P, T], ABC, Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -42,7 +42,7 @@ class VectorAdditionDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
             ) -> AddDecision
 
     Super Class:
-        ComputationDecision
+        VectorComputationDecision
     """
     
     def __init__(

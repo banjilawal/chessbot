@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/distance/decision.py
+# src/artifact/decision/computation/vector/distance/decision.py
 
 """
-Module: artfifact.decision.computation.distance.decision
+Module: artfifact.decision.computation.vector.distance.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, Self, TypeVar
 
-from artifcat import ComputationDecision, Permission
+from artifcat import VectorComputationDecision, Permission
 from exchange import DistanceComputationPermissionRequest, EuclideanDistanceRequest
 
 P = TypeVar("P", bound="DistanceComputationPermissionRequest")
 T = TypeVar("T", bound="EuclideanDistanceRequest")
 
 
-class DistanceComputationDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
+class DistanceVectorComputationDecision(VectorComputationDecision[P, T], ABC, Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -33,7 +33,7 @@ class DistanceComputationDecision(ComputationDecision[P, T], ABC, Generic[P, T])
         -   def do_nothing() -> DistanceDecision
         
     Super Class:
-        ComputationDecision
+        VectorComputationDecision
     """
     
     def __init__(

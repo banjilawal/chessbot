@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/product/decision.py
+# src/artifact/decision/computation/vector/multiplication/decision.py
 
 """
-Module: artfifact.decision.computation.product.decision
+Module: artfifact.decision.computation.vector.multiplication.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,17 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Optional
 
-from artifcat import ComputationDecision, Permission
-from exchange import ScalarProductRequest
-
-P = TypeVar("P", bound="ScalarProductPermissionRequest")
-T = TypeVar("T", bound="ScalarProductRequest")
+from artifcat import Permission, VectorComputationDecision
+from request import ScalarProductPermissionRequest, ScalarProductRequest
 
 
-class ScalarProductDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
+class ScalarProductDecision(
+    VectorComputationDecision[ScalarProductPermissionRequest, ScalarProductRequest]
+):
     """
     Role:
         - Permission Reporting
@@ -32,22 +30,22 @@ class ScalarProductDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
     Provides:
 
     Super Class:
-        ComputationDecision
+        VectorComputationDecision
     """
     
     def __init__(
             self,
             permission: Permission,
             exception: Optional[Exception] | None = None,
-            permission_request: Optional[P] | None = None,
-            transaction_request: Optional[T] | None = None,
+            permission_request: Optional[ScalarProductPermissionRequest] | None = None,
+            transaction_request: Optional[ScalarProductRequest] | None = None,
     ):
         """
         Args:
             permission: Permission
             exception: Optional[Exception]
-            permission_request: Optional[P]
-            transaction_request: Optional[T]
+            permission_request: Optional[ScalarProductPermissionRequest]
+            transaction_request: Optional[ScalarProductRequest]
         """
         super().__init__(
             exception=exception,

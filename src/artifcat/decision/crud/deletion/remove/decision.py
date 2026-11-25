@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
 
-from artifcat.decision.crud.deletion import DeletionDecision
-from exchange import RemoveNodePermissionRequest, RemoveNodeRequest
+from artifcat import DeletionDecision, Permission
+from request import RemoveNodePermissionRequest, RemoveNodeRequest
 
 P = TypeVar("P", bound="RemoveNodePermissionRequest")
 T = TypeVar("T", bound="RemoveNodeRequest")

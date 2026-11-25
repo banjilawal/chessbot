@@ -9,13 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, Optional, TypeVar, cast
+from typing import Generic, Optional, TypeVar
 
 from artifcat import InsertionDecision, Permission
-from exchange import AddNodePermissionRequest
-from exchange import (
-    AddNodeRequest, InsertionRequest, PermissionRequest, CrudPermissionRequest,
-)
+from request import AddNodePermissionRequest, AddNodeRequest
 
 P = TypeVar("P", bound="AddNodePermissionRequest")
 T = TypeVar("T", bound="AddNodeRequest")

@@ -12,7 +12,6 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
 from artifcat import DeletionDecision, Permission
-from exchange import PopPermissionRequest, PopRequest
 
 P = TypeVar("P", bound="PopPermissionRequest")
 T = TypeVar("T", bound="PopRequest")
