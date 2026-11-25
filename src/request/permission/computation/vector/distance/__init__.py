@@ -13,4 +13,4 @@ version: 0.0.2
 from .euclidean import *
 
 # Modules
-from .request import DistanceVectorComputationPermissionRequest
+from .request import DistancePermissionRequest

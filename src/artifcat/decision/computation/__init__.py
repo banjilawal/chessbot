@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.COMPUTATION PACKAGE ===========#
 
 # Packages
+from .sequence import *
 from .vector import *
 
 # Modules

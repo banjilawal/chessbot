@@ -9,17 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Optional
 
 from artifcat import VectorComputationDecision, Permission
 from request import VectorAdditionPermissionRequest, VectorAdditionRequest
 
-P = TypeVar("P", bound="VectorAdditionPermissionRequest")
-T = TypeVar("T", bound="VectorAdditionRequest")
 
-
-class VectorAdditionDecision(VectorComputationDecision[P, T], ABC, Generic[P, T]):
+class VectorAdditionDecision(
+    VectorComputationDecision[VectorAdditionPermissionRequest, VectorAdditionRequest]
+):
     """
     Role:
         - Permission Reporting
@@ -48,8 +46,8 @@ class VectorAdditionDecision(VectorComputationDecision[P, T], ABC, Generic[P, T]
     def __init__(
             self,
             permission: Permission,
-            transaction_request: Optional[T] | None = None,
-            permission_request: Optional[P] | None = None,
+            transaction_request: Optional[VectorAdditionRequest] | None = None,
+            permission_request: Optional[VectorAdditionPermissionRequest] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """

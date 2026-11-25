@@ -9,17 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, Self, TypeVar
 
 from artifcat import VectorComputationDecision, Permission
-from exchange import DistanceComputationPermissionRequest, EuclideanDistanceRequest
-
-P = TypeVar("P", bound="DistanceComputationPermissionRequest")
-T = TypeVar("T", bound="EuclideanDistanceRequest")
+from request import DistancePermissionRequest, DistanceRequest
 
 
-class DistanceVectorComputationDecision(VectorComputationDecision[P, T], ABC, Generic[P, T]):
+class DistanceComputationDecision(
+    VectorComputationDecision[DistancePermissionRequest, DistanceRequest]
+):
     """
     Role:
         - Permission Reporting
@@ -40,8 +37,8 @@ class DistanceVectorComputationDecision(VectorComputationDecision[P, T], ABC, Ge
             self,
             permission: Permission,
             exception: Optional[Exception] | None = None,
-            permission_request: Optional[P] | None = None,
-            transaction_request: Optional[T] | None = None,
+            permission_request: Optional[DistancePermissionRequest] | None = None,
+            transaction_request: Optional[DistanceRequest] | None = None,
     ):
         """
         Args:
@@ -56,7 +53,3 @@ class DistanceVectorComputationDecision(VectorComputationDecision[P, T], ABC, Ge
             permission_request=permission_request,
             transaction_request=transaction_request,
         )
-        
-    @classmethod
-    def do_nothing(cls) -> Self:
-        return cls(permission=Permission.DO_NOTHING)

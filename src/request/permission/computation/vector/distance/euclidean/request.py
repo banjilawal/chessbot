@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from request import DistanceVectorComputationPermissionRequest, EuclideanDistanceRequest
+from request import DistancePermissionRequest, EuclideanDistanceRequest
 
 
 class EuclideanDistancePermissionRequest(
-    DistanceVectorComputationPermissionRequest[EuclideanDistanceRequest]
+    DistancePermissionRequest[EuclideanDistanceRequest]
 ):
     """
      Role:
@@ -49,6 +49,6 @@ class EuclideanDistancePermissionRequest(
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, DistanceVectorComputationPermissionRequest):
+        if isinstance(other, DistancePermissionRequest):
             return self.id == other.id
         return False

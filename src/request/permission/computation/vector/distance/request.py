@@ -16,7 +16,7 @@ from request import DistanceRequest, VectorComputationPermissionRequest
 
 T = TypeVar("T", bound="DistanceRequest")
 
-class DistanceVectorComputationPermissionRequest(
+class DistancePermissionRequest(
     VectorComputationPermissionRequest[T], ABC, Generic[T]
 ):
     """
@@ -47,6 +47,6 @@ class DistanceVectorComputationPermissionRequest(
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, DistanceVectorComputationPermissionRequest):
+        if isinstance(other, DistancePermissionRequest):
             return self.id == other.id
         return False
