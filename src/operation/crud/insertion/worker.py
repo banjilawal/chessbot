@@ -18,12 +18,11 @@ from request import InsertionRequest
 from transit import InsertionPermissionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="InsertionRequest")
-R = TypeVar("R")
+T = TypeVar("T", bound="InsertionRequest")
 
 
 
-class Inserter(CrudWorker[InsertionResult], ABC, Generic[Q, R]):
+class Inserter(CrudWorker[InsertionResult], ABC, Generic[T]):
     """
     Role:
         -   Transaction Worker
@@ -35,7 +34,7 @@ class Inserter(CrudWorker[InsertionResult], ABC, Generic[Q, R]):
         permitter: InsertionPermissionDispatcher
 
     Provides:
-        -   def execute(request: Q) ->R
+        -   def execute(request: T) -> InsertionResult
 
     Super Class:
         CrudOperation
@@ -56,12 +55,12 @@ class Inserter(CrudWorker[InsertionResult], ABC, Generic[Q, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> InsertionResult:
+    def execute(self, request: T) -> InsertionResult:
         """
         Args:
-            request: Q
+            request: T
         Result:
-            R
+            InsertionResult
         Raises:
             InserterException
         """

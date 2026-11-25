@@ -18,10 +18,10 @@ from request import ChainTrimRequest
 from transit import CrudDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="ChainTrimRequest")
+T = TypeVar("T", bound="ChainTrimRequest")
 
 
-class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[Q]):
+class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[T]):
     """
     Role
         -   Process Flow
@@ -30,7 +30,7 @@ class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[Q]):
         1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
-        worker: Inserter[Q]
+        worker: Inserter[T]
         
     Provides:
 
@@ -39,14 +39,14 @@ class ChainTrimDispatcher(CrudDispatcher[TrimResult], ABC, Generic[Q]):
     """
     
     
-    def __init__(self, worker: ChainTrimmer[Q]):
+    def __init__(self, worker: ChainTrimmer[T]):
         """
         Args:
-            worker: ChainTrimmer[Q]
+            worker: ChainTrimmer[T]
         """
         super().__init__(worker=worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> TrimResult:
+    def execute(self, request: T) -> TrimResult:
         pass

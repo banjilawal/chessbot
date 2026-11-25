@@ -18,9 +18,9 @@ from request import RemoveNodeRequest
 from transit import DeletionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="RemoveNodeRequest")
+T = TypeVar("T", bound="RemoveNodeRequest")
 
-class RemoveNodeDispatcher(DeletionDispatcher[Q], ABC, Generic[Q]):
+class RemoveNodeDispatcher(DeletionDispatcher[T], ABC, Generic[T]):
     """
     Role
         -   Process Flow
@@ -29,7 +29,7 @@ class RemoveNodeDispatcher(DeletionDispatcher[Q], ABC, Generic[Q]):
         1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
-        worker: NodeRemover[Q]
+        worker: NodeRemover[T]
         
     Provides:
 
@@ -37,7 +37,7 @@ class RemoveNodeDispatcher(DeletionDispatcher[Q], ABC, Generic[Q]):
         DeletionDispatcher
     """
     
-    def __init__(self, worker: NodeRemover[Q]):
+    def __init__(self, worker: NodeRemover[T]):
         """
         Args:
         """
@@ -45,15 +45,15 @@ class RemoveNodeDispatcher(DeletionDispatcher[Q], ABC, Generic[Q]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> DeletionResult:
+    def execute(self, request: T) -> DeletionResult:
         """
         Send RemoveNodeRequests to a worker.
         
         Args:
-            request: Q
+            request: T
         Result:
             DeletionResult
         Raises:
-            RemoveDispatcherException
+            RemoveNodeDispatcherException
         """
         pass

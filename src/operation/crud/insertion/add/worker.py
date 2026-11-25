@@ -18,10 +18,9 @@ from request import AddNodeRequest
 from util import LoggingLevelRouter
 
 Q = TypeVar("Q", bound="AddNodeRequest")
-R = TypeVar("R")
 
 
-class NodeAdder(Inserter, ABC, Generic[Q]):
+class NodeAdder(Inserter[Q], ABC, Generic[Q]):
     """
     Role:
         -   Transaction Worker

@@ -14,12 +14,12 @@ from typing import List, Optional, cast
 from artifcat import TrimResult
 from domain import VectorNode
 from operation import ChainTrimmer, VectorNodeSearcher
-from request import RemoveVectorNodeRequest, VectorNodeSearchRequest
+from request import VectorNodeSearchRequest
 from transit import VectorNodeSearchPermissionDispatcher
 from util import IdFactory, LoggingLevelRouter
 
 
-class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
+class VectorChainTrimmer(ChainTrimmer[VectorChaimTrimRequest]):
     """
     Role:
         -   Transaction Worker
@@ -62,7 +62,7 @@ class VectorChainTrimmer(ChainTrimmer[RemoveVectorNodeRequest]):
         return cast(VectorNodeSearchPermissionDispatcher, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: RemoveVectorNodeRequest) -> TrimResult[VectorNode]:
+    def execute(self, request: VectorChaimTrimRequest) -> TrimResult:
         """
         Search an VectorChain for context matches.
         

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import TrimResult
 from collection import VectorChain
-from err import VectorChainTrimmerDispatcherException
+from err import VectorChainTrimDispatcherException
 from operation import VectorChainTrimmer
 from request import VectorChainTrimRequest
 from transit import ChainTrimDispatcher
@@ -79,11 +79,11 @@ class VectorChainTrimDispatcher(ChainTrimDispatcher[VectorChainTrimRequest]):
         if result.is_failure:
             # Send the exception chain in the result.
             return TrimResult.failure(
-                VectorChainTrimmerDispatcherException(
+                VectorChainTrimDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorChainTrimmerDispatcherException.MSG,
-                    err_code=VectorChainTrimmerDispatcherException.ERR_CODE,
+                    msg=VectorChainTrimDispatcherException.MSG,
+                    err_code=VectorChainTrimDispatcherException.ERR_CODE,
                     ex=result.exception
                 )
             )

@@ -18,9 +18,9 @@ from request import AddNodeRequest
 from transit import InsertionDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="AddNodeRequest")
+T = TypeVar("T", bound="AddNodeRequest")
 
-class AddNodeDispatcher(InsertionDispatcher[Q], ABC, Generic[Q]):
+class AddNodeDispatcher(InsertionDispatcher[T], ABC, Generic[T]):
     """
     Role
         -   Process Flow
@@ -29,7 +29,7 @@ class AddNodeDispatcher(InsertionDispatcher[Q], ABC, Generic[Q]):
         1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
-        worker: NodeAdder[Q]
+        worker: NodeAdder[T]
         
     Provides:
 
@@ -37,23 +37,24 @@ class AddNodeDispatcher(InsertionDispatcher[Q], ABC, Generic[Q]):
         InsertionDispatcher
     """
     
-    def __init__(self, worker: NodeAdder[Q]):
+    def __init__(self, worker: NodeAdder[T]):
         """
         Args:
+            worker: NodeAdder[T]
         """
         super().__init__(worker=worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> InsertionResult:
+    def execute(self, request: T) -> InsertionResult:
         """
         Send AddNodeRequests to a worker.
         
         Args:
-            request: Q
+            request: T
         Result:
             InsertionResult
         Raises:
-            AddDispatcherException
+            AddNodeDispatcherException
         """
         pass

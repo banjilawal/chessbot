@@ -13,6 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import TransactionResult
+from operation import Worker
 from transit import Dispatcher
 
 T = TypeVar("T", bound="TransactionResult")
@@ -34,18 +35,18 @@ class TransactionDispatcher(Dispatcher[T], ABC, Generic[T]):
     Super Class:
         Dispatcher
     """
-    # _worker: Worker
-    #
-    # def __init__(self, worker: Worker):
-    #     """
-    #     Args:
-    #         worker: Worker
-    #     """
-    #     self._worker = worker
-    #
-    # @property
-    # def worker(self) -> Worker:
-    #     return self._worker
+    _worker: Worker
+
+    def __init__(self, worker: Worker):
+        """
+        Args:
+            worker: Worker
+        """
+        self._worker = worker
+
+    @property
+    def worker(self) -> Worker:
+        return self._worker
     #
     # @LoggingLevelRouter.monitor
     # def execute(self, request: Q) -> R:

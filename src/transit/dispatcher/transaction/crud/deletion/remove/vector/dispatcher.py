@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import DeletionResult
+from domain import VectorNode
 from err import VectorNodeRemoverDispatcherException
 from operation import VectorNodeRemover
 from request import RemoveVectorNodeRequest
@@ -86,5 +87,9 @@ class RemoveVectorNodeDispatcher(RemoveNodeDispatcher[RemoveVectorNodeRequest]):
                     ex=result.exception
                 )
             )
+        # Handle the case that deletion target does not exist.
+        if result.is_nothing_to_delete:
+            return DeletionResult.nothing_to_delete()
         # --- Forward the work product to the caller. ---#
-        return DeletionResult.success()
+        node = cast(VectorNode, result.payload)
+        return DeletionResult.success(node)

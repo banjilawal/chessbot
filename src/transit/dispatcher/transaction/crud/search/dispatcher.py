@@ -18,10 +18,10 @@ from request import SearchRequest
 from transit import CrudDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="SearchRequest")
+T = TypeVar("T", bound="SearchRequest")
 # R = TypeVar("R", bound="SearchResult")
 
-class SearchDispatcher(CrudDispatcher[SearchResult], ABC, Generic[Q]):
+class SearchDispatcher(CrudDispatcher[SearchResult], ABC, Generic[T]):
     """
     Role
         -   Performance Management
@@ -30,19 +30,19 @@ class SearchDispatcher(CrudDispatcher[SearchResult], ABC, Generic[Q]):
         1.  Distribute requests among workers then send the result to the correct client
 
     Attributes:
-        worker: Searcher[Q]
+        worker: Searcher[T]
 
     Provides:
-        -   def  execute(self, request: Q) -> R
+        -   def  execute(self, request: T) -> R
 
     Super Class:
         CrudDispatcher
     """
     
-    def __init__(self, worker: Searcher[Q]):
+    def __init__(self, worker: Searcher[T]):
         """
         Args:
-            worker: Searcher[Q]
+            worker: Searcher[T]
         """
         super().__init__(worker=worker)
         
@@ -51,12 +51,12 @@ class SearchDispatcher(CrudDispatcher[SearchResult], ABC, Generic[Q]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> SearchResult:
+    def execute(self, request: T) -> SearchResult:
         """
         Distribute SearchRequests among workers then forward the results.
 
         Args:
-            request: Q
+            request: T
         Returns:
             R
         Raises:

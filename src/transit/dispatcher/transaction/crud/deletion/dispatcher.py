@@ -1,7 +1,7 @@
-# src/transit/dispatcher/crud/inserter/dispatcher.py
+# src/transit/dispatcher/crud/deleteer/dispatcher.py
 
 """
-Module: transit.dispatcher.crud.inserter.dispatcher
+Module: transit.dispatcher.crud.deleteer.dispatcher
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,15 +13,15 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import DeletionResult
-from operation import Deleter, Inserter
+from operation import Deleter
 from request import DeletionRequest
 from transit import CrudDispatcher
 from util import LoggingLevelRouter
 
-Q = TypeVar("Q", bound="DeletionRequest")
+T = TypeVar("T", bound="DeletionRequest")
 
 
-class DeletionDispatcher(CrudDispatcher[DeletionResult], ABC, Generic[Q]):
+class DeletionDispatcher(CrudDispatcher[DeletionResult], ABC, Generic[T]):
     """
     Role
         -   Process Flow
@@ -30,7 +30,7 @@ class DeletionDispatcher(CrudDispatcher[DeletionResult], ABC, Generic[Q]):
         1.  Distribute jobs between worker then forward the results to clients.
 
     Attributes:
-        worker: Inserter[Q]
+        worker: Deleter[T]
         
     Provides:
 
@@ -39,14 +39,14 @@ class DeletionDispatcher(CrudDispatcher[DeletionResult], ABC, Generic[Q]):
     """
     
     
-    def __init__(self, worker: Deleter[Q]):
+    def __init__(self, worker: Deleter[T]):
         """
         Args:
-            worker: Deleter[Q]
+            worker: Deleter[T]
         """
         super().__init__(worker=worker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Q) -> DeletionResult:
+    def execute(self, request: T) -> DeletionResult:
         pass

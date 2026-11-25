@@ -29,31 +29,31 @@ class CrudDispatcher(TransactionDispatcher[T], ABC, Generic[T]):
         worker: CrudWorker[Q, R]
 
     Provides:
-        -   def  execute(self, request: Q) -> R
+        -   def  execute(self, request: T) -> R
 
     Super Class:
         TransactionDispatcher
     """
     
-    # def __init__(self, worker: CrudWorker[Q]):
+    # def __init__(self, worker: CrudWorker[T]):
     #     """
     #     Args:
-    #         worker: CrudWorker[Q]
+    #         worker: CrudWorker[T]
     #     """
     #     super().__init__(worker=worker)
     #
     # @property
-    # def worker(self) -> CrudWorker[Q]:
-    #     return cast(CrudWorker[Q], super().worker)
+    # def worker(self) -> CrudWorker[T]:
+    #     return cast(CrudWorker[T], super().worker)
     #
     # @abstractmethod
     # @LoggingLevelRouter.monitor
-    # def execute(self, request: Q) -> R:
+    # def execute(self, request: T) -> R:
     #     """
     #     Distribute CrudRequests among workers then forward the results.
     #
     #     Args:
-    #         request: Q
+    #         request: T
     #     Returns:
     #         R
     #     Raises:
