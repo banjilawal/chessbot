@@ -17,9 +17,9 @@ from request import (
 )
 
 P = TypeVar("P", bound="DevelopedTopologyPermissionRequest")
-T = TypeVar("Q", bound="DevelopedTopologyRequest")
+T = TypeVar("T", bound="DevelopedTopologyRequest")
 
-class DevelopedPawnTopologyDecision(PawnTopologyDecision[P, Q], Generic[P, Q]):
+class DevelopedPawnTopologyDecision(PawnTopologyDecision[P, T], Generic[P, T]):
     """
     Role:
         - Permission Reporting
@@ -28,8 +28,8 @@ class DevelopedPawnTopologyDecision(PawnTopologyDecision[P, Q], Generic[P, Q]):
         1.  Report if a TopologyComputation transaction is permitted.
 
     Attributes:
-        transaction_request: PawnTopologyRequest
-        permission_request: PawnTopologyPermissionRequest
+        transaction_request: T
+        permission_request: P
         
     Provides:
 
@@ -42,7 +42,7 @@ class DevelopedPawnTopologyDecision(PawnTopologyDecision[P, Q], Generic[P, Q]):
             permission: Permission,
             exception: Optional[Exception] | None = None,
             permission_request: Optional[P] | None = None,
-            transaction_request: Optional[Q] | None = None,
+            transaction_request: Optional[T] | None = None,
     ):
         """
         Args:

@@ -1,7 +1,7 @@
-# src/artifact/decision/computation/topology/offset/pawn/developed/decision.py
+# src/artifact/decision/computation/topology/offset/pawn/decision.py
 
 """
-Module: artifact.decision.computation.topology.offset.pawn.developed.decision
+Module: artifact.decision.computation.topology.offset.pawn.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Generic, Optional, TypeVar
 
 from artifcat import OffsetTopologyDecision, Permission
 from request import PawnTopologyPermissionRequest, PawnTopologyRequest
 
-class PawnTopologyDecision(
-    OffsetTopologyDecision[PawnTopologyPermissionRequest, PawnTopologyRequest]
-):
+P = TypeVar("P", bound="PawnTopologyPermissionRequest")
+T = TypeVar("T", bound="PawnTopologyRequest")
+
+class PawnTopologyDecision(OffsetTopologyDecision[P, T], Generic[P,T]):
     """
     Role:
         - Permission Reporting
@@ -38,8 +39,8 @@ class PawnTopologyDecision(
             self,
             permission: Permission,
             exception: Optional[Exception] | None = None,
-            permission_request: Optional[PawnTopologyPermissionRequest] | None = None,
-            transaction_request: Optional[PawnTopologyRequest] | None = None,
+            permission_request: Optional[P] | None = None,
+            transaction_request: Optional[T] | None = None,
     ):
         """
         Args:

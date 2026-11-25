@@ -5,43 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/king/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/knight/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/attack/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver/decision.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/king/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/knight/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/attack/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/attack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/attack/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/maneuver/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/bishop/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/bishop/decision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/decision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/queen/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/queen/decision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/rook/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/rook/decision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/permission/computation/topology/offset/pawn/developed/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/permission/computation/topology/offset/pawn/developed/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/attack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/attack/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/maneuver/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/maneuver/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/topology/offset/pawn/developed/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/decision.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000000113" />
-      <entry key="MS500" value="1.0017166600029224" />
-      <entry key="S2" value="1.3097196753268272" />
-      <entry key="S5" value="2.087285304579771" />
-      <entry key="S10" value="2.839154702960168" />
-      <entry key="S30" value="4.973204837018934" />
-      <entry key="S60" value="8.276408764367478" />
-      <entry key="M2" value="14.539809823620242" />
-      <entry key="M5" value="30.215047069037947" />
-      <entry key="M10" value="54.05012028753312" />
-      <entry key="M15" value="77.96509062482694" />
-      <entry key="M30" value="139.8854668826351" />
-      <entry key="H1" value="230.45243014740478" />
-      <entry key="H2" value="388.1779641160727" />
-      <entry key="H4" value="647.8320121334469" />
-      <entry key="D1" value="3402.1958863596037" />
-      <entry key="W1" value="18579.80092614592" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.000000029800804" />
+      <entry key="S10" value="1.0002835044363783" />
+      <entry key="S30" value="1.1564053187970096" />
+      <entry key="S60" value="1.7850538025708151" />
+      <entry key="M2" value="2.7687416419756463" />
+      <entry key="M5" value="3.884754837042388" />
+      <entry key="M10" value="4.45036839035813" />
+      <entry key="M15" value="5.464555997434896" />
+      <entry key="M30" value="21.571740497231417" />
+      <entry key="H1" value="92.17414212135454" />
+      <entry key="H2" value="255.68224812906385" />
+      <entry key="H4" value="540.8023167204052" />
+      <entry key="D1" value="3317.7329281884477" />
+      <entry key="W1" value="18536.944482303163" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="4.1288303286239183E-106" />
-      <entry key="S5" value="7.377496102180752E-43" />
-      <entry key="S10" value="1.0272998208528369E-21" />
-      <entry key="S30" value="1.5541397020102473E-7" />
-      <entry key="S60" value="6.573951512804409E-4" />
-      <entry key="M2" value="0.05345904450432147" />
-      <entry key="M5" value="0.8724552816267486" />
-      <entry key="M10" value="2.4117413494314346" />
-      <entry key="M15" value="3.6676152173485015" />
-      <entry key="M30" value="6.463592986517857" />
-      <entry key="H1" value="9.680370567649472" />
-      <entry key="H2" value="13.45458336053229" />
-      <entry key="H4" value="19.266535719281922" />
-      <entry key="D1" value="141.43282457964403" />
-      <entry key="W1" value="929.6343765133204" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="1.863647658831196E-230" />
+      <entry key="S30" value="4.083622489918813E-77" />
+      <entry key="S60" value="1.0656246609695881E-38" />
+      <entry key="M2" value="2.1523360266510515E-19" />
+      <entry key="M5" value="9.609454378779269E-8" />
+      <entry key="M10" value="8.00402628250888E-4" />
+      <entry key="M15" value="0.01758067789496846" />
+      <entry key="M30" value="0.4475070963799047" />
+      <entry key="H1" value="2.5471524884603083" />
+      <entry key="H2" value="6.9016309907918805" />
+      <entry key="H4" value="13.79889699175103" />
+      <entry key="D1" value="133.77973713866027" />
+      <entry key="W1" value="922.2756955935281" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9330329915368174" />
-      <entry key="MS500" value="0.9878236351553801" />
-      <entry key="S2" value="1.252037670227963" />
-      <entry key="S5" value="1.9499329061397792" />
-      <entry key="S10" value="2.6925631810785102" />
-      <entry key="S30" value="4.83843133663341" />
-      <entry key="S60" value="8.144515290651139" />
-      <entry key="M2" value="14.460635613813293" />
-      <entry key="M5" value="30.951288611367364" />
-      <entry key="M10" value="56.34827530633069" />
-      <entry key="M15" value="81.53899401524875" />
-      <entry key="M30" value="146.28755732085753" />
-      <entry key="H1" value="240.09491908767157" />
-      <entry key="H2" value="401.60757714566887" />
-      <entry key="H4" value="667.0796948470352" />
-      <entry key="D1" value="3543.6081200293243" />
-      <entry key="W1" value="19509.417841210823" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="5.778435987594565E-74" />
+      <entry key="S2" value="4.983771805678423E-19" />
+      <entry key="S5" value="6.237705807504242E-8" />
+      <entry key="S10" value="4.35721636036163E-4" />
+      <entry key="S30" value="0.20701507924632642" />
+      <entry key="S60" value="1.0084215642039716" />
+      <entry key="M2" value="2.2405199351747362" />
+      <entry key="M5" value="3.6248896551354295" />
+      <entry key="M10" value="4.311379546756489" />
+      <entry key="M15" value="5.386173702463105" />
+      <entry key="M30" value="21.96592196837663" />
+      <entry key="H1" value="94.68632853488909" />
+      <entry key="H2" value="262.55839359266383" />
+      <entry key="H4" value="554.5813126977677" />
+      <entry key="D1" value="3451.4921119402597" />
+      <entry key="W1" value="19459.20270057293" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -155,40 +120,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.checker.executor": "Run",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.request.executor": "Run",
-    "Python.responder.executor": "Run",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "Python.table.executor": "Debug",
-    "Python.validator (1).executor": "Run",
-    "Python.worker.executor": "Coverage",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/decision/computation/topology/offset/pawn/developed",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.request.executor&quot;: &quot;Run&quot;,
+    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.worker.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/artifcat/decision/computation/topology/offset/pawn/developed&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed" />
@@ -1018,7 +983,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="422631000" />
+      <workItem from="1794227184139" duration="423082000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

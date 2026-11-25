@@ -13,8 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from request import (
-    OpeningPawnTopologyRequest, OffsetTopologyPermissionRequest, PawnTopologyPermissionRequest,
-    PawnTopologyRequest
+    OpeningPawnTopologyRequest, PawnTopologyPermissionRequest,
 )
 
 T = TypeVar("T", bound="OpeningPawnTopologyRequest")

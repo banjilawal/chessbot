@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from request import OpeningAttackTopologyRequest, OpeningTopologyPermissionRequest
+from request import  OpeningTopologyPermissionRequest
 
 
 class OpeningAttackTopologyPermissionRequest(
