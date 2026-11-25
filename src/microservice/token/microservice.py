@@ -21,10 +21,8 @@ from transit.dispatcher.validator import TokenValidationDispatcher
 class TokenService(Microservice[Token]):
     """
         Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless microservice
+        -   API
+        -   Stateless Microservice
         
     Responsibilities:
         1.  Baremetal service request API for Token operations.

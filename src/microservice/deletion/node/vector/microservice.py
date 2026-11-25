@@ -14,6 +14,7 @@ from typing import Optional, cast
 from artifcat import DeletionResult
 from domain import VectorNode
 from err import VectorNodeDeletionMicroserviceException
+from microservice import DeletionMicroservice
 from request import RemoveVectorNodeRequest
 from transit import RemoveVectorNodeDispatcher
 from util import LoggingLevelRouter
@@ -22,14 +23,8 @@ from util import LoggingLevelRouter
 class VectorNodeDeletionMicroservice(DeletionMicroservice[RemoveVectorNodeRequest]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
-        
-    About:
-        Avoids casting an entity's deletioners and validators by making them abstract
-        properties.
+        -   API
+        -   Stateless Microservice
 
     Responsibilities:
         1.  Baremetal service request API.
@@ -39,6 +34,7 @@ class VectorNodeDeletionMicroservice(DeletionMicroservice[RemoveVectorNodeReques
         dispatcher: Optional[RemoveVectorNodeDispatcher]
 
     Provides:
+        -   def execute(request: RemoveVectorNodeRequest) -> DeletionResult[VectorNode]
 
     Super Class:
         DeletionMicroservice
@@ -65,11 +61,11 @@ class VectorNodeDeletionMicroservice(DeletionMicroservice[RemoveVectorNodeReques
         Handles RemoveVectorNodeRequests.
 
         Action:
-            1.  Send an exception chain in the PushRequest if the request is
+            1.  Send an exception chain in the DeletionResult if the request is
                 not fulfilled.
-            2.  Otherwise, send the Vector in the success result.
+            2.  Otherwise, send the deleted VectorNode in the success result.
         Args:
-            request: VectorSearchRequest
+            request: RemoveVectorNodeRequest
         Result:
             DeletionResult[VectorNode]
         Raises:
@@ -77,8 +73,12 @@ class VectorNodeDeletionMicroservice(DeletionMicroservice[RemoveVectorNodeReques
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # --- Dispatch the request to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that the worker does not fulfil the request.
         if result.is_failure:
+            # Send an exception chain in the result.
             DeletionResult.failure(
                 VectorNodeDeletionMicroserviceException(
                     cls_mthd=method,
@@ -88,7 +88,6 @@ class VectorNodeDeletionMicroservice(DeletionMicroservice[RemoveVectorNodeReques
                     ex=result.exception,
                 )
             )
+        # --- Forward the work product to the client. ---#
         node = cast(VectorNode, result.payload)
         return DeletionResult.success(node)
-    
-    

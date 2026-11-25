@@ -19,13 +19,11 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="SearchRequest")
 
 
-class SearchMicroservice(Microservice[T], ABC, Generic[T]):
+class SearchMicroservice(Microservice[SearchResult], ABC, Generic[T]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's builders and validators by making them abstract
@@ -36,28 +34,36 @@ class SearchMicroservice(Microservice[T], ABC, Generic[T]):
         2.  Maintain the build-validation security lifecycle.
 
     Attributes:
-        id: int
-        controller: Controller[T]
-        name: Optional[str]
+        dispatcher: SearchDispatcher[T]
 
     Provides:
 
     Super Class:
         Microservice
     """
-    _dispatcher: SearchDispatcher
+
     
-    def __init__(self, dispatcher: SearchDispatcher):
+    def __init__(self, dispatcher: SearchDispatcher[T]):
         """
         Args:
-            dispatcher: BuildDispatcher
+            dispatcher: SearchDispatcher[T]
         """
-        self._dispatcher = dispatcher
+        super().__init__(dispatcher=dispatcher)
         
         
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> SearchResult:
+        """
+        Handles SearchRequests
+
+        Args:
+            request: T
+        Result:
+            SearchResult
+        Raises:
+            MicroserviceException
+        """
         pass
     
     

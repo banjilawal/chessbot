@@ -20,10 +20,8 @@ from util import LoggingLevelRouter
 class VectorNodeInsertionMicroservice(InsertionMicroservice[AddVectorNodeRequest]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's insertioners and validators by making them abstract
@@ -37,6 +35,7 @@ class VectorNodeInsertionMicroservice(InsertionMicroservice[AddVectorNodeRequest
         dispatcher: Optional[AddVectorNodeDispatcher]
 
     Provides:
+        -   def execute(request: AddVectorNodeRequest) -> InsertionResult
 
     Super Class:
         InsertionMicroservice
@@ -63,29 +62,34 @@ class VectorNodeInsertionMicroservice(InsertionMicroservice[AddVectorNodeRequest
         Handles AddVectorNodeRequests.
 
         Action:
-            1.  Send an exception chain in the PushRequest if the request is
+            1.  Send an exception chain in the InsertionResult if the request is
                 not fulfilled.
-            2.  Otherwise, send the Vector in the success result.
+            2.  Otherwise, send the success result.
         Args:
-            request: VectorSearchRequest
+            request: AddVectorNodeRequest
         Result:
-            InsertionResult[Vector]
+            InsertionResult
         Raises:
             VectorInsertionMicroserviceException
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # --- Dispatch the request to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that the worker does not fulfil the request.
         if result.is_failure:
+            # Send an exception chain in the result.
             InsertionResult.failure(
-                VectorInsertionMicroserviceException(
+                VectorNodeInsertionMicroserviceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorInsertionMicroserviceException.MSG,
-                    err_code=VectorInsertionMicroserviceException.ERR_CODE,
+                    msg=VectorNodeInsertionMicroserviceException.MSG,
+                    err_code=VectorNodeInsertionMicroserviceException.ERR_CODE,
                     ex=result.exception,
                 )
             )
+        # --- Forward the work product to the client. ---#
         return InsertionResult.success()
     
     

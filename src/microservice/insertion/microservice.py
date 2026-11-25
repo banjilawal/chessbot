@@ -22,10 +22,8 @@ T = TypeVar("T", bound="InsertionRequest")
 class InsertionMicroservice(Microservice[T], ABC, Generic[T]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's builders and validators by making them abstract

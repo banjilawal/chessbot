@@ -11,9 +11,7 @@ version: 0.0.2
 # =========== MICROSERVICE.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .addition import *
-from .distance import *
-from .multiplication import *
+from .vector import *
 
 # Modules
 from .microservice import ComputationMicroservice

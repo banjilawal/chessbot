@@ -20,10 +20,8 @@ from util import LoggingLevelRouter
 class AccountInsertionMicroservice(InsertionMicroservice[AccountPushRequest]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's insertioners and validators by making them abstract
@@ -37,6 +35,7 @@ class AccountInsertionMicroservice(InsertionMicroservice[AccountPushRequest]):
         dispatcher: Optional[AccountPushDispatcher]
 
     Provides:
+        -   def execute(request: AccountPushRequest) -> InsertionResult
 
     Super Class:
         InsertionMicroservice
@@ -58,7 +57,7 @@ class AccountInsertionMicroservice(InsertionMicroservice[AccountPushRequest]):
         return cast(AccountPushDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AccountPushRequest) -> InsertionResult[Account]:
+    def execute(self, request: AccountPushRequest) -> InsertionResult:
         """
         Handles AccountPushRequests.
 
@@ -67,16 +66,20 @@ class AccountInsertionMicroservice(InsertionMicroservice[AccountPushRequest]):
                 not fulfilled.
             2.  Otherwise, send the Account in the success result.
         Args:
-            request: AccountSearchRequest
+            request: AccountPushRequest
         Result:
-            InsertionResult[Account]
+            InsertionResult
         Raises:
             AccountInsertionMicroserviceException
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # --- Dispatch the request to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that the worker does not fulfil the request.
         if result.is_failure:
+            # Send an exception chain in the result.
             InsertionResult.failure(
                 AccountInsertionMicroserviceException(
                     cls_mthd=method,
@@ -86,6 +89,7 @@ class AccountInsertionMicroservice(InsertionMicroservice[AccountPushRequest]):
                     ex=result.exception,
                 )
             )
+        # --- Forward the work product to the client. ---#
         return InsertionResult.success()
     
     

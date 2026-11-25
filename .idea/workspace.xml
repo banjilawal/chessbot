@@ -5,9 +5,124 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/chain/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/chain/vector/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/chain/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/chain/controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/microservice/computation/vector/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/arena/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/attack/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/binder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/binder/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/binder/board/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/board/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/formation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/formation/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/persona/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/persona/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/properties/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/properties/reporter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/addition/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/addition/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/addition/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/addition/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/distance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/distance/euclidean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/distance/euclidean/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/distance/euclidean/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/distance/euclidean/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/distance/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/distance/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/multiplication/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/multiplication/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/multiplication/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/multiplication/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/context/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/context/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/compute.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/deletion/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/deletion/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/deletion/node/vector/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/deletion/node/vector/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/edge/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/fabrication/account/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/fabrication/account/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/fabrication/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/fabrication/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/unique/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/unique/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/unique/service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/identity/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/identity/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/insertion/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/insertion/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/insertion/model/account/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/insertion/model/account/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/insertion/node/vector/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/insertion/node/vector/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/node/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/exception/anchor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/exception/owner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/rank/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/rank/exception/anchor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/rank/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/scalar/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/scalar/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/scalar/exception/anchor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/scalar/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/model/account/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/model/account/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/node/vector/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/node/vector/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/snapshot/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/exception/anchor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/exception/debug.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/operation/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/deploy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/deploy/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/deploy/exception/wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/deploy/processor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/trim/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/trim/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/trim/vector/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/trim/vector/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/microservice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/arithmetic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/arithmetic/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/arithmetic/service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/controller.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,61 +168,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.7459925494506392E-7" />
-      <entry key="MS500" value="0.061070703181924646" />
-      <entry key="S2" value="0.8200354991316682" />
-      <entry key="S5" value="1.610789378112418" />
-      <entry key="S10" value="2.936754226208038" />
-      <entry key="S30" value="8.381959108358316" />
-      <entry key="S60" value="15.651290206801194" />
-      <entry key="M2" value="27.008946798054346" />
-      <entry key="M5" value="45.89115760200125" />
-      <entry key="M10" value="66.96576657151357" />
-      <entry key="M15" value="93.7698136605137" />
-      <entry key="M30" value="185.02541023061434" />
-      <entry key="H1" value="347.9282782452936" />
-      <entry key="H2" value="616.4716359569283" />
-      <entry key="H4" value="1040.78174362236" />
-      <entry key="D1" value="4442.231088647077" />
-      <entry key="W1" value="18985.78381128614" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000072113359464" />
+      <entry key="S5" value="1.0090244460844084" />
+      <entry key="S10" value="1.1108799559959222" />
+      <entry key="S30" value="2.005632307161328" />
+      <entry key="S60" value="3.5928184133848866" />
+      <entry key="M2" value="6.532663681707443" />
+      <entry key="M5" value="14.443003861600202" />
+      <entry key="M10" value="23.94933546052191" />
+      <entry key="M15" value="30.922135098364926" />
+      <entry key="M30" value="46.10399102000829" />
+      <entry key="H1" value="63.59474812098602" />
+      <entry key="H2" value="81.31668122472125" />
+      <entry key="H4" value="160.03900383194926" />
+      <entry key="D1" value="2967.8837674812116" />
+      <entry key="W1" value="17991.949250465746" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000131917912491" />
-      <entry key="S2" value="1.0602807905019327" />
-      <entry key="S5" value="1.3397664184583329" />
-      <entry key="S10" value="1.7680962560668272" />
-      <entry key="S30" value="3.794439765568898" />
-      <entry key="S60" value="6.526983908002214" />
-      <entry key="M2" value="10.368672634867336" />
-      <entry key="M5" value="15.705902383461634" />
-      <entry key="M10" value="18.854296964140115" />
-      <entry key="M15" value="20.46284952451005" />
-      <entry key="M30" value="24.042280054275412" />
-      <entry key="H1" value="30.232966024987885" />
-      <entry key="H2" value="41.1150404548795" />
-      <entry key="H4" value="59.714875206772035" />
-      <entry key="D1" value="220.48217057175964" />
-      <entry key="W1" value="984.9264138147969" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="4.6487210404855606E-145" />
+      <entry key="S10" value="9.559109665531843E-73" />
+      <entry key="S30" value="1.56066248339832E-24" />
+      <entry key="S60" value="1.7662933448267131E-12" />
+      <entry key="M2" value="1.8794022287618873E-6" />
+      <entry key="M5" value="0.007767339341226513" />
+      <entry key="M10" value="0.1265730403016794" />
+      <entry key="M15" value="0.3390722360903281" />
+      <entry key="M30" value="1.1073173738249982" />
+      <entry key="H1" value="2.3812557227015523" />
+      <entry key="H2" value="3.887453796806184" />
+      <entry key="H4" value="8.816030073269753" />
+      <entry key="D1" value="149.14144517939357" />
+      <entry key="W1" value="935.2516102749963" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.0257563636277672E-7" />
-      <entry key="MS500" value="0.0721677209913408" />
-      <entry key="S2" value="1.124292906900319" />
-      <entry key="S5" value="2.3810275406061003" />
-      <entry key="S10" value="4.211621673576525" />
-      <entry key="S30" value="11.717733457629473" />
-      <entry key="S60" value="21.752995055728217" />
-      <entry key="M2" value="37.022803493955045" />
-      <entry key="M5" value="61.36446423291869" />
-      <entry key="M10" value="85.67188681940499" />
-      <entry key="M15" value="114.12128554346485" />
-      <entry key="M30" value="208.99823562192302" />
-      <entry key="H1" value="378.114195101566" />
-      <entry key="H2" value="657.5493524373454" />
-      <entry key="H4" value="1100.463849006393" />
-      <entry key="D1" value="4662.683930776607" />
-      <entry key="W1" value="19970.692084593673" />
+      <entry key="MS100" value="2.168944787627762E-14" />
+      <entry key="MS500" value="0.0018503321691391936" />
+      <entry key="S2" value="0.20740432811491222" />
+      <entry key="S5" value="0.5388811109982122" />
+      <entry key="S10" value="0.8161910616227415" />
+      <entry key="S30" value="1.8271187087535181" />
+      <entry key="S60" value="3.4559021455815286" />
+      <entry key="M2" value="6.422607602672454" />
+      <entry key="M5" value="14.363189700476212" />
+      <entry key="M10" value="24.00791195381204" />
+      <entry key="M15" value="31.204935118551347" />
+      <entry key="M30" value="47.172734809445366" />
+      <entry key="H1" value="65.95140188589866" />
+      <entry key="H2" value="85.18947236597833" />
+      <entry key="H4" value="168.84460002771434" />
+      <entry key="D1" value="3117.0045537239926" />
+      <entry key="W1" value="18927.183500087453" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -143,7 +258,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/controller/chain/vector",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/microservice/computation/vector",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -157,18 +272,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/microservice/computation/vector" />
       <recent name="$PROJECT_DIR$/src/controller/chain/vector" />
       <recent name="$PROJECT_DIR$/src/request/transaction/crud" />
       <recent name="$PROJECT_DIR$/src/microservice" />
       <recent name="$PROJECT_DIR$/src/microservice/search" />
-      <recent name="$PROJECT_DIR$/src/microservice/insertion" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/microservice/computation/vector" />
       <recent name="$PROJECT_DIR$/src/microservice/trim" />
       <recent name="$PROJECT_DIR$/src/microservice/search/model" />
       <recent name="$PROJECT_DIR$/src/microservice/insertion/model" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/crud/trim" />
-      <recent name="$PROJECT_DIR$/src/operation/crud/trim" />
     </key>
   </component>
   <component name="RunManager" selected="Python.request">
@@ -984,7 +1099,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="393682000" />
+      <workItem from="1794227184139" duration="406364000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3257,6 +3372,11 @@
           <url>file://$PROJECT_DIR$/src/artifcat/result/transaction/crud/trim/result.py</url>
           <line>130</line>
           <option name="timeStamp" value="744" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/microservice/computation/__init__.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="745" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -22,13 +22,11 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="DeletionRequest")
 
 
-class DeletionMicroservice(Microservice[T], ABC, Generic[T]):
+class DeletionMicroservice(Microservice[DeletionResult], ABC, Generic[T]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's builders and validators by making them abstract
@@ -39,26 +37,35 @@ class DeletionMicroservice(Microservice[T], ABC, Generic[T]):
         2.  Maintain the build-validation security lifecycle.
 
     Attributes:
-        id: int
-        controller: Controller[T]
-        name: Optional[str]
+        dispatcher: DeletionDispatcher[T]
 
     Provides:
+        -   def execute(request: T) -> DeletionResult
 
     Super Class:
         Microservice
     """
     
-    def __init__(self, dispatcher: DeletionDispatcher):
+    def __init__(self, dispatcher: DeletionDispatcher[T]):
         """
         Args:
-            dispatcher: DeletionDispatcher
+            dispatcher: DeletionDispatcher[T]
         """
         super().__init__(dispatcher=dispatcher)
         
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> DeletionResult:
+        """
+        Handles DeletionRequests.
+
+        Args:
+            request: T
+        Result:
+            DeletionResult
+        Raises:
+            DeletionMicroserviceException
+        """
         pass
     
     

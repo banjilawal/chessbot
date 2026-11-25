@@ -23,10 +23,8 @@ from util import LoggingLevelRouter
 class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's searchers and validators by making them abstract
@@ -68,7 +66,7 @@ class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
         Action:
             1.  Send an exception chain in the SearchRequest if the request is
                 not fulfilled.
-            2.  Otherwise, send the Vector in the success result.
+            2.  Otherwise, send the VectorNode in the success result.
         Args:
             request: VectorNodeSearchRequest
         Result:
@@ -78,8 +76,12 @@ class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # --- Dispatch the request to a worker. ---#
         result = self.dispatcher.execute(request)
+        
+        # Handle the case that the worker does not fulfil the request.
         if result.is_failure:
+            # Send an exception chain in the result.
             SearchResult.failure(
                 VectorNodeSearchMicroserviceException(
                     cls_mthd=method,
@@ -89,9 +91,9 @@ class VectorNodeSearchMicroservice(SearchMicroservice[VectorNodeSearchRequest]):
                     ex=result.exception,
                 )
             )
+        # Handle the case that no matches were found.
         if result.is_empty:
             return SearchResult.empty()
+        # --- Forward the work product to the client. ---#
         matches = cast(List[VectorNode], result.payload)
         return SearchResult.success(matches)
-    
-    

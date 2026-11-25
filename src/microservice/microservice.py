@@ -8,10 +8,9 @@ version: 0.0.2
 """
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import Result
-from controller import Controller
 from transit import Dispatcher
 
 T = TypeVar("T", bound="Result")
@@ -20,10 +19,8 @@ T = TypeVar("T", bound="Result")
 class Microservice(ABC, Generic[T]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
+        -   API
+        -   Stateless Microservice
         
     About:
         Avoids casting an entity's builders and validators by making them abstract
@@ -34,9 +31,7 @@ class Microservice(ABC, Generic[T]):
         2.  Maintain the build-validation security lifecycle.
 
     Attributes:
-        id: int
-        controller: Controller[T]
-        name: Optional[str]
+        dispatcher: Dispatcher
 
     Provides:
 
@@ -44,55 +39,13 @@ class Microservice(ABC, Generic[T]):
     """
     _dispatcher: Dispatcher
     
-    NAME = "microservice"
-    _id: int
-    _name: str
-    _controller: Controller[T]
-    
-    def __init__(
-            self,
-            id: int,
-            controller: Controller[T],
-            dispatcher: Dispatcher,
-            name: Optional[str] | None = None,
-    ):
+    def __init__(self, dispatcher: Dispatcher):
         """
         Args:
-            id: int
             dispatcher: Dispatcher
-            controller: Controller[T]
-            name: Optional[str]
         """
-        self._id = id
-        self._name = name or self.NAME
-        self._controller = controller
         self._dispatcher = dispatcher
-        
-    @property
-    def id(self) -> int:
-        return self._id
-    
-    @property
-    def name(self) -> str:
-        return self._name
-    
-    @property
-    def controller(self) -> Controller[T]:
-        return self._controller
     
     @property
     def dispatcher(self) -> Dispatcher:
         return self._dispatcher
-
-    
-    def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, Microservice):
-                return True
-        return False
-
-    def __hash__(self):
-        return hash(self._id)
-    
-    def __str__(self):
-        return f"id:{self._id}, name:{self._name}"

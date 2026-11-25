@@ -22,10 +22,8 @@ from util import IdFactory, LoggingLevelRouter
 class IdentityService:
     """
         Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless microservice
+        -   API
+        -   Stateless Microservice
 
     Responsibilities:
         1.  Bundles id, name verification, 

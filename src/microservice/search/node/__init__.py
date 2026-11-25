@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# ============= MICROSERVICE.SEARCH.NODEPACKAGE ===========#
+# ============= MICROSERVICE.SEARCH.NODE PACKAGE ===========#
 
 # Packages
 from .vector import *

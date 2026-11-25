@@ -16,52 +16,49 @@ from request import ComputationRequest
 from transit import ComputationDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", bound="ComputationRequest")
 
 
 class ComputationMicroservice(Microservice[ComputationResult], ABC, Generic[T]):
     """
     Role:
-        - API
-        - Lifecycle Manager
-        - Operations Provider
-        - Stateless Microservice
-        
-    About:
-        Avoids casting an entity's computationers and validators by making them abstract
-        properties.
+        -   API
+        -   Stateless Microservice
 
     Responsibilities:
         1.  Baremetal service request API.
         2.  Maintain the computation-validation security lifecycle.
 
     Attributes:
-        id: int
-        controller: Controller[T]
-        name: Optional[str]
+        dispatcher: ComputationDispatcher[T]
 
     Provides:
+        -   def execute(self, request: T) -> ComputationResult
 
     Super Class:
         Microservice
     """
-    _dispatcher: ComputationDispatcher
     
-    def __init__(self, dispatcher: ComputationDispatcher):
+    def __init__(self, dispatcher: ComputationDispatcher[T]):
         """
         Args:
-            dispatcher: ComputationDispatcher
+            dispatcher: ComputationDispatcher[T]
         """
-        super().__init__()
-        self._dispatcher = dispatcher
-        
-    @property
-    def dispatcher(self) -> ComputationDispatcher:
-        return self._dispatcher
+        super().__init__(dispatcher=dispatcher)
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ComputationRequest[T]) -> ComputationResult:
+    def execute(self, request: T) -> ComputationResult:
+        """
+        Handles ComputationRequests.
+
+        Args:
+            request: T
+        Result:
+            ComputationResult
+        Raises:
+            ComputationMicroserviceException
+        """
         pass
     
     
