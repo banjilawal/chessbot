@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .sequence import *
+from .topology import *
 from .vector import *
 
 # Modules

@@ -11,6 +11,7 @@ version: 0.0.2
 # =========== MICROSERVICE.COMPUTATION PACKAGE ===========#
 
 # Packages
+from .sequence import *
 from .vector import *
 
 # Modules

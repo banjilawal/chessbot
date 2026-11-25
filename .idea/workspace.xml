@@ -4,7 +4,41 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/decision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/king/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/knight/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/attack/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/attack/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/maneuver/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/opening/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/bishop/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/queen/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/traversal/rook/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/computation/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,61 +83,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4832863277723742" />
-      <entry key="MS500" value="3.2027339838113327" />
-      <entry key="S2" value="9.89590345069384" />
-      <entry key="S5" value="19.351216972173038" />
-      <entry key="S10" value="28.208386990303577" />
-      <entry key="S30" value="40.5277910341303" />
-      <entry key="S60" value="45.75734277540376" />
-      <entry key="M2" value="50.054534824115464" />
-      <entry key="M5" value="55.35024189344289" />
-      <entry key="M10" value="58.697510298969085" />
-      <entry key="M15" value="60.50764070023025" />
-      <entry key="M30" value="71.73445108789448" />
-      <entry key="H1" value="128.18133793637827" />
-      <entry key="H2" value="277.3295979883571" />
-      <entry key="H4" value="518.7634092429887" />
-      <entry key="D1" value="3272.033422152665" />
-      <entry key="W1" value="18415.975161528277" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000261901578" />
+      <entry key="S10" value="1.0001618350344434" />
+      <entry key="S30" value="1.0695945564449967" />
+      <entry key="S60" value="2.1569663790211857" />
+      <entry key="M2" value="8.989088052424066" />
+      <entry key="M5" value="30.031211468124027" />
+      <entry key="M10" value="50.1940791798454" />
+      <entry key="M15" value="63.794809327584275" />
+      <entry key="M30" value="91.9833354092524" />
+      <entry key="H1" value="149.4968207750797" />
+      <entry key="H2" value="291.5872134315636" />
+      <entry key="H4" value="535.0923310626395" />
+      <entry key="D1" value="3283.73726062838" />
+      <entry key="W1" value="18439.827600981713" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="8.63093615721154E-264" />
-      <entry key="S30" value="2.0512534595827842E-88" />
-      <entry key="S60" value="1.432565094351565E-44" />
-      <entry key="M2" value="1.216546564325559E-22" />
-      <entry key="M5" value="2.1892622921302908E-9" />
-      <entry key="M10" value="7.735093370414004E-5" />
-      <entry key="M15" value="0.0027532455671429126" />
-      <entry key="M30" value="0.10723840067099369" />
-      <entry key="H1" value="0.838107669055265" />
-      <entry key="H2" value="3.1016878380420545" />
-      <entry key="H4" value="8.151101219886172" />
-      <entry key="D1" value="133.3095338226449" />
-      <entry key="W1" value="921.3005309267442" />
+      <entry key="MS500" value="6.7906848106347E-75" />
+      <entry key="S2" value="4.555882149798025E-19" />
+      <entry key="S5" value="6.946333830603499E-8" />
+      <entry key="S10" value="3.7239838109729274E-4" />
+      <entry key="S30" value="0.11534961042036457" />
+      <entry key="S60" value="0.5265547223825917" />
+      <entry key="M2" value="1.3153546190258771" />
+      <entry key="M5" value="2.8047696355731264" />
+      <entry key="M10" value="3.9499664270029955" />
+      <entry key="M15" value="4.498553048285727" />
+      <entry key="M30" value="5.211712757749381" />
+      <entry key="H1" value="6.087703536794475" />
+      <entry key="H2" value="8.231025950011155" />
+      <entry key="H4" value="13.139091520854048" />
+      <entry key="D1" value="136.72190468347173" />
+      <entry key="W1" value="924.7408371408782" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2475567380302308" />
-      <entry key="MS500" value="3.0860298651962856" />
-      <entry key="S2" value="9.807786712823807" />
-      <entry key="S5" value="19.283820009927194" />
-      <entry key="S10" value="28.15985772716484" />
-      <entry key="S30" value="40.50479351861649" />
-      <entry key="S60" value="45.74332748712919" />
-      <entry key="M2" value="50.043551668365865" />
-      <entry key="M5" value="55.34026945617391" />
-      <entry key="M10" value="58.68977422997885" />
-      <entry key="M15" value="60.504173981134535" />
-      <entry key="M30" value="71.83738498208017" />
-      <entry key="H1" value="129.01433727108858" />
-      <entry key="H2" value="280.42247816341745" />
-      <entry key="H4" value="526.9034388585355" />
-      <entry key="D1" value="3405.323267309012" />
-      <entry key="W1" value="19337.258376346286" />
+      <entry key="MS100" value="0.9265880618903709" />
+      <entry key="MS500" value="0.9848664428955506" />
+      <entry key="S2" value="0.9961949481330542" />
+      <entry key="S5" value="0.9984763268334661" />
+      <entry key="S10" value="0.9997514566466309" />
+      <entry key="S30" value="1.1824400772875008" />
+      <entry key="S60" value="2.677731931737756" />
+      <entry key="M2" value="10.294029035928427" />
+      <entry key="M5" value="32.81949412250307" />
+      <entry key="M10" value="54.128707734317786" />
+      <entry key="M15" value="68.28017238145155" />
+      <entry key="M30" value="97.18576515527256" />
+      <entry key="H1" value="155.57708373750268" />
+      <entry key="H2" value="299.80902533138186" />
+      <entry key="H4" value="548.2204189294566" />
+      <entry key="D1" value="3420.439659472033" />
+      <entry key="W1" value="19364.55114188732" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -139,7 +173,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/decision/computation/sequence",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/decision/computation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -153,11 +187,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/artifcat/decision/computation" />
+      <recent name="$PROJECT_DIR$/src/microservice/computation" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/sequence" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/vector" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/crud" />
-      <recent name="$PROJECT_DIR$/src/request/permission/crud" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/computation/vector/distance/euclidean" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/vector" />
@@ -980,7 +1014,7 @@
       <workItem from="1792878648662" duration="255824000" />
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
-      <workItem from="1794227184139" duration="417846000" />
+      <workItem from="1794227184139" duration="418846000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3256,7 +3290,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/microservice/computation/__init__.py</url>
-          <line>13</line>
+          <line>14</line>
           <option name="timeStamp" value="745" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -3278,6 +3312,12 @@
           <url>file://$PROJECT_DIR$/src/artifcat/decision/crud/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="749" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="python-line">
+          <url>file://$PROJECT_DIR$/src/microservice/computation/sequence/distance/euclidean/microservice.py</url>
+          <line>48</line>
+          <log-expression expression="err_code=EuclideanDistanceMicroserviceException.ERR_CODE,&#10;                    ex=result.exception,&#10;                )&#10;            )&#10;        ## --- Forward the work product to the client. ---##&#10;        scalar = cast(Scalar, result.payload)&#10;        return ComputationResult.success(scalar)" language="Python" />
+          <option name="timeStamp" value="750" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
