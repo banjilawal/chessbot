@@ -18,7 +18,7 @@ from surface import Quadrant
 
 T = TypeVar("T", bound="Quadrant")
 
-class QuadrantProjectionRequest(ProjectionRequest, ABC, Generic[T]):
+class QuadrantProjectionRequest(ProjectionRequest, Generic[T]):
     """
      Role:
          -  Messaging

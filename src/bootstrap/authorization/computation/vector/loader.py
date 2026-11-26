@@ -1,7 +1,7 @@
-# src/bootstrap/authorization/loader.py
+# src/bootstrap/authorization/vectorloader.py
 
 """
-Module: bootstrap.authorization.loader
+Module: bootstrap.authorization.vector.loader
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,12 +13,16 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ComputationDecision
-from bootstrap import AuthorizationLoader
+from bootstrap import ComputationAuthorizationLoader
+from request import VectorComputationPermissionRequest
+
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="VectorComputationPermissionRequest")
 
-class ComputationAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
+class VectorComputationAuthorizationLoader(
+    ComputationAuthorizationLoader[T], ABC, Generic[T]
+):
     """
     Role:
         -   Process Bootstrapper
@@ -32,7 +36,7 @@ class ComputationAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
         -   def execute(candidate: Any) -> ComputationDecision
 
     Super Class:
-        AuthorizationLoader
+        ComputationAuthorizationLoader
     """
     
     def __init__(self):

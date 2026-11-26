@@ -10,9 +10,8 @@ version: 0.0.2
 # =========== BOOTSTRAP.AUTHORIZATION.COMPUTATION PACKAGE ===========#
 
 # Packages
-from .addition import *
-from .distance import *
-from .product import *
+from .projection import *
+from .vector import *
 
 # Modules
 from .loader import ComputationAuthorizationLoader

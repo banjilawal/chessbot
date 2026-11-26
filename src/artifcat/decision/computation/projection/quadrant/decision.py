@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from artifcat import Permission, ProjectionComputationDecision
+from artifcat import Permission, ProjectionDecision
 from request import QuadrantProjectionPermissionRequest, QuadrantProjectionRequest
 
 
 class QuadrantProjectionDecision(
-    ProjectionComputationDecision[QuadrantProjectionPermissionRequest, QuadrantProjectionRequest]
+    ProjectionDecision[QuadrantProjectionPermissionRequest, QuadrantProjectionRequest]
 ):
     """
     Role:

@@ -13,10 +13,10 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
 from artifcat import Decision
-from assurance import PrimingValidator
+from assurance import NumberValidator, PrimingValidator
 from bootstrap import Loader
-from exchange import PermissionRequest
 from microservice import IdentityService
+from request import PermissionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="PermissionRequest")
@@ -39,21 +39,29 @@ class AuthorizationLoader(Loader[T], ABC, Generic[T]):
     Super Class:
         Loader
     """
+    _number_validator: NumberValidator
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
     
     def __init__(
             self,
+            number_validator: Optional[NumberValidator] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
+            number_validator: Optional[NumberValidator]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
+        self._number_validator = number_validator or NumberValidator()
         self._identity_service = identity_service or IdentityService()
         self._priming_validator = priming_validator or PrimingValidator()
+        
+    @property
+    def number_validator(self) -> NumberValidator:
+        return self._number_validator
     
     @property
     def identity_service(self) -> IdentityService:

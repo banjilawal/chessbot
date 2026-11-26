@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .decision import ProjectionComputationDecision
+from .decision import ProjectionDecision

@@ -1,7 +1,7 @@
-# src/bootstrap/authorization/addition/loader.py
+# src/bootstrap/authorization/vectoraddition/loader.py
 
 """
-Module: bootstrap.authorization.addition.loader
+Module: bootstrap.authorization.vector.addition.loader
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,17 +12,16 @@ from __future__ import annotations
 from typing import Any, List, Optional, cast
 
 from artifcat import VectorAdditionDecision
-from bootstrap import ComputationAuthorizationLoader
+from bootstrap import VectorComputationAuthorizationLoader
+
 from domain import Vector
-from exchange import (
-    VectorAdditionPermissionRequest, VectorAdditionRequest, VectorValidationRequest
-)
 from microservice import VectorValidationService
+from request import VectorAdditionPermissionRequest
 from transit import VectorCarrier
 from util import IdFactory, LoggingLevelRouter
 
 class VectorAdditionAuthorizationLoader(
-    ComputationAuthorizationLoader[VectorAdditionPermissionRequest]
+    VectorComputationAuthorizationLoader[VectorAdditionPermissionRequest]
 ):
     """
     Role:
@@ -37,7 +36,7 @@ class VectorAdditionAuthorizationLoader(
         -   def execute(candidate: Any) -> AdditionDecision
 
     Super Class:
-        AdditionAuthorizationLoader
+        VectorComputationAuthorizationLoader
     """
     _validation_service: VectorValidationService
     
@@ -113,7 +112,7 @@ class VectorAdditionAuthorizationLoader(
             )
         # Handle the case that the applicant signature is wrong.
         applicant_signature = self.priming_validator.execute(
-            candidate=permission_form.authorization_applicant,
+            candidate=permission_form.authorization_applicant.vector_applicant,
             target_model=VectorAdditionRequest,
             null_exception=VectorAdditionRequestNullException()
         )

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from artifcat import DistanceComputationDecision
+from artifcat import DistanceDecision
 from authorization import DistanceComputationPermitter
 from request import DistanceComputationPermissionRequest, DistanceRequest, EuclideanDistanceRequest
 from transit import ComputationPermissionDispatcher
@@ -51,7 +51,7 @@ class DistanceComputationPermissionDispatcher(
         return cast(DistanceComputationPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> DistanceComputationDecision:
+    def execute(self, candidate: Any) -> DistanceDecision:
         """
         Make a decision about a VectorDistanceRequest.
         
@@ -75,7 +75,7 @@ class DistanceComputationPermissionDispatcher(
         # Handle the case that the permitter does not grant permission.
         if decision.request_is_denied:
             # Send the exception chain in the denial.
-            return DistanceComputationDecision.denial(
+            return DistanceDecision.denial(
                 exception=DistanceComputationPermissionDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -89,7 +89,7 @@ class DistanceComputationPermissionDispatcher(
         transaction_request = cast(DistanceRequest, decision.transaction_request)
 
         # --- Prepare and forward the transaction approval. ---#
-        return DistanceComputationDecision.grant(
+        return DistanceDecision.grant(
             transaction_request=transaction_request,
             permission_request=permission_request,
         )

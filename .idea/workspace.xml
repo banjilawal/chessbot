@@ -5,14 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/axis/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/decision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/quadrant/decision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/axis/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/quadrant/loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/axis/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/axis/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/quadrant/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/projection/quadrant/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/distance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/distance/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/vector/distance/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/addition/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/addition/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/addition/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/addition/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/distance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/distance/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/distance/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/product/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/product/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/product/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/product/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/authorization/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/authorization/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/permission/computation/vector/distance/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/permission/computation/vector/distance/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/projection/axis/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/projection/axis/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/request/transaction/computation/projection/quadrant/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/transaction/computation/projection/quadrant/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/distance/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/authorization/computation/distance/dispatcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,61 +78,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000170792185896" />
-      <entry key="S5" value="1.0188995791710718" />
-      <entry key="S10" value="1.2315825463053236" />
-      <entry key="S30" value="2.6968453150897442" />
-      <entry key="S60" value="4.871725852488106" />
-      <entry key="M2" value="8.989752858182074" />
-      <entry key="M5" value="27.013493113027142" />
-      <entry key="M10" value="67.01600247374535" />
-      <entry key="M15" value="98.08311610565211" />
-      <entry key="M30" value="156.001802353786" />
-      <entry key="H1" value="245.43404440300768" />
-      <entry key="H2" value="416.52688164767557" />
-      <entry key="H4" value="708.9142089060081" />
-      <entry key="D1" value="3493.21055786264" />
-      <entry key="W1" value="18722.92461745291" />
+      <entry key="MS100" value="5.598596605272708E-13" />
+      <entry key="MS500" value="0.0035449967004576592" />
+      <entry key="S2" value="0.24400794019405617" />
+      <entry key="S5" value="0.5688026590923067" />
+      <entry key="S10" value="0.7546024651920182" />
+      <entry key="S30" value="1.1752698832354134" />
+      <entry key="S60" value="2.7608146737670856" />
+      <entry key="M2" value="7.669556956193121" />
+      <entry key="M5" value="23.30474451538981" />
+      <entry key="M10" value="45.31589553951277" />
+      <entry key="M15" value="64.06008655821368" />
+      <entry key="M30" value="103.09542965221796" />
+      <entry key="H1" value="140.64304902891377" />
+      <entry key="H2" value="191.12750020218235" />
+      <entry key="H4" value="361.284720940937" />
+      <entry key="D1" value="2998.4862475321806" />
+      <entry key="W1" value="18373.882253642103" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="3.077230090068366E-172" />
-      <entry key="MS500" value="4.984619292999679E-35" />
-      <entry key="S2" value="2.657100606465762E-9" />
-      <entry key="S5" value="3.71332703427981E-4" />
-      <entry key="S10" value="0.019269994899979274" />
-      <entry key="S30" value="0.268219084760591" />
-      <entry key="S60" value="0.5333508331896364" />
-      <entry key="M2" value="0.9051042490154197" />
-      <entry key="M5" value="2.111653701611319" />
-      <entry key="M10" value="4.183061050836675" />
-      <entry key="M15" value="5.709202878206964" />
-      <entry key="M30" value="8.348679604076617" />
-      <entry key="H1" value="11.665076276593975" />
-      <entry key="H2" value="16.714263966950696" />
-      <entry key="H4" value="24.129770245563112" />
-      <entry key="D1" value="143.88335205718988" />
-      <entry key="W1" value="932.4833717594536" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.000000006606585" />
+      <entry key="S10" value="1.000087769778596" />
+      <entry key="S30" value="1.0744054487566306" />
+      <entry key="S60" value="1.5279997040395017" />
+      <entry key="M2" value="2.7971281845496243" />
+      <entry key="M5" value="5.832418306070526" />
+      <entry key="M10" value="9.29752307080957" />
+      <entry key="M15" value="12.163487687907695" />
+      <entry key="M30" value="18.23815914111404" />
+      <entry key="H1" value="24.13608903053972" />
+      <entry key="H2" value="29.134705173964992" />
+      <entry key="H4" value="36.09507397961269" />
+      <entry key="D1" value="144.4976400095341" />
+      <entry key="W1" value="932.5062307492205" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.794036587204766E-94" />
-      <entry key="MS500" value="2.169086616732091E-19" />
-      <entry key="S2" value="2.4557858838708147E-5" />
-      <entry key="S5" value="0.022343672451801504" />
-      <entry key="S10" value="0.2862083035488658" />
-      <entry key="S30" value="2.254625065979196" />
-      <entry key="S60" value="4.932252495209318" />
-      <entry key="M2" value="9.608338856021856" />
-      <entry key="M5" value="28.975242628159272" />
-      <entry key="M10" value="71.0921125498567" />
-      <entry key="M15" value="103.70224225726045" />
-      <entry key="M30" value="164.28646639395436" />
-      <entry key="H1" value="257.05436691267425" />
-      <entry key="H2" value="433.2093310462785" />
-      <entry key="H4" value="733.0204458966895" />
-      <entry key="D1" value="3637.0727526433025" />
-      <entry key="W1" value="19655.390419514166" />
+      <entry key="MS100" value="6.475831865360442E-13" />
+      <entry key="MS500" value="0.0038173964030385" />
+      <entry key="S2" value="0.3595846035805538" />
+      <entry key="S5" value="0.9896869452535895" />
+      <entry key="S10" value="1.4031901232881747" />
+      <entry key="S30" value="2.097854997767766" />
+      <entry key="S60" value="4.1637218717425375" />
+      <entry key="M2" value="10.337855622792238" />
+      <entry key="M5" value="29.0152972730088" />
+      <entry key="M10" value="54.50672413256757" />
+      <entry key="M15" value="76.12290801463656" />
+      <entry key="M30" value="121.24810824954466" />
+      <entry key="H1" value="164.71816037565114" />
+      <entry key="H2" value="220.22351592170511" />
+      <entry key="H4" value="397.35400414293" />
+      <entry key="D1" value="3142.963708504508" />
+      <entry key="W1" value="19306.370991850137" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -148,7 +168,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/decision/computation/projection",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/bootstrap/authorization/computation/projection",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -162,18 +182,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/bootstrap/authorization/computation/projection" />
+      <recent name="$PROJECT_DIR$/src/bootstrap/authorization/computation" />
+      <recent name="$PROJECT_DIR$/src/authorization/permitter/computation" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/projection" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/projection/axis" />
-      <recent name="$PROJECT_DIR$/src/authorization/permitter/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed" />
-      <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/maneuver" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/bootstrap/authorization/computation" />
+      <recent name="$PROJECT_DIR$/src/bootstrap/authorization/computation/vector" />
       <recent name="$PROJECT_DIR$/src/authorization/permitter/computation/vector" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/vector" />
       <recent name="$PROJECT_DIR$/src/request/permission/crud/trim" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/microservice/computation/vector" />
     </key>
   </component>
   <component name="RunManager" selected="Python.request">
@@ -990,7 +1010,7 @@
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
       <workItem from="1794227184139" duration="423082000" />
-      <workItem from="1795669432848" duration="3051000" />
+      <workItem from="1795669432848" duration="14110000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -3100,7 +3120,7 @@
           <option name="timeStamp" value="703" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/authorization/computation/distance/loader.py</url>
+          <url>file://$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/distance/loader.py</url>
           <line>11</line>
           <option name="timeStamp" value="704" />
         </line-breakpoint>
@@ -3294,6 +3314,16 @@
           <line>48</line>
           <log-expression expression="err_code=EuclideanDistanceMicroserviceException.ERR_CODE,&#10;                    ex=result.exception,&#10;                )&#10;            )&#10;        ## --- Forward the work product to the client. ---##&#10;        scalar = cast(Scalar, result.payload)&#10;        return ComputationResult.success(scalar)" language="Python" />
           <option name="timeStamp" value="750" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/bootstrap/authorization/computation/vector/addition/loader.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="751" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/bootstrap/authorization/computation/projection/loader.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="752" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

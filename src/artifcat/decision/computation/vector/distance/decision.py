@@ -14,7 +14,7 @@ from artifcat import VectorComputationDecision, Permission
 from request import DistancePermissionRequest, DistanceRequest
 
 
-class DistanceComputationDecision(
+class DistanceDecision(
     VectorComputationDecision[DistancePermissionRequest, DistanceRequest]
 ):
     """

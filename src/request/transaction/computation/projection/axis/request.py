@@ -18,7 +18,7 @@ from surface import Axis
 
 T = TypeVar("T", bound="Axis")
 
-class AxisProjectionRequest(ProjectionRequest, ABC, Generic[T]):
+class AxisProjectionRequest(ProjectionRequest, Generic[T]):
     """
      Role:
          -  Messaging

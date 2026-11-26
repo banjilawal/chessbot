@@ -17,7 +17,7 @@ from request import DistanceRequest, VectorComputationPermissionRequest
 T = TypeVar("T", bound="DistanceRequest")
 
 class DistancePermissionRequest(
-    VectorComputationPermissionRequest[T], ABC, Generic[T]
+    VectorComputationPermissionRequest[T], Generic[T]
 ):
     """
      Role:

@@ -1,7 +1,7 @@
-# src/bootstrap/authorization/product/loader.py
+# src/bootstrap/authorization/vectorproduct/loader.py
 
 """
-Module: bootstrap.authorization.product.loader
+Module: bootstrap.authorization.vector.product.loader
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,18 +12,14 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ScalarProductDecision
-from bootstrap import ComputationAuthorizationLoader
+from bootstrap import VectorComputationAuthorizationLoader
 from domain import Scalar, Vector
-from exchange import (
-    ScalarProductPermissionRequest, ScalarProductRequest, ScalarValidationRequest,
-    VectorValidationRequest
-)
 from microservice import ScalarValidationService, VectorValidationService
 from transit import ScalarCarrier, VectorCarrier
 from util import IdFactory, LoggingLevelRouter
 
 class ScalarProductAuthorizationLoader(
-    ComputationAuthorizationLoader[ScalarProductPermissionRequest]
+    VectorComputationAuthorizationLoader[ScalarProductPermissionRequest]
 ):
     """
     Role:
@@ -122,7 +118,7 @@ class ScalarProductAuthorizationLoader(
             )
         # Handle the case that the applicant signature is wrong.
         applicant_signature = self.priming_validator.execute(
-            candidate=permission_form.authorization_applicant,
+            candidate=permission_form.authorization_applicant.vector_applicant,
             target_model=ScalarProductRequest,
             null_exception=ScalarProductRequestNullException()
         )

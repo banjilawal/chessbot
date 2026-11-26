@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from artifcat import Permission, ProjectionComputationDecision
+from artifcat import Permission, ProjectionDecision
 from request import AxisProjectionPermissionRequest, AxisProjectionRequest
 
 
 class AxisProjectionDecision(
-    ProjectionComputationDecision[AxisProjectionPermissionRequest, AxisProjectionRequest]
+    ProjectionDecision[AxisProjectionPermissionRequest, AxisProjectionRequest]
 ):
     """
     Role:

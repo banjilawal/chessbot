@@ -10,9 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Any, Generic, Optional, TypeVar
 
 from artifcat import ComputationDecision
+from assurance import NumberValidator
 from bootstrap import AuthorizationLoader
 from util import LoggingLevelRouter
 
@@ -27,6 +28,7 @@ class ComputationAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
         1.  Ensure the correct Request type is loaded into a ComputationAuthorization module.
 
     Attributes:
+        number_validator: NumberValidator
 
     Provides:
         -   def execute(candidate: Any) -> ComputationDecision
@@ -34,9 +36,19 @@ class ComputationAuthorizationLoader(AuthorizationLoader[T], ABC, Generic[T]):
     Super Class:
         AuthorizationLoader
     """
+    _number_validator: NumberValidator
     
-    def __init__(self):
+    def __init__(self, number_validator: Optional[NumberValidator] | None = None):
+        """
+        Args:
+            number_validator: Optional[NumberValidator]
+        """
         super().__init__()
+        self._number_validator = number_validator or NumberValidator()
+    
+    @property
+    def number_validator(self) -> NumberValidator:
+        return self._number_validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor

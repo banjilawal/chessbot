@@ -19,7 +19,7 @@ P = TypeVar("P", bound="ProjectionPermissionRequest")
 T = TypeVar("T", bound="ProjectionRequest")
 
 
-class ProjectionComputationDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
+class ProjectionDecision(ComputationDecision[P, T], ABC, Generic[P, T]):
     """
     Role:
         - Permission Reporting
