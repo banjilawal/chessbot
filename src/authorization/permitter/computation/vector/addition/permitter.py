@@ -1,7 +1,7 @@
-# src/authorization/permitter/computation/addition/permitter.py
+# src/authorization/permitter/computation/vector/addition/permitter.py
 
 """
-Module: authorization.permitter.computation.addition.permitter
+Module: authorization.permitter.computation.vector.addition.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import VectorAdditionDecision
-from authorization import ComputationPermitter
+from authorization import VectorComputationPermitter
 from bootstrap import VectorAdditionAuthorizationLoader
 from request import VectorAdditionPermissionRequest, VectorAdditionRequest
 from util import LoggingLevelRouter
 
 
-class VectorAdditionPermitter(ComputationPermitter[VectorAdditionPermissionRequest]):
+class VectorAdditionPermitter(VectorComputationPermitter[VectorAdditionPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -34,7 +34,7 @@ class VectorAdditionPermitter(ComputationPermitter[VectorAdditionPermissionReque
         -   def execute(candidate: Any) -> ScalarDecision
 
     Super Class:
-        ComputationPermitter
+        VectorComputationPermitter
     """
     
     def __init__(self, loader: Optional[VectorAdditionAuthorizationLoader] | None = None):

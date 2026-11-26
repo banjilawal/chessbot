@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/multiplication/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/computation/topology/offset/pawn/developed/decision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/addition/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/addition/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/addition/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/addition/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/distance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/distance/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/distance/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/product/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/computation/product/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/computation/vector/multiplication/permitter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="9683" />
+    <option name="cachedIndexableFilesCount" value="9731" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileColors">
@@ -163,11 +171,11 @@
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/permitter/computation/vector" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/computation/vector" />
       <recent name="$PROJECT_DIR$/src/request/permission/crud/trim" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/transaction/computation/vector" />
       <recent name="$PROJECT_DIR$/src/microservice/computation/vector" />
-      <recent name="$PROJECT_DIR$/src/microservice/trim" />
     </key>
   </component>
   <component name="RunManager" selected="Python.request">
@@ -984,6 +992,7 @@
       <workItem from="1793301751162" duration="38360000" />
       <workItem from="1793360739922" duration="298940000" />
       <workItem from="1794227184139" duration="423082000" />
+      <workItem from="1795669432848" duration="1177000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

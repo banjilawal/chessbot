@@ -1,7 +1,7 @@
-# src/authorization/permitter/computation/distance/permitter.py
+# src/authorization/permitter/computation/vector/multiplication/permitter.py
 
 """
-Module: authorization.permitter.computation.distance.permitter
+Module: authorization.permitter.computation.vector.multiplication.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,14 +11,12 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from artifcat import DistanceComputationDecision
-from authorization import ComputationPermitter
-from bootstrap import DistanceComputationAuthorizationLoader
-from exchange import DistanceComputationPermissionRequest, VectorDistanceRequest
+from artifcat import ScalarProductDecision
+from bootstrap import ScalarProductAuthorizationLoader
 from util import LoggingLevelRouter
 
 
-class DistanceComputationPermitter(ComputationPermitter[DistanceComputationPermissionRequest]):
+class ScalarProductPermitter(VectorComputationPermitter[ScalarProductPermissionRequest]):
     """
     Role:
         -   Permission Authorization
@@ -34,35 +32,35 @@ class DistanceComputationPermitter(ComputationPermitter[DistanceComputationPermi
         -   def execute(candidate: Any) -> ScalarDecision
 
     Super Class:
-        ComputationPermitter
+        VectorComputationPermitter
     """
     
-    def __init__(self, loader: DistanceComputationAuthorizationLoader):
+    def __init__(self, loader: ScalarProductAuthorizationLoader):
         """
         Args:
-            loader: DistanceComputationAuthorizationLoader
+            loader: ScalarProductAuthorizationLoader
         """
         super().__init__(loader=loader)
     
     @property
-    def loader(self) -> DistanceComputationAuthorizationLoader:
-        return cast(DistanceComputationAuthorizationLoader, super().loader)
+    def loader(self) -> ScalarProductAuthorizationLoader:
+        return cast(ScalarProductAuthorizationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> DistanceComputationDecision:
+    def execute(self, candidate: Any) -> ScalarProductDecision:
         """
-        Checks if a DistanceComputationPermissionRequest can be granted.
+        Checks if a ScalarProductPermissionRequest can be granted.
 
         Action:
             1.  Send an exception in the denial if the loader cannot bootstrap
                 the process.
-            2.  Otherwise, send a DistanceComputation approval.
+            2.  Otherwise, send a ScalarProduct approval.
         Args:
             candidate: Any
         Returns:
-           DistanceComputationDecision
+           ScalarProductDecision
         Raises:
-            VectorDistancePermitterException
+            ScalarProductPermitterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -70,21 +68,21 @@ class DistanceComputationPermitter(ComputationPermitter[DistanceComputationPermi
         bootstrap = self.loader.execute(candidate=candidate)
         if bootstrap.request_is_denied:
             # Send the exception chain in the denial.
-            return DistanceComputationDecision.denial(
-                exception=VectorDistancePermitterException(
+            return ScalarProductDecision.denial(
+                exception=ScalarProductPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorDistancePermitterException.MSG,
-                    err_code=VectorDistancePermitterException.ERR_CODE,
+                    msg=ScalarProductPermitterException.MSG,
+                    err_code=ScalarProductPermitterException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
         # --- Extract the transaction_request for processing. ---#
-        permission_request = cast(DistanceComputationPermissionRequest, bootstrap.permission_request)
-        transaction_request = cast(VectorDistanceRequest, bootstrap.transaction_request)
+        permission_request = cast(ScalarProductPermissionRequest, bootstrap.permission_request)
+        transaction_request = cast(ScalarProductRequest, bootstrap.transaction_request)
 
         # --- Forward the approval. ---#
-        return DistanceComputationDecision.grant(
+        return ScalarProductDecision.grant(
             transaction_request=transaction_request,
             permission_request=permission_request,
         )

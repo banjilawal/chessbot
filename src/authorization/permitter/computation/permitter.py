@@ -15,7 +15,8 @@ from typing import Any, Generic, TypeVar
 from artifcat import ComputationDecision
 from authorization import Permitter
 from bootstrap import ComputationAuthorizationLoader
-from exchange import ComputationPermissionRequest
+from request import ComputationPermissionRequest
+
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="ComputationPermissionRequest")

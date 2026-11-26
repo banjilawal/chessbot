@@ -1,0 +1,15 @@
+# src/authorization/permitter/computation/vector/multiplication/__init__.py
+
+"""
+Module: authorization.permitter.computation.vector.multiplication.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== AUTHORIZATION.PERMITTER.COMPUTATION.VECTOR.MULTIPLICATION PACKAGE ===========#
+
+# Packages
+
+# Modules
+from .permitter import ScalarProductPermitter
