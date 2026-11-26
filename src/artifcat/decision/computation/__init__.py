@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.DECISION.COMPUTATION PACKAGE ===========#
 
 # Packages
+from .projection import *
 from .sequence import *
 from .topology import *
 from .vector import *
